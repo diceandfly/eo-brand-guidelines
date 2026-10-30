@@ -200,7 +200,7 @@
   --cref-gap: 0.26em; /* 칩 ↔ 이름 */
   --cref-side: 0.14em; /* 칩 바깥쪽 여백 — 앞 글자 ↔ 칩. 이름 없이 칩만일 때는 뒤쪽에도. 공백 글자(약 0.25em)에 더해짐 */
   --cref-radius: 0px; /* 칩 라운드. 0 = 정사각 */
-  --cref-dy: -0.01em; /* 칩 세로 위치 (vertical-align). 음수 = 아래로. Do/Don't 아이콘과 같은 높이로 보이게 맞춤 */
+  --cref-dy: -0.045em; /* 칩 세로 위치 (vertical-align). 음수 = 아래로. 칩 중심이 대문자 높이(캡 하이트 0.63em)의 중심에 오도록: 본문 20px 에서 칩 14.4px 이 베이스라인 아래 0.9px ~ 위 13.5px */
   --cref-grow-solid-gray: 2px; /* Solid Gray 칩을 키우는 양. 어두운 칩은 면이 아니라 테두리로 읽혀 같은 크기여도 작아 보이는 착시 보정. 0 = 끔 */
   --cref-grow-space-black: 3.8px; /* Space Black 칩을 키우는 양. 더 어두우므로 더 많이 */
   --swatch-tip-jump-nudge: 0.8px; /* JUMP + 화살표를 오른쪽으로 옮기는 시각 보정 (→ 가 ↗ 보다 오른쪽이 비어 보여 다른 알약보다 크게) */
