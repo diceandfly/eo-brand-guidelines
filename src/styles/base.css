@@ -10,15 +10,19 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable; /* 스크롤바 자리를 항상 비워 둠. 짧은 페이지(스크롤바 없음)와 긴 페이지의 본문 폭이 같고, 로드 잠금이 풀리며 스크롤바가 나타날 때 폭이 튀지 않음 */
   overscroll-behavior-y: none; /* 페이지 맨 위·맨 아래에서 고무줄 튕김 없음. 튕김이 스무스 스크롤의 본문 이동과 겹치면 끝에서 뚝뚝 걸려 보임. 가로(뒤로 가기 제스처)는 그대로 */
   /* scroll-behavior: smooth 은 쓰지 않습니다. 브라우저 자체 스크롤 애니메이션이 켜져 있으면 GSAP 섹션 이동 트윈이
      지정한 위치를 브라우저가 느리게 따라가다 트윈이 끝난 뒤 되돌아가는 충돌이 생깁니다. 부드러운 이동은 motion.ts 가 맡습니다. */
 }
 /* 로드 직후 스무스 스크롤이 준비될 때까지(Layout.astro 인라인 가드 → motion.ts 가 해제) 페이지를 굴릴 수 없게.
-   scrollbar-gutter 로 스크롤바 자리를 유지해 풀릴 때 폭이 튀지 않음 */
-html.scroll-hold {
+   html 에 overflow: hidden 을 쓰면 Chrome 은 scrollbar-gutter 를 무시해 풀릴 때 본문이 15px 좁아지며 줄바꿈이 튐.
+   대신 body 를 화면에 고정해 문서 자체의 스크롤 범위를 0 으로 만듦 — 직전 페이지에서 이어진 관성 스크롤도 갈 곳이 없음.
+   고정 요소(목차 · 상단 바 · #smooth-wrapper)는 뷰포트 기준이라 영향 없음. 풀 때 motion.ts 가 ScrollTrigger.refresh() 로 스크롤 범위를 다시 잼 */
+html.scroll-hold body {
+  position: fixed;
+  inset: 0;
   overflow: hidden;
-  scrollbar-gutter: stable;
 }
 body {
   margin: 0;

@@ -23,3 +23,7 @@ founders-grotesk-mono-medium.woff2
 ```
 
 파일명이 다르면 `src/styles/fonts.css` 의 경로를 같이 고치세요. 폰트 파일과 빌드 결과물(`dist/`)은 공개 저장소에 올리지 마세요.
+
+## Pretendard (한글)
+`pretendard/` 의 서브셋 woff2 92개는 무료(OFL) 서체지만 역시 git 에 넣지 않습니다. `npm run fonts:ko` 가 CDN 에서 내려받고
+`src/styles/pretendard.css` · `src/lib/pretendard-preload.json` 을 함께 만듭니다. 클론한 뒤 한 번 실행하세요.

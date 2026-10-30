@@ -58,7 +58,10 @@ if (smoothAmount > 0 && wrapper && content) {
 (window as any).__ST = ScrollTrigger;                           // 디버그용 (브라우저 콘솔에서 refresh 등 확인)
 // 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품.
 // ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계" 라서 스크롤을 부드럽게 따라가지 않고 바로 점프하므로, 그 시간이 지난 뒤에 풉니다.
-const releaseGuard = () => (window as any).__scrollGuardOff?.();
+const releaseGuard = () => {
+  (window as any).__scrollGuardOff?.();
+  ScrollTrigger.refresh();                                      // 잠금 중(body 고정)에는 문서 스크롤 범위가 0 이라, 풀린 뒤 다시 잼
+};
 if (smoother) gsap.delayedCall(ms('--scroll-guard-hold', 0.6), releaseGuard); else releaseGuard();
 
 const anchorOffset = () => num('--anchor-offset', 64);

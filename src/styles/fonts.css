@@ -6,6 +6,7 @@
    font-display: block — 폰트가 준비될 때까지 글자를 잠깐 비워 두어 시스템 폰트가 스치는 것(FOUT)을 막습니다.
    매 페이지에서 쓰는 파일은 Layout.astro 에서 preload 합니다.
    저장소에는 폰트 파일을 커밋하지 않습니다 (.gitignore 참고).
+   한글 서체 Pretendard 는 src/styles/pretendard.css (npm run fonts:ko 가 파일과 함께 생성) 에 따로 선언합니다.
 
    보유 웨이트
      Founders Grotesk       Light 300 · Regular 400 · Medium 500 · Semibold 600
