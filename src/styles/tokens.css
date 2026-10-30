@@ -223,10 +223,10 @@
   --lh-unit: 28px; /* 기준 행간 단위 = 본문 행간. 모든 레벨의 행간 = 이 값 × m (본문은 m 1). 이 값 하나로 타이포 전체가 함께 커지고 작아짐 */
 
   /* 서체 스택 — Founders Grotesk 는 public/fonts 의 woff2 (저장소에는 없음), Pretendard 는 CDN. 뒤는 못 읽을 때의 대체 */
-  --font-en: 'Founders Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* 영문 UI (목차 · 검색 · 제목) */
+  --font-en: 'Founders Grotesk', 'Pretendard KO', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* 영문 UI (목차 · 검색 · 제목). 한글 글리프는 Pretendard KO(아래 설명) */
   --font-ko: 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif; /* 본문 속 한글 구간 (base.css 의 .ko) */
-  --font-body: 'Founders Grotesk', 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif; /* 본문. 영문은 Founders, 한글 글리프는 Pretendard 로 떨어짐 */
-  --font-mono: 'Founders Grotesk Mono', 'SF Mono', Menlo, Consolas, monospace; /* label 레벨 (Next · 플레이스홀더 경로 · 검색 경로 · 알약) */
+  --font-body: 'Founders Grotesk', 'Pretendard KO', 'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif; /* 본문. 영문은 Founders, 한글 글리프는 Pretendard 로 떨어짐. 'Pretendard KO' = Pretendard 에 --t-body-ko-scale 을 size-adjust 로 미리 적용한 복제 서체(src/styles/pretendard-ko.css, npm run fonts:ko 로 생성) — .ko 로 감쌀 수 없는 검색창 · 검색 결과 · 목차의 한글도 본문과 같은 배율 */
+  --font-mono: 'Founders Grotesk Mono', 'Pretendard KO', 'SF Mono', Menlo, Consolas, monospace; /* label 레벨 (Next · 플레이스홀더 경로 · 검색 경로 · 알약). 한글 글리프는 Pretendard KO */
 
   /*
     레벨마다 m · p · ls · w · c 다섯 토큰만 가지며 아래 뜻은 모든 레벨에 같습니다 (토큰마다 따로 적지 않음).
