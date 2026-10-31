@@ -525,7 +525,7 @@ EO의 서체는 Founders Grotesk 패밀리입니다. 헤드라인과 본문에�
 
 Founders Grotesk는 장식 없이 명료하고, 넓은 폭과 낮은 콘트라스트 덕분에 큰 크기에서 단단한 블록처럼 보입니다. 이 성격이 "명료하고 열린 자신감"이라는 EO의 목소리를 그대로 전달합니다. 모노는 빌더의 터미널과 스펙 시트를 연상시키는 정보의 서체입니다.
 
-웨이트는 역할이 정해져 있습니다. 디스플레이와 헤드라인에는 Medium, 서브 헤드라인에는 Regular, 본문에는 Light, 정보성 텍스트에는 Mono Regular를 사용합니다. 자세한 기준은 [[#weight-and-tonal-value|Tonal Value]]를 참조하세요.
+웨이트는 역할이 정해져 있습니다. 디스플레이와 헤드라인에는 Medium, 서브 헤드라인에는 Regular, 본문에는 Light, 정보성 텍스트에는 Mono Regular를 사용합니다. 레벨별 웨이트는 [[#reference-scale|Reference Scale]]을 참조하세요.
 ![our-typefaces]
 
 
@@ -554,13 +554,14 @@ Founders Grotesk Mono Regular의 대부분의 글자를 한눈에 보여 줍니�
 
 
 ### + Typographic Framework {layout=grid-2}
+#### Overview
 EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 공간을 기준으로 계량 · 확장되는 프레임웍입니다. 기준행간(Line Unit) 하나를 정하면 모든 레벨의 행간은 그 배수가 되고, 글자 크기는 행간에 실질 행간 비율을 적용해 나옵니다. 레이아웃의 거터와 마진도 같은 단위를 쓰므로 모든 타이포그래피 · 여백 · 그래픽 요소가 통일된 베이스라인 그리드 위에 놓입니다.
 
 프레임웍의 실행은 큰 틀과 미세 조정이 분리되어 있어 새 프로젝트에서 타이포그래피 레벨을 처음부터 짜야 할 때도 진입점을 찾기 수월하며, 레벨과 배수를 고르는 일부터 시작하면 됩니다. 먼저 레벨 배수로 큰 위계를 잡고, 그다음 실질 행간 · 웨이트 · 자간을 조절해 회색도를 다듬고 시각적 완성도를 높입니다. 
 
 다국어 환경에서도 글자 크기와 행간 비율을 언어별로 바꿔도 행간 자체는 그대로이므로 레이아웃이 움직이지 않으며, 서체를 Founders Grotesk에서 Pretendard나 Noto Sans로 바꿔도 회색도만 맞췄다면 룩앤필을 일정하게 유지할 수 있습니다.
 
-이 챕터는 프레임웍의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 기준행간을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 세팅합니다. 각 단계 별 세부 지침은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · [[#weight-and-tonal-value|Weight & Tonal Value]], 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
+이 챕터는 프레임웍의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 기준행간을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 세팅합니다. 각 단계 별 세부 지침은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · [[#tonal-value|Tonal Value]], 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
 ![framework-1] 기준행간(Line Unit) — 지면의 기준 행간. 본문 한 줄의 높이 또는 심볼의 1x · 0.5x, 모든 사이즈의 단위
 ![framework-2] 레벨(Level) — 역할에 따라 나눈 텍스트의 단계. 행간 배수 · 웨이트 · 실질 행간 · 자간의 네 항목 한 묶음
 ![framework-3] 실질 행간(Linespacing) — 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
@@ -589,7 +590,9 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 - **T1** — 1x · Light · 140% · +0.5% (20px). 본문.
 - **C1** — 0.5x · Mono Regular · 111% · -7% (12.6px). 캡션 · 라벨 · 태그 · 스펙 · 날짜 등.
 
-같은 역할의 레벨을 더 만들어야 한다면 이웃한 레벨 사이의 배수를 1x · 0.5x · 0.25x 단위로 조정하고, 실질 행간과 자간은 인접한 양쪽 레벨끼리 [[#weight-and-tonal-value|회색도]]가 일관되게 이어지도록 조정해야 합니다. 한국어와 베트남어의 조정 값은 [[#multilingual|Multilingual]]을 참조하세요.
+웨이트는 레벨에 고정되어 있습니다. Medium은 디스플레이와 헤드라인(D1 · H1), Regular는 서브 헤드라인(D2 · H2 · H3), Light는 본문(T1), Mono Regular는 정보성 텍스트(C1)입니다. Semibold는 버튼과 내비게이션 같은 UI 컴포넌트에만 사용하고 커뮤니케이션 디자인에서는 사용하지 않습니다.
+
+같은 역할의 레벨을 더 만들어야 한다면 이웃한 레벨 사이의 배수를 1x · 0.5x · 0.25x 단위로 조정하고, 실질 행간과 자간은 인접한 양쪽 레벨끼리 [[#tonal-value|회색도]]가 일관되게 이어지도록 조정해야 합니다. 한국어와 베트남어의 조정 값은 [[#multilingual|Multilingual]]을 참조하세요.
 ![reference-scale]
 
 
@@ -601,7 +604,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 2. 기준행간을 정합니다. 일반적으로 가장 중요도가 높은 콘텐츠의 레벨을 기준으로 기준행간(Line Unit)의 크기를 정합니다. 콘텐츠 레이아웃에서는 일반적으로 본문 레벨의 행간이 기준행간이 됩니다. 본문이 없는 포스터나 배너는 EO 심볼 레벨의 행간의 1x, 0.5x 등의 배율을 기준행간으로 정합니다. 
 3. 레벨의 배수를 정합니다. 배수는 1x · 0.5x · 0.25x 단위로만 씁니다. 레벨별 배율 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하며, [[#reference-scale|Reference Scale]]의 값에서 시작해 매체에 맞게 조정하는 방법도 좋습니다.
 4. 실질 행간을 다듬습니다. 레벨마다 글자 크기에 대한 행간의 비율을 정합니다. 글자가 클수록 비율은 낮아지고 작을수록 높아집니다. [[#linespacing-founders-grotesk-medium|Linespacing]]을 참조하세요.
-5. 웨이트와 자간으로 회색도를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 4와 5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#weight-and-tonal-value|Weight & Tonal Value]]를 참조하세요.
+5. 웨이트와 자간으로 회색도를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 4와 5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#tonal-value|Tonal Value]]를 참조하세요.
 
 레이아웃의 격자와 마진은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
 ![setting-up]
@@ -616,7 +619,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 - **지면에 맞추기** — 레벨의 절대 글자 크기는 기준행간으로 결정됩니다. 본문이 있는 콘텐츠는 읽기 크기를 지키기 위해 기준행간을 고정하고 실질행간의 배율(%)을 올립니다. 본문이 없는 포스터와 배너는 기준행간을 심볼 높이를 정수 배(1x · 2x)에 맞춰 적당히 키우는 것이 이상적일 수 있습니다. 
 - **심볼과 레벨** — 심볼도 레벨처럼 다룹니다. 심볼의 높이 정수 배(1x · 2x)를 기준행간으로 설정하면 심볼과 타이포그래피가 같은 단위로 묶을 수 있습니다. 심볼의 크기는 [[symbol#scalability]]를 따릅니다.
 
-일반적으로 레벨이 커질수록 실질 행간과 자간은 좁아지고 웨이트는 무거워집니다. 그래서 레벨을 정하는 일은 선형적 과정이 아닌 [[#linespacing-founders-grotesk-medium|실질 행간]] · [[#letterspacing-founders-grotesk-medium|자간]] · [[#weight-and-tonal-value|웨이트]]를 동시에 조율하는 일이며, 빠른 참고가 필요할 때는 [[#reference-scale|Reference Scale]]의 프리셋 값을 참조하세요.
+일반적으로 레벨이 커질수록 실질 행간과 자간은 좁아지고 웨이트는 무거워집니다. 그래서 레벨을 정하는 일은 선형적 과정이 아닌 [[#linespacing-founders-grotesk-medium|실질 행간]] · [[#letterspacing-founders-grotesk-medium|자간]] · [[#tonal-value|웨이트]]를 동시에 조율하는 일이며, 빠른 참고가 필요할 때는 [[#reference-scale|Reference Scale]]의 프리셋 값을 참조하세요.
 ![levelling-format] {do} 본문이 있으면 기준행간을 고정, 없으면 심볼 높이에 맞춰 키움
 ![levelling-steps-1] {do} 비주얼 커뮤니케이션은 레벨 간 사이즈 배율을 크게 설정 (약 2배 권장)
 ![levelling-steps-2] {do} 기능적일수록 레벨 간 사이즈 배율을 작게 설정 (약 1.5배 권장)
@@ -662,13 +665,13 @@ C1의 행간은 기준행간의 절반입니다. 캡션 두 줄이 본문 한 �
 
 ### Letterspacing
 #### Founders Grotesk Regular
-중간 크기의 서브 헤드라인은 자간을 거의 손대지 않습니다. 헤드라인만큼 좁히면 Regular의 획 사이가 막혀 답답해지고, 본문처럼 벌리면 헤드라인과 본문 사이의 위계가 흐려집니다. Medium 헤드라인과 Light 본문의 중간 [[#weight-and-tonal-value|회색도]]가 나오는 지점이 기준입니다.
+중간 크기의 서브 헤드라인은 자간을 거의 손대지 않습니다. 헤드라인만큼 좁히면 Regular의 획 사이가 막혀 답답해지고, 본문처럼 벌리면 헤드라인과 본문 사이의 위계가 흐려집니다. Medium 헤드라인과 Light 본문의 중간 [[#tonal-value|회색도]]가 나오는 지점이 기준입니다.
 ![letterspacing-regular]
 
 
 ### Letterspacing
 #### Founders Grotesk Light
-작은 글자는 공백이 상대적으로 작아 보이므로 자간을 0에 두거나 조금 벌립니다. 가는 웨이트는 자간을 좁히면 가독성이 빠르게 떨어지므로, [[#weight-and-tonal-value|회색도]]를 맞추고 싶다면 자간보다 [[#linespacing-founders-grotesk-light|실질 행간]]과 웨이트를 먼저 조절하세요.
+작은 글자는 공백이 상대적으로 작아 보이므로 자간을 0에 두거나 조금 벌립니다. 가는 웨이트는 자간을 좁히면 가독성이 빠르게 떨어지므로, [[#tonal-value|회색도]]를 맞추고 싶다면 자간보다 [[#linespacing-founders-grotesk-light|실질 행간]]과 웨이트를 먼저 조절하세요.
 ![letterspacing-light]
 
 
@@ -680,13 +683,11 @@ C1의 행간은 기준행간의 절반입니다. 캡션 두 줄이 본문 한 �
 
 
 ### Typographic Framework
-#### + Weight & Tonal Value
-웨이트의 역할은 고정되어 있습니다. 디스플레이와 헤드라인(D1 · H1)에는 Medium, 서브 헤드라인(D2 · H2 · H3)에는 Regular, 본문(T1)에는 Light, 정보성 텍스트(C1)에는 Mono Regular입니다. Semibold는 버튼과 내비게이션 같은 UI 컴포넌트에만 사용하고 커뮤니케이션 디자인에서는 사용하지 않습니다.
-
+#### + Tonal Value
 회색도는 글 덩어리를 멀리서 봤을 때의 밝기입니다. EO의 원칙은 하나입니다. 모든 레벨이 하나의 글을 그대로 확대 · 축소한 것처럼 보이게 합니다. 글자를 단순히 키우면 자간과 행간이 떠 보이고, 줄이면 뭉쳐 보이므로 레벨마다 [[#linespacing-founders-grotesk-medium|실질 행간]] · [[#letterspacing-founders-grotesk-medium|자간]] · 웨이트를 다시 잡아야 같은 회색도가 나옵니다. 레벨을 나란히 놓고 눈을 가늘게 뜨거나 화면을 축소해 보면 밝기 차이가 드러납니다.
 
 같은 원칙이 서체와 언어가 바뀔 때의 기준이 됩니다. [[#multilingual|Pretendard나 Noto Sans]]로 조판할 때도 Founders Grotesk와 같은 회색도가 나오도록 글자 크기 · 웨이트 · 자간을 맞춥니다.
-![weight-tonal]
+![tonal-value]
 
 
 ### + Alignment & Ragging
@@ -718,7 +719,7 @@ EO 브랜드 커뮤니케이션의 모든 텍스트는 왼쪽 정렬입니다. �
 
 베이스라인 보정은 텍스트 박스를 위에서 맞추는 디자인 툴 기준의 값입니다. 브라우저는 글자의 베이스라인을 스스로 맞추므로 웹에서는 보정이 거의 필요 없습니다.
 
-같은 두 서체가 Founders Grotesk를 사용할 수 없는 환경(이메일, 외부 플랫폼과 문서 툴의 시스템 서체 제약 등)의 대체 서체이기도 합니다. 이때는 영문도 Pretendard로 조판하고, Pretendard를 쓸 수 없거나 지원하지 않는 언어에서는 Noto Sans를 씁니다. 기준행간과 레벨의 배수는 그대로 두고 실질 행간 · 웨이트 · 자간만 [[#weight-and-tonal-value|회색도]]가 Founders Grotesk와 같아지도록 다시 잡으며, Arial 같은 다른 대체 서체는 피하세요.
+같은 두 서체가 Founders Grotesk를 사용할 수 없는 환경(이메일, 외부 플랫폼과 문서 툴의 시스템 서체 제약 등)의 대체 서체이기도 합니다. 이때는 영문도 Pretendard로 조판하고, Pretendard를 쓸 수 없거나 지원하지 않는 언어에서는 Noto Sans를 씁니다. 기준행간과 레벨의 배수는 그대로 두고 실질 행간 · 웨이트 · 자간만 [[#tonal-value|회색도]]가 Founders Grotesk와 같아지도록 다시 잡으며, Arial 같은 다른 대체 서체는 피하세요.
 ![multilingual]
 
 
