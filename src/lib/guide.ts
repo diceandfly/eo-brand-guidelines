@@ -33,7 +33,8 @@ export type Item = ImageItem | SwatchItem;
 
 export interface Section {
   id: string;             // 앵커 id (목차 라벨 기준: 헤드, 헤드가 페이지 이름과 같으면 서브헤드. 중복 시 -2, -3…)
-  label: string;          // 목차 라벨 = 이미지 주제 이름 (헤드, 헤드가 페이지 이름과 같으면 서브헤드)
+  label: string;          // 목차 라벨 = 이미지 주제 이름 (헤드. 헤드가 페이지 이름과 같거나 + 가 서브헤드 줄에 있으면 서브헤드)
+  crumb: string[];        // 참조 링크 글자 [헤드, 서브헤드] 또는 [라벨] — 헤드가 페이지 이름과 다르고 서브헤드가 있으면 둘 다 (flushSection 에서 확정)
   split?: number;           // ::: split … ::: 로 묶인 섹션: 같은 번호끼리 한 12컬럼 행에 나란히 (sectionBlocks)
   span?: number;          // 행 안에서 차지하는 그리드 컬럼 수 {span=N}. 생략하면 남은 컬럼을 균등 분배 (loadGuide 끝에서 확정)
   head: string;
@@ -44,6 +45,7 @@ export interface Section {
   zoom?: number;          // 섹션 안 이미지 전체의 카드 배율 {zoom=1.5}. 이미지별 {zoom=…}/{nozoom} 이 우선
   items: Item[];
   tocMark: boolean;       // ### + 로 목차에 올리라고 표시한 섹션
+  markOnSubhead?: boolean; // + 가 서브헤드 줄(#### + …)에 있었음 → 목차 라벨은 서브헤드
 }
 export interface SubRef { url: string; name: string; chapterNum: string; chapterName: string; }
 export interface Sub {
@@ -54,7 +56,7 @@ export interface Sub {
   chapterName: string;
   chapterSlug: string;
   sections: Section[];
-  navSections: { id: string; head: string }[];   // 목차에 오르는 섹션. ### + 표시가 하나라도 있으면 표시된 것만, 없으면 전부(자동)
+  navSections: { id: string; head: string; key: string }[];   // 목차에 오르는 섹션 (key = 중복 판정용: 라벨, 서브헤드 라벨은 "헤드 / 서브헤드"). ### + 표시가 하나라도 있으면 표시된 것만, 없으면 전부(자동)
   tocSections: boolean;   // false 면 목차에서 섹션 목록을 펼치지 않음 (## 이름 {toc=none})
   prev?: SubRef;
   next?: SubRef;
@@ -341,8 +343,9 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
   const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '').replace(/s$/, '');
   const navLabel = (sec: Section, s: Sub) => {
     const pageLike = norm(sec.head) === norm(s.name) || norm(sec.head) === norm(s.chapterName);
-    return pageLike && sec.subhead ? sec.subhead : sec.head;
+    return (pageLike || sec.markOnSubhead) && sec.subhead ? sec.subhead : sec.head;   // + 를 서브헤드 줄에 붙이면 헤드가 페이지 이름과 달라도 서브헤드가 라벨
   };
+  const pageLikeOf = (sec: Section, s: Sub) => norm(sec.head) === norm(s.name) || norm(sec.head) === norm(s.chapterName);
 
   const flushSection = () => {
     if (!section || !sub) return;
@@ -350,6 +353,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     // "헤드-서브헤드" (morphology-proportion) 로 서브헤드까지 참조할 수 있게. 같은 페이지 안에서 겹치면 -2, -3 …
     // 섹션을 다 읽은 뒤에 정해야 서브헤드를 쓸 수 있으므로 여기서 확정
     section.label = navLabel(section, sub);
+    section.crumb = section.subhead && !pageLikeOf(section, sub) ? [section.head, section.subhead] : [section.label];
     const base = section.subhead && section.label === section.head ? `${slugify(section.head)}-${slugify(section.subhead)}` : slugify(section.label);
     const count = (idsInSub.get(base) ?? 0) + 1;
     idsInSub.set(base, count);
@@ -371,7 +375,8 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     s.navSections = [];
     for (const sec of pool) {
       const label = sec.label;
-      if (!s.navSections.some(n => n.head === label)) s.navSections.push({ id: sec.id, head: label });
+      const key = sec.markOnSubhead && sec.subhead ? `${sec.head} / ${sec.subhead}` : label;   // 서브헤드 라벨은 헤드까지 묶어 비교 (다른 헤드 아래 같은 서브헤드는 따로)
+      if (!s.navSections.some(n => n.key === key)) s.navSections.push({ id: sec.id, head: label, key });
     }
   };
 
@@ -418,7 +423,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       const tocMark = m[1] === '+' || !!m[2];
       const [head, attrs] = takeAttrs(smartQuotes(m[3]));
       section = {
-        id: '', label: head, head, bodyHtml: '', layout: 'basic',   // id 는 flushSection 에서 (서브헤드까지 읽은 뒤)
+        id: '', label: head, crumb: [head], head, bodyHtml: '', layout: 'basic',   // id 는 flushSection 에서 (서브헤드까지 읽은 뒤)
         ratio: normalizeRatio(attrs.ratio), items: [], tocMark, split,
         zoom: Number.isFinite(parseFloat(attrs.zoom)) ? parseFloat(attrs.zoom) : undefined
       };
@@ -433,7 +438,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     }
     if ((m = line.match(/^####\s+(\+\s*)?(.+?)\s*$/)) && section) { // #### Subhead  /  #### + Subhead {layout=…}  (+ 와 {…} 는 헤드 줄과 동일하게 동작)
       const [subhead, attrs] = takeAttrs(smartQuotes(m[2]));
-      if (m[1]) section.tocMark = true;
+      if (m[1]) { section.tocMark = true; section.markOnSubhead = true; }
       if (attrs.layout) pendingLayout = attrs.layout;
       if (attrs.ratio) section.ratio = normalizeRatio(attrs.ratio);
       if (Number.isFinite(parseFloat(attrs.zoom))) section.zoom = parseFloat(attrs.zoom);
@@ -553,7 +558,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       const sec = s.sections.find(x => x.id === secId);
       if (!sec) { console.warn(`[guide] [[${target}]]: ${s.name} 페이지에 #${secId} 섹션이 없습니다 (${here.url}). 있는 id: ${s.sections.map(x => x.id).join(', ')}`); return fallback(); }
       href += `#${secId}`;
-      const crumb = sec.subhead && sec.subhead !== sec.label ? `${text(sec.label)}${NB}›${NB}${text(sec.subhead)}` : text(sec.label);   // 헤드 › 서브헤드
+      const crumb = sec.crumb.map(text).join(`${NB}›${NB}`);   // 헤드 › 서브헤드 (헤드가 페이지 이름과 같으면 서브헤드만)
       auto = pagePart ? `${text(s.name)}${NB}›${NB}${crumb}` : crumb;
     }
     return `<a class="xref xref--jump" href="${href}">${arrow}${label ?? auto}${xrefTip('jump')}</a>`;
