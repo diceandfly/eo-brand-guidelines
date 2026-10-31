@@ -525,7 +525,7 @@ EO의 서체는 Founders Grotesk 패밀리입니다. 헤드라인과 본문에�
 
 Founders Grotesk는 장식 없이 명료하고, 넓은 폭과 낮은 콘트라스트 덕분에 큰 크기에서 단단한 블록처럼 보입니다. 이 성격이 "명료하고 열린 자신감"이라는 EO의 목소리를 그대로 전달합니다. 모노는 빌더의 터미널과 스펙 시트를 연상시키는 정보의 서체입니다.
 
-웨이트는 역할이 정해져 있습니다. 디스플레이와 헤드라인에는 Medium, 서브 헤드라인에는 Regular, 본문에는 Light, 정보성 텍스트에는 Mono Regular를 사용합니다. 자세한 기준은 [[#weight-and-tonal-value]]를 참조하세요.
+웨이트는 역할이 정해져 있습니다. 디스플레이와 헤드라인에는 Medium, 서브 헤드라인에는 Regular, 본문에는 Light, 정보성 텍스트에는 Mono Regular를 사용합니다. 자세한 기준은 [[#weight-and-tonal-value|Tonal Value]]를 참조하세요.
 ![our-typefaces]
 
 
@@ -555,7 +555,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 
 같은 구조가 다국어에서도 장점을 가집니다. 글자 크기와 행간 비율을 언어별로 바꿔도 행간 자체는 그대로이므로 레이아웃이 움직이지 않으며, 서체를 Founders Grotesk에서 Pretendard나 Noto Sans로 바꿔도 회색도만 맞췄다면 룩앤필을 일정하게 유지할 수 있습니다.
 
-웹과 디지털 콘텐츠의 기본 행간은 28px이며, 인쇄물과 편집물은 지면에 맞춰 다시 정합니다. 값만 필요하다면 [[#reference-scale|Reference Scale]]로 가면 됩니다. 새로 짜야 한다면 [[#setting-up|Setting Up]]의 다섯 단계를 따르고, 단계마다 이어지는 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing|Letterspacing]] · [[#weight-and-tonal-value|Weight & Tonal Value]]에서 상세를 봅니다. 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 서체는 [[#multilingual|Multilingual]]과 [[#backup-typefaces|Backup Typefaces]]입니다.
+웹과 디지털 콘텐츠의 기본 행간은 28px이며, 인쇄물과 편집물은 지면에 맞춰 다시 정합니다. 값만 필요하다면 [[#reference-scale|Reference Scale]]로 가면 됩니다. 새로 짜야 한다면 [[#setting-up|Setting Up]]의 다섯 단계를 따르고, 단계마다 이어지는 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing|Letterspacing]] · [[#weight-and-tonal-value|Weight & Tonal Value]]에서 상세를 봅니다. 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]입니다.
 
 - **기본 행간(Line Unit, x)** — 지면의 기준 행간. 본문 한 줄의 높이이며 모든 수치의 단위입니다.
 - **레벨(Level)** — 역할에 따라 나눈 텍스트의 단계. 행간 배수 · 웨이트 · 실질 행간 · 자간을 한 묶음으로 가집니다.
@@ -686,23 +686,16 @@ EO 브랜드 커뮤니케이션의 모든 텍스트는 왼쪽 정렬입니다. �
 ![grid-zones] 패턴과 콘텐츠의 경계는 필드 선 위에
 
 
-### + Multilingual {layout=grid-2}
+### + Multilingual {layout=wide}
 한국어에는 Pretendard를, 베트남어에는 Noto Sans를 사용합니다. 원칙은 하나입니다. 행간은 그대로 두고 글자만 줄입니다. 기본 행간과 레벨의 배수가 그대로이므로 언어를 바꿔도 레이아웃이 움직이지 않고, 글자 크기와 실질 행간만 서체에 맞춰 달라집니다.
 
 - **한국어 · Pretendard** — [[#reference-scale|T1]]은 Regular · 165% · -2% · 베이스라인 +0.2x, H3는 Medium · 165% · -2.5% · 베이스라인 -0.05x입니다. 165%는 140%를 0.85로 나눈 값으로, Founders Grotesk의 85% 크기와 같습니다.
 - **베트남어 · Noto Sans** — T1은 DemiLight · 175% · -2% · 베이스라인 +0.05x, H3는 Regular · 175% · -3%입니다. 175%는 140%를 0.8로 나눈 값으로, Founders Grotesk의 80% 크기와 같습니다.
 
 베이스라인 보정은 텍스트 박스를 위에서 맞추는 디자인 툴 기준의 값입니다. 브라우저는 글자의 베이스라인을 스스로 맞추므로 웹에서는 보정이 거의 필요 없습니다.
-![multilingual-ko] 한국어 · Pretendard 85%
-![multilingual-vi] 베트남어 · Noto Sans 80%
 
-
-### + Backup Typefaces {layout=grid-2}
-Founders Grotesk를 사용할 수 없는 환경(이메일, 외부 플랫폼과 문서 툴의 시스템 서체 제약 등)에서는 [[#multilingual|Pretendard]]가 1순위 대체 서체입니다. Pretendard를 쓸 수 없거나 Pretendard가 지원하지 않는 언어에서는 Noto Sans를 사용합니다. Arial 같은 다른 대체 서체는 피하세요.
-
-대체 서체에서도 기본 행간과 레벨의 배수는 그대로입니다. 실질 행간 · 웨이트 · 자간만 [[#weight-and-tonal-value]]의 원칙에 따라 Founders Grotesk와 같은 회색도가 나오도록 다시 잡습니다.
-![backup-pretendard] 1순위 · Pretendard
-![backup-noto] 2순위 · Noto Sans
+같은 두 서체가 Founders Grotesk를 사용할 수 없는 환경(이메일, 외부 플랫폼과 문서 툴의 시스템 서체 제약 등)의 대체 서체이기도 합니다. 이때는 영문도 Pretendard로 조판하고, Pretendard를 쓸 수 없거나 지원하지 않는 언어에서는 Noto Sans를 씁니다. 기본 행간과 레벨의 배수는 그대로 두고 실질 행간 · 웨이트 · 자간만 [[#weight-and-tonal-value|회색도]]가 Founders Grotesk와 같아지도록 다시 잡으며, Arial 같은 다른 대체 서체는 피하세요.
+![multilingual]
 
 
 ### + Don'ts {layout=grid-3}
