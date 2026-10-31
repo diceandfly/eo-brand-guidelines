@@ -1,0 +1,18 @@
+{
+  "scopeName": "eo.xref.injection",
+  "injectionSelector": "L:text.html.markdown -comment -markup.fenced_code -markup.raw",
+  "patterns": [{ "include": "#xref" }],
+  "repository": {
+    "xref": {
+      "comment": "[[page#section]] · [[#section|라벨 글자]] · [[→ page#section]] · [[https://…|라벨]] — 라벨에 공백이 있어도 한 덩어리",
+      "match": "(\\[\\[)([^\\]\\n|]*)(\\|[^\\]\\n]*)?(\\]\\])",
+      "name": "markup.underline.link.eo-xref.markdown",
+      "captures": {
+        "1": { "name": "punctuation.definition.link.begin.markdown" },
+        "2": { "name": "string.other.link.title.markdown" },
+        "3": { "name": "string.other.link.description.markdown" },
+        "4": { "name": "punctuation.definition.link.end.markdown" }
+      }
+    }
+  }
+}

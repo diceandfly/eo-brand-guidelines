@@ -1,0 +1,18 @@
+{
+  "name": "eo-xref",
+  "displayName": "EO Guide: [[xref]] highlighting",
+  "description": "guide.*.md 의 참조 링크 [[page#section|라벨 글자]] 를 공백이 있어도 링크 색으로 표시",
+  "publisher": "eo",
+  "version": "0.0.1",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "grammars": [
+      {
+        "scopeName": "eo.xref.injection",
+        "path": "./xref.tmLanguage.json",
+        "injectTo": ["text.html.markdown"]
+      }
+    ]
+  }
+}
