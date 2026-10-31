@@ -561,10 +561,10 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 다국어 환경에서도 글자 크기와 행간 비율을 언어별로 바꿔도 행간 자체는 그대로이므로 레이아웃이 움직이지 않으며, 서체를 Founders Grotesk에서 Pretendard나 Noto Sans로 바꿔도 회색도만 맞췄다면 룩앤필을 일정하게 유지할 수 있습니다.
 
 이 챕터는 프레임웍의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 기준행간을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 세팅합니다. 각 단계 별 세부 지침은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · [[#weight-and-tonal-value|Weight & Tonal Value]], 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
-![framework-1] 기준행간(Line Unit) — 지면의 기준행간. 본문 한 줄의 높이 또는 심볼의 1x · 0.5x이며 모든 사이즈의 단위가 됨
-![framework-2] 레벨(Level) — 역할에 따라 나눈 텍스트의 단계. 행간 배수 · 웨이트 · 실질 행간 · 자간 4가지 세부 항목을 갖습니다.
-![framework-3] 실질 행간(Linespacing) — 글자 크기에 대한 행간의 비율. 140%는 행간으로 차지하는 공간이 실제 글자 크기의 1.4배라는 뜻입니다.
-![framework-4] 회색도(Tonal Value) — 글 덩어리를 멀리서 봤을 때의 밀도감. 레벨 간 균형을 판단하는 기준입니다.
+![framework-1] 기준행간(Line Unit) — 지면의 기준 행간. 본문 한 줄의 높이 또는 심볼의 1x · 0.5x, 모든 사이즈의 단위
+![framework-2] 레벨(Level) — 역할에 따라 나눈 텍스트의 단계. 행간 배수 · 웨이트 · 실질 행간 · 자간의 네 항목 한 묶음
+![framework-3] 실질 행간(Linespacing) — 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
+![framework-4] 회색도(Tonal Value) — 글 덩어리를 멀리서 봤을 때의 밀도감. 레벨 간 균형의 판단 기준
 
 
 ### Typographic Framework
