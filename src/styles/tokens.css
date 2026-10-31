@@ -253,7 +253,7 @@
   /* heading — 섹션 헤드, 서브헤드, 다음 버튼 타이틀 */
   --t-heading-m: 1.25; /* 행간 = 본문 행간 × 1.25 */
   --t-heading-p: 120%; /* 행간 113% */
-  --t-heading-ls: -0.015em;
+  --t-heading-ls: -0.005em;
   --t-heading-w: 400;
   --t-heading-c: var(--c-builder-neon);
   --t-subhead-w: 400; /* 서브헤드만 따로 */
@@ -262,7 +262,7 @@
   /* body (영문) — 본문, 카드 캡션, 컬러 카드 스펙. Founders Grotesk */
   --t-body-m: 1; /* 본문 행간 = lh-unit 그대로 */
   --t-body-p: 140%; /* 본문 행간 */
-  --t-body-ls: 0.00em;
+  --t-body-ls: 0.005em;
   --t-body-w: 300; /* Light */
   --t-body-w-swatch: var(--t-body-w); /* 컬러 카드 이름. 본문과 같은 웨이트 */
   --t-body-c: var(--fg); /* 본문 색. 한글 구간도 같음 */
@@ -283,16 +283,16 @@
   --t-body-wrap: pretty; /* text-wrap 값. balance 는 제목용이라 본문에는 쓰지 않음 */
 
   /* body (한글) — 본문 안의 한글 구간. Pretendard. 행간은 영문과 공유 */
-  --t-body-ko-scale: 0.855; /* 영문 폰트 대비 배율 (R6: 20pt / 22pt) */
-  --t-body-ko-ls: -0.024em; /* 자간 (R6: -6%) */
-  --t-body-ko-w: 300; /* 웨이트 (Pretendard 100–900) */
+  --t-body-ko-scale: 0.85; /* 영문 폰트 대비 배율 (R6: 20pt / 22pt) */
+  --t-body-ko-ls: -0.03em; /* 자간 (R6: -6%) */
+  --t-body-ko-w: 400; /* 웨이트 (Pretendard 100–900) */
   --t-body-ko-baseline: 0.02em; /* 베이스라인 보정, 양수 = 위로 (R6: +5pt) */
   --t-body-ko-break: keep-all; /* 줄바꿈 단위. keep-all = 어절, normal = 글자 */
 
   /* ui — 목차, 검색창. 크기·자간·색은 공통, 웨이트는 아래 용도별로 */
   --t-ui-m: 1; /* 본문과 같은 행간 */
-  --t-ui-p: var(--t-body-p)*1.03; /* 목차 텍스트 행간 — 목차·검색은 줄 사이가 넓은 목록형 권장*/
-  --t-ui-ls: -0.01em;
+  --t-ui-p: var(--t-body-p)*1.04; /* 목차 텍스트 행간 — 목차·검색은 줄 사이가 넓은 목록형 권장*/
+  --t-ui-ls: 0.01em;
   --t-ui-w: 300; /* 기본 */
   --t-ui-c: var(--fg); /* ui 기본 색. 목차 · 검색은 3. COLOR 의 상태색(--nav-fg*, --search-*)이 덮어씀 */
 
