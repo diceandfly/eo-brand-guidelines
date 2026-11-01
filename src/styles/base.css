@@ -1419,3 +1419,19 @@ html.js .main {
   margin-left: var(--next-arrow-gap);
   vertical-align: var(--next-arrow-shift);
 }
+
+/* 본문 순서 목록 마커: "1." 대신 캡션 번호와 같은 "1 /" (md 는 그대로 1. 로 씀) */
+.t-body ol {
+  list-style: none;
+  counter-reset: item;
+  padding-left: var(--t-body-olist-indent);
+}
+.t-body ol > li {
+  counter-increment: item;
+  position: relative;
+}
+.t-body ol > li::before {
+  content: counter(item) ' / ';
+  position: absolute;
+  left: calc(-1 * var(--t-body-olist-indent));
+}

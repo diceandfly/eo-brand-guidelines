@@ -235,12 +235,12 @@ EO 심볼은 강렬하지만 단순한 셰이프로 이뤄졌습니다. 따라�
 ### Symbol
 #### + Color{layout=grid-3} {zoom=1.6}
 EO 심볼에는 여섯 가지 기본 컬러 페어링이 있습니다. **심볼은 항상 단색으로 표현되어야 하며**, 배경 컬러에 확신이 서지 않을 때는 다음 중 하나를 사용하세요. 
-![color-1] 1. Space Black on Builder Neon
-![color-2] 2. Air White on Space Black
-![color-3] 3. Air White on Solid Gray
-![color-4] 4. Space Black on Air White
-![color-5] 5. Builder Neon on Space Black
-![color-6] 6. Builder Neon on Solid Gray
+![color-1] 1 / Space Black on Builder Neon
+![color-2] 2 / Air White on Space Black
+![color-3] 3 / Air White on Solid Gray
+![color-4] 4 / Space Black on Air White
+![color-5] 5 / Builder Neon on Space Black
+![color-6] 6 / Builder Neon on Solid Gray
 
 
 ### Symbol
@@ -421,10 +421,10 @@ EO를 한 번 이상 접한 사람에게 EO 심볼은 이미 "EO"로 읽힐 수 
 ### Signature
 #### + Color {layout=grid-2}
 시그니처는 EO 심볼의 여섯 가지 컬러 페어링 중 네 가지를 사용합니다. **심볼과 글자는 항상 같은 컬러로 통일**합니다.
-![color-1] {zoom=1.05} 1. Air White on Space Black
-![color-2] {zoom=1.05} 2. Air White on Solid Gray
-![color-3] {zoom=1.6} 3. Space Black on Air White
-![color-4] {zoom=1.6} 4. Space Black on Builder Neon
+![color-1] {zoom=1.05} 1 / Air White on Space Black
+![color-2] {zoom=1.05} 2 / Air White on Solid Gray
+![color-3] {zoom=1.6} 3 / Space Black on Air White
+![color-4] {zoom=1.6} 4 / Space Black on Builder Neon
 
 
 ### Signature
@@ -494,8 +494,8 @@ EO 시그니처은 파트너 브랜드 및 협업사 로고와 세로로도 락�
 ### Sub Symbol
 #### + Color {layout=grid-2} {zoom=1.05}
 서브심볼은 EO 심볼의 1,2번 컬러 페어링을 사용하며 각 요소는 항상 단색으로 표현합니다. 파비콘처럼 매우 작은 공간에서는 도형의 크기 대비 시각왜곡 양이 커지므로, 컬러 반전 시 각 블록을 1.1배 스케일업하여 사용합니다.
-![color-1]  1. Builder Neon on Space Black
-![color-2]  2. Space Black on Builder Neon
+![color-1]  1 / Builder Neon on Space Black
+![color-2]  2 / Space Black on Builder Neon
 
 
 ### Favicon
@@ -612,11 +612,11 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 5. 웨이트와 자간으로 회색도를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 4와 5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#tonal-value|Tonal Value]]를 참조하세요.
 
 레이아웃의 격자와 마진은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
-![setting-up-1]{bg-color} 1 · 레벨을 셉니다
-![setting-up-2]{bg-color} 2 · 기준행간을 정합니다
-![setting-up-3]{bg-color} 3 · 레벨의 배수를 정합니다
-![setting-up-4]{bg-color} 4 · 실질 행간을 다듬습니다
-![setting-up-5]{bg-color} 5 · 웨이트와 자간으로 회색도를 맞춥니다
+![setting-up-1]{bg-color} 1 / 레벨을 셉니다
+![setting-up-2]{bg-color} 2 / 기준행간을 정합니다
+![setting-up-3]{bg-color} 3 / 레벨의 배수를 정합니다
+![setting-up-4]{bg-color} 4 / 실질 행간을 다듬습니다
+![setting-up-5]{bg-color} 5 / 웨이트와 자간으로 회색도를 맞춥니다
 
 
 ### Typographic Framework
