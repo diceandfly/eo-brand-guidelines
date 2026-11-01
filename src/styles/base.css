@@ -926,6 +926,18 @@ html.js .main {
   font-weight: var(--cap-key-w); /* 캡션 앞 키워드 "세로형/" — 본문 서체 그대로, 웨이트만 강조. 간격은 번호와 같음 */
   margin-right: var(--cap-num-gap);
 }
+.fig__caption-text--hang {
+  display: flex; /* 번호 · 키워드 라벨 + 글. 줄이 넘어가도 글은 라벨 뒤 시작선에 맞춰 걸림(행잉 인덴트) */
+  align-items: baseline;
+}
+.fig__caption-text--hang .cap-num,
+.fig__caption-text--hang .cap-key {
+  flex: none;
+}
+.fig__caption-text--hang .cap-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
 .fig__caption {
   display: flex;
   align-items: flex-start;

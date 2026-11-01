@@ -43,7 +43,7 @@ const tone = info?.tone;
             : <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linejoin="miter"><path d="M8 2.8L13.5 12.5H2.5Z" /></svg>}
         </span>
       )}
-      <span class="fig__caption-text" set:html={captionHtml} />
+      <span class:list={['fig__caption-text', { 'fig__caption-text--hang': /^<span class="cap-(num|key)">/.test(captionHtml) }]} set:html={captionHtml} />
     </figcaption>
   )}
 </figure>
