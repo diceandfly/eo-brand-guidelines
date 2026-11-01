@@ -465,9 +465,8 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       if (flags.includes('bg-cover')) item.cover = true;                     // {bg-cover}: 화면에 꽉 채움
       // 캡션은 한 줄. 본문처럼 \ 가 줄바꿈 (<br>): "위 줄 \ 아래 줄". 앞뒤 공백은 줄바꿈에 흡수
       if (m[3].trim()) item.caption = glueLastWords(wrapKo(colorChips(smartQuotes(escapeHtml(m[3].trim()).replace(/\s*\\\s*/g, '<br>')), ctx)))
-        .replace(/^(\d{1,2})[ \u00A0]?\/[ \u00A0]*/, '<span class="cap-num">$1/</span>')    // HTML (컬러 칩, 한글 구간 래핑, 고아 단어 방지). 앞의 "N/ " 는 번호 → "N/" (모노, 뒤 간격은 --cap-num-gap)
-        .replace(/^(<span class="ko">)?([^<>\/\s]{1,16}(?: [^<>\/\s]{1,16})?)(<\/span>)?\/[ \u00A0]+/, (_, o = '', w, c = '') => `<span class="cap-key">${o}${w}${c}/</span>`)   // "키워드/ 설명" → 키워드 라벨 (.cap-key, 간격은 번호와 같음)
-        .replace(/^(<span class="cap-(?:num|key)">.*?<\/span>)([\s\S]+)$/, '$1<span class="cap-body">$2</span>');   // 라벨 뒤 글을 묶어 둘째 줄부터도 글 시작선에 정렬 (Figure.astro 의 flex)
+        .replace(/^(\d{1,2})[ \u00A0]?\/[ \u00A0]*([\s\S]+)$/, '<span class="cap-num">$1/</span><span class="cap-body">$2</span>')    // HTML (컬러 칩, 한글 구간 래핑, 고아 단어 방지). "N/ 설명" → 번호 라벨(모노) + 글. 뒤 간격은 --cap-num-gap, 글은 .cap-body 로 묶어 둘째 줄부터도 글 시작선에 정렬 (Figure.astro 의 flex)
+        .replace(/^(<span class="ko">)?([^<>\/\s]{1,16}(?: [^<>\/\s]{1,16})?)(<\/span>)?\/[ \u00A0]+([\s\S]+)$/, (_, o = '', w, c = '', rest) => `<span class="cap-key">${o}${w}${c}/</span><span class="cap-body">${rest}</span>`);   // "키워드/ 설명" → 키워드 라벨(강조 웨이트) + 글. 한글 키워드는 wrapKo 의 <span class="ko"> 안팎을 허용
       section.items.push(item);
       continue;
     }
