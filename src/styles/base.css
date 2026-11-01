@@ -919,7 +919,11 @@ html.js .main {
   opacity: var(--placeholder-diag-opacity);
 }
 .fig__caption .cap-num {
-  font-family: var(--font-mono); /* 캡션 앞 번호 "1 /" — 순서 목록 마커와 같은 모노 */
+  font-family: var(--font-mono); /* 캡션 앞 번호 "1/" — 순서 목록 마커와 같은 모노 */
+  margin-right: var(--cap-num-gap);
+}
+.fig__caption .cap-key {
+  font-weight: var(--cap-key-w); /* 캡션 앞 키워드 "세로형/" — 본문 서체 그대로, 웨이트만 강조. 간격은 번호와 같음 */
   margin-right: var(--cap-num-gap);
 }
 .fig__caption {
