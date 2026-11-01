@@ -1451,4 +1451,5 @@ html.js .main {
 }
 html[lang='ko'] .t-body ol > li::before {
   font-size: calc(1em * var(--t-body-olist-marker-scale-ko)); /* 국문: 모노 숫자를 한글 본문에 맞춰 살짝 작게 */
+  transform: translateY(var(--t-body-olist-marker-dy-ko)); /* 줄인 만큼 아래로 보정 */
 }
