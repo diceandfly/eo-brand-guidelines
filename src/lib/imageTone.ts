@@ -45,16 +45,21 @@ function luminance(r: number, g: number, b: number): number {
 function ringAt(data: Buffer, size: number, t: number, lo = 0, hi = size - 1) {
   let r = 0, g = 0, b = 0, n = 0;
   const px: number[] = [];
+  const count = new Map<number, number>();                     // 최빈색 (정확한 RGB). 평균은 1px 어두운 테두리 줄·라벨 글자에 끌려가므로 배경색은 최빈색으로
   for (let y = lo; y <= hi; y++) for (let x = lo; x <= hi; x++) {
     if (x >= lo + t && x <= hi - t && y >= lo + t && y <= hi - t) continue;   // 띠 안쪽은 건너뜀
     const i = (y * size + x) * 3;
     r += data[i]; g += data[i + 1]; b += data[i + 2]; n++;
     px.push(i);
+    const k = (data[i] << 16) | (data[i + 1] << 8) | data[i + 2];
+    count.set(k, (count.get(k) ?? 0) + 1);
   }
   const mr = r / n, mg = g / n, mb = b / n;
   let v = 0;
   for (const i of px) v += (data[i] - mr) ** 2 + (data[i + 1] - mg) ** 2 + (data[i + 2] - mb) ** 2;
-  return { r: mr, g: mg, b: mb, spread: Math.sqrt(v / (n * 3)) };          // spread: 채널 공통 표준편차 (0~255)
+  let mode = 0, best = -1;
+  for (const [k, c] of count) if (c > best) { best = c; mode = k; }
+  return { r: mr, g: mg, b: mb, spread: Math.sqrt(v / (n * 3)), mode: { r: mode >> 16, g: (mode >> 8) & 255, b: mode & 255 } };   // spread: 채널 공통 표준편차 (0~255)
 }
 const hex = (c: number) => Math.round(c).toString(16).padStart(2, '0');
 
@@ -68,7 +73,7 @@ export async function imageEdge(publicSrc: string, zoom = 1, background = '#0000
   const file = path.join(process.cwd(), 'public', decodeURI(publicSrc));
   let st: fs.Stats;
   try { st = fs.statSync(file); } catch { return undefined; }
-  const key = `v3|${publicSrc}|${st.mtimeMs}|${st.size}|${zoom}|${background}|${uniform}`;
+  const key = `v4|${publicSrc}|${st.mtimeMs}|${st.size}|${zoom}|${background}|${uniform}`;
   const c = loadCache();
   if (c[key]) return c[key];
 
@@ -82,11 +87,32 @@ export async function imageEdge(publicSrc: string, zoom = 1, background = '#0000
   const tone: Tone = luminance(seen.r, seen.g, seen.b) > LIGHT_THRESHOLD ? 'light' : 'dark';
   // 라이트박스 배경용 가장자리 색: 전체 이미지의 가장 바깥 1px 띠를 더 큰 샘플(EDGE_SAMPLE)로 잼.
   // 1920px 짜리 장표의 프레임 여백(약 20px)이 1px 보다 넓어야 안쪽 도형이 띠에 섞이지 않음 (1920/256 ≈ 7.5px per px)
-  const edgeRaw = await sharp(file).resize(EDGE_SAMPLE, EDGE_SAMPLE, { fit: 'fill' }).flatten({ background }).removeAlpha().raw().toBuffer();
-  const full = ringAt(edgeRaw, EDGE_SAMPLE, 1);
-  const info: EdgeInfo = { tone, edge: full.spread <= uniform ? `#${hex(full.r)}${hex(full.g)}${hex(full.b)}` : null };
+  // 줄이지 않고 원본 가장 바깥 1px 띠를 그대로 잼 (줄이면 보간으로 색이 섞임). 색은 띠의 최빈색 — 내보내기 때 생기는 1px 어두운 줄(1081px 장표 등)이나 라벨이 평균을 끌어내리지 않게
+  const edgeRaw = await sharp(file).flatten({ background }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const full = ringAtRect(edgeRaw.data, edgeRaw.info.width, edgeRaw.info.height, 1);
+  const info: EdgeInfo = { tone, edge: full.spread <= uniform ? `#${hex(full.mode.r)}${hex(full.mode.g)}${hex(full.mode.b)}` : null };
   c[key] = info; dirty = true;
   return info;
+}
+
+/** 직사각형 원본의 바깥 t px 띠 — ringAt 과 같은 통계 (평균 · 흩어짐 · 최빈색) */
+function ringAtRect(data: Buffer, w: number, h: number, t: number) {
+  let r = 0, g = 0, b = 0, n = 0, v = 0;
+  const count = new Map<number, number>();
+  const idx: number[] = [];
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    if (x >= t && x < w - t && y >= t && y < h - t) continue;
+    const i = (y * w + x) * 3;
+    r += data[i]; g += data[i + 1]; b += data[i + 2]; n++;
+    idx.push(i);
+    const k = (data[i] << 16) | (data[i + 1] << 8) | data[i + 2];
+    count.set(k, (count.get(k) ?? 0) + 1);
+  }
+  const mr = r / n, mg = g / n, mb = b / n;
+  for (const i of idx) v += (data[i] - mr) ** 2 + (data[i + 1] - mg) ** 2 + (data[i + 2] - mb) ** 2;
+  let mode = 0, best = -1;
+  for (const [k, c] of count) if (c > best) { best = c; mode = k; }
+  return { r: mr, g: mg, b: mb, spread: Math.sqrt(v / (n * 3)), mode: { r: mode >> 16, g: (mode >> 8) & 255, b: mode & 255 } };
 }
 
 /** 밝기만 필요할 때 (imageEdge 의 tone) */
