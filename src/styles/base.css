@@ -372,11 +372,11 @@ html.js .main {
   transition: color var(--dur) var(--ease);
 }
 .nav__chapter-link:hover,
-.nav__chapter-link[aria-expanded='true'],
-.nav__chapter.is-active > .nav__chapter-link {
-  color: var(--nav-fg-active); /* 펼쳐진 챕터도 활성 색 (웨이트는 현재 페이지의 챕터만) */
+.nav__chapter-link[aria-expanded='true'] {
+  color: var(--nav-fg-active); /* 호버 · 클릭으로 펼친 챕터는 화이트 */
 }
 .nav__chapter.is-active > .nav__chapter-link {
+  color: var(--nav-fg-current); /* 현재 페이지의 챕터는 네온 (호버보다 뒤라 호버해도 유지). 웨이트도 이 챕터만 */
   font-weight: var(--nav-w-active);
 }
 .nav__num {
@@ -428,11 +428,11 @@ html.js .main {
   color: var(--nav-fg);
   transition: color var(--dur) var(--ease);
 }
-.nav__sub-link:hover,
-.nav__sub.is-active > .nav__sub-link {
+.nav__sub-link:hover {
   color: var(--nav-fg-active);
 }
 .nav__sub.is-active > .nav__sub-link {
+  color: var(--nav-fg-current); /* 현재 페이지는 네온 (호버보다 뒤라 호버해도 유지) */
   font-weight: var(--nav-w-active);
 }
 .nav__sections {
