@@ -169,9 +169,18 @@ button {
 .t-body ol + p {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-para-gap)); /* 본문 행간 × 배수 */
 }
-.t-body ul,
-.t-body ol {
-  padding-left: var(--t-body-list-indent);
+.t-body ul {
+  list-style: none;
+  padding-left: calc(var(--t-body-list-offset) + var(--t-body-list-indent)); /* 마진 ↔ 불릿 + 불릿 ↔ 글 */
+}
+.t-body ul > li {
+  position: relative;
+}
+.t-body ul > li::before {
+  content: var(--t-body-bullet);
+  font-family: var(--font-mono);
+  position: absolute;
+  left: calc(-1 * var(--t-body-list-indent));
 }
 .t-body li + li {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-list-gap)); /* 불렛 사이 = 본문 행간 × 배수 */
@@ -906,6 +915,10 @@ html.js .main {
   );
   opacity: var(--placeholder-diag-opacity);
 }
+.fig__caption .cap-num {
+  font-family: var(--font-mono); /* 캡션 앞 번호 "1 /" — 순서 목록 마커와 같은 모노 */
+  margin-right: var(--cap-num-gap);
+}
 .fig__caption {
   display: flex;
   align-items: flex-start;
@@ -1432,6 +1445,7 @@ html.js .main {
 }
 .t-body ol > li::before {
   content: counter(item) ' / ';
+  font-family: var(--font-mono); /* 숫자 폭이 같아 1 과 5 가 같은 자리에 */
   position: absolute;
   left: calc(-1 * var(--t-body-olist-indent));
 }
