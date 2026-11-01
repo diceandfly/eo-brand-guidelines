@@ -46,6 +46,8 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
     → {con} 은 조건부(conditional, 애매한 경우): 흰 삼각형 아이콘, 대각선 없음. 캡션이 없으면 "Conditional".
     → 카드 안 배율: {zoom=1.2} 를 붙이면 그 이미지만 카드 안에서 가운데 기준 1.2배로 보입니다 (확대 보기는 원본).
       Do/Don't 카드는 그리드별 기본 배율(tokens.css --dodont-zoom-2/3/4)을 따르고, {do nozoom} 처럼 쓰면 그 카드만 끕니다.
+    → 확대 보기 배경: {bg} 를 붙이면 그 이미지는 거울 확장 대신 가장자리 색(빌드 때 측정한 단색)으로 화면을 채웁니다.
+      {bg=#2A2B2B} · {bg=solid-gray} 처럼 색을 직접 적을 수도 있습니다(팔레트 이름은 소문자-하이픈). 가장자리가 단색이 아니고 색도 없으면 기본 막.
       여러 개는 띄어서 함께 씁니다: ![dont-3]{dont nostrike zoom=1.3} 캡션
       섹션 전체에 걸려면 헤드나 서브헤드 줄에 씁니다: ### Symbol {layout=grid-3 zoom=1.5}
       중괄호는 나눠 써도 됩니다: {layout=grid-3} {zoom=1.5}, 이미지 줄도 마찬가지: ![dont-8]{zoom=1.55} {dont} 캡션
@@ -519,7 +521,7 @@ EO 시그니처은 파트너 브랜드 및 협업사 로고와 세로로도 락�
 <!-- 2026-10-31 초고. 기준행간(Line Unit) 체계로 챕터를 다시 씀. 이전 문안은 커밋 989e40c 에 있음.
      이미지는 모두 플레이스홀더(public/assets/03-typography/01-typography/). Grid & Margin 의 필드 · 컬럼 규칙은 토론 중. -->
 
-### + Our Typefaces
+### + Brand Typeface
 #### Founders Grotesk
 EO의 서체는 Founders Grotesk 패밀리입니다. 헤드라인과 본문에는 Founders Grotesk를, 정보성 텍스트(라벨 · 태그 · 날짜 · 스펙)에는 Founders Grotesk Mono를 사용합니다.
 

@@ -20,6 +20,7 @@ export interface ImageItem {
   badge?: 'do' | 'dont' | 'con';   // 캡션 앞 아이콘: 체크 / 엑스 / 삼각형(conditional, 조건부)
   strike?: boolean;       // Don't 대각선. {dont} 이면 자동, {dont nostrike} 면 끔
   zoom?: number;          // 카드 안 배율. {zoom=1.2} 로 직접 지정, {nozoom} 이면 1 (Do/Don't 그리드 기본 배율도 끔)
+  bg?: string | true;     // 확대 보기 배경: {bg} = 거울 확장 대신 가장자리 색(빌드 때 측정)으로 채움(true), {bg=#2A2B2B} · {bg=solid-gray} = 그 색 (CSS 색 문자열)
   caption?: string;       // HTML. 한글 구간은 <span class="ko"> 로 래핑됨
 }
 export interface SwatchItem {
@@ -457,6 +458,9 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       const z = flags.find(f => f.startsWith('zoom='));
       if (z && Number.isFinite(parseFloat(z.slice(5)))) item.zoom = parseFloat(z.slice(5));
       if (flags.includes('nozoom')) item.zoom = 1;
+      const bg = flags.find(f => f === 'bg' || f.startsWith('bg='));         // {bg} · {bg=#hex} · {bg=palette-name}
+      if (bg === 'bg') item.bg = true;
+      else if (bg) { const v = bg.slice(3).trim(); item.bg = /^#?[0-9a-f]{3,8}$/i.test(v) ? (v.startsWith('#') ? v : '#' + v) : `var(--c-${v.toLowerCase().replace(/[^a-z0-9]+/g, '-')})`; }
       // 캡션은 한 줄. 본문처럼 \ 가 줄바꿈 (<br>): "위 줄 \ 아래 줄". 앞뒤 공백은 줄바꿈에 흡수
       if (m[3].trim()) item.caption = glueLastWords(wrapKo(colorChips(smartQuotes(escapeHtml(m[3].trim()).replace(/\s*\\\s*/g, '<br>')), ctx)));   // HTML (컬러 칩, 한글 구간 래핑, 고아 단어 방지)
       section.items.push(item);

@@ -315,7 +315,7 @@ const blockScroll = (e: Event) => {
 const behind = [document.getElementById('smooth-wrapper'), document.querySelector('.sidebar'), document.querySelector('.topbar')].filter((el): el is HTMLElement => !!el);
 
   let opener: HTMLElement | null = null;   // 닫을 때 포커스를 돌려줄 요소
-  const open = (src: string, alt: string, strike = false, edge: string | null = null) => {
+  const open = (src: string, alt: string, strike = false, edge: string | null = null, fill: string | undefined = undefined) => {   // fill: {bg} 이미지 — 거울 확장 없이 이 색으로 배경을 채움 ('' 이면 색 없음 → 기본 막)
     if (opened) return;
     opened = true;
     opener = document.activeElement as HTMLElement | null;
@@ -323,7 +323,9 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     // 배경: 이미지 가장자리가 단색이면(빌드 때 판정, data-lb-bg) 그 색으로 깔아 프레임이 화면 끝까지 이어지게. 아니면 기본 막(--lightbox-bg)
     if (edge) box.style.setProperty('--lightbox-edge', edge); else box.style.removeProperty('--lightbox-edge');
     box.classList.toggle('has-edge', !!edge);
-    const mirror = useMirror && !isMobile();                    // 모바일은 거울 확장 없이 가장자리 색만
+    if (fill) box.style.setProperty('--lightbox-fill', fill); else box.style.removeProperty('--lightbox-fill');
+    box.classList.toggle('has-fill', !!fill);
+    const mirror = useMirror && !isMobile() && fill === undefined;   // 모바일과 {bg} 이미지는 거울 확장 없음
     box.classList.toggle('has-mirror', mirror);
     if (mirror) for (const im of mirrorImgs) im.src = src;      // 거울 사본 8장 (같은 파일이라 캐시에서 옴)
     boxImg.src = src;
@@ -364,7 +366,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     opener = null;
   };
 
-  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null);
+  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill);
   document.addEventListener('click', e => {
     const img = (e.target as HTMLElement).closest('.fig__frame > img') as HTMLImageElement | null;
     if (img) { e.preventDefault(); openFrom(img); }

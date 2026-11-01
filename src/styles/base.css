@@ -1255,6 +1255,9 @@ html.js .main {
 .lightbox.has-edge {
   background: color-mix(in srgb, var(--lightbox-edge), var(--c-space-black) var(--lightbox-bg-mix)); /* 가장자리가 단색인 이미지: 그 색이 화면을 채움 (motion.ts 3) */
 }
+.lightbox.has-fill {
+  background: var(--lightbox-fill); /* {bg} 이미지: 거울 확장 대신 지정한 색(또는 가장자리 색)이 화면을 그대로 채움. 섞지 않음 (motion.ts 3) */
+}
 .lightbox__img,
 .lightbox__strike,
 .lightbox__mirror {
