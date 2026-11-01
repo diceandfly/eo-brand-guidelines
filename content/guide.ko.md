@@ -260,10 +260,10 @@ EO 심볼은 사진 위에서도 항상 또렷하게 읽혀야 하므로 충분�
 사진 구성은 심볼이 돋보일 수 있을 만큼 단순해야 하며, 지나치게 복잡하거나 핵심 피사체가 정중앙에 있는 이미지는 심볼을 올리면 혼란스러워집니다. 이를 염두에 두고 이미지를 고르거나 로고와의 관계에 맞춰 이미지 위치를 조정하세요. 
 
 본 섹션의 지침은 화면 구성이 변화하는 영상 시퀀스보다는 정지된 이미지의 오버레이 상황에 초점을 맞추고 있습니다.
-![imagery-do-1]{do} 배경과 대비가 충분한 곳에 심볼을 둡니다
-![imagery-do-2]{do} 밝기가 고르지 않은 사진을 써야할 경우 투명도 30% 수준의 그라데이션을 오버레이해 대비를 확보합니다
-![imagery-dont-1]{dont} 사진이 조명하는 인물 · 오브제의 주요한 실루엣 위에 심볼을 두지 마세요
-![imagery-dont-2]{dont} 사진과 대비가 부족한 곳에 심볼을 두지 마세요
+![imagery-do-1]{do} {bg-cover} 배경과 대비가 충분한 곳에 심볼을 둡니다
+![imagery-do-2]{do} {bg-cover} 밝기가 고르지 않은 사진을 써야할 경우 투명도 30% 수준의 그라데이션을 오버레이해 대비를 확보합니다
+![imagery-dont-1]{dont} {bg-cover} 사진이 조명하는 인물 · 오브제의 주요한 실루엣 위에 심볼을 두지 마세요
+![imagery-dont-2]{dont} {bg-cover} 사진과 대비가 부족한 곳에 심볼을 두지 마세요
 
 
 ### + Partner Lockup
@@ -305,7 +305,7 @@ H는 작업 파일 속 심볼의 높이(px), S는 화면에서 보이는 또는 
 ### App & Social Icons
 #### In Use
 다음 이미지는 EO 심볼이 앱 아이콘에 적용된 예시입니다.
-![icon-in-use] {bg-color}
+![icon-in-use] {bg-cover} 
 
 
 ### Symbol {layout=grid-3} {zoom=1.6}
@@ -318,7 +318,7 @@ EO 심볼이 일관되고 강렬하게 유지되도록, 재해석하거나 변�
 ![dont-5]{dont} E의 thread 수나 O의 각도, 블록 간격이 달라진 상태(로고 애니메이션 캡처 등)를 사용하지 마세요
 ![dont-6]{dont} 심볼에 글로우, 그림자, 그라데이션 등 시각효과를 적용하지 마세요
 ![dont-7]{dont} 배치할 공간의 대부분을 차지할만큼 과도하게 큰 사이즈를 적용하지 마세요
-![dont-8]{dont} 심볼을 이어 붙이거나 단순 반복하는 방식으로 그래픽을 만들지 마세요
+![dont-8]{dont} {bg-cover} 심볼을 이어 붙이거나 단순 반복하는 방식으로 그래픽을 만들지 마세요
 ![dont-9]{dont} EO 디자인팀의 허가 없이 심볼 주변에 임의의 맥락을 추가하지 마세요
 
 
@@ -602,7 +602,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 
 
 ### Typographic Framework
-#### + Setting Up {layout=wide}
+#### + Setting Up {layout=grid-3}
 새 매체나 포맷에서 타이포그래피를 세팅하는 순서입니다.
 
 1. 레벨을 셉니다. 지면에 표시할 정보량에 따라 필요한 레벨의 수를 정합니다. 레벨을 나누는 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요.
@@ -612,11 +612,15 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 5. 웨이트와 자간으로 회색도를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 4와 5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#tonal-value|Tonal Value]]를 참조하세요.
 
 레이아웃의 격자와 마진은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
-![setting-up]{bg-color}
+![setting-up-1]{bg-color} 1 · 레벨을 셉니다
+![setting-up-2]{bg-color} 2 · 기준행간을 정합니다
+![setting-up-3]{bg-color} 3 · 레벨의 배수를 정합니다
+![setting-up-4]{bg-color} 4 · 실질 행간을 다듬습니다
+![setting-up-5]{bg-color} 5 · 웨이트와 자간으로 회색도를 맞춥니다
 
 
 ### Typographic Framework
-#### + Levelling & Sizing {layout=grid-3}
+#### + Levelling & Sizing {layout=wide}
 레벨은 콘텐츠의 역할로 나눕니다. 지면을 대표하는 한두 단어는 디스플레이(D), 읽기 시작하는 지점은 헤드라인(H), 읽어 내려가는 글은 텍스트(T), 글을 보조하는 정보는 캡션(C)으로 표기하며, 같은 역할 안의 번호는 크기 순의 넘버링입니다.
 
 - **레벨의 수** — 헤드라인과 본문, 또는 헤드라인 · 본문 · 캡션입니다. 레벨을 늘리기 전에 [[#grid-and-margin|행 격자]]의 간격만으로 위계를 만들 수 있는지 먼저 봅니다. 역할이 다르면 레벨을 나누는 것이 기본이나, 레벨이 과도하게 많아지면 일관성있는 타이포그래피를 구축하는 난이도가 가파르게 올라가므로, 역할이 같은데 크기만 다르다면 먼저 하나로 합칠 수 있는지 생각합니다. 
@@ -625,9 +629,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 - **심볼과 레벨** — 심볼도 레벨처럼 다룹니다. 심볼의 높이 정수 배(1x · 2x)를 기준행간으로 설정하면 심볼과 타이포그래피가 같은 단위로 묶을 수 있습니다. 심볼의 크기는 [[symbol#scalability]]를 따릅니다.
 
 일반적으로 레벨이 커질수록 웨이트는 무거워지고 실질 행간과 자간은 좁아집니다. 다만 실제 레벨링 과정은 선형적 규칙보다는 [[#linespacing-founders-grotesk-medium|실질 행간]] · [[#letterspacing-founders-grotesk-medium|자간]] · [[#tonal-value|웨이트]]를 교차로 조율하는 과정에 가깝습니다. 빠른 참고가 필요할 때는 [[#reference-scale|Reference Scale]]의 프리셋 값을 참조하세요.
-![levelling-format] {do bg-color} 본문이 있으면 기준행간을 고정, 없으면 심볼 높이에 맞춰 키움
-![levelling-steps-1] {do bg-color} 비주얼 커뮤니케이션은 레벨 간 사이즈 배율을 크게 설정 (약 2배 권장)
-![levelling-steps-2] {do bg-color} 기능적일수록 레벨 간 사이즈 배율을 작게 설정 (약 1.5배 권장)
+![levelling]{bg-color} 7레벨 프리셋에 기준행간 격자를 겹친 것 — 레벨의 배수가 격자 칸 수로 읽힙니다
 
 
 ### + Linespacing
