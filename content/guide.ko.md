@@ -360,8 +360,8 @@ EO 심볼이 일관되고 강렬하게 유지되도록, 재해석하거나 변�
 #### + Clearspace {layout=grid-2}
 시그니처 주변에도 EO 심볼과 같은 원칙의 여백이 필요합니다. 다만 기준 단위는 형태에 따라 다릅니다.
 
-![clearspace-v] {zoom=1.05} 세로형/ E 블록 하나의 수직 방향 높이를 H라 할 때, 시그니처 전체를 감싸는 상하좌우 각 H/2 이상의 최소 여백을 확보합니다.
-![clearspace-h] {zoom=1.6} 가로형/ 디스크립터 대문자 E의 캡 하이트를 기준으로, 시그니처 전체를 감싸는 상하좌우 각 캡 하이트 이상의 최소 여백을 확보합니다.
+![clearspace-v] {zoom=1.05} Vertical/ E 블록 하나의 수직 방향 높이를 H라 할 때, 시그니처 전체를 감싸는 상하좌우 각 H/2 이상의 최소 여백을 확보합니다.
+![clearspace-h] {zoom=1.6} Horizontal/ 디스크립터 대문자 E의 캡 하이트를 기준으로, 시그니처 전체를 감싸는 상하좌우 각 캡 하이트 이상의 최소 여백을 확보합니다.
 
 
 ### Signature
@@ -398,19 +398,19 @@ EO를 한 번 이상 접한 사람에게 EO 심볼은 이미 "EO"로 읽힐 수 
 ### + Service Signature
 #### Vertical {layout=grid-4} {zoom=2.05}
 서비스 시그니처 세로형 예시입니다. 모두 같은 디스크립터 규격으로 구성되어, 이름이 달라도 하나의 가족으로 읽히는지 체크합니다.
-![service-v-studio] EO Studio · 회사
-![service-v-magazine] EO Magazine · 웹 매거진
-![service-v-planet] EO Planet · 커뮤니티 (eopla.net)
-![service-v-newsletter] EO Newsletter · 뉴스레터
+![service-v-studio] 1/ EO Studio · 회사
+![service-v-magazine] 2/ EO Magazine · 웹 매거진
+![service-v-planet] 3/ EO Planet · 커뮤니티
+![service-v-newsletter] 4/ EO Newsletter · 뉴스레터
 
 
 ### Service Signature
 #### Horizontal {layout=grid-4} {zoom=3}
 서비스 시그니처 가로형 예시입니다. 모두 같은 디스크립터 규격으로 구성되어, 이름이 달라도 하나의 가족으로 읽히는지 체크합니다.
-![service-h-studio] EO Studio · 회사
-![service-h-magazine] EO Magazine · 웹 매거진
-![service-h-planet] EO Planet · 커뮤니티 (eopla.net)
-![service-h-newsletter] EO Newsletter · 뉴스레터
+![service-h-studio] 1/ EO Studio · 회사
+![service-h-magazine] 2/ EO Magazine · 웹 매거진
+![service-h-planet] 3/ EO Planet · 커뮤니티
+![service-h-newsletter] 4/ EO Newsletter · 뉴스레터
 
 
 ### + Usage {layout=grid-2}
