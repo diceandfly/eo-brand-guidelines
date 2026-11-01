@@ -301,7 +301,8 @@
   --nav-w-sub: 400; /* 서브챕터 = 페이지 타이틀 */
   --nav-w-section: 300; /* 섹션 */
   --nav-w-active: 400; /* 활성 항목 (챕터·페이지) */
-  --nav-w-section-active: var(--nav-w-section); /* 스크롤스파이로 켜진 섹션. 웨이트가 바뀌면 글자 폭이 튀므로 섹션은 색만 바꾸고 웨이트는 그대로 */
+  --nav-w-section-active: var(--nav-w-section); /* 스크롤스파이로 켜진 섹션. 웨이트가 바뀌면 글자 폭이 튀므로(300→400 평균 +2.8%) 섹션은 웨이트를 그대로 두고 아래 스트로크로 굵기를 냄 */
+  --nav-section-active-stroke: 0.3px; /* 활성 섹션의 가짜 웨이트: 글자 폭은 그대로 두고 획만 두껍게 (-webkit-text-stroke). 0 = 색만 */
   --nav-w-lang: 400; /* 언어 전환 EN | KR (비활성 쪽) */
   --nav-w-lang-active: 400; /* 언어 전환 현재 언어 */
 
@@ -361,7 +362,7 @@
   /* 3-4 목차 */
   --nav-fg: color-mix(in srgb, var(--c-air-white), transparent 35%); /* 비활성 항목 */
   --nav-fg-active: var(--c-air-white); /* 활성 항목, 호버 */
-  --nav-fg-current: var(--c-builder-neon); /* 현재 페이지의 챕터 · 서브챕터 (클릭으로 펼친 다른 챕터는 --nav-fg-active). 눌러 쓰려면 color-mix(in srgb, var(--c-builder-neon), var(--c-air-white) 30%) */
+  --nav-fg-current: var(--nav-fg-active); /* 현재 페이지의 챕터 · 서브챕터 (클릭으로 펼친 다른 챕터는 --nav-fg-active 로 같음). 네온으로 하려면 var(--c-builder-neon) */
   --nav-fg-section-active: var(--nav-fg-current); /* 스크롤스파이로 켜진 섹션 (지금 보고 있는 섹션). 본문 섹션 헤드와 같은 네온 */
 
   /* 3-5 검색창 */

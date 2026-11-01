@@ -454,7 +454,8 @@ html.js .main {
   display: block;
   font-weight: var(--nav-w-section);
   color: var(--nav-fg);
-  transition: color var(--dur) var(--ease);
+  -webkit-text-stroke: 0 currentColor; /* 활성 때 --nav-section-active-stroke 로 (아래). 0 에서 시작해야 트랜지션이 됨 */
+  transition: color var(--dur) var(--ease), -webkit-text-stroke-width var(--dur) var(--ease);
 }
 .nav__section-link:hover {
   color: var(--nav-fg-active);
@@ -462,6 +463,7 @@ html.js .main {
 .nav__section-link.is-active {
   color: var(--nav-fg-section-active); /* 스크롤스파이: 지금 보고 있는 섹션 (motion.ts 2.5). 호버보다 뒤에 두어 활성 항목은 호버해도 이 색 */
   font-weight: var(--nav-w-section-active); /* 기본은 웨이트 변화 없음 */
+  -webkit-text-stroke-width: var(--nav-section-active-stroke); /* 가짜 웨이트: 글리프 폭(advance)은 그대로라 글자가 번지지 않음 */
 }
 .nav__lang {
   flex: none; /* 목차 바닥에 고정. 위 목록만 스크롤 (목록과의 간격은 .nav__scroll 아래 여백) */
