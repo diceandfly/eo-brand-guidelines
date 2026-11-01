@@ -440,7 +440,15 @@ html.js .main {
   display: flex;
   flex-direction: column;
   gap: var(--nav-item-gap);
-  padding: var(--nav-sections-pad-top) 0 var(--nav-sections-pad-bottom) var(--nav-sections-indent);
+  padding: 0 0 0 var(--nav-sections-indent);
+}
+/* 위아래 숨은 ul 패딩이 아니라 첫·끝 항목의 패딩으로 — 접힌 묶음(nav__fold 0fr)은 내용 높이만 0 으로 줄이고 패딩은 남기므로,
+   ul 에 두면 접힌 서브챕터 사이에도 그만큼 벌어짐. 항목 안에 두면 펼쳐질 때만 함께 나타남 */
+.nav__sections > li:first-child {
+  padding-top: var(--nav-sections-pad-top);
+}
+.nav__sections > li:last-child {
+  padding-bottom: var(--nav-sections-pad-bottom);
 }
 .nav__section-link {
   display: block;

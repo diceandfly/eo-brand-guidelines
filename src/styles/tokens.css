@@ -73,7 +73,7 @@
   --nav-indent: 21px; /* 위계당 들여쓰기 (서브챕터, 섹션) */
   --nav-sections-indent: 21px; /* 섹션 들여쓰기 (서브챕터 기준). 더 밀어 넣으려면 키움 */
   --nav-sections-pad-top: 7px; /* 활성 서브챕터 ↔ 첫 섹션 (서브챕터 이름과 섹션 목록 사이 숨) */
-  --nav-sections-pad-bottom: 0px; /* 마지막 섹션 ↔ 다음 서브챕터 */
+  --nav-sections-pad-bottom:7px; /* 마지막 섹션 ↔ 다음 서브챕터 */
   --nav-sub-pad-bottom: 2px; /* 마지막 서브챕터(와 섹션 묶음) ↔ 다음 챕터 */
 
   /* 1-2 목차 · 언어 전환 (바닥 고정) */
