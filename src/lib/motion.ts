@@ -315,7 +315,7 @@ const blockScroll = (e: Event) => {
 const behind = [document.getElementById('smooth-wrapper'), document.querySelector('.sidebar'), document.querySelector('.topbar')].filter((el): el is HTMLElement => !!el);
 
   let opener: HTMLElement | null = null;   // 닫을 때 포커스를 돌려줄 요소
-  const open = (src: string, alt: string, strike = false, edge: string | null = null, fill: string | undefined = undefined) => {   // fill: {bg} 이미지 — 거울 확장 없이 이 색으로 배경을 채움 ('' 이면 색 없음 → 기본 막)
+  const open = (src: string, alt: string, strike = false, edge: string | null = null, fill: string | undefined = undefined, cover = false) => {   // fill: {bg-color} 이미지 — 거울 확장 없이 이 색으로 배경을 채움 ('' 이면 색 없음 → 기본 막). cover: {bg-cover} — 화면에 꽉 채움
     if (opened) return;
     opened = true;
     opener = document.activeElement as HTMLElement | null;
@@ -324,8 +324,9 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     if (edge) box.style.setProperty('--lightbox-edge', edge); else box.style.removeProperty('--lightbox-edge');
     box.classList.toggle('has-edge', !!edge);
     if (fill) box.style.setProperty('--lightbox-fill', fill); else box.style.removeProperty('--lightbox-fill');
-    box.classList.toggle('has-fill', !!fill);
-    const mirror = useMirror && !isMobile() && fill === undefined;   // 모바일과 {bg} 이미지는 거울 확장 없음
+    box.classList.toggle('has-fill', !!fill && !cover);
+    box.classList.toggle('has-cover', cover && !isMobile());         // 모바일은 옆으로 미는 기본 보기 유지
+    const mirror = useMirror && !isMobile() && fill === undefined && !cover;   // 모바일 · {bg-color} · {bg-cover} 이미지는 거울 확장 없음
     box.classList.toggle('has-mirror', mirror);
     if (mirror) for (const im of mirrorImgs) im.src = src;      // 거울 사본 8장 (같은 파일이라 캐시에서 옴)
     boxImg.src = src;
@@ -366,7 +367,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     opener = null;
   };
 
-  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill);
+  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset);
   document.addEventListener('click', e => {
     const img = (e.target as HTMLElement).closest('.fig__frame > img') as HTMLImageElement | null;
     if (img) { e.preventDefault(); openFrom(img); }
