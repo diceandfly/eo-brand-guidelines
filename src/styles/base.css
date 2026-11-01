@@ -1444,8 +1444,8 @@ html.js .main {
   position: relative;
 }
 .t-body ol > li::before {
-  content: counter(item) ' / ';
-  font-family: var(--font-mono); /* 숫자 폭이 같아 1 과 5 가 같은 자리에 */
+  content: counter(item) '/';
+  font-family: var(--font-mono); /* "1/" — 숫자 폭이 같아 1 과 5 가 같은 자리에. 글과의 간격은 --t-body-olist-indent */
   position: absolute;
   left: calc(-1 * var(--t-body-olist-indent));
 }
