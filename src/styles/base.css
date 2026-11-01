@@ -1449,3 +1449,6 @@ html.js .main {
   position: absolute;
   left: calc(-1 * var(--t-body-olist-indent));
 }
+html[lang='ko'] .t-body ol > li::before {
+  font-size: calc(1em * var(--t-body-olist-marker-scale-ko)); /* 국문: 모노 숫자를 한글 본문에 맞춰 살짝 작게 */
+}
