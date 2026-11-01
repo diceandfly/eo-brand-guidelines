@@ -361,6 +361,7 @@
   /* 3-4 목차 */
   --nav-fg: color-mix(in srgb, var(--c-air-white), transparent 35%); /* 비활성 항목 */
   --nav-fg-active: var(--c-air-white); /* 활성 항목, 호버 */
+  --nav-fg-section-active: var(--c-builder-neon); /* 스크롤스파이로 켜진 섹션 (지금 보고 있는 섹션). 본문 섹션 헤드와 같은 네온. 눌러 쓰려면 color-mix(in srgb, var(--c-builder-neon), var(--c-air-white) 30%) */
 
   /* 3-5 검색창 */
   --search-bg: transparent; /* 검색창 배경. 목차 배경에 묻힘 */

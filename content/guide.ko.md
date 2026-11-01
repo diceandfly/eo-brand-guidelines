@@ -528,31 +528,31 @@ EO의 서체는 Founders Grotesk 패밀리입니다. 헤드라인과 본문에�
 Founders Grotesk는 장식 없이 명료하고, 넓은 폭과 낮은 콘트라스트 덕분에 큰 크기에서 단단한 블록처럼 보입니다. 이 성격이 "명료하고 열린 자신감"이라는 EO의 목소리를 그대로 전달합니다. 모노는 빌더의 터미널과 스펙 시트를 연상시키는 정보의 서체입니다.
 
 웨이트는 역할이 정해져 있습니다. 디스플레이와 헤드라인에는 Medium, 서브 헤드라인에는 Regular, 본문에는 Light, 정보성 텍스트에는 Mono Regular를 사용합니다. 레벨별 웨이트는 [[#reference-scale|Reference Scale]]을 참조하세요.
-![our-typefaces]
+![our-typefaces]{bg}
 
 
 ### Character Set
 #### Founders Grotesk Medium
 다음 이미지는 Founders Grotesk Medium의 대부분의 글자를 나타냅니다. Medium은 디스플레이와 헤드라인의 기본 웨이트입니다. 라틴 확장 문자를 지원하며 베트남어 성조 부호를 포함합니다. 한글처럼 지원하지 않는 문자는 [[#multilingual]]의 서체를 사용합니다.
-![charset-medium]
+![charset-medium]{bg}
 
 
 ### Character Set
 #### Founders Grotesk Regular
 다음 이미지는 Founders Grotesk Regular의 대부분의 글자를 나타냅니다. Regular는 서브 헤드라인(D2 · H2 · H3)의 기본 웨이트로, 헤드라인의 Medium과 본문의 Light 사이에서 위계를 잇습니다. 커뮤니케이션 디자인에서는 이 역할로만 쓰고 본문에는 쓰지 않습니다.
-![charset-regular]
+![charset-regular]{bg}
 
 
 ### Character Set
 #### Founders Grotesk Light
 다음 이미지는 Founders Grotesk Light의 대부분의 글자를 나타냅니다. Light는 본문의 기본 웨이트입니다. 큰 크기에서는 획이 가늘어 떠 보이므로 디스플레이와 헤드라인에는 사용하지 않습니다.
-![charset-light]
+![charset-light]{bg}
 
 
 ### Character Set
 #### Founders Grotesk Mono
 다음 이미지는 Founders Grotesk Mono Regular의 대부분의 글자를 나타냅니다. 모노는 정보성 텍스트 전용입니다. 태그 · 날짜 · 읽기 시간 · 컬러 스펙 · 캡션 번호에 사용하며 헤드라인이나 본문에는 사용하지 않습니다.
-![charset-mono]
+![charset-mono]{bg}
 
 
 ### + Typographic Framework {layout=grid-2}
@@ -564,10 +564,10 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 [[#multilingual|다국어 환경 전환]]과 [[#inversion|다크/라이트 모드 전환]] 시, 글자 크기와 행간 비율을 바꿔도 점유하는 공간 자체는 그대로이므로 레이아웃의 변동성이 최소화되며, 서체를 Founders Grotesk에서 Pretendard나 Noto Sans로 바꿔도 회색도만 맞췄다면 룩앤필을 일정하게 유지할 수 있습니다.
 
 이 챕터는 프레임웍의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 기준행간을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 세팅합니다. 각 단계 별 세부 지침은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · [[#tonal-value|Tonal Value]], 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
-![framework-1] 기준행간(Line Unit) — 지면의 기준 행간. 본문 한 줄의 높이 또는 심볼의 1x · 0.5x, 모든 사이즈의 단위
-![framework-2] 레벨(Level) — 역할에 따라 나눈 텍스트의 단계. 행간 배수 · 웨이트 · 실질 행간 · 자간의 네 항목 한 묶음
-![framework-3] 실질 행간(Linespacing) — 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
-![framework-4] 회색도(Tonal Value) — 글 덩어리를 멀리서 봤을 때의 밀도감. 레벨 간 균형의 판단 기준
+![framework-1]{bg} 기준행간(Line Unit) — 지면의 기준 행간. 본문 한 줄의 높이 또는 심볼의 1x · 0.5x, 모든 사이즈의 단위
+![framework-2]{bg} 레벨(Level) — 역할에 따라 나눈 텍스트의 단계. 행간 배수 · 웨이트 · 실질 행간 · 자간의 네 항목 한 묶음
+![framework-3]{bg} 실질 행간(Linespacing) — 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
+![framework-4]{bg} 회색도(Tonal Value) — 글 덩어리를 멀리서 봤을 때의 밀도감. 레벨 간 균형의 판단 기준
 
 
 ### Typographic Framework
@@ -577,7 +577,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 기준행간은 지면에서 가장 중요한 콘텐츠 레벨과 동일하게 하는 것이 기본입니다. 일반적인 콘텐츠 레이아웃에서는 본문 레벨의 행간이 기준행간이며, 웹과 편집물에서는 28px을 기본으로 하되 지면의 크기와 읽는 거리에 따라 디자이너 재량으로 조절합니다. 본문 콘텐츠가 없는 비주얼 커뮤니케이션(포스터 · 배너 · 키비주얼)에서는 심볼의 높이를 기준으로 그 1x 또는 0.5x를 기준행간으로 설정합니다. 심볼과 타이포그래피의 레벨을 나누는 방법은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요.
 
 기준행간을 정했다면 지면 높이에서 위아래 마진을 뺀 값이 기준행간의 정수 배가 되는 베이스라인 그리드를 설정합니다. 그리드와 마진에 대한 세부적인 지침은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
-![line-unit]
+![line-unit]{bg}
 
 
 ### Typographic Framework
@@ -597,7 +597,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 레벨의 배수를 1x · 0.5x · 0.25x 단위로 조정하고, 실질 행간과 자간은 인접한 양쪽 레벨끼리 [[#tonal-value|회색도]]가 일관되게 이어지도록 조정해야 합니다. 한국어와 베트남어의 조정 값은 [[#multilingual|Multilingual]]을 참조하세요.
 
 프리셋은 비주얼 커뮤니케이션에 초점을 맞춰 고안되었습니다. 한번에 읽어야할 텍스트가 몇 문단 정도에 그치는 컨텐츠의 경우 T1의 프리셋 값을 그대로 사용하고, 본문의 가독성이 가장 중요한 환경에서는 1x · Light · 150% · +1.5% (18.67px)로 조정하는 것을 권장합니다.
-![reference-scale]
+![reference-scale]{bg}
 
 
 ### Typographic Framework
@@ -611,7 +611,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 5. 웨이트와 자간으로 회색도를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 4와 5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#tonal-value|Tonal Value]]를 참조하세요.
 
 레이아웃의 격자와 마진은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
-![setting-up]
+![setting-up]{bg}
 
 
 ### Typographic Framework
@@ -624,9 +624,9 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 - **심볼과 레벨** — 심볼도 레벨처럼 다룹니다. 심볼의 높이 정수 배(1x · 2x)를 기준행간으로 설정하면 심볼과 타이포그래피가 같은 단위로 묶을 수 있습니다. 심볼의 크기는 [[symbol#scalability]]를 따릅니다.
 
 일반적으로 레벨이 커질수록 웨이트는 무거워지고 실질 행간과 자간은 좁아집니다. 다만 실제 레벨링 과정은 선형적 규칙보다는 [[#linespacing-founders-grotesk-medium|실질 행간]] · [[#letterspacing-founders-grotesk-medium|자간]] · [[#tonal-value|웨이트]]를 교차로 조율하는 과정에 가깝습니다. 빠른 참고가 필요할 때는 [[#reference-scale|Reference Scale]]의 프리셋 값을 참조하세요.
-![levelling-format] {do} 본문이 있으면 기준행간을 고정, 없으면 심볼 높이에 맞춰 키움
-![levelling-steps-1] {do} 비주얼 커뮤니케이션은 레벨 간 사이즈 배율을 크게 설정 (약 2배 권장)
-![levelling-steps-2] {do} 기능적일수록 레벨 간 사이즈 배율을 작게 설정 (약 1.5배 권장)
+![levelling-format] {do bg} 본문이 있으면 기준행간을 고정, 없으면 심볼 높이에 맞춰 키움
+![levelling-steps-1] {do bg} 비주얼 커뮤니케이션은 레벨 간 사이즈 배율을 크게 설정 (약 2배 권장)
+![levelling-steps-2] {do bg} 기능적일수록 레벨 간 사이즈 배율을 작게 설정 (약 1.5배 권장)
 
 
 ### + Linespacing
@@ -634,7 +634,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 실질행간은 글자 크기에 대한 행간의 비율입니다. 일반적으로 글자 크기가 클수록 행간이 좁아지고, 글자 크기가 작을수록 행간이 넓어집니다. 행간은 포맷과 커뮤니케이션 유형에 따라 달라질 수 있으며, 레벨별 기준값은 [[#reference-scale|Reference Scale]]을 참조하세요.
 
 헤드라인과 디스플레이는 행간이 글자 크기와 같거나 더 좁습니다. 행과 행이 하나의 블록으로 읽히는 것이 목표이며, 어센더와 디센더가 닿기 직전이 하한입니다. 극단적으로 느슨하거나 타이트한 행간은 피하고, 닿는다면 비율이 아니라 문구를 일부 수정하는 것을 권장합니다.
-![linespacing-medium]
+![linespacing-medium]{bg}
 
 
 ### Linespacing
@@ -642,7 +642,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 서브 헤드라인(H2 · H3)의 행간은 헤드라인과 본문의 사이에 있습니다. 2-4 행으로 이어지는 일이 많으므로 헤드라인보다 넓은 행간을 적용해 가독성을 다소 높혀야 합니다. 헤드라인 크기의 Regular인 D2는 헤드라인과 같은 행간 규칙을 따릅니다.
 
 서브 헤드라인은 본문 바로 위에 놓이는 경우가 많으므로, 행간이 본문의 기준행간 격자와 어긋나지 않는지 함께 확인합니다.
-![linespacing-regular]
+![linespacing-regular]{bg}
 
 
 ### Linespacing
@@ -650,7 +650,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 본문은 글자 크기보다 넓은 행간으로 읽는 리듬을 만듭니다. 한 행이 길수록 행간은 조금 더 넓어야 눈이 다음 행을 놓치지 않기 때문입니다. 단 너무 넓으면 행이 따로 놀아 문단이 흩어지며 시각적 완성도를 떨어트릴 수 있습니다. 가독성을 무리없이 확보하는 범위 안에서 일관된 회색 면이 구성되는 수준까지 행간을 조금씩 좁혀나갑니다.
 
 콘텐츠 중심의 레이아웃에서는 본문의 행간이 곧 [[#line-unit|기준행간]]이 됩니다. 본문의 기준행간을 바꾸면 디지털 레이아웃의 모든 사이즈가 배율을 유지하며 스크롤 방향으로 반응합니다.
-![linespacing-light]
+![linespacing-light]{bg}
 
 
 ### Linespacing
@@ -658,31 +658,31 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 캡션 · 라벨 · 태그 · 스펙(C1)은 한두 줄로 짧고 글자가 작습니다. 모노는 글자 폭이 넓고 엑스하이트가 커서 본문만큼 행간을 벌리면 줄이 떠 보이므로, 본문보다 좁은 비율로 조판합니다.
 
 C1의 행간은 기준행간의 절반입니다. 캡션 두 줄이 본문 한 줄과 같은 높이가 되어 정보성 텍스트도 같은 행 격자 위에 놓입니다.
-![linespacing-mono]
+![linespacing-mono]{bg}
 
 
 ### + Letterspacing
 #### Founders Grotesk Medium
 큰 글자는 글자 사이의 공백도 함께 커져 보이므로 자간을 좁힙니다. 글자가 하나의 블록처럼 붙어 보이되 획이 거의 닿지 않는 지점이 기준입니다(일부 가로로 벌어진 글리프끼리는 닿을 수 있음). 너무 좁히면 세로획이 연속되는 조합이 한 덩어리로 읽히고, 더 벌리면 단어가 글자로 흩어져 헤드라인의 무게가 사라집니다.
-![letterspacing-medium]
+![letterspacing-medium]{bg}
 
 
 ### Letterspacing
 #### Founders Grotesk Regular
  Regular 서체 본연의 회색도가 Medium보다 낮기 때문에 서브 헤드라인 레벨에서 헤드라인 레벨과 비슷한 수준의 회색도를 확보하려면 상대적으로 큰 가중치를 줘야 합니다. 이를테면 H1의 경우 Medium -1.5% 자간을 사용하지만, 동일한 글자 크기를 사용하는 D2의 경우 오히려 더 큰 값의 Regular -2%를 적용합니다.
-![letterspacing-regular]
+![letterspacing-regular]{bg}
 
 
 ### Letterspacing
 #### Founders Grotesk Light
 작은 글자는 공백이 상대적으로 작아 보이므로, 어두운 컬러 배경 위 밝은 컬러의 컨텐츠를 올릴 때를 기준으로 자간을 0.5%-1% 수준을 적용해야 합니다. 가는 웨이트 특성 상 자간을 좁히면 가독성이 빠르게 떨어지므로, 균일한 회색도와 가독성의 중요도에 따라 시각적 완성도의 절충 지점을 찾습니다.
-![letterspacing-light]
+![letterspacing-light]{bg}
 
 
 ### Letterspacing
 #### Founders Grotesk Mono Regular
 모노 서체의 특성 상 균일한 회색도의 연출이 가능해 작인 사이즈로도 시인성이 뛰어나지만, 자체 가독성은 낮기 때문에 자간을 -7% 수준으로 좁히고 단어가 너무 길어질 경우 서체 변경를 고려합니다. 
-![letterspacing-mono]
+![letterspacing-mono]{bg}
 
 
 
@@ -691,15 +691,15 @@ C1의 행간은 기준행간의 절반입니다. 캡션 두 줄이 본문 한 �
 회색도는 글 덩어리를 멀리서 봤을 때의 밝기입니다. 모든 레벨이 하나의 글을 그대로 확대 · 축소한 것처럼 보이는 것이 가장 이상적입니다. 글자를 단순히 키우면 자간과 행간이 떠 보이고, 줄이면 뭉쳐 보이므로 레벨마다 [[#linespacing-founders-grotesk-medium|실질 행간]] · [[#letterspacing-founders-grotesk-medium|자간]] · 웨이트를 다시 잡아야 균일한 회색도 수준을 구할 수 있습니다. 레벨을 나란히 놓고 눈을 가늘게 뜨거나 화면을 축소해 보면 밝기 차이가 더 선명하게 드러납니다.
 
 같은 원칙이 서체 · 언어 · 배경이 바뀔 때의 기준이 됩니다. [[#multilingual|Pretendard나 Noto Sans]]로 조판할 때도, 어두운 배경에서 밝은 배경으로 [[#inversion|반전]]할 때도 Founders Grotesk 다크 모드와 같은 회색도가 나오도록 글자 크기 · 웨이트 · 자간을 맞춥니다. 어느 경우든 글자가 차지하는 공간은 바뀌지 않으므로 레이아웃은 그대로입니다.
-![tonal-value]
+![tonal-value]{bg}
 
 
 ### + Alignment & Ragging
 EO 브랜드 커뮤니케이션의 모든 텍스트는 왼쪽 정렬입니다. 헤드라인은 레이아웃의 왼쪽 [[#grid-and-margin|그리드 라인]]에서 시작해 그래픽 유닛이 놓인 오른쪽을 향합니다. 가운데 정렬은 심볼 단독 아이콘과 굿즈 백프린트처럼 텍스트가 한 줄인 경우에만 허용하고, 오른쪽 정렬과 강제 양끝 정렬은 사용하지 않습니다. 여러 단으로 나뉜 본문은 모든 단의 첫 행 베이스라인을 맞추고, 캡션은 이미지의 왼쪽 · 오른쪽 가장자리에 각각 좌측 · 우측정렬합니다.
 
 래그는 글 덩어리의 오른쪽 가장자리입니다. 가장자리가 불규칙하게 느껴지거나 특정 행이 튀어나오거나, 마지막 행에 단어 하나만 남으면(Orphan) 래그가 나쁘다고 말합니다. EO의 헤드라인은 짧고 행 수가 적어 래그가 그대로 드러납니다. "Build / Anyway."처럼 행마다 의미 단위가 끊어지도록 줄을 바꾸고, 긴 행과 짧은 행이 번갈아 나오는 계단 모양을 피하세요. 본문에서는 가장자리가 고르고 글이 잘 읽힐 때까지 단어를 다음 행으로 옮깁니다.
-![alignment] 왼쪽 정렬과 단 사이의 베이스라인
-![ragging] 의미 단위로 끊은 헤드라인의 래그
+![alignment]{bg} 왼쪽 정렬과 단 사이의 베이스라인
+![ragging]{bg} 의미 단위로 끊은 헤드라인의 래그
 
 
 ### Typographic Framework
@@ -710,9 +710,9 @@ EO 브랜드 커뮤니케이션의 모든 텍스트는 왼쪽 정렬입니다. �
 - **베이스라인 그리드** — 콘텐츠 영역을 기준행간으로 나눈 베이스라인 그리드입니다. 모든 텍스트 블록의 첫 줄은 격자 줄에서 시작하고, 블록 사이 간격은 기준행간의 정수 배로만 띄웁니다.
 - **컬럼 그리드** — 일반적으로 컬럼의 수는 16:9 화면에서 6열, A판형은 4열, 12열을 사용하거나 디자이너의 재량에 따라 자유롭게 설정합니다. A판형 또는 그와 유사한 비율의 지면에서는 그래픽 패턴 영역이 정사각형에 가까워지도록 지면 비례로 정합니다. 
 - **영역 분할** — 그래픽 패턴 영역과 콘텐츠 영역의 경계는 필드 선 위에 둡니다. 패턴 영역은 마진을 무시하고 풀블리드로 배치하며, 콘텐츠 영역은 마진을 지킵니다. 두 영역의 면적 비율은 [[graphic-pattern#grammar#grid]]를 따릅니다.
-![grid-margin] 마진과 거터는 기준행간 1배
-![grid-fields] 필드는 정사각형에 가깝게, 수는 콘텐츠 밀도로
-![grid-zones] 패턴과 콘텐츠의 경계는 그리드 라인 위에 정확하게
+![grid-margin]{bg} 마진과 거터는 기준행간 1배
+![grid-fields]{bg} 필드는 정사각형에 가깝게, 수는 콘텐츠 밀도로
+![grid-zones]{bg} 패턴과 콘텐츠의 경계는 그리드 라인 위에 정확하게
 
 
 ### Typography
@@ -722,7 +722,7 @@ EO 타이포그래피도 심볼과 마찬가지로 Solid Gray · Space Black 등
 이때는 기준행간 · 레벨의 배수 · 웨이트를 그대로 둔 채, 각 레벨의 실질행간에 95%(글자 크기가 105%가 되도록)를 적용하고 자간을 0.5% 좁힙니다. 이렇게 하면 밝은 배경에서도 [[#tonal-value|회색도]]가 라이트 텍스트와 거의 같게 유지되고, 글자가 차지하는 공간이 같으므로 레이아웃도 그대로입니다.
 
 아래는 같은 프리셋을 7레벨 [[#reference-scale|Reference Scale]]에 적용해 라이트 모드로 조판한 예시입니다.
-![inversion]
+![inversion]{bg}
 
 
 ### + Multilingual {layout=wide}
@@ -734,24 +734,24 @@ EO 타이포그래피도 심볼과 마찬가지로 Solid Gray · Space Black 등
 베이스라인 보정은 편집 디자인 어플리케이션에서 텍스트 박스 기준의 위치값을 맞추기 위한 것입니다. 디지털 환경에서 브라우저는 글자의 베이스라인을 스스로 맞추므로 웹에서는 베이스라인 보정이 거의 필요 없지만, 디스플레이 폰트처럼 크게 보여지는 경우에는 텍스트 박스 내 별도 마진으로 보정하는 것이 좋습니다. 
 
 이 두 서체는 Founders Grotesk를 사용할 수 없는 환경(이메일, 외부 플랫폼과 문서 툴의 시스템 서체 제약 등)의 대체 서체이기도 합니다. 이때 영문도 Pretendard을 우선으로 조판하고, Pretendard를 쓸 수 없거나 지원하지 않는 언어에서는 Noto Sans를 씁니다.
-![multilingual]
+![multilingual]{bg}
 
 
 ### Typography
 #### + Don'ts {layout=grid-3}
 아래는 타이포그래피로 하지 말아야 할 것들입니다. 모든 접점에서 일관성을 지키려면 이 챕터의 조판 규칙과 권장 사항을 따르세요.
-![dont-1]{dont} 헤드라인을 전부 대문자로 쓰지 마세요
-![dont-2]{dont} 헤드라인에 Light를, 본문에 Medium을 쓰지 마세요
-![dont-3]{dont} 행간을 좁혀 획이 닿게 하지 마세요
-![dont-4]{dont} 자간을 벌려 글자를 흩뜨리지 마세요
-![dont-5]{dont} 가운데 정렬이나 오른쪽 정렬을 쓰지 마세요
-![dont-6]{dont} 한 레이아웃에 세 가지 넘는 레벨을 쓰지 마세요
-![dont-7]{dont} 헤드라인에 두 가지 이상 컬러를 쓰지 마세요
-![dont-8]{dont} 외곽선 · 그림자 · 기울임 · 늘리기를 적용하지 마세요
-![dont-9]{dont} 헤드라인을 그래픽 유닛 위에 겹치지 마세요
-![dont-10]{dont} 모노를 헤드라인이나 본문에 쓰지 마세요
-![dont-11]{dont} 한국어와 베트남어를 영문과 같은 크기로 조판하지 마세요
-![dont-12]{dont} 지정된 서체 외의 서체를 쓰지 마세요
+![dont-1]{dont bg} 헤드라인을 전부 대문자로 쓰지 마세요
+![dont-2]{dont bg} 헤드라인에 Light를, 본문에 Medium을 쓰지 마세요
+![dont-3]{dont bg} 행간을 좁혀 획이 닿게 하지 마세요
+![dont-4]{dont bg} 자간을 벌려 글자를 흩뜨리지 마세요
+![dont-5]{dont bg} 가운데 정렬이나 오른쪽 정렬을 쓰지 마세요
+![dont-6]{dont bg} 한 레이아웃에 세 가지 넘는 레벨을 쓰지 마세요
+![dont-7]{dont bg} 헤드라인에 두 가지 이상 컬러를 쓰지 마세요
+![dont-8]{dont bg} 외곽선 · 그림자 · 기울임 · 늘리기를 적용하지 마세요
+![dont-9]{dont bg} 헤드라인을 그래픽 유닛 위에 겹치지 마세요
+![dont-10]{dont bg} 모노를 헤드라인이나 본문에 쓰지 마세요
+![dont-11]{dont bg} 한국어와 베트남어를 영문과 같은 크기로 조판하지 마세요
+![dont-12]{dont bg} 지정된 서체 외의 서체를 쓰지 마세요
 
 
 

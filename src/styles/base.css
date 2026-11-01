@@ -456,12 +456,12 @@ html.js .main {
   color: var(--nav-fg);
   transition: color var(--dur) var(--ease);
 }
-.nav__section-link:hover,
-.nav__section-link.is-active {
+.nav__section-link:hover {
   color: var(--nav-fg-active);
 }
 .nav__section-link.is-active {
-  font-weight: var(--nav-w-section-active); /* 스크롤스파이: 지금 보고 있는 섹션 (motion.ts 2.5). 기본은 웨이트 변화 없음 */
+  color: var(--nav-fg-section-active); /* 스크롤스파이: 지금 보고 있는 섹션 (motion.ts 2.5). 호버보다 뒤에 두어 활성 항목은 호버해도 이 색 */
+  font-weight: var(--nav-w-section-active); /* 기본은 웨이트 변화 없음 */
 }
 .nav__lang {
   flex: none; /* 목차 바닥에 고정. 위 목록만 스크롤 (목록과의 간격은 .nav__scroll 아래 여백) */
