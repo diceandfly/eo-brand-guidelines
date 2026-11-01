@@ -1424,7 +1424,7 @@ html.js .main {
 .t-body ol {
   list-style: none;
   counter-reset: item;
-  padding-left: var(--t-body-olist-indent);
+  padding-left: calc(var(--t-body-olist-offset) + var(--t-body-olist-indent)); /* 마진 ↔ 마커 + 마커 ↔ 글 */
 }
 .t-body ol > li {
   counter-increment: item;
