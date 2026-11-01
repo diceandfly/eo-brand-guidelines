@@ -1,0 +1,93 @@
+# Founders Grotesk — 웹폰트(public/fonts/*.woff2)에 실제로 들어 있는 문자와 OpenType 기능
+# 생성: fontTools 로 cmap · GSUB 를 읽음 (2026-11-01). 파일 자체는 저장소에 없음(라이선스).
+
+== founders-grotesk-light.woff2: glyphs 462, encoded 378, GSUB features: aalt case frac liga locl ord  tnum
+  (control / space / combining / PUA — 글자 없음) (6): U+0000 U+000D U+0020 U+00A0 U+2009 U+F6C3
+  Basic Latin (94): !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+  Latin-1 Supplement (90): ¡¢£¥§¨©ª«®¯°±²³´¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+  Latin Extended-A (126): ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž
+  Latin Extended-B (12): ƒǺǻǼǽǾǿȘșȚțȷ
+  IPA / Spacing Modifier (8): ˆˇ˘˙˚˛˜˝
+  Other scripts / Latin Extended Additional (8): ẀẁẂẃẄẅỲỳ
+  General Punctuation (16): –—‘’‚“”„†‡•…‰‹›⁄
+  Currency Symbols (1): €
+  Letterlike Symbols (1): ™
+  Number Forms (6): ⅓⅔⅛⅜⅝⅞
+  Mathematical Operators (5): −≈≠≤≥
+  Other (5): ﬀﬁﬂﬃﬄ
+
+== founders-grotesk-regular.woff2: glyphs 462, encoded 378, GSUB features: aalt case frac liga locl ord  tnum
+  (control / space / combining / PUA — 글자 없음) (6): U+0000 U+000D U+0020 U+00A0 U+2009 U+F6C3
+  Basic Latin (94): !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+  Latin-1 Supplement (90): ¡¢£¥§¨©ª«®¯°±²³´¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+  Latin Extended-A (126): ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž
+  Latin Extended-B (12): ƒǺǻǼǽǾǿȘșȚțȷ
+  IPA / Spacing Modifier (8): ˆˇ˘˙˚˛˜˝
+  Other scripts / Latin Extended Additional (8): ẀẁẂẃẄẅỲỳ
+  General Punctuation (16): –—‘’‚“”„†‡•…‰‹›⁄
+  Currency Symbols (1): €
+  Letterlike Symbols (1): ™
+  Number Forms (6): ⅓⅔⅛⅜⅝⅞
+  Mathematical Operators (5): −≈≠≤≥
+  Other (5): ﬀﬁﬂﬃﬄ
+
+== founders-grotesk-medium.woff2: glyphs 462, encoded 378, GSUB features: aalt case frac liga locl ord  tnum
+  (control / space / combining / PUA — 글자 없음) (6): U+0000 U+000D U+0020 U+00A0 U+2009 U+F6C3
+  Basic Latin (94): !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+  Latin-1 Supplement (90): ¡¢£¥§¨©ª«®¯°±²³´¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+  Latin Extended-A (126): ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž
+  Latin Extended-B (12): ƒǺǻǼǽǾǿȘșȚțȷ
+  IPA / Spacing Modifier (8): ˆˇ˘˙˚˛˜˝
+  Other scripts / Latin Extended Additional (8): ẀẁẂẃẄẅỲỳ
+  General Punctuation (16): –—‘’‚“”„†‡•…‰‹›⁄
+  Currency Symbols (1): €
+  Letterlike Symbols (1): ™
+  Number Forms (6): ⅓⅔⅛⅜⅝⅞
+  Mathematical Operators (5): −≈≠≤≥
+  Other (5): ﬀﬁﬂﬃﬄ
+
+== founders-grotesk-semibold.woff2: glyphs 462, encoded 378, GSUB features: aalt case frac liga locl ord  tnum
+  (control / space / combining / PUA — 글자 없음) (6): U+0000 U+000D U+0020 U+00A0 U+2009 U+F6C3
+  Basic Latin (94): !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+  Latin-1 Supplement (90): ¡¢£¥§¨©ª«®¯°±²³´¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+  Latin Extended-A (126): ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž
+  Latin Extended-B (12): ƒǺǻǼǽǾǿȘșȚțȷ
+  IPA / Spacing Modifier (8): ˆˇ˘˙˚˛˜˝
+  Other scripts / Latin Extended Additional (8): ẀẁẂẃẄẅỲỳ
+  General Punctuation (16): –—‘’‚“”„†‡•…‰‹›⁄
+  Currency Symbols (1): €
+  Letterlike Symbols (1): ™
+  Number Forms (6): ⅓⅔⅛⅜⅝⅞
+  Mathematical Operators (5): −≈≠≤≥
+  Other (5): ﬀﬁﬂﬃﬄ
+
+== founders-grotesk-mono-regular.woff2: glyphs 460, encoded 385, GSUB features: case dnom frac locl numr ordn sinf sups zero
+  (control / space / combining / PUA — 글자 없음) (5): U+0000 U+000D U+0020 U+00A0 U+F6C3
+  Basic Latin (94): !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+  Latin-1 Supplement (90): ¡¢£¥§¨©ª«®¯°±²³´¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+  Latin Extended-A (124): ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž
+  Latin Extended-B (10): ƒǼǽǾǿȘșȚțȷ
+  IPA / Spacing Modifier (8): ˆˇ˘˙˚˛˜˝
+  Other scripts / Latin Extended Additional (8): ẀẁẂẃẄẅỲỳ
+  General Punctuation (16): –—‘’‚“”„†‡•…‰‹›⁄
+  Super/Subscripts (17): ⁰⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉
+  Currency Symbols (1): €
+  Letterlike Symbols (1): ™
+  Number Forms (6): ⅓⅔⅛⅜⅝⅞
+  Mathematical Operators (5): −≈≠≤≥
+
+== founders-grotesk-mono-medium.woff2: glyphs 460, encoded 385, GSUB features: case dnom frac locl numr ordn sinf sups zero
+  (control / space / combining / PUA — 글자 없음) (5): U+0000 U+000D U+0020 U+00A0 U+F6C3
+  Basic Latin (94): !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+  Latin-1 Supplement (90): ¡¢£¥§¨©ª«®¯°±²³´¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
+  Latin Extended-A (124): ĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽž
+  Latin Extended-B (10): ƒǼǽǾǿȘșȚțȷ
+  IPA / Spacing Modifier (8): ˆˇ˘˙˚˛˜˝
+  Other scripts / Latin Extended Additional (8): ẀẁẂẃẄẅỲỳ
+  General Punctuation (16): –—‘’‚“”„†‡•…‰‹›⁄
+  Super/Subscripts (17): ⁰⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉
+  Currency Symbols (1): €
+  Letterlike Symbols (1): ™
+  Number Forms (6): ⅓⅔⅛⅜⅝⅞
+  Mathematical Operators (5): −≈≠≤≥
+
