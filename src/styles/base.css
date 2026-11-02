@@ -947,9 +947,24 @@ html.js .main {
 .cap-slash {
   font-family: var(--font-mono); /* 키워드 뒤 슬래시 — 번호 라벨과 같은 모노 */
 }
+/* 키워드 목록 항목 "- 키워드/ 설명" (guide.ts listKeys): 불릿은 그대로 왼쪽 선, 키워드 + 고정 간격(--cap-num-gap) + 글. 글은 키워드 뒤 시작선에 걸림 (캡션 · 키워드 문단과 같은 행잉). 중첩 목록은 다음 줄 전폭 */
+.t-body .li-keyed {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
 .t-body .li-key {
-  font-weight: var(--cap-key-w); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식 (guide.ts listKeys) */
+  flex: none;
+  font-weight: var(--cap-key-w); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식 */
   margin-right: var(--cap-num-gap);
+}
+.t-body .li-body {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.t-body .li-keyed > ul,
+.t-body .li-keyed > ol {
+  flex-basis: 100%;
 }
 /* 키워드 문단 "키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글. 줄이 넘어가도 글은 키워드 뒤 시작선에 걸림 (번호 캡션과 같은 행잉 인덴트) */
 .t-body .p-keyed {
