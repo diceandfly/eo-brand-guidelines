@@ -300,6 +300,7 @@
   --t-body-ko-scale: 0.85; /* 영문 폰트 대비 배율 (R6: 20pt / 22pt) */
   --t-body-ko-ls: -0.03em; /* 자간 (R6: -6%) */
   --t-body-ko-w: 400; /* 웨이트 (Pretendard 100–900) */
+  --t-body-ko-strong-w: 500; /* 강조 · 키워드 라벨 안의 한글 웨이트. 영문 강조(300 → 400)와 같은 +100. 더 세게는 600 */
   --t-body-ko-baseline: 0.02em; /* 베이스라인 보정, 양수 = 위로 (R6: +5pt) */
   --t-body-ko-break: keep-all; /* 줄바꿈 단위. keep-all = 어절, normal = 글자 */
 

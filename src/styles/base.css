@@ -142,6 +142,13 @@ button {
   word-break: var(--t-body-ko-break);
   overflow-wrap: break-word; /* 한 어절이 행보다 길면 그때만 글자 단위로 끊음 */
 }
+/* 강조 · 키워드 라벨 안의 한글: .ko 가 웨이트를 400 으로 고정하므로 여기서 한 단계 올림 (영문은 strong / .cap-key 의 400 이 그대로 먹음) */
+.t-body strong .ko,
+.t-body .li-key .ko,
+.t-body .p-key .ko,
+.fig__caption .cap-key .ko {
+  font-weight: var(--t-body-ko-strong-w);
+}
 
 /* 화면에는 숨기고 화면낭독기에만 읽히는 글자 (검색 결과 개수 알림 등) */
 .sr-only {
