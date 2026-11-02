@@ -860,14 +860,14 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 **EO 그래픽 유닛**(이하 유닛)은 그래픽 시스템의 최소 단위이며, 로고의 E 블록 · 패턴 라이브러리 · 애플리케이션 그래픽 모두 동일한 시스템으로 제작되었습니다. 유닛은 EO Graphic Builder에서 파라미터로 생성하며, 자세한 사용 방법은 빌더 내 도움말(Help) 메뉴를 참고하시길 바랍니다.
 
 + shaft size/ 나사축 직사각형의 두께, 단위는 양쪽의 thread 포함 유닛 전체 높이 대비 %입니다. shaft size가 기본 값 35% 수준일 때, 비교적 복잡한 그래픽 패턴에서도 시각적 밀도를 이상적으로 유지하기 쉽습니다.
-+ thread top / bottom width/ thread 윗변과 아랫변의 폭. 두 값의 차이가 thread의 기울기를 결정합니다. 기본 값은 위 40% · 아래 0%.
++ thread top, bottom width/ thread 윗변과 아랫변의 폭. 두 값의 차이가 thread의 기울기를 결정합니다. 기본 값은 위 40% · 아래 0%.
 + thread sides/ double은 shaft 위아래 양쪽, single은 위쪽에만 thread가 붙고 shaft가 아래쪽 바닥에 놓입니다.
 + thread amount/ shaft 위아래에 하나씩 붙는, 나사산을 추상화한 사다리꼴 쉐입. 오른쪽 변은 컬럼 끝에 수직으로 서고, 왼쪽 변은 기울어집니다. 아래쪽 thread는 위쪽을 컬럼 중심 기준으로 180° 회전한 모양입니다.
 + thread compression/ thread 폭이 한쪽으로 갈수록 점점 좁아지는 정도. 0이면 모든 thread의 너비가 균등하고, 값이 커질수록 한쪽으로 압축되는 세기가 강해집니다. 음수/양수 값은 compression의 방향을 결정하며, 개별 thread의 기울기는 반전되지 않고 그대로 유지됩니다.
 + thread gutter/ thread가 놓이는 세로 칸과 칸 사이 간격입니다. 빌더에서는 gutter로 표기합니다.
 
 ![param-shaft-size] shaft size/ shaft의 두께 2-95%
-![param-thread-width] thread top / bottom width/ 기울기의 변화
+![param-thread-width] thread top, bottom width/ 기울기의 변화
 ![param-thread-sides] thread sides/ double · single
 ![param-thread-amount] thread amount/ thread 수
 ![param-thread-compression] thread compression/ thread 압축 방향 · 세기
@@ -886,8 +886,8 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 + Medium Gray/ 비활성 · 타자 · 무관심 · 보수성 등 기계적 중립의 뉘앙스를 표현합니다.
 + Space Black/ 시각적 임팩트 최우선 상황에서, Builder Neon 배경과 고정 조합으로 제한적으로 사용하며 압도성을 표현합니다.
 + Solid Gray는 유닛 컬러로는 사용하지 않습니다.
-![color-neon-white] [Builder Neon]빌더 · 주인공 · 핵심 / [Air White]에너지 · 맞은편 · 균형
-![color-blue-green] [Day Blue]다른 빌더 · 주변 요소 · 낙관 / [Bay Green]다른 빌더 · 주변 요소 · 친화성
+![color-neon-white] [Builder Neon]빌더 · 주인공 · 핵심, [Air White]에너지 · 맞은편 · 균형
+![color-blue-green] [Day Blue]다른 빌더 · 주변 요소 · 낙관, [Bay Green]다른 빌더 · 주변 요소 · 친화성
 ![color-gray] [Medium Gray] 비활성 · 타자 · 보수성 · 물질세계
 ![color-black-on-neon] [Space Black] on [Builder Neon] 고정 조합, 압도성
 
