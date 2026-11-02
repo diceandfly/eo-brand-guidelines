@@ -30,7 +30,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
     → 트리로 쓰려면 마크다운 중첩 불렛 그대로: "- 항목" 아래 두 칸 들여쓴 "  - [[symbol#color]]"
   #### Primary Lockup    ← 서브헤드 (선택). 헤드 바로 다음 줄에만 씁니다. 없으면 표시되지 않습니다.
   그 아래 줄들            ← 본문. 마크다운(문단, 굵게, 링크, 목록)을 쓸 수 있습니다.
-                            **굵게** 는 언더라인이 아니라 웨이트 한 단계(300 → 400)로 강조됩니다. 언더라인은 링크 · 참조 전용.
+                            **굵게** 는 언더라인이 아니라 웨이트 한 단계(300 → 400) + 네온 색(tokens.css --t-body-strong-c)으로 강조됩니다. 언더라인은 링크 · 참조 전용.
                             목록 항목이 "- 키워드/ 설명" 으로 시작하면 키워드가 캡션의 "세로형/" 과 같은 라벨(강조 웨이트 + 모노 슬래시 + 간격)이 됩니다.
                             문단이 "키워드/ 설명" 으로 시작하면 같은 라벨이 됩니다. 라벨 뒤 간격은 tokens.css --cap-num-gap, 줄이 넘어가면 글은 왼쪽 선으로 돌아갑니다 (행잉 인덴트 없음 — 캡션 · 순서 목록도 같음). 슬래시 앞 공백 없이, 뒤에 공백 하나. 키워드는 40자까지 (캡션과 같은 규칙).
                             불릿 글자는 쓴 대로입니다: "+ 항목" 은 +, "- 항목" 은 –(엔 대시). 파서는 깊이를 보지 않지만 가이드의 규칙은 1단 "+ ", 2단(두 칸 들여쓴 중첩) "  - " 입니다 (tokens.css --t-body-bullet-plus / --t-body-bullet-dash).
@@ -1136,36 +1136,36 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray을 유닛 컬
 유닛을 조합해 만든 30종의 패턴 라이브러리입니다. 각 패턴은 번호가 아니라 빌더의 여정에서 가져온 키워드 하나를 이름으로 가지며, 캠페인 · 굿즈 · 소셜 · 영상 등 모든 접점에 사용할 수 있습니다. 
 
 디자이너는 자유롭게 키워드를 확장해 새 그래픽을 제작할 수 있지만, 정식 라이브러리의 등록은 EO 디자인팀의 승인을 거쳐야 합니다.
-![pattern-01] 01/ path of builder
-![pattern-02] 02/ power
-![pattern-03] 03/ resistance
-![pattern-04] 04/ builders
-![pattern-05] 05/ rivals
-![pattern-06] 06/ team
-![pattern-07] 07/ backing
-![pattern-08] 08/ teamwork
-![pattern-09] 09/ co-working
-![pattern-10] 10/ rallying
-![pattern-11] 11/ conviction
-![pattern-12] 12/ resonance
-![pattern-13] 13/ advantage
-![pattern-14] 14/ disadvantage
-![pattern-15] 15/ cycle
-![pattern-16] 16/ routine
-![pattern-17] 17/ competition
-![pattern-18] 18/ collective intelligence
-![pattern-19] 19/ growth
-![pattern-20] 20/ diversity
-![pattern-21] 21/ momentum
-![pattern-22] 22/ problem
-![pattern-23] 23/ a-ha
-![pattern-24] 24/ wow
-![pattern-25] 25/ real world
-![pattern-26] 26/ singularity
-![pattern-27] 27/ multi-dimension
-![pattern-28] 28/ adventure
-![pattern-29] 29/ nature
-![pattern-30] 30/ boom
+![pattern-01] 01/ Path of Builder
+![pattern-02] 02/ Power
+![pattern-03] 03/ Resistance
+![pattern-04] 04/ Builders
+![pattern-05] 05/ Rivals
+![pattern-06] 06/ Team
+![pattern-07] 07/ Backing
+![pattern-08] 08/ Teamwork
+![pattern-09] 09/ Co-working
+![pattern-10] 10/ Rallying
+![pattern-11] 11/ Conviction
+![pattern-12] 12/ Resonance
+![pattern-13] 13/ Advantage
+![pattern-14] 14/ Disadvantage
+![pattern-15] 15/ Cycle
+![pattern-16] 16/ Routine
+![pattern-17] 17/ Competition
+![pattern-18] 18/ Collective Intelligence
+![pattern-19] 19/ Growth
+![pattern-20] 20/ Diversity
+![pattern-21] 21/ Momentum
+![pattern-22] 22/ Problem
+![pattern-23] 23/ A-ha
+![pattern-24] 24/ Wow
+![pattern-25] 25/ Real World
+![pattern-26] 26/ Singularity
+![pattern-27] 27/ Multi-dimension
+![pattern-28] 28/ Adventure
+![pattern-29] 29/ Nature
+![pattern-30] 30/ Boom
 
 
 ### + Usage

@@ -204,6 +204,7 @@ button {
 }
 .t-body strong {
   font-weight: var(--t-body-strong-w);
+  color: var(--t-body-strong-c); /* 네온 하이라이팅 — 한글 구간(.ko)도 상속 */
   text-decoration: underline;
   text-decoration-thickness: var(--t-body-strong-line);
   text-underline-offset: var(--t-body-strong-offset);
