@@ -328,11 +328,11 @@ const bullets = (html: string) => html.replace(new RegExp(`<li>(<p>)?${PLUS}`, '
  *   "키워드/ 설명"        → <span class="cap-key">키워드<span class="cap-slash">/</span></span><span class="cap-body">설명</span>
  *   "1/ 키워드/ 설명"     → 번호 + 키워드 둘 다
  * 규칙: 라벨 슬래시는 바로 앞이 공백이 아니고 바로 뒤가 공백 (thread top / bottom width/ 처럼 키워드 안의 " / " 는 통과). 키워드는 40자까지.
- * 글자는 변환하지 않습니다 — 쓴 슬래시가 그대로 보이고, 모노 슬래시 · 뒤 간격(--cap-num-gap)만 CSS 로 붙습니다. 키워드를 강조하려면 키워드를 **…** 로 감싸고 슬래시를 그 바로 뒤에 (본문 강조와 같은 웨이트 + 네온). 주의: 이 주석 안에 별표+슬래시를 붙여 쓰면 주석이 닫힘.
+ * 글자는 변환하지 않습니다 — 쓴 슬래시가 그대로 보이고, 모노 슬래시 · 뒤 간격(--cap-num-gap)만 CSS 로 붙습니다. 키워드를 강조하려면 키워드를 **…** 로 감쌈 (본문 강조와 같은 웨이트 + 네온). 슬래시를 ** 안에 넣으면 슬래시까지 강조, 밖에 두면 키워드만. 주의: 이 주석 안에 별표+슬래시를 붙여 쓰면 주석이 닫힘.
  * 컬러 칩 · 한글 래핑 전의 글자 그대로에서 돌므로 "Builder Neon/ 설명" 도 키워드가 되고 칩은 라벨 안에 붙습니다. 불릿 글자(data-bullet)와는 무관.
  */
 const LABEL_NUM = /^(\d{1,2})\/[ \u00A0]+(?=\S)/;
-const LABEL_SLASH = /(?<=\S)\/(?=[ \u00A0]+\S)/;   // 라벨 슬래시: 바로 앞 공백 없음, 바로 뒤 공백
+const LABEL_SLASH = /(?<=\S)\/(?=(?:<\/strong>)?[ \u00A0]+\S)/;   // 라벨 슬래시: 바로 앞 공백 없음, 바로 뒤 공백 (강조 닫힘 </strong> 이 사이에 와도 됨 — 슬래시까지 강조)
 function labelize(text: string, cls: 'cap' | 'li' | 'p'): string {
   let out = '';
   let rest = text;
@@ -343,8 +343,11 @@ function labelize(text: string, cls: 'cap' | 'li' | 'p'): string {
     const w = rest.slice(0, i);
     const plain = w.replace(/<\/?strong>/g, '');                    // 키워드 안에는 **강조** 태그만 허용 (웨이트 · 색은 거기서)
     if (!/[<>%]/.test(plain) && !/^\s/.test(plain) && plain.length <= 40) {
-      out += `<span class="${cls}-key">${w}<span class="cap-slash">/</span></span>`;
-      rest = rest.slice(i + 1).replace(/^[ \u00A0]+/, '');
+      let after = rest.slice(i + 1);
+      let close = '';
+      if (after.startsWith('</strong>')) { close = '</strong>'; after = after.slice(9); }   // "**키워드/**": 닫힘을 슬래시 뒤로 — 슬래시도 강조
+      out += `<span class="${cls}-key">${w}<span class="cap-slash">/</span>${close}</span>`;
+      rest = after.replace(/^[ \u00A0]+/, '');
     }
   }
   return out ? `${out}<span class="${cls}-body">${rest}</span>` : text;
