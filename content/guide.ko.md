@@ -32,7 +32,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
   그 아래 줄들            ← 본문. 마크다운(문단, 굵게, 링크, 목록)을 쓸 수 있습니다.
                             **굵게** 는 언더라인이 아니라 웨이트 한 단계(300 → 400)로 강조됩니다. 언더라인은 링크 · 참조 전용.
                             목록 항목이 "- 키워드/ 설명" 으로 시작하면 키워드가 캡션의 "세로형/" 과 같은 라벨(강조 웨이트 + 모노 슬래시 + 간격)이 됩니다.
-                            중첩 목록은 "  1. " 번호로 씁니다 (1단 –, 2단 1/).
+                            중첩 목록은 "  - " 로 씁니다 (1단 –, 2단 · — tokens.css --t-body-bullet / --t-body-bullet-2).
 
 ■ 이미지 (한 줄에 하나)
   ![construction]
@@ -807,12 +807,12 @@ EO 팔레트는 Builder Neon, Day Blue, Bay Green과 이를 받쳐 주는 네가
 에셋별 세부 적용 기준은 각 페이지별 컬러 섹션을 참조하세요.
 
 - 로고
-  1. 심볼의 컬러 사용법은 [[symbol#color]]를 참조하세요.
-  2. 시그니처의 컬러 사용법은 [[signature#color]]를 참조하세요.
-  3. 서브심볼의 컬러 사용법은 [[sub-symbol#color]]를 참조하세요.
+  - 심볼의 컬러 사용법은 [[symbol#color]]를 참조하세요.
+  - 시그니처의 컬러 사용법은 [[signature#color]]를 참조하세요.
+  - 서브심볼의 컬러 사용법은 [[sub-symbol#color]]를 참조하세요.
 - 그래픽 시스템 
-  1. 그래픽 유닛의 컬러 사용법은 [[graphic-unit#color]]를 참조하세요.
-  2. 패턴의 컬러 컬러 사용법은 [[graphic-pattern#color]]를 참조하세요.
+  - 그래픽 유닛의 컬러 사용법은 [[graphic-unit#color]]를 참조하세요.
+  - 패턴의 컬러 컬러 사용법은 [[graphic-pattern#color]]를 참조하세요.
 ![usage]
 
 
@@ -1101,15 +1101,15 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray을 유닛 컬
 브랜드의 존재감을 가장 강하게 어필해야 하면서, 전달할 정보량이 적은 지면에 한해서만 Builder Neon을 배경 컬러로 사용하고 그 위에 Space Black 유닛을 올립니다.
 
 - 유닛 컬러
-  1. 하나의 유닛에는 반드시 하나의 컬러만 적용합니다. 
-  2. **하나의 그래픽에 동시에 사용하는 유닛 컬러는 최대 3가지**까지 권장되며, Builder Neon · Day Blue · Bay Green · Medium Gray 고정 조합에 한해 최대 네 가지까지 사용할 수 있습니다.
-  3. Medium Gray는 보조 역할의 컬러이므로, 단독으로 사용하지 말고 반드시 다른 컬러의 유닛과 조합하여 사용합니다. 
-  4. Solid Gray는 유닛 컬러로 사용하지 않습니다.
+  - 하나의 유닛에는 반드시 하나의 컬러만 적용합니다. 
+  - **하나의 그래픽에 동시에 사용하는 유닛 컬러는 최대 3가지**까지 권장되며, Builder Neon · Day Blue · Bay Green · Medium Gray 고정 조합에 한해 최대 네 가지까지 사용할 수 있습니다.
+  - Medium Gray는 보조 역할의 컬러이므로, 단독으로 사용하지 말고 반드시 다른 컬러의 유닛과 조합하여 사용합니다. 
+  - Solid Gray는 유닛 컬러로 사용하지 않습니다.
 - 배경 컬러
-  1. Solid Gray를 배경 컬러로 사용하면, 5개의 유닛 컬러와의 대비가 한 단계 낮아져 모든 컬러가 차분하게 묶이므로 우선적으로 고려합니다. 
-  2. Builder Neon · Day Blue · Bay Green · Air White를 배경 컬러로 쓸 때는 Space Black 유닛만 올릴 수 있습니다.
-  3. Solid Gray는 반드시 배경 컬러으로만 사용하며 유닛 컬러로는 사용하지 않습니다.
-  4. Medium Gray는 디지털 환경에서 배경 컬러로 사용하지 않습니다. Merch 제작 시 실물 소재의 컬러를 Medium Gray로 맞출 수 있는 경우에 한해, EO 디자인팀의 허가를 거쳐 Builder Neon · Space Black 유닛을 제한적으로 올릴 수 있습니다.
+  - Solid Gray를 배경 컬러로 사용하면, 5개의 유닛 컬러와의 대비가 한 단계 낮아져 모든 컬러가 차분하게 묶이므로 우선적으로 고려합니다. 
+  - Builder Neon · Day Blue · Bay Green · Air White를 배경 컬러로 쓸 때는 Space Black 유닛만 올릴 수 있습니다.
+  - Solid Gray는 반드시 배경 컬러으로만 사용하며 유닛 컬러로는 사용하지 않습니다.
+  - Medium Gray는 디지털 환경에서 배경 컬러로 사용하지 않습니다. Merch 제작 시 실물 소재의 컬러를 Medium Gray로 맞출 수 있는 경우에 한해, EO 디자인팀의 허가를 거쳐 Builder Neon · Space Black 유닛을 제한적으로 올릴 수 있습니다.
 ![color-do-1] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Solid Gray]
 ![color-do-2] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Space Black]
 ![color-do-3] {do}[Space Black] on [Builder Neon] · [Day Blue] · [Bay Green]
