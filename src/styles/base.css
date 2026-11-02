@@ -954,6 +954,10 @@ html.js .main {
 .cap-slash {
   font-family: var(--font-mono); /* 키워드 뒤 슬래시 — 번호 라벨과 같은 모노 */
 }
+.t-body .li-key {
+  font-weight: var(--cap-key-w); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식 (guide.ts listKeys) */
+  margin-right: var(--cap-num-gap);
+}
 .fig__caption {
   display: flex;
   align-items: flex-start;

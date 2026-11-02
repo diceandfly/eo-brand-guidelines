@@ -309,7 +309,17 @@ const glueBlocks = (html: string) =>
 
 function md(src: string, ctx: Ctx): string {
   const s = src.trim();
-  return s ? glueBlocks(wrapKo(colorChips(smartQuotes(marked.parse(s, { async: false, gfm: true, breaks: false }) as string), ctx, new Set()))) : '';   // 칩은 섹션 첫 언급에만
+  return s ? listKeys(glueBlocks(wrapKo(colorChips(smartQuotes(marked.parse(s, { async: false, gfm: true, breaks: false }) as string), ctx, new Set())))) : '';   // 칩은 섹션 첫 언급에만
+}
+
+/**
+ * 목록 항목이 "키워드/ 설명" 으로 시작하면 키워드를 라벨로 (캡션의 "세로형/ …" 과 같은 양식: 강조 웨이트, 슬래시는 모노, 뒤 간격 --cap-num-gap).
+ * 키워드 안의 " / " (thread top / bottom width) 는 라벨 슬래시로 보지 않음 — 라벨 슬래시는 바로 앞이 공백이 아니고 바로 뒤가 공백.
+ * wrapKo 뒤에 돌므로 한글 키워드는 <span class="ko"> 안에 있음.
+ */
+function listKeys(html: string): string {
+  return html.replace(/<li>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+/g, (m, w) =>
+    w.replace(/<[^>]+>/g, '').length > 40 ? m : `<li><span class="li-key">${w}<span class="cap-slash">/</span></span>`);   // 키워드 = 한글 span 과 글자의 섞임 (스레드(Thread), 한국어 Pretendard). 40자 넘으면 라벨이 아님
 }
 
 /**
