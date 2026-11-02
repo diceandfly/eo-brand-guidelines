@@ -1488,6 +1488,9 @@ html.js .main {
   position: absolute;
   left: calc(-1 * var(--t-body-olist-indent));
 }
+.t-body li > ol > li::before {
+  color: var(--t-body-olist-nested-c); /* 중첩 번호는 한 톤 죽여 상위 불릿보다 약하게 */
+}
 html[lang='ko'] .t-body ol > li::before {
   font-size: calc(1em * var(--t-body-olist-marker-scale-ko)); /* 국문: 모노 숫자를 한글 본문에 맞춰 살짝 작게 */
   transform: translateY(var(--t-body-olist-marker-dy-ko)); /* 줄인 만큼 아래로 보정 */
