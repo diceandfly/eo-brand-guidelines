@@ -197,7 +197,7 @@ button {
   padding-left: calc(var(--t-body-sublist-offset) + var(--t-body-list-indent)); /* 2단 불릿은 상위 글 시작선 (+ --t-body-sublist-offset) */
 }
 .t-body li > ol {
-  padding-left: calc(var(--t-body-sublist-offset) + var(--t-body-olist-indent));
+  padding-left: var(--t-body-sublist-offset); /* 중첩 번호 "1/" 는 인라인이라 자리값 없이 상위 글 시작선(+ --t-body-sublist-offset)에서 흐름 */
 }
 .t-body li li + li {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-sublist-item-gap));
@@ -932,53 +932,19 @@ html.js .main {
   font-weight: var(--cap-key-w); /* 캡션 앞 키워드 "세로형/" — 본문 서체 그대로, 웨이트만 강조. 간격은 번호와 같음 */
   margin-right: var(--cap-num-gap);
 }
-.fig__caption-text--hang {
-  display: flex; /* 번호 · 키워드 라벨 + 글. 줄이 넘어가도 글은 라벨 뒤 시작선에 맞춰 걸림(행잉 인덴트). 본문 키워드 문단(.p-keyed)과 같은 방식 */
-  align-items: baseline;
-}
-.fig__caption-text--hang .cap-num,
-.fig__caption-text--hang .cap-key {
-  flex: none;
-}
-.fig__caption-text--hang .cap-body {
-  flex: 1 1 auto;
-  min-width: 0;
-}
+/* 번호 · 키워드 라벨은 글과 한 줄에 흐르고(인라인), 줄이 넘어가면 글은 캡션 왼쪽 선으로 돌아감 — 행잉 인덴트 없음. 본문 키워드 문단 · 목록 · 순서 목록과 같은 방식 */
 .cap-slash {
   font-family: var(--font-mono); /* 키워드 뒤 슬래시 — 번호 라벨과 같은 모노 */
 }
-/* 키워드 목록 항목 "- 키워드/ 설명" (guide.ts listKeys): 불릿은 그대로 왼쪽 선, 키워드 + 고정 간격(--cap-num-gap) + 글. 글은 키워드 뒤 시작선에 걸림 (캡션 · 키워드 문단과 같은 행잉). 중첩 목록은 다음 줄 전폭 */
-.t-body .li-keyed {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-}
+/* 키워드 목록 항목 "- 키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글이 인라인으로 흐름. 줄이 넘어가면 글은 불릿 들여쓰기 선으로 돌아감 (캡션과 같음) */
 .t-body .li-key {
-  flex: none;
   font-weight: var(--cap-key-w); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식 */
   margin-right: var(--cap-num-gap);
 }
-.t-body .li-body {
-  flex: 1 1 0;
-  min-width: 0;
-}
-.t-body .li-keyed > ul,
-.t-body .li-keyed > ol {
-  flex-basis: 100%;
-}
-/* 키워드 문단 "키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글. 줄이 넘어가도 글은 키워드 뒤 시작선에 걸림 (번호 캡션과 같은 행잉 인덴트) */
-.t-body .p-keyed {
-  display: flex;
-  align-items: baseline;
-}
+/* 키워드 문단 "키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글이 인라인으로 흐름. 줄이 넘어가면 글은 문단 왼쪽 선으로 돌아감 (캡션과 같음) */
 .t-body .p-key {
-  flex: none;
   font-weight: var(--cap-key-w); /* 캡션 · 목록 키워드와 같은 웨이트 */
   margin-right: var(--cap-num-gap);
-}
-.t-body .p-body {
-  flex: 1 1 auto;
-  min-width: 0;
 }
 .fig__caption {
   display: flex;
@@ -1498,23 +1464,22 @@ html.js .main {
 .t-body ol {
   list-style: none;
   counter-reset: item;
-  padding-left: calc(var(--t-body-olist-offset) + var(--t-body-olist-indent)); /* 마진 ↔ 마커 + 마커 ↔ 글 */
+  padding-left: var(--t-body-olist-offset); /* 마진 ↔ 마커. 마커는 인라인이라 글은 마커 + --cap-num-gap 뒤에서 시작하고, 줄이 넘어가면 마커 자리로 돌아감 (캡션 "1/" 과 같음, 행잉 없음) */
 }
 .t-body ol > li {
   counter-increment: item;
-  position: relative;
 }
 .t-body ol > li::before {
   content: counter(item) '/';
   font-family: var(--font-mono); /* "1/" — 숫자 폭이 같아 1 과 5 가 같은 자리에 */
-  position: absolute;
-  right: calc(100% + var(--cap-num-gap)); /* 마커 오른쪽 끝을 글 시작선에서 --cap-num-gap 만큼 떨어뜨림 — 캡션 "1/" · 키워드 문단과 같은 간격. 자리(들여쓰기)는 --t-body-olist-indent */
+  display: inline-block; /* 국문 세로 보정(transform)이 먹도록 */
+  margin-right: var(--cap-num-gap); /* 캡션 "1/" · 키워드 라벨과 같은 간격 */
 }
 .t-body li > ol > li::before {
   color: var(--t-body-olist-nested-c); /* 중첩 번호는 한 톤 죽여 상위 불릿보다 약하게 */
 }
 html[lang='ko'] .t-body ol > li::before {
   font-size: calc(1em * var(--t-body-olist-marker-scale-ko)); /* 국문: 모노 숫자를 한글 본문에 맞춰 살짝 작게 */
-  right: calc(100% + var(--cap-num-gap) / var(--t-body-olist-marker-scale-ko)); /* 간격은 줄인 글자가 아니라 본문 글자 기준 0.6em 그대로 */
+  margin-right: calc(var(--cap-num-gap) / var(--t-body-olist-marker-scale-ko)); /* 간격은 줄인 글자가 아니라 본문 글자 기준 0.6em 그대로 */
   transform: translateY(var(--t-body-olist-marker-dy-ko)); /* 줄인 만큼 아래로 보정 */
 }
