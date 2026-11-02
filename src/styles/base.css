@@ -925,8 +925,12 @@ html.js .main {
   opacity: var(--placeholder-diag-opacity);
 }
 .fig__caption .cap-num {
-  font-family: var(--font-mono); /* 캡션 앞 번호 "1/" — 순서 목록 마커와 같은 모노 */
-  margin-right: var(--cap-num-gap);
+  font-family: var(--font-mono); /* 캡션 앞 번호 "1/" — 순서 목록 마커와 같은 모노 · 같은 보정 (--num-marker-*) */
+  display: inline-block; /* 세로 보정(transform)이 먹도록 */
+  font-size: calc(1em * var(--num-marker-scale));
+  letter-spacing: var(--num-marker-ls);
+  transform: translateY(var(--num-marker-dy));
+  margin-right: calc(var(--cap-num-gap) / var(--num-marker-scale)); /* 간격은 줄인 글자가 아니라 캡션 글자 기준 0.6em 그대로 */
 }
 .fig__caption .cap-key {
   font-weight: var(--cap-key-w); /* 캡션 앞 키워드 "세로형/" — 본문 서체 그대로, 웨이트만 강조. 간격은 번호와 같음 */
@@ -1471,15 +1475,13 @@ html.js .main {
 }
 .t-body ol > li::before {
   content: counter(item) '/';
-  font-family: var(--font-mono); /* "1/" — 숫자 폭이 같아 1 과 5 가 같은 자리에 */
-  display: inline-block; /* 국문 세로 보정(transform)이 먹도록 */
-  margin-right: var(--cap-num-gap); /* 캡션 "1/" · 키워드 라벨과 같은 간격 */
+  font-family: var(--font-mono); /* "1/" — 숫자 폭이 같아 1 과 5 가 같은 자리에. 캡션 번호와 같은 보정 (--num-marker-*) */
+  display: inline-block; /* 세로 보정(transform)이 먹도록 */
+  font-size: calc(1em * var(--num-marker-scale));
+  letter-spacing: var(--num-marker-ls);
+  transform: translateY(var(--num-marker-dy));
+  margin-right: calc(var(--cap-num-gap) / var(--num-marker-scale)); /* 간격은 줄인 글자가 아니라 본문 글자 기준 0.6em 그대로 — 캡션 "1/" · 키워드 라벨과 같음 */
 }
 .t-body li > ol > li::before {
   color: var(--t-body-olist-nested-c); /* 중첩 번호는 한 톤 죽여 상위 불릿보다 약하게 */
-}
-html[lang='ko'] .t-body ol > li::before {
-  font-size: calc(1em * var(--t-body-olist-marker-scale-ko)); /* 국문: 모노 숫자를 한글 본문에 맞춰 살짝 작게 */
-  margin-right: calc(var(--cap-num-gap) / var(--t-body-olist-marker-scale-ko)); /* 간격은 줄인 글자가 아니라 본문 글자 기준 0.6em 그대로 */
-  transform: translateY(var(--t-body-olist-marker-dy-ko)); /* 줄인 만큼 아래로 보정 */
 }
