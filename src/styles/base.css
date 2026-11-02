@@ -964,19 +964,18 @@ html.js .main {
   font-weight: var(--cap-key-w); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식 (guide.ts listKeys) */
   margin-right: var(--cap-num-gap);
 }
-/* 키워드 문단: 본문 폭을 거터 공유 안쪽 컬럼(--p-key-grid)으로 나눠 키워드 --p-key-span 컬럼, 글은 나머지 (guide.ts listKeys). basic 5컬럼에서는 페이지 컬럼선과 일치 */
+/* 키워드 문단 "키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글. 줄이 넘어가도 글은 키워드 뒤 시작선에 걸림 (번호 캡션과 같은 행잉 인덴트) */
 .t-body .p-keyed {
-  display: grid;
-  grid-template-columns: repeat(var(--p-key-grid), minmax(0, 1fr));
-  column-gap: var(--gutter);
+  display: flex;
   align-items: baseline;
 }
 .t-body .p-key {
+  flex: none;
   font-weight: var(--cap-key-w); /* 캡션 · 목록 키워드와 같은 웨이트 */
-  grid-column: span var(--p-key-span);
+  margin-right: var(--cap-num-gap);
 }
 .t-body .p-body {
-  grid-column: span calc(var(--p-key-grid) - var(--p-key-span));
+  flex: 1 1 auto;
   min-width: 0;
 }
 .fig__caption {

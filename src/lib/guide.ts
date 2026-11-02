@@ -322,7 +322,7 @@ function listKeys(html: string): string {
   return html
     .replace(/<li>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+/g, (m, w) =>
       key(w) ? `<li><span class="li-key">${w}<span class="cap-slash">/</span></span>` : m)
-    // 문단도 같은 문법: "키워드/ 설명" 으로 시작하면 키워드 칸 + 글 칸의 2열(.p-key / .p-body, 폭은 tokens.css --p-key-*)
+    // 문단도 같은 문법: "키워드/ 설명" 으로 시작하면 키워드 + 고정 간격 + 글의 행잉 인덴트 (.p-key / .p-body, 간격은 tokens.css --cap-num-gap)
     .replace(/<p>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+([\s\S]*?)<\/p>/g, (m, w, rest) =>
       key(w) ? `<p class="p-keyed"><span class="p-key">${w}<span class="cap-slash">/</span></span><span class="p-body">${rest}</span></p>` : m);
 }
