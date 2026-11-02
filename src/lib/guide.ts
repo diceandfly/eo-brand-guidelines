@@ -318,8 +318,13 @@ function md(src: string, ctx: Ctx): string {
  * wrapKo 뒤에 돌므로 한글 키워드는 <span class="ko"> 안에 있음.
  */
 function listKeys(html: string): string {
-  return html.replace(/<li>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+/g, (m, w) =>
-    w.replace(/<[^>]+>/g, '').length > 40 ? m : `<li><span class="li-key">${w}<span class="cap-slash">/</span></span>`);   // 키워드 = 한글 span 과 글자의 섞임 (스레드(Thread), 한국어 Pretendard). 40자 넘으면 라벨이 아님
+  const key = (w: string) => w.replace(/<[^>]+>/g, '').length <= 40;   // 키워드 = 한글 span 과 글자의 섞임 (스레드(Thread), 한국어 Pretendard). 40자 넘으면 라벨이 아님
+  return html
+    .replace(/<li>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+/g, (m, w) =>
+      key(w) ? `<li><span class="li-key">${w}<span class="cap-slash">/</span></span>` : m)
+    // 문단도 같은 문법: "키워드/ 설명" 으로 시작하면 키워드 칸 + 글 칸의 2열(.p-key / .p-body, 폭은 tokens.css --p-key-*)
+    .replace(/<p>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+([\s\S]*?)<\/p>/g, (m, w, rest) =>
+      key(w) ? `<p class="p-keyed"><span class="p-key">${w}<span class="cap-slash">/</span></span><span class="p-body">${rest}</span></p>` : m);
 }
 
 /**

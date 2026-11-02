@@ -32,6 +32,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
   그 아래 줄들            ← 본문. 마크다운(문단, 굵게, 링크, 목록)을 쓸 수 있습니다.
                             **굵게** 는 언더라인이 아니라 웨이트 한 단계(300 → 400)로 강조됩니다. 언더라인은 링크 · 참조 전용.
                             목록 항목이 "- 키워드/ 설명" 으로 시작하면 키워드가 캡션의 "세로형/" 과 같은 라벨(강조 웨이트 + 모노 슬래시 + 간격)이 됩니다.
+                            문단이 "키워드/ 설명" 으로 시작하면 키워드 칸(페이지 2컬럼) + 글 칸으로 나뉩니다 (tokens.css --p-key-grid / --p-key-span). 슬래시 앞 공백 없이, 뒤에 공백 하나. 키워드는 두 단어까지.
                             중첩 목록은 "  - " 로 씁니다 (1단 –, 2단 · — tokens.css --t-body-bullet / --t-body-bullet-2).
 
 ■ 이미지 (한 줄에 하나)
@@ -362,6 +363,10 @@ EO 심볼이 일관되고 강렬하게 유지되도록, 재해석하거나 변�
 #### + Clearspace {layout=grid-2}
 시그니처 주변에도 EO 심볼과 같은 원칙의 여백이 필요합니다. 다만 기준 단위는 형태에 따라 다릅니다.
 
+Vertical/ E 블록 하나의 수직 방향 높이를 H라 할 때, 시그니처 전체를 감싸는 상하좌우 각 H/2 이상의 최소 여백을 확보합니다.
+
+Horizontal/ 디스크립터 대문자 E의 캡 하이트를 기준으로, 시그니처 전체를 감싸는 상하좌우 각 캡 하이트 이상의 최소 여백을 확보합니다.
+
 ![clearspace-v] {zoom=1.05} Vertical/ E 블록 하나의 수직 방향 높이를 H라 할 때, 시그니처 전체를 감싸는 상하좌우 각 H/2 이상의 최소 여백을 확보합니다.
 ![clearspace-h] {zoom=1.6} Horizontal/ 디스크립터 대문자 E의 캡 하이트를 기준으로, 시그니처 전체를 감싸는 상하좌우 각 캡 하이트 이상의 최소 여백을 확보합니다.
 
@@ -572,7 +577,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 
 프레임웍의 실행은 큰 틀과 미세 조정이 분리되어 있어 새 프로젝트에서 타이포그래피 레벨을 처음부터 짜야 할 때도 진입점을 찾기 수월하며, 레벨과 배수를 고르는 일부터 시작하면 됩니다. 먼저 레벨 배수로 큰 위계를 잡고, 그다음 실질 행간 · 웨이트 · 자간을 조절해 회색도를 다듬고 시각적 완성도를 높입니다. 
 
-[[#multilingual|다국어 환경 전환]]과 [[#inversion|다크/라이트 모드 전환]] 시, 글자 크기와 행간 비율을 바꿔도 점유하는 공간 자체는 그대로이므로 레이아웃의 변동성이 최소화되며, 서체를 Founders Grotesk에서 Pretendard나 Noto Sans로 바꿔도 회색도만 맞췄다면 룩앤필을 일정하게 유지할 수 있습니다.
+[[#multilingual|다국어 환경 전환]]과 [[#inversion|다크/라이트 모드 전환]] 시, 서체 종류나 글자 크기를 바꿔도 점유하는 공간 자체는 그대로이므로 레이아웃의 변동성이 최소화되며, 서체를 Founders Grotesk에서 Pretendard나 Noto Sans로 바꿔도 회색도만 맞췄다면 룩앤필을 일정하게 유지할 수 있습니다.
 
 이 챕터는 프레임웍의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 기준행간을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 세팅합니다. 각 단계 별 세부 지침은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · [[#tonal-value|Tonal Value]], 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
 ![framework-1]{bg-color} 기준행간(Line Unit) — 지면의 기준 행간. 본문 한 줄의 높이 또는 심볼의 1x · 0.5x, 모든 사이즈의 단위
