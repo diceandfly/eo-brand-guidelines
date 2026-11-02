@@ -309,7 +309,7 @@ const glueBlocks = (html: string) =>
 
 function md(src: string, ctx: Ctx): string {
   const s = src.trim();
-  return s ? listKeys(glueBlocks(wrapKo(colorChips(smartQuotes(bullets(marked.parse(plusMarkers(s), { async: false, gfm: true, breaks: false }) as string)), ctx, new Set())))) : '';   // 칩은 섹션 첫 언급에만
+  return s ? glueBlocks(wrapKo(colorChips(smartQuotes(listKeys(bullets(marked.parse(plusMarkers(s), { async: false, gfm: true, breaks: false }) as string))), ctx, new Set()))) : '';   // 라벨 인식은 칩 · 한글 래핑 전(글자 그대로). 칩은 섹션 첫 언급에만
 }
 
 /**
@@ -323,19 +323,36 @@ const plusMarkers = (src: string) => src.replace(/^([ \t]*)\+[ \t]+(?=\S)/gm, `$
 const bullets = (html: string) => html.replace(new RegExp(`<li>(<p>)?${PLUS}`, 'g'), (_m, p = '') => `<li data-bullet="plus">${p}`);
 
 /**
- * 목록 항목이 "키워드/ 설명" 으로 시작하면 키워드를 라벨로 (캡션의 "세로형/ …" 과 같은 양식: 강조 웨이트, 슬래시는 모노, 뒤 간격 --cap-num-gap).
- * 키워드 안의 " / " (thread top / bottom width) 는 라벨 슬래시로 보지 않음 — 라벨 슬래시는 바로 앞이 공백이 아니고 바로 뒤가 공백.
- * wrapKo 뒤에 돌므로 한글 키워드는 <span class="ko"> 안에 있음.
+ * 라벨 인식 — 한 줄(캡션 줄 · 목록 항목 · 문단)의 시작에서 번호 라벨 "N/ " 과 키워드 라벨 "키워드/ " 을 떼어 냅니다.
+ *   "1/ 설명"            → <span class="cap-num">1/</span><span class="cap-body">설명</span>              (캡션만. 본문 번호는 순서 목록 1. 로)
+ *   "키워드/ 설명"        → <span class="cap-key">키워드<span class="cap-slash">/</span></span><span class="cap-body">설명</span>
+ *   "1/ 키워드/ 설명"     → 번호 + 키워드 둘 다
+ * 규칙: 라벨 슬래시는 바로 앞이 공백이 아니고 바로 뒤가 공백 (thread top / bottom width/ 처럼 키워드 안의 " / " 는 통과). 키워드는 40자까지.
+ * 글자는 변환하지 않습니다 — 쓴 슬래시가 그대로 보이고, 키워드 웨이트 · 모노 슬래시 · 뒤 간격(--cap-num-gap)만 CSS 로 붙습니다.
+ * 컬러 칩 · 한글 래핑 전의 글자 그대로에서 돌므로 "Builder Neon/ 설명" 도 키워드가 되고 칩은 라벨 안에 붙습니다. 불릿 글자(data-bullet)와는 무관.
  */
+const LABEL_NUM = /^(\d{1,2})\/[ \u00A0]+(?=\S)/;
+const LABEL_KEY = /^([^\/\s<>%](?:[^<>\n]{0,38}?[^\/\s<>])?)\/[ \u00A0]+(?=\S)/;   // % 로 시작하면 참조 자리표시자(%%XREF%%)
+function labelize(text: string, cls: 'cap' | 'li' | 'p'): string {
+  let out = '';
+  let rest = text;
+  const num = cls === 'cap' ? rest.match(LABEL_NUM) : null;
+  if (num) { out += `<span class="cap-num">${num[1]}/</span>`; rest = rest.slice(num[0].length); }
+  const key = rest.match(LABEL_KEY);
+  if (key) { out += `<span class="${cls}-key">${key[1]}<span class="cap-slash">/</span></span>`; rest = rest.slice(key[0].length); }
+  return out ? `${out}<span class="${cls}-body">${rest}</span>` : text;
+}
+/** 본문: 목록 항목과 문단의 시작에 labelize. marked 직후(칩 · 한글 래핑 전)에 돕니다. 항목 글은 중첩 목록 앞까지. */
 function listKeys(html: string): string {
-  const key = (w: string) => w.replace(/<[^>]+>/g, '').length <= 40;   // 키워드 = 한글 span 과 글자의 섞임 (스레드(Thread), 한국어 Pretendard). 40자 넘으면 라벨이 아님
   return html
-    // 목록: "- 키워드/ 설명" · "+ 키워드/ 설명" → 키워드 라벨 + 글(.li-body, 중첩 목록 앞까지). 불릿 글자(data-bullet)와는 무관
-    .replace(/<li([^>]*)>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+([\s\S]*?)(?=\s*<(?:ul|ol)>|\s*<\/li>)/g, (m, attrs, w, rest) =>
-      key(w) ? `<li${attrs} class="li-keyed"><span class="li-key">${w}<span class="cap-slash">/</span></span><span class="li-body">${rest}</span>` : m)
-    // 문단도 같은 문법: "키워드/ 설명" 으로 시작하면 키워드 + 고정 간격 + 글의 행잉 인덴트 (.p-key / .p-body, 간격은 tokens.css --cap-num-gap)
-    .replace(/<p>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+([\s\S]*?)<\/p>/g, (m, w, rest) =>
-      key(w) ? `<p class="p-keyed"><span class="p-key">${w}<span class="cap-slash">/</span></span><span class="p-body">${rest}</span></p>` : m);
+    .replace(/<li([^>]*)>(<p>)?([^<>\n][^<\n]*)/g, (m, attrs, p = '', text) => {
+      const out = labelize(text, 'li');
+      return out === text ? m : `<li${attrs} class="li-keyed">${p}${out}`;
+    })
+    .replace(/<p>([^<>\n][^<\n]*)/g, (m, text) => {
+      const out = labelize(text, 'p');
+      return out === text ? m : `<p class="p-keyed">${out}`;
+    });
 }
 
 /**
@@ -490,9 +507,11 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       else if (bg) { const v = bg.slice(9).trim(); item.bg = /^#?[0-9a-f]{3,8}$/i.test(v) ? (v.startsWith('#') ? v : '#' + v) : `var(--c-${v.toLowerCase().replace(/[^a-z0-9]+/g, '-')})`; }
       if (flags.includes('bg-cover')) item.cover = true;                     // {bg-cover}: 화면에 꽉 채움
       // 캡션은 한 줄. 본문처럼 \ 가 줄바꿈 (<br>): "위 줄 \ 아래 줄". 앞뒤 공백은 줄바꿈에 흡수
-      if (m[3].trim()) item.caption = glueLastWords(wrapKo(colorChips(smartQuotes(escapeHtml(m[3].trim()).replace(/\s*\\\s*/g, '<br>')), ctx)))
-        .replace(/^(\d{1,2})[ \u00A0]?\/[ \u00A0]*([\s\S]+)$/, '<span class="cap-num">$1/</span><span class="cap-body">$2</span>')    // HTML (컬러 칩, 한글 구간 래핑, 고아 단어 방지). "N/ 설명" → 번호 라벨(모노) + 글. 뒤 간격은 --cap-num-gap, 글은 .cap-body 로 묶어 둘째 줄부터도 글 시작선에 정렬 (Figure.astro 의 flex)
-        .replace(/^(<span class="ko">)?([^<>\/\s]{1,16}(?: [^<>\/\s]{1,16})?)(<\/span>)?\/[ \u00A0]+([\s\S]+)$/, (_, o = '', w, c = '', rest) => `<span class="cap-key">${o}${w}${c}<span class="cap-slash">/</span></span><span class="cap-body">${rest}</span>`);   // 슬래시만 모노   // "키워드/ 설명" → 키워드 라벨(강조 웨이트) + 글. 한글 키워드는 wrapKo 의 <span class="ko"> 안팎을 허용
+      if (m[3].trim()) {
+        // 라벨("N/ " · "키워드/ ")은 칩 · 한글 래핑 전의 글자 그대로에서 줄(<br>)마다 인식 → 그 뒤 따옴표 · 컬러 칩 · 한글 구간 래핑 · 고아 단어 방지
+        const lines = escapeHtml(m[3].trim()).replace(/\s*\\\s*/g, '<br>').split('<br>').map(l => labelize(l, 'cap')).join('<br>');
+        item.caption = glueLastWords(wrapKo(colorChips(smartQuotes(lines), ctx)));
+      }
       section.items.push(item);
       continue;
     }
