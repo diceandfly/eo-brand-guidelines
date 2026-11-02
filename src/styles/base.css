@@ -177,13 +177,13 @@ button {
   position: relative;
 }
 .t-body ul > li::before {
-  content: var(--t-body-bullet);
+  content: var(--t-body-bullet-dash); /* md 의 "- 항목". 깊이와 무관하게 쓴 마커대로 (guide.ts plusMarkers) */
   font-family: var(--font-mono);
   position: absolute;
   left: calc(-1 * var(--t-body-list-indent));
 }
-.t-body li > ul > li::before {
-  content: var(--t-body-bullet-2); /* 중첩 목록은 2단 불릿 */
+.t-body ul > li[data-bullet='plus']::before {
+  content: var(--t-body-bullet-plus); /* md 의 "+ 항목" */
 }
 .t-body li + li {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-list-gap)); /* 불렛 사이 = 본문 행간 × 배수 */

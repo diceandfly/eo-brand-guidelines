@@ -309,8 +309,18 @@ const glueBlocks = (html: string) =>
 
 function md(src: string, ctx: Ctx): string {
   const s = src.trim();
-  return s ? listKeys(glueBlocks(wrapKo(colorChips(smartQuotes(marked.parse(s, { async: false, gfm: true, breaks: false }) as string), ctx, new Set())))) : '';   // 칩은 섹션 첫 언급에만
+  return s ? listKeys(glueBlocks(wrapKo(colorChips(smartQuotes(bullets(marked.parse(plusMarkers(s), { async: false, gfm: true, breaks: false }) as string)), ctx, new Set())))) : '';   // 칩은 섹션 첫 언급에만
 }
+
+/**
+ * 불릿 글자는 md 에 쓴 대로: "- 항목" 은 대시 불릿, "+ 항목" 은 플러스 불릿 (깊이와 무관, 한 목록 안에서 섞어도 됨).
+ * marked 는 마커 종류를 HTML 에 남기지 않으므로 "+ " 를 "- " + 표식으로 바꿔 넘기고(마커가 바뀌면 목록이 쪼개지는 것도 막음),
+ * 변환 뒤 표식을 <li data-bullet="plus"> 로 돌려놓습니다. 글자 자체는 tokens.css --t-body-bullet-dash / --t-body-bullet-plus.
+ * 키워드 라벨(listKeys)과는 별개 — "+ 키워드/ 설명" 은 둘 다, "+ 설명" · "- 키워드/ 설명" 은 하나만 적용.
+ */
+const PLUS = '%%PLUS%%';
+const plusMarkers = (src: string) => src.replace(/^([ \t]*)\+[ \t]+(?=\S)/gm, `$1- ${PLUS}`);
+const bullets = (html: string) => html.replace(new RegExp(`<li>(<p>)?${PLUS}`, 'g'), (_m, p = '') => `<li data-bullet="plus">${p}`);
 
 /**
  * 목록 항목이 "키워드/ 설명" 으로 시작하면 키워드를 라벨로 (캡션의 "세로형/ …" 과 같은 양식: 강조 웨이트, 슬래시는 모노, 뒤 간격 --cap-num-gap).
@@ -320,9 +330,9 @@ function md(src: string, ctx: Ctx): string {
 function listKeys(html: string): string {
   const key = (w: string) => w.replace(/<[^>]+>/g, '').length <= 40;   // 키워드 = 한글 span 과 글자의 섞임 (스레드(Thread), 한국어 Pretendard). 40자 넘으면 라벨이 아님
   return html
-    // 목록: "- 키워드/ 설명" → 키워드 + 글(.li-body, 중첩 목록 앞까지). 글은 키워드 뒤 시작선에 걸림 (캡션 · 키워드 문단과 같은 행잉)
-    .replace(/<li>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+([\s\S]*?)(?=\s*<(?:ul|ol)>|\s*<\/li>)/g, (m, w, rest) =>
-      key(w) ? `<li class="li-keyed"><span class="li-key">${w}<span class="cap-slash">/</span></span><span class="li-body">${rest}</span>` : m)
+    // 목록: "- 키워드/ 설명" · "+ 키워드/ 설명" → 키워드 라벨 + 글(.li-body, 중첩 목록 앞까지). 불릿 글자(data-bullet)와는 무관
+    .replace(/<li([^>]*)>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+([\s\S]*?)(?=\s*<(?:ul|ol)>|\s*<\/li>)/g, (m, attrs, w, rest) =>
+      key(w) ? `<li${attrs} class="li-keyed"><span class="li-key">${w}<span class="cap-slash">/</span></span><span class="li-body">${rest}</span>` : m)
     // 문단도 같은 문법: "키워드/ 설명" 으로 시작하면 키워드 + 고정 간격 + 글의 행잉 인덴트 (.p-key / .p-body, 간격은 tokens.css --cap-num-gap)
     .replace(/<p>((?:<span class="ko">[^<]*<\/span>|[^<>\n])*?)(?<=\S)\/[ \u00A0]+([\s\S]*?)<\/p>/g, (m, w, rest) =>
       key(w) ? `<p class="p-keyed"><span class="p-key">${w}<span class="cap-slash">/</span></span><span class="p-body">${rest}</span></p>` : m);
