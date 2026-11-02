@@ -193,6 +193,12 @@ button {
 .t-body li > ol {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-sublist-gap));
 }
+.t-body li > ul {
+  padding-left: calc(var(--t-body-sublist-offset) + var(--t-body-list-indent)); /* 2단 불릿은 상위 글 시작선 (+ --t-body-sublist-offset) */
+}
+.t-body li > ol {
+  padding-left: calc(var(--t-body-sublist-offset) + var(--t-body-olist-indent));
+}
 .t-body li li + li {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-sublist-item-gap));
 }
