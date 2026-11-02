@@ -142,11 +142,8 @@ button {
   word-break: var(--t-body-ko-break);
   overflow-wrap: break-word; /* 한 어절이 행보다 길면 그때만 글자 단위로 끊음 */
 }
-/* 강조 · 키워드 라벨 안의 한글: .ko 가 웨이트를 400 으로 고정하므로 여기서 한 단계 올림 (영문은 strong / .cap-key 의 400 이 그대로 먹음) */
-.t-body strong .ko,
-.t-body .li-key .ko,
-.t-body .p-key .ko,
-.fig__caption .cap-key .ko {
+/* 강조 안의 한글: .ko 가 웨이트를 400 으로 고정하므로 여기서 한 단계 올림 (영문은 strong 의 400 이 그대로 먹음). 캡션(.fig__caption.t-body)도 포함 */
+.t-body strong .ko {
   font-weight: var(--t-body-ko-strong-w);
 }
 
@@ -939,8 +936,7 @@ html.js .main {
   margin-right: calc(var(--cap-num-gap) / var(--num-marker-scale)); /* 간격은 줄인 글자가 아니라 캡션 글자 기준 0.6em 그대로 */
 }
 .fig__caption .cap-key {
-  font-weight: var(--cap-key-w); /* 캡션 앞 키워드 "세로형/" — 본문 서체 그대로, 웨이트만 강조. 간격은 번호와 같음 */
-  margin-right: var(--cap-num-gap);
+  margin-right: var(--cap-num-gap); /* 캡션 앞 키워드 "세로형/" — 글자는 그대로, 슬래시만 모노. 강조는 md 에서 **세로형**/ 로 (strong) */
 }
 /* 번호 · 키워드 라벨은 글과 한 줄에 흐르고(인라인), 줄이 넘어가면 글은 캡션 왼쪽 선으로 돌아감 — 행잉 인덴트 없음. 본문 키워드 문단 · 목록 · 순서 목록과 같은 방식 */
 .cap-slash {
@@ -948,13 +944,11 @@ html.js .main {
 }
 /* 키워드 목록 항목 "- 키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글이 인라인으로 흐름. 줄이 넘어가면 글은 불릿 들여쓰기 선으로 돌아감 (캡션과 같음) */
 .t-body .li-key {
-  font-weight: var(--cap-key-w); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식 */
-  margin-right: var(--cap-num-gap);
+  margin-right: var(--cap-num-gap); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식. 강조는 **키워드**/ */
 }
 /* 키워드 문단 "키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글이 인라인으로 흐름. 줄이 넘어가면 글은 문단 왼쪽 선으로 돌아감 (캡션과 같음) */
 .t-body .p-key {
-  font-weight: var(--cap-key-w); /* 캡션 · 목록 키워드와 같은 웨이트 */
-  margin-right: var(--cap-num-gap);
+  margin-right: var(--cap-num-gap); /* 캡션 · 목록 키워드와 같은 양식 */
 }
 .fig__caption {
   display: flex;

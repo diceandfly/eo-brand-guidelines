@@ -328,28 +328,35 @@ const bullets = (html: string) => html.replace(new RegExp(`<li>(<p>)?${PLUS}`, '
  *   "키워드/ 설명"        → <span class="cap-key">키워드<span class="cap-slash">/</span></span><span class="cap-body">설명</span>
  *   "1/ 키워드/ 설명"     → 번호 + 키워드 둘 다
  * 규칙: 라벨 슬래시는 바로 앞이 공백이 아니고 바로 뒤가 공백 (thread top / bottom width/ 처럼 키워드 안의 " / " 는 통과). 키워드는 40자까지.
- * 글자는 변환하지 않습니다 — 쓴 슬래시가 그대로 보이고, 키워드 웨이트 · 모노 슬래시 · 뒤 간격(--cap-num-gap)만 CSS 로 붙습니다.
+ * 글자는 변환하지 않습니다 — 쓴 슬래시가 그대로 보이고, 모노 슬래시 · 뒤 간격(--cap-num-gap)만 CSS 로 붙습니다. 키워드를 강조하려면 키워드를 **…** 로 감싸고 슬래시를 그 바로 뒤에 (본문 강조와 같은 웨이트 + 네온). 주의: 이 주석 안에 별표+슬래시를 붙여 쓰면 주석이 닫힘.
  * 컬러 칩 · 한글 래핑 전의 글자 그대로에서 돌므로 "Builder Neon/ 설명" 도 키워드가 되고 칩은 라벨 안에 붙습니다. 불릿 글자(data-bullet)와는 무관.
  */
 const LABEL_NUM = /^(\d{1,2})\/[ \u00A0]+(?=\S)/;
-const LABEL_KEY = /^([^\/\s<>%](?:[^<>\n]{0,38}?[^\/\s<>])?)\/[ \u00A0]+(?=\S)/;   // % 로 시작하면 참조 자리표시자(%%XREF%%)
+const LABEL_SLASH = /(?<=\S)\/(?=[ \u00A0]+\S)/;   // 라벨 슬래시: 바로 앞 공백 없음, 바로 뒤 공백
 function labelize(text: string, cls: 'cap' | 'li' | 'p'): string {
   let out = '';
   let rest = text;
   const num = cls === 'cap' ? rest.match(LABEL_NUM) : null;
   if (num) { out += `<span class="cap-num">${num[1]}/</span>`; rest = rest.slice(num[0].length); }
-  const key = rest.match(LABEL_KEY);
-  if (key) { out += `<span class="${cls}-key">${key[1]}<span class="cap-slash">/</span></span>`; rest = rest.slice(key[0].length); }
+  const i = rest.search(LABEL_SLASH);
+  if (i > 0) {
+    const w = rest.slice(0, i);
+    const plain = w.replace(/<\/?strong>/g, '');                    // 키워드 안에는 **강조** 태그만 허용 (웨이트 · 색은 거기서)
+    if (!/[<>%]/.test(plain) && !/^\s/.test(plain) && plain.length <= 40) {
+      out += `<span class="${cls}-key">${w}<span class="cap-slash">/</span></span>`;
+      rest = rest.slice(i + 1).replace(/^[ \u00A0]+/, '');
+    }
+  }
   return out ? `${out}<span class="${cls}-body">${rest}</span>` : text;
 }
 /** 본문: 목록 항목과 문단의 시작에 labelize. marked 직후(칩 · 한글 래핑 전)에 돕니다. 항목 글은 중첩 목록 앞까지. */
 function listKeys(html: string): string {
   return html
-    .replace(/<li([^>]*)>(<p>)?([^<>\n][^<\n]*)/g, (m, attrs, p = '', text) => {
+    .replace(/<li([^>]*)>(<p>)?((?:<\/?strong>|[^<\n])+)/g, (m, attrs, p = '', text) => {
       const out = labelize(text, 'li');
       return out === text ? m : `<li${attrs} class="li-keyed">${p}${out}`;
     })
-    .replace(/<p>([^<>\n][^<\n]*)/g, (m, text) => {
+    .replace(/<p>((?:<\/?strong>|[^<\n])+)/g, (m, text) => {
       const out = labelize(text, 'p');
       return out === text ? m : `<p class="p-keyed">${out}`;
     });
@@ -509,7 +516,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       // 캡션은 한 줄. 본문처럼 \ 가 줄바꿈 (<br>): "위 줄 \ 아래 줄". 앞뒤 공백은 줄바꿈에 흡수
       if (m[3].trim()) {
         // 라벨("N/ " · "키워드/ ")은 칩 · 한글 래핑 전의 글자 그대로에서 줄(<br>)마다 인식 → 그 뒤 따옴표 · 컬러 칩 · 한글 구간 래핑 · 고아 단어 방지
-        const lines = escapeHtml(m[3].trim()).replace(/\s*\\\s*/g, '<br>').split('<br>').map(l => labelize(l, 'cap')).join('<br>');
+        const lines = escapeHtml(m[3].trim()).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\s*\\\s*/g, '<br>').split('<br>').map(l => labelize(l, 'cap')).join('<br>');   // 캡션의 **강조** 는 본문과 같은 strong
         item.caption = glueLastWords(wrapKo(colorChips(smartQuotes(lines), ctx)));
       }
       section.items.push(item);
