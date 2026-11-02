@@ -933,29 +933,16 @@ html.js .main {
   margin-right: var(--cap-num-gap);
 }
 .fig__caption-text--hang {
-  display: flex; /* 번호 라벨 + 글. 줄이 넘어가도 글은 라벨 뒤 시작선에 맞춰 걸림(행잉 인덴트) */
+  display: flex; /* 번호 · 키워드 라벨 + 글. 줄이 넘어가도 글은 라벨 뒤 시작선에 맞춰 걸림(행잉 인덴트). 본문 키워드 문단(.p-keyed)과 같은 방식 */
   align-items: baseline;
 }
-.fig__caption-text--hang .cap-num {
+.fig__caption-text--hang .cap-num,
+.fig__caption-text--hang .cap-key {
   flex: none;
 }
 .fig__caption-text--hang .cap-body {
   flex: 1 1 auto;
   min-width: 0;
-}
-/* 키워드 캡션: 카드 폭을 페이지와 같은 거터의 안쪽 컬럼(--cap-key-grid)으로 나눠 키워드 --cap-key-span 컬럼, 글은 나머지. grid-2 카드(6컬럼)에서는 페이지 컬럼선과 일치 */
-.fig__caption-text--hang:has(.cap-key) {
-  display: grid;
-  grid-template-columns: repeat(var(--cap-key-grid), minmax(0, 1fr));
-  column-gap: var(--gutter);
-  align-items: baseline;
-}
-.fig__caption-text--hang .cap-key {
-  grid-column: span var(--cap-key-span);
-  margin-right: 0; /* 간격은 거터가 대신 */
-}
-.fig__caption-text--hang .cap-key + .cap-body {
-  grid-column: span calc(var(--cap-key-grid) - var(--cap-key-span));
 }
 .cap-slash {
   font-family: var(--font-mono); /* 키워드 뒤 슬래시 — 번호 라벨과 같은 모노 */
