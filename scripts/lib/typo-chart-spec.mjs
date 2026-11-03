@@ -30,7 +30,7 @@ export const LEVELS = {
 };
 export const VARIANTS = {
   linespacing:   { medium: [80, 100, 130], regular: [95, 115, 140], light: [110, 140, 180], mono: [90, 111, 140] },
-  letterspacing: { medium: [-4, -1.5, 1], regular: [-3, -1, 1], light: [-1.5, 0.5, 3], mono: [-12, -7, 0] },
+  letterspacing: { medium: [-6, -1.5, 3], regular: [-5, -1, 3], light: [-3, 0.5, 5], mono: [-14, -7, 2] },
 };
 export const VERDICT = ['Too tight', 'Preset', 'Too loose'];
 
