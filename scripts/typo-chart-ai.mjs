@@ -12,6 +12,7 @@
  *   3블록 × 12행(336px). 블록 경계(386 · 722)에 Medium Gray 1pt 점선(1,2) 구분선. 글은 블록 윗선에서 한 행(28) 아래부터.
  *   1컬럼 판정(Too tight · Just right · Too loose, Just right 만 Bay Green) · 3컬럼 스펙 두 줄(폭 242, 변하는 값만 네온)
  *   · 5컬럼(974)부터 샘플. 상단 정보 캡션 없음.
+ *   Linespacing 장표는 줄 사이 여백을 네온 15% 박스로 표시(줄 k+1 캡 윗선 위로 행간 − 0.8em, 샘플 컬럼 전체 폭, 레이어 'bg 2').
  *   캡션: Founders Grotesk Mono 20px · 행간 24 · 자간 -7% · Medium Gray, 첫 베이스라인 엠박스.
  *   샘플: 행간 = 레벨 배수 × 28 고정, 글자 크기 = 행간 ÷ Linespacing, 첫 베이스라인 캡 하이트,
  *         박스 폭은 글자 크기에 비례(같은 글이 세 변형에서 같은 자리에서 줄바꿈되도록), 줄 수 고정.
@@ -62,6 +63,7 @@ function elements(kind, key) {
     const hot = kind === 'linespacing' ? vLs : vLt;
     const at = l1.length + 1 + l2.lastIndexOf(hot);
     els.push({ top: y, left: X(2), w: 242, h: 3 * UNIT, text: `${l1}\r${l2}`, ...CAPTION, fill: GRAY, ranges: [[at, at + hot.length, NEON]], first: 'em' });
+    if (kind === 'linespacing') { const gh = LH - 0.8 * fsz; if (gh > 0.5) for (let q = 1; q < n; q++) els.push({ gap: true, top: y + q * LH - gh, left: X(4), w: RIGHT - X(4), h: gh }); }
     const w = Math.min(RIGHT - X(4), Math.round(widthFor(fsz)));
     const h = Math.ceil((0.7 * fsz + (n - 1) * LH) / UNIT) * UNIT;             // 마지막 베이스라인까지 담는 행 수
     els.push({ top: y, left: X(4), w, h, text: L.text, font: L.family === MONO ? PS.mono : PS[L.weight], size: fsz, leading: LH, tracking: lt * 10, fill: WHITE, ranges: [], first: 'cap', sample: true });
@@ -98,11 +100,14 @@ const jsx = `#target illustrator
     try { content = doc.layers.getByName('content'); } catch (e) { content = doc.layers.add(); content.name = 'content'; }
     try { bgLayer = doc.layers.getByName('bg'); } catch (e) { bgLayer = doc.layers.add(); bgLayer.name = 'bg'; bgLayer.zOrder(ZOrderMethod.SENDTOBACK); }
     content.locked = false; bgLayer.locked = false;
+    var gapLayer; try { gapLayer = doc.layers.getByName('bg 2'); } catch (e) { gapLayer = doc.layers.add(); gapLayer.name = 'bg 2'; gapLayer.zOrder(ZOrderMethod.SENDTOBACK); bgLayer.zOrder(ZOrderMethod.SENDTOBACK); }
+    gapLayer.locked = false;
+    var guideLayer = null; try { guideLayer = doc.layers.getByName('guide'); } catch (e) {}
     var charts = ${js(charts)};
     var names = [];
     // 1번 아트보드의 비텍스트 오브젝트(가이드 격자 · 구분선) — --apply 때 복제해 깔 것
     var furniture = [];
-    if (APPLY) for (var f0 = 0; f0 < doc.pageItems.length; f0++) { var it0 = doc.pageItems[f0]; if (it0.layer.name != 'bg' && it0.typename != 'TextFrame' && it0.parent.typename == 'Layer' && inside(it0.geometricBounds, ab0)) furniture.push(it0); }
+    if (APPLY) for (var f0 = 0; f0 < doc.pageItems.length; f0++) { var it0 = doc.pageItems[f0]; if (it0.layer.name == 'content' && it0.typename != 'TextFrame' && it0.parent.typename == 'Layer' && inside(it0.geometricBounds, ab0)) furniture.push(it0); }
     say('furniture on artboard 1: ' + furniture.length);
     for (var i = 0; i < charts.length; i++) {
       var col = i % 4, row = Math.floor(i / 4);
@@ -123,6 +128,7 @@ const jsx = `#target illustrator
       var els = charts[i].els;
       for (var j = 0; j < els.length; j++) {
         var e = els[j];
+        if (e.gap) { doc.activeLayer = gapLayer; var gb = doc.pathItems.rectangle(OT - e.top, OX + e.left, e.w, e.h); gb.filled = true; gb.fillColor = rgb(${js(NEON)}); gb.stroked = false; gb.opacity = 15; doc.activeLayer = content; continue; }
         if (e.rule) { if (!APPLY) { var ln = doc.pathItems.add(); ln.setEntirePath([[OX + ${X0}, OT - e.y], [OX + ${RIGHT}, OT - e.y]]); ln.filled = false; ln.stroked = true; ln.strokeWidth = 1; ln.strokeColor = rgb(${js(GRAY)}); ln.strokeDashes = [1, 2]; ln.strokeCap = StrokeCap.BUTTENDCAP; } continue; }
         var r = doc.pathItems.rectangle(OT - e.top, OX + e.left, e.w, e.h);
         var tf = doc.textFrames.areaText(r);
@@ -137,8 +143,9 @@ const jsx = `#target illustrator
     }
     var opts = new ExportOptionsPNG24();
     opts.artBoardClipping = true; opts.transparency = false; opts.antiAliasing = true; opts.horizontalScale = 100; opts.verticalScale = 100;
+    var guideWasVisible = guideLayer ? guideLayer.visible : false; if (guideLayer) guideLayer.visible = false;
     for (var a = 0; a < names.length; a++) { doc.artboards.setActiveArtboardIndex(a); doc.exportFile(new File(OUT + '/' + names[a] + '.png'), ExportType.PNG24, opts); }
-    say('exported ' + names.length + ' png');
+    say('exported ' + names.length + ' png'); if (guideLayer) guideLayer.visible = guideWasVisible;
     try { if (APPLY) doc.save(); else doc.saveAs(new File(OUT + '/typo-charts.ai')); say('saved typo-charts.ai'); } catch (x) { say('save failed: ' + x); }
     say('DONE');
   } catch (err) { say('ERROR ' + err + ' line ' + err.line); }
