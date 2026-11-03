@@ -38,7 +38,7 @@ const VERDICT = ['Too tight', 'Just right', 'Too loose'];
 const CAPTION = { font: PS.mono, size: 20, leading: 24, tracking: -70 };
 const LINES = { medium: 4, regular: 4, light: 6, mono: 8 };                  // 샘플 줄 수(블록 3 의 10행 안에 들어가는 범위)
 const EM_HEAD = 627 / 87.5;                                                   // 헤드라인 샘플 폭(em) — 사용자 1번 아트보드 기준
-const js = s => JSON.stringify(s);
+const js = s => JSON.stringify(s).replace(/[\u0080-\uffff]/g, ch => '\\u' + ch.charCodeAt(0).toString(16).padStart(4, '0'));   // ExtendScript 가 .jsx 를 UTF-8 로 읽지 않아 비ASCII 는 \uXXXX 로
 
 function elements(kind, key) {
   const L = LEVELS[key];
