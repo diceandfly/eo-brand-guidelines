@@ -612,13 +612,13 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 
 ### Typographic Framework
 #### + Setting Up {layout=grid-3}
-새 매체나 포맷에서 타이포그래피를 세팅하는 순서입니다.
+새 매체나 포맷에서 타이포그래피를 세팅하는 순서입니다. 다만 적힌 순서를 그대로 따라가기보다는, 3-5단계를 동시에 교차 조율하면서 반복하는 과정에 가깝습니다.
 
 1. 레벨을 수를 정합니다. 지면에 표시할 정보량에 따라 필요한 레벨의 수를 정합니다. 레벨을 나누는 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요.
 2. Line Unit을 정합니다. 일반적으로 가장 중요도가 높은 콘텐츠의 레벨을 기준으로 Line Unit의 크기를 정합니다. 콘텐츠 레이아웃에서는 일반적으로 본문 레벨의 행간이 Line Unit이 됩니다. 본문이 없는 포스터나 배너는 EO 심볼 레벨의 행간의 1x, 0.5x 등의 배율을 Line Unit으로 정합니다. 
 3. 레벨의 배수를 정합니다. 배수는 1x · 0.5x · 0.25x 단위로만 씁니다. 레벨별 배율 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하며, [[#reference-scale|Reference Scale]]의 값에서 시작해 매체에 맞게 조정하는 방법도 좋습니다.
 4. Relative Leading을 다듬습니다. 레벨마다 글자 크기에 대한 행간의 비율을 정합니다. 글자가 클수록 비율은 낮아지고 작을수록 높아집니다. [[#relative-leading-founders-grotesk-medium|Relative Leading]]을 참조하세요.
-5. 웨이트와 자간으로 Tonal Value를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 4와 5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#tonal-value|Tonal Value]]를 참조하세요.
+5. 웨이트와 자간으로 Tonal Value를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 3-5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#tonal-value|Tonal Value]]를 참조하세요.
 
 레이아웃의 격자와 마진은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
 ![setting-up-1]{bg-color} 1/ 레벨 수를 정합니다
