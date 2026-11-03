@@ -346,7 +346,7 @@
   --c-air-white: #fcfbf5; /* 바탕 · 텍스트. 인쇄에서는 용지 색 */
 
   /* UI 전용 색 — 팔레트 7색 밖이라 --c- 접두를 쓰지 않고, 브랜드 컬러로도 쓰지 않습니다 */
-  --warn: #dd5a2d; /* 경고 주황. Don't 배지 · 대각선 등 "하지 말 것" 표시 */
+  --warn-orange: #dd5a2d; /* 경고 주황. Don't 배지 · 대각선 등 "하지 말 것" 표시 */
 
   /* UI 시맨틱 — 컴포넌트는 아래 토큰만 사용합니다. LAYOUT 과 같은 순서.
        3-1 배경          본문, 목차, 모바일 목차 버튼
@@ -407,7 +407,7 @@
   --placeholder-fg: color-mix(in srgb, var(--c-air-white), transparent 55%); /* 플레이스홀더 글자 */
   /* Do / Don't 아이콘 — UI 전용, 브랜드 팔레트가 아닙니다 */
   --badge-do: var(--c-bay-green); /* Do 체크 */
-  --badge-dont: var(--warn); /* Don't 엑스 · 대각선. 경고 주황 (--warn), 브랜드 컬러가 아님 */
+  --badge-dont: var(--warn-orange); /* Don't 엑스 · 대각선. 경고 주황 (--warn-orange), 브랜드 컬러가 아님 */
   --badge-con: var(--c-air-white); /* 조건부(conditional) 배지 — 흰 외곽 삼각형. Do 초록 · Don't 주황 사이의 중립 */
   --strike: var(--badge-dont); /* Don't 대각선 */
 
