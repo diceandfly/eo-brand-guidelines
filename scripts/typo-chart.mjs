@@ -70,7 +70,7 @@ function wrap(text, fs, charW, lsPx, maxW, maxLines) {
   return lines.slice(0, maxLines);
 }
 const caption = (x, y, parts, fill = GRAY) => {
-  const spans = parts.map(p => typeof p === 'string' ? esc(p) : `<tspan fill="${p.fill}">${esc(p.t)}</tspan>`).join('');
+  const spans = parts.map(p => typeof p === 'string' ? esc(p) : p.br ? `<tspan x="${x}" dy="${UNIT}">` : `<tspan fill="${p.fill}">${esc(p.t)}</tspan>`).join('') + (parts.some(p => p.br) ? '</tspan>' : '');
   return `<text x="${x}" y="${y}" font-family="${MONO}" font-size="${CAPTION.size}" letter-spacing="${CAPTION.ls * CAPTION.size}" fill="${fill}">${spans}</text>`;
 };
 const capBase = r => Y(r) + (UNIT + CAP * CAPTION.size) / 2;   // 행 r 안 캡션 베이스라인
@@ -101,16 +101,16 @@ function chart(kind, key) {
     // 1컬럼 판정
     out.push(caption(X(0), capBase(row), [VERDICT[k]], preset ? NEON : GRAY));
     // 2컬럼 스펙 두 줄, 변하는 값만 네온
-    out.push(caption(X(1), capBase(row), [`${L.level} ${L.multiple}x`]));
     const spec = kind === 'linespacing'
       ? [`${weightName(L)} `, { t: fmtLs(ls), fill: NEON }, ` ${pct(lt)}`]
       : [`${weightName(L)} ${fmtLs(ls)} `, { t: pct(lt), fill: NEON }];
-    out.push(caption(X(1), capBase(row + 1), spec));
+    out.push(caption(X(1), capBase(row), [`${L.level} ${L.multiple}x`, { br: true }, ...spec]));
     // 3–5컬럼 샘플
     const lines = wrap(L.text, fs, L.family === MONO ? CHAR_W.mono : CHAR_W[L.weight], lsPx, SAMPLE_W / 1.04, L.lines);
-    out.push(`<g clip-path="url(#s)" font-family="${L.family}" font-weight="${L.weight}" font-size="${fs.toFixed(2)}" letter-spacing="${lsPx.toFixed(2)}" fill="${WHITE}">`);
-    lines.forEach((t, i) => out.push(`<text x="${SAMPLE_X}" y="${(top + i * LH + (LH + CAP * fs) / 2).toFixed(2)}">${esc(t)}</text>`));
-    out.push('</g>');
+    // 샘플은 텍스트 오브젝트 하나: 줄은 tspan, 행간은 dy(= 레벨 행간)로 — Illustrator 에서 열면 한 텍스트 박스에 행간 파라미터로 들어감
+    const base = (top + (LH + CAP * fs) / 2).toFixed(2);
+    const tspans = lines.map((t, i) => `<tspan x="${SAMPLE_X}" dy="${i ? LH : 0}">${esc(t)}</tspan>`).join('');
+    out.push(`<text clip-path="url(#s)" x="${SAMPLE_X}" y="${base}" font-family="${L.family}" font-weight="${L.weight}" font-size="${fs.toFixed(2)}" letter-spacing="${lsPx.toFixed(2)}" fill="${WHITE}">${tspans}</text>`);
   });
   out.push('</svg>');
   return out.join('\n');
