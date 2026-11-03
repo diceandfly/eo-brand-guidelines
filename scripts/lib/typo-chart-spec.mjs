@@ -29,7 +29,7 @@ export const LEVELS = {
              text: "In late September, AMD agreed to buy World Labs, the AI model and research lab led by Fei-Fei Li, for about $8.2 billion. The deal is expected to close by the end of the year. EO's earlier piece looked at why a chipmaker would pay that much for a 2-year-old lab: AMD wants researchers close enough to its chip designers to shape chips three years before they ship. This piece looks at the deal from the lab's side. A research lab does its best work when it is free to pursue questions on its own terms. Can it keep working at that level inside a chipmaker?" },
 };
 export const VARIANTS = {
-  linespacing:   { medium: [85, 100, 125], regular: [95, 115, 140], light: [110, 140, 180], mono: [90, 111, 140] },
+  linespacing:   { medium: [80, 100, 130], regular: [95, 115, 140], light: [110, 140, 180], mono: [90, 111, 140] },
   letterspacing: { medium: [-4, -1.5, 1], regular: [-3, -1, 1], light: [-1.5, 0.5, 3], mono: [-12, -7, 0] },
 };
 export const VERDICT = ['Too tight', 'Preset', 'Too loose'];
