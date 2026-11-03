@@ -26,6 +26,8 @@ export const LEVELS = {
              text: "Big companies in a crowded market keep quiet. Startups don't. They share their story and what they learn. A startup is a path no one walked before, so there is no proven answer to protect. You see it in hacker houses. Young hackers, late teens to mid-twenties, live together in cheap, rough places before they raise their seed round. They rent a small room somewhere tough, pack it with bunk beds, and live on cheap junk food." },
   mono:    { name: 'Founders Grotesk Mono Regular', weight: 400, family: MONO, level: 'C1', multiple: 0.5, ls: 111, lt: -7, lines: 4,
              range: 'C1 0.5x 111% -7%',
+             // Letterspacing 장표용: 문단 대신 길고 짧은 캡션 여러 줄(캡션의 실제 쓰임 — 태그 · 날짜 · 읽기 시간 · 컬러 스펙 · 캡션 번호)
+             captions: ['EO Studio · Nov 3, 2026 · 4 min read', 'Fig. 02/ Thread gutter 10-20px', 'Builder Neon #F9EE3A', 'Seed round', 'In late September, AMD agreed to buy World Labs for about $8.2 billion.', 'Founders Grotesk Mono Regular 0.5x 111% -7%'],
              text: "In late September, AMD agreed to buy World Labs, the AI model and research lab led by Fei-Fei Li, for about $8.2 billion. The deal is expected to close by the end of the year. EO's earlier piece looked at why a chipmaker would pay that much for a 2-year-old lab: AMD wants researchers close enough to its chip designers to shape chips three years before they ship. This piece looks at the deal from the lab's side. A research lab does its best work when it is free to pursue questions on its own terms. Can it keep working at that level inside a chipmaker?" },
 };
 export const VARIANTS = {

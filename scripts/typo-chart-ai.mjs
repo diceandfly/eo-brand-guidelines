@@ -44,7 +44,9 @@ function elements(kind, key) {
   const L = LEVELS[key];
   const values = VARIANTS[kind][key];
   const LH = L.multiple * UNIT;
-  const n = LINES[key];
+  const useCaptions = kind === 'letterspacing' && L.captions;        // 캡션 서체는 자간 장표에서 문단 대신 캡션 여러 줄
+  const n = useCaptions ? L.captions.length : LINES[key];
+  const text = useCaptions ? L.captions.join('\r') : L.text;
   const sizes = values.map(v => LH / ((kind === 'linespacing' ? v : L.ls) / 100));
   const widthFor = L.multiple >= 2 ? fs_ => fs_ * EM_HEAD : fs_ => fs_ * (RIGHT - X(4)) / Math.max(...sizes);   // 본문·캡션은 가장 큰 변형이 꽉 차게
   const els = [];
@@ -66,7 +68,7 @@ function elements(kind, key) {
     if (kind === 'linespacing') { const gh = LH - 0.8 * fsz; if (gh > 0.5) for (let q = 1; q < n; q++) els.push({ gap: true, top: y + q * LH - gh, left: X(4), w: RIGHT - X(4), h: gh }); }
     const w = Math.min(RIGHT - X(4), Math.round(widthFor(fsz)));
     const h = Math.ceil((0.7 * fsz + (n - 1) * LH) / UNIT) * UNIT;             // 마지막 베이스라인까지 담는 행 수
-    els.push({ top: y, left: X(4), w, h, text: L.text, font: L.family === MONO ? PS.mono : PS[L.weight], size: fsz, leading: LH, tracking: lt * 10, fill: WHITE, ranges: [], first: 'cap', sample: true });
+    els.push({ top: y, left: X(4), w: useCaptions ? RIGHT - X(4) : w, h, text, font: L.family === MONO ? PS.mono : PS[L.weight], size: fsz, leading: LH, tracking: lt * 10, fill: WHITE, ranges: [], first: 'cap', sample: true });
   });
   return els;
 }
