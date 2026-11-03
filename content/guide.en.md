@@ -538,7 +538,7 @@ EO's typeface is the Founders Grotesk family. Founders Grotesk is used for headl
 Founders Grotesk is clear without ornament, and thanks to its wide proportions and low contrast it reads like solid blocks at large sizes. This character carries EO's voice of "clear, open confidence" directly. The Mono is the typeface of information, recalling a builder's terminal and spec sheet.
 
 Korean body copy is set in Pretendard and Vietnamese body copy in Noto Sans. See the Backup Typeface section for multilingual pairing.
-![our-typefaces]
+![brand-typefaces]
 
 
 ### Custom Characters

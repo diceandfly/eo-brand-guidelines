@@ -538,7 +538,7 @@ EO의 서체는 Founders Grotesk 패밀리입니다.
 Founders Grotesk는 20세기 초 Miller & Richard와 Caslon의 그로테스크를 출발점으로 재해석한 서체로, 단순한 기하와 좁은 어퍼처, 조여진 자간 덕분에 큰 크기에서 단단한 블록처럼 보입니다. 장식 없이 명료한 인상을 주며, 같은 패밀리의 모노스페이스로 공학과 스펙 시트 같은 빌더의 모티프를 연출 할 수 있습니다.
 
 웨이트는 역할이 정해져 있습니다. 디스플레이와 헤드라인에는 Medium, 서브 헤드라인에는 Regular, 본문에는 Light, 정보성 텍스트에는 Mono Regular를 사용합니다. 더 자세한 기준은 [[#reference-scale|Reference Scale]]을 참조하세요.
-![our-typefaces]{bg-color}
+![brand-typefaces]{bg-color}
 
 
 ### Character Set
