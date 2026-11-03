@@ -567,22 +567,22 @@ Founders Grotesk는 20세기 초 Miller & Richard와 Caslon의 그로테스크�
 
 ### + Typographic Framework {layout=grid-2}
 #### Overview
-EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 공간을 기준으로 계량 · 확장되는 프레임웍입니다. Line Unit(기준행간) 하나를 정한 뒤 모든 레벨의 행간은 그 배수(x)로 정하고, 글자 크기는 행간을 Relative Leading(실질 행간, 행간 ÷ 글자 크기)으로 나눠 자동으로 정해지는 방식입니다. 레이아웃의 거터와 마진도 같은 단위를 쓰므로 모든 타이포그래피 · 여백 · 그래픽 요소가 통일된 베이스라인 그리드 위에 놓입니다.
+EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 공간을 기준으로 계량 · 확장되는 프레임웍입니다. Line Unit(기준행간) 하나를 정한 뒤 모든 레벨의 행간은 그 배수(x)로 정하고, 글자 크기는 행간을 Linespacing(실질 행간, 행간 ÷ 글자 크기)으로 나눠 자동으로 정해지는 방식입니다. 레이아웃의 거터와 마진도 같은 단위를 쓰므로 모든 타이포그래피 · 여백 · 그래픽 요소가 통일된 베이스라인 그리드 위에 놓입니다.
 
-위계의 조절과 Tonal Value(회색도)의 조절을 분리하는 방침은 프로젝트 별 타이포그래피 시스템을 처음부터 짜야 할 때 진입점을 보다 수월하게 찾도록 돕기 위함입니다. 먼저 레벨 배수로 큰 위계를 잡고, 그다음 Relative Leading · 웨이트 · 자간을 조절해 Tonal Value를 다듬고 시스템의 시각적 완성도를 높입니다. 
+위계의 조절과 Tonal Value(회색도)의 조절을 분리하는 방침은 프로젝트 별 타이포그래피 시스템을 처음부터 짜야 할 때 진입점을 보다 수월하게 찾도록 돕기 위함입니다. 먼저 레벨 배수로 큰 위계를 잡고, 그다음 Linespacing · 웨이트 · 자간을 조절해 Tonal Value를 다듬고 시스템의 시각적 완성도를 높입니다. 
 
 [[#multilingual|다국어 환경 전환]]과 [[#inversion|다크/라이트 모드 전환]] 시, 서체 종류나 글자 크기를 바꿔도 점유하는 공간 자체는 그대로이므로 레이아웃의 변동성이 최소화되며, 서체를 Founders Grotesk에서 Pretendard나 Noto Sans로 바꿔도 Tonal Value만 맞췄다면 룩앤필을 일정하게 유지할 수 있습니다.
 
-이 챕터는 프레임웍의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 Line Unit을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 세팅합니다. 각 단계 별 세부 기준은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#relative-leading-founders-grotesk-medium|Relative Leading]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · [[#tonal-value|Tonal Value]], 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
+이 챕터는 프레임웍의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 Line Unit을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 세팅합니다. 각 단계 별 세부 기준은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · [[#tonal-value|Tonal Value]], 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
 ![framework-1]{bg-color} Line Unit/ 지면의 기준 행간. 레이아웃의 모든 거리를 결정하는 단위가 됨.
-![framework-2]{bg-color} 레벨(Level)/ 역할에 따라 나눈 텍스트의 단계. 배수(x) · 웨이트 · Relative Leading · 자간의 네 항목 한 묶음
-![framework-3]{bg-color} Relative Leading/ 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
+![framework-2]{bg-color} 레벨(Level)/ 역할에 따라 나눈 텍스트의 단계. 배수(x) · 웨이트 · Linespacing · 자간의 네 항목 한 묶음
+![framework-3]{bg-color} Linespacing/ 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
 ![framework-4]{bg-color} Tonal Value/ 글 덩어리를 멀리서 봤을 때의 밝기. 레벨 간 균형의 판단 기준
 
 
 ### Typographic Framework
 #### + Line Unit
-Line Unit은 지면의 단위가 되는 단위이며, 모든 레벨의 행간은 Line Unit의 배수, 글자 크기는 Line Unit에 Relative Leading 비율(%)을 적용해 나옵니다. 이하 Line Unit을 x로 줄여 표기합니다. 이를테면 2.5x는 해당 레벨의 행간은 Line Unit의 2.5배 스케일로 설정됐다는 뜻입니다. 레이아웃의 간격 · 거터 · 마진도 모두 같은 Line Unit을 공유하게 됩니다.
+Line Unit은 지면의 단위가 되는 단위이며, 모든 레벨의 행간은 Line Unit의 배수, 글자 크기는 Line Unit에 Linespacing 비율(%)을 적용해 나옵니다. 이하 Line Unit을 x로 줄여 표기하며, x로 적힌 값은 Line Unit의 배수, %로 적힌 행간 값은 모두 Linespacing입니다. 이를테면 2.5x는 해당 레벨의 행간은 Line Unit의 2.5배 스케일로 설정됐다는 뜻입니다. 레이아웃의 간격 · 거터 · 마진도 모두 같은 Line Unit을 공유하게 됩니다.
 
 Line Unit은 지면에서 가장 중요한 콘텐츠 레벨과 동일하게 하는 것이 기본입니다. 일반적인 콘텐츠 레이아웃에서는 본문 레벨의 행간이 Line Unit이며, 웹과 편집물에서는 28px을 기본으로 하되 지면의 크기와 읽는 거리에 따라 디자이너 재량으로 조절합니다. 본문 콘텐츠가 없는 비주얼 커뮤니케이션(포스터 · 배너 · 키비주얼)에서는 심볼의 높이를 기준으로 그 1x 또는 0.5x를 Line Unit으로 설정합니다. 심볼과 타이포그래피의 레벨을 나누는 방법은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요.
 
@@ -592,7 +592,7 @@ Line Unit을 정했다면 지면 높이에서 위아래 마진을 뺀 값이 Lin
 
 ### Typographic Framework
 #### + Reference Scale {layout=wide}
-Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니다. 레벨 이름의 첫 글자는 해당하는 콘텐츠의 역할, D는 디스플레이, H는 헤드라인, T는 텍스트, C는 캡션을 의미합니다. 본 웹 가이드라인은 이 중 H1 · H3 · T1 · C1 네 레벨을 사용해 구축되었으며, 사용되지 않은 나머지는 새 레벨을 만들 때 참조하세요. 레벨마다 배수(x) · 웨이트 · Relative Leading · 자간을 세부 항목으로 가지며, 괄호 안은 1x = 28px에서 화면에 렌더되는 글자 크기입니다.
+Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니다. 레벨 이름의 첫 글자는 해당하는 콘텐츠의 역할, D는 디스플레이, H는 헤드라인, T는 텍스트, C는 캡션을 의미합니다. 본 웹 가이드라인은 이 중 H1 · H3 · T1 · C1 네 레벨을 사용해 구축되었으며, 사용되지 않은 나머지는 새 레벨을 만들 때 참조하세요. 레벨마다 배수(x) · 웨이트 · Linespacing · 자간을 세부 항목으로 가지며, 괄호 안은 1x = 28px에서 화면에 렌더되는 글자 크기입니다.
 
 + D1/ 6x · Medium · 80% · -2.5% (210px). 포스터나 키비주얼의 태그라인 또는 코어 키워드 한두 단어 등
 + H1/ 2.5x · Medium · 100% · -1.5% (70px). 메인 헤드라인 · 페이지 타이틀
@@ -604,9 +604,9 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 
 레벨에 따른 권장하는 웨이트는 다음과 같습니다. Medium은 디스플레이와 헤드라인(D1 · H1), Regular는 서브 디스플레이와 헤드라인(D2 · H2 · H3), Light는 본문(T1), Mono Regular는 정보성 텍스트(C1)입니다. Semibold는 밝은 배경 컬러에 어두운 콘텐츠 컬러 조합일 때, 헤드라인 레벨의 시각보정을 위해 한정적으로 사용합니다.
 
-레벨의 배수를 1x · 0.5x · 0.25x 단위로 조정하고, Relative Leading과 자간은 인접한 양쪽 레벨끼리 [[#tonal-value|Tonal Value]]가 일관되게 이어지도록 조정해야 합니다. 한국어와 베트남어의 조정 값은 [[#multilingual|Multilingual]]을 참조하세요.
+레벨의 배수를 1x · 0.5x · 0.25x 단위로 조정하고, Linespacing과 자간은 인접한 양쪽 레벨끼리 [[#tonal-value|Tonal Value]]가 일관되게 이어지도록 조정해야 합니다. 한국어와 베트남어의 조정 값은 [[#multilingual|Multilingual]]을 참조하세요.
 
-프리셋은 비주얼 커뮤니케이션에 초점을 맞춰 고안되었습니다. 한번에 읽어야할 텍스트가 몇 문단 정도에 그치는 컨텐츠의 경우 T1의 프리셋 값을 그대로 사용하고, 본문의 가독성이 가장 중요한 환경에서는 1x · Light · 150% · +1.5% (18.67px)로 조정하는 것을 권장합니다. Founders Grotesk는 본래 헤드라인용으로 설계되어 어퍼처가 좁고 자간이 조여 있으므로, 본문 레벨에서는 Light 웨이트에 Relative Leading을 넉넉히 두고 자간을 살짝 열어 씁니다. T1의 값은 그 균형점입니다.
+프리셋은 비주얼 커뮤니케이션에 초점을 맞춰 고안되었습니다. 한번에 읽어야할 텍스트가 몇 문단 정도에 그치는 컨텐츠의 경우 T1의 프리셋 값을 그대로 사용하고, 본문의 가독성이 가장 중요한 환경에서는 1x · Light · 150% · +1.5% (18.67px)로 조정하는 것을 권장합니다. Founders Grotesk는 본래 헤드라인용으로 설계되어 어퍼처가 좁고 자간이 조여 있으므로, 본문 레벨에서는 Light 웨이트에 Linespacing을 넉넉히 두고 자간을 살짝 열어 씁니다. T1의 값은 그 균형점입니다.
 ![reference-scale]{bg-color}
 
 
@@ -617,14 +617,14 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 1. 레벨을 수를 정합니다. 지면에 표시할 정보량에 따라 필요한 레벨의 수를 정합니다. 레벨을 나누는 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요.
 2. Line Unit을 정합니다. 일반적으로 가장 중요도가 높은 콘텐츠의 레벨을 기준으로 Line Unit의 크기를 정합니다. 콘텐츠 레이아웃에서는 일반적으로 본문 레벨의 행간이 Line Unit이 됩니다. 본문이 없는 포스터나 배너는 EO 심볼 레벨의 행간의 1x, 0.5x 등의 배율을 Line Unit으로 정합니다. 
 3. 레벨의 배수를 정합니다. 배수는 1x · 0.5x · 0.25x 단위로만 씁니다. 레벨별 배율 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하며, [[#reference-scale|Reference Scale]]의 값에서 시작해 매체에 맞게 조정하는 방법도 좋습니다.
-4. Relative Leading을 다듬습니다. 레벨마다 글자 크기에 대한 행간의 비율을 정합니다. 글자가 클수록 비율은 낮아지고 작을수록 높아집니다. [[#relative-leading-founders-grotesk-medium|Relative Leading]]을 참조하세요.
+4. Linespacing을 다듬습니다. 레벨마다 글자 크기에 대한 행간의 비율을 정합니다. 글자가 클수록 비율은 낮아지고 작을수록 높아집니다. [[#linespacing-founders-grotesk-medium|Linespacing]]을 참조하세요.
 5. 웨이트와 자간으로 Tonal Value를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 3-5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#tonal-value|Tonal Value]]를 참조하세요.
 
 레이아웃의 격자와 마진은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
 ![setting-up-1]{bg-color} 1/ 레벨 수를 정합니다
 ![setting-up-2]{bg-color} 2/ Line Unit을 정합니다
 ![setting-up-3]{bg-color} 3/ 레벨의 배수를 정합니다
-![setting-up-4]{bg-color} 4/ Relative Leading을 다듬습니다
+![setting-up-4]{bg-color} 4/ Linespacing을 다듬습니다
 ![setting-up-5]{bg-color} 5/ 웨이트와 자간으로 Tonal Value를 맞춥니다
 
 
@@ -634,30 +634,30 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 
 + 레벨의 수/ 헤드라인과 본문, 또는 헤드라인 · 본문 · 캡션입니다. 레벨을 늘리기 전에 [[#grid-and-margin|행 격자]]의 간격만으로 위계를 만들 수 있는지 먼저 봅니다. 역할이 다르면 레벨을 나누는 것이 기본이나, 레벨이 과도하게 많아지면 일관성있는 타이포그래피를 구축하는 난이도가 가파르게 올라가므로, 역할이 같은데 크기만 다르다면 먼저 하나로 합칠 수 있는지 생각합니다. 
 + 레벨 간 대비/ 타이포그래피의 룩앤필은 인접한 레벨 사이의 차이에서 큰 틀이 결정됩니다. 본문(1x)에서 헤드라인으로 갈 때는 두 배 이상(2x · 2.5x), 헤드라인에서 디스플레이로 갈 때도 두 배 이상(6x)이어야 역할이 한눈에 구분됩니다. 반면 세부적인 커텐츠를 주로 다루는 역할 안의 단계(H2 → H3)에서는 1.5배 정도의 배율이 적당합니다. 배수는 1x · 0.5x · 0.25x 단위로만 씁니다.
-+ 지면에 맞추기/ 레벨의 절대 글자 크기는 Line Unit으로 결정됩니다. 본문이 있는 콘텐츠는 읽기 크기를 지키기 위해 Line Unit을 고정하고 Relative Leading의 배율(%)을 올립니다. 본문이 없는 포스터와 배너는 Line Unit을 심볼 높이의 1x · 0.5x에 맞춰 적당히 키우는 것이 이상적일 수 있습니다. 
++ 지면에 맞추기/ 레벨의 절대 글자 크기는 Line Unit으로 결정됩니다. 본문이 있는 콘텐츠는 읽기 크기를 지키기 위해 Line Unit을 고정하고 Linespacing의 배율(%)을 올립니다. 본문이 없는 포스터와 배너는 Line Unit을 심볼 높이의 1x · 0.5x에 맞춰 적당히 키우는 것이 이상적일 수 있습니다. 
 + 심볼과 레벨/ 심볼도 레벨처럼 다룹니다. 심볼의 높이 정수 배(1x · 2x)를 Line Unit으로 설정하면 심볼과 타이포그래피가 같은 단위로 묶을 수 있습니다. 심볼의 크기는 [[symbol#scalability]]를 따릅니다.
 
-일반적으로 레벨이 커질수록 웨이트는 무거워지고 Relative Leading과 자간은 좁아집니다. 다만 실제 레벨링 과정은 목차순 그대로의 선형적 절차라기보다는 [[#relative-leading-founders-grotesk-medium|Relative Leading]] · [[#letterspacing-founders-grotesk-medium|자간]] · [[#tonal-value|웨이트]]를 동시에 교차 조율하는 과정에 가깝습니다. 빠른 참고가 필요할 때는 [[#reference-scale|Reference Scale]]의 프리셋 값을 참조하세요.
+일반적으로 레벨이 커질수록 웨이트는 무거워지고 Linespacing과 자간은 좁아집니다. 다만 실제 레벨링 과정은 목차순 그대로의 선형적 절차라기보다는 [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|자간]] · [[#tonal-value|웨이트]]를 동시에 교차 조율하는 과정에 가깝습니다. 빠른 참고가 필요할 때는 [[#reference-scale|Reference Scale]]의 프리셋 값을 참조하세요.
 ![levelling]{bg-color} 7레벨 프리셋에 Line Unit 격자를 겹친 것 — 레벨의 배수가 격자 칸 수로 읽힙니다
 
 
-### + Relative Leading
+### + Linespacing
 #### Founders Grotesk Medium
-Relative Leading은 글자 크기에 대한 행간의 비율(행간 ÷ 글자 크기)입니다. 일반적으로 글자 크기가 클수록 Relative Leading은 낮아지고, 글자 크기가 작을수록 높아집니다. Relative Leading은 포맷과 커뮤니케이션 유형에 따라 달라질 수 있으며, 레벨별 기준값은 [[#reference-scale|Reference Scale]]을 참조하세요.
+행간이 줄과 줄 사이의 거리(x)라면, Linespacing은 그 거리를 글자 크기로 나눈 비율(%)입니다. 같은 행간이라도 글자가 크면 Linespacing은 낮아집니다. Figma의 Line height %, CSS의 단위 없는 line-height, InDesign의 Auto Leading %가 모두 이 값입니다. 일반적으로 글자 크기가 클수록 Linespacing은 낮아지고, 글자 크기가 작을수록 높아집니다. Linespacing은 포맷과 커뮤니케이션 유형에 따라 달라질 수 있으며, 레벨별 기준값은 [[#reference-scale|Reference Scale]]을 참조하세요.
 
-헤드라인과 디스플레이는 Relative Leading이 100% 이하, 즉 행간이 글자 크기와 같거나 더 좁습니다. 행과 행이 하나의 블록으로 읽히는 것이 목표이며, 어센더와 디센더가 닿기 직전이 하한입니다. 극단적으로 느슨하거나 타이트한 행간은 피하고, 닿는다면 비율이 아니라 문구를 일부 수정하는 것을 권장합니다.
+헤드라인과 디스플레이는 Linespacing이 100% 이하, 즉 행간이 글자 크기와 같거나 더 좁습니다. 행과 행이 하나의 블록으로 읽히는 것이 목표이며, 어센더와 디센더가 닿기 직전이 하한입니다. 극단적으로 느슨하거나 타이트한 행간은 피하고, 닿는다면 비율이 아니라 문구를 일부 수정하는 것을 권장합니다.
 ![linespacing-medium]{bg-color}
 
 
-### Relative Leading
+### Linespacing
 #### Founders Grotesk Regular
-서브 헤드라인(H2 · H3)의 Relative Leading은 헤드라인과 본문의 사이(115-125%)에 있습니다. 2-4 행으로 이어지는 일이 많으므로 헤드라인보다 넓은 행간을 적용해 가독성을 다소 높혀야 합니다. 헤드라인 크기의 Regular인 D2는 헤드라인과 같은 행간 규칙을 따릅니다.
+서브 헤드라인(H2 · H3)의 Linespacing은 헤드라인과 본문의 사이(115-125%)에 있습니다. 2-4 행으로 이어지는 일이 많으므로 헤드라인보다 넓은 행간을 적용해 가독성을 다소 높혀야 합니다. 헤드라인 크기의 Regular인 D2는 헤드라인과 같은 행간 규칙을 따릅니다.
 
 서브 헤드라인은 본문 바로 위에 놓이는 경우가 많으므로, 행간이 본문의 Line Unit 격자와 어긋나지 않는지 함께 확인합니다.
 ![linespacing-regular]{bg-color}
 
 
-### Relative Leading
+### Linespacing
 #### Founders Grotesk Light
 본문은 글자 크기보다 넓은 행간으로 읽는 리듬을 만듭니다. 한 행이 길수록 행간은 조금 더 넓어야 눈이 다음 행을 놓치지 않기 때문입니다. 단 너무 넓으면 행이 따로 놀아 문단이 흩어지며 시각적 완성도를 떨어트릴 수 있습니다. 가독성을 무리없이 확보하는 범위 안에서 일관된 회색 면이 구성되는 수준까지 행간을 조금씩 좁혀나갑니다.
 
@@ -665,7 +665,7 @@ Relative Leading은 글자 크기에 대한 행간의 비율(행간 ÷ 글자 �
 ![linespacing-light]{bg-color}
 
 
-### Relative Leading
+### Linespacing
 #### Founders Grotesk Mono Regular
 캡션 · 라벨 · 태그 · 스펙(C1)은 한두 줄로 짧고 글자가 작습니다. 모노는 글자 폭이 넓고 엑스하이트가 커서 본문만큼 행간을 벌리면 줄이 떠 보이므로, 본문보다 좁은 비율로 조판합니다.
 
@@ -700,7 +700,7 @@ C1의 행간은 Line Unit의 절반입니다. 캡션 두 줄이 본문 한 줄�
 
 ### Typographic Framework
 #### + Tonal Value
-Tonal Value는 글 덩어리를 멀리서 봤을 때의 밝기입니다. 모든 레벨이 하나의 글을 그대로 확대 · 축소한 것처럼 보이는 것이 가장 이상적입니다. 글자를 단순히 키우면 자간과 행간이 떠 보이고, 줄이면 뭉쳐 보이므로 레벨마다 [[#relative-leading-founders-grotesk-medium|Relative Leading]] · [[#letterspacing-founders-grotesk-medium|자간]] · 웨이트를 다시 잡아야 균일한 Tonal Value 수준을 구할 수 있습니다. 레벨을 나란히 놓고 눈을 가늘게 뜨거나 화면을 축소해 보면 밝기 차이가 더 선명하게 드러납니다.
+Tonal Value는 글 덩어리를 멀리서 봤을 때의 밝기입니다. 모든 레벨이 하나의 글을 그대로 확대 · 축소한 것처럼 보이는 것이 가장 이상적입니다. 글자를 단순히 키우면 자간과 행간이 떠 보이고, 줄이면 뭉쳐 보이므로 레벨마다 [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|자간]] · 웨이트를 다시 잡아야 균일한 Tonal Value 수준을 구할 수 있습니다. 레벨을 나란히 놓고 눈을 가늘게 뜨거나 화면을 축소해 보면 밝기 차이가 더 선명하게 드러납니다.
 
 같은 원칙이 서체 · 언어 · 배경이 바뀔 때의 기준이 됩니다. [[#multilingual|Pretendard나 Noto Sans]]로 조판할 때도, 어두운 배경에서 밝은 배경으로 [[#inversion|반전]]할 때도 Founders Grotesk 다크 모드와 같은 Tonal Value가 나오도록 글자 크기 · 웨이트 · 자간을 맞춥니다. 어느 경우든 글자가 차지하는 공간은 바뀌지 않으므로 레이아웃은 그대로입니다.
 ![tonal-value]{bg-color}
@@ -732,14 +732,14 @@ EO 브랜드 커뮤니케이션의 모든 텍스트는 왼쪽 정렬입니다. �
 #### + Inversion {layout=wide}
 EO 타이포그래피도 심볼과 마찬가지로 Solid Gray · Space Black 등 어두운 배경 위에 Air White · Medium Gray 등 밝은 컬러의 텍스트 사용을 기본으로 제작되었습니다. 밝은 컬러의 배경 위에 어두운 컬러의 텍스트를 쓰고자 할 때 컬러만 반전하면, 같은 웨이트와 자간인데도 글자가 한 단계 가늘어 보이고 글자 사이가 벌어져 보이는 착시가 생깁니다. [[signature#inversion|시그니처의 디스크립터]]와 같은 현상입니다.
 
-이때는 Line Unit · 레벨의 배수 · 웨이트를 그대로 둔 채, 각 레벨의 Relative Leading에 95%(글자 크기가 105%가 되도록)를 적용하고 자간을 0.5% 좁힙니다. 이렇게 하면 밝은 배경에서도 [[#tonal-value|Tonal Value]]가 라이트 텍스트와 거의 같게 유지되고, 글자가 차지하는 공간이 같으므로 레이아웃도 그대로입니다.
+이때는 Line Unit · 레벨의 배수 · 웨이트를 그대로 둔 채, 각 레벨의 Linespacing에 95%(글자 크기가 105%가 되도록)를 적용하고 자간을 0.5% 좁힙니다. 이렇게 하면 밝은 배경에서도 [[#tonal-value|Tonal Value]]가 라이트 텍스트와 거의 같게 유지되고, 글자가 차지하는 공간이 같으므로 레이아웃도 그대로입니다.
 
 아래는 같은 프리셋을 7레벨 [[#reference-scale|Reference Scale]]에 적용해 라이트 모드로 조판한 예시입니다.
 ![inversion]{bg-color}
 
 
 ### + Multilingual {layout=wide}
-한국어에는 Pretendard를, 베트남어에는 Noto Sans를 사용합니다. 기존 레이아웃에서 다국어 서체로 변경할 때, Line Unit과 레벨의 배수가 그대로이므로 언어를 바꿔도 레이아웃이 움직이지 않고, 글자 크기와 Relative Leading만 서체에 맞춰 달라집니다.
+한국어에는 Pretendard를, 베트남어에는 Noto Sans를 사용합니다. 기존 레이아웃에서 다국어 서체로 변경할 때, Line Unit과 레벨의 배수가 그대로이므로 언어를 바꿔도 레이아웃이 움직이지 않고, 글자 크기와 Linespacing만 서체에 맞춰 달라집니다.
 
 + 한국어 Pretendard/ [[#reference-scale|T1]]은 Regular · 165% · -2% · 베이스라인 +0.2x, H3는 Medium · 165% · -2.5% · 베이스라인 -0.05x입니다. 렌더링되는 실제 글자 크기는 같은 레벨의 Founders Grotesk의 85% 크기와 같습니다.
 + 베트남어 Noto Sans/ T1은 DemiLight · 175% · -2% · 베이스라인 +0.05x, H3는 Regular · 175% · -3%입니다. 렌더링되는 실제 글자 크기는 같은 레벨의 Founders Grotesk의 80% 크기와 같습니다.
