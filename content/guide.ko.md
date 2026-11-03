@@ -581,7 +581,7 @@ EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 
 ![framework-1]{bg-color} 기준행간(Line Unit)/ 지면의 기준 행간. 본문 한 줄의 높이 또는 심볼의 1x · 0.5x, 모든 사이즈의 단위
 ![framework-2]{bg-color} 레벨(Level)/ 역할에 따라 나눈 텍스트의 단계. 행간 배수 · 웨이트 · 실질 행간 · 자간의 네 항목 한 묶음
 ![framework-3]{bg-color} 실질 행간(Linespacing)/ 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
-![framework-4]{bg-color} 회색도(Tonal Value)/ 글 덩어리를 멀리서 봤을 때의 밀도감. 레벨 간 균형의 판단 기준
+![framework-4]{bg-color} 회색도(Tonal Value)/ 글 덩어리를 멀리서 봤을 때의 밝기. 레벨 간 균형의 판단 기준
 
 
 ### Typographic Framework
