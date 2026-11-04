@@ -32,16 +32,18 @@ if (items.length !== 30 || missing.length) throw new Error(`patterns: ${items.le
 
 // ── 양식 (아트보드 크기별 프리셋: --size 1440x1080 | 2560x1440) ───────────────
 const PRESETS = {
-  '1440x1080': { W: 1440, H: 1080, UNIT: 28, M: 50, COLS: 6, ROWS: 5, GUT: 28, CARD_W: 200, PITCH: 7 * 28, CAP_DY: 5 * 28, CAP_LINES: 2, CAP: { size: 20, leading: 24, tracking: -70 } },
-  // 2560×1440 (16:9 라 세로가 부족): 마진 80 → 6×320 + 5×64 = 2400, 행 피치 256 (= 8 × 32) × 5 = 1280. 카드 180 높이 · 캡션 윗선 +200 (아래 간격 20) · 캡션 24/28 한 줄(폭 384 = 카드 + 거터, 가장 긴 이름 27자 ≈ 343) · 다음 카드까지 28
-  '2560x1440': { W: 2560, H: 1440, UNIT: 32, M: 80, COLS: 6, ROWS: 5, GUT: 64, CARD_W: 320, PITCH: 8 * 32, CAP_DY: 200, CAP_LINES: 1, CAP: { size: 24, leading: 28, tracking: -70 } },
+  '1440x1080': { W: 1440, H: 1080, UNIT: 28, M: 50, COLS: 6, ROWS: 5, GUT: 28, PITCH: 7 * 28, CAP_DY: 5 * 28, CAP_LINES: 2, CAP: { size: 20, leading: 24, tracking: -70 } },   // 카드 폭 = (1440 − 100 − 5×28) / 6 = 200, 16:9
+  // 2560×1440 (16:9 라 세로가 부족): 가로는 마진 80 · 거터 64 → 카드 폭 (2560 − 160 − 320) / 6 = 346.67, 세로는 행 피치 256 (= 8 × 32) 안에 카드 192 + 16 + 캡션 28 + 20 → 카드 1.806:1 (16:9 에서 1.6% 넓힘). 보이는 높이 1260 을 세로 가운데에 (위아래 90)
+  '2560x1440': { W: 2560, H: 1440, UNIT: 32, M: 80, MY: 90, COLS: 6, ROWS: 5, GUT: 64, CARD_H: 192, PITCH: 8 * 32, CAP_DY: 208, CAP_LINES: 1, CAP: { size: 24, leading: 28, tracking: -70 } },
 };
 const SIZE = args.find(a => /^\d+x\d+$/.test(a)) ?? (args.includes('--size') ? args[args.indexOf('--size') + 1] : '1440x1080');
 const P = PRESETS[SIZE]; if (!P) throw new Error(`unknown size ${SIZE}: ${Object.keys(PRESETS).join(' | ')}`);
-const { W, H, UNIT, M, COLS, ROWS, GUT, CARD_W, PITCH, CAP_DY, CAP_LINES } = P;
-const CARD_H = CARD_W * 9 / 16;
+const { W, H, UNIT, M, COLS, ROWS, GUT, PITCH, CAP_DY, CAP_LINES } = P;
+const CARD_W = P.CARD_W ?? (W - 2 * M - (COLS - 1) * GUT) / COLS;   // 격자에서 역산 — 가로를 꽉 채움
+const MY = P.MY ?? M;                                                 // 세로 마진 (행 피치 끝의 여분 때문에 가로와 다를 수 있음)
+const CARD_H = P.CARD_H ?? CARD_W * 9 / 16;                            // 프리셋이 정하면 16:9 에서 살짝 늘림 (비균등 resize)
 const NAME = SIZE === '1440x1080' ? 'pattern-library' : `pattern-library-${SIZE}`;   // 출력 파일 이름
-const X = c => M + c * (CARD_W + GUT), Y = r => M + r * PITCH;
+const X = c => M + c * (CARD_W + GUT), Y = r => MY + r * PITCH;
 const BG = '#000000', GRAY = '#8e8e8e', WHITE = '#fcfbf5';
 const CAPTION = { font: 'FoundersGroteskMono-Regular', ...P.CAP };
 const js = s => JSON.stringify(s).replace(/[\u0080-￿]/g, ch => '\\u' + ch.charCodeAt(0).toString(16).padStart(4, '0'));
