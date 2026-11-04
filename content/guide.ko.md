@@ -643,7 +643,7 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 
 ### + Linespacing
 #### Founders Grotesk Medium
-행간이 줄과 줄 사이의 거리(x)라면, Linespacing은 그 거리를 글자 크기로 나눈 비율(%)입니다. 같은 행간이라도 글자가 크면 Linespacing은 낮아집니다. Figma의 Line height %, CSS의 단위 없는 line-height, InDesign의 Auto Leading %가 모두 이 값입니다. 일반적으로 글자 크기가 클수록 Linespacing은 낮아지고, 글자 크기가 작을수록 높아집니다. Linespacing은 포맷과 커뮤니케이션 유형에 따라 달라질 수 있으며, 레벨별 기준값은 [[#reference-scale|Reference Scale]]을 참조하세요.
+행간이 줄과 줄 사이의 거리(x)라면, Linespacing은 그 거리를 글자 크기로 나눈 비율(%)입니다. 같은 행간이라도 글자가 크면 Linespacing은 낮아집니다. Figma의 Line height %, CSS의 단위 없는 line-height, InDesign의 Auto Leading %가 모두 이 값입니다. Linespacing은 포맷과 커뮤니케이션 유형에 따라 달라질 수 있으며, 레벨별 기준값은 [[#reference-scale|Reference Scale]]을 참조하세요.
 
 헤드라인과 디스플레이는 Linespacing이 100% 이하, 즉 행간이 글자 크기와 같거나 더 좁습니다. 행과 행이 하나의 블록으로 읽히는 것이 목표이며, 어센더와 디센더가 닿기 직전이 하한입니다. 극단적으로 느슨하거나 타이트한 행간은 피하고, 닿는다면 비율이 아니라 문구를 일부 수정하는 것을 권장합니다.
 ![linespacing-medium]{bg-color}
@@ -651,7 +651,7 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 
 ### Linespacing
 #### Founders Grotesk Regular
-서브 헤드라인(H2 · H3)의 Linespacing은 헤드라인과 본문의 사이(115-125%)에 있습니다. 2-4 행으로 이어지는 일이 많으므로 헤드라인보다 넓은 행간을 적용해 가독성을 다소 높혀야 합니다. 헤드라인 크기의 Regular인 D2는 헤드라인과 같은 행간 규칙을 따릅니다.
+서브 헤드라인(H2 · H3)의 Linespacing은 헤드라인과 본문의 사이(115-125%)에 있습니다. 2-4 행으로 이어지는 일이 많으므로 헤드라인보다 넓은 행간을 적용해 가독성을 다소 높여야 합니다. 헤드라인 크기의 Regular인 D2는 헤드라인과 같은 행간 규칙을 따릅니다.
 
 서브 헤드라인은 본문 바로 위에 놓이는 경우가 많으므로, 행간이 본문의 Line Unit 격자와 어긋나지 않는지 함께 확인합니다.
 ![linespacing-regular]{bg-color}
@@ -661,7 +661,7 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 #### Founders Grotesk Light
 본문은 글자 크기보다 넓은 행간으로 읽는 리듬을 만듭니다. 한 행이 길수록 행간은 조금 더 넓어야 눈이 다음 행을 놓치지 않기 때문입니다. 단 너무 넓으면 행이 따로 놀아 문단이 흩어지며 시각적 완성도를 떨어트릴 수 있습니다. 가독성을 무리없이 확보하는 범위 안에서 일관된 회색 면이 구성되는 수준까지 행간을 조금씩 좁혀나갑니다.
 
-콘텐츠 중심의 레이아웃에서는 본문의 행간이 곧 [[#line-unit|Line Unit]]이 됩니다. 본문의 Line Unit을 바꾸면 디지털 레이아웃의 모든 사이즈가 배율을 유지하며 스크롤 방향으로 반응합니다.
+콘텐츠 중심의 레이아웃에서는 본문의 행간이 곧 [[#line-unit|Line Unit]]이 됩니다. 본문의 Line Unit을 바꾸면 디지털 레이아웃 전체가 같은 비율로 세로 방향으로 늘거나 줄어듭니다.
 ![linespacing-light]{bg-color}
 
 
@@ -681,19 +681,19 @@ C1의 행간은 Line Unit의 절반입니다. 캡션 두 줄이 본문 한 줄�
 
 ### Letterspacing
 #### Founders Grotesk Regular
- Regular 서체 본연의 Tonal Value가 Medium보다 낮기 때문에 서브 헤드라인 레벨에서 헤드라인 레벨과 비슷한 수준의 Tonal Value를 확보하려면 상대적으로 큰 가중치를 줘야 합니다. 이를테면 H1의 경우 Medium -1.5% 자간을 사용하지만, 동일한 글자 크기를 사용하는 D2의 경우 오히려 더 큰 값의 Regular -2%를 적용합니다.
+Regular 서체 본연의 Tonal Value가 Medium보다 낮기 때문에 서브 헤드라인 레벨에서 헤드라인 레벨과 비슷한 수준의 Tonal Value를 확보하려면 자간을 상대적으로 더 좁혀야 합니다. 이를테면 H1의 경우 Medium -1.5% 자간을 사용하지만, 동일한 글자 크기를 사용하는 D2의 경우 오히려 더 좁은 -2%를 적용합니다.
 ![letterspacing-regular]{bg-color}
 
 
 ### Letterspacing
 #### Founders Grotesk Light
-작은 글자는 공백이 상대적으로 작아 보이므로, 어두운 컬러 배경 위 밝은 컬러의 컨텐츠를 올릴 때를 기준으로 자간을 0.5%-1% 수준을 적용해야 합니다. 가는 웨이트 특성 상 자간을 좁히면 가독성이 빠르게 떨어지므로, 균일한 Tonal Value와 가독성의 중요도에 따라 시각적 완성도의 절충 지점을 찾습니다.
+작은 글자는 공백이 상대적으로 작아 보이므로, 어두운 컬러 배경 위 밝은 컬러의 콘텐츠를 올릴 때를 기준으로 자간을 0.5-1% 수준으로 벌립니다. 가는 웨이트 특성상 자간을 좁히면 가독성이 빠르게 떨어지므로, 균일한 Tonal Value와 가독성 중 어느 쪽이 중요한지에 따라 절충점을 찾습니다.
 ![letterspacing-light]{bg-color}
 
 
 ### Letterspacing
 #### Founders Grotesk Mono Regular
-모노 서체의 특성 상 균일한 Tonal Value의 연출이 가능해 작인 사이즈로도 시인성이 뛰어나지만, 자체 가독성은 낮기 때문에 자간을 -7% 수준으로 좁히고 단어가 너무 길어질 경우 서체 변경를 고려합니다. 
+모노 서체의 특성상 균일한 Tonal Value의 연출이 가능해 작은 사이즈로도 시인성이 뛰어나지만, 자체 가독성은 낮기 때문에 자간을 -7% 수준으로 좁히고 긴 단어가 많아 줄이 늘어지면 본문 서체로 바꾸는 것을 고려합니다. 
 ![letterspacing-mono]{bg-color}
 
 
