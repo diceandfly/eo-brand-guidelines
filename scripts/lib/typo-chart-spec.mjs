@@ -19,10 +19,10 @@ export const LEVELS = {
              range: 'D1 6x 80% -2.5% · H1 2.5x 100% -1.5%',
              text: "Layers, approvals, and titles that decide who's right." },
   regular: { name: 'Founders Grotesk Regular', weight: 400, family: SANS, level: 'H2', multiple: 2, ls: 115, lt: -1, lines: 2,
-             range: 'D2 2.5x 100% -2% · H2 2x 115% -1% · H3 1.25x 125% -0.5%',
+             range: 'D2 2.5x 100% -2% · H2 2x 115% -1% · H3 1.25x 120% 0%',
              text: 'Chase the vision, not the money, the money will end up following you.' },
-  light:   { name: 'Founders Grotesk Light', weight: 300, family: SANS, level: 'T1', multiple: 1, ls: 140, lt: 0.5, lines: 3,
-             range: 'T1 1x 140% +0.5% · reading-first 150% +1.5%',
+  light:   { name: 'Founders Grotesk Light', weight: 300, family: SANS, level: 'T1', multiple: 1, ls: 140, lt: 1.5, lines: 3,
+             range: 'T1 1x 140% +1.5% · reading-first 150% +1.5%',
              text: "Big companies in a crowded market keep quiet. Startups don't. They share their story and what they learn. A startup is a path no one walked before, so there is no proven answer to protect. You see it in hacker houses. Young hackers, late teens to mid-twenties, live together in cheap, rough places before they raise their seed round. They rent a small room somewhere tough, pack it with bunk beds, and live on cheap junk food." },
   mono:    { name: 'Founders Grotesk Mono Regular', weight: 400, family: MONO, level: 'C1', multiple: 0.5, ls: 111, lt: -7, lines: 4,
              range: 'C1 0.5x 111% -7%',
@@ -32,7 +32,7 @@ export const LEVELS = {
 };
 export const VARIANTS = {
   linespacing:   { medium: [80, 100, 130], regular: [95, 115, 140], light: [110, 140, 180], mono: [90, 111, 140] },
-  letterspacing: { medium: [-6, -1.5, 3], regular: [-5, -1, 3], light: [-3, 0.5, 5], mono: [-14, -7, 2] },
+  letterspacing: { medium: [-6, -1.5, 3], regular: [-5, -1, 3], light: [-3, 1.5, 5], mono: [-14, -7, 2] },
 };
 export const VERDICT = ['Too tight', 'Preset', 'Too loose'];
 
