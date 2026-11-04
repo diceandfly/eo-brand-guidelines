@@ -638,7 +638,7 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 + 심볼과 레벨/ 심볼도 레벨처럼 다룹니다. 심볼의 높이 정수 배(1x · 2x)를 Line Unit으로 설정하면 심볼과 타이포그래피가 같은 단위로 묶을 수 있습니다. 심볼의 크기는 [[symbol#scalability]]를 따릅니다.
 
 일반적으로 레벨이 커질수록 웨이트는 무거워지고 Linespacing과 자간은 좁아집니다. 다만 실제 레벨링 과정은 목차순 그대로의 선형적 절차라기보다는 [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|자간]] · [[#tonal-value|웨이트]]를 동시에 교차 조율하는 과정에 가깝습니다. 빠른 참고가 필요할 때는 [[#reference-scale|Reference Scale]]의 프리셋 값을 참조하세요.
-![levelling]{bg-color} 7레벨 프리셋에 Line Unit 격자를 겹친 것 — 레벨의 배수가 격자 칸 수로 읽힙니다
+![levelling-sizing]{bg-color} 7레벨 프리셋에 Line Unit 격자를 겹친 것 — 레벨의 배수가 격자 칸 수로 읽힙니다
 
 
 ### + Linespacing
