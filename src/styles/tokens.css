@@ -114,6 +114,8 @@
   /* 본문 **강조** — 웨이트 + 네온 색. 언더라인 없음 (언더라인은 링크 · 참조 전용이라 둘이 바로 구분됨) */
   --t-body-strong-w: 400; /* 강조 웨이트. 본문(300)보다 한 단계 */
   --t-body-strong-c: var(--c-builder-neon); /* 강조 색. 네온 하이라이팅 (헤드와 같은 색). 본문색으로 돌리려면 var(--t-body-c) */
+  --t-body-strong-ls: 0em; /* 강조 자간 (영문). 본문 +1.5% 그대로면 Regular 가 벌어져 보여 한 단계 좁힘. 본문과 같게 하려면 var(--t-body-ls) */
+  --t-body-ko-strong-ls: -0.02em; /* 강조 안의 한글 자간. 본문 한글(-1.5%)보다 살짝 좁게 */
   /* 본문 하이퍼링크 — 언더라인. 호버 색·시간은 B-5 */
   --t-body-link-line: 0.5px; /* 언더라인 두께 */
   --t-body-link-offset: 0.15em; /* 언더라인 ↔ 글자 */
@@ -410,7 +412,7 @@
   /* 테두리와 호버 — 확대 가능한 이미지에 마우스를 올리면 테두리 색·두께만 바뀜. 호버 색은 컬러 카드(B-7)도 같이 씀.
      밝은 이미지(data-tone="light", 빌드 때 가장자리 밝기로 판정 — src/lib/imageTone.ts)는 -on-light 값 */
   --img-border: var(--border); /* 프레임 테두리 */
-  --img-border-w-hover: 0.6px; /* 호버 두께 — 어두운 이미지(테두리가 밝아짐). 밝은 선이 굵어 보이는 착시를 상쇄하려고 조금 가늘게 */
+  --img-border-w-hover: 0.4px; /* 호버 두께 — 어두운 이미지(테두리가 밝아짐). 밝은 선이 굵어 보이는 착시를 상쇄하려고 조금 가늘게 */
   --img-border-w-hover-on-light: 0.2px; /* 호버 두께 — 밝은 이미지(테두리가 더 밝은 회색이 됨). 어두운 이미지와 따로 조정 */
   --img-border-hover: color-mix(in srgb, var(--border), var(--c-air-white) 20%); /* 호버 테두리 — 어두운 이미지 위 (밝은 회색) */
   --img-border-hover-on-light: color-mix(in srgb, var(--border), var(--c-air-white) 75%); /* 호버 테두리 — 밝은 이미지 위. 띠가 어두운 페이지 배경과 맞닿는 바깥 1px 이라 어두운 선은 배경에 묻혀 안 보임 → 기본 호버보다 더 밝은 회색 */

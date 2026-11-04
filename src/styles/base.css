@@ -145,6 +145,7 @@ button {
 /* 강조 안의 한글: .ko 가 웨이트를 400 으로 고정하므로 여기서 한 단계 올림 (영문은 strong 의 400 이 그대로 먹음). 캡션(.fig__caption.t-body)도 포함 */
 .t-body strong .ko {
   font-weight: var(--t-body-ko-strong-w);
+  letter-spacing: var(--t-body-ko-strong-ls);
 }
 
 /* 화면에는 숨기고 화면낭독기에만 읽히는 글자 (검색 결과 개수 알림 등) */
@@ -209,6 +210,7 @@ button {
 .t-body strong {
   font-weight: var(--t-body-strong-w); /* 강조 = 웨이트 + 네온. 언더라인은 쓰지 않음 — 언더라인은 링크(.t-body a) 전용 */
   color: var(--t-body-strong-c); /* 네온 하이라이팅 — 한글 구간(.ko)도 상속 */
+  letter-spacing: var(--t-body-strong-ls); /* 웨이트가 오른 만큼 자간을 좁힘 */
   text-decoration: none;
 }
 .t-body a {
