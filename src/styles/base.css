@@ -938,7 +938,7 @@ html.js .main {
   margin-right: calc(var(--cap-num-gap) / var(--num-marker-scale)); /* 간격은 줄인 글자가 아니라 캡션 글자 기준 0.6em 그대로 */
 }
 .fig__caption .cap-key {
-  margin-right: var(--cap-num-gap); /* 캡션 앞 키워드 "세로형/" — 글자는 그대로, 슬래시만 모노. 강조는 md 에서 **세로형**/ 로 (strong) */
+  margin-right: var(--cap-num-gap); /* 캡션 앞 키워드 "세로형/" — 글자는 그대로, 슬래시만 모노. 강조는 md 에서 키워드를 ** 로 감쌈 (strong). 보관: 2026-11-04 부터 가이드는 "세로형 — 설명" 글자로 씀 */
 }
 /* 번호 · 키워드 라벨은 글과 한 줄에 흐르고(인라인), 줄이 넘어가면 글은 캡션 왼쪽 선으로 돌아감 — 행잉 인덴트 없음. 본문 키워드 문단 · 목록 · 순서 목록과 같은 방식 */
 .cap-slash {
@@ -946,7 +946,7 @@ html.js .main {
 }
 /* 키워드 목록 항목 "- 키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글이 인라인으로 흐름. 줄이 넘어가면 글은 불릿 들여쓰기 선으로 돌아감 (캡션과 같음) */
 .t-body .li-key {
-  margin-right: var(--cap-num-gap); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식. 강조는 **키워드**/ */
+  margin-right: var(--cap-num-gap); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식. 강조는 키워드를 ** 로 감쌈. 보관: 가이드는 "- 키워드 — 설명" 글자로 씀 */
 }
 /* 키워드 문단 "키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글이 인라인으로 흐름. 줄이 넘어가면 글은 문단 왼쪽 선으로 돌아감 (캡션과 같음) */
 .t-body .p-key {
