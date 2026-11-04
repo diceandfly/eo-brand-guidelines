@@ -107,6 +107,9 @@
   --t-body-olist-nested-c: var(--fg-muted); /* 불릿 아래 중첩된 번호 "1/" 의 색. 라벨 회색으로 내려 상위 "–" 보다 뒤로 물러남 (꽉 찬 불릿 · 빈 불릿의 관계). 최상위 번호 목록은 본문색 */
   /* 라벨 "1/" · "키워드/" — 캡션과 본문 공통. "1/ 설명"(번호, 모노) · "세로형/ 설명"(키워드 + 모노 슬래시). guide.ts 가 감쌈 */
   --cap-num-gap: 0.6em; /* 캡션 앞 번호 "1/" · 키워드 "세로형/" ↔ 캡션 글. 본문 키워드 문단 "키워드/" 와 목록 "- 키워드/" 도 같은 값 */
+  /* 키워드 단락 "키워드// 설명" (슬래시 둘) — 인라인 라벨과 달리 들여쓰기 + 독립 단락. 순서 목록과 같은 자리 · 간격. + 불릿과 독립 */
+  --t-body-keyed-offset: 0.6em; /* 왼쪽 마진 ↔ 키워드. 순서 목록 마커(--t-body-olist-offset)와 같은 자리 */
+  --t-body-keyed-gap: 0.5; /* 연속 키워드 단락 ↔ 단락 = 본문 행간 × 값 (목록 --t-body-list-gap 과 같게). 문단 간격(0.75)보다 좁아 한 묶음으로 읽힘 */
   /* 번호 마커 "1/" 공통 보정 — 캡션 번호와 본문 순서 목록, 모든 언어. Mono 는 Light 가 없어 Regular 로 찍히고 같은 크기에서 숫자가 커 보여, 줄이고 자간을 좁혀 글과 맞춤 */
   --num-marker-scale: 0.955; /* 글자 크기 대비 */
   --num-marker-ls: -0.07em; /* 자간 (−7%) */
@@ -412,9 +415,9 @@
   /* 테두리와 호버 — 확대 가능한 이미지에 마우스를 올리면 테두리 색·두께만 바뀜. 호버 색은 컬러 카드(B-7)도 같이 씀.
      밝은 이미지(data-tone="light", 빌드 때 가장자리 밝기로 판정 — src/lib/imageTone.ts)는 -on-light 값 */
   --img-border: var(--border); /* 프레임 테두리 */
-  --img-border-w-hover: 0.4px; /* 호버 두께 — 어두운 이미지(테두리가 밝아짐). 밝은 선이 굵어 보이는 착시를 상쇄하려고 조금 가늘게 */
+  --img-border-w-hover: 1px; /* 호버 두께 — 어두운 이미지(테두리가 밝아짐). 밝은 선이 굵어 보이는 착시를 상쇄하려고 조금 가늘게 */
   --img-border-w-hover-on-light: 0.2px; /* 호버 두께 — 밝은 이미지(테두리가 더 밝은 회색이 됨). 어두운 이미지와 따로 조정 */
-  --img-border-hover: color-mix(in srgb, var(--border), var(--c-air-white) 20%); /* 호버 테두리 — 어두운 이미지 위 (밝은 회색) */
+  --img-border-hover: color-mix(in srgb, var(--border), var(--c-air-white) 10%); /* 호버 테두리 — 어두운 이미지 위 (밝은 회색) */
   --img-border-hover-on-light: color-mix(in srgb, var(--border), var(--c-air-white) 75%); /* 호버 테두리 — 밝은 이미지 위. 띠가 어두운 페이지 배경과 맞닿는 바깥 1px 이라 어두운 선은 배경에 묻혀 안 보임 → 기본 호버보다 더 밝은 회색 */
   --img-border-hover-dur: 200ms; /* 테두리 색·두께 디졸브 (들어갈 때 · 나갈 때 동일) */
 

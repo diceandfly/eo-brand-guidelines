@@ -309,7 +309,7 @@ const glueBlocks = (html: string) =>
 
 function md(src: string, ctx: Ctx): string {
   const s = src.trim();
-  return s ? glueBlocks(wrapKo(colorChips(smartQuotes(listKeys(bullets(marked.parse(plusMarkers(s), { async: false, gfm: true, breaks: false }) as string))), ctx, new Set()))) : '';   // 라벨 인식은 칩 · 한글 래핑 전(글자 그대로). 칩은 섹션 첫 언급에만
+  return s ? glueBlocks(wrapKo(colorChips(smartQuotes(listKeys(bullets(marked.parse(plusMarkers(dslashBlocks(s)), { async: false, gfm: true, breaks: false }) as string))), ctx, new Set()))) : '';   // 라벨 인식은 칩 · 한글 래핑 전(글자 그대로). 칩은 섹션 첫 언급에만
 }
 
 /**
@@ -332,21 +332,26 @@ const bullets = (html: string) => html.replace(new RegExp(`<li>(<p>)?${PLUS}`, '
  * 컬러 칩 · 한글 래핑 전의 글자 그대로에서 돌므로 "Builder Neon/ 설명" 도 키워드가 되고 칩은 라벨 안에 붙습니다. 불릿 글자(data-bullet)와는 무관.
  */
 const LABEL_NUM = /^(\d{1,2})\/[ \u00A0]+(?=\S)/;
-const LABEL_SLASH = /(?<=\S)\/(?=(?:<\/strong>)?[ \u00A0]+\S)/;   // 라벨 슬래시: 바로 앞 공백 없음, 바로 뒤 공백 (강조 닫힘 </strong> 이 사이에 와도 됨 — 슬래시까지 강조)
+const LABEL_SLASH = /(?<=\S)\/(?=(?:<\/strong>)?[ \u00A0]+\S)/;
+const LABEL_DSLASH = /(?<=\S)\/\/(?=(?:<\/strong>)?[ \u00A0]+\S)/;   // "키워드// 설명": 단락 모드 — 문단에서는 들여쓰기 + 독립 단락(p-keyed--block). 화면에는 슬래시 하나만. 캡션 · 목록에서는 보통 라벨과 같음
+// 단락 모드 줄은 저마다 한 문단이 되도록 앞에 빈 줄을 보장 (marked 는 breaks:false 라 이어진 줄을 한 문단으로 합침). URL 의 // 는 뒤에 공백이 없어 제외
+const dslashBlocks = (src: string) => src.replace(/\n(?!\n)(?=[^\s+\-#!<>|\d*][^\n]{0,40}\/\/[ \u00A0]|\*\*[^\n]{0,40}\/\/[ \u00A0])/g, '\n\n');   // 라벨 슬래시: 바로 앞 공백 없음, 바로 뒤 공백 (강조 닫힘 </strong> 이 사이에 와도 됨 — 슬래시까지 강조)
 function labelize(text: string, cls: 'cap' | 'li' | 'p'): string {
   let out = '';
   let rest = text;
   const num = cls === 'cap' ? rest.match(LABEL_NUM) : null;
   if (num) { out += `<span class="cap-num">${num[1]}/</span>`; rest = rest.slice(num[0].length); }
-  const i = rest.search(LABEL_SLASH);
+  const d = rest.search(LABEL_DSLASH);
+  const block = d > 0;
+  const i = block ? d : rest.search(LABEL_SLASH);
   if (i > 0) {
     const w = rest.slice(0, i);
     const plain = w.replace(/<\/?strong>/g, '');                    // 키워드 안에는 **강조** 태그만 허용 (웨이트 · 색은 거기서)
     if (!/[<>%]/.test(plain) && !/^\s/.test(plain) && plain.length <= 40) {
-      let after = rest.slice(i + 1);
+      let after = rest.slice(i + (block ? 2 : 1));
       let close = '';
       if (after.startsWith('</strong>')) { close = '</strong>'; after = after.slice(9); }   // "**키워드/**": 닫힘을 슬래시 뒤로 — 슬래시도 강조
-      out += `<span class="${cls}-key">${w}<span class="cap-slash">/</span>${close}</span>`;
+      out += `<span class="${cls}-key${block && cls === 'p' ? ' p-key--block' : ''}">${w}<span class="cap-slash">/</span>${close}</span>`;
       rest = after.replace(/^[ \u00A0]+/, '');
     }
   }
@@ -361,7 +366,7 @@ function listKeys(html: string): string {
     })
     .replace(/<p>((?:<\/?strong>|[^<\n])+)/g, (m, text) => {
       const out = labelize(text, 'p');
-      return out === text ? m : `<p class="p-keyed">${out}`;
+      return out === text ? m : `<p class="p-keyed${out.includes('p-key--block') ? ' p-keyed--block' : ''}">${out}`;
     });
 }
 
