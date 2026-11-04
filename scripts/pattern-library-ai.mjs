@@ -33,8 +33,8 @@ if (items.length !== 30 || missing.length) throw new Error(`patterns: ${items.le
 // ── 양식 (아트보드 크기별 프리셋: --size 1440x1080 | 2560x1440) ───────────────
 const PRESETS = {
   '1440x1080': { W: 1440, H: 1080, UNIT: 28, M: 50, COLS: 6, ROWS: 5, GUT: 28, PITCH: 7 * 28, CAP_DY: 5 * 28, CAP_LINES: 2, CAP: { size: 20, leading: 24, tracking: -70 } },   // 카드 폭 = (1440 − 100 − 5×28) / 6 = 200, 16:9
-  // 2560×1440 (16:9 라 세로가 부족): 마진 80 사방. 가로 거터 64 → 카드 폭 (2560 − 160 − 320) / 6 = 346.67. 세로는 행 간격(캡션 아래 ↔ 다음 카드) 45 · 캡션 위 간격 20 · 캡션 28 을 정하고 카드 높이를 역산 → 172 (2.02:1, 16:9 보다 13% 넓힘)
-  '2560x1440': { W: 2560, H: 1440, UNIT: 32, M: 80, COLS: 6, ROWS: 5, GUT: 64, CAP_GAP: 20, ROW_GAP: 45, CAP_BOX_H: 28, CAP_LINES: 1, CAP: { size: 24, leading: 28, tracking: -70 } },
+  // 2560×1440 (16:9 라 세로가 부족): 마진 80 사방. 가로 거터 48 → 카드 폭 (2560 − 160 − 240) / 6 = 360. 세로는 행 간격(캡션 아래 ↔ 다음 카드) 36 · 캡션 위 간격 16 · 캡션 20/24 를 정하고 카드 높이를 역산 → 187.2 (1.92:1, 16:9 보다 8% 넓힘)
+  '2560x1440': { W: 2560, H: 1440, UNIT: 32, M: 80, COLS: 6, ROWS: 5, GUT: 48, CAP_GAP: 16, ROW_GAP: 36, CAP_BOX_H: 24, CAP_LINES: 1, CAP: { size: 20, leading: 24, tracking: -70 } },
 };
 const SIZE = args.find(a => /^\d+x\d+$/.test(a)) ?? (args.includes('--size') ? args[args.indexOf('--size') + 1] : '1440x1080');
 const P = PRESETS[SIZE]; if (!P) throw new Error(`unknown size ${SIZE}: ${Object.keys(PRESETS).join(' | ')}`);
