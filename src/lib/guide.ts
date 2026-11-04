@@ -246,7 +246,7 @@ const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
  */
 const COLOR_NAMES = ['Builder Neon', 'Day Blue', 'Bay Green', 'Medium Gray', 'Solid Gray', 'Space Black', 'Air White'];
 const colorSlug = (name: string) => name.toLowerCase().replace(/ /g, '-');
-/** 이름 → HEX (tokens.css 3. COLOR 의 --c-* 를 빌드 때 읽음). 칩을 누르면 이 값을 복사 */
+/** 이름 → HEX (tokens.css A-2 컬러의 --c-* 를 빌드 때 읽음). 칩을 누르면 이 값을 복사 */
 const colorHexes = (tokens: Tokens): Record<string, string> =>
   Object.fromEntries(COLOR_NAMES.map(n => [n, tokenHex(tokens, `--c-${colorSlug(n)}`, '').toUpperCase()]));
 /** 한 번의 파싱 동안 공유하는 것: 언어(UI 문구), 컬러 HEX */
