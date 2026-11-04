@@ -1,9 +1,9 @@
 /**
- * 패턴 라이브러리 30종 한 장(4:3) — Illustrator 생성: node scripts/pattern-library-ai.mjs [--run] [출력 폴더]
+ * 패턴 라이브러리 30종 한 장 — Illustrator 생성: node scripts/pattern-library-ai.mjs [--run] [1440x1080 | 2560x1440] [출력 폴더]
  *   기본 출력: ~/Downloads/temp/pattern-library-ai/  (pattern-library.jsx · pattern-library.ai · pattern-library.png · @2x · jsx-log.txt)
  *   --run 이면 osascript 로 Illustrator 에 .jsx 를 실행 (Illustrator 가 켜져 있어야 함).
  *
- * 양식 (장표 규칙과 같은 28px 격자, 4:3 세이프 영역 그대로 아트보드로): 1440×1080, 마진 50 → 콘텐츠 x 50–1390 · y 50–1030.
+ * 양식 (기본 1440x1080 = 4:3, 장표 규칙과 같은 28px 격자. 2560x1440 은 PRESETS 참조): 1440×1080, 마진 50 → 콘텐츠 x 50–1390 · y 50–1030.
  *   6컬럼 200 · 거터 28 (6×200 + 5×28 = 1340) × 5행, 행 피치 196 (= 7행 × 28): 카드 16:9 200×112.5 가 행 윗선에, 캡션은 카드 윗선 +140 (5행) 에, 박스 폭 228(거터 포함) × 2줄 — 긴 이름은 둘째 줄로.
  *   캡션 Founders Grotesk Mono 20 · 행간 24 · 자간 -70, "05/ " 는 Medium Gray, 이름은 Air White. 배경 Space Black. 카드는 SVG 원본(자체 배경 Solid Gray) 그대로 임베드.
  *   레이어: bg(배경) · content(카드 · 캡션) · guide(격자, 내보낼 때 숨김).
@@ -15,7 +15,7 @@ import { execFileSync } from 'node:child_process';
 
 const args = process.argv.slice(2);
 const run = args.includes('--run');
-const OUT = (args.find(a => !a.startsWith('--')) ?? path.join(os.homedir(), 'Downloads', 'temp', 'pattern-library-ai')).replace(/^~(?=\/|$)/, os.homedir());
+const OUT = (args.find((a, i) => !a.startsWith('--') && !/^\d+x\d+$/.test(a) && args[i - 1] !== '--size') ?? path.join(os.homedir(), 'Downloads', 'temp', 'pattern-library-ai')).replace(/^~(?=\/|$)/, os.homedir());
 fs.mkdirSync(OUT, { recursive: true });
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
@@ -30,13 +30,20 @@ const items = [...MD.matchAll(/^!\[pattern-(\d\d)\]\s+\d\d\/\s+(.+?)\s*$/gm)].ma
 const missing = items.filter(i => !i.file).map(i => i.n);
 if (items.length !== 30 || missing.length) throw new Error(`patterns: ${items.length} found, svg missing: ${missing.join(',') || 'none'}`);
 
-// ── 양식 ────────────────────────────────────────────────────────────────
-const W = 1440, H = 1080, UNIT = 28, M = 50;
-const COLS = 6, ROWS = 5, GUT = 28, CARD_W = 200, CARD_H = CARD_W * 9 / 16, PITCH = 7 * UNIT;
-const CAP_DY = 5 * UNIT;                      // 카드 윗선 ↔ 캡션 박스 윗선
+// ── 양식 (아트보드 크기별 프리셋: --size 1440x1080 | 2560x1440) ───────────────
+const PRESETS = {
+  '1440x1080': { W: 1440, H: 1080, UNIT: 28, M: 50, COLS: 6, ROWS: 5, GUT: 28, CARD_W: 200, PITCH: 7 * 28, CAP_DY: 5 * 28, CAP_LINES: 2, CAP: { size: 20, leading: 24, tracking: -70 } },
+  // 2560×1440 (16:9 라 세로가 부족): 마진 80 → 6×320 + 5×64 = 2400, 행 피치 256 (= 8 × 32) × 5 = 1280. 카드 180 높이 · 캡션 윗선 +200 (아래 간격 20) · 캡션 24/28 한 줄(폭 384 = 카드 + 거터, 가장 긴 이름 27자 ≈ 343) · 다음 카드까지 28
+  '2560x1440': { W: 2560, H: 1440, UNIT: 32, M: 80, COLS: 6, ROWS: 5, GUT: 64, CARD_W: 320, PITCH: 8 * 32, CAP_DY: 200, CAP_LINES: 1, CAP: { size: 24, leading: 28, tracking: -70 } },
+};
+const SIZE = args.find(a => /^\d+x\d+$/.test(a)) ?? (args.includes('--size') ? args[args.indexOf('--size') + 1] : '1440x1080');
+const P = PRESETS[SIZE]; if (!P) throw new Error(`unknown size ${SIZE}: ${Object.keys(PRESETS).join(' | ')}`);
+const { W, H, UNIT, M, COLS, ROWS, GUT, CARD_W, PITCH, CAP_DY, CAP_LINES } = P;
+const CARD_H = CARD_W * 9 / 16;
+const NAME = SIZE === '1440x1080' ? 'pattern-library' : `pattern-library-${SIZE}`;   // 출력 파일 이름
 const X = c => M + c * (CARD_W + GUT), Y = r => M + r * PITCH;
 const BG = '#000000', GRAY = '#8e8e8e', WHITE = '#fcfbf5';
-const CAPTION = { font: 'FoundersGroteskMono-Regular', size: 20, leading: 24, tracking: -70 };
+const CAPTION = { font: 'FoundersGroteskMono-Regular', ...P.CAP };
 const js = s => JSON.stringify(s).replace(/[\u0080-￿]/g, ch => '\\u' + ch.charCodeAt(0).toString(16).padStart(4, '0'));
 
 const cards = items.map((it, i) => ({
@@ -55,7 +62,7 @@ const jsx = `#target illustrator
   try {
     app.userInteractionLevel = UserInteractionLevel.DONTDISPLAYALERTS;
     app.coordinateSystem = CoordinateSystem.DOCUMENTCOORDINATESYSTEM;
-    for (var d2 = app.documents.length - 1; d2 >= 0; d2--) if (app.documents[d2].name == 'pattern-library.ai') app.documents[d2].close(SaveOptions.DONOTSAVECHANGES);
+    for (var d2 = app.documents.length - 1; d2 >= 0; d2--) if (app.documents[d2].name == ${js(NAME + '.ai')}) app.documents[d2].close(SaveOptions.DONOTSAVECHANGES);
     var doc = app.documents.add(DocumentColorSpace.RGB, ${W}, ${H});
     var ab = doc.artboards[0].artboardRect, L0 = ab[0], T0 = ab[1];
     var content = doc.layers[0]; content.name = 'content';
@@ -84,7 +91,7 @@ const jsx = `#target illustrator
       gb = grp.geometricBounds;
       if (Math.abs((gb[2] - gb[0]) - e.w) > 0.5 || Math.abs((gb[1] - gb[3]) - e.h) > 0.5 || n == 0) say(e.name + ' items=' + n + ' size ' + (gb[2] - gb[0]).toFixed(1) + 'x' + (gb[1] - gb[3]).toFixed(1));
       // 캡션: 영역 텍스트, 첫 베이스라인 엠박스, "05/" 회색 · 이름 흰색
-      var tf = content.textFrames.areaText(content.pathItems.rectangle(T0 - (e.y + ${CAP_DY}), L0 + e.x, e.w + ${GUT}, 2 * ${UNIT}));   // 거터까지 폭, 두 줄 (긴 이름은 둘째 줄로)
+      var tf = content.textFrames.areaText(content.pathItems.rectangle(T0 - (e.y + ${CAP_DY}), L0 + e.x, e.w + ${GUT}, ${CAP_LINES} * ${UNIT}));   // 거터까지 폭, 프리셋 줄 수 (긴 이름은 둘째 줄로)
       tf.contents = e.label; tf.name = e.name + ' caption';
       var ca = tf.textRange.characterAttributes;
       ca.textFont = capFont; ca.size = ${CAPTION.size}; ca.autoLeading = false; ca.leading = ${CAPTION.leading}; ca.tracking = ${CAPTION.tracking}; ca.fillColor = rgb(${js(WHITE)});
@@ -94,19 +101,19 @@ const jsx = `#target illustrator
     var opts = new ExportOptionsPNG24();
     opts.artBoardClipping = true; opts.transparency = false; opts.antiAliasing = true;
     guide.visible = false;
-    opts.horizontalScale = 100; opts.verticalScale = 100; doc.exportFile(new File(OUT + '/pattern-library.png'), ExportType.PNG24, opts);
-    opts.horizontalScale = 200; opts.verticalScale = 200; doc.exportFile(new File(OUT + '/pattern-library@2x.png'), ExportType.PNG24, opts);
+    opts.horizontalScale = 100; opts.verticalScale = 100; doc.exportFile(new File(OUT + '/' + ${js(NAME)} + '.png'), ExportType.PNG24, opts);
+    opts.horizontalScale = 200; opts.verticalScale = 200; doc.exportFile(new File(OUT + '/' + ${js(NAME)} + '@2x.png'), ExportType.PNG24, opts);
     guide.visible = true;
     say('exported png');
-    try { doc.saveAs(new File(OUT + '/pattern-library.ai')); say('saved pattern-library.ai'); } catch (x) { say('save failed: ' + x); }
+    try { doc.saveAs(new File(OUT + '/' + ${js(NAME)} + '.ai')); say('saved ' + ${js(NAME)} + '.ai'); } catch (x) { say('save failed: ' + x); }
     say('DONE');
   } catch (err) { say('ERROR ' + err + ' line ' + err.line); }
   flush();
 })();
 `;
-const jsxPath = path.join(OUT, 'pattern-library.jsx');
+const jsxPath = path.join(OUT, `${NAME}.jsx`);
 fs.writeFileSync(jsxPath, jsx);
-console.log('wrote', jsxPath, `(${cards.length} cards)`);
+console.log('wrote', jsxPath, `(${cards.length} cards, ${SIZE})`);
 
 if (run) {
   try { fs.unlinkSync(path.join(OUT, 'jsx-log.txt')); } catch {}
