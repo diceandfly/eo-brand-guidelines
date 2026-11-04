@@ -202,7 +202,7 @@ button {
   padding-left: calc(var(--t-body-sublist-offset) + var(--t-body-list-indent)); /* 2단 불릿은 상위 글 시작선 (+ --t-body-sublist-offset) */
 }
 .t-body li > ol {
-  padding-left: var(--t-body-sublist-offset); /* 중첩 번호 "1/" 는 인라인이라 자리값 없이 상위 글 시작선(+ --t-body-sublist-offset)에서 흐름 */
+  padding-left: calc(var(--t-body-sublist-offset) + var(--t-body-olist-indent)); /* 2단 번호도 상위 글 시작선 (+ --t-body-sublist-offset) 에서 행잉 */
 }
 .t-body li li + li {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-sublist-item-gap));
@@ -1477,19 +1477,20 @@ html.js .main {
 .t-body ol {
   list-style: none;
   counter-reset: item;
-  padding-left: var(--t-body-olist-offset); /* 마진 ↔ 마커. 마커는 인라인이라 글은 마커 + --cap-num-gap 뒤에서 시작하고, 줄이 넘어가면 마커 자리로 돌아감 (캡션 "1/" 과 같음, 행잉 없음) */
+  padding-left: calc(var(--t-body-olist-offset) + var(--t-body-olist-indent)); /* 마진 ↔ 마커 + 마커 ↔ 글. 불릿 목록(.t-body ul)과 같은 행잉 구조 — 글은 --t-body-olist-indent 뒤에서 시작하고 줄이 넘어가도 거기에 걸림 */
 }
 .t-body ol > li {
   counter-increment: item;
+  position: relative;
 }
 .t-body ol > li::before {
   content: counter(item) '/';
   font-family: var(--font-mono); /* "1/" — 숫자 폭이 같아 1 과 5 가 같은 자리에. 캡션 번호와 같은 보정 (--num-marker-*) */
-  display: inline-block; /* 세로 보정(transform)이 먹도록 */
+  position: absolute;
+  left: calc(-1 * var(--t-body-olist-indent) / var(--num-marker-scale)); /* 마커는 거터에 (불릿 ::before 와 같음). ::before 는 글자를 줄였으므로 em 을 되돌려 본문 글자 기준 1.6em 자리에 */
   font-size: calc(1em * var(--num-marker-scale));
   letter-spacing: var(--num-marker-ls);
   transform: translateY(var(--num-marker-dy));
-  margin-right: calc(var(--cap-num-gap) / var(--num-marker-scale)); /* 간격은 줄인 글자가 아니라 본문 글자 기준 0.6em 그대로 — 캡션 "1/" · 키워드 라벨과 같음 */
 }
 .t-body li > ol > li::before {
   color: var(--t-body-olist-nested-c); /* 중첩 번호는 한 톤 죽여 상위 불릿보다 약하게 */
