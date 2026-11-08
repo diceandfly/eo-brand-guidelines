@@ -75,6 +75,27 @@ resetWrapperScroll();
 window.addEventListener('load', resetWrapperScroll);
 
 /**
+ * 브라우저의 페이지 검색(Cmd+F)은 래퍼조차 굴리지 않고 찾은 글자를 선택 영역으로만 잡습니다(고정 래퍼 안이라 스크롤을 포기).
+ * 그래서 선택 영역이 화면 밖에 생기면 스무더를 그 자리로 바로 옮깁니다. 마우스 · 키보드 선택은 화면 안에서 시작하므로 영향 없음.
+ */
+document.addEventListener('selectionchange', () => {
+  if (!smoother || !content) return;
+  const sel = document.getSelection();
+  if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return;
+  const range = sel.getRangeAt(0);
+  if (!content.contains(range.startContainer)) return;
+  const r = range.getBoundingClientRect();
+  if (!r.height || (r.bottom > 0 && r.top < innerHeight)) return;            // 이미 화면 안
+  const y = smoother.scrollTop() + r.top - Math.max(anchorOffset(), innerHeight * 0.3);
+  // 검색이 선택 영역을 잡는 처리가 끝난 다음 프레임에 옮깁니다(같은 틱에 옮기면 브라우저가 되돌림)
+  setTimeout(() => {
+    if (!smoother) return;
+    stopAnchorTween();
+    smoother.scrollTo(Math.min(ScrollTrigger.maxScroll(window), Math.max(0, y)), false);
+  }, 30);
+});
+
+/**
  * 섹션 이동(목차 클릭·검색 클릭·검색으로 다른 페이지에 도착).
  * 휠 스크롤의 감속 곡선(--scroll-smooth, 꼬리가 긴 expo)과는 별개의 전용 트윈으로,
  * 거리와 무관하게 --anchor-dur 초 안에 --anchor-ease 곡선으로 도착합니다.
