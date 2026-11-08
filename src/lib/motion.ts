@@ -51,10 +51,34 @@ const wrapper = document.getElementById('smooth-wrapper');
 const content = document.getElementById('smooth-content');
 let smoother: ScrollSmoother | null = null;
 
-if (smoothAmount > 0 && wrapper && content) {
-  smoother = ScrollSmoother.create({ wrapper, content, smooth: smoothAmount, effects: false, smoothTouch: 0 });
-}
+const createSmoother = () => ScrollSmoother.create({ wrapper: wrapper!, content: content!, smooth: smoothAmount, effects: false, smoothTouch: 0 });
+if (smoothAmount > 0 && wrapper && content) smoother = createSmoother();
 (window as any).__smoother = smoother;
+
+/* 브라우저 페이지 검색(Cmd/Ctrl+F): 검색창은 transform 으로 움직이는 본문을 스크롤하지 못하고, 찾은 글자도 검색창을 닫기 전까지는 선택 영역으로 드러나지 않습니다.
+   그래서 검색 단축키가 눌리면 스무더를 끄고 네이티브 스크롤로 두었다가(브라우저가 직접 굴릴 수 있게), 다음 휠 · 터치 입력 때 같은 위치에서 다시 만듭니다. */
+let findMode = false;
+const suspendSmoother = () => {
+  if (!smoother || findMode) return;
+  findMode = true;
+  const y = smoother.scrollTop();
+  smoother.kill();
+  smoother = null;
+  (window as any).__smoother = null;
+  window.scrollTo(0, y);
+};
+const resumeSmoother = () => {
+  if (!findMode || !wrapper || !content) return;
+  findMode = false;
+  const y = window.scrollY;
+  smoother = createSmoother();
+  smoother.scrollTop(y);
+  (window as any).__smoother = smoother;
+  ScrollTrigger.refresh();
+};
+document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && !e.altKey && (e.key === 'f' || e.key === 'g' || e.key === 'e')) suspendSmoother(); });   // f: 찾기, g: 다음 찾기, e: 선택 영역으로 찾기
+window.addEventListener('wheel', resumeSmoother, { passive: true });
+window.addEventListener('touchstart', resumeSmoother, { passive: true });
 (window as any).__ST = ScrollTrigger;                           // 디버그용 (브라우저 콘솔에서 refresh 등 확인)
 // 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품.
 // ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계" 라서 스크롤을 부드럽게 따라가지 않고 바로 점프하므로, 그 시간이 지난 뒤에 풉니다.
