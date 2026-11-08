@@ -58,11 +58,15 @@ if (smoothAmount > 0 && wrapper && content) {
 (window as any).__ST = ScrollTrigger;                           // 디버그용 (브라우저 콘솔에서 refresh 등 확인)
 // 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품.
 // ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계" 라서 스크롤을 부드럽게 따라가지 않고 바로 점프하므로, 그 시간이 지난 뒤에 풉니다.
+let guardReleased = false;
 const releaseGuard = () => {
   (window as any).__scrollGuardOff?.();
   ScrollTrigger.refresh();                                      // 잠금 중(body 고정)에는 문서 스크롤 범위가 0 이라, 풀린 뒤 다시 잼
+  guardReleased = true;
+  arriveAtHash();                                               // #섹션으로 들어온 경우, 스크롤 범위가 생긴 뒤에 이동
 };
-if (smoother) gsap.delayedCall(ms('--scroll-guard-hold', 0.6), releaseGuard); else releaseGuard();
+// setTimeout 으로 잡습니다: gsap.delayedCall 은 rAF 기반이라 백그라운드 탭(Cmd+클릭 등)에서는 멈춰 가드가 3초 폴백까지 안 풀리고, #섹션 도착 이동도 못 합니다.
+if (smoother) setTimeout(releaseGuard, ms('--scroll-guard-hold', 0.6) * 1000); else releaseGuard();
 
 const anchorOffset = () => num('--anchor-offset', 64);
 
@@ -237,14 +241,28 @@ document.addEventListener('click', e => {
 });
 
 // 주소에 #섹션 을 달고 들어온 경우 (검색 결과로 다른 페이지에 도착 등).
-// 폰트·이미지까지 다 자리 잡은 뒤(load) 높이를 다시 재고 이동해야 위치가 어긋나지 않습니다.
-if (location.hash) {
+// 두 조건이 다 갖춰진 뒤 한 번만 이동합니다: (1) 폰트·이미지까지 자리 잡은 load, (2) 로드 가드가 풀려 스크롤 범위가 생긴 뒤.
+// 가드가 풀리기 전에는 html 이 overflow: hidden 이라 maxScroll 이 0 → scrollToId 가 0 으로 잘려 제자리에 머뭅니다(검색으로 다른 페이지에 도착해도 안 움직이던 원인).
+let loaded = document.readyState === 'complete';
+let arrived = false;
+function arriveAtHash() {
+  if (arrived || !loaded || !guardReleased || !location.hash) return;
   const id = decodeURIComponent(location.hash.slice(1));
-  // 다른 페이지의 섹션으로 온 경우(검색 등): 맨 위에서 섹션까지 목차 클릭과 같은 트윈으로 이동
-  const go = () => requestAnimationFrame(() => { ScrollTrigger.refresh(); scrollToId(id, true); });
-  if (document.readyState === 'complete') go();
-  else window.addEventListener('load', go, { once: true });
+  if (!document.getElementById(id)) return;
+  arrived = true;
+  // rAF 가 아니라 setTimeout: 백그라운드 탭에서는 rAF 가 멈춰 있어 도착 이동이 영영 안 일어납니다
+  setTimeout(() => {
+    ScrollTrigger.refresh();
+    scrollToId(id, true);                                     // 맨 위에서 섹션까지 목차 클릭과 같은 트윈으로
+    // 트윈이 돌지 못했으면(rAF 정지 · 탭 숨김) 바로 점프해서라도 도착시킵니다
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el && Math.abs(el.getBoundingClientRect().top - anchorOffset()) > 4) scrollToId(id, false);
+    }, (ms('--anchor-dur', 0.56) * 1.5 + 0.3) * 1000);
+  }, 0);
 }
+if (!loaded) window.addEventListener('load', () => { loaded = true; arriveAtHash(); }, { once: true });
+else arriveAtHash();
 
 /* ---------- 2.5 스크롤스파이 ----------
    본문을 스크롤하면 목차의 섹션 목록([data-scrollspy], 현재 페이지에만 있음)에서 지금 보고 있는 섹션을 강조합니다.
