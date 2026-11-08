@@ -213,9 +213,9 @@ Clearspace is the minimum safeguard that protects the symbol when it sits next t
 The EO symbol is designed and tested to work across a range of sizes.
 
 - The **optimal range** is a height of 40-100px (approx. 8-20mm) on a 16-inch Mac display viewed from 500mm. Converted to viewing distance, that is 1/60-1/25 of the distance; in other media, size the symbol by this ratio. The optical correction of the thread angles is also tuned to this range.
-- The **recommended maximum size** is a height of 70px (approx. 15mm, 1/40 of the viewing distance). In a typical layout, we recommend not exceeding this size.
-- The **minimum size** is a height of 20px on screen (approx. 4mm, 1/125 of the viewing distance) and 5mm in print. Below this the threads of the E block fill in, so ask the EO design team to check.
-- The **maximum size** is a height of 135px (approx. 30mm, 1/20 of the viewing distance). Any larger and the symbol reads as a surface rather than a graphic, so when you need a greater presence, use a graphic pattern instead of the symbol.
+- The **recommended maximum size** is a height of 70px (approx. 15mm, 1/33 of the viewing distance). In a typical layout, we recommend not exceeding this size.
+- The **minimum size** is a height of 20px on screen (approx. 4mm, 1/125 of the viewing distance) and 4mm in print. Below this the threads of the E block fill in, so ask the EO design team to check.
+- The **maximum size** is a height of 125px (approx. 25mm, 1/20 of the viewing distance). Any larger and the symbol reads as a surface rather than a graphic, so when you need a greater presence, use a graphic pattern instead of the symbol.
 ![scalability] {zoom=1.05}
 
 
@@ -229,7 +229,7 @@ When used as a sign-off, place the symbol in the corner farthest from the hero o
 
 ### Usage {layout=grid-2}
 #### Do's & Don'ts
-When using the symbol for display purposes, **avoid raising its visual hierarchy simply by making it bigger.** Secure enough empty space around the symbol's position so that it keeps its impact at an appropriate size. It is best when the symbol's actual footprint is around 10% of the whole empty area, and the surrounding empty space is at least 2-3 times the symbol's width.
+When using the symbol for display purposes, **avoid raising its visual hierarchy simply by making it bigger.** Secure enough empty space around the symbol's position so that it keeps its impact at an appropriate size. It is best when the symbol's actual footprint is around 10-20% of the whole empty area, and the surrounding empty space is at least 2-3 times the symbol's width.
 ![usage-do-1]{do} Size the symbol at around 10-20% of the empty area it is placed in
 ![usage-do-2]{do} Leave generous space around the symbol so it has enough presence even at a moderate size
 ![usage-dont-1]{dont} Don't fill the empty space with the symbol
@@ -274,7 +274,7 @@ The guidance in this section focuses on overlays on still images rather than vid
 #### Horizontal
 The following image is an example of the basic horizontal lockup of the EO symbol with partner brands' and collaborators' logos.
 
-The elements must be optically adjusted so that they appear the same size; once each logo is sized, add space between them along with a vertical dividing line · collaboration mark. The space between the EO symbol and the partner logo equals 2 or 3 times the width of one E block (W), and the two logos must always be optically centered on the vertical axis.
+The elements must be optically adjusted so that they appear the same size; once each logo is sized, add space between them along with a vertical dividing line · collaboration mark. The space between the EO symbol and the partner logo is based on the width of one E block (W): 1.5 W with a dividing line, 2 W with a collaboration mark, and the two logos must always be optically centered on the vertical axis.
 ![lockup-h] {zoom=1.05}
 
 
@@ -367,7 +367,7 @@ The sizes on this page are written, as on the Symbol page, as the symbol height 
 The smaller the signature is seen, the more the symbol and descriptor read as one mass; the larger, the more each letter of the descriptor stands out. The form therefore depends on the visible size, and the boundary is a symbol height of 10mm (50px, 1/50).
 
 - **At 4-10mm (20-50px), use only the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable and it can appear to split into three masses: symbol · EO · Studio. Within the 6-10mm size range, consider the "Studio" version as an alternative.
-- **At 10mm (50px, 1/50) and above, use only the vertical signature.** From this size the vertical form's descriptor (cap height approx. 2.4mm) reads crisply. The recommended maximum is a symbol height of 15mm (70px, 1/40), and the maximum is a symbol height of 30mm (135px, 1/20).
+- **At 10mm (50px, 1/50) and above, use only the vertical signature.** From this size the vertical form's descriptor (cap height approx. 2.4mm) reads crisply. The recommended maximum is a symbol height of 15mm (70px, 1/33), and the maximum is a symbol height of 25mm (125px, 1/20).
 - As with the symbol's minimum size limit, the signature is not used below 4mm (20px, 1/125) either.
 ![scalability] {zoom=1.05}
 
@@ -447,7 +447,7 @@ This keeps the gray level balance between symbol and descriptor the same as the 
 #### Horizontal
 The EO signature can be locked up with partner brands' and collaborators' logos. The images in this section are examples of the basic lockup construction.
 
-The elements must be optically adjusted so that they appear the same size. Once each logo is sized, you can add space and a dividing line · collaboration mark between them. The space between the EO symbol and the partner logo is 2 or 3 times the width of one E block (W).
+The elements must be optically adjusted so that they appear the same size. Once each logo is sized, you can add space and a dividing line · collaboration mark between them. The space between the EO symbol and the partner logo is based on the width of one E block (W): 1.5 W with a dividing line, 2 W with a collaboration mark.
 ![partner-h] {zoom=1.05}
 
 
@@ -455,7 +455,7 @@ The elements must be optically adjusted so that they appear the same size. Once 
 #### Vertical
 The EO signature can also be locked up vertically with partner brands' and collaborators' logos. On the right is an example of the basic vertical lockup construction.
 
-The elements must be optically adjusted so that they appear the same size. Once each logo is sized, you can add space and a dividing line between them. Make the space equal to the height of the EO signature (H), and place the dividing line horizontally at its center.
+The elements must be optically adjusted so that they appear the same size. Once each logo is sized, you can add space and a dividing line between them. Make the space between the two logos 1.5 times the height of the EO signature (H), and place the dividing line horizontally at its center.
 
 Make sure the logos are always optically centered.
 ![partner-v] {zoom=1.05}
@@ -497,7 +497,7 @@ The sub symbol also needs margin on the same basis as the EO symbol. Taking the 
 
 ### Sub Symbol
 #### + Color {layout=grid-2} {zoom=1.05}
-The sub symbol uses color pairings 1 and 2 of the EO symbol. Always render it in a single color.
+The sub symbol uses only the two combinations Builder Neon on Space Black · Space Black on Builder Neon. Always render it in a single color.
 ![color-1] 1. Builder Neon on Space Black
 ![color-2] 2. Space Black on Builder Neon
 
@@ -603,7 +603,7 @@ A seven-level preset based on Line Unit 1x = 28px. The first letter of a level n
 - **T2** - 1x / Light / 150% / +1.5% [Solid Gray] · +2% [Space Black] (18.67px). Body > readability first
 - **C1** — 0.5x / Mono Regular / 111% / -7% (12.6px). Caption · label · tag · spec · date · button
 
-The recommended weight for each level follows these criteria. Medium for display and headlines (D1 · H1), Regular for sub-display and sub-headlines (D2 · H2 · H3), Light for body copy (T1), Mono Regular for informational text (C1). Founders Grotesk Semibold is used only in a limited way, for optical correction at headline level when dark content sits on a light background color. Keyword emphasis within body copy does not change weight and uses the Builder Neon color only.
+The recommended weight for each level follows these criteria. Medium for display and headlines (D1 · H1), Regular for sub-display and sub-headlines (D2 · H2 · H3), Light for body copy (T1), Mono Regular for informational text (C1). Founders Grotesk Semibold is used only in a limited way, at the designer's discretion, for optical correction when Medium-level display text is inverted onto a light background and shown small. Keyword emphasis within body copy does not change weight and uses the Builder Neon color only.
 
 Set level multiples in steps of 1x · 0.5x · 0.25x, and refine linespacing ratio and tracking so that the gray level carries consistently between adjacent levels. For the adjusted values for Korean and Vietnamese, see [[#multilingual|Multilingual]].
 
@@ -635,7 +635,7 @@ Levels are divided by the role of the content. The one or two words that represe
 
 - **Number of levels** — headline and body, or headline · body · caption. Dividing levels by role is the default, but too many levels make consistent typography steeply harder, so first consider whether information of similar role and priority can be merged into one level.
 - **Contrast between levels** — the look and feel of typography is largely decided by the degree of contrast between adjacent levels. Going from body (1x) to headline, and from headline to display, the step should be two times or more (2-3x) for the roles to be told apart at a glance. Within a role that handles detailed content (H2 → H3), a multiple of about 1.5 is appropriate. Divide all multiples in steps of 1x · 0.5x · 0.25x so that they fit the baseline grid.
-- **Symbol and levels** — treat the symbol like a level. Setting a whole multiple of the symbol height (1x · 0.5x) as the Line Unit ties the symbol and the typography to the same unit. The size of the symbol follows [[symbol#scalability]].
+- **Symbol and levels** — treat the symbol like a level. Setting 1x or 0.5x of the symbol height as the Line Unit ties the symbol and the typography to the same unit. The size of the symbol follows [[symbol#scalability]].
 
 As a rule, the larger the level, the heavier the weight and the tighter the linespacing ratio and tracking. In practice, though, levelling is less a linear procedure in table-of-contents order than a process of tuning [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · weight against each other at the same time. For the preset values, see [[#reference-scale|Reference Scale]].
 ![levelling-sizing]{bg-color}
@@ -817,7 +817,7 @@ Each color is provided as HEX · RGB for screen and CMYK · Pantone for print, s
 ### Color
 #### Usage Ratio
 
-The background defaults to Solid Gray or Space Black, and in media that can use photography, the San Francisco sky itself becomes the background. The recommended ratio for the graphic elements placed on the background is Builder Neon 50%, Day Blue · Bay Green 30%, Medium Gray 20%. Text is Air White or Space Black and takes up around 10% of the whole composition. In text-centered media the share of the background grows; in pattern-centered media the share of Builder Neon grows. In contexts sufficiently recognized as the EO brand, such as social channels or series artwork, Day Blue · Bay Green can be used more widely than the recommended ratio.
+The background defaults to Solid Gray or Space Black, and in media that can use photography, the San Francisco sky itself becomes the background. The recommended ratio for the graphic elements placed on the background is Builder Neon 50%, Day Blue · Bay Green 30%, Medium Gray · Air White 20%. Text is Air White or Space Black and takes up around 10% of the whole composition. In text-centered media the share of the background grows; in pattern-centered media the share of Builder Neon grows. In contexts sufficiently recognized as the EO brand, such as social channels or series artwork, Day Blue · Bay Green can be used more widely than the recommended ratio.
 
 For detailed application criteria per asset, see the color section of each page.
 
@@ -866,9 +866,9 @@ The **EO graphic unit** (hereafter the unit) is designed on the motif of the thr
 The **EO graphic unit** (hereafter the unit) is the smallest element of the graphic system; the E block of the logo · the pattern library · application graphics are all produced with the same system. Units are generated from parameters in the EO Graphic Builder; for detailed usage, refer to the Help menu inside the builder.
 
 - **shaft size** — the thickness of the shaft rectangle, as a % of the unit's total height including the threads on both sides. At the default of around 35%, visual density is easy to keep ideal even in relatively complex graphic patterns.
-- **thread top / bottom width** — the widths of the top and bottom edges of a thread. The difference between the two sets the slope of the thread. Defaults are top 40% · bottom 0%.
+- **thread top / bottom width** — the widths of the top and bottom edges of a thread. A thread is a trapezoid abstracted from a screw thread: its right side stands vertical at the end of the column, its left side slopes, and the lower thread is the upper one rotated 180° about the center of the column. The difference between the two widths sets the slope of the thread. Defaults are top 40% · bottom 0%.
 - **thread sides** — double attaches threads above and below the shaft; single attaches threads only on top, with the shaft resting on the bottom.
-- **thread amount** — the trapezoid shapes abstracted from screw threads, one attached above and one below the shaft. The right side stands vertical at the end of the column and the left side slopes. The lower thread is the upper one rotated 180° about the column center.
+- **thread amount** — the number of threads attached to each side of the shaft, above and below.
 - **thread compression** — how much the thread width narrows progressively toward one side. At 0 all threads have equal width; the larger the value, the stronger the compression toward one side. Negative/positive values set the direction of compression, and the slope of individual threads stays as is without being flipped.
 - **thread gutter** — the gap between the vertical cells in which threads sit. Labelled gutter in the builder.
 
@@ -882,7 +882,7 @@ The **EO graphic unit** (hereafter the unit) is the smallest element of the grap
 
 ### Graphic Unit
 #### + Color {layout=grid-2} {ratio=16:9} {zoom=1.042}
-Color expresses who is the hero in the graphic, what is the environment, and where a state changes, and is used as a supporting means that complements the nuance of Vocabulary. The contexts readable through [[graphic-pattern#references|the library of 30 patterns]] fall into four strands, and the entries in Vocabulary below assume these roles. For more specific combination rules, see [[graphic-pattern#color]].
+Color expresses who is the hero in the graphic, what is the environment, and where a state changes, and is used as a supporting means that complements the nuance of Vocabulary. For more specific combination rules, see [[graphic-pattern#color]].
 
 Only one color is ever applied to a unit.
 - Builder Neon — the main color with the highest hierarchy, expressing the nuance of builder · hero · focus · highlighting. Most ideal when its area is around 10-40% of the whole canvas.
@@ -940,7 +940,7 @@ Connecting two units creates a new relationship. Whether they combine horizontal
 
 - **Journey** — the length of time, a recurring process. Expressed by matching the compression direction of two horizontal units and docking them. It expresses one chapter ending and the next continuing; repeated, it becomes a routine · cycle. Apply the same color to a docked unit pair.
 - **Momentum** — the moment acceleration crosses a threshold and direction changes. Expressed by point-reflecting two horizontal units and docking them. Meeting as `<>` is the moment force gathers; meeting as `><` is the moment it bursts out. In both states, adjust compression so the eye gathers at the center.
-- **Pulse** — pulse · frequency · a signal spreading out. Expressed by mirror-reflecting two lightning units and joining them at their wide-thread ends.
+- **Pulse** — pulse · frequency · a signal spreading out. Expressed by reflecting two lightning units in point or mirror symmetry and joining them at their wide-thread ends.
 - **Peers** — two figures standing together. Expressed by standing two vertical units side by side facing the same direction. Apply Builder Neon to the unit representing EO or the hero, and a different color that fittingly expresses its character to the peer unit.
 - **Rivals** — opposition · competition. Expressed by standing two vertical units side by side facing each other. Apply Builder Neon to the unit representing EO or the hero, and Air White · Medium Gray to the rival unit.
 - **House** — shelter · community · EO House. Expressed by standing two vertical units side by side facing outward, making the silhouette into a roof. To express EO House, apply Builder Neon to both units, or Builder Neon to the left unit and Day Blue to the right.
@@ -1090,7 +1090,7 @@ pattern gutter is the gap between units within a graphic pattern. For typical di
 Set pattern margin to 0 so the pattern fills 100% of the layout's graphic pattern area. Depending on the nuance of the metaphor, it can extend past the layout's margin to the edge of the page · output medium. Butting a unit's densely compressed stretch against the edge of the page creates the illusion of entering from outside the page or reaching out beyond it, which creates visual interest.
 
 ![margin-crop-do]{do} A pattern filling 100% of the content area
-![margin-crop-dont]{dont} A pattern extended to the edge of the output medium
+![margin-crop-dont]{do} A pattern extended to the edge of the output medium according to the metaphor
 
 
 ### Grammar {layout=grid-4}
@@ -1100,7 +1100,7 @@ There are no particular restrictions on combining horizontal and vertical units,
 - In general, units should align to the pattern margin 0 lines on all four sides, but depending on the metaphor you can mix: some on the pattern margin 0 line, some extending to the page edge.
 - Once units are aligned on the pattern grid, look closely at the shaft and thread lines that happen to form between intersecting units. Unintended misalignment can hurt the finish of the whole pattern. Fine-tune the compression of the vertical units and the shaft size of the horizontal units so that the shaft lines of horizontal units and the thread lines of vertical units coincide. This is recommended as the last step in completing a layout.
 ![alignment-do-1]{do} Units aligned to the pattern margin 0 line
-![alignment-do-2]{dont} Units mixing alignment methods by intent
+![alignment-do-2]{do} Units mixing alignment methods by intent
 ![alignment-do-3]{do} An intersection where shaft line and thread line meet
 ![alignment-dont]{dont} An intersection with misaligned lines
 
@@ -1171,7 +1171,7 @@ A library of 30 patterns made by combining units. Each pattern is named not by a
 
 
 ### + Usage
-#### Do's & Dont's {layout=grid-2}
+#### Do's & Don'ts {layout=grid-2}
 The graphic pattern is the most vivid and dense visual element in all of EO's visual expression, so on the page it must play the role of the subject that draws the eye. Give the pattern an entire half of the layout (usually the top or the right) and set the headline left-aligned at the edge of the content area on the other side. Do not overlap text on the pattern, and place the logo in the margin outside it. Patterns may be cropped, but crop on column boundaries so that no diagonal stretch of a thread is cut through the middle.
 ![pattern-do-1] {do} When using a graphic pattern, fill a large rectangular area of 60-70% or more of the page to raise its visibility
 ![pattern-do-2] {do} Use a graphic pattern of suitable complexity for the size at which the page is actually seen
@@ -1184,7 +1184,7 @@ Examples of the EO graphic pattern in actual use.
 ![pattern-in-use-1] A medium-sized poster in a tall portrait ratio
 ![pattern-in-use-2] A wide, extra-large billboard in a long landscape ratio
 ![pattern-in-use-3] A small business card in a landscape ratio
-![pattern-in-use-4] Don't let the diagonal part of a thread be cropped
+![pattern-in-use-4] Social media artwork in a square ratio
 
 
 ## Applications
