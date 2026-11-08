@@ -707,13 +707,13 @@ EO 브랜드 커뮤니케이션의 콘텐츠는 왼쪽 정렬을 기준으로 �
 예외는 정보성 텍스트(C1 · Mono)입니다. 이미지 아래의 캡션은 심볼이 왼쪽 가장자리에 좌측정렬되는 것과 짝을 이뤄 오른쪽 가장자리에 우측정렬할 수 있습니다. 그 밖의 Mono 텍스트는 다른 레벨과 같이 왼쪽 정렬합니다.
 ![alignment-medium]{bg-color} 헤드라인(Medium) — 왼쪽 정렬이 기준, 가운데 · 오른쪽 · 양끝 정렬은 쓰지 않음
 ![alignment-regular]{bg-color} 서브 헤드라인(Regular) — 헤드라인과 같은 규칙
-![alignment-light]{bg-color} 본문(Light) — 왼쪽 정렬, 여러 단은 첫 행 베이스라인을 맞춤
+![alignment-light]{bg-color} 본문(Light) — 헤드라인과 같은 규칙
 ![alignment-mono]{bg-color} 정보성 텍스트(Mono) — 이미지 오른쪽 가장자리의 캡션만 우측정렬 허용
 
 
-### + Ragging {layout=wide}
+### + Ragging
 문단의 가장자리가 불규칙하게 느껴지거나 특정 행이 튀어나오거나, 마지막 행에 단어 하나만 남으면 랙이 나쁘다고 말합니다. EO의 헤드라인은 짧고 행 수가 적어 랙이 그대로 드러납니다. "Build / Anyway."처럼 행마다 의미 단위가 끊어지도록 행을 바꾸고, 긴 행과 짧은 행이 번갈아 나오는 계단 모양을 피하세요. 본문에서는 가장자리가 고르고 글이 잘 읽힐 때까지 단어를 다음 행으로 옮깁니다.
-![ragging]{bg-color} 헤드라인 · 서브 헤드라인 · 본문의 Poorly-ragged 와 Well-ragged
+![ragging]{bg-color}
 
 
 ### + Grid Setting
