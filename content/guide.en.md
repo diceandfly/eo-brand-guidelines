@@ -701,11 +701,11 @@ By nature the Mono is highly distinguishable even at small sizes, but its readab
 ### + Alignment {layout=grid-2}
 Content in EO brand communication is left-aligned by default. Centered alignment is allowed only when the text is a single line, as with standalone symbol icons and merch back prints, and justified alignment is not used. When body copy runs in several columns, align the first-line baselines of all columns. Align the symbol and the caption to the left and right edges of an image respectively. A single left alignment line becomes the reference line of the page: headline · sub-headline · body start from the same line, and the reader starts reading at the same place on every line. Right alignment loses that reference because the start of each line moves, and justified alignment opens the word spaces and makes the gray level uneven. This criterion is the same regardless of weight.
 
-The exception is informational text (C1 · Mono). A caption beneath an image may be right-aligned to the right edge, paired with the symbol left-aligned to the left edge. All other Mono text is left-aligned like the other levels.
+The exception is informational text (C1 · Mono). A caption beneath an image may be right-aligned to the right edge, paired with the symbol left-aligned to the left edge, and a caption attached to a simple graphic such as an icon · shape · illustration may be centered beneath it. This is the same case as centering a single line of text under a standalone symbol icon. All other Mono text is left-aligned like the other levels, and justified alignment is not used for Mono either.
 ![alignment-medium]{bg-color} Headline (Medium) — left alignment is the default; centered · right · justified are not used
 ![alignment-regular]{bg-color} Sub-headline (Regular) — same rule as the headline
 ![alignment-light]{bg-color} Body (Light) — same rule as the headline
-![alignment-mono]{bg-color} Informational text (Mono) — only a caption at the right edge of an image may be right-aligned
+![alignment-mono]{bg-color} Informational text (Mono) — captions at an image edge may be right-aligned and captions under simple icons · shapes may be centered; only justified is not used
 
 
 ### + Ragging
