@@ -60,8 +60,8 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
       (이미지 태그 > 섹션 zoom > Do/Don't 그리드 기본값 순서로 적용)
     → Do/Don't만 있는 섹션은 4:3 카드입니다. 원본은 16:9로 만들면 카드에서는 가운데 4:3이 보이고, 확대하면 전체가 보입니다.
     → 뒤에 글을 쓰면 이미지 아래 캡션이 붙습니다 (= 카드). 배지만 있고 글이 없으면 "Do" / "Don't" 가 기본 문구.
-    → 캡션 앞 번호: "1/ 설명" 처럼 쓰면 번호가 모노로 붙고 뒤 간격은 tokens.css --cap-num-gap. "위 줄 \ 아래 줄" 로 줄을 나누면 줄마다 번호를 인식합니다.
-      키워드는 "세로형 — 설명" 처럼 앞뒤를 띄운 긴 대시로 그냥 글로 씁니다 ("1/ 마진 — 설명" 은 번호 + 키워드). 캡션 안의 **…** 는 본문 강조와 같습니다.
+    → 캡션 앞 번호: "1. 설명" 처럼 쓰면(일반 md 순서 목록과 같은 표기) 화면에는 숫자만 "1" 로 붙고(본문 순서 목록 마커와 같은 서체 · 들여쓰기 · 간격, tokens.css --t-body-marker-gap) 줄이 넘어가면 글은 첫 줄 글 시작선으로 돌아갑니다. "위 줄 \ 아래 줄" 로 줄을 나누면 줄마다 번호를 인식합니다.
+      키워드는 "세로형 — 설명" 처럼 앞뒤를 띄운 긴 대시로 그냥 글로 씁니다 ("1. 마진 — 설명" 은 번호 + 키워드). 캡션 안의 **…** 는 본문 강조와 같습니다.
       (보관: "세로형/ 설명" 슬래시 라벨 인식은 파서에 남아 있지만 가이드에서는 쓰지 않습니다 — 본문 쪽 주의와 같음)
 
 ■ 줄바꿈
@@ -194,9 +194,9 @@ EO 심볼은 미디어 브랜드 EO를 알리는 가장 상징적이고 효과�
 #### + Motif
 EO 심볼은 나사의 3요소인 나사축(Shaft) · 나사산(Thread) · 나사머리(Head)을 모티프로 고안되었습니다.
 
-- 나사선(Thread) — thread 한 바퀴는 문제 해결의 사이클을 상징합니다.
-- 나사축(Shaft) — shaft는 빌딩의 과정이자 빌더의 여정을 상징하며, 앞으로 나아가는 용기(Build anyway)를 표현합니다.
-- 나사머리(Head) — head는 작은 문제 해결 하나, 또는 빌더 한 사람을 상징합니다. 
+- **나사선(Thread)** — thread 한 바퀴는 문제 해결의 사이클을 상징합니다.
+- **나사축(Shaft)** — shaft는 빌딩의 과정이자 빌더의 여정을 상징하며, 앞으로 나아가는 용기(Build anyway)를 표현합니다.
+- **나사머리(Head)** — head는 작은 문제 해결 하나, 또는 빌더 한 사람을 상징합니다. 
 ![motif] {zoom=1.05}
 
 
@@ -243,12 +243,12 @@ EO 심볼은 강렬하지만 단순한 셰이프로 이뤄졌습니다. 따라�
 ### Symbol
 #### + Color{layout=grid-3} {zoom=1.6}
 EO 심볼에는 여섯 가지 기본 컬러 페어링이 있습니다. **심볼은 항상 단색으로 표현되어야 하며,** 배경 컬러에 확신이 서지 않을 때는 다음 중 하나를 사용하세요. 
-![color-1] 1/ Space Black on Builder Neon
-![color-2] 2/ Air White on Space Black
-![color-3] 3/ Air White on Solid Gray
-![color-4] 4/ Space Black on Air White
-![color-5] 5/ Builder Neon on Space Black
-![color-6] 6/ Builder Neon on Solid Gray
+![color-1] 1. Space Black on Builder Neon
+![color-2] 2. Air White on Space Black
+![color-3] 3. Air White on Solid Gray
+![color-4] 4. Space Black on Air White
+![color-5] 5. Builder Neon on Space Black
+![color-6] 6. Builder Neon on Solid Gray
 
 
 ### Symbol
@@ -355,7 +355,7 @@ EO 심볼이 일관되고 강렬하게 유지되도록, 재해석하거나 변�
 디스크립터의 첫 글자나 끝 글자가 S · o처럼 측면 형태가 곡선인 글리프인 경우, 텍스트 기준선에 좌측 정렬을 유지한 채로 대문자 H, 소문자는 h로 잠시 바꿔 캡 박스의 경계를 잡습니다. 예를 들어 “Studio”는 “Htudio”로 왼쪽 경계를, “Studih”로 오른쪽 경계를 잡습니다.
 
 새 디스크립터를 만들거나 기존 디스크립터를 변경할 때는 반드시 EO 디자인팀의 컨펌을 받아야 합니다. 캠페인이나 이벤트 이름처럼 한시적인 이름은 디스크립터로 사용하지 않습니다.
-![descriptor-v] 세로형 — Founders Grotesk Regular, 조판 사이즈 0.46H, 자간 0으로 조판합니다. 심볼의 하단 경계로부터 H/5 아래에 캡 박스의 윗변을 두고, 심볼과 중앙 정렬한 뒤 H/100만큼 왼쪽으로 보정합니다. EO 심볼은 E 블록의 Tonal Value(회색도)가 더 높아 시각적 중심이 왼쪽에 있기 때문입니다.
+![descriptor-v] 세로형 — Founders Grotesk Regular, 조판 사이즈 0.46H, 자간 0으로 조판합니다. 심볼의 하단 경계로부터 H/5 아래에 캡 박스의 윗변을 두고, 심볼과 중앙 정렬한 뒤 H/100만큼 왼쪽으로 보정합니다. EO 심볼은 E 블록의 회색도가 더 높아 시각적 중심이 왼쪽에 있기 때문입니다.
 ![descriptor-h] 가로형 — Founders Grotesk Regular, 조판 사이즈 1.3H, 자간 0으로 조판하고, 단어 사이 포함된 공백 문자에 한해 -6%의 자간을 별도 적용합니다. 심볼의 우측 경계로부터 W/2 떨어진 곳에 캡 박스의 왼쪽 변을 두고, 베이스라인을 심볼의 하단 경계에서 H/10만큼 올립니다. 
 
 
@@ -397,19 +397,19 @@ EO를 한 번 이상 접한 사람에게 EO 심볼은 이미 "EO"로 읽힐 수 
 ### + Service Signature
 #### Vertical {layout=grid-4} {zoom=2.05}
 Service Signature 세로형 예시입니다. 모두 같은 디스크립터 규격으로 구성되어, 이름이 달라도 하나의 가족으로 읽히는지 체크합니다.
-![service-v-studio] 1/ EO Studio · 회사
-![service-v-magazine] 2/ EO Magazine · 웹 매거진
-![service-v-planet] 3/ EO Planet · 커뮤니티
-![service-v-newsletter] 4/ EO Newsletter · 뉴스레터
+![service-v-studio] 1. EO Studio · 회사
+![service-v-magazine] 2. EO Magazine · 웹 매거진
+![service-v-planet] 3. EO Planet · 커뮤니티
+![service-v-newsletter] 4. EO Newsletter · 뉴스레터
 
 
 ### Service Signature
 #### Horizontal {layout=grid-4} {zoom=3}
 Service Signature 가로형 예시입니다. 모두 같은 디스크립터 규격으로 구성되어, 이름이 달라도 하나의 가족으로 읽히는지 체크합니다.
-![service-h-studio] 1/ EO Studio · 회사
-![service-h-magazine] 2/ EO Magazine · 웹 매거진
-![service-h-planet] 3/ EO Planet · 커뮤니티
-![service-h-newsletter] 4/ EO Newsletter · 뉴스레터
+![service-h-studio] 1. EO Studio · 회사
+![service-h-magazine] 2. EO Magazine · 웹 매거진
+![service-h-planet] 3. EO Planet · 커뮤니티
+![service-h-newsletter] 4. EO Newsletter · 뉴스레터
 
 
 ### + Usage {layout=grid-2}
@@ -428,10 +428,10 @@ Service Signature 가로형 예시입니다. 모두 같은 디스크립터 규�
 ### Signature
 #### + Color {layout=grid-2}
 시그니처는 EO 심볼의 여섯 가지 컬러 페어링 중 네 가지를 사용합니다. **심볼과 글자는 항상 같은 컬러로 통일**합니다.
-![color-1] {zoom=1.05} 1/ Air White on Space Black
-![color-2] {zoom=1.05} 2/ Air White on Solid Gray
-![color-3] {zoom=1.6} 3/ Space Black on Air White
-![color-4] {zoom=1.6} 4/ Space Black on Builder Neon
+![color-1] {zoom=1.05} 1. Air White on Space Black
+![color-2] {zoom=1.05} 2. Air White on Solid Gray
+![color-3] {zoom=1.6} 3. Space Black on Air White
+![color-4] {zoom=1.6} 4. Space Black on Builder Neon
 
 
 ### Signature
@@ -441,7 +441,7 @@ Service Signature 가로형 예시입니다. 모두 같은 디스크립터 규�
 - 세로형 — 라이트 심볼을 [[symbol#inversion]] 규칙대로 변환해, 라이트 심볼이 있던 자리에 x · y 모두 중앙 정렬합니다. 디스크립터는 원래 캡박스 위치에서 그대로 중앙 정렬하고 베이스라인도 원래 위치를 유지합니다. 웨이트는 Regular를 유지한 채 컬러만 반전한 뒤, 조판 사이즈 0.48H · 자간 -1%로 설정하고 H/200만큼 바깥으로 외곽선 오프셋을 주어 완성합니다.
 - 가로형 — 라이트 심볼을 [[symbol#inversion]] 규칙대로 변환해 라이트 심볼이 있던 자리에 x · y 모두 중앙 정렬합니다. 디스크립터는 원래 캡 박스의 왼쪽 경계선을 기준으로 왼쪽 정렬하고 베이스라인은 원래 위치를 유지합니다. 웨이트는 Regular를 유지한 채 컬러만 반전한 뒤, 조판 사이즈 1.35H · 자간 -1%로 설정하고 H/200만큼 바깥으로 외곽선 오프셋을 주어 완성합니다.
 
-이렇게 하면 밝은 배경에서도 심볼과 디스크립터의 Tonal Value 균형이 라이트 시그니처와 같게 유지됩니다. 이렇게 완성된 다크 시그니처는 동일한 레벨의 라이트 시그니처의 클리어스페이스에 x · y 중앙 정렬해 그대로 씁니다.
+이렇게 하면 밝은 배경에서도 심볼과 디스크립터의 회색도 균형이 라이트 시그니처와 같게 유지됩니다. 이렇게 완성된 다크 시그니처는 동일한 레벨의 라이트 시그니처의 클리어스페이스에 x · y 중앙 정렬해 그대로 씁니다.
 ![inversion-v] {zoom=1.05}
 ![inversion-h] {zoom=1.05}
 
@@ -494,15 +494,15 @@ EO 시그니처은 파트너 브랜드 및 협업사 로고와 세로로도 락�
 #### + Clearspace
 서브심볼 주변에도 EO 심볼과 같은 기준의 여백이 필요합니다. 상하좌우 thread 요소 하나의 높이를 t라고 할 때, 심볼과 인접한 모든 요소에 대해 상하좌우 각 t 이상의 최소 여백을 반드시 확보해야 합니다.
 
-클리어스페이스는 서브심볼이 Builder Neon, 배경은 Space Black을 기준으로 하며, O 블록의 Tonal Value가 E 블록보다 낮으므로 1.04배의 별도 보정을 합니다.
+클리어스페이스는 서브심볼이 Builder Neon, 배경은 Space Black을 기준으로 하며, O 블록의 회색도가 E 블록보다 낮으므로 1.04배의 별도 보정을 합니다.
 ![clearspace] {zoom=1.05}
 
 
 ### Sub Symbol
 #### + Color {layout=grid-2} {zoom=1.05}
 서브심볼은 EO 심볼의 1,2번 컬러 페어링을 사용하며 각 요소는 항상 단색으로 표현합니다. 파비콘처럼 매우 작은 공간에서는 도형의 크기 대비 시각왜곡 양이 커지므로, 컬러 반전 시 각 블록을 1.1배 스케일업하여 사용합니다.
-![color-1]  1/ Builder Neon on Space Black
-![color-2]  2/ Space Black on Builder Neon
+![color-1]  1. Builder Neon on Space Black
+![color-2]  2. Space Black on Builder Neon
 
 
 ### Favicon
@@ -547,7 +547,7 @@ Founders Grotesk는 20세기 초 Miller & Richard와 Caslon의 그로테스크�
 
 ### Character Set
 #### Founders Grotesk Regular
-다음 이미지는 Founders Grotesk Regular의 대부분의 글자를 나타냅니다. Regular는 서브 헤드라인(D2 · H2 · H3)의 기본 웨이트로, 헤드라인의 Medium과 본문의 Light 사이에서 위계를 잇습니다. 커뮤니케이션 디자인에서는 이 역할로만 쓰고 본문에는 쓰지 않습니다.
+다음 이미지는 Founders Grotesk Regular의 대부분의 글자를 나타냅니다. Regular는 서브 헤드라인(D2 · H2 · H3)의 기본 웨이트로, 헤드라인의 Medium과 본문의 Light 사이에서 위계를 잇습니다. 포스터 · 배너처럼 본문이 짧은 브랜드 커뮤니케이션에서는 디스플레이 헤드라인 바로 아래 레벨에서 본문 역할까지 맡습니다.
 ![charset-regular]{bg-color}
 
 
@@ -564,94 +564,99 @@ Founders Grotesk는 20세기 초 Miller & Richard와 Caslon의 그로테스크�
 
 
 ### + Typographic Framework {layout=grid-2}
-#### Overview
-EO 타이포그래피는 글자 크기 기준이 아닌, 글자가 차지하는 공간을 기준으로 계량 · 확장되는 프레임웍입니다. Line Unit(기준행간) 하나를 정한 뒤 모든 레벨의 행간은 그 배수(x)로 정하고, 글자 크기는 행간을 Linespacing(실질 행간, 행간 ÷ 글자 크기)으로 나눠 자동으로 정해지는 방식입니다. 레이아웃의 거터와 마진도 같은 단위를 쓰므로 모든 타이포그래피 · 여백 · 그래픽 요소가 통일된 베이스라인 그리드 위에 놓입니다.
+#### Overview {zoom=1.1}
+EO 타이포그래피는 글자 설정 값이 아닌, **글자가 차지하는 공간을 기준으로 계량 · 확장되는 베이스라인 그리드 프레임워크**입니다. Line Unit(기준이 되는 행간, 즉 줄 사이의 절대 높이)의 값을 정한 뒤 각 레벨별 행간을 그 배수(x)로 정하고, 글자 크기는 행간을 행간 비율(행간 비율, 행간 ÷ 글자 크기)로 나눠 자동으로 정해지는 방식을 취합니다. 
 
-위계의 조절과 Tonal Value(회색도)의 조절을 분리하는 방침은 프로젝트 별 타이포그래피 시스템을 처음부터 짜야 할 때 진입점을 보다 수월하게 찾도록 돕기 위함입니다. 먼저 레벨 배수로 큰 위계를 잡고, 그다음 Linespacing · 웨이트 · 자간을 조절해 Tonal Value를 다듬고 시스템의 시각적 완성도를 높입니다. 
+- 위계를 정하는 일과 회색도(Tonal Value)를 맞추는 일을 분리하는 방침은 프로젝트 별 타이포그래피 시스템을 처음부터 짜야 할 때 진입점을 보다 수월하게 찾도록 돕기 위함입니다.
+- [[#multilingual|다국어 환경 전환]] 시, 서체 종류나 글자 크기를 바꿔도 점유하는 공간 자체는 그대로이므로 레이아웃의 변동성이 최소화되며, 회색도만 개별 조정하면 룩앤필을 일정하게 유지할 수 있습니다.
+- [[#inversion|다크/라이트 모드 전환]] 시에도 동일한 장점을 가집니다.
+- AI Assisted Design 워크플로우에서, AI의 효율적인 레이아웃 구성 능력과 디자이너의 감각 두가지 의사결정 레벨을 분리할 수 있습니다. 콘텐츠 논리에 따른 큰 위계는 AI에게 맡기고, 시각적 완성도는 별도로 분리된 행간 비율 등을 다듬어 마감합니다.
 
-[[#multilingual|다국어 환경 전환]]과 [[#inversion|다크/라이트 모드 전환]] 시, 서체 종류나 글자 크기를 바꿔도 점유하는 공간 자체는 그대로이므로 레이아웃의 변동성이 최소화되며, 서체를 Founders Grotesk에서 Pretendard나 Noto Sans로 바꿔도 Tonal Value만 맞췄다면 룩앤필을 일정하게 유지할 수 있습니다.
-
-이 챕터는 프레임웍의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 Line Unit을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 세팅합니다. 각 단계 별 세부 기준은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · [[#tonal-value|Tonal Value]], 레이아웃은 [[#grid-and-margin|Grid & Margin]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
-![framework-1]{bg-color} Line Unit — 지면의 기준 행간. 레이아웃의 모든 거리를 결정하는 단위가 됨.
-![framework-2]{bg-color} 레벨(Level) — 역할에 따라 나눈 텍스트의 단계. 배수(x) · 웨이트 · Linespacing · 자간의 네 항목 한 묶음
-![framework-3]{bg-color} Linespacing — 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
-![framework-4]{bg-color} Tonal Value — 글 덩어리를 멀리서 봤을 때의 밝기. 레벨 간 균형의 판단 기준
+이 챕터는 프레임워크의 실행 순서대로 읽습니다. 손쉽게 활용할 값이 필요하다면 [[#reference-scale|Reference Scale]]의 프리셋을 참조하세요. 새로 짜야 한다면 [[#line-unit|Line Unit]]에 따라 Line Unit을 정하고, [[#setting-up|Setting Up]]의 다섯 단계를 따라 타이포그래피를 설정합니다. 각 단계 별 세부 기준은 [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]], 레이아웃은 [[#grid-setting-zoning|Zoning]] · [[#grid-setting-margin|Margin]] · [[#grid-setting-compound-grid|Compound Grid]], 다른 언어와 대체 서체는 [[#multilingual|Multilingual]]를 참조하세요.
+![framework-1]{bg-cover} **Line Unit** — 지면의 기준이 되는 행간. 레이아웃의 모든 거리를 정하는 단위가 됨.
+![framework-2]{bg-cover} **레벨(Level)** — 역할에 따라 나눈 텍스트의 단계. 배수(x) · 웨이트 · 행간 비율 · 자간 4개의 파라미터를 가짐
+![framework-3]{bg-cover} **행간 비율** — 글자 크기에 대한 행간의 비율. 140%는 행간이 글자 크기의 1.4배
+![framework-4]{bg-cover} **회색도** — 글 덩어리를 멀리서 봤을 때의 밝기. 레벨 간 균형의 판단 기준
 
 
 ### Typographic Framework
-#### + Line Unit
-Line Unit은 지면의 단위가 되는 단위이며, 모든 레벨의 행간은 Line Unit의 배수, 글자 크기는 Line Unit에 Linespacing 비율(%)을 적용해 나옵니다. 이하 Line Unit을 x로 줄여 표기하며, x로 적힌 값은 Line Unit의 배수, %로 적힌 행간 값은 모두 Linespacing입니다. 이를테면 2.5x는 해당 레벨의 행간은 Line Unit의 2.5배 스케일로 설정됐다는 뜻입니다. 레이아웃의 간격 · 거터 · 마진도 모두 같은 Line Unit을 공유하게 됩니다.
+#### + Line Unit {zoom=1.3}
+Line Unit은 지면의 기준 단위이며, 모든 레벨의 행간은 Line Unit의 배수로 정하고, 실제 글자 크기는 행간을 행간 비율(%)로 나눈 값이 적용됩니다. 이하 Line Unit을 x로 줄여 표기하며, x로 적힌 값은 Line Unit의 배수, %로 적힌 값은 모두 행간 비율입니다. 이를테면 2.5x는 해당 레벨의 행간은 Line Unit의 2.5배 스케일로 정해졌다는 뜻입니다.
 
-Line Unit은 지면에서 가장 중요한 콘텐츠 레벨과 동일하게 하는 것이 기본입니다. 일반적인 콘텐츠 레이아웃에서는 본문 레벨의 행간이 Line Unit이며, 웹과 편집물에서는 28px을 기본으로 하되 지면의 크기와 읽는 거리에 따라 디자이너 재량으로 조절합니다. 본문 콘텐츠가 없는 비주얼 커뮤니케이션(포스터 · 배너 · 키비주얼)에서는 심볼의 높이를 기준으로 그 1x 또는 0.5x를 Line Unit으로 설정합니다. 심볼과 타이포그래피의 레벨을 나누는 방법은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요.
+일반적으로 Line Unit의 값은 **지면 내 가장 많이 · 자주 사용되고 내용 비중이 가장 높은 콘텐츠 또는 그 구성 요소**를 기준으로 정합니다.
 
-Line Unit을 정했다면 지면 높이에서 위아래 마진을 뺀 값이 Line Unit의 정수 배가 되는 베이스라인 그리드를 설정합니다. 그리드와 마진에 대한 세부적인 지침은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
+- 콘텐츠 레이아웃에서는 일반적으로 본문 레벨의 행간이 Line Unit이 됩니다. 
+- 중요한 본문 콘텐츠가 없는 비주얼 커뮤니케이션(포스터 · 배너 · 키비주얼)에서는 심볼의 높이를 기준으로 그 1x 또는 0.5x를 Line Unit으로 정합니다. 
+- 웹 · 편집 환경에서 권장하는 Line Unit의 설정 값은 28px입니다. 지면의 크기와 사용자의 읽는 거리를 고려해 디자이너 재량으로 조정합니다.
+
+Line Unit을 정했다면, 콘텐츠 영역의 전체 높이에서 상하 마진을 빼고 Line Unit의 정수 배로 베이스라인 그리드를 설정하고, 같은 시리즈의 콘텐츠에서 반복 활용합니다. 그리드와 마진에 대한 세부 내용은 [[#grid-setting-margin|Margin]]과 [[#grid-setting-compound-grid|Compound Grid]]를 참조하세요.
 ![line-unit]{bg-color}
 
 
 ### Typographic Framework
 #### + Reference Scale {layout=wide}
-Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니다. 레벨 이름의 첫 글자는 해당하는 콘텐츠의 역할, D는 디스플레이, H는 헤드라인, T는 텍스트, C는 캡션을 의미합니다. 본 웹 가이드라인은 이 중 H1 · H3 · T1 · C1 네 레벨을 사용해 구축되었으며, 사용되지 않은 나머지는 새 레벨을 만들 때 참조하세요. 레벨마다 배수(x) · 웨이트 · Linespacing · 자간을 세부 항목으로 가지며, 괄호 안은 1x = 28px에서 화면에 렌더되는 글자 크기입니다.
+Line Unit 1x = 28px 기준의 7레벨 프리셋입니다. 레벨 이름의 첫 글자는 해당하는 콘텐츠의 역할, D는 디스플레이, H는 헤드라인, T는 텍스트, C는 캡션을 의미합니다. 본 웹 가이드라인은 이 중 H1 · H3 · T1 · C1 네 레벨로 설정되었으며, 사용되지 않은 나머지는 새 레벨을 만들 때 참조하세요. 레벨마다 배수(x) · 웨이트 · 행간 비율 · 자간을 세부 항목으로 가지며, 괄호 안은 1x = 28px에서 화면에 렌더되는 글자 크기입니다.
 
-- D1 — 6x · Medium · 80% · -2.5% (210px). 포스터나 키비주얼의 태그라인 또는 코어 키워드 한두 단어 등
-- H1 — 2.5x · Medium · 100% · -1.5% (70px). 메인 헤드라인 · 페이지 타이틀
-- D2 — 2.5x · Regular · 100% · -2% (70px). 헤드라인 크기의 디스플레이 변형, 캠페인 슬로건 등
-- H2 — 2x · Regular · 115% · -1% (49px). 서브 헤드라인
-- H3 — 1.25x · Regular · 120% · 0% (29.2px). 섹션 헤드 · 서브헤드
-- T1 — 1x · Light · 140% · +1.5% (20px). 본문
-- C1 — 0.5x · Mono Regular · 111% · -7% (12.6px). 캡션 · 라벨 · 태그 · 스펙 · 날짜 · 버튼
+- **D1** — 6x / Medium / 80% / -2.5%. 포스터나 키비주얼의 태그라인 또는 코어 키워드 한두 단어 등
+- **H1** — 2.5x / Medium / 100% / -1.5% (70px). 메인 헤드라인 · 페이지 타이틀
+- **D2** — 2.5x / Regular / 100% / -2% (70px). 헤드라인 레벨의 디스플레이, 캠페인 슬로건 · 서브 카피 · 인용구
+- **H2** — 2x / Regular / 115% / -1% (49px). 서브 헤드라인
+- **H3** — 1.25x / Regular / 125% / -0.5% [Solid Gray] · 0 [Space Black] (28px). 섹션 헤드 · 서브헤드
+- **T1** — 1x / Light / 140% / +1% [Solid Gray] · +1.5% [Space Black] (20px). 본문 > 브랜드 커뮤니케이션 우선
+- **T2** - 1x / Light / 150% / +1.5% [Solid Gray] · +2% [Space Black] (18.67px). 본문 > 가독성 우선
+- **C1** — 0.5x / Mono Regular / 111% / -7% (12.6px). 캡션 · 라벨 · 태그 · 스펙 · 날짜 · 버튼
 
-레벨에 따른 권장하는 웨이트는 다음과 같습니다. Medium은 디스플레이와 헤드라인(D1 · H1), Regular는 서브 디스플레이와 헤드라인(D2 · H2 · H3), Light는 본문(T1), Mono Regular는 정보성 텍스트(C1)입니다. Semibold는 밝은 배경 컬러에 어두운 콘텐츠 컬러 조합일 때, 헤드라인 레벨의 시각보정을 위해 한정적으로 사용합니다.
+레벨에 따른 권장 웨이트는 다음 기준을 따릅니다. Medium은 디스플레이와 헤드라인(D1 · H1), Regular는 서브 디스플레이와 헤드라인(D2 · H2 · H3), Light는 본문(T1), Mono Regular는 정보성 텍스트(C1)입니다. Founders Grotesk Semibold는 밝은 배경 컬러에 어두운 콘텐츠 컬러 조합일 때, 헤드라인 레벨의 시각보정을 위해 한정적으로 사용합니다. 본문 안 키워드 강조는 웨이트를 바꾸지 않고 Builder Neon 컬러로만 합니다.
 
-레벨의 배수를 1x · 0.5x · 0.25x 단위로 조정하고, Linespacing과 자간은 인접한 양쪽 레벨끼리 [[#tonal-value|Tonal Value]]가 일관되게 이어지도록 조정해야 합니다. 한국어와 베트남어의 조정 값은 [[#multilingual|Multilingual]]을 참조하세요.
+레벨의 배수는 1x · 0.5x · 0.25x 단위로 정하고, 행간 비율과 자간은 인접한 양쪽 레벨끼리 회색도가 일관되게 이어지도록 다듬습니다. 한국어와 베트남어의 조정 값은 [[#multilingual|Multilingual]]을 참조하세요.
 
-프리셋은 비주얼 커뮤니케이션에 초점을 맞춰 고안되었습니다. 한번에 읽어야할 텍스트가 몇 문단 정도에 그치는 컨텐츠의 경우 T1의 프리셋 값을 그대로 사용하고, 본문의 가독성이 가장 중요한 환경에서는 1x · Light · 150% · +1.5% (18.67px)로 조정하는 것을 권장합니다. Founders Grotesk는 본래 헤드라인용으로 설계되어 어퍼처가 좁고 자간이 조여 있으므로, 본문 레벨에서는 Light 웨이트에 Linespacing을 넉넉히 두고 자간을 살짝 열어 씁니다. T1의 값은 그 균형점입니다.
+Founders Grotesk는 어퍼처가 좁고 자간이 좁은 서체이므로, 본문 레벨에서는 Light 웨이트에 행간 비율을 넓게 두고 자간을 살짝 넓혀 씁니다. 프리셋은 비주얼 커뮤니케이션에 초점을 맞춰 고안되었으므로, 한번에 읽어야할 텍스트가 몇 문단 정도에 그치는 콘텐츠의 경우 T1, 본문의 가독성이 가장 중요한 환경에서는 T2의 사용을 권장합니다. 
+
+위 프리셋은 모두 Air White의 콘텐츠를 Solid Gray 배경에서 적용할 때를 기준으로 합니다. Air White의 콘텐츠를 Space Black의 배경에서 사용할 경우 H3 · T1 · T2 수준의 비교적 작은 크기의 레벨에 대해서는 0.5% 더 넓은 자간을 적용합니다.
 ![reference-scale]{bg-color}
 
 
 ### Typographic Framework
 #### + Setting Up {layout=grid-3}
-새 매체나 포맷에서 타이포그래피를 세팅하는 순서입니다. 다만 적힌 순서를 그대로 따라가기보다는, 3-5단계를 동시에 교차 조율하면서 반복하는 과정에 가깝습니다.
+새 매체나 포맷에서 타이포그래피를 설정하는 방법입니다. 적힌 순서를 그대로 따라가기보다는, 3-4단계를 교차 조율하면서 최적의 상태로 수렴하는 과정에 가깝습니다.
 
-1. 레벨을 수를 정합니다. 지면에 표시할 정보량에 따라 필요한 레벨의 수를 정합니다. 레벨을 나누는 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요.
-2. Line Unit을 정합니다. 일반적으로 가장 중요도가 높은 콘텐츠의 레벨을 기준으로 Line Unit의 크기를 정합니다. 콘텐츠 레이아웃에서는 일반적으로 본문 레벨의 행간이 Line Unit이 됩니다. 본문이 없는 포스터나 배너는 EO 심볼 레벨의 행간의 1x, 0.5x 등의 배율을 Line Unit으로 정합니다. 
-3. 레벨의 배수를 정합니다. 배수는 1x · 0.5x · 0.25x 단위로만 씁니다. 레벨별 배율 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하며, [[#reference-scale|Reference Scale]]의 값에서 시작해 매체에 맞게 조정하는 방법도 좋습니다.
-4. Linespacing을 다듬습니다. 레벨마다 글자 크기에 대한 행간의 비율을 정합니다. 글자가 클수록 비율은 낮아지고 작을수록 높아집니다. [[#linespacing-founders-grotesk-medium|Linespacing]]을 참조하세요.
-5. 웨이트와 자간으로 Tonal Value를 맞춥니다. 모든 레벨이 하나의 블록을 일관되게 확대 · 축소한 것처럼 보이는 정도의 균형감에 이를 때까지 3-5의 과정을 반복합니다. [[#letterspacing-founders-grotesk-medium|Letterspacing]]과 [[#tonal-value|Tonal Value]]를 참조하세요.
-
-레이아웃의 격자와 마진은 [[#grid-and-margin|Grid & Margin]]을 참조하세요.
-![setting-up-1]{bg-color} 1/ 레벨 수를 정합니다
-![setting-up-2]{bg-color} 2/ Line Unit을 정합니다
-![setting-up-3]{bg-color} 3/ 레벨의 배수를 정합니다
-![setting-up-4]{bg-color} 4/ Linespacing을 다듬습니다
-![setting-up-5]{bg-color} 5/ 웨이트와 자간으로 Tonal Value를 맞춥니다
+1. 타이포그래피 레벨 수를 정합니다. 지면에 표시할 정보량에 따라 사용할 레벨을 나눕니다. 세부 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요.
+2. Line Unit을 정하고, 레이아웃의 콘텐츠 영역에 베이스라인 그리드를 설정합니다. 일반적으로 내용 비중이 가장 높거나 지면을 가장 많이 점유하는 콘텐츠 또는 그 구성 요소를 기준으로 Line Unit의 크기를 정합니다. Line Unit의 세부 지침은 [[#line-unit|Line Unit]], 그리드 설정은 [[#grid-setting-margin|Margin]] · [[#grid-setting-compound-grid|Compound Grid]]를 참조하세요.
+3. 콘텐츠를 그리드에 배치하고 레벨별 배수로 위계를 정합니다. 배수는 1x · 0.5x · 0.25x 단위에 맞춰 정합니다. 세부 지침은 [[#levelling-and-sizing|Levelling & Sizing]]을 참조하세요. [[#reference-scale|Reference Scale]]의 값에서 시작해 매체에 맞게 조정하는 방법도 좋습니다.
+4. 레벨별 웨이트 · 행간 비율 · 자간 · 컬러 · 줄바꿈을 다듬어 회색도를 맞춥니다. 회색도는 글 덩어리를 멀리서 봤을 때의 밝기이며, 모든 레벨이 한 글을 확대 · 축소한 것처럼 같은 밝기로 보이면 맞은 것입니다. 레벨을 나란히 놓고 눈을 가늘게 뜨거나 화면을 축소해 보면 차이가 드러납니다. 일반적으로 글자가 클수록 행간 비율 값을 낮게, 글자가 작을수록 값을 높게 정합니다. 세부 지침은 [[#linespacing-founders-grotesk-medium|Linespacing]]을 참조하세요. 
+5. 위계에 따라 레벨들이 일관되게 확대 · 축소한 것처럼 보이는 균형감에 이를 때까지 3-4의 과정을 반복합니다. 
+![setting-up-1]{bg-color} 1. 레벨 수를 정합니다
+![setting-up-2]{bg-cover} 2. Line Unit을 정하고, 콘텐츠 영역에 베이스라인 그리드를 설정합니다.
+![setting-up-3]{bg-color} 3. 콘텐츠를 그리드에 배치하고, 레벨별 배수로 위계를 정합니다
+![setting-up-4]{bg-color} 4. 행간 비율과 회색도를 맞춥니다
+![setting-up-5]{bg-color} 5. 3-4의 과정을 반복해 레이아웃을 완성합니다
 
 
 ### Typographic Framework
 #### + Levelling & Sizing {layout=wide}
 레벨은 콘텐츠의 역할로 나눕니다. 지면을 대표하는 한두 단어는 디스플레이(D), 읽기 시작하는 지점은 헤드라인(H), 읽어 내려가는 글은 텍스트(T), 글을 보조하는 정보는 캡션(C)으로 표기하며, 같은 역할 안의 번호는 크기 순의 넘버링입니다.
 
-- 레벨의 수 — 헤드라인과 본문, 또는 헤드라인 · 본문 · 캡션입니다. 레벨을 늘리기 전에 [[#grid-and-margin|행 격자]]의 간격만으로 위계를 만들 수 있는지 먼저 봅니다. 역할이 다르면 레벨을 나누는 것이 기본이나, 레벨이 과도하게 많아지면 일관성있는 타이포그래피를 구축하는 난이도가 가파르게 올라가므로, 역할이 같은데 크기만 다르다면 먼저 하나로 합칠 수 있는지 생각합니다. 
-- 레벨 간 대비 — 타이포그래피의 룩앤필은 인접한 레벨 사이의 차이에서 큰 틀이 결정됩니다. 본문(1x)에서 헤드라인으로 갈 때는 두 배 이상(2x · 2.5x), 헤드라인에서 디스플레이로 갈 때도 두 배 이상(6x)이어야 역할이 한눈에 구분됩니다. 반면 세부적인 커텐츠를 주로 다루는 역할 안의 단계(H2 → H3)에서는 1.5배 정도의 배율이 적당합니다. 배수는 1x · 0.5x · 0.25x 단위로만 씁니다.
-- 지면에 맞추기 — 레벨의 절대 글자 크기는 Line Unit으로 결정됩니다. 본문이 있는 콘텐츠는 읽기 크기를 지키기 위해 Line Unit을 고정하고 Linespacing의 배율(%)을 올립니다. 본문이 없는 포스터와 배너는 Line Unit을 심볼 높이의 1x · 0.5x에 맞춰 적당히 키우는 것이 이상적일 수 있습니다. 
-- 심볼과 레벨 — 심볼도 레벨처럼 다룹니다. 심볼의 높이 정수 배(1x · 2x)를 Line Unit으로 설정하면 심볼과 타이포그래피가 같은 단위로 묶을 수 있습니다. 심볼의 크기는 [[symbol#scalability]]를 따릅니다.
+- **레벨의 수** — 헤드라인과 본문, 또는 헤드라인 · 본문 · 캡션입니다. 역할이 다르면 레벨을 나누는 것이 기본이나, 레벨이 과도하게 많아지면 일관성 있는 타이포그래피를 만드는 난이도가 가파르게 올라가므로, 역할과 우선도가 비슷한 정보는 먼저 하나의 레벨로 합칠 수 있는지 고려합니다. 
+- **레벨 간 대비** — 타이포그래피의 룩앤필은 인접한 레벨 간 대비 정도에서 큰 인상이 결정됩니다. 본문(1x)에서 헤드라인으로 갈 때는 두 배 이상(2-3x), 헤드라인에서 디스플레이로 갈 때도 두 배 이상이어야 역할이 한눈에 구분됩니다. 반면 세부적인 콘텐츠를 다루는 역할 안 단계(H2 → H3)에서는 1.5배 정도의 배수가 적당합니다. 모든 배수는 1x · 0.5x · 0.25x 단위로 나눠 베이스라인 그리드에 맞을 수 있도록 합니다.
+- **심볼과 레벨** — 심볼도 레벨처럼 다룹니다. 심볼 높이의 정수 배(1x · 0.5x)를 Line Unit으로 정하면 심볼과 타이포그래피를 같은 단위로 묶을 수 있습니다. 심볼의 크기는 [[symbol#scalability]]를 따릅니다.
 
-일반적으로 레벨이 커질수록 웨이트는 무거워지고 Linespacing과 자간은 좁아집니다. 다만 실제 레벨링 과정은 목차순 그대로의 선형적 절차라기보다는 [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|자간]] · [[#tonal-value|웨이트]]를 동시에 교차 조율하는 과정에 가깝습니다. 빠른 참고가 필요할 때는 [[#reference-scale|Reference Scale]]의 프리셋 값을 참조하세요.
-![levelling-sizing]{bg-color} 7레벨 프리셋에 Line Unit 격자를 겹친 것 — 레벨의 배수가 격자 칸 수로 읽힙니다
+일반적으로 레벨이 커질수록 웨이트는 무거워지고 행간 비율과 자간은 좁아집니다. 다만 실제 레벨링 과정은 목차순 그대로의 선형적 절차라기보다는 [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · 웨이트를 동시에 교차 조율하는 과정에 가깝습니다. 프리셋 값은 [[#reference-scale|Reference Scale]]을 참조하세요.
+![levelling-sizing]{bg-color}
 
 
 ### + Linespacing
 #### Founders Grotesk Medium
-행간이 줄과 줄 사이의 거리(x)라면, Linespacing은 그 거리를 글자 크기로 나눈 비율(%)입니다. 같은 행간이라도 글자가 크면 Linespacing은 낮아집니다. Figma의 Line height %, CSS의 단위 없는 line-height, InDesign의 Auto Leading %가 모두 이 값입니다. Linespacing은 포맷과 커뮤니케이션 유형에 따라 달라질 수 있으며, 레벨별 기준값은 [[#reference-scale|Reference Scale]]을 참조하세요.
+행간 비율은 1행의 글자가 차지하는 공간 높이를 글자 크기로 나눈 비율(%)로서, 범용 OA 환경과 동일하게 %를 단위로 합니다. 같은 공간이라도 행간 비율이 낮아지면 글자가 커집니다. Figma의 Line height %, CSS의 line-height, InDesign의 Auto Leading과 연결되는 개념입니다. 행간 비율은 포맷과 커뮤니케이션 유형에 따라 달라질 수 있으며, 레벨별 프리셋은 [[#reference-scale|Reference Scale]]을 참조하세요.
 
-헤드라인과 디스플레이는 Linespacing이 100% 이하, 즉 행간이 글자 크기와 같거나 더 좁습니다. 행과 행이 하나의 블록으로 읽히는 것이 목표이며, 어센더와 디센더가 닿기 직전이 하한입니다. 극단적으로 느슨하거나 타이트한 행간은 피하고, 닿는다면 비율이 아니라 문구를 일부 수정하는 것을 권장합니다.
+헤드라인과 디스플레이는 행간 비율이 100% 이하, 즉 행간이 글자 크기와 같거나 더 좁습니다. 행과 행이 하나의 블록으로 읽히는 것이 목표이며, 어센더와 디센더가 닿기 직전이 하한입니다. 극단적으로 넓거나 좁은 행간 비율은 피하고, 가능한 경우 문구를 일부 수정하는 것을 고려합니다.
 ![linespacing-medium]{bg-color}
 
 
 ### Linespacing
 #### Founders Grotesk Regular
-서브 헤드라인(H2 · H3)의 Linespacing은 헤드라인과 본문의 사이(115-120%)에 있습니다. 2-4 행으로 이어지는 일이 많으므로 헤드라인보다 넓은 행간을 적용해 가독성을 다소 높여야 합니다. 헤드라인 크기의 Regular인 D2는 헤드라인과 같은 행간 규칙을 따릅니다.
+서브 헤드라인(H2 · H3)의 행간 비율은 헤드라인과 본문의 사이(115-120%)에 있습니다. 2-4 행으로 이어지는 일이 많으므로 헤드라인보다 넓은 행간을 적용해 가독성을 다소 높여야 합니다. 헤드라인 크기의 Regular인 D2는 헤드라인과 같은 행간 규칙을 따릅니다.
 
-서브 헤드라인은 본문 바로 위에 놓이는 경우가 많으므로, 행간이 본문의 Line Unit 격자와 어긋나지 않는지 함께 확인합니다.
+서브 헤드라인은 본문 바로 위에 놓이는 경우가 많으므로, 행간이 본문의 베이스라인 그리드와 어긋나지 않는지 함께 확인합니다.
 ![linespacing-regular]{bg-color}
 
 
@@ -665,9 +670,9 @@ Line Unit 1x = 28px로 설정된 7레벨 레퍼런스 스케일 프리셋입니�
 
 ### Linespacing
 #### Founders Grotesk Mono Regular
-캡션 · 라벨 · 태그 · 스펙(C1)은 한두 줄로 짧고 글자가 작습니다. 모노는 글자 폭이 넓고 엑스하이트가 커서 본문만큼 행간을 벌리면 줄이 떠 보이므로, 본문보다 좁은 비율로 조판합니다.
+캡션 · 라벨 · 태그 · 스펙(C1)은 한두 행으로 짧고 글자가 작습니다. 모노는 글자 폭이 넓고 엑스하이트가 커서 본문만큼 행간을 넓히면 행이 떠 보이므로, 본문보다 좁은 비율로 조판합니다.
 
-C1의 행간은 Line Unit의 절반입니다. 캡션 두 줄이 본문 한 줄과 같은 높이가 되어 정보성 텍스트도 같은 행 격자 위에 놓입니다.
+C1의 행간은 Line Unit의 절반입니다. 캡션 두 행이 본문 한 행과 같은 높이가 되어 정보성 텍스트도 같은 베이스라인 그리드 위에 놓입니다.
 ![linespacing-mono]{bg-color}
 
 
@@ -679,68 +684,87 @@ C1의 행간은 Line Unit의 절반입니다. 캡션 두 줄이 본문 한 줄�
 
 ### Letterspacing
 #### Founders Grotesk Regular
-Regular 서체 본연의 Tonal Value가 Medium보다 낮기 때문에 서브 헤드라인 레벨에서 헤드라인 레벨과 비슷한 수준의 Tonal Value를 확보하려면 자간을 상대적으로 더 좁혀야 합니다. 이를테면 H1의 경우 Medium -1.5% 자간을 사용하지만, 동일한 글자 크기를 사용하는 D2의 경우 오히려 더 좁은 -2%를 적용합니다.
+Regular 서체 본연의 회색도가 Medium보다 낮기 때문에 서브 헤드라인 레벨에서 헤드라인 레벨과 비슷한 수준의 회색도를 확보하려면 자간을 상대적으로 더 좁혀야 합니다. 이를테면 H1의 경우 Medium -1.5% 자간을 사용하지만, 동일한 글자 크기를 사용하는 D2의 경우 오히려 더 좁은 -2%를 적용합니다.
 ![letterspacing-regular]{bg-color}
 
 
 ### Letterspacing
 #### Founders Grotesk Light
-작은 글자는 공백이 상대적으로 작아 보이므로, 어두운 컬러 배경 위 밝은 컬러의 콘텐츠를 올릴 때를 기준으로 자간을 1-1.5% 수준으로 벌립니다. 가는 웨이트 특성상 자간을 좁히면 가독성이 빠르게 떨어지므로, 균일한 Tonal Value와 가독성 중 어느 쪽이 중요한지에 따라 절충점을 찾습니다.
+작은 글자는 공백이 상대적으로 작아 보이므로, 어두운 컬러 배경 위 밝은 컬러의 콘텐츠를 올릴 때를 기준으로 자간을 1-1.5% 수준으로 넓힙니다. 가는 웨이트 특성상 자간을 좁히면 가독성이 빠르게 떨어지므로, 균일한 회색도와 가독성 중 어느 쪽이 중요한지에 따라 절충점을 찾습니다.
 ![letterspacing-light]{bg-color}
 
 
 ### Letterspacing
 #### Founders Grotesk Mono Regular
-모노 서체의 특성상 균일한 Tonal Value의 연출이 가능해 작은 사이즈로도 시인성이 뛰어나지만, 자체 가독성은 낮기 때문에 자간을 -7% 수준으로 좁히고 긴 단어가 많아 줄이 늘어지면 본문 서체로 바꾸는 것을 고려합니다. 
+모노 서체의 특성상 작은 사이즈로도 식별성이 뛰어나지만, 글로서의 가독성은 낮기 때문에 자간을 -7% 수준으로 좁힙니다. 긴 단어가 많아 행이 늘어지면 본문 서체로 바꾸는 것을 고려합니다. 
 ![letterspacing-mono]{bg-color}
 
 
 
-### Typographic Framework
-#### + Tonal Value
-Tonal Value는 글 덩어리를 멀리서 봤을 때의 밝기입니다. 모든 레벨이 하나의 글을 그대로 확대 · 축소한 것처럼 보이는 것이 가장 이상적입니다. 글자를 단순히 키우면 자간과 행간이 떠 보이고, 줄이면 뭉쳐 보이므로 레벨마다 [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|자간]] · 웨이트를 다시 잡아야 균일한 Tonal Value 수준을 구할 수 있습니다. 레벨을 나란히 놓고 눈을 가늘게 뜨거나 화면을 축소해 보면 밝기 차이가 더 선명하게 드러납니다.
+### + Alignment {layout=grid-2}
+EO 브랜드 커뮤니케이션의 콘텐츠는 왼쪽 정렬을 기준으로 합니다. 가운데 정렬은 심볼 단독 아이콘과 굿즈 백프린트처럼 텍스트가 한 행인 경우에만 허용하고, 양끝 정렬은 사용하지 않습니다. 여러 단으로 나뉜 본문은 모든 단의 첫 행 베이스라인을 맞춥니다. 심볼과 캡션은 이미지의 왼쪽 · 오른쪽 가장자리에 각각 좌측 · 우측정렬합니다. 왼쪽 정렬선 하나가 지면의 기준선이 되어 헤드라인 · 서브 헤드라인 · 본문이 같은 선에서 출발하고, 독자는 행마다 같은 자리에서 읽기 시작합니다. 오른쪽 정렬은 행의 시작점이 매번 달라져 그 기준을 잃고, 양끝 정렬은 단어 사이가 벌어져 회색도가 고르지 않게 됩니다. 이 기준은 웨이트와 관계없이 같습니다.
 
-같은 원칙이 서체 · 언어 · 배경이 바뀔 때의 기준이 됩니다. [[#multilingual|Pretendard나 Noto Sans]]로 조판할 때도, 어두운 배경에서 밝은 배경으로 [[#inversion|반전]]할 때도 Founders Grotesk 다크 모드와 같은 Tonal Value가 나오도록 글자 크기 · 웨이트 · 자간을 맞춥니다. 어느 경우든 글자가 차지하는 공간은 바뀌지 않으므로 레이아웃은 그대로입니다.
-![tonal-value]{bg-color}
-
-
-### + Alignment & Ragging
-EO 브랜드 커뮤니케이션의 모든 텍스트는 왼쪽 정렬입니다. 헤드라인은 레이아웃의 왼쪽 [[#grid-and-margin|그리드 라인]]에서 시작해 그래픽 유닛이 놓인 오른쪽을 향합니다. 가운데 정렬은 심볼 단독 아이콘과 굿즈 백프린트처럼 텍스트가 한 줄인 경우에만 허용하고, 오른쪽 정렬과 강제 양끝 정렬은 사용하지 않습니다. 여러 단으로 나뉜 본문은 모든 단의 첫 행 베이스라인을 맞추고, 캡션은 이미지의 왼쪽 · 오른쪽 가장자리에 각각 좌측 · 우측정렬합니다.
-
-래그는 글 덩어리의 오른쪽 가장자리입니다. 가장자리가 불규칙하게 느껴지거나 특정 행이 튀어나오거나, 마지막 행에 단어 하나만 남으면(Orphan) 래그가 나쁘다고 말합니다. EO의 헤드라인은 짧고 행 수가 적어 래그가 그대로 드러납니다. "Build / Anyway."처럼 행마다 의미 단위가 끊어지도록 줄을 바꾸고, 긴 행과 짧은 행이 번갈아 나오는 계단 모양을 피하세요. 본문에서는 가장자리가 고르고 글이 잘 읽힐 때까지 단어를 다음 행으로 옮깁니다.
-![alignment]{bg-color} 왼쪽 정렬과 단 사이의 베이스라인
-![ragging]{bg-color} 의미 단위로 끊은 헤드라인의 래그
+예외는 정보성 텍스트(C1 · Mono)입니다. 이미지 아래의 캡션은 심볼이 왼쪽 가장자리에 좌측정렬되는 것과 짝을 이뤄 오른쪽 가장자리에 우측정렬할 수 있습니다. 그 밖의 Mono 텍스트는 다른 레벨과 같이 왼쪽 정렬합니다.
+![alignment-medium]{bg-color} 헤드라인(Medium) — 왼쪽 정렬이 기준, 가운데 · 오른쪽 · 양끝 정렬은 쓰지 않음
+![alignment-regular]{bg-color} 서브 헤드라인(Regular) — 헤드라인과 같은 규칙
+![alignment-light]{bg-color} 본문(Light) — 왼쪽 정렬, 여러 단은 첫 행 베이스라인을 맞춤
+![alignment-mono]{bg-color} 정보성 텍스트(Mono) — 이미지 오른쪽 가장자리의 캡션만 우측정렬 허용
 
 
-### Typographic Framework
-#### + Grid & Margin {layout=grid-2}
-레이아웃의 마진 · 거터 · 격자 모두 [[#line-unit|Line Unit]]의 배수로 세팅해 글과 여백이 같은 비례로 움직이도록 합니다.
+### + Ragging {layout=wide}
+문단의 가장자리가 불규칙하게 느껴지거나 특정 행이 튀어나오거나, 마지막 행에 단어 하나만 남으면 랙이 나쁘다고 말합니다. EO의 헤드라인은 짧고 행 수가 적어 랙이 그대로 드러납니다. "Build / Anyway."처럼 행마다 의미 단위가 끊어지도록 행을 바꾸고, 긴 행과 짧은 행이 번갈아 나오는 계단 모양을 피하세요. 본문에서는 가장자리가 고르고 글이 잘 읽힐 때까지 단어를 다음 행으로 옮깁니다.
+![ragging]{bg-color} 헤드라인 · 서브 헤드라인 · 본문의 Poorly-ragged 와 Well-ragged
 
-- 1. 마진 — 콘텐츠 영역의 네 변 마진은 Line Unit 1-2배를 기준으로 합니다. 글이 적고 지면이 큰 포스터와 배너는 2배까지 넓힐 수 있습니다. 네 변의 마진은 시각적으로 항상 같으며, 상하 마진이 좌우 마진보다 크게 보정되어야 안정적으로 보이는 경향이 있습니다.
-- 2. 베이스라인 그리드 — 콘텐츠 영역을 Line Unit으로 나눈 베이스라인 그리드입니다. 모든 텍스트 블록의 첫 줄은 격자 줄에서 시작하고, 블록 사이 간격은 Line Unit의 정수 배로만 띄웁니다.
-- 3. 컬럼 그리드 — 일반적으로 컬럼의 수는 16:9 화면에서 6열, A판형은 4열, 12열을 사용하거나 디자이너의 재량에 따라 자유롭게 설정합니다. A판형 또는 그와 유사한 비율의 지면에서는 그래픽 패턴 영역이 정사각형에 가까워지도록 지면 비례로 정합니다. 
-- 4. 영역 분할 — 그래픽 패턴 영역과 콘텐츠 영역의 경계는 필드 선 위에 둡니다. 패턴 영역은 마진을 무시하고 풀블리드로 배치하며, 콘텐츠 영역은 마진을 지킵니다. 두 영역의 면적 비율은 [[graphic-pattern#grammar#grid]]를 따릅니다.
-![grid-margin]{bg-color} 1/ 마진 — 네 변 Line Unit 1배
-![grid-baseline]{bg-color} 2/ 베이스라인 그리드 — Line Unit의 정수 배
-![grid-column]{bg-color} 3/ 컬럼 그리드 — 거터는 Line Unit 1배
-![grid-zones]{bg-color} 4/ 영역 분할 — 경계는 그리드 라인 위에
+
+### + Grid Setting
+#### Zoning {layout=grid-2}
+지면은 그래픽 패턴 영역과 콘텐츠 영역으로 나눕니다. 그래픽 패턴 영역은 3:4 · A판형 · 명함에서는 정사각형에 가깝게, 가로형 와이드 지면에서는 지면의 70 % 정도, 세로형 롤업에서는 절반 정도를 차지하는 것이 이상적입니다. 정보량이 적은 커뮤니케이션 용도 지면은 4분할해 콘텐츠와 번갈아 두거나 한쪽에 몰아 둘 수도 있습니다. 
+
+패턴 영역은 마진을 무시한 풀블리드로 배치하고, 유닛 배치는 [[graphic-pattern#grammar#grid]]를 따릅니다. 비율은 먼저 잡고, 두 영역의 경계선은 [[#grid-setting-compound-grid|Compound Grid]]를 설정한 뒤 그 컬럼 · 로우 라인 중 하나에 맞춥니다.
+
+콘텐츠 영역은 나머지이며, 마진과 그리드는 이 영역을 기준으로 설정합니다. 4분할 레이아웃은 분할된 콘텐츠 영역 하나를 기준으로 합니다. 명함처럼 앞뒷면이 연계되는 지면은 주요 콘텐츠가 있는 면을 기준으로 합니다.
+
+
+![zoning-ratio]{bg-color} 그래픽 패턴 영역과 콘텐츠 영역의 비율 예시
+![zoning-4-division]{bg-color} 4분할된 콘텐츠와 패턴 영역을 대각으로 번갈아 두거나 한쪽에 몰아 둠
+
+
+### Grid Setting
+#### Margin {layout=grid-2}
+콘텐츠 영역의 마진은 햐덩 영역의 긴 변의 1/24 을 기준으로 네 변을 같게 설정합니다. 최종값은 [[#grid-setting-compound-grid|Compound Grid]]에서 베이스라인 칸 수를 맞추면서 1/22 ~ 1/25 사이로 안착합니다. 가까이서 읽는 지면에서는 마진이 Line Unit과 거의 같은 스케일이고, 멀리서 보는 지면에서는 마진이 Line Unit의 70-80% 수준까지 작아질 수 있습니다.
+
+타이포그래피가 그래픽 패턴에 닿는 변은 마진의 1.5배 수준을 띄웁니다. 타이포그래피의 상단 경계는 글자 윗선이 고르지 않은 회색 경계이므로, 왼쪽 정렬선 · 베이스라인 · 심볼의 왼쪽과 하단처럼 선이 또렷한 경계보다 간격을 더 두어 보정합니다. 텍스트는 왼쪽 정렬이므로 오른쪽은 패턴에 닿지 않습니다.
+![margin-24]{bg-color} 마진 — 콘텐츠 영역 긴 변의 1/24, 네 방향 모두 같거나, 가로 방향 마진을 10% 정도 더 좁게 보정
+![margin-compensation]{bg-color} 패턴에 인접한 마진은 1.5배 보정, 타이포그래피 상단은 회색 경계이므로 또렷한 왼쪽 정렬선 · 베이스라인보다 여유 있게 배치
+
+
+### Grid Setting
+#### Compound Grid {layout=grid-2}
+기본이 되는 그리드는 Line Unit의 정수 배인 베이스라인 그리드입니다. 마진은 [[#grid-setting-margin|Margin]]에서 콘텐츠 영역 기준으로 먼저 정하고, 베이스라인 칸 수 N 을 맞추면서 1/22 ~ 1/25 사이로 안착합니다. 이때 마진과 Line Unit의 비는 가까이서 읽는 지면에서 마진 = Line Unit의 0.8 ~ 1.1배, 멀리서 보는 지면에서 0.7 ~ 0.8배 범위에 들어오는지 검산합니다. 
+
+넓은 지면 또는 구성요소가 복잡한 레이아웃을 구성할 경우 여기에 모듈러 그리드를 결합한 컴파운드 그리드의 사용을 권장합니다. 콘텐츠 영역을 Line Unit 간격의 거터로 등분한 모듈러 그리드이며, 모듈 셀의 높이도 Line Unit의 정수 배이므로 베이스라인 그리드와 완벽하게 호환됩니다. 
+
+- **컴파운드 그리드 로우** — 전체 베이스라인 칸 수 **N = 로우 수 R × (로우 당 Line Unit 수 n + 1) − 1**을 만족할 때 컴파운드 그리드 적용이 가능합니다. 이를테면, 35칸은 6로우 × 5칸 또는 4로우 × 8칸으로 떨어집니다. 47칸은 4 · 6 · 8 · 12로우가 모두 가능해 가장 유연합니다. 로우 사이 거터를 2칸으로 넓히면 47칸은 7로우 × 5칸으로도 떨어집니다.
+- **컴파운드 그리드 컬럼** — 컬럼 수는 일반적으로 16:9 화면에서 12x6컬럼, A판형은 4x8 · 6x8컬럼이 사용되곤 하는데, 디자이너의 재량에 따라 자유롭게 정합니다. A판형 또는 그와 유사한 비율의 지면에서는 그래픽 패턴 영역이 정사각형에 가까워지도록 지면 비례로 정합니다. 컬럼 사이 거터는 Line Unit의 1배로 합니다.
+![grid-row]{bg-color} 47칸 — 6로우 × 7칸 · 8로우 × 5칸 · 7로우 × 5칸(거터 2칸), 로우 사이 거터는 1 ~ 2칸
+![grid-column]{bg-color} 컬럼 그리드 — 같은 35칸 위에 16:9 는 12컬럼 · A판형은 6컬럼, 컬럼 거터는 Line Unit의 1배
 
 
 ### Typography
 #### + Inversion {layout=wide}
 EO 타이포그래피도 심볼과 마찬가지로 Solid Gray · Space Black 등 어두운 배경 위에 Air White · Medium Gray 등 밝은 컬러의 텍스트 사용을 기본으로 제작되었습니다. 밝은 컬러의 배경 위에 어두운 컬러의 텍스트를 쓰고자 할 때 컬러만 반전하면, 같은 웨이트와 자간인데도 글자가 한 단계 가늘어 보이고 글자 사이가 벌어져 보이는 착시가 생깁니다. [[signature#inversion|시그니처의 디스크립터]]와 같은 현상입니다.
 
-이때는 Line Unit · 레벨의 배수 · 웨이트를 그대로 둔 채, 각 레벨의 Linespacing에 95%(글자 크기가 105%가 되도록)를 적용하고 자간을 0.5% 좁힙니다. 이렇게 하면 밝은 배경에서도 [[#tonal-value|Tonal Value]]가 라이트 텍스트와 거의 같게 유지되고, 글자가 차지하는 공간이 같으므로 레이아웃도 그대로입니다.
+이때는 Line Unit · 레벨의 배수 · 웨이트를 그대로 둔 채, 각 레벨의 행간 비율에 95%(글자 크기가 105%가 되도록)를 적용하고 자간을 0.5% 좁힙니다. 이렇게 하면 밝은 배경에서도 회색도가 라이트 텍스트와 거의 같게 유지되고, 글자가 차지하는 공간이 같으므로 레이아웃도 그대로입니다.
 
 아래는 같은 프리셋을 7레벨 [[#reference-scale|Reference Scale]]에 적용해 라이트 모드로 조판한 예시입니다.
 ![inversion]{bg-color}
 
 
 ### + Multilingual {layout=wide}
-한국어에는 Pretendard를, 베트남어에는 Noto Sans를 사용합니다. 기존 레이아웃에서 다국어 서체로 변경할 때, Line Unit과 레벨의 배수가 그대로이므로 언어를 바꿔도 레이아웃이 움직이지 않고, 글자 크기와 Linespacing만 서체에 맞춰 달라집니다.
+한국어에는 Pretendard를, 베트남어에는 Noto Sans를 사용합니다. 기존 레이아웃에서 다국어 서체로 변경할 때, Line Unit과 레벨의 배수가 그대로이므로 언어를 바꿔도 레이아웃이 움직이지 않고, 글자 크기와 행간 비율만 서체에 맞춰 달라집니다.
 
-- 한국어 Pretendard — [[#reference-scale|T1]]은 Regular · 165% · -2% · 베이스라인 +0.2x, H3는 Medium · 165% · -2.5% · 베이스라인 -0.05x입니다. 렌더링되는 실제 글자 크기는 같은 레벨의 Founders Grotesk의 85% 크기와 같습니다.
-- 베트남어 Noto Sans — T1은 DemiLight · 175% · -2% · 베이스라인 +0.05x, H3는 Regular · 175% · -3%입니다. 렌더링되는 실제 글자 크기는 같은 레벨의 Founders Grotesk의 80% 크기와 같습니다.
+- 한국어 Pretendard — [[#reference-scale|Reference Scale]]의 T1은 Regular · 165% · -1.5% · 베이스라인 +0.2x, H3는 Medium · 165% · -2.5% · 베이스라인 -0.05x입니다. 렌더링되는 실제 글자 크기는 같은 레벨의 Founders Grotesk의 85% 크기와 같습니다.
+- 베트남어 Noto Sans — T1은 DemiLight · 175% · -1.5% · 베이스라인 +0.05x, H3는 Regular · 175% · -3%입니다. 렌더링되는 실제 글자 크기는 같은 레벨의 Founders Grotesk의 80% 크기와 같습니다.
 
 베이스라인 보정은 편집 디자인 어플리케이션에서 텍스트 박스 기준의 위치값을 맞추기 위한 것입니다. 디지털 환경에서 브라우저는 글자의 베이스라인을 스스로 맞추므로 웹에서는 베이스라인 보정이 거의 필요 없지만, 디스플레이 폰트처럼 크게 보여지는 경우에는 텍스트 박스 내 별도 마진으로 보정하는 것이 좋습니다. 
 
@@ -749,22 +773,19 @@ EO 타이포그래피도 심볼과 마찬가지로 Solid Gray · Space Black 등
 
 
 ### Typography
-#### + Don'ts {layout=grid-3}
-아래는 타이포그래피로 하지 말아야 할 것들입니다. 모든 접점에서 일관성을 지키려면 이 챕터의 조판 규칙과 권장 사항을 따르세요.
-![dont-1]{dont bg-color} 헤드라인을 전부 대문자로 쓰지 마세요
-![dont-2]{dont bg-color} 헤드라인에 Light를, 본문에 Medium을 쓰지 마세요
-![dont-3]{dont bg-color} 행간을 좁혀 획이 닿게 하지 마세요
-![dont-4]{dont bg-color} 자간을 벌려 글자를 흩뜨리지 마세요
-![dont-5]{dont bg-color} 가운데 정렬이나 오른쪽 정렬을 쓰지 마세요
-![dont-6]{dont bg-color} 한 레이아웃에 세 가지 넘는 레벨을 쓰지 마세요
-![dont-7]{dont bg-color} 헤드라인에 두 가지 이상 컬러를 쓰지 마세요
-![dont-8]{dont bg-color} 외곽선 · 그림자 · 기울임 · 늘리기를 적용하지 마세요
-![dont-9]{dont bg-color} 헤드라인을 그래픽 유닛 위에 겹치지 마세요
-![dont-10]{dont bg-color} 모노를 헤드라인이나 본문에 쓰지 마세요
-![dont-11]{dont bg-color} 한국어와 베트남어를 영문과 같은 크기로 조판하지 마세요
-![dont-12]{dont bg-color} 지정된 서체 외의 서체를 쓰지 마세요
-
-
+#### + Don'ts {layout=grid-3} {zoom=1.55}
+아래는 브랜드 커뮤니케이션에서 타이포그래피로 하지 말아야 할 것들입니다. 모든 접점에서 일관성을 지키려면 이 챕터의 조판 규칙과 권장 사항을 따르세요. 개별 서비스 · 제품 · 콘텐츠 디자인에서 브랜드 커뮤니케이션 일관성을 얼마나 우선할지는 디자이너 재량에 따르거나 EO 디자인팀의 방침을 준수합니다.
+![dont-1]{dont bg-color} 글자를 늘리거나 왜곡하지 마세요
+![dont-2]{dont bg-color} 헤드라인을 전부 대문자로 쓰지마세요
+![dont-3]{dont bg-color} 헤드라인에 Light를, 본문에 Regular · Medium을 쓰지 마세요
+![dont-4]{dont bg-color} 헤드라인에 두 가지 이상 컬러를 쓰지 마세요
+![dont-5]{dont bg-color} 헤드라인에 가운데 정렬이나 오른쪽 정렬을 쓰지 마세요
+![dont-6]{dont bg-color} 하나의 레벨에 2가지 이상의 웨이트를 쓰지 마세요
+![dont-7]{dont bg-color} 글자에 외곽선 · 그림자 · 기울임을 적용하지 마세요
+![dont-8]{dont bg-color} 타이포그래피를 그래픽 패턴 위에 겹치지 마세요
+![dont-9]{dont bg-color} 모노를 헤드라인이나 본문에 쓰지 마세요
+![dont-10]{dont bg-color} 지정된 서체 외의 서체를 쓰지 마세요
+![dont-11]{dont bg-color} 텍스트를 베이스라인 그리드에서 벗어나게 놓지 마세요
 
 
 # 04 Color
@@ -820,7 +841,7 @@ EO 팔레트는 Builder Neon, Day Blue, Bay Green과 이를 받쳐 주는 네가
 ### Color {layout=grid-3}
 #### Don'ts
 EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트와 배경의 최소 대비는 WCAG 기준을 참고하세요.
-![dont-1]{dont} Builder Neon을 본문 텍스트나 밝은 바탕 위 텍스트로 사용하지 마세요
+![dont-1]{dont} Builder Neon을 본문 텍스트 전체나 밝은 바탕 위 텍스트로 사용하지 마세요
 ![dont-2]{dont} 그라데이션을 만들지 마세요
 ![dont-3]{dont} 팔레트 이외의 컬러를 추가하지 마세요
 ![dont-4]{dont} 명도 · 채도 · 투명도를 바꿔 새로운 톤을 만들지 마세요
@@ -1007,10 +1028,10 @@ thread는 가까이서/크게 볼수록 하나하나의 덩어리가 읽히지�
 
 ### Morphology {layout=grid-4}
 #### Shape
-thread 윗변과 아랫변의 폭 차이입니다. thread의 날카로움과 점유 면적을 결정하고 촘촘한 compression 구간의 Tonal Value(회색도)에 영향을 줍니다. 대각선 면적이 약 60%를 차지하는 thread가 이상적이므로, thread top width는 35-50%, bottom width는 0-20%를 권장합니다.
+thread 윗변과 아랫변의 폭 차이입니다. thread의 날카로움과 점유 면적을 결정하고 촘촘한 compression 구간의 회색도에 영향을 줍니다. 대각선 면적이 약 60%를 차지하는 thread가 이상적이므로, thread top width는 35-50%, bottom width는 0-20%를 권장합니다.
 
 - shaft가 두꺼워지면 thread가 짧아지고 기울기는 완만해집니다. shaft size를 조절할 때는 thread의 기울기가 함께 움직인다는 점을 유의하세요.
-- 유닛이 많은 패턴일수록 thread의 기울기 하나하나가 인지되기보다는 회색 면 · 덩어리로 뭉쳐 보입니다. thread top/bottome with은 가급적 권장 범위 내에서 Tonal Value 미세 조정이 필요할 때만 조정합니다. shaft side를 single로 하여 클로즈업하는 연출에서는 thread의 기울기가 핵심적인 메타포가 되므로 예외입니다.
+- 유닛이 많은 패턴일수록 thread의 기울기 하나하나가 인지되기보다는 회색 면 · 덩어리로 뭉쳐 보입니다. thread top/bottome with은 가급적 권장 범위 내에서 회색도 미세 조정이 필요할 때만 조정합니다. shaft side를 single로 하여 클로즈업하는 연출에서는 thread의 기울기가 핵심적인 메타포가 되므로 예외입니다.
 ![shape-do]{do} top 40% · bottom 0%의 thread
 ![shape-dont]{dont} top · bottom이 권장 범위를 벗어난 thread
 
@@ -1126,36 +1147,36 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray을 유닛 컬
 유닛을 조합해 만든 30종의 패턴 라이브러리입니다. 각 패턴은 번호가 아니라 빌더의 여정에서 가져온 키워드 하나를 이름으로 가지며, 캠페인 · 굿즈 · 소셜 · 영상 등 모든 접점에 사용할 수 있습니다. 
 
 디자이너는 자유롭게 키워드를 확장해 새 그래픽을 제작할 수 있지만, 정식 라이브러리의 등록은 EO 디자인팀의 승인을 거쳐야 합니다.
-![pattern-01] 01/ Path of Builder
-![pattern-02] 02/ Power
-![pattern-03] 03/ Resistance
-![pattern-04] 04/ Builders
-![pattern-05] 05/ Rivals
-![pattern-06] 06/ Team
-![pattern-07] 07/ Backing
-![pattern-08] 08/ Teamwork
-![pattern-09] 09/ Co-working
-![pattern-10] 10/ Rallying
-![pattern-11] 11/ Conviction
-![pattern-12] 12/ Resonance
-![pattern-13] 13/ Advantage
-![pattern-14] 14/ Disadvantage
-![pattern-15] 15/ Cycle
-![pattern-16] 16/ Routine
-![pattern-17] 17/ Competition
-![pattern-18] 18/ Collective Intelligence
-![pattern-19] 19/ Growth
-![pattern-20] 20/ Diversity
-![pattern-21] 21/ Momentum
-![pattern-22] 22/ Problem
-![pattern-23] 23/ A-ha
-![pattern-24] 24/ Wow
-![pattern-25] 25/ Real World
-![pattern-26] 26/ Singularity
-![pattern-27] 27/ Multi-dimension
-![pattern-28] 28/ Adventure
-![pattern-29] 29/ Nature
-![pattern-30] 30/ Boom
+![pattern-01] 01. Path of Builder
+![pattern-02] 02. Power
+![pattern-03] 03. Resistance
+![pattern-04] 04. Builders
+![pattern-05] 05. Rivals
+![pattern-06] 06. Team
+![pattern-07] 07. Backing
+![pattern-08] 08. Teamwork
+![pattern-09] 09. Co-working
+![pattern-10] 10. Rallying
+![pattern-11] 11. Conviction
+![pattern-12] 12. Resonance
+![pattern-13] 13. Advantage
+![pattern-14] 14. Disadvantage
+![pattern-15] 15. Cycle
+![pattern-16] 16. Routine
+![pattern-17] 17. Competition
+![pattern-18] 18. Collective Intelligence
+![pattern-19] 19. Growth
+![pattern-20] 20. Diversity
+![pattern-21] 21. Momentum
+![pattern-22] 22. Problem
+![pattern-23] 23. A-ha
+![pattern-24] 24. Wow
+![pattern-25] 25. Real World
+![pattern-26] 26. Singularity
+![pattern-27] 27. Multi-dimension
+![pattern-28] 28. Adventure
+![pattern-29] 29. Nature
+![pattern-30] 30. Boom
 
 
 ### + Usage

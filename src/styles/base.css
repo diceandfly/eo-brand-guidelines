@@ -142,7 +142,7 @@ button {
   word-break: var(--t-body-ko-break);
   overflow-wrap: break-word; /* 한 어절이 행보다 길면 그때만 글자 단위로 끊음 */
 }
-/* 강조 안의 한글: .ko 가 웨이트를 400 으로 고정하므로 여기서 한 단계 올림 (영문은 strong 의 400 이 그대로 먹음). 캡션(.fig__caption.t-body)도 포함 */
+/* 강조 안의 한글: .ko 가 웨이트 · 자간을 따로 잡으므로 강조용 토큰을 여기서 다시 적용 (값은 본문 한글과 같게 두는 것이 규칙). 캡션(.fig__caption.t-body)도 포함 */
 .t-body strong .ko {
   font-weight: var(--t-body-ko-strong-w);
   letter-spacing: var(--t-body-ko-strong-ls);
@@ -208,9 +208,9 @@ button {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-sublist-item-gap));
 }
 .t-body strong {
-  font-weight: var(--t-body-strong-w); /* 강조 = 웨이트 + 네온. 언더라인은 쓰지 않음 — 언더라인은 링크(.t-body a) 전용 */
+  font-weight: var(--t-body-strong-w); /* 강조 = 네온 색만. 웨이트 · 자간은 본문과 같게. 언더라인은 쓰지 않음 — 언더라인은 링크(.t-body a) 전용 */
   color: var(--t-body-strong-c); /* 네온 하이라이팅 — 한글 구간(.ko)도 상속 */
-  letter-spacing: var(--t-body-strong-ls); /* 웨이트가 오른 만큼 자간을 좁힘 */
+  letter-spacing: var(--t-body-strong-ls); /* 본문 자간과 같은 토큰 */
   text-decoration: none;
 }
 .t-body a {
@@ -929,18 +929,20 @@ html.js .main {
   );
   opacity: var(--placeholder-diag-opacity);
 }
+/* 캡션 앞 번호 — md 는 일반 순서 목록처럼 "1. " 로 쓰고(guide.ts LABEL_NUM) 화면은 숫자만 "1". 본문 순서 목록 마커(.t-body ol > li::before)와 같은 글자 · 서체 · 행잉 구조 (크기 · 자간 · 세로 보정 없음). 줄이 넘어가면 글은 첫 줄 글 시작선(--t-body-olist-indent)으로 돌아감 */
+.fig__caption-text:has(> .cap-num) {
+  padding-left: var(--t-body-olist-indent);
+}
 .fig__caption .cap-num {
-  font-family: var(--font-mono); /* 캡션 앞 번호 "1/" — 순서 목록 마커와 같은 모노 · 같은 보정 (--num-marker-*) */
-  display: inline-block; /* 세로 보정(transform)이 먹도록 */
-  font-size: calc(1em * var(--num-marker-scale));
-  letter-spacing: var(--num-marker-ls);
-  transform: translateY(var(--num-marker-dy));
-  margin-right: calc(var(--cap-num-gap) / var(--num-marker-scale)); /* 간격은 줄인 글자가 아니라 캡션 글자 기준 0.6em 그대로 */
+  display: inline-block;
+  font-variant-numeric: tabular-nums; /* 본문 번호와 같이 등폭 숫자 */
+  width: var(--t-body-olist-indent);
+  margin-left: calc(-1 * var(--t-body-olist-indent)); /* 번호는 padding 안쪽 거터에, 글은 들여쓰기 선에서 시작 */
 }
 .fig__caption .cap-key {
   margin-right: var(--cap-num-gap); /* 캡션 앞 키워드 "세로형/" — 글자는 그대로, 슬래시만 모노. 강조는 md 에서 키워드를 ** 로 감쌈 (strong). 보관: 2026-11-04 부터 가이드는 "세로형 — 설명" 글자로 씀 */
 }
-/* 번호 · 키워드 라벨은 글과 한 줄에 흐르고(인라인), 줄이 넘어가면 글은 캡션 왼쪽 선으로 돌아감 — 행잉 인덴트 없음. 본문 키워드 문단 · 목록 · 순서 목록과 같은 방식 */
+/* 키워드 라벨은 글과 한 줄에 흐르고(인라인), 줄이 넘어가면 글은 캡션 왼쪽 선으로 돌아감 — 행잉 인덴트 없음 (번호 라벨은 위처럼 행잉). 본문 키워드 문단 · 목록과 같은 방식 */
 .cap-slash {
   font-family: var(--font-mono); /* 키워드 뒤 슬래시 — 번호 라벨과 같은 모노 */
 }
@@ -1473,7 +1475,7 @@ html.js .main {
   vertical-align: var(--next-arrow-shift);
 }
 
-/* 본문 순서 목록 마커: "1." 대신 캡션 번호와 같은 "1 /" (md 는 그대로 1. 로 씀) */
+/* 본문 순서 목록 마커: 본문 서체 그대로 숫자만 "1" (점 · 슬래시 없음. 2026-11-07 결정 — 모노 "1/" 은 웨이트가 한 단계 무거워 본문과 어울리지 않음. 크기 · 자간 · 세로 보정 없음. 캡션 번호도 같은 글자 · 서체, .fig__caption .cap-num) */
 .t-body ol {
   list-style: none;
   counter-reset: item;
@@ -1481,16 +1483,13 @@ html.js .main {
 }
 .t-body ol > li {
   counter-increment: item;
-  position: relative;
 }
 .t-body ol > li::before {
-  content: counter(item) '/';
-  font-family: var(--font-mono); /* "1/" — 숫자 폭이 같아 1 과 5 가 같은 자리에. 캡션 번호와 같은 보정 (--num-marker-*) */
-  position: absolute;
-  left: calc(-1 * var(--t-body-olist-indent) / var(--num-marker-scale)); /* 마커는 거터에 (불릿 ::before 와 같음). ::before 는 글자를 줄였으므로 em 을 되돌려 본문 글자 기준 1.6em 자리에 */
-  font-size: calc(1em * var(--num-marker-scale));
-  letter-spacing: var(--num-marker-ls);
-  transform: translateY(var(--num-marker-dy));
+  content: counter(item); /* 숫자만, 점 없음 */
+  font-variant-numeric: tabular-nums; /* 1 과 5 의 폭을 같게 — 숨이 번호마다 달라지지 않도록 (--t-body-marker-w) */
+  display: inline-block; /* 글줄 안에서 베이스라인 정렬 */
+  width: var(--t-body-olist-indent); /* 마커는 거터에 (불릿 ::before 와 같은 자리) */
+  margin-left: calc(-1 * var(--t-body-olist-indent)); /* 폭만큼 왼쪽으로 빼서 글은 li 의 글 시작선에서 그대로 시작 */
 }
 .t-body li > ol > li::before {
   color: var(--t-body-olist-nested-c); /* 중첩 번호는 한 톤 죽여 상위 불릿보다 약하게 */

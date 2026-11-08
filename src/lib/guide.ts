@@ -253,7 +253,7 @@ const colorHexes = (tokens: Tokens): Record<string, string> =>
 interface Ctx { lang: Lang; hex: Record<string, string>; }
 const COLOR_DARK = new Set(['Space Black', 'Solid Gray']);   // 어두운 칩: 테두리만 보여 작아 보이는 착시를 CSS(--cref-grow-*)로 색마다 보정
 const NAMES = COLOR_NAMES.join('|');
-const COLOR_RE = new RegExp(`(?<![\\w-])(?:\\[(\\+?)(${NAMES})\\]|(${NAMES}))(?![\\w-])`, 'g');   // [Name] · [+Name] · Name
+const COLOR_RE = new RegExp(`\\[(\\+?)(${NAMES})\\]|(?<![\\w-])(${NAMES})(?![\\w-])`, 'g');   // [Name] · [+Name] · Name — 대괄호 형은 앞뒤 글자와 무관("0[Space Black]" 처럼 숫자에 붙여 써도 칩), 맨 이름만 단어 경계 확인
 /**
  * @param seen  섹션 안에서 이미 칩을 붙인 이름. 주면 "섹션 첫 언급에만 칩" 규칙(본문), 없으면 언급마다 칩(캡션).
  *              [Builder Neon] 은 칩만, [+Builder Neon] 은 칩 + 이름을 규칙과 무관하게 강제.
@@ -323,15 +323,15 @@ const plusMarkers = (src: string) => src.replace(/^([ \t]*)\+[ \t]+(?=\S)/gm, `$
 const bullets = (html: string) => html.replace(new RegExp(`<li>(<p>)?${PLUS}`, 'g'), (_m, p = '') => `<li data-bullet="plus">${p}`);
 
 /**
- * 라벨 인식 — 한 줄(캡션 줄 · 목록 항목 · 문단)의 시작에서 번호 라벨 "N/ " 과 키워드 라벨 "키워드/ " 을 떼어 냅니다.
- *   "1/ 설명"            → <span class="cap-num">1/</span><span class="cap-body">설명</span>              (캡션만. 본문 번호는 순서 목록 1. 로)
+ * 라벨 인식 — 한 줄(캡션 줄 · 목록 항목 · 문단)의 시작에서 번호 라벨 "N. " 과 키워드 라벨 "키워드/ " 을 떼어 냅니다.
+ *   "1. 설명"            → <span class="cap-num">1</span><span class="cap-body">설명</span>               (캡션만. md 는 일반 순서 목록처럼 "1. " 로 쓰고 화면은 본문 순서 목록 마커와 같은 숫자만 "1" — 점은 CSS 가 붙이지 않음)
  *   "키워드/ 설명"        → <span class="cap-key">키워드<span class="cap-slash">/</span></span><span class="cap-body">설명</span>
- *   "1/ 키워드/ 설명"     → 번호 + 키워드 둘 다
+ *   "1. 키워드/ 설명"     → 번호 + 키워드 둘 다
  * 규칙: 라벨 슬래시는 바로 앞이 공백이 아니고 바로 뒤가 공백 (thread top / bottom width/ 처럼 키워드 안의 " / " 는 통과). 키워드는 40자까지.
- * 글자는 변환하지 않습니다 — 쓴 슬래시가 그대로 보이고, 모노 슬래시 · 뒤 간격(--cap-num-gap)만 CSS 로 붙습니다. 키워드를 강조하려면 키워드를 **…** 로 감쌈 (본문 강조와 같은 웨이트 + 네온). 슬래시를 ** 안에 넣으면 슬래시까지 강조, 밖에 두면 키워드만. 주의: 이 주석 안에 별표+슬래시를 붙여 쓰면 주석이 닫힘.
+ * 글자는 변환하지 않습니다 — 쓴 슬래시가 그대로 보이고, 키워드 라벨은 모노 슬래시 · 뒤 간격(--cap-num-gap)만 CSS 로 붙습니다. 키워드를 강조하려면 키워드를 **…** 로 감쌈 (본문 강조와 같은 웨이트 + 네온). 슬래시를 ** 안에 넣으면 슬래시까지 강조, 밖에 두면 키워드만. 주의: 이 주석 안에 별표+슬래시를 붙여 쓰면 주석이 닫힘.
  * 컬러 칩 · 한글 래핑 전의 글자 그대로에서 돌므로 "Builder Neon/ 설명" 도 키워드가 되고 칩은 라벨 안에 붙습니다. 불릿 글자(data-bullet)와는 무관.
  */
-const LABEL_NUM = /^(\d{1,2})\/[ \u00A0]+(?=\S)/;
+const LABEL_NUM = /^(\d{1,2})\.[ \u00A0]+(?=\S)/;   // 캡션 번호 "1. " — 일반 md 순서 목록과 같은 표기 (2026-11-08, "1/ " 에서 롤백). 캡션은 marked 를 거치지 않아 목록으로 바뀌지 않음
 const LABEL_SLASH = /(?<=\S)\/(?=(?:<\/strong>)?[ \u00A0]+\S)/;
 const LABEL_DSLASH = /(?<=\S)\/\/(?=(?:<\/strong>)?[ \u00A0]+\S)/;   // "키워드// 설명": 단락 모드 — 문단에서는 들여쓰기 + 독립 단락(p-keyed--block). 화면에는 슬래시 하나만. 캡션 · 목록에서는 보통 라벨과 같음
 // 단락 모드 줄은 저마다 한 문단이 되도록 앞에 빈 줄을 보장 (marked 는 breaks:false 라 이어진 줄을 한 문단으로 합침). URL 의 // 는 뒤에 공백이 없어 제외
@@ -340,7 +340,7 @@ function labelize(text: string, cls: 'cap' | 'li' | 'p'): string {
   let out = '';
   let rest = text;
   const num = cls === 'cap' ? rest.match(LABEL_NUM) : null;
-  if (num) { out += `<span class="cap-num">${num[1]}/</span>`; rest = rest.slice(num[0].length); }
+  if (num) { out += `<span class="cap-num">${num[1]}</span>`; rest = rest.slice(num[0].length); }   // 화면은 숫자만 "1" (본문 순서 목록 마커와 같은 글자 · 서체)
   const d = rest.search(LABEL_DSLASH);
   const block = d > 0;
   const i = block ? d : rest.search(LABEL_SLASH);
