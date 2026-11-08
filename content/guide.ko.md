@@ -382,13 +382,13 @@ EO 심볼이 일관되고 강렬하게 유지되도록, 재해석하거나 변�
 ### + Company Signature
 #### Vertical 
 
-Company Signature 세로형는 EO 심볼 아래에 "EO Studio"를 중앙 정렬로 놓은 세로 조합입니다. 구성 규칙은 위 Descriptor 섹션의 세로형 규격을 따릅니다.
+Company Signature 세로형은 EO 심볼 아래에 "EO Studio"를 중앙 정렬로 놓은 세로 조합입니다. 구성 규칙은 [[#descriptor|Descriptor]]의 세로형 규격을 참조하세요.
 ![company-v] {zoom=1.05}
 
 
 ### Company Signature
 #### Horizontal
-Company Signature 가로형는 EO 심볼 오른쪽에 "EO Studio"를 놓은 가로 조합입니다. 구성 규칙은 위 Descriptor 섹션의 가로형 규격을 따릅니다. 
+Company Signature 가로형은 EO 심볼 오른쪽에 "EO Studio"를 놓은 가로 조합입니다. 구성 규칙은 [[#descriptor|Descriptor]]의 가로형 규격을 참조하세요. 
 
 EO를 한 번 이상 접한 사람에게 EO 심볼은 이미 "EO"로 읽힐 수 있으므로, 가로형 사용 시 디스크립터에 "Studio"만 표기하는 것을 고려하세요.
 ![company-h] {zoom=1.6}
@@ -712,7 +712,9 @@ EO 브랜드 커뮤니케이션의 콘텐츠는 왼쪽 정렬을 기준으로 �
 
 
 ### + Ragging
-문단의 가장자리가 불규칙하게 느껴지거나 특정 행이 튀어나오거나, 마지막 행에 단어 하나만 남으면 랙이 나쁘다고 말합니다. EO의 헤드라인은 짧고 행 수가 적어 랙이 그대로 드러납니다. "Build / Anyway."처럼 행마다 의미 단위가 끊어지도록 행을 바꾸고, 긴 행과 짧은 행이 번갈아 나오는 계단 모양을 피하세요. 본문에서는 가장자리가 고르고 글이 잘 읽힐 때까지 단어를 다음 행으로 옮깁니다.
+문단의 가장자리가 불규칙하게 느껴지거나 특정 행이 튀어나오거나, 마지막 행에 단어 하나만 남으면 랙이 나쁘다고 말합니다. 
+
+헤드라인은 짧고 행 수가 적어 랙이 그대로 드러나기 때문에 "Build / Anyway."처럼 행마다 의미 단위가 끊어지도록 행을 바꾸고, 긴 행과 짧은 행이 번갈아 나오는 계단 모양을 피하세요. 본문에서는 가장자리가 고르고 글이 잘 읽힐 때까지 단어를 다음 행으로 옮깁니다.
 ![ragging]{bg-color}
 
 
@@ -872,8 +874,8 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 
 - shaft size — 나사축 직사각형의 두께, 단위는 양쪽의 thread 포함 유닛 전체 높이 대비 %입니다. shaft size가 기본 값 35% 수준일 때, 비교적 복잡한 그래픽 패턴에서도 시각적 밀도를 이상적으로 유지하기 쉽습니다.
 - thread top, bottom width — thread 윗변과 아랫변의 폭. 두 값의 차이가 thread의 기울기를 결정합니다. 기본 값은 위 40% · 아래 0%.
-- thread sides — double은 shaft 위아래 양쪽, single은 위쪽에만 thread가 붙고 shaft가 아래쪽 바닥에 놓입니다.
-- thread amount — shaft 위아래에 하나씩 붙는, 나사산을 추상화한 사다리꼴 쉐입. 오른쪽 변은 컬럼 끝에 수직으로 서고, 왼쪽 변은 기울어집니다. 아래쪽 thread는 위쪽을 컬럼 중심 기준으로 180° 회전한 모양입니다.
+- thread sides — double은 shaft 상하 양쪽, single은 위쪽에만 thread가 붙고 shaft가 아래쪽 바닥에 놓입니다.
+- thread amount — shaft 상하에 하나씩 붙는, 나사산을 추상화한 사다리꼴 쉐입. 오른쪽 변은 컬럼 끝에 수직으로 서고, 왼쪽 변은 기울어집니다. 아래쪽 thread는 위쪽을 컬럼 중심 기준으로 180° 회전한 모양입니다.
 - thread compression — thread 폭이 한쪽으로 갈수록 점점 좁아지는 정도. 0이면 모든 thread의 너비가 균등하고, 값이 커질수록 한쪽으로 압축되는 세기가 강해집니다. 음수/양수 값은 compression의 방향을 결정하며, 개별 thread의 기울기는 반전되지 않고 그대로 유지됩니다.
 - thread gutter — thread가 놓이는 세로 칸과 칸 사이 간격입니다. 빌더에서는 gutter로 표기합니다.
 
@@ -1016,7 +1018,7 @@ compression 값을 올리면 한쪽으로 갈수록 thread가 촘촘해지며 �
 thread는 가까이서/크게 볼수록 하나하나의 덩어리가 읽히지만, 멀리서/작게 볼수록 인접한 형태끼리 뭉치며 일정한 밀도의 회색 면을 이룹니다. 이때 회색 면의 경계는 compression에 따라 변화하고, 밀도는 thread gutter와 thread의 기울기에 따라 변화합니다. thread gutter는 thread 사이의 최소 간격이며, 촘촘한 thread가 각각의 선으로 보일지 회색 면으로 뭉칠지에 결정적 영향을 줍니다. 일반적인 해상도의 디지털 에셋에는 10-20px 수준의 thread gutter를 권장합니다.
 
 - 촘촘한 구간은 회색 면으로 뭉쳐 보이는 쪽이 거의 언제나 좋습니다. 헤어라인 두께로 일정하게 반복되는 thread를 노출시키기보다, 그 구간이 유닛 끝의 좁은 띠로 뭉치게 thread gutter를 낮추세요. 일반적인 해상도의 디지털 에셋에서는 thread gutter를 30px 이상으로 올리는 일이 드뭅니다.
-- 회색 면의 밀도는 thread gutter에 의해 큰 인상을 결정되지만, thread의 기울기에도 미세하게 영향을 받습니다. 두꺼운 쪽 thread의 기울기를 조절할 때도 촘촘한 쪽의 회색 면에 변화가 생기고 있는지 유의하세요.
+- 회색 면의 밀도는 thread gutter에 의해 큰 인상이 결정되지만, thread의 기울기에도 미세하게 영향을 받습니다. 두꺼운 쪽 thread의 기울기를 조정할 때도 촘촘한 쪽의 회색 면에 변화가 생기고 있는지 유의하세요.
 - Space Black 유닛은 밝은 배경에서 쪼그라드는데, 이때 촘촘한 쪽의 회색 면이 thread 하나하나로 흩어지며 기존의 리듬감을 무너뜨릴 수 있습니다. 밝은 컬러에서 어두운 컬러로 반전할 때는(반대의 경우도 같습니다) thread gutter와 compression을 새로 잡아야 합니다.
 ![density-mass-do]{do} thread gutter가 작아 회색 면으로 뭉친 촘촘한 구간
 ![density-mass-dont]{dont} thread gutter가 커서 헤어라인을 하나하나 돌출시킨 구간
@@ -1030,7 +1032,7 @@ thread는 가까이서/크게 볼수록 하나하나의 덩어리가 읽히지�
 #### Shape
 thread 윗변과 아랫변의 폭 차이입니다. thread의 날카로움과 점유 면적을 결정하고 촘촘한 compression 구간의 회색도에 영향을 줍니다. 대각선 면적이 약 60%를 차지하는 thread가 이상적이므로, thread top width는 35-50%, bottom width는 0-20%를 권장합니다.
 
-- shaft가 두꺼워지면 thread가 짧아지고 기울기는 완만해집니다. shaft size를 조절할 때는 thread의 기울기가 함께 움직인다는 점을 유의하세요.
+- shaft가 두꺼워지면 thread가 짧아지고 기울기는 완만해집니다. shaft size를 조정할 때는 thread의 기울기가 함께 움직인다는 점을 유의하세요.
 - 유닛이 많은 패턴일수록 thread의 기울기 하나하나가 인지되기보다는 회색 면 · 덩어리로 뭉쳐 보입니다. thread top/bottome with은 가급적 권장 범위 내에서 회색도 미세 조정이 필요할 때만 조정합니다. shaft side를 single로 하여 클로즈업하는 연출에서는 thread의 기울기가 핵심적인 메타포가 되므로 예외입니다.
 ![shape-do]{do} top 40% · bottom 0%의 thread
 ![shape-dont]{dont} top · bottom이 권장 범위를 벗어난 thread
@@ -1071,9 +1073,9 @@ EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다.
 
 ### Grammar {layout=grid-4}
 #### Grid
-그래픽 패턴 영역과 콘텐츠 영역을 함께 고려해 지면의 Layout를 구성하며, 그래픽 패턴 영역은 전체 지면 면적의 50-70%을 차지하는 것이 이상적입니다. 중간의 10% 정도는 여백으로 볼 때, 나머지 약 20-40%의 면적을 콘텐츠 영역으로 쓰는 것이 좋습니다. 
+그래픽 패턴 영역과 콘텐츠 영역을 함께 고려해 지면의 레이아웃을 구성하며, 그래픽 패턴 영역은 전체 지면 면적의 50-70%를 차지하는 것이 이상적입니다. 중간의 10% 정도는 여백으로 볼 때, 나머지 약 20-40%의 면적을 콘텐츠 영역으로 쓰는 것이 좋습니다. 
 
-이렇게 나눠진 그래픽 패턴 영역에 pattern grid을 기준으로 유닛을 배치합니다. EO Graphic Builder에서 설정하는 프레임의 그리드가 pattern grid에 해당합니다. 먼저 빌더 · 그래픽툴의 워크스페이스에서 유닛을 조합해 새로운 메타포의 그래픽 초안을 만들고, 적절하게 세팅된 pattern grid 위에 유닛을 정렬해 리파인하는 작업 방식을 권장합니다.
+이렇게 나눠진 그래픽 패턴 영역에 pattern grid를 기준으로 유닛을 배치합니다. EO Graphic Builder에서 설정하는 프레임의 그리드가 pattern grid에 해당합니다. 먼저 빌더 · 그래픽툴의 워크스페이스에서 유닛을 조합해 새로운 메타포의 그래픽 초안을 만들고, 적절하게 설정된 pattern grid 위에 유닛을 정렬해 리파인하는 작업 방식을 권장합니다.
 ![grid-do-1]{do} 이상적인 비율의 영역 구획
 ![grid-dont-1]{dont} 그래픽 영역이 너무 작아 시각성이 약화된 레이아웃
 ![grid-do-2]{do} pattern grid의 컬럼과 로우에 물린 유닛
@@ -1114,7 +1116,7 @@ pattern margin은 0으로 설정해 레이아웃의 그래픽 패턴 영역을 1
 
 ### Graphic Pattern {layout=grid-4}
 #### + Color
-Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray을 유닛 컬러, Solid Gray · Space Black를 배경 컬러로 사용하는 것을 기본으로 합니다. 여러 유닛을 나란히 놓을 때는 명도 차가 비슷한 Day Blue · Bay Green · Medium Gray를 균일한 비중 · 위치 · 동세로 배치하거나, 명도가 높은 Builder Neon · Air White를 시각 초점으로 활용해 캔버스의 깊이감을 의도적으로 조절하세요.
+Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray를 유닛 컬러, Solid Gray · Space Black을 배경 컬러로 사용하는 것을 기본으로 합니다. 여러 유닛을 나란히 놓을 때는 명도 차가 비슷한 Day Blue · Bay Green · Medium Gray를 균일한 비중 · 위치 · 동세로 배치하거나, 명도가 높은 Builder Neon · Air White를 시각 초점으로 활용해 캔버스의 깊이감을 의도적으로 조절하세요.
 
 브랜드의 존재감을 가장 강하게 어필해야 하면서, 전달할 정보량이 적은 지면에 한해서만 Builder Neon을 배경 컬러로 사용하고 그 위에 Space Black 유닛을 올립니다.
 
@@ -1181,10 +1183,10 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray을 유닛 컬
 
 ### + Usage
 #### Do's & Dont's {layout=grid-2}
-그래픽 패턴은 EO의 모든 비주얼 표현 중 가장 화려하고 밀도 있는 시각 요소이므로, 지면에서 시선을 집중시키는 주제 역할이 되어야 합니다. 레이아웃의 한쪽 절반(보통 상단 또는 오른쪽)을 통째로 내어 주고, 헤드라인은 반대쪽 컨텐츠 영역 가장자리에 왼쪽 정렬로 놓습니다. 텍스트를 패턴 위에 겹치지 않고, 로고는 패턴 바깥의 여백에 배치합니다. 패턴은 잘라 쓸 수 있지만 thread의 대각선 구간이 중간에서 잘리지 않도록 컬럼 경계에서 크롭합니다.
+그래픽 패턴은 EO의 모든 비주얼 표현 중 가장 화려하고 밀도 있는 시각 요소이므로, 지면에서 시선을 집중시키는 주제 역할이 되어야 합니다. 레이아웃의 한쪽 절반(보통 상단 또는 오른쪽)을 통째로 내어 주고, 헤드라인은 반대쪽 콘텐츠 영역 가장자리에 왼쪽 정렬로 놓습니다. 텍스트를 패턴 위에 겹치지 않고, 로고는 패턴 바깥의 여백에 배치합니다. 패턴은 잘라 쓸 수 있지만 thread의 대각선 구간이 중간에서 잘리지 않도록 컬럼 경계에서 크롭합니다.
 ![pattern-do-1] {do} 그래픽 패턴을 사용할 땐 지면의 60-70% 이상의 큰 사각 영역을 채워 시각성을 높이세요
 ![pattern-do-2] {do} 지면이 실제 보여지는 크기를 고려해 적절한 복잡도의 그래픽 패턴을 사용하세요
-![pattern-dont-1] {dont} 그래픽 패턴 위에 컨텐츠를 오버레이 하지 마세요
+![pattern-dont-1] {dont} 그래픽 패턴 위에 콘텐츠를 오버레이 하지 마세요
 ![pattern-dont-2] {dont} 스레드의 대각선 부분이 크롭되지 않도록 하세요
 
 ### Usage

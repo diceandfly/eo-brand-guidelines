@@ -176,14 +176,14 @@ EO · the EO monogram · the block symbol · "Build Anyway" · "Entrepreneur Onw
 ### Logo
 #### + Overview 
 The EO logo is the umbrella term for everything covered in this chapter: the EO symbol · EO signature · service signatures · EO sub symbol. This page explains how to apply the EO symbol across situations · formats · communications, from small sign-offs to large display executions.
-![hero]
+![hero] {zoom=1.05}
 
 
 ### Symbol
 A graphic metaphor whose screw motif makes it identifiable, and a monogram holding the two letters E and O. This form of the logo is referred to below as the **EO symbol**.
 
 The EO symbol is the most iconic and effective way to signal the media brand EO.
-![symbol]
+![symbol] {zoom=1.065}
 
 
 ### Symbol
@@ -193,7 +193,7 @@ The **EO symbol** is designed on the motif of the three elements of a screw: the
 - **thread** — one turn of thread symbolizes a cycle of problem solving.
 - **shaft** — the shaft symbolizes the process of building and the builder's journey, and expresses the courage to move forward (Build anyway).
 - **head** — the head symbolizes one small act of problem solving, or one builder.
-![motif]
+![motif] {zoom=1.05}
 
 
 ### Symbol
@@ -205,7 +205,7 @@ The EO symbol is a monogram made of two blocks. The E block, depicting the facad
 ### Symbol
 #### + Clearspace 
 Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the canvas. Taking the vertical height of one E block as H, always keep a minimum margin of at least H/2 on every side between the symbol and any adjacent element.
-![clearspace]
+![clearspace] {zoom=1.05}
 
 
 ### Symbol
@@ -216,7 +216,7 @@ The EO symbol is designed and tested to work across a range of sizes.
 - The **recommended maximum size** is a height of 70px (approx. 15mm, 1/40 of the viewing distance). In a typical layout, we recommend not exceeding this size.
 - The **minimum size** is a height of 20px on screen (approx. 4mm, 1/125 of the viewing distance) and 5mm in print. Below this the threads of the E block fill in, so ask the EO design team to check.
 - The **maximum size** is a height of 135px (approx. 30mm, 1/20 of the viewing distance). Any larger and the symbol reads as a surface rather than a graphic, so when you need a greater presence, use a graphic pattern instead of the symbol.
-![scalability]
+![scalability] {zoom=1.05}
 
 
 ### + Usage
@@ -237,7 +237,7 @@ When using the symbol for display purposes, **avoid raising its visual hierarchy
 
 
 ### Symbol
-#### + Color{layout=grid-3}
+#### + Color{layout=grid-3} {zoom=1.6}
 The EO symbol has six basic color pairings. **The symbol must always be rendered in a single color**; when you are unsure about the background color, use one of the following.
 ![color-1] 1. Space Black on Builder Neon
 ![color-2] 2. Air White on Space Black
@@ -254,20 +254,20 @@ The EO symbol is built primarily as a light symbol in light colors such as Build
 In this case, offset the outline of the light symbol outward by H/100, then scale each of the two blocks up proportionally by H/30 in all four directions. Then reduce the gap between the two expanded blocks from the original (4/30)H to (3/30)H to complete the dark symbol. This converts a light symbol anywhere on the size spectrum into a dark symbol of the same level.
 
 Also, because clearspace on a light background creates the illusion of looking larger, center the dark symbol as is within the clearspace area of the light symbol of the same level.
-![inversion]
+![inversion] {zoom=1.05}
 
 
 ### + Over Imagery {layout=grid-2}
-#### Do's & Don'ts
+#### Do's & Don'ts {zoom=1.05}
 The EO symbol must always read clearly over photography, so overlay the Air White symbol on images that provide sufficient contrast. If an image is too bright or has areas that are excessively white, the symbol risks sinking into the composition; in that case, overlay a gradient or a black box at around 30% opacity before applying the symbol.
 
 The photo composition must be simple enough for the symbol to stand out. Images that are overly complex or have the key subject dead center become confusing once the symbol is placed on them. Keep this in mind when choosing images, or adjust the image position to suit its relationship with the logo.
 
 The guidance in this section focuses on overlays on still images rather than video sequences, where the composition keeps changing.
-![imagery-do-1]{do} Place the symbol where it contrasts sufficiently with the background
-![imagery-do-2]{do} When you must use a photo with uneven brightness, overlay a gradient at around 30% opacity to secure contrast
-![imagery-dont-1]{dont} Don't place the symbol over the main silhouette of the person or object the photo illuminates
-![imagery-dont-2]{dont} Don't place the symbol where it lacks contrast with the photo
+![imagery-do-1]{do} {bg-cover} Place the symbol where it contrasts sufficiently with the background
+![imagery-do-2]{do} {bg-cover} When you must use a photo with uneven brightness, overlay a gradient at around 30% opacity to secure contrast
+![imagery-dont-1]{dont} {bg-cover} Don't place the symbol over the main silhouette of the person or object the photo illuminates
+![imagery-dont-2]{dont} {bg-cover} Don't place the symbol where it lacks contrast with the photo
 
 
 ### + Partner Lockup
@@ -275,7 +275,7 @@ The guidance in this section focuses on overlays on still images rather than vid
 The following image is an example of the basic horizontal lockup of the EO symbol with partner brands' and collaborators' logos.
 
 The elements must be optically adjusted so that they appear the same size; once each logo is sized, add space between them along with a vertical dividing line · collaboration mark. The space between the EO symbol and the partner logo equals 2 or 3 times the width of one E block (W), and the two logos must always be optically centered on the vertical axis.
-![lockup-h]
+![lockup-h] {zoom=1.05}
 
 
 ### Partner Lockup
@@ -283,7 +283,7 @@ The elements must be optically adjusted so that they appear the same size; once 
 The following image is an example of the basic vertical lockup of the EO symbol with partner brands' and collaborators' logos.
 
 The elements must be optically adjusted so that they appear the same size. Once each logo is sized, add a horizontal dividing line between them. The space between the EO symbol and the partner logo equals 1.5 times the height of the EO symbol (H), and the two logos must always be optically centered on the horizontal axis.
-![lockup-v]
+![lockup-v] {zoom=1.05}
 
 
 ### Partner Lockup
@@ -291,7 +291,7 @@ The elements must be optically adjusted so that they appear the same size. Once 
 A partner brand's logo may not look perfectly balanced when aligned with the EO symbol. Because the EO symbol is wide and heavy, a thin or tall partner logo looks smaller even at a mathematically equal height.
 
 In such cases, optically scale the partner logo up or down to create a more equal hierarchy.
-![lockup-optical]
+![lockup-optical] {zoom=1.05}
 
 
 ### + App & Social Icons
@@ -303,16 +303,16 @@ When the EO symbol is placed as is in the center of an app icon or profile image
 H is the symbol's height in the working file (px), and S is the height at which the symbol is actually drawn on screen or in the end user's view (mm). When n is positive, correct to the right; when n is negative, no correction is made. The formula is an approximation derived from the appropriate correction values measured at each symbol size under typical desktop working conditions; the tested range is a visible symbol height S of 4mm-50mm (viewing distance 500mm), with a maximum error of ±0.02mm.
 
 When applying the symbol to a surface larger than a desktop monitor, set the range by the end user's typical viewing distance and apply the formula above with the average size of the key range in mind.
-![icon-alignment]
+![icon-alignment] {zoom=1.05}
 
 
 ### App & Social Icons
 #### In Use
 The following image is an example of the EO symbol used as an app icon.
-![icon-in-use]
+![icon-in-use] {bg-cover} 
 
 
-### Symbol {layout=grid-3}
+### Symbol {layout=grid-3} {zoom=1.6}
 #### + Don'ts
 To keep the EO symbol consistent and impactful, it must not be reinterpreted, modified, or embellished. This page shows examples of modifications to avoid. When the company name needs to appear, use the EO signature instead of the symbol. When a sub-brand needs to be identified, create a service signature in consultation with the EO design team.
 ![dont-1]{dont} Don't stretch or distort the symbol
@@ -322,7 +322,7 @@ To keep the EO symbol consistent and impactful, it must not be reinterpreted, mo
 ![dont-5]{dont} Don't use a state where the E's thread count, the O's angle, or the block spacing has changed (such as a logo animation capture)
 ![dont-6]{dont} Don't apply visual effects such as glows, shadows, or gradients to the symbol
 ![dont-7]{dont} Don't apply a size so large that it takes up most of the space it is placed in
-![dont-8] {dont} Don't create graphics by joining or simply repeating the symbol
+![dont-8]{dont} {bg-cover} Don't create graphics by joining or simply repeating the symbol
 ![dont-9]{dont} Don't add arbitrary context around the symbol without the EO design team's permission
 
 
@@ -335,11 +335,11 @@ The **signature** is a combination logo that groups the EO symbol with the text 
 The combination logo of the symbol and the text "EO Studio" is referred to below as the **company signature**, and the combination logo of the symbol and each service name as the **service signature**.
 
 Where the company comes to the front, such as contracts · proposals · official documents · job postings · website footers, prefer the company signature; in brand communication for each service, prefer that service's signature. Everywhere else the media brand EO needs to be signaled, such as videos · thumbnails · social posts · posters · content sign-offs, prefer the EO symbol.
-![overview]
+![overview] {zoom=1.05}
 
 
 ### Signature
-#### + Descriptor {layout=grid-2}
+#### + Descriptor {layout=grid-2} {zoom=1.05}
 The text part of the signature, excluding the symbol, is called the **descriptor**. Whatever the word, company name · service name · domain, it follows the specification below as is. The height (H) and width (W) of one E block of the symbol are the basis for every size setting.
 
 - **Vertical** — the descriptor is set in Founders Grotesk Regular at a type size of 0.46H with 0 tracking. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then correct it to the left by H/100. This is because the E block of the EO symbol has a higher gray level, so the visual center sits to the left.
@@ -347,8 +347,8 @@ The text part of the signature, excluding the symbol, is called the **descriptor
 - When the first or last letter of the descriptor is a glyph with a curved side, such as S · o, keep the text left-aligned on its baseline and temporarily swap the letter for a capital H (or lowercase h) to set the boundary of the cap box. For example, "Studio" takes its left boundary from "Htudio" and its right boundary from "Studih".
 
 Creating a new descriptor or changing an existing one always requires confirmation from the EO design team. Temporary names such as campaign or event names are not used as descriptors.
-![descriptor-v]
-![descriptor-h]
+![descriptor-v] Vertical — set in Founders Grotesk Regular at 0.46H, tracking 0. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then shift it left by H/100, because the E block of the EO symbol has the higher gray level and its visual center sits to the left.
+![descriptor-h] Horizontal — set in Founders Grotesk Regular at 1.3H, tracking 0, with -6% tracking applied only to the space characters between words. Place the left edge of the cap box W/2 from the right edge of the symbol, and raise the baseline H/10 above the bottom edge of the symbol. 
 
 
 ### Signature
@@ -356,8 +356,8 @@ Creating a new descriptor or changing an existing one always requires confirmati
 The signature also needs margin on the same principle as the EO symbol, but the reference unit depends on the format.
 - **Vertical** — Taking the vertical height of one E block as H, keep a minimum margin of at least H/2 on every side around the whole signature.
 - **Horizontal** — Taking the cap height of the descriptor's capital E as the unit, keep a minimum margin of at least one cap height on every side around the whole signature.
-![clearspace-v]
-![clearspace-h]
+![clearspace-v] {zoom=1.05} Vertical — taking the vertical height of one E block as H, keep a minimum clearspace of at least H/2 on all four sides around the whole signature.
+![clearspace-h] {zoom=1.6} Horizontal — taking the cap height of the descriptor's capital E as the reference, keep a minimum clearspace of at least one cap height on all four sides around the whole signature.
 
 
 ### Signature
@@ -369,44 +369,44 @@ The smaller the signature is seen, the more the symbol and descriptor read as on
 - **At 4-10mm (20-50px), use only the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable and it can appear to split into three masses: symbol · EO · Studio. Within the 6-10mm size range, consider the "Studio" version as an alternative.
 - **At 10mm (50px, 1/50) and above, use only the vertical signature.** From this size the vertical form's descriptor (cap height approx. 2.4mm) reads crisply. The recommended maximum is a symbol height of 15mm (70px, 1/40), and the maximum is a symbol height of 30mm (135px, 1/20).
 - As with the symbol's minimum size limit, the signature is not used below 4mm (20px, 1/125) either.
-![scalability]
+![scalability] {zoom=1.05}
 
 
 ### + Company Signature
 #### Vertical
 
-Company signature-V is the vertical combination placing "EO Studio" centered beneath the EO symbol. Its construction follows the vertical specification of the Descriptor section above.
+Company signature-V is the vertical combination placing "EO Studio" centered beneath the EO symbol. For its construction, see the vertical specification in [[#descriptor|Descriptor]].
 
 Unless there is a specific reason, do not re-set the text of company signature-V; use the original files provided.
-![company-v]
+![company-v] {zoom=1.05}
 
 
 ### Company Signature
 #### Horizontal
-Company signature-H is the horizontal combination placing "EO Studio" to the right of the EO symbol. Its construction follows the horizontal specification of the Descriptor section above.
+Company signature-H is the horizontal combination placing "EO Studio" to the right of the EO symbol. For its construction, see the horizontal specification in [[#descriptor|Descriptor]].
 
 For anyone who has encountered EO at least once, the EO symbol may already read as "EO", so consider marking only "Studio" in the descriptor when using the horizontal form.
 
 Unless there is a specific reason, do not re-set the text of company signature-H; use the original files provided.
-![company-h]
+![company-h] {zoom=1.6}
 
 
 ### + Service Signature
-#### Vertical {layout=grid-4}
+#### Vertical {layout=grid-4} {zoom=2.05}
 Examples of the vertical service signatures. All are built to the same descriptor specification; check that they read as one family even though the names differ.
-![service-v-studio] EO Studio · company
-![service-v-magazine] EO Magazine · web magazine
-![service-v-planet] EO Planet · community (eopla.net)
-![service-v-newsletter] EO Newsletter · newsletter
+![service-v-studio] 1. EO Studio · company
+![service-v-magazine] 2. EO Magazine · web magazine
+![service-v-planet] 3. EO Planet · community
+![service-v-newsletter] 4. EO Newsletter · newsletter
 
 
 ### Service Signature
-#### Horizontal {layout=grid-4}
+#### Horizontal {layout=grid-4} {zoom=3}
 Examples of the horizontal service signatures. All are built to the same descriptor specification; check that they read as one family even though the names differ.
-![service-h-studio] EO Studio · company
-![service-h-magazine] EO Magazine · web magazine
-![service-h-planet] EO Planet · community (eopla.net)
-![service-h-newsletter] EO Newsletter · newsletter
+![service-h-studio] 1. EO Studio · company
+![service-h-magazine] 2. EO Magazine · web magazine
+![service-h-planet] 3. EO Planet · community
+![service-h-newsletter] 4. EO Newsletter · newsletter
 
 
 ### + Usage {layout=grid-2}
@@ -417,8 +417,8 @@ Because the signature carries text, it needs a more generous size than the EO sy
 
 If the call is difficult, first check whether that piece really needs the company name EO Studio. If not, the EO symbol is enough; if it is still unclear, ask the EO design team.
 ![usage-do-1]{do} Use the signature on official documents that represent the company's position
-![usage-do-2]{do} Use the EO symbol for content sign-offs
 ![usage-dont-1]{dont} Don't use the signature for content sign-offs
+![usage-do-2]{do} Use the EO symbol for content sign-offs
 ![usage-dont-2]{dont} Don't use the signature and the EO symbol together in one piece
 
 
@@ -439,8 +439,16 @@ Like the symbol, the signature is built primarily as a light signature in bright
 - **Horizontal** — take the left edges of the light signature's symbol and descriptor cap box as the x-alignment reference lines for each element. Convert the light symbol by the [[symbol#inversion]] rule, align it on x to the symbol's reference line, and center it on y where the light symbol was. Left-align the descriptor to its reference line and leave the baseline in its original position. Keep the weight Regular and invert only the color, then set the type size to 1.35H · tracking to -1% and give an outward outline offset of H/200 to finish.
 
 This keeps the gray level balance between symbol and descriptor the same as the light signature, even on a light background. Clearspace likewise uses the area of the light signature of the same level as is, centered on x · y.
-![inversion-v] Vertical — dark signature overlaid on the light signature for comparison
-![inversion-h] Horizontal — dark signature overlaid on the light signature for comparison
+![inversion-v] {zoom=1.05}
+![inversion-h] {zoom=1.05}
+
+
+### Partner Lockup
+#### Horizontal
+The EO signature can be locked up with partner brands' and collaborators' logos. The images in this section are examples of the basic lockup construction.
+
+The elements must be optically adjusted so that they appear the same size. Once each logo is sized, you can add space and a dividing line · collaboration mark between them. The space between the EO symbol and the partner logo is 2 or 3 times the width of one E block (W).
+![partner-h] {zoom=1.05}
 
 
 ### + Partner Lockup
@@ -450,31 +458,25 @@ The EO signature can also be locked up vertically with partner brands' and colla
 The elements must be optically adjusted so that they appear the same size. Once each logo is sized, you can add space and a dividing line between them. Make the space equal to the height of the EO signature (H), and place the dividing line horizontally at its center.
 
 Make sure the logos are always optically centered.
-![partner-v]
+![partner-v] {zoom=1.05}
 
 
-### Partner Lockup
-#### Horizontal
-The EO signature can be locked up with partner brands' and collaborators' logos. The images in this section are examples of the basic lockup construction.
-
-The elements must be optically adjusted so that they appear the same size. Once each logo is sized, you can add space and a dividing line · collaboration mark between them. The space between the EO symbol and the partner logo is 2 or 3 times the width of one E block (W).
-![partner-h]
 
 
 ### Signature {layout=grid-3}
 #### + Don'ts
 The signature is a single combination with a fixed relationship between symbol and descriptor. Do not change or re-create its components separately.
 ![dont-1]{dont} Don't use the vertical signature at a size so small that the descriptor is hard to read
-![dont-2]{dont} Don't use the horizontal signature at a size larger than a symbol height of 10mm (50px, 1/50)
-![dont-3]{dont} Don't set EO Studio in a different typeface
-![dont-4]{dont} Don't modify the descriptor in any way other than as directed in these guidelines
-![dont-5]{dont} Don't break the descriptor across multiple lines
-![dont-6]{dont} Don't use the EO Studio letters on their own like a logo
-![dont-7]{dont} Don't combine the sub symbol with the letters
-![dont-8]{dont} Don't color the symbol and the letters differently
-![dont-9]{dont} Don't stretch or distort the signature
-![dont-10]{dont} Don't apply glows · shadows · gradients
-![dont-11]{dont} Don't place it over a busy image where legibility suffers
+![dont-2]{dont} {zoom=2.3} Don't use the horizontal signature at a size larger than a symbol height of 10mm (50px, 1/50)
+![dont-3]{dont} {zoom=1.6} Don't set EO Studio in a different typeface
+![dont-4]{dont} {zoom=1.6} Don't modify the descriptor in any way other than as directed in these guidelines
+![dont-5]{dont} {zoom=1.6} Don't break the descriptor across multiple lines
+![dont-6]{dont} {zoom=1.5} Don't use the EO Studio letters on their own like a logo
+![dont-7]{dont} {zoom=2.4} Don't combine the sub symbol with the letters
+![dont-8]{dont} {zoom=1.6} Don't color the symbol and the letters differently
+![dont-9]{dont} {zoom=1.6} Don't stretch or distort the signature
+![dont-10]{dont} {zoom=1.6} Don't apply glows · shadows · gradients
+![dont-11]{dont} {zoom=1.6} Don't place it over a busy image where legibility suffers
 
 
 
@@ -484,45 +486,37 @@ The signature is a single combination with a fixed relationship between symbol a
 The form that uses only the E block taken from the EO symbol is referred to below as the **sub symbol**. Use it only in small square spaces where the whole EO symbol is hard to recognize, such as app icons · favicons · social media avatars · pin badges.
 
 The sub symbol cannot fully replace the EO symbol, so always use the EO symbol wherever there is enough room. Because the E block shares its geometry with the graphic unit, it connects naturally with the whole graphic system even at small sizes.
-![overview]
+![overview] {zoom=1.05}
 
 
 ### Sub Symbol
 #### + Clearspace
 The sub symbol also needs margin on the same basis as the EO symbol. Taking the vertical height of one E block as H, keep a margin of at least [H/2] on every side, and apply the same value on the side where the thread protrudes.
-![clearspace]
+![clearspace] {zoom=1.05}
 
 
 ### Sub Symbol
-#### + Color {layout=grid-2}
+#### + Color {layout=grid-2} {zoom=1.05}
 The sub symbol uses color pairings 1 and 2 of the EO symbol. Always render it in a single color.
 ![color-1] 1. Builder Neon on Space Black
 ![color-2] 2. Space Black on Builder Neon
 
 
-### + Favicon
-#### Alignment
-Place the sub symbol inside square containers of the smallest formats, such as favicons. Align the sub symbol to the center of the container, using its clearspace as the reference.
-![alignment]
-
-
 ### Favicon
 #### In Use
 Examples of the EO sub symbol in actual use.
-![favicon-in-use]
+![favicon-in-use] {zoom=1.2}
 
 
 ### Sub Symbol {layout=grid-3}
-#### + Don'ts
+#### + Don'ts {zoom=1.6}
 The sub symbol is part of the EO symbol, so it follows the same principles as the EO symbol. Do not change its form or decorate it, and do not use it outside its designated purpose.
 ![dont-1]{dont} Don't stretch or distort the sub symbol
 ![dont-2]{dont} Don't rotate the sub symbol
 ![dont-3]{dont} Don't flip the sub symbol horizontally
-![dont-4]{dont} Don't change the number or angle of the threads
-![dont-5]{dont} Don't outline the sub symbol
-![dont-6]{dont} Don't apply glows · shadows · gradients
-![dont-7]{dont} Don't color it in two colors or use unapproved pairings
-![dont-8]{dont} Don't use the O block as the sub symbol instead of the E block
+![dont-4]{dont} Don't outline the sub symbol
+![dont-5]{dont} Don't adjust the clearspace arbitrarily
+![dont-6]{dont} {zoom=1.08} Don't use the sub symbol as a standalone identity in place of the EO symbol
 
 
 
@@ -530,212 +524,265 @@ The sub symbol is part of the EO symbol, so it follows the same principles as th
 
 ## Typography
 
-### Brand Typefaces
-EO's typeface is the Founders Grotesk family. Founders Grotesk is used for headlines and body copy, and Founders Grotesk Mono for informational text (labels · tags · dates · specs).
+<!-- 2026-11-09 translated from the Korean rewrite (Line Unit framework). Structure · tokens · attributes mirror guide.ko.md. -->
 
-Founders Grotesk is clear without ornament, and thanks to its wide proportions and low contrast it reads like solid blocks at large sizes. This character carries EO's voice of "clear, open confidence" directly. The Mono is the typeface of information, recalling a builder's terminal and spec sheet.
+### + Brand Typeface
+#### Founders Grotesk
+EO's typeface is the Founders Grotesk family.
 
-Korean body copy is set in Pretendard and Vietnamese body copy in Noto Sans. See the Backup Typeface section for multilingual pairing.
-![brand-typefaces]
+Founders Grotesk reinterprets the early-20th-century grotesques of Miller & Richard and Caslon. Its simple geometry, narrow apertures and tight letterspacing make it read like solid blocks at large sizes. It is clear without ornament, and the monospaced member of the same family evokes the builder's motifs of engineering and spec sheets.
 
-
-### Custom Characters
-A cross-shaped brand mark taken from the O block of the EO symbol is used alongside text. The cross socket of the screw head, which carries the image of both the plus (+) and the spark (✦), can be used as a visual element: the action mark on buttons and links, the bullet for lists and quotes, and so on. Use the vector files provided rather than the typeface's default glyphs, and size it with the x-height and gray level of the accompanying text in mind.
-![custom-characters]
+Each weight has a fixed role. Medium for display and headlines, Regular for sub-headlines, Light for body copy, and Mono Regular for informational text. For the detailed criteria, see [[#reference-scale|Reference Scale]].
+![brand-typefaces]{bg-color}
 
 
-### Character Set {layout=wide}
+### Character Set
 #### Founders Grotesk Medium
-This page shows most of the characters of Founders Grotesk Medium at a glance. Medium is the default weight for headlines and display typography. The typeface supports Latin Extended characters, including Vietnamese tone marks. For scripts it does not support, such as Hangul, use the alternative typefaces in the Backup Typeface section.
-![charset-medium]
+The image shows most of the characters of Founders Grotesk Medium. Medium is the default weight for display and headlines. The typeface supports Latin Extended characters, including Vietnamese tone marks. For scripts it does not support, such as Hangul, use the typefaces in [[#multilingual]].
+![charset-medium]{bg-color}
 
 
-### Character Set {layout=wide}
+### Character Set
+#### Founders Grotesk Regular
+The image shows most of the characters of Founders Grotesk Regular. Regular is the default weight for sub-headlines (D2 · H2 · H3), bridging the hierarchy between the Medium of headlines and the Light of body copy. In brand communication with short body copy, such as posters and banners, it also takes the body role at the level directly below the display headline.
+![charset-regular]{bg-color}
+
+
+### Character Set
 #### Founders Grotesk Light
-This page shows most of the characters of Founders Grotesk Light at a glance. Light is the default weight for body copy · subheads · captions. It can look thin at large sizes, so use it at 24pt and below.
-![charset-light]
+The image shows most of the characters of Founders Grotesk Light. Light is the default weight for body copy. At large sizes its thin strokes look as if they float, so it is not used for display or headlines.
+![charset-light]{bg-color}
 
 
-### Character Set {layout=wide}
+### Character Set
 #### Founders Grotesk Mono
-This page shows most of the characters of Founders Grotesk Mono Regular at a glance.
-
-Note: the Mono is for informational text only. Use it for tags · dates · reading time · color specs · caption numbers, and not for headlines or body copy.
-![charset-mono]
+The image shows most of the characters of Founders Grotesk Mono Regular. Because a monospaced typeface readily recalls builder motifs such as engineering and spec sheets, it can be used as a supporting device that enriches a layout. Use it for tags · dates · reading time · color specs · caption numbers, and not for headlines or body copy.
+![charset-mono]{bg-color}
 
 
-### Typeface Usage
-To balance EO's solid visual identity with clear communication, weight selection must be clearly intentional.
+### + Typographic Framework {layout=grid-2}
+#### Overview {zoom=1.1}
+EO typography is **a baseline grid framework measured and scaled from the space type occupies**, not from type settings. Once the Line Unit (the base line spacing, that is, the absolute height between lines) is set, each level's line spacing is set as a multiple (x) of it, and the font size follows automatically by dividing the line spacing by the linespacing ratio (line spacing ÷ font size).
 
-Use Founders Grotesk Medium for headlines and display.
+- Separating the setting of hierarchy from the matching of gray level (tonal value) gives an easier point of entry when a typography system has to be built from scratch for each project.
+- When [[#multilingual|switching to a multilingual environment]], the space occupied stays the same even if the typeface or font size changes, so layout variation is minimized and only the gray level needs individual adjustment to keep the look and feel consistent.
+- [[#inversion|Switching between dark and light mode]] has the same advantage.
+- In an AI-assisted design workflow, the two levels of decision, the AI's efficient layout construction and the designer's eye, can be separated. The broad hierarchy that follows the content logic is left to the AI, and the visual finish is completed by refining the separately held linespacing ratio and similar values.
 
-Use Founders Grotesk Light for body copy · subheads · captions.
+Read this chapter in the order the framework is carried out. If you need values you can use straight away, see the presets in [[#reference-scale|Reference Scale]]. If you are building anew, set the Line Unit by [[#line-unit|Line Unit]] and set up the typography through the five steps of [[#setting-up|Setting Up]]. For the detailed criteria of each step, see [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]]; for layout, [[#grid-setting-zoning|Zoning]] · [[#grid-setting-margin|Margin]] · [[#grid-setting-compound-grid|Compound Grid]]; for other languages and alternative typefaces, [[#multilingual|Multilingual]].
+![framework-1]{bg-cover} **Line Unit** — the base line spacing of the page. The unit that sets every distance in the layout.
+![framework-2]{bg-cover} **Level** — a tier of text divided by role. Each has four parameters: multiple (x) · weight · linespacing ratio · tracking
+![framework-3]{bg-cover} **Linespacing ratio** — line spacing relative to font size. 140% means the line spacing is 1.4 times the font size
+![framework-4]{bg-cover} **Gray level** — the brightness of a block of text seen from a distance. The criterion for balance between levels
 
-Use Founders Grotesk Mono Regular for informational text such as tags · dates · specs.
 
-Regular and Semibold are used only for UI components (buttons, navigation) and not in communication design.
-![typeface-usage]
+### Typographic Framework
+#### + Line Unit {zoom=1.3}
+The Line Unit is the base unit of the page. The line spacing of every level is set as a multiple of the Line Unit, and the actual font size is the line spacing divided by the linespacing ratio (%). Below, the Line Unit is abbreviated as x: values written in x are multiples of the Line Unit, and values written in % are all linespacing ratios. For example, 2.5x means that the line spacing of that level is set at 2.5 times the Line Unit.
+
+As a rule, the Line Unit is set from **the content, or the component of it, that is used most often and carries the most weight on the page**.
+
+- In content layouts, the line spacing of the body level usually becomes the Line Unit.
+- In visual communication without significant body copy (posters · banners · key visuals), set the Line Unit at 1x or 0.5x the height of the symbol.
+- The recommended Line Unit for web and editorial environments is 28px. Adjust it at the designer's discretion for the size of the page and the reader's viewing distance.
+
+Once the Line Unit is set, subtract the top and bottom margins from the full height of the content area, set a baseline grid in whole multiples of the Line Unit, and reuse it across content in the same series. For details on grid and margin, see [[#grid-setting-margin|Margin]] and [[#grid-setting-compound-grid|Compound Grid]].
+![line-unit]{bg-color}
 
 
-### Case Setting
-EO headlines are set in sentence case and end with a period. Like "Build Anyway." and "Trust, not clicks.", a headline is a sentence, not a slogan, and the period is the conviction behind that sentence. All caps is used only for Mono labels, never for headlines.
-![case-setting]
+### Typographic Framework
+#### + Reference Scale {layout=wide}
+A seven-level preset based on Line Unit 1x = 28px. The first letter of a level name is the role of its content: D for display, H for headline, T for text, C for caption. This web guideline is set in four of these levels, H1 · H3 · T1 · C1; refer to the unused ones when creating new levels. Each level has multiple (x) · weight · linespacing ratio · tracking as its details, and the size in parentheses is the font size rendered on screen at 1x = 28px.
+
+- **D1** — 6x / Medium / 80% / -2.5%. One or two words, such as a tagline or core keyword, on a poster or key visual
+- **H1** — 2.5x / Medium / 100% / -1.5% (70px). Main headline · page title
+- **D2** — 2.5x / Regular / 100% / -2% (70px). Display at headline level, campaign slogan · sub copy · quotation
+- **H2** — 2x / Regular / 115% / -1% (49px). Sub-headline
+- **H3** — 1.25x / Regular / 125% / -0.5% [Solid Gray] · 0 [Space Black] (28px). Section head · subhead
+- **T1** — 1x / Light / 140% / +1% [Solid Gray] · +1.5% [Space Black] (20px). Body > brand communication first
+- **T2** - 1x / Light / 150% / +1.5% [Solid Gray] · +2% [Space Black] (18.67px). Body > readability first
+- **C1** — 0.5x / Mono Regular / 111% / -7% (12.6px). Caption · label · tag · spec · date · button
+
+The recommended weight for each level follows these criteria. Medium for display and headlines (D1 · H1), Regular for sub-display and sub-headlines (D2 · H2 · H3), Light for body copy (T1), Mono Regular for informational text (C1). Founders Grotesk Semibold is used only in a limited way, for optical correction at headline level when dark content sits on a light background color. Keyword emphasis within body copy does not change weight and uses the Builder Neon color only.
+
+Set level multiples in steps of 1x · 0.5x · 0.25x, and refine linespacing ratio and tracking so that the gray level carries consistently between adjacent levels. For the adjusted values for Korean and Vietnamese, see [[#multilingual|Multilingual]].
+
+Founders Grotesk has narrow apertures and tight letterspacing, so at body level it is set in the Light weight with a wide linespacing ratio and slightly opened tracking. The presets are designed with visual communication in mind: for content whose text to be read at once runs to a few paragraphs, T1 is recommended, and T2 where the readability of body copy matters most.
+
+All the presets above assume Air White content on a Solid Gray background. When Air White content is used on a Space Black background, apply 0.5% wider tracking to the relatively small levels H3 · T1 · T2.
+![reference-scale]{bg-color}
+
+
+### Typographic Framework
+#### + Setting Up {layout=grid-3}
+How to set up typography in a new medium or format. Rather than following the written order to the letter, it is closer to a process of converging on the best state while tuning steps 3 and 4 against each other.
+
+1. Decide the number of typography levels. Divide the levels to be used according to the amount of information to be shown on the page. For details, see [[#levelling-and-sizing|Levelling & Sizing]].
+2. Set the Line Unit and set a baseline grid in the content area of the layout. As a rule, size the Line Unit from the content, or the component of it, that carries the most weight or occupies the most of the page. For details on the Line Unit, see [[#line-unit|Line Unit]]; for grid setting, [[#grid-setting-margin|Margin]] · [[#grid-setting-compound-grid|Compound Grid]].
+3. Place the content on the grid and set the hierarchy with each level's multiple. Set the multiples in steps of 1x · 0.5x · 0.25x. For details, see [[#levelling-and-sizing|Levelling & Sizing]]. Starting from the values in [[#reference-scale|Reference Scale]] and adjusting them to the medium also works well.
+4. Refine weight · linespacing ratio · tracking · color · line breaks for each level and match the gray level. Gray level is the brightness of a block of text seen from a distance; it is right when every level looks like the same text enlarged or reduced, at the same brightness. Place the levels side by side and squint, or zoom the screen out, and the differences show. As a rule, set the linespacing ratio lower the larger the type and higher the smaller the type. For details, see [[#linespacing-founders-grotesk-medium|Linespacing]].
+5. Repeat steps 3 and 4 until the levels reach a balance in which they look consistently enlarged or reduced according to the hierarchy.
+![setting-up-1]{bg-color} 1. Decide the number of levels
+![setting-up-2]{bg-cover} 2. Set the Line Unit and set a baseline grid in the content area.
+![setting-up-3]{bg-color} 3. Place the content on the grid and set the hierarchy with each level's multiple
+![setting-up-4]{bg-color} 4. Match linespacing ratio and gray level
+![setting-up-5]{bg-color} 5. Repeat steps 3 and 4 to complete the layout
+
+
+### Typographic Framework
+#### + Levelling & Sizing {layout=wide}
+Levels are divided by the role of the content. The one or two words that represent the page are display (D), the point where reading starts is headline (H), the text read down the page is text (T), and the information supporting the text is caption (C). Numbers within a role run in order of size.
+
+- **Number of levels** — headline and body, or headline · body · caption. Dividing levels by role is the default, but too many levels make consistent typography steeply harder, so first consider whether information of similar role and priority can be merged into one level.
+- **Contrast between levels** — the look and feel of typography is largely decided by the degree of contrast between adjacent levels. Going from body (1x) to headline, and from headline to display, the step should be two times or more (2-3x) for the roles to be told apart at a glance. Within a role that handles detailed content (H2 → H3), a multiple of about 1.5 is appropriate. Divide all multiples in steps of 1x · 0.5x · 0.25x so that they fit the baseline grid.
+- **Symbol and levels** — treat the symbol like a level. Setting a whole multiple of the symbol height (1x · 0.5x) as the Line Unit ties the symbol and the typography to the same unit. The size of the symbol follows [[symbol#scalability]].
+
+As a rule, the larger the level, the heavier the weight and the tighter the linespacing ratio and tracking. In practice, though, levelling is less a linear procedure in table-of-contents order than a process of tuning [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · weight against each other at the same time. For the preset values, see [[#reference-scale|Reference Scale]].
+![levelling-sizing]{bg-color}
+
+
+### + Linespacing
+#### Founders Grotesk Medium
+The linespacing ratio is the height of the space one line of type occupies divided by the font size (%), using % as its unit like general office software. In the same space, a lower linespacing ratio makes the type larger. It corresponds to Line height % in Figma, line-height in CSS and Auto Leading in InDesign. The linespacing ratio can vary with format and type of communication; for the presets by level, see [[#reference-scale|Reference Scale]].
+
+Headlines and display have a linespacing ratio of 100% or less, that is, a line spacing equal to or tighter than the font size. The goal is for the lines to read as one block, and the lower limit is the point just before ascenders and descenders touch. Avoid extremely wide or tight linespacing ratios, and where possible consider revising part of the copy instead.
+![linespacing-medium]{bg-color}
 
 
 ### Linespacing
-EO typography is calculated from line spacing, not font size. Once a base line-spacing unit (L) is set, each level's line spacing is a multiple of it, and the font size is that line spacing divided by the level's ratio. This keeps the space text occupies fixed as layouts develop, and lets you fine-tune the gray level of each level by eye through ratio and letterspacing alone.
+#### Founders Grotesk Regular
+The linespacing ratio of sub-headlines (H2 · H3) sits between headline and body (115-120%). They often run to 2-4 lines, so apply a wider line spacing than headlines to raise readability somewhat. D2, the Regular at headline size, follows the same line spacing rule as headlines.
 
-Display 7L / 87.5%, Head 3L / 109%, Sub-head 2L / 133%, Body 1.5L / 150%, Caption 0.5L / 125%.
-![linespacing]
-
-
-### Linespacing
-#### Founders Grotesk Medium
-To the right are examples of correct and incorrect linespacing in headlines set in Founders Grotesk Medium.
-
-At the Display and Head levels, line spacing is smaller than the font size (87.5%, 109%). Lines are meant to interlock like blocks, but ascenders and descenders must never touch. If they do, change the copy, not the ratio.
-![linespacing-medium]
+Sub-headlines often sit directly above body copy, so also check that their line spacing does not fall out of step with the body's baseline grid.
+![linespacing-regular]{bg-color}
 
 
 ### Linespacing
 #### Founders Grotesk Light
-To the right are examples of correct and incorrect linespacing in body copy set in Founders Grotesk Light.
+Body copy makes a reading rhythm with line spacing wider than the font size. The longer a line, the slightly wider the line spacing must be so the eye does not lose the next line. Too wide, though, and the lines drift apart, the paragraph scatters and the visual finish suffers. Within the range that secures readability without strain, tighten the line spacing little by little until a consistent gray plane forms.
 
-At the Body level, line spacing is 150%. Tighter than this, the thin strokes of the Light weight clump together; looser, the paragraph falls apart. Set right, it lets readers move down the text without obstruction.
-![linespacing-light]
+In content-centered layouts, the line spacing of the body copy becomes the [[#line-unit|Line Unit]]. Changing the body's Line Unit stretches or shrinks the whole digital layout vertically at the same ratio.
+![linespacing-light]{bg-color}
 
 
-### Linespacing Scale {layout=wide}
+### Linespacing
+#### Founders Grotesk Mono Regular
+Captions · labels · tags · specs (C1) are short, one or two lines, with small type. The Mono has wide letters and a large x-height, so with as much line spacing as body copy the lines look as if they float; set it at a tighter ratio than body copy.
+
+The line spacing of C1 is half the Line Unit. Two lines of caption equal the height of one line of body copy, so informational text also sits on the same baseline grid.
+![linespacing-mono]{bg-color}
+
+
+### + Letterspacing
 #### Founders Grotesk Medium
-To the right are examples of headline linespacing at various sizes.
-
-As a general rule, the bigger the typography, the tighter the linespacing ratio should be. Display 87.5%, Head 109%, and Sub-head 133% are ratios that change with size on the same base unit.
-![linespacing-scale-medium]
-
-
-### Linespacing Scale {layout=wide}
-#### Founders Grotesk Light
-To the right are examples of body copy linespacing at various sizes.
-
-As a general rule, the smaller the typography, the looser the linespacing ratio should be. Body 150% and Caption 125% are ratios that change with size on the same base unit.
-![linespacing-scale-light]
+In large type the spaces between letters look larger too, so tighten the tracking. The reference point is where the letters sit together like one block but the strokes barely avoid touching (some horizontally open glyphs may touch each other). Too tight, and combinations of consecutive vertical strokes read as one mass; any wider, and words scatter into letters and the headline loses its weight.
+![letterspacing-medium]{bg-color}
 
 
 ### Letterspacing
-For large headlines and titles, letterspacing must go through a three-step process so that it is tight yet optically even across all letters. The process is as follows.
-
-**Step 1: Original**
-This is the space between the letters before any letterspacing value is applied.
-
-**Step 2: Tracking**
-This is the spacing applied uniformly across all letters. The defaults per level are Display -3%, Head -2%, Sub-head -1.5%, Body -1%, Caption 0.
-
-**Step 3: Kerning**
-Once the right tracking value is set, manually adjust (kern) the space between specific letters so that no letters touch and the spacing is even across all letters. Founders Grotesk particularly needs kerning where diagonal strokes meet, as in "A" and "y" or "W" and "a".
-![letterspacing]
-
-
-### Letterspacing
-#### Founders Grotesk Medium
-To the right are examples of correct and incorrect letterspacing in headlines set in Founders Grotesk Medium.
-
-At Display size, tracking is -3%. This is the point where letters sit together like blocks without strokes touching. Any tighter and combinations of consecutive vertical strokes, such as "ild", read as one mass.
-![letterspacing-medium]
+#### Founders Grotesk Regular
+Because the inherent gray level of the Regular is lower than that of the Medium, securing a gray level at sub-headline level close to that of the headline level calls for relatively tighter tracking. For example, H1 uses Medium at -1.5% tracking, while D2, at the same font size, applies an even tighter -2%.
+![letterspacing-regular]{bg-color}
 
 
 ### Letterspacing
 #### Founders Grotesk Light
-To the right are examples of correct and incorrect letterspacing in body copy set in Founders Grotesk Light.
-
-At Body size, tracking is between -1% and 0. The Light weight loses legibility quickly when tracked tighter, so if you want to tune the gray level, adjust the line spacing rather than the letterspacing.
-![letterspacing-light]
+In small type the spaces look relatively small, so open the tracking to around 1-1.5%, taking light-colored content on a dark background as the reference. Because the thin weight loses readability quickly when tracked tighter, find the compromise according to which matters more, uniform gray level or readability.
+![letterspacing-light]{bg-color}
 
 
-### Letterspacing Scale {layout=wide}
-#### Founders Grotesk Medium
-To the right are additional examples of letterspacing set in Founders Grotesk Medium at various sizes.
-
-As a general rule, the bigger the type size, the tighter the letterspacing should be, and vice versa. The smaller the type size, the looser the letterspacing should be.
-![letterspacing-scale-medium]
+### Letterspacing
+#### Founders Grotesk Mono Regular
+By nature the Mono is highly distinguishable even at small sizes, but its readability as running text is low, so tighten the tracking to around -7%. If many long words make the lines run long, consider switching to the body typeface.
+![letterspacing-mono]{bg-color}
 
 
-### Letterspacing Scale {layout=wide}
-#### Founders Grotesk Light
-To the right are additional examples of letterspacing set in Founders Grotesk Light at various sizes.
 
-As a general rule, the bigger the type size, the tighter the letterspacing should be, and vice versa. The smaller the type size, the looser the letterspacing should be.
-![letterspacing-scale-light]
+### + Alignment {layout=grid-2}
+Content in EO brand communication is left-aligned by default. Centered alignment is allowed only when the text is a single line, as with standalone symbol icons and merch back prints, and justified alignment is not used. When body copy runs in several columns, align the first-line baselines of all columns. Align the symbol and the caption to the left and right edges of an image respectively. A single left alignment line becomes the reference line of the page: headline · sub-headline · body start from the same line, and the reader starts reading at the same place on every line. Right alignment loses that reference because the start of each line moves, and justified alignment opens the word spaces and makes the gray level uneven. This criterion is the same regardless of weight.
 
-
-### Alignment
-#### Founders Grotesk Medium
-All headlines in EO brand communication are left-aligned. A headline starts on the left grid line of the layout and faces the right, where the graphic unit sits. Centered alignment is allowed only for single-line text such as standalone symbol icons and merch back prints; right alignment and forced justification are not used.
-![alignment-medium]
+The exception is informational text (C1 · Mono). A caption beneath an image may be right-aligned to the right edge, paired with the symbol left-aligned to the left edge. All other Mono text is left-aligned like the other levels.
+![alignment-medium]{bg-color} Headline (Medium) — left alignment is the default; centered · right · justified are not used
+![alignment-regular]{bg-color} Sub-headline (Regular) — same rule as the headline
+![alignment-light]{bg-color} Body (Light) — same rule as the headline
+![alignment-mono]{bg-color} Informational text (Mono) — only a caption at the right edge of an image may be right-aligned
 
 
-### Alignment
-#### Founders Grotesk Light
-Body copy and captions are also left-aligned. When body copy runs in several columns, align the first-line baselines of all columns, and align captions to the left edge of the image. Right alignment and forced justification are not used.
-![alignment-light]
+### + Ragging
+A paragraph or headline is said to be badly ragged when its edge feels irregular, when a particular line sticks out, or when a single word is left alone on the last line. EO headlines are short with few lines, so the rag is fully exposed. Break lines so that each line holds a unit of meaning, as in "Build / Anyway.", and avoid the staircase shape of alternating long and short lines. In body copy, move words to the next line until the edge is even and the copy reads well.
+![ragging]{bg-color}
 
 
-### Ragging
-In typography, the 'rag' is the right-hand edge of a block of text. A paragraph or headline is said to be badly ragged when the optical edge feels irregular and certain lines stick out, or when a single word is left alone on the last line (a widow).
+### + Grid Setting
+#### Zoning {layout=grid-2}
+The page is divided into a graphic pattern area and a content area. Ideally the graphic pattern area is close to a square on 3:4 · A-series · business card formats, around 70 % of the page on wide landscape formats, and around half on vertical roll-ups. Communication pages with little information may also be divided into four, alternating content and pattern, or gathered to one side.
 
-EO headlines are short with few lines, so the rag is fully exposed. Break lines so that each line holds a unit of meaning, as in "Build / Anyway.", and avoid the staircase shape of alternating long and short lines. In body copy, move words to the next line until the edge is even and the copy reads well.
-![ragging]
+Place the pattern area full-bleed, ignoring the margin, and place its units following [[graphic-pattern#grammar#grid]]. Settle the proportion first, then set the [[#grid-setting-compound-grid|Compound Grid]] and snap the boundary between the two areas to one of its column or row lines.
 
-
-### Sizing
-To keep communication simple, a single layout generally uses no more than two type levels: one headline and one body, or one headline and one caption.
-
-Sizes between levels are determined by multiples of the base line-spacing unit (L): Display 7L, Head 3L, Sub-head 2L, Body 1.5L, Caption 0.5L. Changing L scales every level together, so you only need to set L for each format. For example, if L is 24pt on an A2 poster, Display line spacing is 168pt and Body line spacing is 36pt.
-
-Note that this rule is a guideline for communication design. On the web and in product, the size difference between levels is smaller.
-![sizing]
+The content area is what remains, and margin and grid are set from this area. A four-way division is based on one of the divided content areas. For pieces whose front and back are linked, such as business cards, use the side that carries the main content.
 
 
-### Sizing {layout=grid-2}
-#### In Layout
-To the right are two examples of how to size and space headline typography within a composition.
-
-**Large:** the headline fills the left half of the layout, and the graphic unit occupies the right half. The headline's line-spacing blocks and the unit's columns sit on the same grid.
-
-**Small:** the headline is scaled down, and the space beneath it is left empty in multiples of the Body line spacing. Use this when a photo or video still is the hero.
-![sizing-large] Large — the headline fills the left half and shares its grid with the graphic unit.
-![sizing-small] Small — the headline is reduced and the space beneath it is left empty in multiples of the Body line spacing.
+![zoning-ratio]{bg-color} Examples of the proportion between graphic pattern area and content area
+![zoning-4-division]{bg-color} Four-way division — content and pattern areas alternating diagonally or gathered to one side
 
 
-### Don'ts {layout=grid-3}
-#### Headline
-Below are a few things never to do with typography. To guarantee consistency across all touchpoints, follow the typesetting rules and recommendations given in the typography section of these guidelines.
-![dont-1]{dont} Don't set headlines in all caps
-![dont-2]{dont} Don't use the Light weight for headlines
-![dont-3]{dont} Don't tighten line spacing below 87.5% so that strokes touch
-![dont-4]{dont} Don't open up tracking and scatter the letters
-![dont-5]{dont} Don't center or right-align
-![dont-6]{dont} Don't use three or more levels in one layout
-![dont-7]{dont} Don't apply two or more colors to a headline
-![dont-8]{dont} Don't apply outlines · shadows · italics
-![dont-9]{dont} Don't overlap a headline on a graphic unit
+### Grid Setting
+#### Margin {layout=grid-2}
+The margin of the content area is set equal on all four sides, based on 1/24 of the area's long side. The final value settles between 1/22 and 1/25 while the number of baseline cells is matched in the [[#grid-setting-compound-grid|Compound Grid]]. On pages read up close the margin is roughly the same scale as the Line Unit; on pages seen from a distance it can shrink to around 70-80% of the Line Unit.
+
+On the side where typography meets the graphic pattern, leave about 1.5 times the margin. The top edge of typography is a soft, gray edge, because the tops of the letters are uneven, so give it more clearance than hard edges such as the left alignment line · the baseline · the left and bottom of the symbol. Text is left-aligned, so its right side never meets the pattern.
+![margin-24]{bg-color} Margin — 1/24 of the content area's long side, equal on all four sides, or with the horizontal margins corrected about 10% tighter
+![margin-compensation]{bg-color} Margin next to the pattern is corrected to 1.5 times; the top of typography is a gray edge, so give it more room than the hard left alignment line · baseline
 
 
-### Backup Typeface
-#### Inter
-In environments where Founders Grotesk cannot be used (email, system-font restrictions on external platforms, and so on), Inter is the preferred alternative. Use Inter Medium for headlines and Inter Light for body copy.
+### Grid Setting
+#### Compound Grid {layout=grid-2}
+The basic grid is a baseline grid in whole multiples of the Line Unit. The margin is set first in [[#grid-setting-margin|Margin]] from the content area, and settles between 1/22 and 1/25 while the number of baseline cells N is matched. At that point, check that the ratio of margin to Line Unit falls in the range margin = 0.8-1.1 times the Line Unit on pages read up close, and 0.7-0.8 times on pages seen from a distance.
 
-Keep the basic rules of our typography in mind and act in their spirit. Avoid other substitute fonts (Arial and the like), and use Inter only when Founders Grotesk is unavailable.
+For large pages or layouts with complex components, a compound grid that combines a modular grid with this is recommended. It is a modular grid that divides the content area evenly with gutters one Line Unit wide, and since the height of a module cell is also a whole multiple of the Line Unit, it is fully compatible with the baseline grid.
 
-The comparison on this page shows some of the differences between Founders Grotesk Medium and Inter Medium.
-![backup-inter]
-
-
-### Backup Typeface
-#### Non-latin – Noto Sans
-For Vietnamese and other languages not supported by Founders Grotesk or Pretendard, Noto Sans is the preferred alternative. Vietnamese uses the reference pairing of Noto Sans Light 18pt, -3.5% tracking, baseline +2pt, matched to Founders Grotesk Light 22pt. If Noto Sans cannot be used for a particular language, use the typeface closest to Founders Grotesk available in that language.
-![backup-non-latin]
+- **Compound grid rows** — the compound grid can be applied when the total number of baseline cells satisfies **N = number of rows R × (Line Units per row n + 1) − 1**. For example, 35 cells divide into 6 rows × 5 cells or 4 rows × 8 cells. 47 cells allow 4 · 6 · 8 · 12 rows alike and are the most flexible. Widening the gutter between rows to 2 cells, 47 cells also divide into 7 rows × 5 cells.
+- **Compound grid columns** — 12 × 6 columns are commonly used on 16:9 screens and 4 × 8 · 6 × 8 columns on A-series formats, but the number is left to the designer's discretion. On A-series and similar proportions, set it from the page proportion so that the graphic pattern area comes close to a square. The gutter between columns is 1 Line Unit.
+![grid-row]{bg-color} 47 cells — 6 rows × 7 cells · 8 rows × 5 cells · 7 rows × 5 cells (2-cell gutter); gutters between rows are 1-2 cells
+![grid-column]{bg-color} Column grid — on the same 35 cells, 12 columns for 16:9 · 6 columns for A-series; column gutter is 1 Line Unit
 
 
+### Typography
+#### + Inversion {layout=wide}
+Like the symbol, EO typography is built primarily as light-colored text, such as Air White · Medium Gray, on dark backgrounds such as Solid Gray · Space Black. When you want dark text on a light background and simply invert the colors, an optical illusion occurs: at the same weight and tracking, the letters look one step thinner and the spaces between them look wider. It is the same phenomenon as the [[signature#inversion|signature's descriptor]].
+
+In that case, keep the Line Unit · level multiples · weights as they are, apply 95% to each level's linespacing ratio (so the font size becomes 105%), and tighten the tracking by 0.5%. The gray level then stays almost the same as the light text even on a light background, and because the space the type occupies is unchanged, the layout stays as it is.
+
+Below is an example of the same presets applied to the seven-level [[#reference-scale|Reference Scale]] and set in light mode.
+![inversion]{bg-color}
+
+
+### + Multilingual {layout=wide}
+Korean is set in Pretendard and Vietnamese in Noto Sans. When an existing layout is changed to a multilingual typeface, the Line Unit and level multiples stay the same, so the layout does not move when the language changes; only the font size and linespacing ratio change to suit the typeface.
+
+- Korean Pretendard — T1 of the [[#reference-scale|Reference Scale]] is Regular · 165% · -1.5% · baseline +0.2x, and H3 is Medium · 165% · -2.5% · baseline -0.05x. The rendered font size equals 85% of Founders Grotesk at the same level.
+- Vietnamese Noto Sans — T1 is DemiLight · 175% · -1.5% · baseline +0.05x, and H3 is Regular · 175% · -3%. The rendered font size equals 80% of Founders Grotesk at the same level.
+
+The baseline correction is for matching positions relative to the text box in editorial design applications. In digital environments the browser aligns baselines by itself, so on the web the correction is rarely needed, but where type is shown large, as with display fonts, it is better to correct with a separate margin inside the text box.
+
+These two typefaces are also the alternatives in environments where Founders Grotesk cannot be used (email, system-font restrictions on external platforms and document tools, and so on). In that case set English in Pretendard first as well, and use Noto Sans for languages Pretendard cannot be used for or does not support.
+![multilingual]{bg-color}
+
+
+### Typography
+#### + Don'ts {layout=grid-3} {zoom=1.55}
+Below are the things not to do with typography in brand communication. To keep consistency across every touchpoint, follow the typesetting rules and recommendations of this chapter. How far brand communication consistency takes priority in individual service · product · content design is at the designer's discretion or follows the EO design team's policy.
+![dont-1]{dont bg-color} Don't stretch or distort the type
+![dont-2]{dont bg-color} Don't set headlines in all caps
+![dont-3]{dont bg-color} Don't use Light for headlines or Regular · Medium for body copy
+![dont-4]{dont bg-color} Don't apply two or more colors to a headline
+![dont-5]{dont bg-color} Don't center or right-align headlines
+![dont-6]{dont bg-color} Don't use two or more weights within one level
+![dont-7]{dont bg-color} Don't apply outlines · shadows · italics to type
+![dont-8]{dont bg-color} Don't overlap typography on the graphic pattern
+![dont-9]{dont bg-color} Don't use the Mono for headlines or body copy
+![dont-10]{dont bg-color} Don't use typefaces other than those specified
+![dont-11]{dont bg-color} Don't place text off the baseline grid
 
 
 # 04 Color
@@ -784,10 +831,14 @@ For detailed application criteria per asset, see the color section of each page.
 ![usage]
 
 
+### Color {layout=grid-4}
+#### In Use
+The following images show the EO palette applied across a range of designs.
+
 ### Color {layout=grid-3}
 #### Don'ts
 To keep EO's colors consistent, avoid the following. For minimum contrast between text and background, refer to the WCAG criteria.
-![dont-1]{dont} Don't use Builder Neon for body text or for text on light grounds
+![dont-1]{dont} Don't use Builder Neon for body text as a whole or for text on light grounds
 ![dont-2]{dont} Don't create gradients
 ![dont-3]{dont} Don't add colors outside the palette
 ![dont-4]{dont} Don't create new tones by changing brightness · saturation · opacity
@@ -1090,36 +1141,36 @@ Only on pages that must assert the brand's presence most strongly while carrying
 ### Graphic Pattern {layout=grid-4} {ratio=16:9} {zoom=1.03}
 #### + References
 A library of 30 patterns made by combining units. Each pattern is named not by a number but by one keyword taken from the builder's journey, and is reused across every touchpoint: campaigns · merch · social · video. When a new pattern is needed, choosing from the library comes first; additions go through the EO design team's approval.
-![pattern-01] 01 / path of builder
-![pattern-02] 02 / power
-![pattern-03] 03 / resistance
-![pattern-04] 04 / builders
-![pattern-05] 05 / rivals
-![pattern-06] 06 / team
-![pattern-07] 07 / backing
-![pattern-08] 08 / teamwork
-![pattern-09] 09 / co-working
-![pattern-10] 10 / rallying
-![pattern-11] 11 / conviction
-![pattern-12] 12 / resonance
-![pattern-13] 13 / advantage
-![pattern-14] 14 / disadvantage
-![pattern-15] 15 / cycle
-![pattern-16] 16 / routine
-![pattern-17] 17 / competition
-![pattern-18] 18 / collective intelligence
-![pattern-19] 19 / growth
-![pattern-20] 20 / diversity
-![pattern-21] 21 / momentum
-![pattern-22] 22 / problem
-![pattern-23] 23 / a-ha
-![pattern-24] 24 / wow
-![pattern-25] 25 / real world
-![pattern-26] 26 / singularity
-![pattern-27] 27 / multi-dimension
-![pattern-28] 28 / adventure
-![pattern-29] 29 / nature
-![pattern-30] 30 / boom
+![pattern-01] 01. Path of Builder
+![pattern-02] 02. Power
+![pattern-03] 03. Resistance
+![pattern-04] 04. Builders
+![pattern-05] 05. Rivals
+![pattern-06] 06. Team
+![pattern-07] 07. Backing
+![pattern-08] 08. Teamwork
+![pattern-09] 09. Co-working
+![pattern-10] 10. Rallying
+![pattern-11] 11. Conviction
+![pattern-12] 12. Resonance
+![pattern-13] 13. Advantage
+![pattern-14] 14. Disadvantage
+![pattern-15] 15. Cycle
+![pattern-16] 16. Routine
+![pattern-17] 17. Competition
+![pattern-18] 18. Collective Intelligence
+![pattern-19] 19. Growth
+![pattern-20] 20. Diversity
+![pattern-21] 21. Momentum
+![pattern-22] 22. Problem
+![pattern-23] 23. A-ha
+![pattern-24] 24. Wow
+![pattern-25] 25. Real World
+![pattern-26] 26. Singularity
+![pattern-27] 27. Multi-dimension
+![pattern-28] 28. Adventure
+![pattern-29] 29. Nature
+![pattern-30] 30. Boom
 
 
 ### + Usage
