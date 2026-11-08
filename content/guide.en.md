@@ -483,7 +483,7 @@ The signature is a single combination with a fixed relationship between symbol a
 ## Sub Symbol
 
 ### + Sub Symbol
-The form that uses only the E block taken from the EO symbol is referred to below as the **sub symbol**. Use it only in small square spaces where the whole EO symbol is hard to recognize, such as app icons · favicons · social media avatars · pin badges.
+The form that uses only the E block taken from the EO symbol is referred to below as the **sub symbol**. Use it only in very small square spaces where the whole EO symbol is hard to recognize, such as favicons · pin badges. Places whose size varies by medium, such as app icons · social media avatars, use the EO symbol by default; whether to switch to the sub symbol is judged by the designer from the size actually seen, and reviewed by the EO design team.
 
 The sub symbol cannot fully replace the EO symbol, so always use the EO symbol wherever there is enough room. Because the E block shares its geometry with the graphic unit, it connects naturally with the whole graphic system even at small sizes.
 ![overview] {zoom=1.05}
@@ -761,7 +761,7 @@ Below is an example of the same presets applied to the seven-level [[#reference-
 Korean is set in Pretendard and Vietnamese in Noto Sans. When an existing layout is changed to a multilingual typeface, the Line Unit and level multiples stay the same, so the layout does not move when the language changes; only the font size and linespacing ratio change to suit the typeface.
 
 - Korean Pretendard — T1 of the [[#reference-scale|Reference Scale]] is Regular · 165% · -1.5% · baseline +0.2x, and H3 is Medium · 165% · -2.5% · baseline -0.05x. The rendered font size equals 85% of Founders Grotesk at the same level.
-- Vietnamese Noto Sans — T1 is DemiLight · 175% · -1.5% · baseline +0.05x, and H3 is Regular · 175% · -3%. The rendered font size equals 80% of Founders Grotesk at the same level.
+- Vietnamese Noto Sans — T1 is DemiLight · 175% · -1.5% · baseline +0.05x, and H3 is Regular · 175% · -3% · baseline +0.05x. The rendered font size equals 80% of Founders Grotesk at the same level.
 
 The baseline correction is for matching positions relative to the text box in editorial design applications. In digital environments the browser aligns baselines by itself, so on the web the correction is rarely needed, but where type is shown large, as with display fonts, it is better to correct with a separate margin inside the text box.
 
