@@ -846,9 +846,9 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 ![dont-1]{dont} Builder Neon을 본문 텍스트 전체나 밝은 바탕 위 텍스트로 사용하지 마세요
 ![dont-2]{dont} 그라데이션을 만들지 마세요
 ![dont-3]{dont} 팔레트 이외의 컬러를 추가하지 마세요
-![dont-4]{dont} 명도 · 채도 · 투명도를 바꿔 새로운 톤을 만들지 마세요
-![dont-5]{dont} Medium Gray와 Solid Gray처럼 대비가 약한 조합을 쓰지 마세요
-![dont-6]{dont} 사진에 컬러 오버레이를 씌우지 마세요
+![dont-4]{dont} 승인되지 않은 컬러 조합을 사용하지 마세요
+![dont-5]{dont} Day Blue · Bay Green · Solid Gray 등 대비가 약한 조합을 사용하지 마세요
+![dont-6]{dont} 명도 · 채도 · 투명도를 바꿔 새로운 톤을 만들지 마세요 (필요 시 EO 디자인팀에 요청하세요)
 ![dont-7]{dont} 그래픽 유닛 하나에 여러 컬러를 적용하지 마세요
 
 

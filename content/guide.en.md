@@ -841,9 +841,9 @@ To keep EO's colors consistent, avoid the following. For minimum contrast betwee
 ![dont-1]{dont} Don't use Builder Neon for body text as a whole or for text on light grounds
 ![dont-2]{dont} Don't create gradients
 ![dont-3]{dont} Don't add colors outside the palette
-![dont-4]{dont} Don't create new tones by changing brightness · saturation · opacity
-![dont-5]{dont} Don't use low-contrast combinations such as Medium Gray and Solid Gray
-![dont-6]{dont} Don't apply color overlays to photography
+![dont-4]{dont} Don't use unapproved color combinations
+![dont-5]{dont} Don't use low-contrast combinations such as Day Blue · Bay Green · Solid Gray
+![dont-6]{dont} Don't create new tones by changing brightness · saturation · opacity (ask the EO design team if needed)
 ![dont-7]{dont} Don't apply several colors to a single graphic unit
 
 
