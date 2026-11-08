@@ -72,13 +72,21 @@ const resumeSmoother = () => {
   findMode = false;
   const y = window.scrollY;
   smoother = createSmoother();
-  smoother.scrollTop(y);
+  smoother.scrollTo(y, false);                                  // 0 에서 y 까지 달려오지 않도록 현재 위치에 바로 놓음
   (window as any).__smoother = smoother;
   ScrollTrigger.refresh();
 };
+// 복구는 휠 · 터치가 멈춘 뒤에: 스무더는 만들어진 직후 0.5초간 입력을 부드럽게 따라가지 않으므로, 굴리는 도중에 만들면 튑니다
+let resumeTimer: ReturnType<typeof setTimeout> | undefined;
+const scheduleResume = () => {
+  if (!findMode) return;
+  clearTimeout(resumeTimer);
+  resumeTimer = setTimeout(resumeSmoother, ms('--find-resume-delay', 0.3) * 1000);
+};
 document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && !e.altKey && (e.key === 'f' || e.key === 'g' || e.key === 'e')) suspendSmoother(); });   // f: 찾기, g: 다음 찾기, e: 선택 영역으로 찾기
-window.addEventListener('wheel', resumeSmoother, { passive: true });
-window.addEventListener('touchstart', resumeSmoother, { passive: true });
+window.addEventListener('wheel', scheduleResume, { passive: true });
+window.addEventListener('touchstart', scheduleResume, { passive: true });
+window.addEventListener('touchmove', scheduleResume, { passive: true });
 (window as any).__ST = ScrollTrigger;                           // 디버그용 (브라우저 콘솔에서 refresh 등 확인)
 // 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품.
 // ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계" 라서 스크롤을 부드럽게 따라가지 않고 바로 점프하므로, 그 시간이 지난 뒤에 풉니다.
