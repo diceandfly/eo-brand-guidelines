@@ -24,7 +24,7 @@ let seen = 0;
 const eagerFrom = (s: Sub['sections'][number]) => { const from = seen; seen += s.items.filter(it => it.kind === 'image').length; return from; };
 const blocks = sectionBlocks(sub);
 ---
-<Layout guide={guide} current={sub} lang={lang} alt={alt} title={`${sub.chapterNum} ${sub.chapterName} / ${sub.name}`}>
+<Layout guide={guide} current={sub} lang={lang} alt={alt} title={sub.name}>
   <header class="page-head">
     <h1 class="page-head__title t-display">{sub.name}</h1>
   </header>
