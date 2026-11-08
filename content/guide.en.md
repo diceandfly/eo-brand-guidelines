@@ -770,7 +770,7 @@ These two typefaces are also the alternatives in environments where Founders Gro
 
 
 ### Typography
-#### + Don'ts {layout=grid-3} {zoom=1.55}
+#### + Don'ts {layout=grid-3} {zoom=1.35}
 Below are the things not to do with typography in brand communication. To keep consistency across every touchpoint, follow the typesetting rules and recommendations of this chapter. How far brand communication consistency takes priority in individual service · product · content design is at the designer's discretion or follows the EO design team's policy.
 ![dont-1]{dont bg-color} Don't stretch or distort the type
 ![dont-2]{dont bg-color} Don't set headlines in all caps
@@ -836,15 +836,14 @@ For detailed application criteria per asset, see the color section of each page.
 The following images show the EO palette applied across a range of designs.
 
 ### Color {layout=grid-3}
-#### Don'ts
+#### Don'ts {zoom=1.3}
 To keep EO's colors consistent, avoid the following. For minimum contrast between text and background, refer to the WCAG criteria.
 ![dont-1]{dont} Don't use Builder Neon for body text as a whole or for text on light grounds
 ![dont-2]{dont} Don't create gradients
-![dont-3]{dont} Don't add colors outside the palette
+![dont-3]{dont} Don't add colors outside the palette (ask the EO design team if needed)
 ![dont-4]{dont} Don't use unapproved color combinations
 ![dont-5]{dont} Don't use low-contrast combinations such as Day Blue · Bay Green · Solid Gray
 ![dont-6]{dont} Don't create new tones by changing brightness · saturation · opacity (ask the EO design team if needed)
-![dont-7]{dont} Don't apply several colors to a single graphic unit
 
 
 
@@ -1016,8 +1015,6 @@ Seen close up or large, each thread reads as its own mass, but seen from afar or
 - A Space Black unit shrinks on a light background, and the gray plane on the dense side can scatter into individual threads and break the established rhythm. When inverting from light to dark colors (and the reverse is the same), reset thread gutter and compression.
 ![density-mass-do]{do} A dense stretch merged into a gray plane with a small thread gutter
 ![density-mass-dont]{dont} A stretch with a large thread gutter, each hairline sticking out
-![density-slope-do]{do} A unit whose gray plane was re-tuned after adjusting the slope
-![density-slope-dont]{dont} A unit whose gray plane density changed because only the slope was changed
 ![density-inversion-do]{do} A unit whose thread gutter and compression were reset on inversion
 ![density-inversion-dont]{dont} A unit with only the colors inverted and the values left as they were
 
@@ -1028,7 +1025,7 @@ The difference between the widths of a thread's top and bottom edges. It determi
 
 - As the shaft thickens, the threads shorten and their slope flattens. When adjusting shaft size, keep in mind that the slope moves with it.
 - The more units a pattern has, the more the threads read as a gray plane · mass rather than as individual slopes. Adjust thread top/bottom width only within the recommended range, and only when the gray level needs fine-tuning. Close-up treatments with thread sides set to single are the exception, since there the slope of the thread is the key metaphor.
-![shape-do]{do} A thread with top 40% · bottom 0%
+![shape-do]{do} A thread with top 40% · bottom 10%
 ![shape-dont]{dont} A thread with top · bottom outside the recommended range
 
 

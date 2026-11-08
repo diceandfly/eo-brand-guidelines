@@ -775,7 +775,7 @@ EO 타이포그래피도 심볼과 마찬가지로 Solid Gray · Space Black 등
 
 
 ### Typography
-#### + Don'ts {layout=grid-3} {zoom=1.55}
+#### + Don'ts {layout=grid-3} {zoom=1.35}
 아래는 브랜드 커뮤니케이션에서 타이포그래피로 하지 말아야 할 것들입니다. 모든 접점에서 일관성을 지키려면 이 챕터의 조판 규칙과 권장 사항을 따르세요. 개별 서비스 · 제품 · 콘텐츠 디자인에서 브랜드 커뮤니케이션 일관성을 얼마나 우선할지는 디자이너 재량에 따르거나 EO 디자인팀의 방침을 준수합니다.
 ![dont-1]{dont bg-color} 글자를 늘리거나 왜곡하지 마세요
 ![dont-2]{dont bg-color} 헤드라인을 전부 대문자로 쓰지마세요
@@ -841,15 +841,14 @@ EO 팔레트는 Builder Neon, Day Blue, Bay Green과 이를 받쳐 주는 네가
 다음 이미지들은 EO 팔레트가 다양한 디자인에 적용된 예시입니다.
 
 ### Color {layout=grid-3}
-#### Don'ts
+#### Don'ts {zoom=1.3}
 EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트와 배경의 최소 대비는 WCAG 기준을 참고하세요.
 ![dont-1]{dont} Builder Neon을 본문 텍스트 전체나 밝은 바탕 위 텍스트로 사용하지 마세요
 ![dont-2]{dont} 그라데이션을 만들지 마세요
-![dont-3]{dont} 팔레트 이외의 컬러를 추가하지 마세요
+![dont-3]{dont} 팔레트 이외의 컬러를 추가하지 마세요 (필요 시 EO 디자인팀에 요청하세요)
 ![dont-4]{dont} 승인되지 않은 컬러 조합을 사용하지 마세요
 ![dont-5]{dont} Day Blue · Bay Green · Solid Gray 등 대비가 약한 조합을 사용하지 마세요
 ![dont-6]{dont} 명도 · 채도 · 투명도를 바꿔 새로운 톤을 만들지 마세요 (필요 시 EO 디자인팀에 요청하세요)
-![dont-7]{dont} 그래픽 유닛 하나에 여러 컬러를 적용하지 마세요
 
 
 
@@ -1018,12 +1017,9 @@ compression 값을 올리면 한쪽으로 갈수록 thread가 촘촘해지며 �
 thread는 가까이서/크게 볼수록 하나하나의 덩어리가 읽히지만, 멀리서/작게 볼수록 인접한 형태끼리 뭉치며 일정한 밀도의 회색 면을 이룹니다. 이때 회색 면의 경계는 compression에 따라 변화하고, 밀도는 thread gutter와 thread의 기울기에 따라 변화합니다. thread gutter는 thread 사이의 최소 간격이며, 촘촘한 thread가 각각의 선으로 보일지 회색 면으로 뭉칠지에 결정적 영향을 줍니다. 일반적인 해상도의 디지털 에셋에는 10-20px 수준의 thread gutter를 권장합니다.
 
 - 촘촘한 구간은 회색 면으로 뭉쳐 보이는 쪽이 거의 언제나 좋습니다. 헤어라인 두께로 일정하게 반복되는 thread를 노출시키기보다, 그 구간이 유닛 끝의 좁은 띠로 뭉치게 thread gutter를 낮추세요. 일반적인 해상도의 디지털 에셋에서는 thread gutter를 30px 이상으로 올리는 일이 드뭅니다.
-- 회색 면의 밀도는 thread gutter에 의해 큰 인상이 결정되지만, thread의 기울기에도 미세하게 영향을 받습니다. 두꺼운 쪽 thread의 기울기를 조정할 때도 촘촘한 쪽의 회색 면에 변화가 생기고 있는지 유의하세요.
 - Space Black 유닛은 밝은 배경에서 쪼그라드는데, 이때 촘촘한 쪽의 회색 면이 thread 하나하나로 흩어지며 기존의 리듬감을 무너뜨릴 수 있습니다. 밝은 컬러에서 어두운 컬러로 반전할 때는(반대의 경우도 같습니다) thread gutter와 compression을 새로 잡아야 합니다.
 ![density-mass-do]{do} thread gutter가 작아 회색 면으로 뭉친 촘촘한 구간
 ![density-mass-dont]{dont} thread gutter가 커서 헤어라인을 하나하나 돌출시킨 구간
-![density-slope-do]{do} 기울기를 조절한 뒤 회색 면을 다시 맞춘 유닛
-![density-slope-dont]{dont} 기울기만 바꿔 회색 면의 밀도가 달라진 유닛
 ![density-inversion-do]{do} 반전하면서 thread gutter와 compression을 새로 잡은 유닛
 ![density-inversion-dont]{dont} 값을 그대로 두고 컬러만 반전한 유닛
 
@@ -1034,7 +1030,7 @@ thread 윗변과 아랫변의 폭 차이입니다. thread의 날카로움과 점
 
 - shaft가 두꺼워지면 thread가 짧아지고 기울기는 완만해집니다. shaft size를 조정할 때는 thread의 기울기가 함께 움직인다는 점을 유의하세요.
 - 유닛이 많은 패턴일수록 thread의 기울기 하나하나가 인지되기보다는 회색 면 · 덩어리로 뭉쳐 보입니다. thread top/bottome with은 가급적 권장 범위 내에서 회색도 미세 조정이 필요할 때만 조정합니다. shaft side를 single로 하여 클로즈업하는 연출에서는 thread의 기울기가 핵심적인 메타포가 되므로 예외입니다.
-![shape-do]{do} top 40% · bottom 0%의 thread
+![shape-do]{do} top 40% · bottom 10%의 thread
 ![shape-dont]{dont} top · bottom이 권장 범위를 벗어난 thread
 
 
