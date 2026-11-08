@@ -1173,7 +1173,7 @@ A library of 30 patterns made by combining units. Each pattern is named not by a
 ### + Usage
 #### Do's & Don'ts {layout=grid-2}
 The graphic pattern is the most vivid and dense visual element in all of EO's visual expression, so on the page it must play the role of the subject that draws the eye. Give the pattern an entire half of the layout (usually the top or the right) and set the headline left-aligned at the edge of the content area on the other side. Do not overlap text on the pattern, and place the logo in the margin outside it. Patterns may be cropped, but crop on column boundaries so that no diagonal stretch of a thread is cut through the middle.
-![pattern-do-1] {do} When using a graphic pattern, fill a large rectangular area of 60-70% or more of the page to raise its visibility
+![pattern-do-1] {do} When using a graphic pattern, fill a large rectangular area of 50-70% of the page to raise its visibility
 ![pattern-do-2] {do} Use a graphic pattern of suitable complexity for the size at which the page is actually seen
 ![pattern-dont-1] {dont} Don't overlay content on the graphic pattern
 ![pattern-dont-2] {dont} Don't let the diagonal part of a thread be cropped
