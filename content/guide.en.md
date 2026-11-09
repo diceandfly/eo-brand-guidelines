@@ -603,7 +603,7 @@ A seven-level preset based on Line Unit 1x = 28px. The first letter of a level n
 - **T2** - 1x / Light / 150% / +1.5% [Solid Gray] · +2% [Space Black] (18.67px). Body > readability first
 - **C1** — 0.5x / Mono Regular / 111% / -7% (12.6px). Caption · label · tag · spec · date · button
 
-The recommended weight for each level follows these criteria. Medium for display and headlines (D1 · H1), Regular for sub-display and sub-headlines (D2 · H2 · H3), Light for body copy (T1), Mono Regular for informational text (C1). Founders Grotesk Semibold is used only in a limited way, at the designer's discretion, for optical correction when Medium-level display text is inverted onto a light background and shown small. Keyword emphasis within body copy does not change weight and uses the Builder Neon color only.
+The recommended weight for each level follows these criteria. Medium for display and headlines (D1 · H1), Regular for sub-display and sub-headlines (D2 · H2 · H3), Light for body copy (T1), Mono Regular for informational text (C1). Founders Grotesk Semibold is used only in a limited way, at the designer's discretion, for optical correction when Medium-level display text is inverted onto a light background and shown small. Keyword emphasis within body copy does not change weight and uses the Builder Neon color with an underline.
 
 Set level multiples in steps of 1x · 0.5x · 0.25x, and refine linespacing ratio and tracking so that the gray level carries consistently between adjacent levels. For the adjusted values for Korean and Vietnamese, see [[#multilingual|Multilingual]].
 

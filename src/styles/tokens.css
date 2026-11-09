@@ -113,11 +113,13 @@
   /* 키워드 단락 "키워드// 설명" (슬래시 둘) — 인라인 라벨과 달리 들여쓰기 + 독립 단락. 순서 목록과 같은 자리 · 간격. + 불릿과 독립 */
   --t-body-keyed-offset: 0.6em; /* 왼쪽 마진 ↔ 키워드. 순서 목록 마커(--t-body-olist-offset)와 같은 자리 */
   --t-body-keyed-gap: 0.5; /* 연속 키워드 단락 ↔ 단락 = 본문 행간 × 값 (목록 --t-body-list-gap 과 같게). 문단 간격(0.75)보다 좁아 한 묶음으로 읽힘 */
-  /* 본문 **강조** — 색만 바꾼다. 웨이트 · 자간은 본문과 같게 두는 것이 규칙(Typography › Reference Scale). 언더라인 없음 (언더라인은 링크 · 참조 전용이라 둘이 바로 구분됨) */
+  /* 본문 **강조** — 네온 색 + 언더라인. 웨이트 · 자간은 본문과 같게 두는 것이 규칙(Typography › Reference Scale). 링크도 언더라인이지만 색이 달라 구분됨 */
   --t-body-strong-w: 300; /* 강조 웨이트. 본문 웨이트와 같게 */
   --t-body-strong-c: var(--c-builder-neon); /* 강조 색. 네온 하이라이팅 (헤드와 같은 색). 본문색으로 돌리려면 var(--t-body-c) */
   --t-body-strong-ls: var(--t-body-ls); /* 강조 자간 (영문). 본문과 같게 — 웨이트를 바꾸지 않으므로 자간도 그대로 */
   --t-body-ko-strong-ls: var(--t-body-ko-ls); /* 강조 안의 한글 자간. 본문 한글과 같게 */
+  --t-body-strong-line: var(--t-body-link-line); /* 강조 언더라인 두께. 링크와 같은 두께, 색(네온)으로 구분 */
+  --t-body-strong-offset: var(--t-body-link-offset); /* 강조 언더라인 ↔ 글자 */
   /* 본문 하이퍼링크 — 언더라인. 호버 색·시간은 B-5 */
   --t-body-link-line: 0.5px; /* 언더라인 두께 */
   --t-body-link-offset: 0.15em; /* 언더라인 ↔ 글자 */

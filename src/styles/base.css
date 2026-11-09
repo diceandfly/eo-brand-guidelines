@@ -208,13 +208,15 @@ button {
   margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-sublist-item-gap));
 }
 .t-body strong {
-  font-weight: var(--t-body-strong-w); /* 강조 = 네온 색만. 웨이트 · 자간은 본문과 같게. 언더라인은 쓰지 않음 — 언더라인은 링크(.t-body a) 전용 */
+  font-weight: var(--t-body-strong-w); /* 강조 = 네온 색 + 언더라인. 웨이트 · 자간은 본문과 같게 */
   color: var(--t-body-strong-c); /* 네온 하이라이팅 — 한글 구간(.ko)도 상속 */
   letter-spacing: var(--t-body-strong-ls); /* 본문 자간과 같은 토큰 */
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: var(--t-body-strong-line);
+  text-underline-offset: var(--t-body-strong-offset);
 }
 .t-body a {
-  text-decoration: underline; /* 링크만 언더라인 (강조와 구분) */
+  text-decoration: underline; /* 링크 언더라인. 강조(strong)도 언더라인이지만 네온 색으로 구분 */
   text-decoration-thickness: var(--t-body-link-line);
   text-underline-offset: var(--t-body-link-offset);
 }
