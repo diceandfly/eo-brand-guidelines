@@ -42,6 +42,8 @@
 - **허브 둘 다 유지**: Overview 끝 문단 = 단순 나열, Setting Up = 단계별 인용. 단 Overview 나열 순서를 Setting Up 단계 순서와 같게 맞춘다.
 - **개념 명사 섹션** (Line Unit · Linespacing · Letterspacing · Tonal Value · Reference Scale · Grid & Margin): 사전 항목처럼 어디서든, 교차로도 가리킬 수 있다.
 - **잎 섹션** (Inversion · Multilingual · Alignment & Ragging · Don'ts): 다른 곳에서 "이 경우엔 여기" 로 한두 번만 가리키고, 잎끼리는 서로 가리키지 않는다.
+- **다른 페이지 참조**: 라벨을 쓰지 않고 자동 경로 "페이지 › 섹션"이 보이게 한다(`[[typography#grid-setting#zoning]]` → Typography › Zoning). 헤드가 그 페이지에서 반복되는 범주(Grid Setting · Grammar · Morphology …)면 파서가 범주를 빼고 서브헤드만 붙인다. 단 서브헤드가 페이지 안에서 겹치면(Founders Grotesk Medium) "헤드 › 서브헤드"로 남긴다(2026-11-09 결정).
+- **개념 보조 인용**: 복잡하거나 특정한 개념을 설명하면서 이해를 돕기 위해 가리킬 때는 `[[경로|개념]]`처럼 문장 속 개념어를 라벨로 쓴다(「시그니처의 디스크립터」→ signature#inversion).
 - **라벨**: 섹션명이 있으면 섹션명 그대로. 국문 최초 개념 설명 자리에서만 우리말 라벨 허용(건별로 보고 결정). 지금 바꿀 라벨: 「자간」→Letterspacing, 「웨이트」→Tonal Value, 「반전」→Inversion, 「Pretendard나 Noto Sans」→Multilingual, 「그리드 라인」→Grid & Margin, 「T1」(Multilingual 안)→Reference Scale, 「다국어 환경 전환」·「다크/라이트 모드 전환」(Overview 불릿)은 최초 설명 자리라 유지(2026-11-08 결정).
 
 ## 4. 현재 인용 트리 (2026-11-07 기준)

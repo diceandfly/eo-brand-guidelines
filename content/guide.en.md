@@ -19,7 +19,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
   [[graphic-pattern#color]]            → "Graphic Pattern › Color" 링크. 글자는 목차에서 자동, 언어별 경로도 자동
   [[graphic-pattern]]                          → "Graphic Pattern" (페이지로)
   [[#grammar]]                         → 같은 페이지의 섹션 ("Grammar")
-  [[graphic-unit#morphology#proportion]] → "Graphic Unit › Morphology › Proportion" (헤드 › 서브헤드까지)
+  [[graphic-unit#morphology#proportion]] → "Graphic Unit › Proportion" (헤드가 그 페이지에서 반복되는 범주면 빼고 서브헤드만. 서브헤드가 페이지 안에서 겹치면 "헤드 › 서브헤드")
   [[→ graphic-pattern#color]]          → "→ Graphic Pattern › Color" (화살표까지 한 밑줄. -> 로 써도 됨)
   [[symbol#clearspace]]        → 같은 페이지 이름이 여러 챕터에 있을 때 챕터로 한정
   [[graphic-pattern#grammar|grammar rules]]         → 링크 글자를 직접 지정
@@ -1064,7 +1064,7 @@ Vocabulary handles a unit's meaning and Morphology its appearance, so the Gramma
 
 ### Grammar {layout=grid-4}
 #### Grid Setting
-The proportion and boundary that divide the page into the graphic pattern area and the content area follow [[typography#grid-setting#zoning|Zoning]]. The order is: build the Compound Grid first, divide the areas on that modular grid, then complete the pattern grid inside the pattern area. No separate gap is placed between the two areas; it is counted as part of the content area's margin.
+The proportion and boundary that divide the page into the graphic pattern area and the content area follow [[typography#grid-setting#zoning]]. The order is: build the Compound Grid first, divide the areas on that modular grid, then complete the pattern grid inside the pattern area. No separate gap is placed between the two areas; it is counted as part of the content area's margin.
 
 The pattern grid is an independent grid that operates only inside the graphic pattern area. The frame grid set in the EO Graphic Builder corresponds to the pattern grid. It need not align with the typographic baseline grid or the Line Unit; the two systems harmonize on a page through the contrast of strong and weak. What characterizes a pattern grid layout is units interlocking inside a rectangular frame with no empty space.
 

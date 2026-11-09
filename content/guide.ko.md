@@ -19,7 +19,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
   [[graphic-pattern#color]]            → "Graphic Pattern › Color" 링크. 글자는 목차에서 자동, 언어별 경로도 자동
   [[graphic-pattern]]                          → "Graphic Pattern" (페이지로)
   [[#grammar]]                         → 같은 페이지의 섹션 ("Grammar")
-  [[graphic-unit#morphology#proportion]] → "Graphic Unit › Morphology › Proportion" (헤드 › 서브헤드까지)
+  [[graphic-unit#morphology#proportion]] → "Graphic Unit › Proportion" (헤드가 그 페이지에서 반복되는 범주면 빼고 서브헤드만. 서브헤드가 페이지 안에서 겹치면 "헤드 › 서브헤드")
   [[→ graphic-pattern#color]]          → "→ Graphic Pattern › Color" (화살표까지 한 밑줄. -> 로 써도 됨)
   [[symbol#clearspace]]        → 같은 페이지 이름이 여러 챕터에 있을 때 챕터로 한정
   [[graphic-pattern#grammar|문법 원칙]]         → 링크 글자를 직접 지정
@@ -1066,7 +1066,7 @@ EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다.
 
 ### Grammar {layout=grid-4}
 #### Grid Setting
-지면을 그래픽 패턴 영역과 콘텐츠 영역으로 나누는 비율과 경계는 [[typography#grid-setting#zoning|Zoning]]을 따릅니다. 순서는 Compound Grid를 먼저 세우고, 그 모듈러 그리드를 기준으로 영역을 나눈 뒤, 패턴 영역 안에서 pattern grid를 완성하는 것입니다. 두 영역 사이의 여백은 따로 두지 않고 콘텐츠 영역의 마진에 포함된 것으로 봅니다.
+지면을 그래픽 패턴 영역과 콘텐츠 영역으로 나누는 비율과 경계는 [[typography#grid-setting#zoning]]을 따릅니다. 순서는 Compound Grid를 먼저 세우고, 그 모듈러 그리드를 기준으로 영역을 나눈 뒤, 패턴 영역 안에서 pattern grid를 완성하는 것입니다. 두 영역 사이의 여백은 따로 두지 않고 콘텐츠 영역의 마진에 포함된 것으로 봅니다.
 
 pattern grid는 그래픽 패턴 영역 안에서만 작동하는 독자적인 그리드입니다. EO Graphic Builder에서 설정하는 프레임의 그리드가 pattern grid에 해당합니다. 타이포그래피의 베이스라인 그리드나 Line Unit과 맞출 필요는 없으며, 두 시스템은 한 지면에서 강약의 대비로 조화를 이룹니다. 사각 프레임 안에 유닛이 빈 공간 없이 맞물려 짜이는 것이 pattern grid 레이아웃의 특징입니다.
 
