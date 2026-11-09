@@ -906,7 +906,7 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 
 Vocabulary는 이러한 맵핑 규칙을 모은 EO 그래픽 시스템의 어휘 사전이며, 특정한 가치 키워드를 표현하려면 어떤 시각 속성과 컬러를 조합하는지에 대한 포괄적인 지침을 다룹니다. 단, 이하 내용은 지금까지 정리된 규칙일 뿐 전부는 아니며 새로운 메타포는 언제든 더해질 수 있습니다. 
 
-이 섹션은 키워드 표현을 주로 설명하며, 그래픽 시각성의 관한 지침은 [[graphic-unit#morphology]] 및 [[graphic-pattern#grammar]]를 참조하세요. 두개의 유닛을 정렬하는 방식인 docking에 대해서는 [[graphic-unit#morphology#docking]]을 참조하세요.
+이 섹션은 키워드 표현을 주로 설명하며, 그래픽 시각성의 관한 지침은 Morphology 및 [[graphic-pattern#grammar]]를 참조하세요. 두개의 유닛을 정렬하는 방식인 docking에 대해서는 Docking을 참조하세요.
 ![vocabulary-overview]
 
 
@@ -974,8 +974,8 @@ shaft는 나사의 축이자 빌딩 과정의 타임라인을 상징하고, shaf
 ### + Morphology
 어떤 유닛이든 파라미터 몇 개로 간단히 만들 수 있지만, 좋은 형태의 유닛은 절대적 값이 아니라 비례와 리듬에서 나옵니다.  
 
-- [[graphic-unit#vocabulary|Vocabulary]]에서는 유닛과 pair가 가진 의미와 메타포에 대해 다룹니다.
-- [[graphic-unit#morphology|Morphology]]에서는 같은 뜻의 단어도 어떻게 생겨야 이상적인지, 단일 유닛의 비례와 리듬에 대해 다룹니다. 
+- Vocabulary에서는 유닛과 pair가 가진 의미와 메타포에 대해 다룹니다.
+- Morphology에서는 같은 뜻의 단어도 어떻게 생겨야 이상적인지, 단일 유닛의 비례와 리듬에 대해 다룹니다. 
 
 이 섹션은 시각적으로 이상적인 유닛의 체크리스트와 파라미터 권장 범위를 제공합니다. 단, 이것은 절대적인 기준이 아니므로 최종 파라미터 값은 디자이너의 미적 감각에 따라 결정하세요. 복수 유닛의 조합 규칙은 [[graphic-pattern#grammar]]을 참조하세요.
 ![morphology-overview]
@@ -1058,9 +1058,9 @@ thread 윗변과 아랫변의 폭 차이입니다. thread의 날카로움과 점
 EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다. 
 - [[graphic-unit#vocabulary|Vocabulary]]는 단어입니다. 유닛과 pair가 어떤 뜻을 갖는지, 의미와 메타포에 대해 다룹니다.
 - [[graphic-unit#morphology|Morphology]]는 그 단어의 형태입니다. 뜻은 같아도 어떻게 생겨야 이상적인지, 유닛 하나의 비례와 리듬에 대해 다룹니다. 
-- [[graphic-pattern#grammar|Grammar]]는 단어를 활용해 문장을 구성하는 문법입니다. 복수의 유닛을 한 지면에 배치하는 방법을 정리한 레이아웃 규칙입니다.
+- Grammar는 단어를 활용해 문장을 구성하는 문법입니다. 복수의 유닛을 한 지면에 배치하는 방법을 정리한 레이아웃 규칙입니다.
 
-유닛의 의미는 Vocabulary가, 유닛의 생김새는 Morphology가 맡으므로, Grammar 섹션에서는 뜻보다는 레이아웃 형식에 대해 다룹니다. [[graphic-pattern#references]]의 라이브러리는 이 규칙이 적용된 대표적인 예시이며, 디자이너는 이를 재해석해 새로운 패턴을 제작할 수 있습니다.
+유닛의 의미는 Vocabulary가, 유닛의 생김새는 Morphology가 맡으므로, Grammar 섹션에서는 뜻보다는 레이아웃 형식에 대해 다룹니다. References의 라이브러리는 이 규칙이 적용된 대표적인 예시이며, 디자이너는 이를 재해석해 새로운 패턴을 제작할 수 있습니다.
 ![grammar]
 
 
