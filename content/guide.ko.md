@@ -1074,7 +1074,7 @@ EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다.
 ![grid-do-1]{do} 이상적인 비율의 영역 구획
 ![grid-dont-1]{dont} 그래픽 영역이 너무 작아 시각성이 약화된 레이아웃
 ![grid-do-2]{do} pattern grid의 컬럼과 로우에 물린 유닛
-![grid-dont-2]{dont} 컬럼 · 로우 라인과 무관한 위치에서 잘린 그래픽 패턴 영역
+![grid-do-3]{do} 그래픽 패턴 영역 안에 빈 공간 없이 맞물려 쌓인 유닛
 
 
 ### Grammar {layout=grid-2}
