@@ -12,6 +12,7 @@
     </style>
   </defs>
   <rect class="cls-2" width="1920" height="1080"/>
+  <g transform="translate(960 540) scale(1.01887) translate(-960.00 -550.00)">
   <g>
     <rect class="cls-1" y="878.6" width="1920" height="201.4"/>
     <g>
@@ -26,4 +27,5 @@
       <polygon class="cls-1" points="1277.87 878.6 1655.59 20 1920 20 1920 878.6 1863.34 979.3 1221.21 979.3 1277.87 878.6"/>
     </g>
   </g>
+</g>
 </svg>
