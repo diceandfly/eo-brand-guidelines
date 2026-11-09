@@ -720,7 +720,7 @@ EO 브랜드 커뮤니케이션의 콘텐츠는 왼쪽 정렬을 기준으로 �
 #### Zoning {layout=grid-2}
 지면은 그래픽 패턴 영역과 콘텐츠 영역으로 나눕니다. 그래픽 패턴 영역은 3:4 · A판형 · 명함에서는 정사각형에 가깝게, 가로형 와이드 지면에서는 지면의 70 % 정도, 세로형 롤업에서는 절반 정도를 차지하는 것이 이상적입니다. 정보량이 적은 커뮤니케이션 용도 지면은 4분할해 콘텐츠와 번갈아 두거나 한쪽에 몰아 둘 수도 있습니다. 콘텐츠 영역의 타이포그래피는 좌측 · 상단 정렬로 전개되므로, 지면을 가로로 나눌 때는 패턴 영역을 우측에, 세로로 나눌 때는 상단에 두는 것을 우선합니다. 
 
-패턴 영역은 마진을 무시한 풀블리드로 배치하고, 유닛 배치는 [[graphic-pattern#grammar#grid-setting]]를 따릅니다. 두 영역의 경계선은 [[#grid-setting-compound-grid|Compound Grid]]를 설정한 뒤 컬럼 · 로우를 기준으로 영역의 적정 비율을 체크하고 그 라인에 맞춥니다. 라인에 꼭 떨어지지 않으면 컬럼 · 로우의 중간선이나 베이스라인으로 조정할 수 있습니다.
+패턴 영역은 마진을 무시한 풀블리드로 배치하고, 유닛 배치는 [[graphic-pattern#zoning]]를 따릅니다. 두 영역의 경계선은 [[#grid-setting-compound-grid|Compound Grid]]를 설정한 뒤 컬럼 · 로우를 기준으로 영역의 적정 비율을 체크하고 그 라인에 맞춥니다. 라인에 꼭 떨어지지 않으면 컬럼 · 로우의 중간선이나 베이스라인으로 조정할 수 있습니다.
 
 콘텐츠 영역은 나머지이며, 마진과 그리드는 이 영역을 기준으로 설정합니다. 4분할 레이아웃은 분할된 콘텐츠 영역 하나를 기준으로 합니다. 명함처럼 앞뒷면이 연계되는 지면은 주요 콘텐츠가 있는 면을 기준으로 합니다.
 
@@ -834,11 +834,13 @@ EO 팔레트는 Builder Neon, Day Blue, Bay Green과 이를 받쳐 주는 네 �
 ![usage]
 
 
-### Color {layout=grid-4}
+### Color {layout=grid-2}
 #### In Use
 다음 이미지들은 EO 팔레트가 다양한 디자인에 적용된 예시입니다.
-![color-in-use-1] 옥외 깃발
-![color-in-use-2] 거리 배너
+![color-in-use-1] ?
+![color-in-use-2] ?
+![color-in-use-3] 거리 배너
+![color-in-use-4] 옥외 깃발
 
 ### Color {layout=grid-3}
 #### Don'ts {zoom=1.3}
@@ -910,7 +912,7 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 Vocabulary는 이러한 맵핑 규칙을 모은 EO 그래픽 시스템의 어휘 사전이며, 특정한 가치 키워드를 표현하려면 어떤 시각 속성과 컬러를 조합하는지에 대한 포괄적인 지침을 다룹니다. 단, 이하 내용은 지금까지 정리된 규칙일 뿐 전부는 아니며 새로운 메타포는 언제든 더해질 수 있습니다. 
 
 이 섹션은 키워드 표현을 주로 설명하며, 그래픽 시각성의 관한 지침은 Morphology 및 [[graphic-pattern#grammar]]를 참조하세요. 두개의 유닛을 정렬하는 방식인 docking에 대해서는 Docking을 참조하세요.
-![vocabulary-overview]
+![vocabulary-overview] {zoom=1.1} {bg-cover}
 
 
 ### Vocabulary
@@ -981,7 +983,7 @@ shaft는 나사의 축이자 빌딩 과정의 타임라인을 상징하고, shaf
 - Morphology에서는 같은 뜻의 단어도 어떻게 생겨야 이상적인지, 단일 유닛의 비례와 리듬에 대해 다룹니다. 
 
 이 섹션은 시각적으로 이상적인 유닛의 체크리스트와 파라미터 권장 범위를 제공합니다. 단, 이것은 절대적인 기준이 아니므로 최종 파라미터 값은 디자이너의 미적 감각에 따라 결정하세요. 복수 유닛의 조합 규칙은 [[graphic-pattern#grammar]]을 참조하세요.
-![morphology-overview]
+![morphology-overview] {zoom=1.1} {bg-cover}
 
 
 ### Morphology {layout=grid-4}
@@ -989,7 +991,7 @@ shaft는 나사의 축이자 빌딩 과정의 타임라인을 상징하고, shaf
 EO 그래픽 유닛의 특징은 크기와 종횡비를 자유롭게 변형할 수 있는 점입니다. 다만 모든 비율의 유닛이 다 시각적으로 적절한 것은 아닙니다.
 
 - shaft 축 방향으로 긴 인상의 유닛을 권장합니다. shaft가 납작해지면 모든 thread가 한데 뭉쳐 버리므로 의도된 메타포를 표현하기에 이상적이지 않습니다. 단 복잡한 패턴의 일부 · 주변부에 쓰이는 유닛은 예외적으로 납작한 형태를 사용할 수 있습니다.
-- shaft 축 방향으로 직선처럼 가늘고 긴 유닛도 이상적이지 않습니다. 이 경우에는 긴 shaft를 따라 thread가 늘어나면서 기존 메타포로 인식되지 않을 만큼 변형되기 때문입니다.
+- shaft 축 방향으로 직선처럼 가늘고 긴 유닛도 이상적이지 않습니다. 이 경우에는 긴 shaft를 따라 thread가 늘어나면서 기존 메타포로 인식되지 않을 만큼 변형되고, 형태적으로는 거터가 과도하게 늘어나기 때문에 지양합니다.
 ![proportion-flat-do]{do} shaft 축 방향으로 적당히 긴 인상의 유닛
 ![proportion-flat-dont]{dont} 축과 수직 방향으로 넓어져 thread가 한데 뭉친 납작한 유닛
 ![proportion-line-do]{do} 적당한 길이의 shaft가 몸통처럼 균형이 잡힌 유닛
@@ -1020,8 +1022,8 @@ thread는 가까이서/크게 볼수록 하나하나의 덩어리가 읽히지�
 - Space Black 유닛은 밝은 배경에서 쪼그라드는데, 이때 촘촘한 쪽의 회색 면이 thread 하나하나로 흩어지며 기존의 리듬감을 무너뜨릴 수 있습니다. 밝은 컬러에서 어두운 컬러로 반전할 때는(반대의 경우도 같습니다) thread gutter와 compression을 새로 잡아야 합니다.
 ![density-mass-do]{do} thread gutter가 작아 회색 면으로 뭉친 촘촘한 구간
 ![density-mass-dont]{dont} thread gutter가 커서 헤어라인을 하나하나 돌출시킨 구간
-![density-inversion-do]{do} 반전하면서 thread gutter와 compression을 새로 잡은 유닛
-![density-inversion-dont]{dont} 값을 그대로 두고 컬러만 반전한 유닛
+![density-inversion-do]{zoom=2} {do} 반전하면서 thread gutter와 compression을 새로 잡은 유닛
+![density-inversion-dont]{zoom=2} {dont} 값을 그대로 두고 컬러만 반전한 유닛
 
 
 ### Morphology {layout=grid-4}
@@ -1029,7 +1031,7 @@ thread는 가까이서/크게 볼수록 하나하나의 덩어리가 읽히지�
 thread 윗변과 아랫변의 폭 차이입니다. thread의 날카로움과 점유 면적을 결정하고 촘촘한 compression 구간의 회색도에 영향을 줍니다. 대각선 면적이 약 60%를 차지하는 thread가 이상적이므로, thread top width는 35-50%, bottom width는 0-20%를 권장합니다.
 
 - shaft가 두꺼워지면 thread가 짧아지고 기울기는 완만해집니다. shaft size를 조정할 때는 thread의 기울기가 함께 움직인다는 점을 유의하세요.
-- 유닛이 많은 패턴일수록 thread의 기울기 하나하나가 인지되기보다는 회색 면 · 덩어리로 뭉쳐 보입니다. thread top/bottom width는 가급적 권장 범위 내에서 회색도 미세 조정이 필요할 때만 조정합니다. shaft side를 single로 하여 클로즈업하는 연출에서는 thread의 기울기가 핵심적인 메타포가 되므로 예외입니다.
+- 유닛이 많은 패턴일수록 thread의 기울기 하나하나가 인지되기보다는 회색 면 · 덩어리로 뭉쳐 보입니다. thread top/bottom width는 가급적 권장 범위 내에서 회색도 미세 조정이 필요할 때만 조정합니다. thread sides를 single로 하여 클로즈업하는 연출에서는 thread의 기울기가 핵심적인 메타포가 되므로 예외입니다.
 ![shape-do]{do} top 40% · bottom 10%의 thread
 ![shape-dont]{dont} top · bottom이 권장 범위를 벗어난 thread
 
@@ -1064,20 +1066,28 @@ EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다.
 - Grammar는 단어를 활용해 문장을 구성하는 문법입니다. 복수의 유닛을 한 지면에 배치하는 방법을 정리한 레이아웃 규칙입니다.
 
 유닛의 의미는 Vocabulary가, 유닛의 생김새는 Morphology가 맡으므로, Grammar 섹션에서는 뜻보다는 레이아웃 형식에 대해 다룹니다. References의 라이브러리는 이 규칙이 적용된 대표적인 예시이며, 디자이너는 이를 재해석해 새로운 패턴을 제작할 수 있습니다.
-![grammar]
+![grammar] {zoom=1.1} {bg-cover}
 
 
 ### Grammar {layout=grid-2}
-#### Grid Setting
-지면을 그래픽 패턴 영역과 콘텐츠 영역으로 나누는 비율과 경계는 [[typography#grid-setting#zoning]]을 따릅니다. 순서는 Compound Grid를 먼저 세우고, 그 모듈러 그리드를 기준으로 영역을 나눈 뒤, 그래픽 패턴 영역 안에서 패턴을 완성하는 것입니다. 두 영역 사이의 여백은 따로 두지 않고 콘텐츠 영역의 마진에 포함된 것으로 봅니다.
+#### + Zoning
+새로운 레이아웃을 만들 떄의 작업 순서는 먼저 Compound Grid를 먼저 세우고, 모듈러를 큰 기준으로 그래픽 패턴 영역과 콘텐츠 영역을 나눈 뒤, 그래픽 패턴 영역 안에서 패턴을 완성하는 것입니다. Compound Grid의 세부 지침은 [[typography#grid-setting#zoning]]을 참고하세요. 두 영역 사이의 여백은 명시적으로 설정하지 않고 콘텐츠 영역의 여백에 포함된 것으로 처리합니다.
 
-그래픽 패턴 영역은 EO Graphic Builder의 프레임에 해당하는 사각 틀이며, 그 안에 유닛을 테트리스처럼 빈 공간 없이 맞물려 쌓는 것이 패턴 레이아웃의 특징입니다. 영역 안의 유닛 배치는 타이포그래피의 그리드와 맞출 필요가 없으며, 두 시스템은 한 지면에서 강약의 대비로 조화를 이룹니다.
+그래픽 패턴 영역은 EO Graphic Builder의 프레임에 해당하는 사각 프레임이며, 그 안에 유닛을 테트리스처럼 빈 공간 없이 맞물려 쌓는 것이 별도의 시스템입니다. EO Graphic Builder에서는 Frame으로 구분됩니다. 그래픽 패턴 영역 안의 유닛 배치는 타이포그래피의 그리드와 맞출 필요가 없습니다. 그래픽 패턴 영역과 타이포그래피 중심의 컨텐츠 영역 두 시스템은 한 지면에서 강약의 대비를 이룹니다. 콘텐츠 영역의 타이포그래피가 좌측 · 상단 정렬로 전개되므로, 지면을 가로로 나눌 때는 패턴 영역을 우측에, 세로로 나눌 때는 상단에 두는 것을 우선합니다.
 
-먼저 빌더 · 그래픽툴의 워크스페이스에서 유닛을 조합해 새로운 메타포의 그래픽 초안을 만들고, 그래픽 패턴 영역에 맞춰 유닛을 정렬해 리파인하는 작업 방식을 권장합니다. 규칙을 먼저 정하고 채우기보다 패턴 탐색이 배치를 이끕니다.
+EO Graphic Builder의 워크스페이스에서 새로운 메타포의 그래픽 초안을 만들 때는, 프레임 안에 독자적인 그리드를 설정해 그래픽 유닛을 규칙적으로 배치하는 과정을 거치는데, 이것은 본 가이드라인에서 중점적으로 다루는 compound grid와는 완전히 독립된 별도의 시스템입니다. 
 ![grid-do-1]{do} 이상적인 비율의 영역 구획
-![grid-dont-1]{dont} 그래픽 영역이 너무 작아 시각성이 약화된 레이아웃
-![grid-do-2]{do} pattern grid의 컬럼과 로우에 물린 유닛
-![grid-do-3]{do} 그래픽 패턴 영역 안에 빈 공간 없이 맞물려 쌓인 유닛
+![grid-dont-1]{dont} 그래픽 영역이 너무 작고, 다른 요소와 위계를 경합하는 그래픽 패턴
+![grid-do-2]{do} 컬럼 · 로우 라인에 떨어지는 그래픽 패턴 영역
+![grid-dont-2]{dont} 패턴 영역을 좌측 · 하단에 둔 레이아웃
+
+
+### Grammar {layout=grid-2}
+#### + Pattern Margin
+pattern margin은 0으로 설정해 레이아웃의 그래픽 패턴 영역을 100% 차지하도록 합니다. 메타포의 뉘앙스에 따라 레이아웃의 마진을 넘어 지면의 경계까지 확장할 수 있습니다. 유닛의 compression이 촘촘한 구간을 지면의 경계에 붙이면, 지면 바깥에서 진입하거나 바깥으로 뻗어 나가는 착시를 주어 시각적 흥미를 만듭니다. 콘텐츠 영역이 없는 단독 그래픽 패턴 어플리케이션에는 예외적으로 Pattern Gutter과 비슷한 수준의 마진을 적용할 수 있습니다. 
+
+![margin-crop-do]{do} 지면의 경계에 그래픽 유닛의 컴프레션을 배치해 메타포를 강화한 그래픽 패턴
+![margin-crop-dont]{dont} 콘텐츠 레이아웃에서 마진에 100% 채워지지 않은 그래픽 패턴
 
 
 ### Grammar {layout=grid-2}
@@ -1085,31 +1095,24 @@ EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다.
 pattern gutter는 그래픽 패턴 내 유닛과 유닛 사이의 간격입니다. 유닛의 밀도와 가장 가는 thread의 크기를 기준으로 정하며, 대체로 타이트한 쪽이 이상적입니다. 일반적인 디지털 에셋을 제작할 땐 0-20px 사이, 15px을 권장합니다.
 
 - pattern gutter는 thread gutter와 밸런스를 맞춥니다. 적절한 균pattern gutter를 설정하면 그래픽 패턴의 시각 요소에만 시선이 온전히 집중되며 시각적 긴장감이 만들어집니다. 패턴 구성에 따라 pattern gutter는 0이 될 수도 있습니다.
-- pattern gutter가 0이 되더라도 유닛은 절대 중첩되선 안 됩니다. pattern gutter를 사이에 두고 떨어지거나, docking으로 연결되거나, 완전히 붙어 있거나 셋 중 하나입니다.
-![gutter-balance-do]{do} thread gutter와 밸런스를 맞춘 pattern gutter
-![gutter-balance-dont]{dont} thread gutter와 어긋난 pattern gutter
-![gutter-overlap-do]{do} 떨어지거나 · docking되거나 · 붙어 있는 유닛
-![gutter-overlap-dont]{dont} 서로 겹친 유닛
+- pattern Gutter를 0으로 두어 유닛끼리 맞닿게 배치할 수 있습니다.
+- gutter를 변칙적으로 활용하며 유닛을 중첩하는 방식은 실험적인 패턴을 만들어낼 잠재성이 있지만, 변수가 많기 때문에 현 단계에서는 지양합니다.
+![gutter-do]{do} thread gutter와 밸런스를 맞춘 pattern gutter
+![gutter-dont-1]{dont} thread gutter와 밸런스가 맞지 않는 pattern gutter
+![gutter-dont-2]{dont} 한 패턴 안에서 통일되지 않고 제각각인 pattern gutter
+![gutter-con]{con} 유닛을 중첩하는 방식은 잠재성이 있지만 현 단계에서는 지양
 
-
-### Grammar {layout=grid-2}
-#### + Pattern Margin
-pattern margin은 0으로 설정해 레이아웃의 그래픽 패턴 영역을 100% 차지하도록 합니다. 메타포의 뉘앙스에 따라 레이아웃의 마진을 넘어 지면 · 출력 매체의 경계까지 확장할 수 있습니다. 유닛의 compression이 촘촘한 구간을 지면의 경계에 붙이면, 지면 바깥에서 진입하거나 바깥으로 뻗어 나가는 착시를 주어 시각적 흥미를 만듭니다.
-
-![margin-crop-do]{do} 콘텐츠 영역에 100% 채워진 패턴
-![margin-crop-dont]{do} 메타포에 따라 출력매체의 경계까지 확장한 패턴
 
 
 ### Grammar {layout=grid-2}
 #### + Alignment
 가로 유닛과 세로 유닛을 함께 조합할 때 특별한 제한 사항이 있는 것은 아니지만, 각 유닛의 형태는 가급적 Morphology의 권장 사항을 따르는 것이 유려한 패턴을 만드는데 도움 됩니다. 
 
-- 일반적으로 상하좌우 네 방향의 pattern margin 0 라인에 유닛들이 정렬되어야 하지만, 메타포에 따라서 일부는 pattern margin 0 라인, 일부는 지면 경계 라인까지 확장하는 식으로 혼합할 수 있습니다.
 - 그래픽 패턴 영역에 유닛을 정렬하고 나면, 교차하는 유닛들 사이의 우연히 만들어진 shaft와 thread의 라인들을 잘 살펴보세요. 의도치 않은 어긋남이 전체 패턴의 완성도를 해칠 수 있습니다. 가로 유닛의 shaft 라인과 세로 유닛의 thread 라인이 일치하도록, 세로 유닛의 compression과 가로 유닛의 shaft size를 미세 조정합니다. 레이아웃을 완성하는 마지막 작업 순서로 권장합니다.
-![alignment-do-1]{do} pattern margin 0 라인에 정렬된 유닛들
-![alignment-do-2]{do} 의도에 따라 정렬 방식을 혼합한 유닛들
-![alignment-do-3]{do} shaft 라인과 thread 라인이 맞은 교차
-![alignment-dont]{dont} 라인이 어긋난 교차
+![alignment-dont-1]{dont} shaft 라인과 thread 라인이 흐트러진 패턴
+![alignment-do-1]{do} shaft 라인과 thread 라인이 의도적으로 정리된 패턴
+![alignment-do-2]{do} 라인이 의도적으로 정리된 패턴의 적용 예시
+![alignment-dont-2]{dont} 라인의 균형이 두드러지게 어긋난 패턴
 
 
 ### Graphic Pattern {layout=grid-4}
@@ -1130,8 +1133,8 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray를 유닛 컬
   - Medium Gray는 디지털 환경에서 배경 컬러로 사용하지 않습니다. Merch 제작 시 실물 소재의 컬러를 Medium Gray로 맞출 수 있는 경우에 한해, EO 디자인팀의 허가를 거쳐 Builder Neon · Space Black 유닛을 제한적으로 올릴 수 있습니다.
 ![color-do-1] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Solid Gray]
 ![color-do-2] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Space Black]
-![color-do-3] {do}[Space Black] on [Builder Neon] · [Day Blue] · [Bay Green]
-![color-do-4] {do}[Space Black] on [Air White]
+![color-do-3] {do}[Space Black] on [Builder Neon] · [Day Blue] · [Bay Green] · [Air White]
+![color-con] {con}[Builder Neon] · [Space Black] on [Medium Gray]
 ![color-dont-1] {dont}[Space Black] on [Solid Gray] or vice versa
 ![color-dont-2] {dont}[Medium Gray] alone on [Solid Gray] · [Space Black]
 ![color-dont-3] {dont}[Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Builder Neon]
@@ -1139,10 +1142,9 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray를 유닛 컬
 ![color-dont-5] {dont}[Builder Neon] · [Day Blue] · [Medium Gray] · [Air White] on [Bay Green]
 ![color-dont-6] {dont}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] on [Air White]
 ![color-dont-7] {dont}[Day Blue] · [Bay Green] · [Air White] on [Medium Gray]
-![color-con] {con}[Builder Neon] · [Space Black] on [Medium Gray]
 
 
-### Graphic Pattern {layout=grid-4} {ratio=16:9} {zoom=1.03}
+### Graphic Pattern {layout=grid-4} {ratio=16:9} {zoom=1.0} {bg-color}
 #### + References
 유닛을 조합해 만든 30종의 패턴 라이브러리입니다. 각 패턴은 번호가 아니라 빌더의 여정에서 가져온 키워드 하나를 이름으로 가지며, 캠페인 · 굿즈 · 소셜 · 영상 등 모든 접점에 사용할 수 있습니다. 
 
@@ -1179,13 +1181,19 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray를 유닛 컬
 ![pattern-30] 30. Boom
 
 
-### + Usage
-#### Do's & Don'ts {layout=grid-2}
-그래픽 패턴은 EO의 모든 비주얼 표현 중 가장 화려하고 밀도 있는 시각 요소이므로, 지면에서 시선을 집중시키는 역할을 맡습니다. 레이아웃의 한쪽 절반(보통 상단 또는 오른쪽)을 통째로 내어 주고, 헤드라인은 반대쪽 콘텐츠 영역 가장자리에 왼쪽 정렬로 놓습니다. 텍스트를 패턴 위에 겹치지 않고, 로고는 패턴 바깥의 여백에 배치합니다. 패턴은 잘라 쓸 수 있지만 thread의 대각선 구간이 중간에서 잘리지 않도록 컬럼 경계에서 크롭합니다.
-![pattern-do-1] {do} 그래픽 패턴을 사용할 땐 지면의 50-70%를 차지하는 큰 사각 영역을 채워 주목도를 높이세요
-![pattern-do-2] {do} 지면이 실제 보여지는 크기를 고려해 적절한 복잡도의 그래픽 패턴을 사용하세요
-![pattern-dont-1] {dont} 그래픽 패턴 위에 콘텐츠를 오버레이 하지 마세요
-![pattern-dont-2] {dont} 스레드의 대각선 부분이 크롭되지 않도록 하세요
+### Graphic Pattern
+#### + Don'ts {layout=grid-3}
+그래픽 패턴은 EO의 모든 비주얼 표현 중 가장 화려하고 밀도 있는 시각 요소이므로, 지면에서 시선을 집중시키는 주인공 역할을 맡습니다. 레이아웃의 한쪽(보통 상단 또는 오른쪽, 지면의 70% 정도)을 사각 영역으로 통째로 내어 주고, 헤드라인은 반대쪽 콘텐츠 영역 가장자리에 왼쪽 정렬로, 로고는 패턴 바깥의 여백에 배치합니다. 패턴은 잘라 쓸 수 있지만 thread의 대각선 구간이 중간에서 잘리지 않도록 컬럼 경계에서 크롭합니다.
+
+다음은 패턴이 주인공 자리를 잃는 대표적인 경우입니다. 패턴을 늘이거나 왜곡하면 유닛의 비례가 깨지고, 무언가를 패턴 위에 올리거나 패턴을 무언가 위에 올리면 두 요소가 위계를 경합합니다. 마스킹 · 반복으로 가공하면 유닛의 밀도가 만드는 리듬이 무너지고, 보여지는 크기에 비해 복잡한 패턴은 thread가 뭉개져 읽히지 않습니다.
+
+![pattern-dont-1] {dont} 패턴을 늘이거나 왜곡하지 마세요
+![pattern-dont-2] {dont} 패턴 위에 심볼 · 텍스트 등 콘텐츠를 겹치지 마세요
+![pattern-dont-3] {dont} 사진이나 다른 그래픽 위에 패턴을 올리지 마세요
+![pattern-dont-4] {dont} 패턴 영역을 원형 · 자유 형태로 마스킹하지 마세요
+![pattern-dont-5] {dont} 패턴을 타일처럼 반복해 배경 텍스처로 쓰지 마세요
+![pattern-dont-6] {dont} 지면에서 보여지는 크기에 비해 과도하게 복잡한 패턴을 쓰지 마세요
+
 
 ### Usage
 #### In Use {layout=grid-2}
@@ -1193,7 +1201,7 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray를 유닛 컬
 ![pattern-in-use-1] 세로로 긴 비율의 중형 포스터
 ![pattern-in-use-2] 가로로 긴 비율의 넓은 초대형 빌보드
 ![pattern-in-use-3] 가로로 긴 비율의 작은 명함 
-![pattern-in-use-4] 정사각형 비율의 소셜 미디어 아트워크
+![pattern-in-use-4] 가로로 긴 소셜 미디어 배너
 
 
 ## Applications
