@@ -717,7 +717,7 @@ A paragraph or headline is said to be badly ragged when its edge feels irregular
 #### Zoning {layout=grid-2}
 The page is divided into a graphic pattern area and a content area. Ideally the graphic pattern area is close to a square on 3:4 · A-series · business card formats, around 70 % of the page on wide landscape formats, and around half on vertical roll-ups. Communication pages with little information may also be divided into four, alternating content and pattern, or gathered to one side.
 
-Place the pattern area full-bleed, ignoring the margin, and place its units following [[graphic-pattern#grammar#grid]]. Settle the proportion first, then set the [[#grid-setting-compound-grid|Compound Grid]] and snap the boundary between the two areas to one of its column or row lines.
+Place the pattern area full-bleed, ignoring the margin, and place its units following [[graphic-pattern#grammar#grid-setting]]. Settle the proportion first, then set the [[#grid-setting-compound-grid|Compound Grid]] and snap the boundary between the two areas to one of its column or row lines.
 
 The content area is what remains, and margin and grid are set from this area. A four-way division is based on one of the divided content areas. For pieces whose front and back are linked, such as business cards, use the side that carries the main content.
 
@@ -779,7 +779,7 @@ Below are the things not to do with typography in brand communication. To keep c
 ![dont-5]{dont bg-color} Don't center or right-align headlines
 ![dont-6]{dont bg-color} Don't use two or more weights within one level
 ![dont-7]{dont bg-color} Don't apply outlines · shadows · italics to type
-![dont-8]{dont bg-color} Don't overlap typography on the graphic pattern
+![dont-8]{dont bg-cover} Don't overlap typography on the graphic pattern
 ![dont-9]{dont bg-color} Don't use the Mono for headlines or body copy
 ![dont-10]{dont bg-color} Don't use typefaces other than those specified
 ![dont-11]{dont bg-color} Don't place text off the baseline grid
@@ -1063,10 +1063,12 @@ Vocabulary handles a unit's meaning and Morphology its appearance, so the Gramma
 
 
 ### Grammar {layout=grid-4}
-#### Grid
-Compose the page layout with the graphic pattern area and the content area together; ideally the graphic pattern area takes up 50-70% of the whole page. Counting about 10% in between as margin, it is good to make the remaining 20-40% the content area.
+#### Grid Setting
+The proportion and boundary that divide the page into the graphic pattern area and the content area follow [[typography#grid-setting#zoning|Zoning]]. The order is: build the Compound Grid first, divide the areas on that modular grid, then complete the pattern grid inside the pattern area. No separate gap is placed between the two areas; it is counted as part of the content area's margin.
 
-Within the graphic pattern area divided this way, place units on the pattern grid. The frame grid set in the EO Graphic Builder corresponds to the pattern grid. The recommended workflow is to first combine units in the builder · graphic tool workspace into a draft graphic with a new metaphor, then refine it by aligning the units on a properly set pattern grid.
+The pattern grid is an independent grid that operates only inside the graphic pattern area. The frame grid set in the EO Graphic Builder corresponds to the pattern grid. It need not align with the typographic baseline grid or the Line Unit; the two systems harmonize on a page through the contrast of strong and weak. What characterizes a pattern grid layout is units interlocking inside a rectangular frame with no empty space.
+
+The recommended workflow is to first combine units in the builder · graphic tool workspace into a draft graphic with a new metaphor, then set the pattern grid to fit that result and refine by aligning the units. Rather than fixing the grid first and filling it, pattern exploration leads the grid.
 ![grid-do-1]{do} Area division at ideal proportions
 ![grid-dont-1]{dont} A layout whose graphic area is too small, weakening visibility
 ![grid-do-2]{do} Units snapped to the columns and rows of the pattern grid
@@ -1075,7 +1077,7 @@ Within the graphic pattern area divided this way, place units on the pattern gri
 
 ### Grammar {layout=grid-4}
 #### Pattern Gutter
-pattern gutter is the gap between units within a graphic pattern. For typical digital assets, 0-20px, with 15px recommended.
+pattern gutter is the gap between units within a graphic pattern. It is set from the density of the units and the size of the thinnest thread, and a tight gutter is usually ideal. For typical digital assets, 0-20px, with 15px recommended.
 
 - pattern gutter is balanced against thread gutter. Stacking units with an appropriate pattern gutter creates visual tension and draws interest.
 - Units must never overlap. They are one of three: separated by a pattern gutter, connected by docking, or fully touching.
