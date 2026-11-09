@@ -36,7 +36,7 @@ export type Item = ImageItem | SwatchItem;
 export interface Section {
   id: string;             // 앵커 id (목차 라벨 기준: 헤드, 헤드가 페이지 이름과 같으면 서브헤드. 중복 시 -2, -3…)
   label: string;          // 목차 라벨 = 이미지 주제 이름 (헤드. 헤드가 페이지 이름과 같거나 + 가 서브헤드 줄에 있으면 서브헤드)
-  crumb: string[];        // 참조 링크 글자 [헤드, 서브헤드] 또는 [라벨] — 헤드가 페이지 이름과 다르고 서브헤드가 있으면 둘 다. 단 헤드가 그 페이지에서 반복되는 범주(Grid Setting · Grammar …)이고 서브헤드가 페이지 안에서 유일하면 [서브헤드] (페이지를 다 읽은 뒤 확정)
+  crumb: string[];        // 참조 링크 글자 — 목차 기준. [서브헤드]: 헤드가 페이지 이름이거나 + 가 서브헤드 줄에 있을 때(목차에 서브헤드가 보임). 그 외 서브헤드가 있으면 [헤드, 서브헤드](목차에 헤드가 보임), 없으면 [헤드] (flushSection 에서 확정)
   split?: number;           // ::: split … ::: 로 묶인 섹션: 같은 번호끼리 한 12컬럼 행에 나란히 (sectionBlocks)
   span?: number;          // 행 안에서 차지하는 그리드 컬럼 수 {span=N}. 생략하면 남은 컬럼을 균등 분배 (loadGuide 끝에서 확정)
   head: string;
@@ -413,7 +413,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     // "헤드-서브헤드" (morphology-proportion) 로 서브헤드까지 참조할 수 있게. 같은 페이지 안에서 겹치면 -2, -3 …
     // 섹션을 다 읽은 뒤에 정해야 서브헤드를 쓸 수 있으므로 여기서 확정
     section.label = navLabel(section, sub);
-    section.crumb = section.subhead && !pageLikeOf(section, sub) ? [section.head, section.subhead] : [section.label];
+    section.crumb = section.subhead && !pageLikeOf(section, sub) && !section.markOnSubhead ? [section.head, section.subhead] : [section.label];   // 목차에 보이는 이름부터: + 가 서브헤드에 있으면 서브헤드만
     const base = section.subhead && section.label === section.head ? `${slugify(section.head)}-${slugify(section.subhead)}` : slugify(section.label);
     const count = (idsInSub.get(base) ?? 0) + 1;
     idsInSub.set(base, count);
@@ -632,13 +632,6 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     return `<a class="xref xref--jump" href="${href}">${arrow}${label ?? auto}${xrefTip('jump')}</a>`;
   };
   const resolveXrefs = (html: string, here: Sub): string => html.replace(/%%XREF(\d+)%%/g, (_m, i: string) => xrefHtml(xrefs[Number(i)], here));
-  // 참조 라벨의 범주 생략: 같은 헤드가 페이지 안에서 두 번 이상 나오면 묶음 라벨(범주)로 보고, 서브헤드가 페이지 안에서 유일할 때만 헤드를 뺌
-  // → "Typography › Zoning". 서브헤드가 겹치면(Linespacing · Letterspacing 의 Founders Grotesk Medium) 헤드를 남겨 구분
-  for (const s of flat) {
-    const heads = new Map<string, number>(), subs = new Map<string, number>();
-    for (const sec of s.sections) { heads.set(sec.head, (heads.get(sec.head) ?? 0) + 1); if (sec.subhead) subs.set(sec.subhead, (subs.get(sec.subhead) ?? 0) + 1); }
-    for (const sec of s.sections) if (sec.crumb.length === 2 && (heads.get(sec.head) ?? 0) > 1 && subs.get(sec.subhead!) === 1) sec.crumb = [sec.subhead!];
-  }
   for (const s of flat) for (const sec of s.sections) {
     sec.bodyHtml = resolveXrefs(sec.bodyHtml, s);
     for (const it of sec.items) if (it.kind === 'image' && it.caption) it.caption = resolveXrefs(it.caption, s);

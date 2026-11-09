@@ -19,7 +19,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
   [[graphic-pattern#color]]            → "Graphic Pattern › Color" 링크. 글자는 목차에서 자동, 언어별 경로도 자동
   [[graphic-pattern]]                          → "Graphic Pattern" (페이지로)
   [[#grammar]]                         → 같은 페이지의 섹션 ("Grammar"). 페이지 이름을 적어도 대상이 현재 페이지면 경로 없이 섹션만
-  [[graphic-unit#morphology#proportion]] → "Graphic Unit › Proportion" (헤드가 그 페이지에서 반복되는 범주면 빼고 서브헤드만. 서브헤드가 페이지 안에서 겹치면 "헤드 › 서브헤드")
+  [[graphic-unit#morphology#proportion]] → "Graphic Unit › Morphology › Proportion" (목차 기준: 헤드가 목차에 있으면 헤드 › 서브헤드, + 가 서브헤드 줄에 있으면 서브헤드만 → "Typography › Line Unit")
   [[→ graphic-pattern#color]]          → "→ Graphic Pattern › Color" (화살표까지 한 밑줄. -> 로 써도 됨)
   [[symbol#clearspace]]        → 같은 페이지 이름이 여러 챕터에 있을 때 챕터로 한정
   [[graphic-pattern#grammar|문법 원칙]]         → 링크 글자를 직접 지정
@@ -1064,7 +1064,7 @@ EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다.
 ![grammar]
 
 
-### Grammar {layout=grid-4}
+### Grammar {layout=grid-2}
 #### Grid Setting
 지면을 그래픽 패턴 영역과 콘텐츠 영역으로 나누는 비율과 경계는 [[typography#grid-setting#zoning]]을 따릅니다. 순서는 Compound Grid를 먼저 세우고, 그 모듈러 그리드를 기준으로 영역을 나눈 뒤, 패턴 영역 안에서 pattern grid를 완성하는 것입니다. 두 영역 사이의 여백은 따로 두지 않고 콘텐츠 영역의 마진에 포함된 것으로 봅니다.
 
@@ -1077,12 +1077,12 @@ pattern grid는 그래픽 패턴 영역 안에서만 작동하는 독자적인 �
 ![grid-dont-2]{dont} pattern grid와 무관하게 놓인 유닛
 
 
-### Grammar {layout=grid-4}
-#### Pattern Gutter
+### Grammar {layout=grid-2}
+#### + Pattern Gutter
 pattern gutter는 그래픽 패턴 내 유닛과 유닛 사이의 간격입니다. 유닛의 밀도와 가장 가는 thread의 크기를 기준으로 정하며, 대체로 타이트한 쪽이 이상적입니다. 일반적인 디지털 에셋을 제작할 땐 0-20px 사이, 15px을 권장합니다.
 
-- pattern gutter는 thread gutter와 밸런스를 맞춥니다. 적절한 pattern gutter로 유닛을 쌓아 올리면 시각적 긴장감이 생겨 흥미를 끕니다.
-- 유닛은 절대 중첩되선 안 됩니다. pattern gutter를 사이에 두고 떨어지거나, docking으로 연결되거나, 완전히 붙어 있거나 셋 중 하나입니다.
+- pattern gutter는 thread gutter와 밸런스를 맞춥니다. 적절한 균pattern gutter를 설정하면 그래픽 패턴의 시각 요소에만 시선이 온전히 집중되며 시각적 긴장감이 만들어집니다. 패턴 구성에 따라 pattern gutter는 0이 될 수도 있습니다.
+- pattern gutter가 0이 되더라도 유닛은 절대 중첩되선 안 됩니다. pattern gutter를 사이에 두고 떨어지거나, docking으로 연결되거나, 완전히 붙어 있거나 셋 중 하나입니다.
 ![gutter-balance-do]{do} thread gutter와 밸런스를 맞춘 pattern gutter
 ![gutter-balance-dont]{dont} thread gutter와 어긋난 pattern gutter
 ![gutter-overlap-do]{do} 떨어지거나 · docking되거나 · 붙어 있는 유닛
@@ -1090,15 +1090,15 @@ pattern gutter는 그래픽 패턴 내 유닛과 유닛 사이의 간격입니�
 
 
 ### Grammar {layout=grid-2}
-#### Pattern Margin
+#### + Pattern Margin
 pattern margin은 0으로 설정해 레이아웃의 그래픽 패턴 영역을 100% 차지하도록 합니다. 메타포의 뉘앙스에 따라 레이아웃의 마진을 넘어 지면 · 출력 매체의 경계까지 확장할 수 있습니다. 유닛의 compression이 촘촘한 구간을 지면의 경계에 붙이면, 지면 바깥에서 진입하거나 바깥으로 뻗어 나가는 착시를 주어 시각적 흥미를 만듭니다.
 
 ![margin-crop-do]{do} 콘텐츠 영역에 100% 채워진 패턴
 ![margin-crop-dont]{do} 메타포에 따라 출력매체의 경계까지 확장한 패턴
 
 
-### Grammar {layout=grid-4}
-#### Alignment
+### Grammar {layout=grid-2}
+#### + Alignment
 가로 유닛과 세로 유닛을 함께 조합할 때 특별한 제한 사항이 있는 것은 아니지만, 각 유닛의 형태는 가급적 Morphology의 권장 사항을 따르는 것이 유려한 패턴을 만드는데 도움 됩니다. 
 
 - 일반적으로 상하좌우 네 방향의 pattern margin 0 라인에 유닛들이 정렬되어야 하지만, 메타포에 따라서 일부는 pattern margin 0 라인, 일부는 지면 경계 라인까지 확장하는 식으로 혼합할 수 있습니다.
@@ -1178,8 +1178,8 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray를 유닛 컬
 
 ### + Usage
 #### Do's & Don'ts {layout=grid-2}
-그래픽 패턴은 EO의 모든 비주얼 표현 중 가장 화려하고 밀도 있는 시각 요소이므로, 지면에서 시선을 집중시키는 주제 역할이 되어야 합니다. 레이아웃의 한쪽 절반(보통 상단 또는 오른쪽)을 통째로 내어 주고, 헤드라인은 반대쪽 콘텐츠 영역 가장자리에 왼쪽 정렬로 놓습니다. 텍스트를 패턴 위에 겹치지 않고, 로고는 패턴 바깥의 여백에 배치합니다. 패턴은 잘라 쓸 수 있지만 thread의 대각선 구간이 중간에서 잘리지 않도록 컬럼 경계에서 크롭합니다.
-![pattern-do-1] {do} 그래픽 패턴을 사용할 땐 지면의 50-70%를 차지하는 큰 사각 영역을 채워 시각성을 높이세요
+그래픽 패턴은 EO의 모든 비주얼 표현 중 가장 화려하고 밀도 있는 시각 요소이므로, 지면에서 시선을 집중시키는 역할을 맡습니다. 레이아웃의 한쪽 절반(보통 상단 또는 오른쪽)을 통째로 내어 주고, 헤드라인은 반대쪽 콘텐츠 영역 가장자리에 왼쪽 정렬로 놓습니다. 텍스트를 패턴 위에 겹치지 않고, 로고는 패턴 바깥의 여백에 배치합니다. 패턴은 잘라 쓸 수 있지만 thread의 대각선 구간이 중간에서 잘리지 않도록 컬럼 경계에서 크롭합니다.
+![pattern-do-1] {do} 그래픽 패턴을 사용할 땐 지면의 50-70%를 차지하는 큰 사각 영역을 채워 주목도를 높이세요
 ![pattern-do-2] {do} 지면이 실제 보여지는 크기를 고려해 적절한 복잡도의 그래픽 패턴을 사용하세요
 ![pattern-dont-1] {dont} 그래픽 패턴 위에 콘텐츠를 오버레이 하지 마세요
 ![pattern-dont-2] {dont} 스레드의 대각선 부분이 크롭되지 않도록 하세요
@@ -1198,7 +1198,7 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray를 유닛 컬
 ### + Principles
 패턴을 지면에 올릴 때 지키는 네 가지 규칙입니다.
 
-- **밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 면은 복잡도를 끝까지 올려 밀도로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에 둡니다.
+- **밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 면은 복잡도를 끝까지 올려 밀도로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에 둡니다. 단 이것은 일반적 경향성이므로 디자이너 재량으로 시각적 완성도를 우선하여 판단합니다.
 - **한 장에 여러 변형을 둘 수 있습니다.** 같은 모티프의 변형 여러 개를 한 구성에 놓아 리듬을 만듭니다.
 - **패턴은 어떤 비율에도 맞습니다.** 지면을 서브 레이아웃으로 나누면 한 프레임에 여러 메시지를 실을 수 있습니다.
 - **thread의 방향으로 시선을 이끕니다.** 모든 thread가 한 점으로 모이게 놓으면 그 자리의 마크나 메시지로 시선이 갑니다.
