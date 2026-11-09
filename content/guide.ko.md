@@ -18,7 +18,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
 ■ 참조 링크 (본문·캡션 어디서나)
   [[graphic-pattern#color]]            → "Graphic Pattern › Color" 링크. 글자는 목차에서 자동, 언어별 경로도 자동
   [[graphic-pattern]]                          → "Graphic Pattern" (페이지로)
-  [[#grammar]]                         → 같은 페이지의 섹션 ("Grammar")
+  [[#grammar]]                         → 같은 페이지의 섹션 ("Grammar"). 페이지 이름을 적어도 대상이 현재 페이지면 경로 없이 섹션만
   [[graphic-unit#morphology#proportion]] → "Graphic Unit › Proportion" (헤드가 그 페이지에서 반복되는 범주면 빼고 서브헤드만. 서브헤드가 페이지 안에서 겹치면 "헤드 › 서브헤드")
   [[→ graphic-pattern#color]]          → "→ Graphic Pattern › Color" (화살표까지 한 밑줄. -> 로 써도 됨)
   [[symbol#clearspace]]        → 같은 페이지 이름이 여러 챕터에 있을 때 챕터로 한정

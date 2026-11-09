@@ -627,7 +627,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       if (!sec) { console.warn(`[guide] [[${target}]]: ${s.name} 페이지에 #${secId} 섹션이 없습니다 (${here.url}). 있는 id: ${s.sections.map(x => x.id).join(', ')}`); return fallback(); }
       href += `#${secId}`;
       const crumb = sec.crumb.map(text).join(`${NB}›${NB}`);   // 헤드 › 서브헤드 (헤드가 페이지 이름과 같으면 서브헤드만)
-      auto = pagePart ? `${text(s.name)}${NB}›${NB}${crumb}` : crumb;
+      auto = pagePart && s !== here ? `${text(s.name)}${NB}›${NB}${crumb}` : crumb;   // 페이지 이름을 적었어도 대상이 현재 페이지면 경로 없이 섹션만
     }
     return `<a class="xref xref--jump" href="${href}">${arrow}${label ?? auto}${xrefTip('jump')}</a>`;
   };
