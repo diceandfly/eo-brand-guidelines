@@ -45,6 +45,8 @@ export interface Section {
   layout: Layout;
   ratio?: string;         // "5 / 4" 형식. 없으면 레이아웃 기본 토큰 사용
   zoom?: number;          // 섹션 안 이미지 전체의 카드 배율 {zoom=1.5}. 이미지별 {zoom=…}/{nozoom} 이 우선
+  bg?: string | true;     // 섹션 안 이미지 전체의 확대 보기 배경 {bg-color}. 이미지별 {bg-color}/{bg-cover}/{bg-mirror} 가 우선
+  cover?: boolean;        // 섹션 안 이미지 전체의 확대 보기 꽉 채움 {bg-cover}
   items: Item[];
   tocMark: boolean;       // ### + 로 목차에 올리라고 표시한 섹션
   markOnSubhead?: boolean; // + 가 서브헤드 줄(#### + …)에 있었음 → 목차 라벨은 서브헤드
@@ -157,8 +159,18 @@ function takeAttrs(text: string): [string, Record<string, string>] {
 
 function parseAttrs(raw: string): Record<string, string> {
   const out: Record<string, string> = {};
-  for (const m of raw.matchAll(/(\w+)\s*=\s*([^\s}]+)/g)) out[m[1]] = m[2];
+  for (const t of raw.trim().split(/\s+/).filter(Boolean)) {                    // key=value 또는 값 없는 플래그(bg-cover → '')
+    const i = t.indexOf('=');
+    if (i > 0) out[t.slice(0, i)] = t.slice(i + 1); else out[t] = '';
+  }
   return out;
+}
+
+/** {bg-color} 의 값 → ImageItem.bg: 빈 값이면 true(가장자리 색), #hex 는 그대로, 팔레트 이름은 var(--c-…) */
+function bgValue(v: string): string | true {
+  v = v.trim();
+  if (!v) return true;
+  return /^#?[0-9a-f]{3,8}$/i.test(v) ? (v.startsWith('#') ? v : '#' + v) : `var(--c-${v.toLowerCase().replace(/[^a-z0-9]+/g, '-')})`;
 }
 
 function normalizeRatio(r?: string): string | undefined {
@@ -485,7 +497,8 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       section = {
         id: '', label: head, crumb: [head], head, bodyHtml: '', layout: 'basic',   // id 는 flushSection 에서 (서브헤드까지 읽은 뒤)
         ratio: normalizeRatio(attrs.ratio), items: [], tocMark, split,
-        zoom: Number.isFinite(parseFloat(attrs.zoom)) ? parseFloat(attrs.zoom) : undefined
+        zoom: Number.isFinite(parseFloat(attrs.zoom)) ? parseFloat(attrs.zoom) : undefined,
+        bg: 'bg-color' in attrs ? bgValue(attrs['bg-color']) : undefined, cover: 'bg-cover' in attrs || undefined
       };
       pendingLayout = attrs.layout;
       if (attrs.span !== undefined) {                                 // {span=N}: ::: split 안에서 차지하는 컬럼 수
@@ -502,6 +515,8 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       if (attrs.layout) pendingLayout = attrs.layout;
       if (attrs.ratio) section.ratio = normalizeRatio(attrs.ratio);
       if (Number.isFinite(parseFloat(attrs.zoom))) section.zoom = parseFloat(attrs.zoom);
+      if ('bg-color' in attrs) section.bg = bgValue(attrs['bg-color']);
+      if ('bg-cover' in attrs) section.cover = true;
       section.subhead = subhead;
       continue;
     }
@@ -518,9 +533,9 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       if (z && Number.isFinite(parseFloat(z.slice(5)))) item.zoom = parseFloat(z.slice(5));
       if (flags.includes('nozoom')) item.zoom = 1;
       const bg = flags.find(f => f === 'bg-color' || f.startsWith('bg-color='));   // {bg-color} · {bg-color=#hex} · {bg-color=palette-name}
-      if (bg === 'bg-color') item.bg = true;
-      else if (bg) { const v = bg.slice(9).trim(); item.bg = /^#?[0-9a-f]{3,8}$/i.test(v) ? (v.startsWith('#') ? v : '#' + v) : `var(--c-${v.toLowerCase().replace(/[^a-z0-9]+/g, '-')})`; }
+      if (bg) item.bg = bgValue(bg === 'bg-color' ? '' : bg.slice(9));
       if (flags.includes('bg-cover')) item.cover = true;                     // {bg-cover}: 화면에 꽉 채움
+      if (!bg && !item.cover && !flags.includes('bg-mirror')) { item.bg = section.bg; item.cover = section.cover; }   // 이미지에 표시가 없으면 섹션 기본(헤드 · 서브헤드의 {bg-color}/{bg-cover}). {bg-mirror} 는 기본 거울 확장으로
       // 캡션은 한 줄. 본문처럼 \ 가 줄바꿈 (<br>): "위 줄 \ 아래 줄". 앞뒤 공백은 줄바꿈에 흡수
       if (m[3].trim()) {
         // 라벨("N/ " · "키워드/ ")은 칩 · 한글 래핑 전의 글자 그대로에서 줄(<br>)마다 인식 → 그 뒤 따옴표 · 컬러 칩 · 한글 구간 래핑 · 고아 단어 방지
