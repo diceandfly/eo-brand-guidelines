@@ -352,7 +352,7 @@ function labelize(text: string, cls: 'cap' | 'li' | 'p'): string {
   let out = '';
   let rest = text;
   const num = cls === 'cap' ? rest.match(LABEL_NUM) : null;
-  if (num) { out += `<span class="cap-num">${num[1]}</span>`; rest = rest.slice(num[0].length); }   // 화면은 숫자만 "1" (본문 순서 목록 마커와 같은 글자 · 서체)
+  if (num) { out += `<span class="cap-num${num[1].length > 1 ? ' cap-num--2' : ''}">${num[1]}</span>`; rest = rest.slice(num[0].length); }   // 화면은 숫자만 "1" (본문 순서 목록 마커와 같은 글자 · 서체). 두 자리("01" · "12")는 cap-num--2 — 칸이 --t-body-olist-indent-2 로 넓어짐
   const d = rest.search(LABEL_DSLASH);
   const block = d > 0;
   const i = block ? d : rest.search(LABEL_SLASH);

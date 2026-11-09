@@ -941,6 +941,13 @@ html.js .main {
   width: var(--t-body-olist-indent);
   margin-left: calc(-1 * var(--t-body-olist-indent)); /* 번호는 padding 안쪽 거터에, 글은 들여쓰기 선에서 시작 */
 }
+.fig__caption-text:has(> .cap-num--2) {
+  padding-left: var(--t-body-olist-indent-2); /* 두 자리 번호: 행잉 기준선도 넓은 칸에 맞춤 */
+}
+.fig__caption .cap-num--2 {
+  width: var(--t-body-olist-indent-2);
+  margin-left: calc(-1 * var(--t-body-olist-indent-2));
+}
 .fig__caption .cap-key {
   margin-right: var(--cap-num-gap); /* 캡션 앞 키워드 "세로형/" — 글자는 그대로, 슬래시만 모노. 강조는 md 에서 키워드를 ** 로 감쌈 (strong). 보관: 2026-11-04 부터 가이드는 "세로형 — 설명" 글자로 씀 */
 }
