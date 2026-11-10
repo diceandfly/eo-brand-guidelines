@@ -8,6 +8,7 @@
  * 비용을 작게: sharp 로 64×64 로 한 번만 줄여 받아(원본 해상도·채널 통계 호출 없이) JS 로 띠 평균을 냅니다.
  * 결과는 node_modules/.cache/eo-image-tone.json 에 (경로 · 수정 시각 · 크기 · 배율 · 배경색) 키로 저장해
  * 빌드·dev 재시작·npm run assets 에서 다시 재지 않습니다. 브라우저에서는 아무 일도 하지 않습니다.
+ * 파일을 읽지 못하면(손상 등) 경고만 내고 undefined → Figure 는 data-tone 을 생략합니다.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -29,10 +30,20 @@ const loadCache = (): Cache => {
   try { cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')); } catch { cache = {}; }
   return cache!;
 };
+// 측정 직후 저장합니다 (dev 서버를 강제 종료해도 잰 만큼은 남음). 한꺼번에 여러 장을 잴 때는 짧게 모아 한 번에 쓰고,
+// 임시 파일에 쓴 뒤 이름을 바꿔 도중에 끊겨도 캐시가 깨지지 않게 합니다. exit 때 한 번 더 확인.
 const saveCache = () => {
   if (!dirty || !cache) return;
-  try { fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true }); fs.writeFileSync(CACHE_FILE, JSON.stringify(cache)); dirty = false; } catch {}
+  try {
+    fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
+    const tmp = `${CACHE_FILE}.${process.pid}.tmp`;
+    fs.writeFileSync(tmp, JSON.stringify(cache));
+    fs.renameSync(tmp, CACHE_FILE);
+    dirty = false;
+  } catch {}
 };
+let saveTimer: ReturnType<typeof setTimeout> | undefined;
+const scheduleSave = () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveCache, 50); saveTimer.unref?.(); };
 process.on('exit', saveCache);
 
 /** srgb 평균값(0~255)으로 상대 휘도 근사 (BT.709 계수, 감마 보정) */
@@ -77,6 +88,17 @@ export async function imageEdge(publicSrc: string, zoom = 1, background = '#0000
   const c = loadCache();
   if (c[key]) return c[key];
 
+  try {
+    const info = await measure(file, zoom, background, uniform);
+    c[key] = info; dirty = true; scheduleSave();
+    return info;
+  } catch (err) {                                              // 손상 파일 등: 빌드는 계속, data-tone · 라이트박스 배경색 없이 렌더
+    console.warn(`[imageTone] ${publicSrc} 를 재지 못했습니다 (${(err as Error).message}). data-tone 없이 진행합니다`);
+    return undefined;
+  }
+}
+
+async function measure(file: string, zoom: number, background: string, uniform: number): Promise<EdgeInfo> {
   const sharp = (await import('sharp')).default;
   const { data } = await sharp(file).resize(SAMPLE, SAMPLE, { fit: 'fill' }).flatten({ background }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const z = Math.max(1, zoom);
@@ -90,9 +112,7 @@ export async function imageEdge(publicSrc: string, zoom = 1, background = '#0000
   // 줄이지 않고 원본 가장 바깥 1px 띠를 그대로 잼 (줄이면 보간으로 색이 섞임). 색은 띠의 최빈색 — 내보내기 때 생기는 1px 어두운 줄(1081px 장표 등)이나 라벨이 평균을 끌어내리지 않게
   const edgeRaw = await sharp(file).flatten({ background }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const full = ringAtRect(edgeRaw.data, edgeRaw.info.width, edgeRaw.info.height, 1);
-  const info: EdgeInfo = { tone, edge: full.spread <= uniform ? `#${hex(full.mode.r)}${hex(full.mode.g)}${hex(full.mode.b)}` : null };
-  c[key] = info; dirty = true;
-  return info;
+  return { tone, edge: full.spread <= uniform ? `#${hex(full.mode.r)}${hex(full.mode.g)}${hex(full.mode.b)}` : null };
 }
 
 /** 직사각형 원본의 바깥 t px 띠 — ringAt 과 같은 통계 (평균 · 흩어짐 · 최빈색) */
