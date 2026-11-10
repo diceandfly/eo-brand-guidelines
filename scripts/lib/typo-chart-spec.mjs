@@ -1,4 +1,4 @@
-/** Linespacing · Letterspacing 차트 공통 스펙 — scripts/typo-chart.mjs(SVG+PNG) · scripts/typo-chart-ai.mjs(Illustrator .jsx) 가 함께 씀 */
+/** Linespacing · Letterspacing 차트 스펙 — scripts/typo-chart.mjs(SVG+PNG) 가 씀. (일러스트레이터판 typo-chart-ai.mjs 는 2026-11-10 삭제, 태그 archive/illustrator-scripts-2026-11-10) */
 // ── 격자 ───────────────────────────────────────────────────────────────
 export const W = 1920, H = 1080, UNIT = 28, ROWS = 35;
 export const X = c => 290 + c * 228;           // 컬럼 c(0–5) 왼쪽
