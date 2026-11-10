@@ -875,7 +875,7 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 
 - shaft size — 나사축 직사각형의 두께, 단위는 양쪽의 thread 포함 유닛 전체 높이 대비 %입니다. shaft size가 기본 값 35% 수준일 때, 비교적 복잡한 그래픽 패턴에서도 시각적 밀도를 이상적으로 유지하기 쉽습니다.
 - thread top, bottom width — thread 윗변과 아랫변의 폭. thread는 나사산을 추상화한 사다리꼴 쉐입으로, 오른쪽 변은 컬럼 끝에 수직으로 서고 왼쪽 변은 기울어지며, 아래쪽 thread는 위쪽을 컬럼 중심 기준으로 180° 회전한 모양입니다. 두 값의 차이가 thread의 기울기를 결정합니다. 기본 값은 위 40% · 아래 0%.
-- thread sides — double은 shaft 상하 양쪽, single은 위쪽에만 thread가 붙고 shaft가 아래쪽 바닥에 놓입니다.
+- thread sides — double은 shaft 상하 양쪽, single은 한쪽에만 thread가 붙고 shaft가 아래쪽 바닥에 놓입니다.
 - thread amount — shaft 상하에 각각 붙는 thread의 개수.
 - thread compression — thread 폭이 한쪽으로 갈수록 점점 좁아지는 정도. 0이면 모든 thread의 너비가 균등하고, 값이 커질수록 한쪽으로 압축되는 세기가 강해집니다. 음수/양수 값은 compression의 방향을 결정하며, 개별 thread의 기울기는 반전되지 않고 그대로 유지됩니다.
 - thread gutter — thread가 놓이는 세로 칸과 칸 사이 간격입니다. 빌더에서는 gutter로 표기합니다.
@@ -1131,6 +1131,8 @@ Builder Neon · Air White  · Day Blue · Bay Green · Medium Gray를 유닛 컬
   - Builder Neon · Day Blue · Bay Green · Air White를 배경 컬러로 쓸 때는 Space Black 유닛만 올릴 수 있습니다.
   - Solid Gray는 반드시 배경 컬러로만 사용하며 유닛 컬러로는 사용하지 않습니다.
   - Medium Gray는 디지털 환경에서 배경 컬러로 사용하지 않습니다. Merch 제작 시 실물 소재의 컬러를 Medium Gray로 맞출 수 있는 경우에 한해, EO 디자인팀의 허가를 거쳐 Builder Neon · Space Black 유닛을 제한적으로 올릴 수 있습니다.
+
+아래 Do · Don't는 배경 컬러별로 올릴 수 있는 유닛 컬러를 한 장에 모은 대조표이며, 한 패턴에 실제로 쓰는 색의 수는 위 규칙을 따릅니다.
 ![color-do-1] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Solid Gray]
 ![color-do-2] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Space Black]
 ![color-do-3] {do}[Space Black] on [Builder Neon] · [Day Blue] · [Bay Green] · [Air White]
