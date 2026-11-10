@@ -84,7 +84,6 @@ document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && !e.a
 window.addEventListener('wheel', scheduleResume, { passive: true });
 window.addEventListener('touchstart', scheduleResume, { passive: true });
 window.addEventListener('touchmove', scheduleResume, { passive: true });
-(window as any).__ST = ScrollTrigger;                           // 디버그용 (브라우저 콘솔에서 refresh 등 확인)
 // 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품.
 // ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계" 라서 스크롤을 부드럽게 따라가지 않고 바로 점프하므로, 그 시간이 지난 뒤에 풉니다.
 let guardReleased = false;
@@ -324,7 +323,6 @@ else arriveAtHash();
     };
     gsap.ticker.add(spy);
     window.addEventListener('resize', () => { lastY = -1; });
-    (window as any).__spy = spy;                                  // 디버그용 (브라우저 콘솔에서 상태 확인)
   }
 }
 
