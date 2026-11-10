@@ -20,7 +20,7 @@ export interface ImageItem {
   badge?: 'do' | 'dont' | 'con';   // 캡션 앞 아이콘: 체크 / 엑스 / 삼각형(conditional, 조건부)
   strike?: boolean;       // Don't 대각선. {dont} 이면 자동, {dont nostrike} 면 끔
   zoom?: number;          // 카드 안 배율. {zoom=1.2} 로 직접 지정, {nozoom} 이면 1 (Do/Don't 그리드 기본 배율도 끔)
-  bg?: string | true;     // 확대 보기 배경: {bg-color} = 거울 확장 대신 가장자리 색(빌드 때 측정)으로 채움(true), {bg-color=#2A2B2B} · {bg-color=solid-gray} = 그 색 (CSS 색 문자열)
+  bg?: string | true;     // 확대 보기 배경: {bg-color} = 거울 확장 대신 가장자리 색(빌드 때 측정)으로 채움(true), {bg-color=solid-gray} = 팔레트 색 (var(--c-…))
   cover?: boolean;        // 확대 보기 {bg-cover}: 이미지를 화면에 꽉 채움 (object-fit: cover, 넘치는 쪽은 잘림). 거울 확장 · 배경색 없음. 모바일은 기본 보기
   caption?: string;       // HTML. 한글 구간은 <span class="ko"> 로 래핑됨
 }
@@ -177,11 +177,10 @@ function parseAttrs(raw: string): Record<string, string> {
   return out;
 }
 
-/** {bg-color} 의 값 → ImageItem.bg: 빈 값이면 true(가장자리 색), #hex 는 그대로, 팔레트 이름은 var(--c-…). 팔레트에 없는 이름은 경고 후 무시(undefined) */
+/** {bg-color} 의 값 → ImageItem.bg: 빈 값이면 true(가장자리 색), 팔레트 이름은 var(--c-…). 그 밖(팔레트에 없는 이름 · HEX)은 경고 후 무시(undefined) */
 function bgValue(v: string, ctx: Ctx, where: string): string | true | undefined {
   v = v.trim();
   if (!v) return true;
-  if (/^#?[0-9a-f]{3,8}$/i.test(v)) return v.startsWith('#') ? v : '#' + v;
   const slug = v.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   if (COLOR_NAMES.some(n => colorSlug(n) === slug)) return `var(--c-${slug})`;
   ctx.warn(`[guide] ${where}: {bg-color=${v}} 은 팔레트에 없는 이름입니다 (${COLOR_NAMES.map(colorSlug).join(' · ')}). 무시합니다`);
@@ -539,7 +538,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       if (z && Number.isFinite(parseFloat(z.slice(5)))) item.zoom = parseFloat(z.slice(5));
       else if (z) warn(`[guide] ${where}: {${z}} 의 배율이 숫자가 아닙니다. 무시합니다`);
       if (flags.includes('nozoom')) item.zoom = 1;
-      const bg = flags.find(f => f === 'bg-color' || f.startsWith('bg-color='));   // {bg-color} · {bg-color=#hex} · {bg-color=palette-name}
+      const bg = flags.find(f => f === 'bg-color' || f.startsWith('bg-color='));   // {bg-color} · {bg-color=palette-name}
       if (bg) item.bg = bgValue(bg === 'bg-color' ? '' : bg.slice(9), ctx, where);
       if (flags.includes('bg-cover')) item.cover = true;                     // {bg-cover}: 화면에 꽉 채움
       if (!bg && !item.cover && !flags.includes('bg-mirror')) { item.bg = section.bg; item.cover = section.cover; }   // 이미지에 표시가 없으면 섹션 기본(헤드 · 서브헤드의 {bg-color}/{bg-cover}). {bg-mirror} 는 기본 거울 확장으로

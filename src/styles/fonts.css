@@ -9,7 +9,7 @@
    한글 서체 Pretendard 는 src/styles/pretendard.css (npm run fonts:ko 가 파일과 함께 생성) 에 따로 선언합니다.
 
    보유 웨이트
-     Founders Grotesk       Light 300 · Regular 400 · Medium 500 · Semibold 600
+     Founders Grotesk       Light 300 · Regular 400 · Medium 500   (Semibold 600 은 쓰지 않아 선언하지 않음)
      Founders Grotesk Mono  Regular 400 · Medium 500
    ===================================================================== */
 
@@ -31,13 +31,6 @@
   font-family: 'Founders Grotesk';
   src: url('/fonts/founders-grotesk-medium.woff2') format('woff2');
   font-weight: 500;
-  font-style: normal;
-  font-display: block;
-}
-@font-face {
-  font-family: 'Founders Grotesk';
-  src: url('/fonts/founders-grotesk-semibold.woff2') format('woff2');
-  font-weight: 600;
   font-style: normal;
   font-display: block;
 }

@@ -20,7 +20,6 @@ export interface EdgeInfo { tone: Tone; edge: string | null; }
 const LIGHT_THRESHOLD = 0.5;   // 가장자리 평균 휘도(0~1, 감마 보정)가 이 값보다 크면 밝은 이미지
 const RING = 0.03;             // 가장자리 띠의 두께 (보이는 영역 각 변 길이에 대한 비율)
 const SAMPLE = 64;             // 줄여서 재는 크기 (px). 띠 두께가 최소 1px 이 되도록 RING × SAMPLE ≥ 1
-const EDGE_SAMPLE = 256;       // 라이트박스 배경색용 가장자리 1px 띠를 잴 때의 크기 (px)
 
 const CACHE_FILE = path.join(process.cwd(), 'node_modules', '.cache', 'eo-image-tone.json');
 type Cache = Record<string, EdgeInfo>;
@@ -129,9 +128,4 @@ function ringAtRect(data: Buffer, w: number, h: number, t: number) {
   let mode = 0, best = -1;
   for (const [k, c] of count) if (c > best) { best = c; mode = k; }
   return { r: mr, g: mg, b: mb, spread: Math.sqrt(v / (n * 3)), mode: { r: mode >> 16, g: (mode >> 8) & 255, b: mode & 255 } };
-}
-
-/** 밝기만 필요할 때 (imageEdge 의 tone) */
-export async function imageTone(publicSrc: string, zoom = 1, background = '#000000'): Promise<Tone | undefined> {
-  return (await imageEdge(publicSrc, zoom, background))?.tone;
 }
