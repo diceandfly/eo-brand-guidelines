@@ -22,7 +22,7 @@ import { parseTokens } from '../src/lib/tokens.ts';
 import { checkFonts } from './lib/check-fonts.mjs';
 
 const ROOT = process.cwd();
-const MAX_PLACEHOLDERS = { ko: 11, en: 19 };   // 2026-11-10 기준. 이미지를 채우면 낮출 것
+const MAX_PLACEHOLDERS = { ko: 11, en: 11 };   // 2026-11-10 기준. 이미지를 채우면 낮출 것
 
 let failed = 0;
 const fail = msg => { failed++; console.log(`  ✗ ${msg}`); };
