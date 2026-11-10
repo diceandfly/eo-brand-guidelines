@@ -19,6 +19,7 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 
 ## 타이포 규칙
 5레벨 고정: display / heading / body / ui / label. 행간이 기준 단위(`--lh-unit`). 레벨마다 m(행간 배수)·p(행간÷폰트)·ls·w 토큰만 가지며 폰트 사이즈는 계산값. 레벨을 늘리지 말 것.
+검색 · 스와치 · 로고 폴백의 파생 배율은 허용(새 레벨 아님): 검색 결과 ui × `--search-result-scale`, 컬러 카드 패널 body × `--swatch-panel-scale`(밝은 면 × `--swatch-panel-fg-light-scale`), 로고 폴백 글자 `--nav-logo-h`.
 서체는 Founders Grotesk(본문 포함)와 Founders Grotesk Mono(label)만 사용. woff2는 `public/fonts/`(git 제외).
 
 ## 컬러 규칙

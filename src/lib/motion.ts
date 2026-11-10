@@ -353,6 +353,7 @@ if (box && boxImg) {
   // Don't 대각선: 화면에 그려진 이미지의 가운데 --ratio-dodont 영역 (카드에서 보이던 영역과 같음)
   // 모바일: 2:3 창(.lightbox__pan) 높이에 맞춰, 원본의 가운데 --ratio-dodont(4:3) 폭만 보이게 crop 상자와 이미지 위치를 정함. 처음엔 왼쪽 끝
   const placeMobile = () => {
+    for (const el of [boxStrike, boxMirror]) if (el) { el.style.width = ''; el.style.height = ''; }   // PC 에서 연 뒤 좁아진 경우: PC 용 px 크기를 지워 CSS(4:3 영역 전체)가 적용되게
     if (!boxPan || !boxCrop || !boxImg.naturalWidth) return;
     const H = boxPan.clientHeight;
     const imgRatio = boxImg.naturalWidth / boxImg.naturalHeight;

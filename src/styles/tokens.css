@@ -471,12 +471,17 @@
   --lightbox-mirror-hold-y: 0%; /* 상하 사본: 닿은 쪽부터 100% 로 보이는 높이 (사본 높이 대비) */
   --lightbox-mirror-fade-y: 0%; /* 상하 사본이 완전히 사라지는 지점 (사본 높이 대비). 꼭짓점 사본은 가로에 -x, 세로에 -y 를 겹쳐 씀 */
   --lightbox-mirror-opacity: 1; /* 사본 전체 불투명도. 1 = 그대로, 0.5 = 반투명 */
+  --lightbox-mirror-a1: 0.92; /* 사본 마스크의 S 커브: hold → fade 구간 20% 지점의 불투명도 (base.css --_mx · --_my) */
+  --lightbox-mirror-a2: 0.7; /* 같은 커브 40% 지점 */
+  --lightbox-mirror-a3: 0.38; /* 같은 커브 60% 지점 */
+  --lightbox-mirror-a4: 0.12; /* 같은 커브 80% 지점 */
   --lightbox-mirror-overlap: 1px; /* 사본을 이미지 밑으로 이만큼 밀어 넣음. 이미지 크기가 소수점 px 일 때 경계에 1px 틈이 비치는 것을 막음 */
   --lightbox-mirror-blur: 0px; /* 사본 블러 반경. 0 = 선명 (기본). 켜면 사본을 이 값만큼 더 이미지 밑으로 밀어 넣어 흐린 가장자리가 경계에 비치지 않음 */
   --lightbox-m-ratio: 2 / 3; /* 모바일 확대 보기 창의 비율 (가로 / 세로). 이 창 안에 원본의 가운데 4:3(--ratio-dodont)만 잘라 넣고 옆으로 밀어 봄 */
   /* 색 */
   --lightbox-bg: color-mix(in srgb, var(--c-space-black), transparent 8%); /* 뒤를 덮는 막 */
-  --lightbox-bg-mix: 100%; /* 가장자리 색 배경에 Space Black 을 섞는 비율. 100% = 항상 검정 (거울 띠가 검정으로 사라지도록 통일), 0% = 이미지 가장자리 색 그대로 */
+  --lightbox-bg-mix: 100%; /* 가장자리 색 배경에 --lightbox-bg-mix-c 를 섞는 비율. 100% = 항상 검정 (거울 띠가 검정으로 사라지도록 통일), 0% = 이미지 가장자리 색 그대로 */
+  --lightbox-bg-mix-c: var(--c-space-black); /* 가장자리 색 배경에 섞는 색 */
   /* 모션 */
   --lightbox-dur: 360ms; /* 열고 닫는 디졸브 시간 */
   --lightbox-dur-reduced: 120ms; /* 동작 줄이기를 켠 사용자: 배율 없이 이 시간만큼 디졸브 */

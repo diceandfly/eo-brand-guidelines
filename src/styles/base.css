@@ -1297,7 +1297,7 @@ html.js .main {
   visibility: visible;
 }
 .lightbox.has-edge {
-  background: color-mix(in srgb, var(--lightbox-edge), var(--c-space-black) var(--lightbox-bg-mix)); /* 가장자리가 단색인 이미지: 그 색이 화면을 채움 (motion.ts 3) */
+  background: color-mix(in srgb, var(--lightbox-edge), var(--lightbox-bg-mix-c) var(--lightbox-bg-mix)); /* 가장자리가 단색인 이미지: 그 색이 화면을 채움 (motion.ts 3) */
 }
 .lightbox.has-fill {
   background: var(--lightbox-fill); /* {bg-color} 이미지: 거울 확장 대신 지정한 색(또는 가장자리 색)이 화면을 그대로 채움. 섞지 않음 (motion.ts 3) */
@@ -1355,8 +1355,8 @@ html.js .main {
   .lightbox__crop .lightbox__strike {
     position: absolute;
     inset: 0;
-    width: auto !important; /* motion.ts 가 PC 용으로 넣는 px 크기를 무시하고 4:3 영역 전체 */
-    height: auto !important;
+    width: auto; /* 4:3 영역 전체. PC 용 px 크기(인라인)는 motion.ts 가 모바일에서 지움 */
+    height: auto;
   }
   .lightbox__mirror {
     display: none; /* 모바일은 거울 확장 없음 */
@@ -1374,17 +1374,17 @@ html.js .main {
   /* 마스크 정지점 (hold → fade 구간을 S 커브로). 직선 그라데이션은 시작·끝의 꺾임이 선으로 보이므로 ease-in-out 에 가깝게 6단계 */
   --_mx:
     #000 var(--lightbox-mirror-hold-x),
-    rgb(0 0 0 / 0.92) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.2),
-    rgb(0 0 0 / 0.7) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.4),
-    rgb(0 0 0 / 0.38) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.6),
-    rgb(0 0 0 / 0.12) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.8),
+    rgb(0 0 0 / var(--lightbox-mirror-a1)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.2),
+    rgb(0 0 0 / var(--lightbox-mirror-a2)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.4),
+    rgb(0 0 0 / var(--lightbox-mirror-a3)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.6),
+    rgb(0 0 0 / var(--lightbox-mirror-a4)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.8),
     transparent var(--lightbox-mirror-fade-x);
   --_my:
     #000 var(--lightbox-mirror-hold-y),
-    rgb(0 0 0 / 0.92) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.2),
-    rgb(0 0 0 / 0.7) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.4),
-    rgb(0 0 0 / 0.38) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.6),
-    rgb(0 0 0 / 0.12) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.8),
+    rgb(0 0 0 / var(--lightbox-mirror-a1)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.2),
+    rgb(0 0 0 / var(--lightbox-mirror-a2)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.4),
+    rgb(0 0 0 / var(--lightbox-mirror-a3)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.6),
+    rgb(0 0 0 / var(--lightbox-mirror-a4)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.8),
     transparent var(--lightbox-mirror-fade-y);
 }
 .lightbox:not(.has-mirror) .lightbox__mirror {
