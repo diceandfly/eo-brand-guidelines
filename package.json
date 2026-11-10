@@ -13,7 +13,8 @@
     "check": "astro check",
     "assets": "node scripts/assets.mjs",
     "import": "node scripts/import.mjs",
-    "fonts:ko": "node scripts/pretendard-ko.mjs"
+    "fonts:ko": "node scripts/pretendard-ko.mjs",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "astro": "^5.14.0",
