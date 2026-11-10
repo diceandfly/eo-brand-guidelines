@@ -331,7 +331,7 @@ html.js .main {
   margin-inline: auto; /* 남는 폭은 양쪽에 균등 분배 */
 }
 
-@media (max-width: 899px) {
+@media (max-width: 899px) { /* 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 */
   .topbar {
     display: flex;
   }
@@ -736,7 +736,7 @@ html.js .main {
 }
 
 /* 모바일: PC 토큰 이름을 -m 값으로 바꿔 끼웁니다. 위의 규칙들은 그대로 PC 이름을 씁니다. */
-@media (max-width: 899px) {
+@media (max-width: 899px) { /* 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 */
   .sec--textcols .sec__body {
     grid-template-columns: 1fr; /* 모바일: 한 단으로 */
   }
@@ -1323,7 +1323,7 @@ html.js .main {
 }
 /* 모바일 확대 보기: 2:3 창(.lightbox__pan, 가로 스크롤) 안에 원본의 가운데 4:3(.lightbox__crop)을 창 높이에 맞춰 넣음.
    처음엔 4:3 의 왼쪽 끝에 정렬되고 옆으로 밀어 봄. 크기는 motion.ts 가 이미지 비율로 계산 (--_crop-w, --_img-x) */
-@media (max-width: 899px) {
+@media (max-width: 899px) { /* 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 */
   .lightbox__pan {
     display: block;
     grid-area: 1 / 1;

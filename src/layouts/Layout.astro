@@ -137,7 +137,7 @@ const ui = UI_TEXT[lang];
       const root = document.documentElement;
       const btn = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
       const sidebar = document.querySelector<HTMLElement>('.sidebar');
-      const desktop = window.matchMedia('(min-width: 900px)');
+      const desktop = window.matchMedia('(min-width: 900px)');   // 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 (여기는 PC 쪽 900px)
       const set = (open: boolean) => {
         root.classList.toggle('nav-open', open);
         btn?.setAttribute('aria-expanded', String(open));

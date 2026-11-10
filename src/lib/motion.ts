@@ -333,7 +333,7 @@ const boxStrike = box?.querySelector<HTMLElement>('.lightbox__strike');
 const boxMirror = box?.querySelector<HTMLElement>('.lightbox__mirror');
 const boxPan = box?.querySelector<HTMLElement>('[data-lightbox-pan]');
 const boxCrop = box?.querySelector<HTMLElement>('.lightbox__crop');
-const mobileMQ = matchMedia('(max-width: 899px)');            // base.css 의 모바일 브레이크포인트와 같게
+const mobileMQ = matchMedia('(max-width: 899px)');            // 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것
 const isMobile = () => mobileMQ.matches;
 const mirrorImgs = boxMirror ? Array.from(boxMirror.querySelectorAll<HTMLImageElement>('img')) : [];
 
