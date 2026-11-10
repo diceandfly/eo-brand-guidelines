@@ -97,7 +97,7 @@
   --t-body-list-gap: 0.5; /* 불렛 ↔ 불렛 = 본문 행간 × 값. 0 = 줄처럼 붙음, 문단 간격(--t-body-para-gap)보다 작게 */
   --t-body-list-offset: 0.6em; /* 왼쪽 마진 ↔ 불릿. 순서 목록의 마커(--t-body-olist-offset)와 같은 자리 */
   --t-body-marker-w: 0.6em; /* 목록 마커 한 글자의 폭 — 불릿 모노 대시(0.61em)와 본문 숫자(tabular 0.6em)가 같음. 들여쓰기 계산용 */
-  --t-body-marker-gap: 0.6em; /* 마커 ↔ 글 (불릿 · 본문 번호 · 캡션 번호 공통). 캡션 키워드 간격 --cap-num-gap 과 같은 값 */
+  --t-body-marker-gap: 0.6em; /* 마커 ↔ 글 (불릿 · 본문 번호 · 캡션 번호 공통) */
   --t-body-list-indent: calc(var(--t-body-marker-w) + var(--t-body-marker-gap)); /* 불릿 시작 ↔ 글 시작 (행잉 기준선) = 1.2em */
   --t-body-bullet-plus: '+'; /* md 에 "+ 항목" 으로 쓴 불릿의 화면 글자 (모노). 2026-11-04 부터 가이드는 1단도 "- " 를 씀 — 문법만 남김 */
   --t-body-bullet-dash: '–'; /* md 에 "- 항목" 으로 쓴 불릿의 화면 글자 (모노). 가이드 규칙상 1단 · 2단(중첩) 모두. 기본은 엔 대시 — 하이픈 '-' 보다 길어 불릿으로 읽힘. md 는 항상 ASCII '-' 로 씀. 키워드 소개 "- 키워드 — 설명" 은 그냥 글자 */
@@ -109,11 +109,6 @@
   --t-body-olist-indent: var(--t-body-list-indent); /* 번호 "1" 시작 ↔ 글 시작 (행잉 기준선). 본문 목록 · 캡션 번호 공통, 불릿과 같은 값 — 숫자는 tabular 라 1 과 5 의 폭이 같아 숨도 같음. Do/Don't 배지 들여쓰기(1.4em)와는 맞추지 않음(2026-11-07 결정) */
   --t-body-olist-indent-2: calc(2 * var(--t-body-marker-w) + var(--t-body-marker-gap)); /* 두 자리 번호 "01" · "30" 시작 ↔ 글 시작 = 1.8em. 캡션 번호가 두 자리면(guide.ts cap-num--2) 이 칸을 씀 — 한 자리 칸(1.2em)에는 두 자리가 꽉 차서 글과 붙음. 한 섹션 안에서 글 시작선을 맞추려면 "01." 처럼 전부 두 자리로 */
   --t-body-olist-nested-c: var(--fg-muted); /* 불릿 아래 중첩된 번호 "1" 의 색. 라벨 회색으로 내려 상위 "–" 보다 뒤로 물러남 (꽉 찬 불릿 · 빈 불릿의 관계). 최상위 번호 목록은 본문색 */
-  /* 키워드 라벨 "키워드/" — 캡션과 본문 공통. "세로형/ 설명"(키워드 + 모노 슬래시). guide.ts 가 감쌈. 캡션 번호 "1. " 는 위 순서 목록 토큰을 씀 */
-  --cap-num-gap: 0.6em; /* 키워드 라벨 "세로형/" ↔ 캡션 글. 본문 키워드 문단 "키워드/" 와 목록 "- 키워드/" 도 같은 값 (캡션 번호는 --t-body-marker-gap · --t-body-olist-indent 를 씀) */
-  /* 키워드 단락 "키워드// 설명" (슬래시 둘) — 인라인 라벨과 달리 들여쓰기 + 독립 단락. 순서 목록과 같은 자리 · 간격. + 불릿과 독립 */
-  --t-body-keyed-offset: 0.6em; /* 왼쪽 마진 ↔ 키워드. 순서 목록 마커(--t-body-olist-offset)와 같은 자리 */
-  --t-body-keyed-gap: 0.5; /* 연속 키워드 단락 ↔ 단락 = 본문 행간 × 값 (목록 --t-body-list-gap 과 같게). 문단 간격(0.75)보다 좁아 한 묶음으로 읽힘 */
   /* 본문 **강조** — 네온 색 + 언더라인. 웨이트 · 자간은 본문과 같게 두는 것이 규칙(Typography › Reference Scale). 링크도 언더라인이지만 색이 달라 구분됨 */
   --t-body-strong-w: 300; /* 강조 웨이트. 본문 웨이트와 같게 */
   --t-body-strong-c: var(--c-builder-neon); /* 강조 색. 네온 하이라이팅 (헤드와 같은 색). 본문색으로 돌리려면 var(--t-body-c) */

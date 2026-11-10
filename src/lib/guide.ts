@@ -13,8 +13,8 @@ export type Layout = 'basic' | 'text' | 'wide' | 'half' | 'grid-2' | 'grid-3' | 
 
 export interface ImageItem {
   kind: 'image';
-  token: string;          // guide.<lang>.md 에 쓴 그대로. 예: clearspace (예전 형식 logo/clearspace 도 허용)
-  name: string;           // 파일 이름(확장자 제외). 토큰의 마지막 / 뒤. 페이지 폴더 안에서 이 이름으로 찾음
+  token: string;          // guide.<lang>.md 에 쓴 그대로. 예: clearspace
+  name: string;           // 파일 이름(확장자 제외) = 토큰. 페이지 폴더 안에서 이 이름으로 찾음
   path: string;           // 넣을 자리: 02-logo/01-symbol/04-clearspace (확장자 제외, 플레이스홀더에 표시. 앞 번호 = 주제 순서)
   src: string | null;     // 파일이 있으면 /assets/… 경로, 없으면 null(플레이스홀더)
   badge?: 'do' | 'dont' | 'con';   // 캡션 앞 아이콘: 체크 / 엑스 / 삼각형(conditional, 조건부)
@@ -334,65 +334,29 @@ const glueBlocks = (html: string) =>
 
 function md(src: string, ctx: Ctx): string {
   const s = src.trim();
-  return s ? glueBlocks(wrapKo(colorChips(smartQuotes(listKeys(bullets(marked.parse(plusMarkers(dslashBlocks(s)), { async: false, gfm: true, breaks: false }) as string))), ctx, new Set()))) : '';   // 라벨 인식은 칩 · 한글 래핑 전(글자 그대로). 칩은 섹션 첫 언급에만
+  return s ? glueBlocks(wrapKo(colorChips(smartQuotes(bullets(marked.parse(plusMarkers(s), { async: false, gfm: true, breaks: false }) as string)), ctx, new Set()))) : '';   // 칩은 섹션 첫 언급에만
 }
 
 /**
  * 불릿 글자는 md 에 쓴 대로: "- 항목" 은 대시 불릿, "+ 항목" 은 플러스 불릿 (깊이와 무관, 한 목록 안에서 섞어도 됨).
  * marked 는 마커 종류를 HTML 에 남기지 않으므로 "+ " 를 "- " + 표식으로 바꿔 넘기고(마커가 바뀌면 목록이 쪼개지는 것도 막음),
  * 변환 뒤 표식을 <li data-bullet="plus"> 로 돌려놓습니다. 글자 자체는 tokens.css --t-body-bullet-dash / --t-body-bullet-plus.
- * 키워드 라벨(listKeys)과는 별개 — "+ 키워드/ 설명" 은 둘 다, "+ 설명" · "- 키워드/ 설명" 은 하나만 적용.
  */
 const PLUS = '%%PLUS%%';
 const plusMarkers = (src: string) => src.replace(/^([ \t]*)\+[ \t]+(?=\S)/gm, `$1- ${PLUS}`);
 const bullets = (html: string) => html.replace(new RegExp(`<li>(<p>)?${PLUS}`, 'g'), (_m, p = '') => `<li data-bullet="plus">${p}`);
 
 /**
- * 라벨 인식 — 한 줄(캡션 줄 · 목록 항목 · 문단)의 시작에서 번호 라벨 "N. " 과 키워드 라벨 "키워드/ " 을 떼어 냅니다.
- *   "1. 설명"            → <span class="cap-num">1</span><span class="cap-body">설명</span>               (캡션만. md 는 일반 순서 목록처럼 "1. " 로 쓰고 화면은 본문 순서 목록 마커와 같은 숫자만 "1" — 점은 CSS 가 붙이지 않음)
- *   "키워드/ 설명"        → <span class="cap-key">키워드<span class="cap-slash">/</span></span><span class="cap-body">설명</span>
- *   "1. 키워드/ 설명"     → 번호 + 키워드 둘 다
- * 규칙: 라벨 슬래시는 바로 앞이 공백이 아니고 바로 뒤가 공백 (thread top / bottom width/ 처럼 키워드 안의 " / " 는 통과). 키워드는 40자까지.
- * 글자는 변환하지 않습니다 — 쓴 슬래시가 그대로 보이고, 키워드 라벨은 모노 슬래시 · 뒤 간격(--cap-num-gap)만 CSS 로 붙습니다. 키워드를 강조하려면 키워드를 **…** 로 감쌈 (본문 강조와 같은 웨이트 + 네온). 슬래시를 ** 안에 넣으면 슬래시까지 강조, 밖에 두면 키워드만. 주의: 이 주석 안에 별표+슬래시를 붙여 쓰면 주석이 닫힘.
- * 컬러 칩 · 한글 래핑 전의 글자 그대로에서 돌므로 "Builder Neon/ 설명" 도 키워드가 되고 칩은 라벨 안에 붙습니다. 불릿 글자(data-bullet)와는 무관.
+ * 캡션 번호 — 캡션 줄(\ 로 나눈 줄마다)의 시작 "1. " 을 번호 라벨로 떼어 냅니다.
+ *   "1. 설명" → <span class="cap-num">1</span><span class="cap-body">설명</span>
+ * md 는 일반 순서 목록처럼 "1. " 로 쓰고 화면은 본문 순서 목록 마커와 같은 숫자만 "1" (점은 붙이지 않음). 두 자리("01" · "12")는 cap-num--2 — 칸이 --t-body-olist-indent-2 로 넓어짐.
+ * 키워드 소개는 "세로형 — 설명" 처럼 그냥 글자로 씁니다. (2026-11-04 폐기한 슬래시 라벨 "키워드/ 설명" 은 git 태그 archive/keyword-labels-2026-11-04)
  */
-const LABEL_NUM = /^(\d{1,2})\.[ \u00A0]+(?=\S)/;   // 캡션 번호 "1. " — 일반 md 순서 목록과 같은 표기 (2026-11-08, "1/ " 에서 롤백). 캡션은 marked 를 거치지 않아 목록으로 바뀌지 않음
-const LABEL_SLASH = /(?<=\S)\/(?=(?:<\/strong>)?[ \u00A0]+\S)/;
-const LABEL_DSLASH = /(?<=\S)\/\/(?=(?:<\/strong>)?[ \u00A0]+\S)/;   // "키워드// 설명": 단락 모드 — 문단에서는 들여쓰기 + 독립 단락(p-keyed--block). 화면에는 슬래시 하나만. 캡션 · 목록에서는 보통 라벨과 같음
-// 단락 모드 줄은 저마다 한 문단이 되도록 앞에 빈 줄을 보장 (marked 는 breaks:false 라 이어진 줄을 한 문단으로 합침). URL 의 // 는 뒤에 공백이 없어 제외
-const dslashBlocks = (src: string) => src.replace(/\n(?!\n)(?=[^\s+\-#!<>|\d*][^\n]{0,40}\/\/[ \u00A0]|\*\*[^\n]{0,40}\/\/[ \u00A0])/g, '\n\n');   // 라벨 슬래시: 바로 앞 공백 없음, 바로 뒤 공백 (강조 닫힘 </strong> 이 사이에 와도 됨 — 슬래시까지 강조)
-function labelize(text: string, cls: 'cap' | 'li' | 'p'): string {
-  let out = '';
-  let rest = text;
-  const num = cls === 'cap' ? rest.match(LABEL_NUM) : null;
-  if (num) { out += `<span class="cap-num${num[1].length > 1 ? ' cap-num--2' : ''}">${num[1]}</span>`; rest = rest.slice(num[0].length); }   // 화면은 숫자만 "1" (본문 순서 목록 마커와 같은 글자 · 서체). 두 자리("01" · "12")는 cap-num--2 — 칸이 --t-body-olist-indent-2 로 넓어짐
-  const d = rest.search(LABEL_DSLASH);
-  const block = d > 0;
-  const i = block ? d : rest.search(LABEL_SLASH);
-  if (i > 0) {
-    const w = rest.slice(0, i);
-    const plain = w.replace(/<\/?strong>/g, '');                    // 키워드 안에는 **강조** 태그만 허용 (웨이트 · 색은 거기서)
-    if (!/[<>%]/.test(plain) && !/^\s/.test(plain) && plain.length <= 40) {
-      let after = rest.slice(i + (block ? 2 : 1));
-      let close = '';
-      if (after.startsWith('</strong>')) { close = '</strong>'; after = after.slice(9); }   // "**키워드/**": 닫힘을 슬래시 뒤로 — 슬래시도 강조
-      out += `<span class="${cls}-key${block && cls === 'p' ? ' p-key--block' : ''}">${w}<span class="cap-slash">/</span>${close}</span>`;
-      rest = after.replace(/^[ \u00A0]+/, '');
-    }
-  }
-  return out ? `${out}<span class="${cls}-body">${rest}</span>` : text;
-}
-/** 본문: 목록 항목과 문단의 시작에 labelize. marked 직후(칩 · 한글 래핑 전)에 돕니다. 항목 글은 중첩 목록 앞까지. */
-function listKeys(html: string): string {
-  return html
-    .replace(/<li([^>]*)>(<p>)?((?:<\/?strong>|[^<\n])+)/g, (m, attrs, p = '', text) => {
-      const out = labelize(text, 'li');
-      return out === text ? m : `<li${attrs} class="li-keyed">${p}${out}`;
-    })
-    .replace(/<p>((?:<\/?strong>|[^<\n])+)/g, (m, text) => {
-      const out = labelize(text, 'p');
-      return out === text ? m : `<p class="p-keyed${out.includes('p-key--block') ? ' p-keyed--block' : ''}">${out}`;
-    });
+const LABEL_NUM = /^(\d{1,2})\.[ \u00A0]+(?=\S)/;   // 캡션 번호 "1. " (2026-11-08, "1/ " 에서 롤백). 캡션은 marked 를 거치지 않아 목록으로 바뀌지 않음
+function captionNum(text: string): string {
+  const num = text.match(LABEL_NUM);
+  if (!num) return text;
+  return `<span class="cap-num${num[1].length > 1 ? ' cap-num--2' : ''}">${num[1]}</span><span class="cap-body">${text.slice(num[0].length)}</span>`;
 }
 
 /**
@@ -525,10 +489,10 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       idsInSub = new Map();
       continue;
     }
-    if ((m = line.match(/^###(\+?)\s+(\+\s*)?(.+?)\s*$/)) && sub) { // ### Head {layout=…}  /  #### + Head (목차에 올림, ###+ Head 도 가능)
+    if ((m = line.match(/^###\s+(\+\s*)?(.+?)\s*$/)) && sub) { // ### Head {layout=…}  /  ### + Head (목차에 올림)
       flushSection();
-      const tocMark = m[1] === '+' || !!m[2];
-      const [head, attrs] = takeAttrs(smartQuotes(m[3]));
+      const tocMark = !!m[1];
+      const [head, attrs] = takeAttrs(smartQuotes(m[2]));
       section = {
         id: '', label: head, crumb: [head], head, bodyHtml: '', layout: 'basic',   // id 는 flushSection 에서 (서브헤드까지 읽은 뒤)
         ratio: normalizeRatio(attrs.ratio), items: [], tocMark, split,
@@ -557,7 +521,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     }
     if ((m = line.match(/^!\[([^\]]+)\]\s*((?:\{[^}]*\}\s*)*)(.*)$/)) && section) {   // ![token]{dont nostrike zoom=1.2} caption  (] 와 { 사이 공백 허용, {zoom=1.5} {dont} 처럼 묶음을 나눠 써도 모두 합침)
       const token = m[1].trim();
-      const name = token.split('/').pop()!.trim();
+      const name = token;
       const item: ImageItem = { kind: 'image', token, name, path: '', src: null };   // path·src 는 페이지를 다 읽은 뒤 확정
       const flags = [...m[2].matchAll(/\{([^}]*)\}/g)].map(g => g[1]).join(' ').trim().split(/\s+/).filter(Boolean);
       const where = `![${token}] (${sub!.url})`;
@@ -576,8 +540,9 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       if (!bg && !item.cover && !flags.includes('bg-mirror')) { item.bg = section.bg; item.cover = section.cover; }   // 이미지에 표시가 없으면 섹션 기본(헤드 · 서브헤드의 {bg-color}/{bg-cover}). {bg-mirror} 는 기본 거울 확장으로
       // 캡션은 한 줄. 본문처럼 \ 가 줄바꿈 (<br>): "위 줄 \ 아래 줄". 앞뒤 공백은 줄바꿈에 흡수
       if (m[3].trim()) {
-        // 라벨("N/ " · "키워드/ ")은 칩 · 한글 래핑 전의 글자 그대로에서 줄(<br>)마다 인식 → 그 뒤 따옴표 · 컬러 칩 · 한글 구간 래핑 · 고아 단어 방지
-        const lines = escapeHtml(m[3].trim()).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\s*\\\s*/g, '<br>').split('<br>').map(l => labelize(l, 'cap')).join('<br>');   // 캡션의 **강조** 는 본문과 같은 strong
+        // 번호 "1. " 은 칩 · 한글 래핑 전의 글자 그대로에서 줄(<br>)마다 인식 → 그 뒤 따옴표 · 컬러 칩 · 한글 구간 래핑 · 고아 단어 방지
+        // 캡션은 마크다운을 거치지 않습니다: **강조** (본문과 같은 strong) · \ 줄바꿈 · [[참조]] 만. [글자](주소) 는 글자 그대로
+        const lines = escapeHtml(m[3].trim()).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\s*\\\s*/g, '<br>').split('<br>').map(captionNum).join('<br>');
         item.caption = glueLastWords(wrapKo(colorChips(smartQuotes(lines), ctx)));
       }
       section.items.push(item);
@@ -640,14 +605,14 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
 
   // 참조 링크 [[page#section|라벨]] → <a class="xref">. 본문·캡션 모두. 라벨을 생략하면 목차 라벨에서 "페이지 › 섹션" 을 만든다.
   //   [[graphic-pattern]]        → Graphic Pattern 페이지  [[graphic-pattern#grammar]] → "Graphic Pattern › Grammar"
-  //   [[#grammar]]               → 같은 페이지의 섹션      [[02-logo/symbol#clearspace]] → 챕터로 한정 (같은 slug 가 여러 챕터에 있을 때)
-  //   [[→ graphic-pattern#grammar]] → "→ Graphic Pattern › Grammar" (화살표도 링크 글자의 일부라 밑줄이 이어짐. -> 도 됨)
+  //   [[#grammar]]               → 같은 페이지의 섹션
+  //   [[→ graphic-pattern#grammar]] → "→ Graphic Pattern › Grammar" (화살표도 링크 글자의 일부라 밑줄이 이어짐)
   //   [[graphic-pattern#grammar|문법 원칙]] → 라벨 직접 지정.   대상이 없으면 빌드 로그에 경고하고 글자만 남긴다
   //   [[https://eopla.net|EO Planet]] → 외부 링크 (새 탭). 라벨 없으면 "eopla.net"
   // 원문은 마크다운 변환 전에 자리표시자로 빠져 있었으므로(stashXrefs) 여기서 링크로 복원한다. 라벨은 본문과 같은 글자 처리(따옴표·한글 래핑)를 거친다.
   const NB = '\u00A0';
   const text = (plain: string) => wrapKo(smartQuotes(escapeHtml(plain)));
-  const bySlug = (slug: string, chapterSlug?: string) => flat.find(x => x.slug === slug && (!chapterSlug || chapters.find(c => c.subs.includes(x))!.slug === chapterSlug));
+  const bySlug = (slug: string) => flat.find(x => x.slug === slug);
   // 호버 알약: 컬러 칩의 Copy 알약(.swatch__tip)과 같은 부품. 글자(JUMP · OPEN · MAIL)는 CSS content 라 드래그 복사에 섞이지 않음.
   // 글자 뒤 화살표 SVG: 문서 안 이동(jump)은 →, 밖으로 나가는 링크(open · mail)는 ↗. 둘 다 같은 상자(viewBox 가 선에 딱 맞음)
   const XREF_ARROWS = {
@@ -660,7 +625,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     const bar = inner.indexOf('|');
     const rawTarget = bar >= 0 ? inner.slice(0, bar) : inner;
     const label = bar >= 0 ? text(inner.slice(bar + 1).trim()) : undefined;
-    const arrowM = rawTarget.match(/^\s*(→|->)\s*/);
+    const arrowM = rawTarget.match(/^\s*→\s*/);
     const arrow = arrowM ? `→${NB}` : '';
     const target = rawTarget.slice(arrowM?.[0].length ?? 0).trim();
     const fallback = () => label ?? text(target);
@@ -671,8 +636,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     }
     const [pagePart, ...secParts] = target.split('#');
     const secId = secParts.length ? secParts.join('-') : undefined;            // page#head#subhead → id "head-subhead"
-    const [a, b] = pagePart.split('/');
-    const s = !pagePart ? here : b ? bySlug(b, a) : bySlug(a);
+    const s = !pagePart ? here : bySlug(pagePart);
     if (!s) { warn(`[guide] [[${target}]]: "${pagePart}" 페이지가 없습니다 (${here.url})`); return fallback(); }
     let href = s.url, auto = text(s.name);
     if (secId !== undefined) {
@@ -716,9 +680,7 @@ export function buildSearchIndex(guide: Guide): SearchEntry[] {
 }
 
 /**
- * 스와치 스펙 문자열을 행으로. 두 가지 표기를 모두 받습니다.
- *   R249 G238 B58 / C5 M0 Y95 K0 / PANTONE 3945 C          (기존)
- *   RGB: 249 238 58 / CMYK: 5 0 95 0 / Pantone: 3945 C     (라벨: 값)
+ * 스와치 스펙 문자열을 행으로: R249 G238 B58 / C5 M0 Y95 K0 / PANTONE 3945 C. 그 밖의 "라벨: 값" 은 추가 행, 나머지는 메모 행.
  * 숫자 뒤의 꼬리말(예: "or raw paper")은 복사 대상이 아닌 메모로 붙습니다.
  */
 function swatchRows(hex: string, specs: string[]): SwatchRow[] {
@@ -728,12 +690,10 @@ function swatchRows(hex: string, specs: string[]): SwatchRow[] {
   for (const raw of specs) {
     const s = raw.trim();
     let m: RegExpMatchArray | null;
-    if ((m = s.match(/^(?:rgb\s*:?\s*)?R\s*(\d+)\s*G\s*(\d+)\s*B\s*(\d+)\s*(.*)$/i)))
+    if ((m = s.match(/^R\s*(\d+)\s*G\s*(\d+)\s*B\s*(\d+)\s*(.*)$/i)))
       named.RGB = { label: 'RGB', values: [m[1], m[2], m[3]], note: note(m[4]) };
-    else if ((m = s.match(/^(?:cmyk\s*:?\s*)?C\s*(\d+)\s*M\s*(\d+)\s*Y\s*(\d+)\s*K\s*(\d+)\s*(.*)$/i)))
+    else if ((m = s.match(/^C\s*(\d+)\s*M\s*(\d+)\s*Y\s*(\d+)\s*K\s*(\d+)\s*(.*)$/i)))
       named.CMYK = { label: 'CMYK', values: [m[1], m[2], m[3], m[4]], note: note(m[5]) };
-    else if ((m = s.match(/^(rgb|cmyk)\s*:\s*([\d\s,]+?)\s*([^\d\s,].*)?$/i)))
-      named[m[1].toUpperCase()] = { label: m[1].toUpperCase(), values: m[2].split(/[\s,]+/).filter(Boolean), note: note(m[3]) };
     else if ((m = s.match(/^(?:pantone|pms)\s*:?\s*(.+)$/i)))
       named.Pantone = { label: 'Pantone', values: [m[1].trim()] };
     else if ((m = s.match(/^([A-Za-z][\w ]*?)\s*:\s*(.+)$/)))
