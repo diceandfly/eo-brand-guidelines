@@ -208,6 +208,8 @@ The E block, which depicts the facade of a screw, consists of a shaft and three 
 ### Symbol
 #### + Clearspace
 Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the page. With H as the vertical height of one E block, always keep clear space of at least H/2 on all four sides between the symbol and every adjacent element.
+
+When the symbol sits at the center of a small frame, such as an app icon or profile image, its visual weight drifts to the left the smaller it is seen. Correct this by narrowing only the right clearspace, which pushes the symbol to the right. **Right clearspace = H × (0.42 + 0.0012 × S)**, where S is the symbol height actually seen on screen (mm); at S of 67mm or more, keep H/2 as is. The symbol moves right within the frame by (H/2 − right clearspace) ÷ 2, which equals the correction value n in [[#app-and-social-icons-alignment|App & Social Icons › Alignment]].
 ![clearspace] {zoom=1.05}
 
 
@@ -311,7 +313,7 @@ When the EO symbol is placed exactly in the center of an app icon or profile ima
 
 H is the height of the symbol in the working file (px), and S is the height (mm) at which the symbol is actually rendered on screen or in the end user's view. When n is positive, shift to the right; when n is negative, apply no correction. This formula is an approximation derived from correction values measured for each symbol size under typical desktop working conditions. The tested range is a visible symbol height S of 4-50mm (viewing distance 500mm), and the margin of error is at most ±0.02mm
 
-When applying the symbol to screens larger than a desktop monitor, take the end user's typical viewing distances as the range, and apply the formula above to the average visible size across the main part of that range.
+When applying the symbol to screens larger than a desktop monitor, take the end user's typical viewing distances as the range, and apply the formula above to the average visible size across the main part of that range. For the same correction expressed as a clearspace value, see [[#clearspace|Clearspace]].
 ![icon-alignment] {zoom=1.05}
 
 
