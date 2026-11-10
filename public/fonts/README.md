@@ -11,7 +11,11 @@ Founders Grotesk 는 유료 서체라 폰트 파일을 git 에 넣지 않습니�
 ## 배포 담당자(클라이언트)가 할 일
 1. 이 저장소를 클론합니다.
 2. 아래 5개 파일을 이 폴더(`public/fonts/`)에 그대로 넣습니다. 파일명이 같아야 합니다.
-3. `npm install` → `npm run build` 를 실행하면 `dist/` 에 폰트가 포함된 정적 사이트가 만들어집니다. 그 `dist/` 를 배포합니다.
+3. `npm install` 을 실행합니다 (Node 22.6 이상, `.nvmrc` 는 24).
+4. `npm run fonts:ko` 를 한 번 실행합니다. 한글 서체 Pretendard 서브셋 92개를 CDN(jsDelivr, 버전 고정)에서 `public/fonts/pretendard/` 로 내려받고
+   `src/styles/pretendard.css` · `src/lib/pretendard-preload.json` 을 다시 만듭니다. 이미 받은 파일은 건너뜁니다. 인터넷 연결이 필요합니다.
+5. `npm run build` 를 실행하면 `dist/` 에 폰트가 포함된 정적 사이트가 만들어집니다. 그 `dist/` 를 배포합니다.
+   빌드는 시작할 때 위 폰트 파일이 다 있는지 확인하고, 빠진 것이 있으면 `[eo-check-fonts]` 경고로 알려 줍니다(빌드는 계속되지만 그 서체는 폴백으로 보임).
 
 ```
 founders-grotesk-light.woff2
@@ -25,4 +29,5 @@ founders-grotesk-mono-medium.woff2
 
 ## Pretendard (한글)
 `pretendard/` 의 서브셋 woff2 92개는 무료(OFL) 서체지만 역시 git 에 넣지 않습니다. `npm run fonts:ko` 가 CDN 에서 내려받고
-`src/styles/pretendard.css` · `src/lib/pretendard-preload.json` 을 함께 만듭니다. 클론한 뒤 한 번 실행하세요.
+`src/styles/pretendard.css` · `src/lib/pretendard-preload.json` 을 함께 만듭니다. 클론한 뒤 한 번 실행하세요(위 4단계).
+다시 돌릴 때: Pretendard 버전을 올릴 때(`scripts/pretendard-ko.mjs` 의 VERSION), 한글 배율 토큰(`--t-body-ko-scale`)을 바꿨을 때, 가이드에 새 글자가 늘어 preload 목록을 갱신할 때.

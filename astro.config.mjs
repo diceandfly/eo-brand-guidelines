@@ -1,4 +1,6 @@
 import { defineConfig } from 'astro/config';
+import { fileURLToPath } from 'node:url';
+import { fontWarnings } from './scripts/lib/check-fonts.mjs';
 
 // 콘텐츠(content/guide.*.md)는 src/lib/guide.ts 가 Vite 모듈로 읽으므로
 // 저장하면 라우트 재계산과 브라우저 새로고침이 자동으로 일어납니다. 별도 감시 플러그인은 필요 없습니다.
@@ -18,7 +20,18 @@ const watchAssets = () => ({
   },
 });
 
+// 빌드 시작 때 폰트 파일(git 에 없음)이 public/fonts 에 다 있는지 확인. 없으면 경고만 하고 빌드는 계속 (사이트는 폴백 서체로 보임)
+const checkFontsOnBuild = () => ({
+  name: 'eo-check-fonts',
+  hooks: {
+    'astro:build:start': ({ logger }) => {
+      for (const w of fontWarnings(fileURLToPath(new URL('.', import.meta.url)))) logger.warn(w);
+    },
+  },
+});
+
 export default defineConfig({
+  integrations: [checkFontsOnBuild()],
   site: 'http://localhost:4321',
   vite: { cacheDir: isBuild ? 'node_modules/.vite-build' : 'node_modules/.vite', plugins: [watchAssets()] },
   trailingSlash: 'never',
