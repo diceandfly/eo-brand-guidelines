@@ -39,7 +39,7 @@ export function loadGuide(lang: Lang): Guide {
   if (!g) {
     const source = CONTENT_FILES[`/content/guide.${lang}.md`];
     if (source === undefined) throw new Error(`content/guide.${lang}.md 가 없습니다`);
-    g = parseGuide(lang, source, TOKENS);
+    g = parseGuide(lang, source, TOKENS, { strict: !import.meta.env.DEV });   // astro build: 오타 · 깨진 참조가 있으면 빌드 중단, dev 서버: 경고만
     cache.set(lang, g);
   }
   return g;

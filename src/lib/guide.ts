@@ -93,7 +93,9 @@ export const langFromPath = (path: string): Lang => (LANGS as readonly string[])
 const ASSETS = path.join(ROOT, 'public', 'assets');
 export const EXTS = ['svg', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'avif'];   // 이미지 확장자 (우선순위 순). scripts/*.mjs 도 공유
 
-const GRID_COLS = 12;   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음). {span} 의 상한
+const GRID_COLS = 12;
+/** 이미지 줄 ![이름]{…} 에 쓸 수 있는 플래그 (= 로 끝나면 값을 받음) */
+const IMAGE_FLAGS = ['do', 'dont', 'con', 'nostrike', 'zoom=', 'nozoom', 'bg-color', 'bg-color=', 'bg-cover', 'bg-mirror'];   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음). {span} 의 상한
 
 function slugify(s: string): string {
   return s
@@ -166,11 +168,15 @@ function parseAttrs(raw: string): Record<string, string> {
   return out;
 }
 
-/** {bg-color} 의 값 → ImageItem.bg: 빈 값이면 true(가장자리 색), #hex 는 그대로, 팔레트 이름은 var(--c-…) */
-function bgValue(v: string): string | true {
+/** {bg-color} 의 값 → ImageItem.bg: 빈 값이면 true(가장자리 색), #hex 는 그대로, 팔레트 이름은 var(--c-…). 팔레트에 없는 이름은 경고 후 무시(undefined) */
+function bgValue(v: string, ctx: Ctx, where: string): string | true | undefined {
   v = v.trim();
   if (!v) return true;
-  return /^#?[0-9a-f]{3,8}$/i.test(v) ? (v.startsWith('#') ? v : '#' + v) : `var(--c-${v.toLowerCase().replace(/[^a-z0-9]+/g, '-')})`;
+  if (/^#?[0-9a-f]{3,8}$/i.test(v)) return v.startsWith('#') ? v : '#' + v;
+  const slug = v.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  if (COLOR_NAMES.some(n => colorSlug(n) === slug)) return `var(--c-${slug})`;
+  ctx.warn(`[guide] ${where}: {bg-color=${v}} 은 팔레트에 없는 이름입니다 (${COLOR_NAMES.map(colorSlug).join(' · ')}). 무시합니다`);
+  return undefined;
 }
 
 function normalizeRatio(r?: string): string | undefined {
@@ -179,15 +185,18 @@ function normalizeRatio(r?: string): string | undefined {
   return m ? `${m[1]} / ${m[2]}` : undefined;
 }
 
-function pickLayout(explicit: string | undefined, items: Item[]): Layout {
-  const allowed: Layout[] = ['basic', 'text', 'wide', 'half', 'grid-2', 'grid-3', 'grid-4', 'text-2', 'text-3', 'text-4'];
-  if (explicit && (allowed as string[]).includes(explicit)) return explicit as Layout;
+const LAYOUTS: Layout[] = ['basic', 'text', 'wide', 'half', 'grid-2', 'grid-3', 'grid-4', 'text-2', 'text-3', 'text-4'];
+/** 이미지 수에 맞는 그리드: 2장 이하 grid-2, 3의 배수 grid-3, 그 밖 grid-4 ({layout=grid} 와 자동 판정이 공유) */
+const autoGrid = (n: number): Layout => (n <= 2 ? 'grid-2' : n % 3 === 0 ? 'grid-3' : 'grid-4');
+/** {layout=…} 확정. 생략하면 이미지 수로 자동, {layout=grid} 는 칸 수만 자동. 모르는 값은 경고 후 자동 */
+function pickLayout(explicit: string | undefined, items: Item[], ctx: Ctx, where: string): Layout {
+  if (explicit && (LAYOUTS as string[]).includes(explicit)) return explicit as Layout;
   const n = items.length;
+  if (explicit === 'grid') return autoGrid(n);
+  if (explicit) ctx.warn(`[guide] ${where}: {layout=${explicit}} 은 없는 레이아웃입니다 (${LAYOUTS.join(' · ')} · grid). 이미지 수로 자동 판정합니다`);
   if (n === 0) return 'text';
   if (n === 1) return 'basic';
-  if (n === 2) return 'grid-2';
-  if (n % 3 === 0) return 'grid-3';
-  return 'grid-4';
+  return autoGrid(n);
 }
 
 /**
@@ -261,8 +270,8 @@ const colorSlug = (name: string) => name.toLowerCase().replace(/ /g, '-');
 /** 이름 → HEX (tokens.css A-2 컬러의 --c-* 를 빌드 때 읽음). 칩을 누르면 이 값을 복사 */
 const colorHexes = (tokens: Tokens): Record<string, string> =>
   Object.fromEntries(COLOR_NAMES.map(n => [n, tokenHex(tokens, `--c-${colorSlug(n)}`, '').toUpperCase()]));
-/** 한 번의 파싱 동안 공유하는 것: 언어(UI 문구), 컬러 HEX */
-interface Ctx { lang: Lang; hex: Record<string, string>; }
+/** 한 번의 파싱 동안 공유하는 것: 언어(UI 문구), 컬러 HEX, 경고 */
+interface Ctx { lang: Lang; hex: Record<string, string>; warn: (msg: string) => void; }
 const COLOR_DARK = new Set(['Space Black', 'Solid Gray']);   // 어두운 칩: 테두리만 보여 작아 보이는 착시를 CSS(--cref-grow-*)로 색마다 보정
 const NAMES = COLOR_NAMES.join('|');
 const COLOR_RE = new RegExp(`\\[(\\+?)(${NAMES})\\]|(?<![\\w-])(${NAMES})(?![\\w-])`, 'g');   // [Name] · [+Name] · Name — 대괄호 형은 앞뒤 글자와 무관("0[Space Black]" 처럼 숫자에 붙여 써도 칩), 맨 이름만 단어 경계 확인
@@ -391,11 +400,32 @@ const stashXrefs = (text: string, store: string[]): string =>
   text.replace(/\[\[([^\]]*?)\]\]/g, (_m, inner: string) => { store.push(inner); return XREF_MARK(store.length - 1); });
 
 /**
+ * 파서 옵션. 오타(없는 레이아웃 · 팔레트 밖 색 이름 · 모르는 이미지 플래그)와 깨진 참조 · 숨는 이미지는 경고로 모읍니다.
+ *   strict    true 면 경고를 콘솔에 찍지 않고 모아 두었다가 파싱 끝에 한 번에 throw (astro build — src/lib/content.ts).
+ *             false(기본)면 console.warn 후 폴백 (dev 서버 · scripts). 환경 변수 EO_GUIDE_STRICT=1 로도 켤 수 있습니다.
+ *   warnings  주면 경고 문구를 여기에도 모읍니다 (npm test 가 "경고 0" 을 셈).
+ */
+export interface LoadOptions { strict?: boolean; warnings?: string[]; }
+export class GuideError extends Error {   // 파라미터 프로퍼티(public x) 는 Node 의 타입 제거 모드가 못 읽으므로 필드를 따로 선언
+  lang: Lang;
+  warnings: string[];
+  constructor(lang: Lang, warnings: string[]) {
+    super(`content/guide.${lang}.md 에 고칠 곳이 ${warnings.length}개 있습니다 (개발 서버에서는 경고로만 표시):\n  ${warnings.join('\n  ')}`);
+    this.lang = lang;
+    this.warnings = warnings;
+  }
+}
+
+/**
  * @param source    content/guide.<lang>.md 전문
  * @param tokens    tokens.css 를 parseTokens 한 것 (컬러 칩 HEX)
+ * @param opts      LoadOptions (strict · warnings)
  */
-export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
-  const ctx: Ctx = { lang, hex: colorHexes(tokens) };
+export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: LoadOptions = {}): Guide {
+  const strict = opts.strict ?? (typeof process !== 'undefined' && process.env?.EO_GUIDE_STRICT === '1');
+  const collected: string[] = [];
+  const warn = (msg: string) => { collected.push(msg); opts.warnings?.push(msg); if (!strict) console.warn(msg); };
+  const ctx: Ctx = { lang, hex: colorHexes(tokens), warn };
   const xrefs: string[] = [];                                   // [[…]] 원문. 자리표시자 번호 = 배열 index
   const raw = stashXrefs(source.replace(/<!--[\s\S]*?-->/g, ''), xrefs);
   const lines = raw.split(/\r?\n/);
@@ -419,6 +449,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
   };
   const pageLikeOf = (sec: Section, s: Sub) => norm(sec.head) === norm(s.name) || norm(sec.head) === norm(s.chapterName);
 
+  const secName = (sec: Section) => `${sec.head}${sec.subhead ? ' / ' + sec.subhead : ''}`;
   const flushSection = () => {
     if (!section || !sub) return;
     // 앵커 id = 목차 라벨의 슬러그 (헤드가 페이지 이름과 같으면 서브헤드). 헤드가 페이지 이름과 다르고 서브헤드까지 있으면
@@ -431,10 +462,10 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     idsInSub.set(base, count);
     section.id = count === 1 ? base : `${base}-${count}`;
     section.bodyHtml = md(body.join('\n'), ctx);
-    section.layout = pickLayout(pendingLayout, section.items);
+    section.layout = pickLayout(pendingLayout, section.items, ctx, `"${secName(section)}" (${sub.url})`);
     pendingLayout = undefined;
     if (!/^(grid|text)-/.test(section.layout) && section.layout !== 'wide' && section.items.length > 1)
-      console.warn(`[guide] "${section.head}${section.subhead ? ' / ' + section.subhead : ''}" (${section.layout}) 섹션의 이미지 ${section.items.length}개 중 첫 번째만 표시됩니다. 모두 보이려면 {layout=grid-2|3|4} 또는 {layout=wide}`);
+      warn(`[guide] "${section.head}${section.subhead ? ' / ' + section.subhead : ''}" (${section.layout}) 섹션의 이미지 ${section.items.length}개 중 첫 번째만 표시됩니다. 모두 보이려면 {layout=grid-2|3|4} 또는 {layout=wide}`);
     sub.sections.push(section);
     section = null;
     body = [];
@@ -457,7 +488,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
 
     if (/^:::\s*split\s*$/.test(line)) {                             // ::: split  → 다음 섹션들을 한 12컬럼 행에 (::: 로 닫음). 폭은 섹션의 {span=N}
       flushSection();
-      if (split !== undefined) console.warn(`[guide] ::: split: 앞의 ::: split 가 닫히지 않았습니다 (${sub?.url ?? ''}). 새 행으로 넘어갑니다`);
+      if (split !== undefined) warn(`[guide] ::: split: 앞의 ::: split 가 닫히지 않았습니다 (${sub?.url ?? ''}). 새 행으로 넘어갑니다`);
       split = ++splitSeq;
       continue;
     }
@@ -498,13 +529,13 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
         id: '', label: head, crumb: [head], head, bodyHtml: '', layout: 'basic',   // id 는 flushSection 에서 (서브헤드까지 읽은 뒤)
         ratio: normalizeRatio(attrs.ratio), items: [], tocMark, split,
         zoom: Number.isFinite(parseFloat(attrs.zoom)) ? parseFloat(attrs.zoom) : undefined,
-        bg: 'bg-color' in attrs ? bgValue(attrs['bg-color']) : undefined, cover: 'bg-cover' in attrs || undefined
+        bg: 'bg-color' in attrs ? bgValue(attrs['bg-color'], ctx, `"${head}" (${sub.url})`) : undefined, cover: 'bg-cover' in attrs || undefined
       };
       pendingLayout = attrs.layout;
       if (attrs.span !== undefined) {                                 // {span=N}: ::: split 안에서 차지하는 컬럼 수
         const n = parseInt(attrs.span, 10);
-        if (split === undefined) console.warn(`[guide] "${head}": {span=${attrs.span}} 은 ::: split 안에서만 뜻이 있습니다 (${sub.url}). 무시합니다`);
-        else if (!(n >= 1 && n <= GRID_COLS)) console.warn(`[guide] "${head}": {span=${attrs.span}} 은 1~${GRID_COLS} 사이여야 합니다 (${sub.url}). 무시합니다`);
+        if (split === undefined) warn(`[guide] "${head}": {span=${attrs.span}} 은 ::: split 안에서만 뜻이 있습니다 (${sub.url}). 무시합니다`);
+        else if (!(n >= 1 && n <= GRID_COLS)) warn(`[guide] "${head}": {span=${attrs.span}} 은 1~${GRID_COLS} 사이여야 합니다 (${sub.url}). 무시합니다`);
         else section.span = n;
       }
       continue;
@@ -515,7 +546,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       if (attrs.layout) pendingLayout = attrs.layout;
       if (attrs.ratio) section.ratio = normalizeRatio(attrs.ratio);
       if (Number.isFinite(parseFloat(attrs.zoom))) section.zoom = parseFloat(attrs.zoom);
-      if ('bg-color' in attrs) section.bg = bgValue(attrs['bg-color']);
+      if ('bg-color' in attrs) section.bg = bgValue(attrs['bg-color'], ctx, `"${subhead}" (${sub!.url})`);
       if ('bg-cover' in attrs) section.cover = true;
       section.subhead = subhead;
       continue;
@@ -525,15 +556,18 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
       const name = token.split('/').pop()!.trim();
       const item: ImageItem = { kind: 'image', token, name, path: '', src: null };   // path·src 는 페이지를 다 읽은 뒤 확정
       const flags = [...m[2].matchAll(/\{([^}]*)\}/g)].map(g => g[1]).join(' ').trim().split(/\s+/).filter(Boolean);
+      const where = `![${token}] (${sub!.url})`;
+      for (const f of flags) if (!IMAGE_FLAGS.includes(f.replace(/=.*$/, '='))) warn(`[guide] ${where}: {${f}} 은 모르는 이미지 플래그입니다 (${IMAGE_FLAGS.join(' · ')}). 무시합니다`);
       if (flags.includes('do')) item.badge = 'do';
       if (flags.includes('dont')) item.badge = 'dont';
       if (flags.includes('con')) item.badge = 'con';                   // 조건부(conditional): 삼각형, 대각선 없음
       if (item.badge === 'dont' && !flags.includes('nostrike')) item.strike = true;
       const z = flags.find(f => f.startsWith('zoom='));
       if (z && Number.isFinite(parseFloat(z.slice(5)))) item.zoom = parseFloat(z.slice(5));
+      else if (z) warn(`[guide] ${where}: {${z}} 의 배율이 숫자가 아닙니다. 무시합니다`);
       if (flags.includes('nozoom')) item.zoom = 1;
       const bg = flags.find(f => f === 'bg-color' || f.startsWith('bg-color='));   // {bg-color} · {bg-color=#hex} · {bg-color=palette-name}
-      if (bg) item.bg = bgValue(bg === 'bg-color' ? '' : bg.slice(9));
+      if (bg) item.bg = bgValue(bg === 'bg-color' ? '' : bg.slice(9), ctx, where);
       if (flags.includes('bg-cover')) item.cover = true;                     // {bg-cover}: 화면에 꽉 채움
       if (!bg && !item.cover && !flags.includes('bg-mirror')) { item.bg = section.bg; item.cover = section.cover; }   // 이미지에 표시가 없으면 섹션 기본(헤드 · 서브헤드의 {bg-color}/{bg-cover}). {bg-mirror} 는 기본 거울 확장으로
       // 캡션은 한 줄. 본문처럼 \ 가 줄바꿈 (<br>): "위 줄 \ 아래 줄". 앞뒤 공백은 줄바꿈에 흡수
@@ -571,7 +605,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     for (const sec of s.sections) {                              // 좁은 폭에서 문단까지 나누면 글이 깨짐
       const m = sec.layout.match(/^text-(\d)$/);
       if (m && sec.span !== undefined && sec.span / Number(m[1]) < 3)
-        console.warn(`[guide] "${sec.head}": 폭 ${sec.span}컬럼에서 {layout=${sec.layout}} 은 단이 ${(sec.span / Number(m[1])).toFixed(1)}컬럼이 되어 너무 좁습니다 (${s.url})`);
+        warn(`[guide] "${sec.head}": 폭 ${sec.span}컬럼에서 {layout=${sec.layout}} 은 단이 ${(sec.span / Number(m[1])).toFixed(1)}컬럼이 되어 너무 좁습니다 (${s.url})`);
     }
   }
 
@@ -635,11 +669,11 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     const secId = secParts.length ? secParts.join('-') : undefined;            // page#head#subhead → id "head-subhead"
     const [a, b] = pagePart.split('/');
     const s = !pagePart ? here : b ? bySlug(b, a) : bySlug(a);
-    if (!s) { console.warn(`[guide] [[${target}]]: "${pagePart}" 페이지가 없습니다 (${here.url})`); return fallback(); }
+    if (!s) { warn(`[guide] [[${target}]]: "${pagePart}" 페이지가 없습니다 (${here.url})`); return fallback(); }
     let href = s.url, auto = text(s.name);
     if (secId !== undefined) {
       const sec = s.sections.find(x => x.id === secId);
-      if (!sec) { console.warn(`[guide] [[${target}]]: ${s.name} 페이지에 #${secId} 섹션이 없습니다 (${here.url}). 있는 id: ${s.sections.map(x => x.id).join(', ')}`); return fallback(); }
+      if (!sec) { warn(`[guide] [[${target}]]: ${s.name} 페이지에 #${secId} 섹션이 없습니다 (${here.url}). 있는 id: ${s.sections.map(x => x.id).join(', ')}`); return fallback(); }
       href += `#${secId}`;
       const crumb = sec.crumb.map(text).join(`${NB}›${NB}`);   // 헤드 › 서브헤드 (헤드가 페이지 이름과 같으면 서브헤드만)
       auto = pagePart && s !== here ? `${text(s.name)}${NB}›${NB}${crumb}` : crumb;   // 페이지 이름을 적었어도 대상이 현재 페이지면 경로 없이 섹션만
@@ -652,6 +686,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens): Guide {
     for (const it of sec.items) if (it.kind === 'image' && it.caption) it.caption = resolveXrefs(it.caption, s);
   }
 
+  if (strict && collected.length) throw new GuideError(lang, collected);
   return { lang, chapters };
 }
 
