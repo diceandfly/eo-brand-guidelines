@@ -5,13 +5,15 @@
  *   1. 페이지마다 폴더를 만듭니다 (파일이 아직 없어도 넣을 곳이 보이도록).
  *   2. 이미 있는 이미지의 앞 번호를 지금 주제 순서에 맞춥니다 (번호가 없으면 붙임)
  *      (섹션 순서를 바꿔 번호가 밀렸을 때, 예전 public/assets/logo/… 위치에 있을 때).
- *   3. 비어 버린 예전 폴더를 지웁니다.
+ *   3. 비어 버린 예전 폴더(.DS_Store 만 남은 것 포함)를 .trash/ 로 옮깁니다 (scripts/lib/trash.mjs).
  *   4. 빠진 이미지 수와, 어디에서도 쓰지 않는 파일을 알려 줍니다.
- * 파일을 지우지는 않습니다. 쓰지 않는 파일은 목록만 보여 줍니다.
+ * 파일을 지우지는 않습니다. 쓰지 않는 파일은 목록만 보여 줍니다. 이름은 대소문자를 무시하고 비교합니다
+ * (대소문자 무시 파일 시스템에서 대소문자만 다른 이름은 그 자리에서 이름만 고칩니다).
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { loadManifest, srcToRel, srcToFile } from './lib/manifest.mjs';
+import { toTrash } from './lib/trash.mjs';
 
 const MASTER = 'ko';
 const ROOT = process.cwd();
@@ -41,8 +43,9 @@ for (const e of entries) {
   const from = srcToFile(ROOT, e.src);
   const to = path.join(ASSETS, `${e.path}${path.extname(from)}`);
   if (from === to || !fs.existsSync(from)) continue;
-  if (fs.existsSync(to)) { console.log(`건너뜀 ${rel(to)} 이(가) 이미 있어 ${rel(from)} 을 옮기지 않음`); continue; }
-  act(`이동   ${rel(from)}  →  ${rel(to)}`, () => fs.renameSync(from, to));
+  const caseOnly = from.toLowerCase() === to.toLowerCase();   // 대소문자만 다름: macOS 에서는 같은 파일이라 existsSync(to) 가 참 → 이름만 고침
+  if (!caseOnly && fs.existsSync(to)) { console.log(`건너뜀 ${rel(to)} 이(가) 이미 있어 ${rel(from)} 을 옮기지 않음`); continue; }
+  act(`${caseOnly ? '이름   ' : '이동   '}${rel(from)}  →  ${rel(to)}`, () => fs.renameSync(from, to));
   moved++;
 }
 
@@ -53,7 +56,7 @@ const prune = dir => {
   if (dir === ASSETS || KEEP.includes(r.split('/')[0])) return;
   const left = fs.readdirSync(dir).filter(n => n !== '.DS_Store');
   const isExpected = [...expectedDirs].some(x => x === r || x.startsWith(`${r}/`));
-  if (!left.length && !isExpected) act(`삭제   ${r}/ (빈 폴더)`, () => fs.rmSync(dir, { recursive: true }));
+  if (!left.length && !isExpected) act(`정리   ${r}/ (빈 폴더 → .trash/)`, () => toTrash(ROOT, dir));
 };
 prune(ASSETS);                                        // --dry 면 act 가 출력만 함
 
@@ -67,7 +70,8 @@ const walk = dir => { for (const d of fs.readdirSync(dir, { withFileTypes: true 
   if (d.isDirectory()) walk(p); else if (d.name !== '.DS_Store') files.push(rel(p));
 } };
 walk(ASSETS);
-const unused = files.filter(f => !used.has(noExt(f)) && !KEEP.includes(f.split('/')[0]));
+const usedLower = new Set([...used].map(u => u.toLowerCase()));                  // 대소문자 무시
+const unused = files.filter(f => !usedLower.has(noExt(f).toLowerCase()) && !KEEP.includes(f.split('/')[0]));
 
 console.log(`\n이동 ${moved} · 새 폴더 ${created} · 빠진 이미지 ${missing} / ${entries.length} (기준: guide.${MASTER}.md)`);
 for (const [page, n] of missingByPage) console.log(`  ${page}  빠진 이미지 ${n}`);

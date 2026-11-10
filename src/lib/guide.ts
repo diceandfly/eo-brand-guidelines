@@ -145,7 +145,7 @@ function subAssetIndex(chapterSlug: string, chapterName: string, subSlug: string
       if (d.isDirectory()) { walk(r); continue; }
       const m = d.name.match(/^(.+)\.([a-z0-9]+)$/i);
       if (!m || !EXTS.includes(m[2].toLowerCase())) continue;
-      const key = stripNum(m[1]);
+      const key = stripNum(m[1]).toLowerCase();                 // 대소문자 무시 (scripts/assets.mjs 가 이름을 소문자 토큰에 맞춰 고침)
       index.set(key, [...(index.get(key) ?? []), r]);
     }
   };
@@ -156,7 +156,7 @@ function subAssetIndex(chapterSlug: string, chapterName: string, subSlug: string
 function resolveAsset(item: ImageItem, index: Map<string, string[]>): string | null {
   const noExt = (r: string) => r.replace(/\.[^./]+$/, '');
   const rank = (r: string) => `${noExt(r) === item.path ? 0 : 1}\0${EXTS.indexOf(r.split('.').pop()!.toLowerCase())}`;   // 제자리 우선, 같으면 svg → png …
-  const hits = (index.get(item.name) ?? []).sort((a, b) => rank(a).localeCompare(rank(b)));
+  const hits = (index.get(item.name.toLowerCase()) ?? []).sort((a, b) => rank(a).localeCompare(rank(b)));
   return hits[0] ? assetSrc(hits[0]) : null;
 }
 
