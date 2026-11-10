@@ -11,7 +11,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadManifest } from './lib/manifest.mjs';
+import { loadManifest, srcToRel, srcToFile } from './lib/manifest.mjs';
 
 const MASTER = 'ko';
 const ROOT = process.cwd();
@@ -38,7 +38,7 @@ for (const e of entries) {
     created++;
   }
   if (!e.src) { missing++; missingByPage.set(e.page, (missingByPage.get(e.page) ?? 0) + 1); continue; }
-  const from = path.join(ROOT, 'public', decodeURI(e.src));
+  const from = srcToFile(ROOT, e.src);
   const to = path.join(ASSETS, `${e.path}${path.extname(from)}`);
   if (from === to || !fs.existsSync(from)) continue;
   if (fs.existsSync(to)) { console.log(`건너뜀 ${rel(to)} 이(가) 이미 있어 ${rel(from)} 을 옮기지 않음`); continue; }
@@ -60,7 +60,7 @@ prune(ASSETS);                                        // --dry 면 act 가 출�
 // 4. 보고
 const noExt = f => f.replace(/\.[^./]+$/, '');
 const used = new Set(Object.values(manifest).flat().flatMap(e =>          // 지금 자리(path) 또는 빌드 때 찾은 자리(src)
-  [e.path, e.src && noExt(decodeURI(e.src).replace(/^\/assets\//, ''))].filter(Boolean)));
+  [e.path, e.src && noExt(srcToRel(e.src))].filter(Boolean)));
 const files = [];
 const walk = dir => { for (const d of fs.readdirSync(dir, { withFileTypes: true })) {
   const p = path.join(dir, d.name);

@@ -113,8 +113,12 @@ function slugify(s: string): string {
  * 이미지는 그 페이지 폴더 안에서 파일 이름으로 찾습니다. 그래서 섹션 순서를 바꿔 번호가 달라져도,
  * 영문·국문 구조가 잠시 달라도 이미지가 끊기지 않습니다. 번호를 지금 순서에 맞추려면 npm run assets (scripts/assets.mjs).
  */
-const stripNum = (dir: string) => dir.replace(/^\d+-/, '');
-export const stripFileNum = (name: string) => name.replace(/^\d{2}-/, '');   // 파일명 앞 두 자리 정렬 번호 (예: 04-clearspace → clearspace)
+/** 폴더 · 파일명 앞 두 자리 정렬 번호를 뗌 (예: 04-clearspace → clearspace, 02-logo → logo). 파서와 scripts/*.mjs(manifest.mjs 경유)가 이것 하나만 씀 */
+export const stripNum = (name: string) => name.replace(/^\d{2}-/, '');
+/** assets 기준 경로(02-logo/01-symbol/04-clearspace.png) ↔ <img src>(/assets/…) ↔ 디스크 파일. 셋 사이 변환은 이 세 함수로만 */
+export const assetSrc = (rel: string) => `/assets/${rel}`;
+export const srcToRel = (src: string) => decodeURI(src).replace(/^\/assets\//, '');
+export const srcToFile = (root: string, src: string) => path.join(root, 'public', 'assets', srcToRel(src));
 const pad2 = (n: number) => String(n).padStart(2, '0');
 
 /** 페이지 폴더 안의 이미지 목록: 이름(확장자 제외) → assets 기준 경로들 */
@@ -136,7 +140,7 @@ function subAssetIndex(chapterSlug: string, chapterName: string, subSlug: string
       if (d.isDirectory()) { walk(r); continue; }
       const m = d.name.match(/^(.+)\.([a-z0-9]+)$/i);
       if (!m || !EXTS.includes(m[2].toLowerCase())) continue;
-      const key = stripFileNum(m[1]);
+      const key = stripNum(m[1]);
       index.set(key, [...(index.get(key) ?? []), r]);
     }
   };
@@ -148,7 +152,7 @@ function resolveAsset(item: ImageItem, index: Map<string, string[]>): string | n
   const noExt = (r: string) => r.replace(/\.[^./]+$/, '');
   const rank = (r: string) => `${noExt(r) === item.path ? 0 : 1}\0${EXTS.indexOf(r.split('.').pop()!.toLowerCase())}`;   // 제자리 우선, 같으면 svg → png …
   const hits = (index.get(item.name) ?? []).sort((a, b) => rank(a).localeCompare(rank(b)));
-  return hits[0] ? `/assets/${hits[0]}` : null;
+  return hits[0] ? assetSrc(hits[0]) : null;
 }
 
 /** 줄 끝의 {…} 속성을 떼어 냅니다. {layout=grid-3} {zoom=1.6} 처럼 여러 개로 나눠 써도 모두 합칩니다. */

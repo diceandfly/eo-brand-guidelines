@@ -19,8 +19,7 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
-import { loadManifest } from './lib/manifest.mjs';
-import { EXTS, stripFileNum as strip } from '../src/lib/guide.ts';
+import { loadManifest, EXTS, stripNum as strip } from './lib/manifest.mjs';
 
 const ROOT = process.cwd();
 const ASSETS = path.join(ROOT, 'public', 'assets');
@@ -46,7 +45,7 @@ const subDir = path.join(baseDir, slugOf(page));
 const srcDir = fs.existsSync(subDir) && fs.statSync(subDir).isDirectory() ? subDir : baseDir;
 console.log(`가져오는 폴더: ${srcDir}${srcDir === baseDir ? '  (페이지 하위 폴더 없음)' : ''}`);
 
-const norm = s => s.toLowerCase().replace(/^.*_/, '').replace(/^\d{2}-/, '').trim().replace(/\s+/g, '-');
+const norm = s => strip(s.toLowerCase().replace(/^.*_/, '')).trim().replace(/\s+/g, '-');   // 접두어(마지막 _ 까지) → 앞 번호(파서와 같은 stripNum) → 공백은 -
 const slots = new Map(entries.filter(e => e.page === page).map(e => [strip(e.path.split('/').pop()), e]));
 const md5 = buf => crypto.createHash('md5').update(buf).digest('hex');
 const fileHash = f => md5(fs.readFileSync(f));
