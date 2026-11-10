@@ -72,7 +72,7 @@ Don'ts                                   → 없음
 ## 5. 함께 처리할 것
 
 - Setting Up 은 5단계로 확정(Overview "다섯 단계"와 일치). 5번 "값울" · 이중 공백 · "Linespacing와" 는 2026-11-08 정리.
-- `scripts/typo-layout-ai.mjs` 의 setting-up 장표는 5장 기준 유지. 생성 결과 `~/Downloads/temp/typography-layout-ai/`.
+- setting-up 장표는 5장 기준 유지. (생성 스크립트 `scripts/typo-layout-ai.mjs` 는 2026-11-10 삭제, git 태그 `archive/illustrator-scripts-2026-11-10` 에 보관)
 - 영문 md 번역 때 라벨 규칙 동일 적용.
 
 ## 6. 결정 사항 (2026-11-08)

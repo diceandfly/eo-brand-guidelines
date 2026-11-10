@@ -9,8 +9,8 @@ const { guide } = Astro.props;
 const ui = UI_TEXT[guide.lang];
 const found = { zero: ui.found(0), many: ui.found(999).replace('999', '{n}') };   // 결과 개수 알림 문구 (클라이언트에서 {n} 치환)
 ---
-<form class="search" role="search" data-search onsubmit="return false" data-found-zero={found.zero} data-found-many={found.many} data-index-url={`/${guide.lang}/search-index.json`}>
-  <input class="search__input t-ui" type="search" placeholder="Search" aria-label={ui.search} autocomplete="off" spellcheck="false"
+<form class="search" role="search" data-search onsubmit="return false" data-found-zero={found.zero} data-found-many={found.many} data-empty={ui.noResults} data-index-url={`/${guide.lang}/search-index.json`}>
+  <input class="search__input t-ui" type="search" placeholder={ui.searchPlaceholder} aria-label={ui.search} autocomplete="off" spellcheck="false"
     role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-results" data-search-input />
   <button class="search__clear" type="button" aria-label={ui.clear} hidden data-search-clear>
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="square" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" /></svg>
@@ -86,7 +86,7 @@ const found = { zero: ui.found(0), many: ui.found(999).replace('999', '{n}') }; 
               + `<span class="search__quote">${quote}</span>`
               + `<span class="search__crumb t-label">${esc(crumb)}</span></a></li>`;   // 경로는 강조하지 않음
           }).join('')
-        : `<li class="search__empty" role="option" aria-disabled="true">No results</li>`;
+        : `<li class="search__empty" role="option" aria-disabled="true">${esc(form.dataset.empty ?? '')}</li>`;
       input.removeAttribute('aria-activedescendant');
       announce(hits.length);
       open(true);

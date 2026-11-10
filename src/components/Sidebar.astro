@@ -17,7 +17,7 @@ const { guide, current, lang, alt } = Astro.props;
       return (
         <li class:list={['nav__chapter', { 'is-active': active }]}>
           <!-- 챕터는 이동하지 않고 페이지 목록만 접고 폅니다 (JS). 페이지가 하나뿐인 챕터도 같은 동작 (경험 일관). JS 가 없으면 첫 페이지로 가는 링크 -->
-          <a class="nav__chapter-link" href={ch.subs[0]?.url ?? `/${lang}`} aria-current={active ? 'true' : undefined} aria-expanded={String(active)} data-chapter-toggle role="button">
+          <a class="nav__chapter-link" href={ch.subs[0]?.url ?? `/${lang}`} aria-current={active ? 'true' : undefined} aria-expanded={active ? 'true' : 'false'} data-chapter-toggle role="button">
             <span class="nav__num">{ch.num}</span><span>{ch.name}</span>
           </a>
           <!-- 접고 펴는 묶음(nav__fold). 모든 목록을 미리 그려 두고 활성 쪽만 열어 둡니다. 클릭하면 아래 스크립트가 슬라이드로 전환 -->

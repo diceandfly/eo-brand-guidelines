@@ -6,12 +6,14 @@
  *  1.5 페이지 전환 — 다른 페이지 링크를 누르면 본문을 먼저 사라지게 한 뒤 이동 (들어올 때는 CSS).
  *  3. 이미지 확대 보기 — .fig__frame 의 <img> 를 누르면 라이트박스. 디졸브 + 스케일.
  * 수치는 전부 tokens.css 의 모션 토큰(B-9 페이지 전환 · 스크롤, B-8 라이트박스, B-2 목차 슬라이드)에서 읽습니다 (Don't 대각선 영역만 B-6 의 --ratio-dodont).
- * 시간 토큰은 "0.4" 처럼 초로 써도, "400ms" 처럼 ms 로 써도 됩니다. 아래 대체값은 토큰을 못 읽을 때만 쓰며 토큰과 같게 유지.
+ * 시간 토큰은 "0.4" 처럼 초로 써도, "400ms" 처럼 ms 로 써도 됩니다. 아래 대체값은 토큰을 못 읽을 때만 쓰며 토큰과 같게 유지
+ * (npm test 가 ms() · num() · easeOf() 의 대체값을 tokens.css 와 대조해, 다르면 실패).
  */
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { CustomEase } from 'gsap/CustomEase';
+import { parseSeconds } from './tokens';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, CustomEase);
 
@@ -34,19 +36,14 @@ const easeOf = (name: string, fallback: string): string | gsap.EaseFunction => {
   eases.set(raw, ease);
   return ease;
 };
-/** 시간 토큰 → 초. "360ms" → 0.36, "0.4s" · "0.4" → 0.4 */
-const ms = (name: string, fallback: number) => {
-  const raw = token(name);
-  const v = parseFloat(raw);
-  if (!Number.isFinite(v)) return fallback;
-  return raw.endsWith('ms') ? v / 1000 : v;          // "360ms" → 0.36, "0.4s" → 0.4
-};
+/** 시간 토큰 → 초. "360ms" → 0.36, "0.4s" · "0.4" → 0.4 (parseSeconds, src/lib/tokens.ts) */
+const ms = (name: string, fallback: number) => parseSeconds(token(name)) ?? fallback;
 
 // 운영체제의 "동작 줄이기"를 켠 사용자: 스무스 스크롤 끔, 섹션 이동은 바로 점프, 라이트박스는 배율 없이 짧은 디졸브
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- 1. 스무스 스크롤 ---------- */
-const smoothAmount = reduced ? 0 : ms('--scroll-smooth', 1.2);
+const smoothAmount = reduced ? 0 : ms('--scroll-smooth', 1);
 const wrapper = document.getElementById('smooth-wrapper');
 const content = document.getElementById('smooth-content');
 let smoother: ScrollSmoother | null = null;
@@ -87,7 +84,6 @@ document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && !e.a
 window.addEventListener('wheel', scheduleResume, { passive: true });
 window.addEventListener('touchstart', scheduleResume, { passive: true });
 window.addEventListener('touchmove', scheduleResume, { passive: true });
-(window as any).__ST = ScrollTrigger;                           // 디버그용 (브라우저 콘솔에서 refresh 등 확인)
 // 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품.
 // ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계" 라서 스크롤을 부드럽게 따라가지 않고 바로 점프하므로, 그 시간이 지난 뒤에 풉니다.
 let guardReleased = false;
@@ -98,7 +94,7 @@ const releaseGuard = () => {
   arriveAtHash();                                               // #섹션으로 들어온 경우, 스크롤 범위가 생긴 뒤에 이동
 };
 // setTimeout 으로 잡습니다: gsap.delayedCall 은 rAF 기반이라 백그라운드 탭(Cmd+클릭 등)에서는 멈춰 가드가 3초 폴백까지 안 풀리고, #섹션 도착 이동도 못 합니다.
-if (smoother) setTimeout(releaseGuard, ms('--scroll-guard-hold', 0.6) * 1000); else releaseGuard();
+if (smoother) setTimeout(releaseGuard, ms('--scroll-guard-hold', 0.41) * 1000); else releaseGuard();
 
 const anchorOffset = () => num('--anchor-offset', 64);
 
@@ -188,7 +184,7 @@ export function scrollToId(id: string, animate = true) {
    목표 위치만 옮기고 매 프레임 지수 감속으로 따라갑니다. 이동 거리는 브라우저가 주는 deltaY 그대로(기본 스크롤과 같은 양),
    휠 한 칸이 120 단위(wheelDeltaY)로 오는 환경만 --nav-wheel-step 으로 환산. */
 const navScroller = document.querySelector<HTMLElement>('[data-nav-scroll]');
-const navSmooth = reduced ? 0 : ms('--nav-scroll-smooth', 1.2);
+const navSmooth = reduced ? 0 : ms('--nav-scroll-smooth', 0.3);
 if (navScroller && navSmooth > 0) {
   const legacyOf = (e: WheelEvent) => (e as WheelEvent & { wheelDeltaY?: number }).wheelDeltaY;
   const stepPx = num('--nav-wheel-step', 80);
@@ -327,7 +323,6 @@ else arriveAtHash();
     };
     gsap.ticker.add(spy);
     window.addEventListener('resize', () => { lastY = -1; });
-    (window as any).__spy = spy;                                  // 디버그용 (브라우저 콘솔에서 상태 확인)
   }
 }
 
@@ -338,7 +333,7 @@ const boxStrike = box?.querySelector<HTMLElement>('.lightbox__strike');
 const boxMirror = box?.querySelector<HTMLElement>('.lightbox__mirror');
 const boxPan = box?.querySelector<HTMLElement>('[data-lightbox-pan]');
 const boxCrop = box?.querySelector<HTMLElement>('.lightbox__crop');
-const mobileMQ = matchMedia('(max-width: 899px)');            // base.css 의 모바일 브레이크포인트와 같게
+const mobileMQ = matchMedia('(max-width: 899px)');            // 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것
 const isMobile = () => mobileMQ.matches;
 const mirrorImgs = boxMirror ? Array.from(boxMirror.querySelectorAll<HTMLImageElement>('img')) : [];
 
@@ -356,6 +351,7 @@ if (box && boxImg) {
   // Don't 대각선: 화면에 그려진 이미지의 가운데 --ratio-dodont 영역 (카드에서 보이던 영역과 같음)
   // 모바일: 2:3 창(.lightbox__pan) 높이에 맞춰, 원본의 가운데 --ratio-dodont(4:3) 폭만 보이게 crop 상자와 이미지 위치를 정함. 처음엔 왼쪽 끝
   const placeMobile = () => {
+    for (const el of [boxStrike, boxMirror]) if (el) { el.style.width = ''; el.style.height = ''; }   // PC 에서 연 뒤 좁아진 경우: PC 용 px 크기를 지워 CSS(4:3 영역 전체)가 적용되게
     if (!boxPan || !boxCrop || !boxImg.naturalWidth) return;
     const H = boxPan.clientHeight;
     const imgRatio = boxImg.naturalWidth / boxImg.naturalHeight;
@@ -432,10 +428,10 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
         smoother?.paused(false);
         document.documentElement.classList.remove('lightbox-open');
         for (const t of SCROLL_EVENTS) window.removeEventListener(t, blockScroll);
+        opener?.focus({ preventScroll: true });                   // inert 를 푼 뒤에 돌려줌 (inert 요소는 포커스를 받지 못함)
+        opener = null;
       }
     });
-    opener?.focus({ preventScroll: true });
-    opener = null;
   };
 
   const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset);

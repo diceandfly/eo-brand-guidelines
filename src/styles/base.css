@@ -331,7 +331,7 @@ html.js .main {
   margin-inline: auto; /* 남는 폭은 양쪽에 균등 분배 */
 }
 
-@media (max-width: 899px) {
+@media (max-width: 899px) { /* 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 */
   .topbar {
     display: flex;
   }
@@ -736,7 +736,7 @@ html.js .main {
 }
 
 /* 모바일: PC 토큰 이름을 -m 값으로 바꿔 끼웁니다. 위의 규칙들은 그대로 PC 이름을 씁니다. */
-@media (max-width: 899px) {
+@media (max-width: 899px) { /* 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 */
   .sec--textcols .sec__body {
     grid-template-columns: 1fr; /* 모바일: 한 단으로 */
   }
@@ -947,28 +947,6 @@ html.js .main {
 .fig__caption .cap-num--2 {
   width: var(--t-body-olist-indent-2);
   margin-left: calc(-1 * var(--t-body-olist-indent-2));
-}
-.fig__caption .cap-key {
-  margin-right: var(--cap-num-gap); /* 캡션 앞 키워드 "세로형/" — 글자는 그대로, 슬래시만 모노. 강조는 md 에서 키워드를 ** 로 감쌈 (strong). 보관: 2026-11-04 부터 가이드는 "세로형 — 설명" 글자로 씀 */
-}
-/* 키워드 라벨은 글과 한 줄에 흐르고(인라인), 줄이 넘어가면 글은 캡션 왼쪽 선으로 돌아감 — 행잉 인덴트 없음 (번호 라벨은 위처럼 행잉). 본문 키워드 문단 · 목록과 같은 방식 */
-.cap-slash {
-  font-family: var(--font-mono); /* 키워드 뒤 슬래시 — 번호 라벨과 같은 모노 */
-}
-/* 키워드 목록 항목 "- 키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글이 인라인으로 흐름. 줄이 넘어가면 글은 불릿 들여쓰기 선으로 돌아감 (캡션과 같음) */
-.t-body .li-key {
-  margin-right: var(--cap-num-gap); /* 목록 항목 앞 "키워드/" — 캡션 키워드와 같은 양식. 강조는 키워드를 ** 로 감쌈. 보관: 가이드는 "- 키워드 — 설명" 글자로 씀 */
-}
-/* 키워드 문단 "키워드/ 설명" (guide.ts listKeys): 키워드 + 고정 간격(--cap-num-gap) + 글이 인라인으로 흐름. 줄이 넘어가면 글은 문단 왼쪽 선으로 돌아감 (캡션과 같음) */
-.t-body .p-key {
-  margin-right: var(--cap-num-gap); /* 캡션 · 목록 키워드와 같은 양식 */
-}
-/* 키워드 단락 "키워드// 설명" (슬래시 둘): 순서 목록처럼 들여쓰고, 연속 항목은 목록 간격으로 묶임. + 불릿과는 독립 (tokens.css A-1 --t-body-keyed-*) */
-.t-body .p-keyed--block {
-  margin-left: var(--t-body-keyed-offset);
-}
-.t-body .p-keyed--block + .p-keyed--block {
-  margin-top: calc(var(--lh-unit) * var(--t-body-m) * var(--t-body-keyed-gap));
 }
 .fig__caption {
   display: flex;
@@ -1319,7 +1297,7 @@ html.js .main {
   visibility: visible;
 }
 .lightbox.has-edge {
-  background: color-mix(in srgb, var(--lightbox-edge), var(--c-space-black) var(--lightbox-bg-mix)); /* 가장자리가 단색인 이미지: 그 색이 화면을 채움 (motion.ts 3) */
+  background: color-mix(in srgb, var(--lightbox-edge), var(--lightbox-bg-mix-c) var(--lightbox-bg-mix)); /* 가장자리가 단색인 이미지: 그 색이 화면을 채움 (motion.ts 3) */
 }
 .lightbox.has-fill {
   background: var(--lightbox-fill); /* {bg-color} 이미지: 거울 확장 대신 지정한 색(또는 가장자리 색)이 화면을 그대로 채움. 섞지 않음 (motion.ts 3) */
@@ -1345,7 +1323,7 @@ html.js .main {
 }
 /* 모바일 확대 보기: 2:3 창(.lightbox__pan, 가로 스크롤) 안에 원본의 가운데 4:3(.lightbox__crop)을 창 높이에 맞춰 넣음.
    처음엔 4:3 의 왼쪽 끝에 정렬되고 옆으로 밀어 봄. 크기는 motion.ts 가 이미지 비율로 계산 (--_crop-w, --_img-x) */
-@media (max-width: 899px) {
+@media (max-width: 899px) { /* 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 */
   .lightbox__pan {
     display: block;
     grid-area: 1 / 1;
@@ -1377,8 +1355,8 @@ html.js .main {
   .lightbox__crop .lightbox__strike {
     position: absolute;
     inset: 0;
-    width: auto !important; /* motion.ts 가 PC 용으로 넣는 px 크기를 무시하고 4:3 영역 전체 */
-    height: auto !important;
+    width: auto; /* 4:3 영역 전체. PC 용 px 크기(인라인)는 motion.ts 가 모바일에서 지움 */
+    height: auto;
   }
   .lightbox__mirror {
     display: none; /* 모바일은 거울 확장 없음 */
@@ -1396,17 +1374,17 @@ html.js .main {
   /* 마스크 정지점 (hold → fade 구간을 S 커브로). 직선 그라데이션은 시작·끝의 꺾임이 선으로 보이므로 ease-in-out 에 가깝게 6단계 */
   --_mx:
     #000 var(--lightbox-mirror-hold-x),
-    rgb(0 0 0 / 0.92) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.2),
-    rgb(0 0 0 / 0.7) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.4),
-    rgb(0 0 0 / 0.38) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.6),
-    rgb(0 0 0 / 0.12) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.8),
+    rgb(0 0 0 / var(--lightbox-mirror-a1)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.2),
+    rgb(0 0 0 / var(--lightbox-mirror-a2)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.4),
+    rgb(0 0 0 / var(--lightbox-mirror-a3)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.6),
+    rgb(0 0 0 / var(--lightbox-mirror-a4)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.8),
     transparent var(--lightbox-mirror-fade-x);
   --_my:
     #000 var(--lightbox-mirror-hold-y),
-    rgb(0 0 0 / 0.92) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.2),
-    rgb(0 0 0 / 0.7) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.4),
-    rgb(0 0 0 / 0.38) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.6),
-    rgb(0 0 0 / 0.12) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.8),
+    rgb(0 0 0 / var(--lightbox-mirror-a1)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.2),
+    rgb(0 0 0 / var(--lightbox-mirror-a2)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.4),
+    rgb(0 0 0 / var(--lightbox-mirror-a3)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.6),
+    rgb(0 0 0 / var(--lightbox-mirror-a4)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.8),
     transparent var(--lightbox-mirror-fade-y);
 }
 .lightbox:not(.has-mirror) .lightbox__mirror {

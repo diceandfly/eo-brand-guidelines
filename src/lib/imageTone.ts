@@ -8,9 +8,11 @@
  * 비용을 작게: sharp 로 64×64 로 한 번만 줄여 받아(원본 해상도·채널 통계 호출 없이) JS 로 띠 평균을 냅니다.
  * 결과는 node_modules/.cache/eo-image-tone.json 에 (경로 · 수정 시각 · 크기 · 배율 · 배경색) 키로 저장해
  * 빌드·dev 재시작·npm run assets 에서 다시 재지 않습니다. 브라우저에서는 아무 일도 하지 않습니다.
+ * 파일을 읽지 못하면(손상 등) 경고만 내고 undefined → Figure 는 data-tone 을 생략합니다.
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { luminance } from './tokens.ts';   // srgb 평균값(0~255) → 상대 휘도
 
 export type Tone = 'light' | 'dark';
 export interface EdgeInfo { tone: Tone; edge: string | null; }
@@ -18,7 +20,6 @@ export interface EdgeInfo { tone: Tone; edge: string | null; }
 const LIGHT_THRESHOLD = 0.5;   // 가장자리 평균 휘도(0~1, 감마 보정)가 이 값보다 크면 밝은 이미지
 const RING = 0.03;             // 가장자리 띠의 두께 (보이는 영역 각 변 길이에 대한 비율)
 const SAMPLE = 64;             // 줄여서 재는 크기 (px). 띠 두께가 최소 1px 이 되도록 RING × SAMPLE ≥ 1
-const EDGE_SAMPLE = 256;       // 라이트박스 배경색용 가장자리 1px 띠를 잴 때의 크기 (px)
 
 const CACHE_FILE = path.join(process.cwd(), 'node_modules', '.cache', 'eo-image-tone.json');
 type Cache = Record<string, EdgeInfo>;
@@ -29,17 +30,22 @@ const loadCache = (): Cache => {
   try { cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')); } catch { cache = {}; }
   return cache!;
 };
+// 측정 직후 저장합니다 (dev 서버를 강제 종료해도 잰 만큼은 남음). 한꺼번에 여러 장을 잴 때는 짧게 모아 한 번에 쓰고,
+// 임시 파일에 쓴 뒤 이름을 바꿔 도중에 끊겨도 캐시가 깨지지 않게 합니다. exit 때 한 번 더 확인.
 const saveCache = () => {
   if (!dirty || !cache) return;
-  try { fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true }); fs.writeFileSync(CACHE_FILE, JSON.stringify(cache)); dirty = false; } catch {}
+  try {
+    fs.mkdirSync(path.dirname(CACHE_FILE), { recursive: true });
+    const tmp = `${CACHE_FILE}.${process.pid}.tmp`;
+    fs.writeFileSync(tmp, JSON.stringify(cache));
+    fs.renameSync(tmp, CACHE_FILE);
+    dirty = false;
+  } catch {}
 };
+let saveTimer: ReturnType<typeof setTimeout> | undefined;
+const scheduleSave = () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveCache, 50); saveTimer.unref?.(); };
 process.on('exit', saveCache);
 
-/** srgb 평균값(0~255)으로 상대 휘도 근사 (BT.709 계수, 감마 보정) */
-function luminance(r: number, g: number, b: number): number {
-  const lin = (c: number) => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
-  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
-}
 
 /** 띠 평균색과 흩어짐. size 가 샘플 한 변, t 가 띠 두께(px), lo~hi 가 보이는 영역 */
 function ringAt(data: Buffer, size: number, t: number, lo = 0, hi = size - 1) {
@@ -69,7 +75,7 @@ const hex = (c: number) => Math.round(c).toString(16).padStart(2, '0');
  * @param background 투명 부분을 깔 색 (#rrggbb). 카드가 놓이는 면의 색이어야 투명 PNG·SVG 가 제대로 판정됩니다.
  * @param uniform    가장자리를 단색으로 볼 흩어짐 상한 (0~255). tokens.css --lightbox-bg-uniform
  */
-export async function imageEdge(publicSrc: string, zoom = 1, background = '#000000', uniform = 6): Promise<EdgeInfo | undefined> {
+export async function imageEdge(publicSrc: string, zoom = 1, background = '#000000', uniform = 40): Promise<EdgeInfo | undefined> {
   const file = path.join(process.cwd(), 'public', decodeURI(publicSrc));
   let st: fs.Stats;
   try { st = fs.statSync(file); } catch { return undefined; }
@@ -77,6 +83,17 @@ export async function imageEdge(publicSrc: string, zoom = 1, background = '#0000
   const c = loadCache();
   if (c[key]) return c[key];
 
+  try {
+    const info = await measure(file, zoom, background, uniform);
+    c[key] = info; dirty = true; scheduleSave();
+    return info;
+  } catch (err) {                                              // 손상 파일 등: 빌드는 계속, data-tone · 라이트박스 배경색 없이 렌더
+    console.warn(`[imageTone] ${publicSrc} 를 재지 못했습니다 (${(err as Error).message}). data-tone 없이 진행합니다`);
+    return undefined;
+  }
+}
+
+async function measure(file: string, zoom: number, background: string, uniform: number): Promise<EdgeInfo> {
   const sharp = (await import('sharp')).default;
   const { data } = await sharp(file).resize(SAMPLE, SAMPLE, { fit: 'fill' }).flatten({ background }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const z = Math.max(1, zoom);
@@ -90,9 +107,7 @@ export async function imageEdge(publicSrc: string, zoom = 1, background = '#0000
   // 줄이지 않고 원본 가장 바깥 1px 띠를 그대로 잼 (줄이면 보간으로 색이 섞임). 색은 띠의 최빈색 — 내보내기 때 생기는 1px 어두운 줄(1081px 장표 등)이나 라벨이 평균을 끌어내리지 않게
   const edgeRaw = await sharp(file).flatten({ background }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
   const full = ringAtRect(edgeRaw.data, edgeRaw.info.width, edgeRaw.info.height, 1);
-  const info: EdgeInfo = { tone, edge: full.spread <= uniform ? `#${hex(full.mode.r)}${hex(full.mode.g)}${hex(full.mode.b)}` : null };
-  c[key] = info; dirty = true;
-  return info;
+  return { tone, edge: full.spread <= uniform ? `#${hex(full.mode.r)}${hex(full.mode.g)}${hex(full.mode.b)}` : null };
 }
 
 /** 직사각형 원본의 바깥 t px 띠 — ringAt 과 같은 통계 (평균 · 흩어짐 · 최빈색) */
@@ -113,9 +128,4 @@ function ringAtRect(data: Buffer, w: number, h: number, t: number) {
   let mode = 0, best = -1;
   for (const [k, c] of count) if (c > best) { best = c; mode = k; }
   return { r: mr, g: mg, b: mb, spread: Math.sqrt(v / (n * 3)), mode: { r: mode >> 16, g: (mode >> 8) & 255, b: mode & 255 } };
-}
-
-/** 밝기만 필요할 때 (imageEdge 의 tone) */
-export async function imageTone(publicSrc: string, zoom = 1, background = '#000000'): Promise<Tone | undefined> {
-  return (await imageEdge(publicSrc, zoom, background))?.tone;
 }

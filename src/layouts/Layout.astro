@@ -16,7 +16,7 @@ const ui = UI_TEXT[lang];
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} - EO Brand Guidelines</title>
+    <title>{title} - {ui.siteName}</title>
     <meta name="robots" content="noindex" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script is:inline>document.documentElement.classList.add('js');</script>
@@ -110,8 +110,8 @@ const ui = UI_TEXT[lang];
     </script>
     <script>
       // 값 복사 (컬러 카드의 값 · 본문 컬러 칩). 버튼에 is-copied 를 잠깐 붙여 Copy → Copied 로 바꿉니다.
-      const raw = getComputedStyle(document.documentElement).getPropertyValue('--swatch-copied-dur').trim();
-      const copiedMs = raw.endsWith('ms') ? parseFloat(raw) : (parseFloat(raw) || 1.2) * 1000;
+      import { parseSeconds } from '../lib/tokens';
+      const copiedMs = (parseSeconds(getComputedStyle(document.documentElement).getPropertyValue('--swatch-copied-dur')) ?? 1.2) * 1000;
       const write = async (text: string) => {
         try { await navigator.clipboard.writeText(text); return true; }
         catch {                                                     // 클립보드 API 를 못 쓰는 환경 폴백
@@ -137,7 +137,7 @@ const ui = UI_TEXT[lang];
       const root = document.documentElement;
       const btn = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
       const sidebar = document.querySelector<HTMLElement>('.sidebar');
-      const desktop = window.matchMedia('(min-width: 900px)');
+      const desktop = window.matchMedia('(min-width: 900px)');   // 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 (여기는 PC 쪽 900px)
       const set = (open: boolean) => {
         root.classList.toggle('nav-open', open);
         btn?.setAttribute('aria-expanded', String(open));

@@ -6,8 +6,9 @@
  * 폴더(기본: 다운로드/temp)의 이미지를 국문 가이드(content/guide.ko.md)의 이미지 이름에 맞춰
  * public/assets/<챕터>/<페이지>/<주제 번호>-<이름>.<확장자> 로 복사합니다. 원본은 그대로 둡니다.
  *   - 파일명 앞 접두어(마지막 _ 까지, 예: "20261016 Finalization_")와 앞 번호(예: 03-)는 떼고 비교합니다.
- *   - 공백은 - 로 바꿉니다 ("icon-in use" → icon-in-use). 대소문자는 무시합니다.
- *   - 같은 이름의 예전 파일(번호·확장자가 달라도)은 새 파일로 바꿉니다. 단 그림이 같으면 건드리지 않습니다.
+ *   - 공백은 - 로 바꿉니다 ("icon-in use" → icon-in-use). 대소문자는 무시합니다(가이드 이름 · 예전 파일 이름도 소문자로 비교).
+ *   - 같은 이름의 예전 파일(번호·확장자·대소문자가 달라도)은 새 파일로 바꿉니다. 단 그림이 같으면 건드리지 않습니다.
+ *     바뀌는 예전 파일은 지우지 않고 .trash/<날짜-시각>/ 로 옮깁니다 (scripts/lib/trash.mjs).
  *     다시 내보내면 그림이 같아도 바이트가 달라질 수 있어서, 바이트가 다르면 픽셀로 한 번 더 비교합니다(sharp).
  *   - 가이드에 자리가 없는 파일은 복사하지 않고 목록으로 알려 줍니다.
  * 같은 이미지 이름이 여러 페이지에 있으므로(clearspace, dont-1 …) 페이지를 꼭 지정합니다.
@@ -19,8 +20,8 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import sharp from 'sharp';
-import { loadManifest } from './lib/manifest.mjs';
-import { EXTS, stripFileNum as strip } from '../src/lib/guide.ts';
+import { loadManifest, EXTS, stripNum as strip } from './lib/manifest.mjs';
+import { toTrash } from './lib/trash.mjs';
 
 const ROOT = process.cwd();
 const ASSETS = path.join(ROOT, 'public', 'assets');
@@ -46,8 +47,9 @@ const subDir = path.join(baseDir, slugOf(page));
 const srcDir = fs.existsSync(subDir) && fs.statSync(subDir).isDirectory() ? subDir : baseDir;
 console.log(`가져오는 폴더: ${srcDir}${srcDir === baseDir ? '  (페이지 하위 폴더 없음)' : ''}`);
 
-const norm = s => s.toLowerCase().replace(/^.*_/, '').replace(/^\d{2}-/, '').trim().replace(/\s+/g, '-');
-const slots = new Map(entries.filter(e => e.page === page).map(e => [strip(e.path.split('/').pop()), e]));
+const norm = s => strip(s.toLowerCase().replace(/^.*_/, '')).trim().replace(/\s+/g, '-');   // 접두어(마지막 _ 까지) → 앞 번호(파서와 같은 stripNum) → 공백은 -
+const slots = new Map(entries.filter(e => e.page === page).map(e => [strip(e.path.split('/').pop()).toLowerCase(), e]));
+const sameName = (file, name) => strip(path.basename(file, path.extname(file))).toLowerCase() === name;   // 폴더 안 예전 파일 ↔ 자리 이름 (번호 · 확장자 · 대소문자 무시)
 const md5 = buf => crypto.createHash('md5').update(buf).digest('hex');
 const fileHash = f => md5(fs.readFileSync(f));
 // 픽셀 비교: 디코드한 원시 픽셀의 해시. 같은 그림이면 같은 해시. 디코드 실패(깨진 파일 등)면 null (→ 바뀐 것으로 취급)
@@ -73,16 +75,16 @@ for (const f of files) {
   done.add(name);
   // 비교 대상: 같은 자리의 파일, 없으면 같은 이름의 예전 파일 (번호·확장자가 달라도)
   const prev = fs.existsSync(dst) ? dst
-    : fs.existsSync(dir) ? (fs.readdirSync(dir).map(o => path.join(dir, o)).find(o => strip(path.basename(o, path.extname(o))) === name) ?? null)
+    : fs.existsSync(dir) ? (fs.readdirSync(dir).map(o => path.join(dir, o)).find(o => sameName(o, name)) ?? null)
     : null;
   const verdict = prev && await sameImage(prev, src);
   if (verdict === 'bytes') { same++; continue; }
   if (verdict === 'pixels') { reexported++; continue; }                // 그림은 같고 다시 내보내기만 됨
-  const existed = fs.existsSync(dir) && fs.readdirSync(dir).some(o => strip(path.basename(o, path.extname(o))) === name);
+  const existed = fs.existsSync(dir) && fs.readdirSync(dir).some(o => sameName(o, name));
   if (!dry) {
     fs.mkdirSync(dir, { recursive: true });
-    for (const o of fs.readdirSync(dir)) {                    // 같은 이름의 예전 파일 정리 (번호·확장자가 달라도)
-      if (strip(path.basename(o, path.extname(o))) === name && path.join(dir, o) !== dst) fs.rmSync(path.join(dir, o));
+    for (const o of fs.readdirSync(dir)) {                    // 같은 이름의 예전 파일(같은 자리 포함)은 지우지 않고 .trash/ 로 (번호·확장자·대소문자가 달라도)
+      if (sameName(o, name)) toTrash(ROOT, path.join(dir, o));
     }
     fs.copyFileSync(src, dst);
   }
