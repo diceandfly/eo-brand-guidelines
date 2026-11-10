@@ -2,7 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Section from '../../../components/Section.astro';
 import { loadAllGuides } from '../../../lib/content';
-import { altUrl, sectionBlocks, LANGS, type Guide, type Sub, type Lang } from '../../../lib/guide';
+import { altUrl, sectionBlocks, LANGS, UI_TEXT, type Guide, type Sub, type Lang } from '../../../lib/guide';
 
 export async function getStaticPaths() {
   const guides = loadAllGuides();
@@ -40,7 +40,7 @@ const blocks = sectionBlocks(sub);
 
   {sub.next && (
     <a class="next" href={sub.next.url}>
-      <span class="next__label t-label">Next</span>
+      <span class="next__label t-label">{UI_TEXT[lang].next}</span>
       <span class="next__title t-heading">{sub.next.chapterName} / {sub.next.name}{' '}<svg class="next__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="square" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7" /></svg></span>
     </a>
   )}

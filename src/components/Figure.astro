@@ -16,7 +16,7 @@ const ui = UI_TEXT[langFromPath(Astro.url.pathname)];
 const plain = (html: string) => html.replace(/<[^>]+>/g, '').replace(/&(amp|lt|gt|quot|#39|#x27);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", '#x27': "'" } as Record<string, string>)[e]);
 const alt = item.caption ? plain(item.caption) : (label ?? item.token);
 const ratioLabel = ratio.replace(/\s/g, '').replace('var(--ratio-', '').replace(')', '');
-const captionHtml = item.caption ?? (item.badge === 'do' ? 'Do' : item.badge === 'dont' ? 'Don’t' : item.badge === 'con' ? 'Conditional' : '');
+const captionHtml = item.caption ?? (item.badge ? ui.badgeCaption[item.badge] : '');
 // 가장자리(빌드 때 측정): tone → 호버 테두리를 밝은 회색/어두운 회색 중 어느 쪽으로 할지. edge → 가장자리가 단색이면 그 색 (라이트박스 배경, data-lb-bg).
 // 투명 부분은 카드 면 색(--surface)으로 깔고 잼. 단색 판정 문턱은 --lightbox-bg-uniform
 const info = item.src ? await imageEdge(item.src, toneZoom, tokenHex(TOKENS, '--surface', '#000000'), tokenNumber(TOKENS, '--lightbox-bg-uniform', 40)) : undefined;

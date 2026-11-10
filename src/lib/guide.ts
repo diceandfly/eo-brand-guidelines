@@ -79,10 +79,15 @@ export const LANGS = ['en', 'ko'] as const;
 export type Lang = (typeof LANGS)[number];
 export const DEFAULT_LANG: Lang = 'en';
 export const LANG_LABEL: Record<Lang, string> = { en: 'EN', ko: 'KR' };   // 목차 하단 전환 버튼 표기
-/** 화면낭독기용 문구 (aria-label · 상태 알림). 화면에 보이는 UI 글자(Search, No results 등)는 디자인상 영문 그대로 */
+/**
+ * UI 문구는 여기 한 곳에만 둡니다 (컴포넌트에 글자를 직접 쓰지 않음).
+ *   화면낭독기용(aria-label · 상태 알림): toc … con — 언어별로 번역.
+ *   화면에 보이는 글자: siteName(탭 제목 접미) · searchPlaceholder · noResults · next · badgeCaption(캡션 없는 Do/Don't 카드의 기본 문구) — 디자인상 두 언어 모두 영문 그대로.
+ */
+const UI_VISIBLE = { siteName: 'EO Brand Guidelines', searchPlaceholder: 'Search', noResults: 'No results', next: 'Next', badgeCaption: { do: 'Do', dont: 'Don’t', con: 'Conditional' } };
 export const UI_TEXT = {
-  en: { toc: 'Table of contents', openToc: 'Open table of contents', language: 'Language', search: 'Search the guidelines', clear: 'Clear search', results: 'Search results', found: (n: number) => (n ? `${n} results` : 'No results'), lightbox: 'Image viewer', copy: 'Copy', do: 'Do', dont: "Don't", con: 'Conditional' },
-  ko: { toc: '목차', openToc: '목차 열기', language: '언어', search: '가이드라인 검색', clear: '검색어 지우기', results: '검색 결과', found: (n: number) => (n ? `결과 ${n}개` : '결과 없음'), lightbox: '이미지 확대 보기', copy: '복사', do: 'Do', dont: "Don't", con: 'Conditional' },
+  en: { toc: 'Table of contents', openToc: 'Open table of contents', language: 'Language', search: 'Search the guidelines', clear: 'Clear search', results: 'Search results', found: (n: number) => (n ? `${n} results` : 'No results'), lightbox: 'Image viewer', copy: 'Copy', do: 'Do', dont: "Don't", con: 'Conditional', ...UI_VISIBLE },
+  ko: { toc: '목차', openToc: '목차 열기', language: '언어', search: '가이드라인 검색', clear: '검색어 지우기', results: '검색 결과', found: (n: number) => (n ? `결과 ${n}개` : '결과 없음'), lightbox: '이미지 확대 보기', copy: '복사', do: 'Do', dont: "Don't", con: 'Conditional', ...UI_VISIBLE },
 } satisfies Record<Lang, Record<string, unknown>>;
 /** 페이지 경로(/ko/…, /en/…)로 언어 판별. 언어 정보가 props 로 오지 않는 컴포넌트용 */
 export const langFromPath = (path: string): Lang => (LANGS as readonly string[]).includes(path.split('/')[1]) ? (path.split('/')[1] as Lang) : DEFAULT_LANG;
