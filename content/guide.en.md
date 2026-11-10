@@ -193,9 +193,9 @@ The EO symbol is the most iconic and effective way to signal the media brand EO.
 #### + Motif
 The EO symbol is designed around the three parts of a screw: shaft · thread · head.
 
-- **Thread** — one turn of the thread stands for a cycle of problem solving.
-- **Shaft** — the shaft stands for the process of building and the builder's journey, and expresses the courage to keep moving forward (Build Anyway).
-- **Head** — the head stands for a single small problem solved, or a single builder.
+- **Thread** — One turn of the thread stands for a cycle of problem solving.
+- **Shaft** — The shaft stands for the process of building and the builder's journey, and expresses the courage to keep moving forward (Build Anyway).
+- **Head** — The head stands for a single small problem solved, or a single builder.
 ![motif] {zoom=1.05}
 
 
@@ -207,9 +207,9 @@ The E block, which depicts the facade of a screw, consists of a shaft and three 
 
 ### Symbol
 #### + Clearspace
-Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the page. With H as the vertical height of one E block, always keep clear space of at least H/2 on all four sides between the symbol and every adjacent element.
+Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the page. With H as the vertical height of one E block, always keep a clearspace of at least H/2 on all four sides between the symbol and every adjacent element.
 
-When the symbol sits at the center of a small frame, such as an app icon or profile image, its visual weight drifts to the left the smaller it is seen. Correct this by narrowing only the right clearspace, which pushes the symbol to the right. **Right clearspace = H × (0.42 + 0.0012 × S)**, where S is the symbol height actually seen on screen (mm); at S of 67mm or more, keep H/2 as is. The symbol moves right within the frame by (H/2 − right clearspace) ÷ 2, which equals the correction value n in [[#app-and-social-icons-alignment|App & Social Icons › Alignment]]. This is an approximation derived from measurements at a desktop viewing distance of 500mm across seen heights of 4-50mm, with a maximum error of ±0.02mm.
+When the symbol sits at the center of a small frame, such as an app icon or profile image, its visual weight drifts to the left the smaller it is seen. Correct this by narrowing only the right clearspace, which pushes the symbol to the right. **Right clearspace = H × (0.42 + 0.0012 × S)**, where S is the symbol height actually seen on screen (mm); at S of 67mm or more, keep H/2 as is. The symbol moves right within the frame by (H/2 − right clearspace) ÷ 2. For how to apply it, see [[#app-and-social-icons-alignment|App & Social Icons › Alignment]]. This is an approximation derived from measurements at a desktop viewing distance of 500mm across seen heights of 4-50mm, with a maximum error of ±0.02mm.
 ![clearspace] {zoom=1.05}
 
 
@@ -217,10 +217,10 @@ When the symbol sits at the center of a small frame, such as an app icon or prof
 #### + Scalability
 The EO symbol is designed and tested to work across a range of sizes. Every size rule is based on the height seen at a distance of 500mm; for media viewed from farther away, apply it to the height converted to the end user's typical viewing distance (actual height × 500 ÷ distance).
 
-- Optimal range — a height of 40-100px (about 8-20mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/25 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
-- Recommended maximum size — a height of 70px (about 15mm, 1/33 of the viewing distance). On typical pages, we recommend staying within this size.
-- Minimum size — a height of 20px on screen (about 4mm, 1/125 of the viewing distance) and 4mm in print. Below this, the threads of the E block blur together, so ask the EO design team to review.
-- Maximum size — a height of 125px (about 25mm, 1/20 of the viewing distance). Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#donts|graphic pattern]] instead of the symbol.
+- Optimal range — A height of 40-100px (about 8-20mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/25 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
+- Recommended maximum size — A height of 70px (about 15mm, 1/33 of the viewing distance). On typical pages, we recommend staying within this size.
+- Minimum size — A height of 20px on screen (about 4mm, 1/125 of the viewing distance) and 4mm in print. Below this, the threads of the E block blur together, so ask the EO design team to review.
+- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#donts|graphic pattern]] instead of the symbol.
 ![scalability] {zoom=1.05}
 
 
@@ -234,7 +234,7 @@ As a sign-off, place the symbol in the corner farthest from the person or [[grap
 
 ### Usage {layout=grid-2}
 #### Do's & Don'ts
-When using the symbol for display, **do not raise its visual hierarchy simply by scaling it up.** Secure ample space around where the symbol sits, so that it keeps its impact at a moderate size. Ideally, the symbol's actual footprint is 5-10% of the whole empty space, with space around it of at least 2-3 times the symbol's width.
+When using the symbol for display, **do not raise its visual hierarchy simply by scaling it up.** Leave ample space around the symbol, so that it keeps its impact at a moderate size. Ideally, the symbol's actual footprint is 5-10% of the whole empty space, with space around it of at least 2-3 times the symbol's width.
 ![usage-do-1]{do} Ideally, a symbol at 5-10% of the empty space it sits in
 ![usage-do-2]{do} Generous space around the symbol gives it ample presence at a moderate size
 ![usage-dont-1]{dont} Do not fill the empty space with the symbol alone
@@ -307,7 +307,7 @@ In such cases, optically scale the partner logo up or down to create a more equa
 
 ### + App & Social Icons
 #### Alignment
-In an app icon or profile image, do not simply center the symbol itself. Center the clearspace box with the right-side correction from [[#clearspace|Clearspace]] in the frame instead. This corrects the visual weight that drifts to the left the smaller the symbol is seen. The correction value for a given frame size and viewing distance follows the clearspace rule.
+Because the EO symbol is asymmetric, its visual weight shifts to the left the smaller it is seen. In an app icon or profile image, do not simply center the symbol itself; center the clearspace box from [[#clearspace|Clearspace]] in the icon area instead. The correction for the icon area's size and viewing distance follows the clearspace rule.
 ![icon-alignment] {zoom=1.05}
 
 
@@ -358,13 +358,13 @@ Always get approval from the EO design team when creating a new descriptor or ch
 #### + Clearspace {layout=grid-2}
 The signature also needs space around it, on the same principle as the EO symbol. The base unit, however, differs by form.
 
-![clearspace-v] {zoom=1.05} Vertical — with H as the vertical height of one E block, keep clear space of at least H/2 on all four sides around the whole signature.
-![clearspace-h] {zoom=1.6} Horizontal — based on the cap height of the uppercase E in the descriptor, keep clear space of at least one cap height on all four sides around the whole signature.
+![clearspace-v] {zoom=1.05} Vertical — with H as the vertical height of one E block, keep a clearspace of at least H/2 on all four sides around the whole signature.
+![clearspace-h] {zoom=1.6} Horizontal — based on the cap height of the uppercase E in the descriptor, keep a clearspace of at least one cap height on all four sides around the whole signature.
 
 
 ### Signature
 #### + Scalability
-As on the Symbol page, sizes on this page are given as the symbol height on a 16-inch Mac display (about 5px/mm) viewed from 500mm. On other media, convert using the ratio in parentheses (symbol height relative to viewing distance).
+As in the Symbol section, sizes on this page are given as the symbol height on a 16-inch Mac display (about 5px/mm) viewed from 500mm. On other media, convert using the ratio in parentheses (symbol height relative to viewing distance).
 
 The smaller the signature is seen, the more the symbol and descriptor read as a single mass; the larger it is seen, the more each letter of the descriptor comes into focus. The form therefore depends on the visible size, and the threshold is a symbol height of 10mm (50px, 1/50).
 
@@ -434,8 +434,8 @@ The signature uses four of the six color pairings of the EO symbol. **Always ren
 #### + Inversion {layout=grid-2}
 Like the symbol, the signature is built by default as a light signature in bright colors such as Builder Neon · Air White on dark backgrounds such as Space Black · Solid Gray. If you simply invert the colors to use a dark signature on a light background, an optical illusion makes the symbol look thinner and more spread out, and the letters of the descriptor look one step lighter despite the same weight.
 
-- Vertical — convert the light symbol by the [[symbol#inversion]] rules, and center it in both x · y where the light symbol was. Keep the descriptor centered in its original cap box position, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 0.48H · tracking to -1%, and finish by offsetting the outline outward by H/200.
-- Horizontal — convert the light symbol by the same rules, and center it in both x · y where the light symbol was. Left align the descriptor to the left edge of the original cap box, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 1.35H · tracking to -1%, and finish by offsetting the outline outward by H/200.
+- Vertical — Convert the light symbol by the [[symbol#inversion]] rules, and center it in both x · y where the light symbol was. Keep the descriptor centered in its original cap box position, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 0.48H · tracking to -1%, and finish by offsetting the outline outward by H/200.
+- Horizontal — Convert the light symbol by the same rules, and center it in both x · y where the light symbol was. Left align the descriptor to the left edge of the original cap box, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 1.35H · tracking to -1%, and finish by offsetting the outline outward by H/200.
 
 This keeps the [[typography#inversion|tonal value]] balance between the symbol and the descriptor on a light background the same as in the light signature. Center the finished dark signature in x · y on the clearspace of the light signature of the same level, and use it as is.
 ![inversion-v] {zoom=1.05}
@@ -488,7 +488,7 @@ The sub symbol cannot fully replace the EO symbol, so always use the EO symbol w
 
 ### Sub Symbol
 #### + Clearspace
-The sub symbol also needs space around it, on the same basis as the EO symbol. With t as the height of one thread element, always keep clear space of at least t on all four sides between the symbol and every adjacent element.
+The sub symbol also needs space around it, on the same basis as the EO symbol. With t as the height of one thread element, always keep a clearspace of at least t on all four sides between the symbol and every adjacent element.
 
 The clearspace is based on a Builder Neon sub symbol on a Space Black background. Because the O block has a lower tonal value than the E block, a separate 1.04x correction is applied.
 ![clearspace] {zoom=1.05}
@@ -574,7 +574,7 @@ Read this chapter in the order the framework is carried out. If you need values 
 
 ### Typographic Framework
 #### + Line Unit {zoom=1.3}
-The Line Unit is the base unit of the page. Set the leading of every level as a multiple of the Line Unit; the actual type size is the leading divided by the linespacing (%). From here on, the Line Unit is abbreviated as x: values written in x are multiples of the Line Unit, and values written in % are all linespacing. For example, 2.5x means the leading of that level is set at 2.5 times the Line Unit.
+The Line Unit is the base unit of the page. Set the leading of every level as a multiple of the Line Unit; the actual type size is the leading divided by the linespacing (%). From here on, the Line Unit is abbreviated as x: values written in x are multiples of the Line Unit, and values written in % are all linespacing ratios. For example, 2.5x means the leading of that level is set at 2.5 times the Line Unit.
 
 As a rule, base the Line Unit on **the content, or the component of it, that is used most widely · most often and carries the most weight on the page**.
 
@@ -740,7 +740,7 @@ The base grid is a baseline grid in whole multiples of the Line Unit. The margin
 
 For large pages or layouts with complex components, we recommend the Compound Grid, which combines a modular grid with this baseline grid. It is a modular grid that divides the content area evenly with gutters of one Line Unit, and since the height of a module cell is also a whole multiple of the Line Unit, it is fully compatible with the baseline grid.
 
-- **Compound Grid rows** — the Compound Grid can be applied when the total number of baseline cells satisfies **N = number of rows R × (Line Units per row n + 1) − 1**. For example, 35 cells divide into 6 rows × 5 cells or 4 rows × 8 cells. 47 cells allow 4 · 6 · 8 · 12 rows alike, making it the most flexible. With the gutter between rows widened to 2 cells, 47 cells also divide into 7 rows × 5 cells.
+- **Compound Grid rows** — The Compound Grid can be applied when the total number of baseline cells satisfies **N = number of rows R × (Line Units per row n + 1) − 1**. For example, 35 cells divide into 6 rows × 5 cells or 4 rows × 8 cells. 47 cells allow 4 · 6 · 8 · 12 rows alike, making it the most flexible. With the gutter between rows widened to 2 cells, 47 cells also divide into 7 rows × 5 cells.
 - **Compound Grid columns** — 12 columns × 6 rows are commonly used on 16:9 pages and 6 columns × 6 rows on A-series formats, but set the number freely at the designer's discretion. On A-series or similarly proportioned pages, set it from the page proportion so that the graphic pattern area comes close to a square. The gutter between columns is 1x the Line Unit.
 ![grid-row]{bg-color} 47 cells — 6 rows × 7 cells · 8 rows × 5 cells · 7 rows × 5 cells (2-cell gutter), row gutters of 1-2 cells
 ![grid-column]{bg-color} Column grid — on the same 35 cells, 12 columns for 16:9 · 6 columns for A-series, column gutter of 1x the Line Unit
@@ -801,7 +801,7 @@ Day Blue and Bay Green are cool tones drawn from the nature of the Bay Area. Day
 
 ### Color
 #### EO Palette {layout=grid-4}
-The EO palette consists of Builder Neon · Day Blue · Bay Green and four neutral colors that support them. Solid Gray and Medium Gray carry the neutrality of media: use the darker one as a background color and the lighter one for graphic elements. Space Black and Air White are the foundation for backgrounds and text.
+The EO palette consists of Builder Neon · Day Blue · Bay Green and four neutral colors that support them. Solid Gray and Medium Gray carry the the neutral stance of a media brand: use the darker one as a background color and the lighter one for graphic elements. Space Black and Air White are the foundation for backgrounds and text.
 
 Each color is specified in HEX · RGB for screen and in CMYK · Pantone for print. Use the color mode that matches the medium. In print, Air White can be left as unprinted white paper.
 [swatch] Builder Neon | #F9EE3A | R249 G238 B58 | C5 M0 Y95 K0 | PANTONE 3945 C
@@ -857,7 +857,7 @@ To keep EO's colors consistent, avoid the following. For the minimum contrast be
 
 ### Graphic Unit
 #### + Motif {layout=grid-2}
-Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (hereafter, the unit) takes its motif from the three elements of a screw: shaft, thread and head.
+Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (hereafter, the unit) takes its motif from the three parts of a screw: shaft · thread · head.
 
 - Thread — One turn of the thread symbolizes one cycle of problem solving. The harder the wall it meets, the stronger the resistance and the longer it takes to break through. The tighter the threads, the more densely the builder's time is filled (Build thorough).
 - Shaft — The shaft symbolizes the process of building and the builder's journey. The shaft size expresses how strong the core qualities of that process are.
@@ -894,12 +894,12 @@ Color shows who the protagonist of a graphic is, what forms the environment, and
 - Day Blue — Builders of a different character · community · surrounding elements. Emphasizes the nuance of positive energy · optimism drawn from a blue sky.
 - Bay Green — Builders of a different character · community · surrounding elements. Emphasizes the nuance of softness · friendliness drawn from the green of California's chaparral hills. (team, teamwork, co-working, diversity, nature)
 - Medium Gray — Expresses the nuance of mechanical neutrality: inactivity · the other · indifference · conservatism.
-- Space Black — For situations where visual impact comes first. Use it sparingly, only in a fixed combination with a Builder Neon background, to express overwhelming force.
+- Space Black — For situations where visual impact comes first. Use it sparingly, only in a fixed combination with a Builder Neon background, to express overwhelming presence.
 - Solid Gray is not used as a unit color.
 ![color-neon-white] [Builder Neon]builder · protagonist · core, [Air White]energy · counterpart · balance
 ![color-blue-green] [Day Blue]other builders · surrounding elements · optimism, [Bay Green]other builders · surrounding elements · friendliness
 ![color-gray] [Medium Gray] inactivity · the other · conservatism · the material world
-![color-black-on-neon] [Space Black] on [Builder Neon] fixed combination, overwhelming force
+![color-black-on-neon] [Space Black] on [Builder Neon] fixed combination, overwhelming presence
 
 
 ### + Vocabulary
@@ -907,7 +907,7 @@ A unit takes on new meaning through its direction, number and density alone. The
 
 Vocabulary is the dictionary of the EO graphic system that collects these mapping rules. It gives comprehensive guidance on which visual properties and colors to combine to express a given value keyword. The rules below are those defined so far, not a complete set; new metaphors can be added at any time.
 
-This section mainly covers keyword expression; for guidance on visual quality, see Morphology and [[graphic-pattern#grammar]]. For docking, the way two units are aligned, see Docking.
+This section mainly covers keyword expression; for guidance on visual quality, see [[#morphology|Morphology]] and [[graphic-pattern#grammar]]. For docking, the way two units are aligned, see [[#morphology-docking|Docking]].
 ![vocabulary-overview] {zoom=1.1} {bg-cover}
 
 
@@ -1119,7 +1119,7 @@ Use Builder Neon as a background color, with Space Black units on top, only on p
 
 - Unit color
   - **Apply only one color to each unit.**
-  - **Use no more than three unit colors at once in one graphic pattern.** Up to four are allowed only for the fixed combination of Builder Neon · Day Blue · Bay Green · Medium Gray.
+  - **We recommend no more than three unit colors at once in one graphic pattern;** up to four are allowed only for the fixed combination of Builder Neon · Day Blue · Bay Green · Medium Gray.
   - Medium Gray is a supporting color. Do not use it alone; always combine it with units in other colors.
   - Do not use Solid Gray as a unit color.
 - Background color
@@ -1197,7 +1197,7 @@ The following are typical cases where the pattern loses its role as protagonist.
 The following images show the EO graphic pattern applied across a range of designs.
 ![pattern-in-use-1] 1. Medium-sized poster in a tall vertical format
 ![pattern-in-use-2] 2. Extra-large billboard in a wide horizontal format
-![pattern-in-use-3] 3. Small business card in a horizontal format
+![pattern-in-use-3] 3. Small business card in a wide horizontal format
 ![pattern-in-use-4] 4. Horizontal social media banner
 
 
@@ -1207,7 +1207,7 @@ The following images show the EO graphic pattern applied across a range of desig
 Four rules to follow when placing the [[graphic-pattern#donts|graphic pattern]] on a page.
 
 - **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through density; keep posters seen up close at medium complexity. This is a general tendency, however: designers use their judgment and put visual quality first.
-- **One sheet can hold several variations.** Place several variations of the same motif in one composition to create rhythm.
+- **One page can hold several variations.** Place several variations of the same motif in one composition to create rhythm.
 - **A pattern fits any proportion.** Divide the page into sub-layouts to carry several messages on one page.
 - **Lead the eye with the direction of the threads.** Converge all threads on a single point to draw the eye to the mark or message placed there.
 ![app-principles]
@@ -1221,7 +1221,7 @@ Digital touchpoints such as the web magazine · social feed · video thumbnails.
 
 
 ### Print {layout=grid-3}
-Printed matter such as posters · hang tags · stickers · pins. The default is Space Black units on an Air White ground; use Builder Neon on one side only. Color combinations follow [[graphic-pattern#color]]. Hang tags carry the pattern on the front and size and material information set in Mono on the back.
+Printed matter such as posters · hang tags · stickers · pins. The default is Space Black units on an Air White background; use Builder Neon on one side only. Color combinations follow [[graphic-pattern#color]]. Hang tags carry the pattern on the front and size and material information set in Mono on the back.
 ![app-poster] Poster
 ![app-hangtag] Hang Tag
 ![app-sticker] Sticker Pack & Pin
@@ -1246,7 +1246,7 @@ This document is not a fixed, final edition but a standard that grows and change
 For anything that needs confirmation from the EO design team, such as descriptors · patterns · color combinations, please get in touch.
 
 ### Imagery {span=6}
-Some of the photos · illustrations · mockups in these guidelines are examples to explain brand rules, and EO Studio does not hold the primary license to them. Do not reuse the photos · illustrations · example slides in this guide as-is in external communications.
+Some of the photos · illustrations · mockups in these guidelines are examples to explain brand rules, and EO Studio does not hold the primary license to them. Do not reuse the photos · illustrations · example slides in this guide as is in external communications.
 
 When using others' intellectual property, such as images · illustrations · video, in any EO work released externally, always obtain permission from the copyright holder first.
 
