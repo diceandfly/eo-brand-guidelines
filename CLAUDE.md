@@ -34,4 +34,4 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 - 상세 튜토리얼: `docs/file-management.md`.
 
 ## 실행
-`npm run dev` → http://localhost:4321  /  `npm run build` → `dist/`
+`npm run dev` → http://localhost:4321  /  `npm run build` → `dist/`(md 경고가 있으면 오류로 멈춤)  /  `npm test` → scripts/test.mjs (경고 0 · 플레이스홀더 수 · 모션 대체값 · astro check, EN/KO 패리티는 리포트)

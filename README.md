@@ -6,6 +6,7 @@ EO 리브랜딩 웹 브랜드 가이드라인. Astro 정적 사이트.
 npm install
 npm run dev      # http://localhost:4321
 npm run build    # dist/
+npm test         # 두 md 파싱(경고 0) · 플레이스홀더 수 · 모션 대체값 · astro check, EN/KO 구조 · 폰트 리포트
 ```
 
 - 글·이미지 배치: `content/guide.en.md`, `content/guide.ko.md` (문법은 파일 상단 주석). 두 언어가 함께 빌드되며 `/en/…`, `/ko/…`
@@ -18,7 +19,7 @@ npm run build    # dist/
 이 저장소에는 **폰트 파일이 없습니다.** Founders Grotesk 는 유료 서체라 git 에 넣지 않고(`.gitignore` 와 `.githooks` 가 막음), 라이선스를 가진 쪽이 자기 컴퓨터에서 폰트를 넣어 빌드합니다. 빌드 결과(`dist/`)에는 폰트가 포함되므로, 그 폴더만 호스팅에 올리면 됩니다.
 
 1. 저장소를 클론하고 `npm install`.
-2. `public/fonts/README.md` 에 적힌 woff2 6개를 `public/fonts/` 에 넣습니다 (파일명 그대로).
+2. `public/fonts/README.md` 에 적힌 woff2 5개를 `public/fonts/` 에 넣고(파일명 그대로), `npm run fonts:ko` 로 한글 서체를 받습니다.
 3. `npm run build` → `dist/` 가 완성된 정적 사이트입니다. 이 폴더를 호스팅(Vercel · Netlify · S3 · 사내 서버 등 정적 파일을 올릴 수 있는 곳)에 배포합니다.
 4. 폰트 파일과 `dist/` 는 저장소에 커밋하거나 푸시하지 않습니다. 커밋을 시도하면 훅이 막습니다 (`npm install` 이 `prepare` 스크립트로 `git config core.hooksPath .githooks` 를 실행해 훅을 켭니다).
 

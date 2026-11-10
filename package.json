@@ -11,6 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "test": "node scripts/test.mjs",
     "assets": "node scripts/assets.mjs",
     "import": "node scripts/import.mjs",
     "fonts:ko": "node scripts/pretendard-ko.mjs",
