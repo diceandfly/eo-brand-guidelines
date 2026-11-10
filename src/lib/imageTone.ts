@@ -12,6 +12,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { luminance } from './tokens.ts';   // srgb 평균값(0~255) → 상대 휘도
 
 export type Tone = 'light' | 'dark';
 export interface EdgeInfo { tone: Tone; edge: string | null; }
@@ -46,11 +47,6 @@ let saveTimer: ReturnType<typeof setTimeout> | undefined;
 const scheduleSave = () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveCache, 50); saveTimer.unref?.(); };
 process.on('exit', saveCache);
 
-/** srgb 평균값(0~255)으로 상대 휘도 근사 (BT.709 계수, 감마 보정) */
-function luminance(r: number, g: number, b: number): number {
-  const lin = (c: number) => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
-  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
-}
 
 /** 띠 평균색과 흩어짐. size 가 샘플 한 변, t 가 띠 두께(px), lo~hi 가 보이는 영역 */
 function ringAt(data: Buffer, size: number, t: number, lo = 0, hi = size - 1) {

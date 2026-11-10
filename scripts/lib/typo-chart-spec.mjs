@@ -1,4 +1,8 @@
 /** Linespacing · Letterspacing 차트 스펙 — scripts/typo-chart.mjs(SVG+PNG) 가 씀. (일러스트레이터판 typo-chart-ai.mjs 는 2026-11-10 삭제, 태그 archive/illustrator-scripts-2026-11-10) */
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { parseTokens, tokenHex } from '../../src/lib/tokens.ts';
+
 // ── 격자 ───────────────────────────────────────────────────────────────
 export const W = 1920, H = 1080, UNIT = 28, ROWS = 35;
 export const X = c => 290 + c * 228;           // 컬럼 c(0–5) 왼쪽
@@ -6,7 +10,11 @@ export const Y = r => 50 + r * UNIT;           // 행 r(0–34) 위
 export const SAMPLE_X = X(2), SAMPLE_R = X(4) + 200, SAMPLE_W = SAMPLE_R - SAMPLE_X;   // 746 … 1402
 
 // ── 색 · 서체 ───────────────────────────────────────────────────────────
-export const BG = '#2a2b2b', GRAY = '#8e8e8e', WHITE = '#fcfbf5', NEON = '#f9ee3a';
+// 팔레트 HEX 는 tokens.css(--c-*) 에서 읽습니다 (src/lib/tokens.ts 의 tokenHex — 사이트와 같은 값)
+const TOKENS = parseTokens(fs.readFileSync(fileURLToPath(new URL('../../src/styles/tokens.css', import.meta.url)), 'utf8'));
+const hex = name => tokenHex(TOKENS, name, '');
+export const BG = hex('--c-solid-gray'), GRAY = hex('--c-medium-gray'), WHITE = hex('--c-air-white'), NEON = hex('--c-builder-neon');
+if (![BG, GRAY, WHITE, NEON].every(Boolean)) throw new Error('tokens.css 에서 팔레트 색(--c-solid-gray · --c-medium-gray · --c-air-white · --c-builder-neon)을 읽지 못했습니다');
 export const SANS = 'Founders Grotesk', MONO = 'Founders Grotesk Mono';
 export const CAP = 0.70;                       // 캡 하이트(em) — 행 박스 안에서 대문자를 세로 중앙에
 export const CHAR_W = { 300: 0.384, 400: 0.395, 500: 0.413, mono: 0.570 };   // 평균 글자 폭(em), 실측(scripts 메모)

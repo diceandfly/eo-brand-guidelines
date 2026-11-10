@@ -110,8 +110,8 @@ const ui = UI_TEXT[lang];
     </script>
     <script>
       // 값 복사 (컬러 카드의 값 · 본문 컬러 칩). 버튼에 is-copied 를 잠깐 붙여 Copy → Copied 로 바꿉니다.
-      const raw = getComputedStyle(document.documentElement).getPropertyValue('--swatch-copied-dur').trim();
-      const copiedMs = raw.endsWith('ms') ? parseFloat(raw) : (parseFloat(raw) || 1.2) * 1000;
+      import { parseSeconds } from '../lib/tokens';
+      const copiedMs = (parseSeconds(getComputedStyle(document.documentElement).getPropertyValue('--swatch-copied-dur')) ?? 1.2) * 1000;
       const write = async (text: string) => {
         try { await navigator.clipboard.writeText(text); return true; }
         catch {                                                     // 클립보드 API 를 못 쓰는 환경 폴백

@@ -13,6 +13,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { CustomEase } from 'gsap/CustomEase';
+import { parseSeconds } from './tokens';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, CustomEase);
 
@@ -35,13 +36,8 @@ const easeOf = (name: string, fallback: string): string | gsap.EaseFunction => {
   eases.set(raw, ease);
   return ease;
 };
-/** 시간 토큰 → 초. "360ms" → 0.36, "0.4s" · "0.4" → 0.4 */
-const ms = (name: string, fallback: number) => {
-  const raw = token(name);
-  const v = parseFloat(raw);
-  if (!Number.isFinite(v)) return fallback;
-  return raw.endsWith('ms') ? v / 1000 : v;          // "360ms" → 0.36, "0.4s" → 0.4
-};
+/** 시간 토큰 → 초. "360ms" → 0.36, "0.4s" · "0.4" → 0.4 (parseSeconds, src/lib/tokens.ts) */
+const ms = (name: string, fallback: number) => parseSeconds(token(name)) ?? fallback;
 
 // 운영체제의 "동작 줄이기"를 켠 사용자: 스무스 스크롤 끔, 섹션 이동은 바로 점프, 라이트박스는 배율 없이 짧은 디졸브
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;

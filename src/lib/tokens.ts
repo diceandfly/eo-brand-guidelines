@@ -1,7 +1,9 @@
 /**
  * tokens.css 를 빌드 때 읽는 작은 파서. 디자인 수치를 코드에서도 같은 값으로 쓰기 위한 것:
  * 컬러 칩의 복사 HEX(--c-*), Do/Don't 카드 배율(--dodont-zoom-N), 이미지 톤 판정의 배경색(--bg).
- * 순수 함수라 Vite 없이(scripts/*.mjs) 도 씁니다. 파일은 src/lib/content.ts(Vite) 또는 스크립트가 읽어 넘깁니다.
+ * 순수 함수라 Vite 없이(scripts/*.mjs) 도, 브라우저 스크립트(motion.ts · Layout.astro)에서도 씁니다.
+ * 파일은 src/lib/content.ts(Vite) 또는 스크립트가 읽어 넘깁니다.
+ * 시간 토큰 해석(parseSeconds)과 휘도 공식(luminance · hexLuminance)도 여기 한 벌만 둡니다.
  */
 export type Tokens = Map<string, string>;
 
@@ -64,4 +66,26 @@ function splitTop(s: string): string[] {
   }
   if (cur.trim()) out.push(cur);
   return out.map(x => x.trim());
+}
+
+/** 시간 토큰 값 → 초. "360ms" → 0.36, "0.4s" · "0.4" → 0.4. 숫자가 아니면 null */
+export function parseSeconds(raw: string): number | null {
+  const v = parseFloat(raw);
+  if (!Number.isFinite(v)) return null;
+  return raw.trim().endsWith('ms') ? v / 1000 : v;
+}
+
+/** sRGB 채널(0~255) → 상대 휘도 0~1 (WCAG · BT.709 계수, 감마 보정) */
+export function luminance(r: number, g: number, b: number): number {
+  const lin = (c: number) => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
+
+/** #rgb · #rrggbb → 상대 휘도. 잘못된 값은 검정(0)으로 봄 */
+export function hexLuminance(hex: string): number {
+  let h = hex.replace('#', '');
+  if (h.length === 3) h = [...h].map(x => x + x).join('');
+  if (!/^[0-9a-f]{6}$/i.test(h)) return 0;
+  const [r, g, b] = h.match(/../g)!.map(x => parseInt(x, 16));
+  return luminance(r, g, b);
 }

@@ -8,17 +8,12 @@
  */
 import type { SwatchItem } from '../lib/guide';
 import SwatchVal from './SwatchVal.astro';
+import { hexLuminance } from '../lib/tokens';
 interface Props { item: SwatchItem; ratio?: string; }
 const { item, ratio } = Astro.props;
-// WCAG 상대 휘도. 검정 대비가 흰색 대비보다 높으면 밝은 색면으로 봄 (Y > 약 0.18)
-const lum = (hex: string) => {
-  let h = hex.replace('#', '');
-  if (h.length === 3) h = [...h].map(x => x + x).join('');           // #FFF → #FFFFFF
-  if (!/^[0-9a-f]{6}$/i.test(h)) h = '000000';                        // 잘못된 값은 검정으로 보고 빌드는 계속
-  const c = h.match(/../g)!.map(x => parseInt(x, 16) / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
-  return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-};
-const light = (lum(item.hex) + 0.05) / 0.05 > 1.05 / (lum(item.hex) + 0.05);
+// WCAG 상대 휘도(src/lib/tokens.ts). 검정 대비가 흰색 대비보다 높으면 밝은 색면으로 봄 (Y > 약 0.18). 잘못된 HEX 는 검정으로 보고 빌드는 계속
+const lum = hexLuminance(item.hex);
+const light = (lum + 0.05) / 0.05 > 1.05 / (lum + 0.05);
 // 메모("or K45 only")에서 잉크 값(C·M·Y·K + 숫자)만 복사 가능한 값으로 떼어 냄
 const noteParts = (note: string) => note.split(/\b([CMYK]\d{1,3})\b/).map((t, i) => ({ text: t, copy: i % 2 === 1 })).filter(p => p.text);
 ---
