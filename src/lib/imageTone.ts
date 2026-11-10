@@ -69,7 +69,7 @@ const hex = (c: number) => Math.round(c).toString(16).padStart(2, '0');
  * @param background 투명 부분을 깔 색 (#rrggbb). 카드가 놓이는 면의 색이어야 투명 PNG·SVG 가 제대로 판정됩니다.
  * @param uniform    가장자리를 단색으로 볼 흩어짐 상한 (0~255). tokens.css --lightbox-bg-uniform
  */
-export async function imageEdge(publicSrc: string, zoom = 1, background = '#000000', uniform = 6): Promise<EdgeInfo | undefined> {
+export async function imageEdge(publicSrc: string, zoom = 1, background = '#000000', uniform = 40): Promise<EdgeInfo | undefined> {
   const file = path.join(process.cwd(), 'public', decodeURI(publicSrc));
   let st: fs.Stats;
   try { st = fs.statSync(file); } catch { return undefined; }

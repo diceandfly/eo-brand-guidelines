@@ -6,7 +6,8 @@
  *  1.5 페이지 전환 — 다른 페이지 링크를 누르면 본문을 먼저 사라지게 한 뒤 이동 (들어올 때는 CSS).
  *  3. 이미지 확대 보기 — .fig__frame 의 <img> 를 누르면 라이트박스. 디졸브 + 스케일.
  * 수치는 전부 tokens.css 의 모션 토큰(B-9 페이지 전환 · 스크롤, B-8 라이트박스, B-2 목차 슬라이드)에서 읽습니다 (Don't 대각선 영역만 B-6 의 --ratio-dodont).
- * 시간 토큰은 "0.4" 처럼 초로 써도, "400ms" 처럼 ms 로 써도 됩니다. 아래 대체값은 토큰을 못 읽을 때만 쓰며 토큰과 같게 유지.
+ * 시간 토큰은 "0.4" 처럼 초로 써도, "400ms" 처럼 ms 로 써도 됩니다. 아래 대체값은 토큰을 못 읽을 때만 쓰며 토큰과 같게 유지
+ * (npm test 가 ms() · num() · easeOf() 의 대체값을 tokens.css 와 대조해, 다르면 실패).
  */
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -46,7 +47,7 @@ const ms = (name: string, fallback: number) => {
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- 1. 스무스 스크롤 ---------- */
-const smoothAmount = reduced ? 0 : ms('--scroll-smooth', 1.2);
+const smoothAmount = reduced ? 0 : ms('--scroll-smooth', 1);
 const wrapper = document.getElementById('smooth-wrapper');
 const content = document.getElementById('smooth-content');
 let smoother: ScrollSmoother | null = null;
@@ -98,7 +99,7 @@ const releaseGuard = () => {
   arriveAtHash();                                               // #섹션으로 들어온 경우, 스크롤 범위가 생긴 뒤에 이동
 };
 // setTimeout 으로 잡습니다: gsap.delayedCall 은 rAF 기반이라 백그라운드 탭(Cmd+클릭 등)에서는 멈춰 가드가 3초 폴백까지 안 풀리고, #섹션 도착 이동도 못 합니다.
-if (smoother) setTimeout(releaseGuard, ms('--scroll-guard-hold', 0.6) * 1000); else releaseGuard();
+if (smoother) setTimeout(releaseGuard, ms('--scroll-guard-hold', 0.41) * 1000); else releaseGuard();
 
 const anchorOffset = () => num('--anchor-offset', 64);
 
@@ -188,7 +189,7 @@ export function scrollToId(id: string, animate = true) {
    목표 위치만 옮기고 매 프레임 지수 감속으로 따라갑니다. 이동 거리는 브라우저가 주는 deltaY 그대로(기본 스크롤과 같은 양),
    휠 한 칸이 120 단위(wheelDeltaY)로 오는 환경만 --nav-wheel-step 으로 환산. */
 const navScroller = document.querySelector<HTMLElement>('[data-nav-scroll]');
-const navSmooth = reduced ? 0 : ms('--nav-scroll-smooth', 1.2);
+const navSmooth = reduced ? 0 : ms('--nav-scroll-smooth', 0.3);
 if (navScroller && navSmooth > 0) {
   const legacyOf = (e: WheelEvent) => (e as WheelEvent & { wheelDeltaY?: number }).wheelDeltaY;
   const stepPx = num('--nav-wheel-step', 80);
