@@ -136,9 +136,9 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
 ## Welcome
 
 ### Welcome to the EO Brand Guidelines
-EO is media for builders. It rallies builders (Rallying), stands with builders of conviction (Conviction), and has their backs (Backing). To record the founder's journey as it is, and to carry that story to the next builder: that is what EO does.
+EO is a media brand for builders. It rallies builders (Rallying), stands with builders of conviction (Conviction), and has their backs (Backing). Recording the founder's journey as it is, and carrying that story to the next builder: that is what EO does.
 
-These guidelines describe the fundamental elements of the EO identity system: logo · typography · color · graphic system. Their purpose is to make the brand's content and services look and read as one EO, whether in San Francisco · Seoul · Vietnam.
+These guidelines describe the fundamental elements of the EO identity system: logo · typography · color · graphic system. Their purpose is to make the brand's content and services look and read as one EO, in San Francisco · Seoul · Vietnam alike.
 
 Build Anyway.
 
@@ -156,7 +156,7 @@ EO · the EO monogram · the block symbol · "Build Anyway" · "Entrepreneur Onw
 - Always follow these brand guidelines when using the EO Logos and Brand Assets.
 - You may use the EO Logos to indicate that you have appeared in EO content or taken part in an EO program. Do not, however, give the impression that EO endorses or sponsors your product or service.
 - When citing EO videos and articles, credit the source clearly as "EO" and provide a link to the original.
-- Use the EO Logos and Brand Assets only as the original files provided, and only within the approved color pairings.
+- Use the EO Logos and Brand Assets only as provided in the original files, unaltered, and only within the approved color pairings.
 
 
 ### Don'ts
@@ -176,14 +176,14 @@ EO · the EO monogram · the block symbol · "Build Anyway" · "Entrepreneur Onw
 
 ### Logo
 #### + Overview
-The EO logo is the umbrella term for the EO symbol · [[signature|signature]] · [[sub-symbol|EO sub symbol]] covered in this chapter.
+The EO logo is the umbrella term covering the EO symbol · [[signature|signature]] · [[sub-symbol|EO sub symbol]] covered in this chapter.
 
-This page describes how to apply the EO symbol across situations · formats · communications, from a small sign-off to a large display application.
+This page describes how to apply the EO symbol across situations · formats · communications, from a small sign-off to large-scale display use.
 ![hero] {zoom=1.05}
 
 
 ### Symbol
-A graphic metaphor that identifies through a screw motif, and a monogram logo that holds the two letters E and O. This form of the logo is hereafter called the **EO symbol**.
+A graphic metaphor that makes the brand recognizable through a screw motif, and a monogram logo that holds the two letters E and O. This form of the logo is hereafter called the **EO symbol**.
 
 The EO symbol is the most iconic and effective way to signal the media brand EO.
 ![symbol] {zoom=1.065}
@@ -195,7 +195,7 @@ The EO symbol is designed around the three parts of a screw: shaft · thread · 
 
 - **Thread** — one turn of the thread stands for a cycle of problem solving.
 - **Shaft** — the shaft stands for the process of building and the builder's journey, and expresses the courage to keep moving forward (Build Anyway).
-- **Head** — the head stands for a single solved problem, or a single builder.
+- **Head** — the head stands for a single small problem solved, or a single builder.
 ![motif] {zoom=1.05}
 
 
@@ -207,7 +207,7 @@ The E block, which depicts the facade of a screw, consists of a shaft and three 
 
 ### Symbol
 #### + Clearspace
-Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the page. With H as the vertical height of one E block, always keep a minimum clear space of at least H/2 on all four sides between the symbol and every adjacent element.
+Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the page. With H as the vertical height of one E block, always keep clear space of at least H/2 on all four sides between the symbol and every adjacent element.
 ![clearspace] {zoom=1.05}
 
 
@@ -215,16 +215,16 @@ Clearspace is the minimum safeguard that protects the symbol when it sits next t
 #### + Scalability
 The EO symbol is designed and tested to work across a range of sizes.
 
-- Optimal range — a height of 40-100px (about 8-20mm) on a 16-inch Mac display viewed from 500mm. Converted to viewing distance, this is 1/60-1/25 of the distance; on other media, set the size by this ratio. The optical correction of the thread angle is also tuned to this range.
-- Recommended maximum size — a height of 70px (about 15mm, 1/33 of the viewing distance). On typical pages, do not exceed this size.
+- Optimal range — a height of 40-100px (about 8-20mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/25 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
+- Recommended maximum size — a height of 70px (about 15mm, 1/33 of the viewing distance). On typical pages, we recommend staying within this size.
 - Minimum size — a height of 20px on screen (about 4mm, 1/125 of the viewing distance) and 4mm in print. Below this, the threads of the E block blur together, so ask the EO design team to review.
-- Maximum size — a height of 125px (about 25mm, 1/20 of the viewing distance). Any larger and the symbol reads as a mass rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#donts|graphic pattern]] instead of the symbol.
+- Maximum size — a height of 125px (about 25mm, 1/20 of the viewing distance). Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#donts|graphic pattern]] instead of the symbol.
 ![scalability] {zoom=1.05}
 
 
 ### + Usage
 #### Placement
-The EO symbol is made of a strong but simple shape. On typical pages, we therefore recommend using it as a sign-off in one of the four corners of the content area. The symbol's presence should step back, so that the main content can be the protagonist of a video thumbnail that invites the click, and the graphic pattern the protagonist of a poster that catches the eye.
+The EO symbol is a strong but simple shape. On typical pages, we therefore recommend using it as a sign-off in one of the four corners of the content area. In a video thumbnail that invites the click, the main content should be the protagonist; on a poster that catches the eye, the graphic pattern should be. The symbol's presence should step back to let them lead.
 
 As a sign-off, place the symbol in the corner farthest from the person or [[graphic-pattern#donts|graphic pattern]] that is the protagonist of the layout, with appropriate space from the other visual elements around it. This keeps symbol placement simple and consistent, while leaving enough flexibility to accommodate a dynamic graphic system.
 ![usage-placement]
@@ -232,8 +232,8 @@ As a sign-off, place the symbol in the corner farthest from the person or [[grap
 
 ### Usage {layout=grid-2}
 #### Do's & Don'ts
-When using the symbol for display, **do not raise its visual hierarchy simply by scaling it up.** Secure ample space around where the symbol sits, so that it keeps its impact at a moderate size. Ideally, the symbol occupies 5-10% of the whole empty space, with space around it of at least 2-3 times the symbol's width.
-![usage-do-1]{do} A symbol at 5-10% of the empty space it sits in
+When using the symbol for display, **do not raise its visual hierarchy simply by scaling it up.** Secure ample space around where the symbol sits, so that it keeps its impact at a moderate size. Ideally, the symbol's actual footprint is 5-10% of the whole empty space, with space around it of at least 2-3 times the symbol's width.
+![usage-do-1]{do} Ideally, a symbol at 5-10% of the empty space it sits in
 ![usage-do-2]{do} Generous space around the symbol gives it ample presence at a moderate size
 ![usage-dont-1]{dont} Do not fill the empty space with the symbol alone
 ![usage-dont-2]{dont} Do not place the symbol where there is not enough space around it
@@ -260,9 +260,9 @@ In that case, convert the light symbol in the following order.
 2. Scale each of the two blocks up proportionally by H/30 in all four directions.
 3. Reduce the gap between the two enlarged blocks from the original (4/30)H to (3/30)H to complete the dark symbol.
 
-This converts a light symbol at any point on the size spectrum into a dark symbol of the same level.
+This converts a light symbol of any size into a dark symbol of the same level.
 
-On a light background, the clearspace also creates the illusion of looking larger, so center the dark symbol on the clearspace area of the light symbol of the same level and use it as is.
+On a light background, clearspace also looks larger than it is, so keep the clearspace area of the light symbol of the same level unchanged and center the dark symbol within it.
 ![inversion] {zoom=1.05}
 
 
@@ -275,7 +275,7 @@ The composition of the photo should be simple enough for the symbol to stand out
 The guidance in this section focuses on overlays on still images rather than on video sequences whose composition changes.
 ![imagery-do-1]{do} {bg-cover} The symbol placed where it has sufficient contrast with the background
 ![imagery-do-2]{do} {bg-cover} When a photo with uneven brightness must be used, a gradient overlay at about 30% opacity secures contrast
-![imagery-dont-1]{dont} {bg-cover} Do not place the symbol over the key silhouette of the person · object the photo highlights
+![imagery-dont-1]{dont} {bg-cover} Do not place the symbol over the main silhouette of the person · object the photo focuses on
 ![imagery-dont-2]{dont} {bg-cover} Do not place the symbol where it lacks contrast with the photo
 
 
@@ -283,7 +283,7 @@ The guidance in this section focuses on overlays on still images rather than on 
 #### Horizontal
 The image below shows the basic horizontal lockup of the EO symbol with the logos of partner brands and collaborators.
 
-Optically adjust the elements so that they appear the same size. After matching the size of each logo, insert space and a vertical divider · collaboration mark between them. Based on the width of one E block (W), the gap between the EO symbol and the partner logo is 1.5 times with a divider and 2 times with a collaboration mark. Always center the two logos optically on the vertical axis.
+Optically adjust the elements so that they appear the same size. After matching the size of each logo, insert a gap and a vertical divider · collaboration mark between them. Based on the width of one E block (W), the gap between the EO symbol and the partner logo is 1.5W with a divider and 2W with a collaboration mark. Always keep the two logos optically centered vertically.
 ![lockup-h] {zoom=1.05}
 
 
@@ -291,13 +291,13 @@ Optically adjust the elements so that they appear the same size. After matching 
 #### Vertical
 The image below shows the basic vertical lockup of the EO symbol with the logos of partner brands and collaborators.
 
-Optically adjust the elements so that they appear the same size. After matching the size of each logo, insert a horizontal divider between them. The gap between the EO symbol and the partner logo equals 1.5 times the height of the EO symbol (H). Always center the two logos optically on the horizontal axis.
+Optically adjust the elements so that they appear the same size. After matching the size of each logo, insert a horizontal divider between them. The gap between the EO symbol and the partner logo is 1.5H, where H is the height of the EO symbol. Always keep the two logos optically centered horizontally.
 ![lockup-v] {zoom=1.05}
 
 
 ### Partner Lockup
 #### Optical Adjustment
-A partner brand's logo sometimes does not balance perfectly when aligned with the EO symbol. Because the EO symbol is wide and heavy, a thin or tall partner logo looks smaller even at the mathematically same height.
+A partner brand's logo sometimes does not balance perfectly when aligned with the EO symbol. Because the EO symbol is wide and heavy, a thin or tall partner logo looks smaller even at the same mathematical height.
 
 In such cases, optically scale the partner logo up or down to create a more equal hierarchy.
 ![lockup-optical] {zoom=1.05}
@@ -311,7 +311,7 @@ When the EO symbol is placed exactly in the center of an app icon or profile ima
 
 H is the height of the symbol in the working file (px), and S is the height (mm) at which the symbol is actually rendered on screen or in the end user's view. When n is positive, shift to the right; when n is negative, apply no correction. This formula is an approximation derived from correction values measured for each symbol size under typical desktop working conditions. The tested range is a visible symbol height S of 4-50mm (viewing distance 500mm), and the margin of error is at most ±0.02mm
 
-When applying the symbol to screens larger than a desktop monitor, set the range to the end user's typical viewing distance, and apply the formula above using the average size over the main range.
+When applying the symbol to screens larger than a desktop monitor, take the end user's typical viewing distances as the range, and apply the formula above to the average visible size across the main part of that range.
 ![icon-alignment] {zoom=1.05}
 
 
@@ -323,14 +323,14 @@ The image below shows the EO symbol applied to an app icon.
 
 ### Symbol {layout=grid-3} {zoom=1.6}
 #### + Don'ts
-To keep the EO symbol consistent and strong, do not reinterpret, alter, or decorate it. This page shows examples of alterations to avoid. When the company name is needed, use the EO signature instead of the symbol. When a sub-brand needs to be identified, create a Service Signature in consultation with the EO design team.
+To keep the EO symbol consistent and strong, do not reinterpret, alter, or decorate it. This page shows examples of alterations to avoid. When the company name must appear, use the EO signature instead of the symbol. When a sub-brand needs to be identified, create a Service Signature in consultation with the EO design team.
 ![dont-1]{dont} Do not stretch or distort the symbol
 ![dont-2]{dont} Do not rotate the symbol
 ![dont-3]{dont} Do not add an outline to the symbol
 ![dont-4]{dont} Do not use a black outline on a light background
-![dont-5]{dont} Do not use a state in which the number of threads in the E, the angle of the O, or the gap between the blocks has changed (such as a capture of the logo animation)
+![dont-5]{dont} Do not use a version in which the number of threads in the E, the angle of the O, or the gap between the blocks has changed (such as a still from the logo animation)
 ![dont-6]{dont} Do not apply visual effects such as glow · shadow · gradient to the symbol
-![dont-7]{dont} Do not use a size so large that it fills most of the space it sits in
+![dont-7]{dont} Do not make the symbol so large that it fills most of the space it sits in
 ![dont-8]{dont} {bg-cover} Do not create graphics by joining or simply repeating the symbol
 ![dont-9]{dont} Do not add arbitrary context around the symbol without the permission of the EO design team
 
@@ -349,12 +349,12 @@ Where the company itself steps forward, such as contracts · proposals · offici
 
 ### Signature
 #### + Descriptor {layout=grid-2} {zoom=1.05}
-The text part of the signature, excluding the symbol, is called the **descriptor**. Whatever the word, be it a company name · service name · domain, it follows the specifications below exactly. The height (H) and width (W) of one E block of the symbol are the basis for every size setting.
+The text part of the signature, excluding the symbol, is called the **descriptor**. Any word, whether a company name · service name · domain, follows the specifications below exactly. The height (H) and width (W) of one E block of the symbol are the basis for every size setting.
 
-When the first or last letter of the descriptor is a glyph with a curved side, such as S · o, keep the text left aligned on its baseline and temporarily replace the letter with an uppercase H, or a lowercase h, to set the edge of the cap box. For example, “Studio” takes its left edge from “Htudio” and its right edge from “Studih”.
+When the first or last letter of the descriptor is a glyph with a curved side, such as S · o, keep the text left aligned on its baseline and temporarily replace it with H if it is uppercase or h if it is lowercase, to set the edge of the cap box. For example, “Studio” takes its left edge from “Htudio” and its right edge from “Studih”.
 
-Always get confirmation from the EO design team when creating a new descriptor or changing an existing one. Do not use temporary names, such as those of campaigns or events, as descriptors.
-![descriptor-v] Vertical — set in Founders Grotesk Regular, type size 0.46H, tracking 0. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then shift it left by H/100. This is because the E block of the EO symbol has the higher tonal value, which places the visual center to the left.
+Always get approval from the EO design team when creating a new descriptor or changing an existing one. Do not use temporary names, such as those of campaigns or events, as descriptors.
+![descriptor-v] Vertical — set in Founders Grotesk Regular, type size 0.46H, tracking 0. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then shift it left by H/100. This is because the E block of the EO symbol has the higher tonal value, which shifts the visual center to the left.
 ![descriptor-h] Horizontal — set in Founders Grotesk Regular, type size 1.3H, tracking 0, with a separate tracking of -6% applied only to the space characters between words. Place the left side of the cap box W/2 from the right edge of the symbol, and raise the baseline H/10 above the bottom edge of the symbol.
 
 
@@ -362,8 +362,8 @@ Always get confirmation from the EO design team when creating a new descriptor o
 #### + Clearspace {layout=grid-2}
 The signature also needs space around it, on the same principle as the EO symbol. The base unit, however, differs by form.
 
-![clearspace-v] {zoom=1.05} Vertical — with H as the vertical height of one E block, keep a minimum clear space of at least H/2 on all four sides around the whole signature.
-![clearspace-h] {zoom=1.6} Horizontal — based on the cap height of the uppercase E in the descriptor, keep a minimum clear space of at least one cap height on all four sides around the whole signature.
+![clearspace-v] {zoom=1.05} Vertical — with H as the vertical height of one E block, keep clear space of at least H/2 on all four sides around the whole signature.
+![clearspace-h] {zoom=1.6} Horizontal — based on the cap height of the uppercase E in the descriptor, keep clear space of at least one cap height on all four sides around the whole signature.
 
 
 ### Signature
@@ -381,13 +381,13 @@ The smaller the signature is seen, the more the symbol and descriptor read as a 
 ### + Company Signature
 #### Vertical
 
-The vertical Company Signature is a vertical combination with "EO Studio" centered beneath the EO symbol. For its construction, see the vertical specifications in [[#descriptor|Descriptor]].
+The vertical Company Signature centers "EO Studio" beneath the EO symbol. For its construction, see the vertical specifications in [[#descriptor|Descriptor]].
 ![company-v] {zoom=1.05}
 
 
 ### Company Signature
 #### Horizontal
-The horizontal Company Signature is a horizontal combination with "EO Studio" to the right of the EO symbol. For its construction, see the horizontal specifications in [[#descriptor|Descriptor]].
+The horizontal Company Signature places "EO Studio" to the right of the EO symbol. For its construction, see the horizontal specifications in [[#descriptor|Descriptor]].
 
 For anyone who has encountered EO before, the EO symbol may already read as "EO", so consider using only "Studio" in the descriptor of the horizontal form.
 ![company-h] {zoom=1.6}
@@ -414,12 +414,12 @@ Examples of the horizontal Service Signature. All are built to the same descript
 
 ### + Usage {layout=grid-2}
 #### Symbol or Signature
-Choose between the signature and the EO symbol by who is speaking. Use the signature where the company EO Studio, or a service the company runs, is the speaker, and the EO symbol for the content of the media EO. Use only one of the two in a single deliverable.
+Choose between the signature and the EO symbol by who is speaking. Use the signature where the company EO Studio, or a service the company runs, is the speaker, and the EO symbol for content from EO as a media brand. Use only one of the two in a single deliverable.
 
-Because the signature carries text, it needs more room than the EO symbol. Where the space is too small for the text to read clearly (below a symbol height of [20px] on digital or [4mm] in print), use the EO symbol alone instead of the signature.
+Because the signature carries text, it needs more room than the EO symbol. Where the space is too small for the text to read clearly (below a symbol height of [20px] in digital or [4mm] in print), use the EO symbol alone instead of the signature.
 
 If you are unsure, first check whether the deliverable truly needs the company name EO Studio. If it does not, the EO symbol is enough. If you are still unsure, ask the EO design team.
-![usage-do-1]{do} The signature used for emails · official documents and other places that state the company's position
+![usage-do-1]{do} The signature on emails · official documents and other materials that speak for the company
 ![usage-dont-1]{dont} Do not use the signature as a content sign-off
 ![usage-do-2]{do} The EO symbol used as a content sign-off
 ![usage-dont-2]{dont} Do not use the signature and the EO symbol together in one deliverable
@@ -450,7 +450,7 @@ This keeps the [[typography#inversion|tonal value]] balance between the symbol a
 #### Horizontal
 The EO signature can be locked up with the logos of partner brands and collaborators. The images in this section show examples of the basic lockup.
 
-Optically adjust the elements so that they appear the same size. After matching the size of each logo, you can insert space and a divider · collaboration mark between them. Based on the width of one E block (W), set the gap between the EO symbol and the partner logo to 1.5 times with a divider and 2 times with a collaboration mark.
+Optically adjust the elements so that they appear the same size. After matching the size of each logo, you can insert a gap and a divider · collaboration mark between them. Based on the width of one E block (W), set the gap between the EO symbol and the partner logo to 1.5W with a divider and 2W with a collaboration mark.
 ![partner-h] {zoom=1.05}
 
 
@@ -458,7 +458,7 @@ Optically adjust the elements so that they appear the same size. After matching 
 #### Vertical
 The EO signature can also be locked up vertically with the logos of partner brands and collaborators. On the right is an example of the basic vertical lockup.
 
-Optically adjust the elements so that they appear the same size. After matching the size of each logo, you can insert space and a divider between them. Set the gap between the two logos to 1.5 times the height of the EO signature (H), and place the divider horizontally at its center.
+Optically adjust the elements so that they appear the same size. After matching the size of each logo, you can insert a gap and a divider between them. Set the gap between the two logos to 1.5 times the height of the EO signature (H), and place the divider horizontally at its center.
 
 Always keep the logos optically centered.
 ![partner-v] {zoom=1.05}
@@ -472,19 +472,19 @@ The signature is a fixed combination with a defined relationship between symbol 
 ![dont-3]{dont} {zoom=1.6} Do not use a different typeface for the descriptor
 ![dont-4]{dont} {zoom=1.6} Do not change the font settings of the descriptor
 ![dont-5]{dont} {zoom=1.6} Do not break the descriptor onto multiple lines
-![dont-6]{dont} {zoom=1.5} Do not use the EO Studio type alone as a logo
+![dont-6]{dont} {zoom=1.5} Do not use the words "EO Studio" alone as a logo
 ![dont-7]{dont} {zoom=2.4} Do not combine the sub symbol with a descriptor
 ![dont-8]{dont} {zoom=1.6} Do not color the symbol and the descriptor differently
 ![dont-9]{dont} {zoom=1.6} Do not stretch or distort the signature
-![dont-10]{dont} {zoom=1.6} Do not apply glow · shadow · gradient
-![dont-11]{dont} {zoom=1.6} Do not place the signature over complex images that reduce legibility
+![dont-10]{dont} {zoom=1.6} Do not apply glow · shadow · gradient effects
+![dont-11]{dont} {zoom=1.6} Do not reduce legibility by placing the signature over complex images
 
 
 
 ## Sub Symbol
 
 ### + Sub Symbol
-Using the E block · O block detached from the symbol is hereafter called the **sub symbol**. Use it only in very small square spaces where the full EO symbol is hard to recognize, such as favicons · pin badges. Where the size varies by medium, such as app icons · social media avatars, the EO symbol is the default. The designer decides whether to switch to the sub symbol based on the actual visible size, and the EO design team reviews the decision.
+The form that uses the E block · O block detached from the symbol is hereafter called the **sub symbol**. Use it only in very small square spaces where the full EO symbol is hard to recognize, such as favicons · pin badges. Where the size varies by medium, such as app icons · social media avatars, the EO symbol is the default. The designer decides whether to switch to the sub symbol based on the actual visible size, and the EO design team reviews the decision.
 
 The sub symbol cannot fully replace the EO symbol, so always use the EO symbol where there is enough room. Because the E block shares its geometry with the [[graphic-unit#motif|graphic unit]], it connects naturally to the whole graphic system even at small sizes.
 ![overview] {zoom=1.05}
@@ -492,9 +492,9 @@ The sub symbol cannot fully replace the EO symbol, so always use the EO symbol w
 
 ### Sub Symbol
 #### + Clearspace
-The sub symbol also needs space around it, on the same basis as the EO symbol. With t as the height of one thread element, always keep a minimum clear space of at least t on all four sides between the symbol and every adjacent element.
+The sub symbol also needs space around it, on the same basis as the EO symbol. With t as the height of one thread element, always keep clear space of at least t on all four sides between the symbol and every adjacent element.
 
-The clearspace is based on a Builder Neon sub symbol on a Space Black background. Because the O block has a lower tonal value than the E block, it takes a separate correction of 1.04x.
+The clearspace is based on a Builder Neon sub symbol on a Space Black background. Because the O block has a lower tonal value than the E block, a separate 1.04x correction is applied.
 ![clearspace] {zoom=1.05}
 
 
@@ -513,7 +513,7 @@ The image below shows the EO sub symbol applied to a favicon.
 
 ### Sub Symbol {layout=grid-3}
 #### + Don'ts {zoom=1.6}
-The sub symbol is part of the EO symbol and follows the same principles. Do not alter or decorate its shape, and do not use it outside its defined purposes.
+The sub symbol is part of the EO symbol and follows the same principles. Do not alter its shape or decorate it, and do not use it outside its defined purposes.
 ![dont-1]{dont} Do not stretch or distort the sub symbol
 ![dont-2]{dont} Do not rotate the sub symbol
 ![dont-3]{dont} Do not flip the sub symbol horizontally
@@ -544,7 +544,7 @@ The following image shows most of the characters of Founders Grotesk Medium. Med
 
 ### Character Set
 #### Founders Grotesk Regular
-The following image shows most of the characters of Founders Grotesk Regular. Regular is the default weight for sub-headlines (D2 · H2 · H3), bridging the hierarchy between the Medium of headlines and the Light of body copy. In brand communication with short body copy, such as posters · banners, it also takes the body role at the level directly below the display headline.
+The following image shows most of the characters of Founders Grotesk Regular. Regular is the default weight for sub-headlines (D2 · H2 · H3), bridging the hierarchy between the Medium of headlines and the Light of body copy. In brand communication with short body copy, such as posters · banners, it also serves as body copy at the level directly below the display headline.
 ![charset-regular]{bg-color}
 
 
@@ -567,9 +567,9 @@ EO typography is **a baseline grid framework measured and scaled from the space 
 - Separating the setting of hierarchy from the matching of tonal value gives an easier point of entry when a project's typography system has to be built from scratch.
 - When [[#multilingual|switching to another language]], the space type occupies stays the same even if the typeface or type size changes, so layout variation is minimal, and adjusting only the tonal value keeps the look and feel consistent.
 - [[#inversion|Switching between dark and light mode]] has the same advantage.
-- In an AI Assisted Design workflow, two levels of decision can be separated: the AI's efficient layout building and the designer's eye. Leave the broad hierarchy that follows the content logic to the AI, and finish the visual quality by refining separately held values such as linespacing.
+- In an AI Assisted Design workflow, two levels of decision can be separated: the AI's efficient layout building and the designer's eye. Leave the broad hierarchy that follows the content logic to the AI, and refine the visual finish through the separately held values, such as linespacing.
 
-Read this chapter in the order the framework is carried out. If you need values ready to use, see the presets in [[#reference-scale|Reference Scale]]. If you are building anew, set the Line Unit by [[#line-unit|Line Unit]] and set up the typography through the five steps of [[#setting-up|Setting Up]]. For the detailed criteria of each step, see [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]]; for layout, [[#zoning|Zoning]] · [[#margin|Margin]] · [[#compound-grid|Compound Grid]]; for other languages and alternative typefaces, [[#multilingual|Multilingual]].
+Read this chapter in the order the framework is carried out. If you need values ready to use, see the presets in [[#reference-scale|Reference Scale]]. If you are building anew, set the Line Unit following [[#line-unit|Line Unit]] and set up the typography through the five steps of [[#setting-up|Setting Up]]. For the detailed criteria of each step, see [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]]; for layout, [[#zoning|Zoning]] · [[#margin|Margin]] · [[#compound-grid|Compound Grid]]; for other languages and alternative typefaces, [[#multilingual|Multilingual]].
 ![framework-1]{bg-cover} **Line Unit** — the base leading of the page. The unit that sets every distance in the layout.
 ![framework-2]{bg-cover} **Level** — a tier of text divided by role. Each has four parameters: multiple (x) · weight · linespacing · tracking
 ![framework-3]{bg-cover} **Linespacing** — the ratio of leading to type size. 140% means the leading is 1.4 times the type size
@@ -578,13 +578,13 @@ Read this chapter in the order the framework is carried out. If you need values 
 
 ### Typographic Framework
 #### + Line Unit {zoom=1.3}
-The Line Unit is the base unit of the page. Set the leading of every level as a multiple of the Line Unit; the actual type size is the leading divided by the linespacing (%). Below, the Line Unit is abbreviated as x: values written in x are multiples of the Line Unit, and values written in % are all linespacing. For example, 2.5x means the leading of that level is set at 2.5 times the Line Unit.
+The Line Unit is the base unit of the page. Set the leading of every level as a multiple of the Line Unit; the actual type size is the leading divided by the linespacing (%). From here on, the Line Unit is abbreviated as x: values written in x are multiples of the Line Unit, and values written in % are all linespacing. For example, 2.5x means the leading of that level is set at 2.5 times the Line Unit.
 
-As a rule, set the Line Unit from **the content, or the component of it, that is used most widely · most often and carries the most weight on the page**.
+As a rule, base the Line Unit on **the content, or the component of it, that is used most widely · most often and carries the most weight on the page**.
 
 - In content layouts, the leading of the body level usually becomes the Line Unit.
 - In visual communication without significant body copy (posters · banners · key visuals), set the Line Unit at 1x or 0.5x the height of the symbol.
-- The recommended Line Unit for web and editorial environments is 28px. Adjust it at the designer's discretion for the size of the page and the reader's viewing distance.
+- The recommended Line Unit for web and editorial environments is 28px. Adjust it at the designer's discretion to suit the page size and the reader's viewing distance.
 
 Once the Line Unit is set, subtract the top and bottom margins from the full height of the content area, set a baseline grid in whole multiples of the Line Unit, and reuse it across content in the same series. For details on grid and margin, see [[#margin|Margin]] and [[#compound-grid|Compound Grid]].
 ![line-unit]{bg-color}
@@ -592,7 +592,7 @@ Once the Line Unit is set, subtract the top and bottom margins from the full hei
 
 ### Typographic Framework
 #### + Reference Scale {layout=wide}
-A seven-level preset based on Line Unit 1x = 28px. The first letter of a level name is the role of its content: D for display, H for headline, T for text, C for caption. This web guideline is set in four of these levels, H1 · H3 · T1 · C1; refer to the unused ones when creating new levels. Each level has multiple (x) · weight · linespacing · tracking as its details, and the size in parentheses is the type size rendered on screen at 1x = 28px.
+A seven-level preset based on Line Unit 1x = 28px. The first letter of a level name is the role of its content: D for display, H for headline, T for text, C for caption. This web guideline is set in four of these levels, H1 · H3 · T1 · C1; refer to the unused ones when creating new levels. Each level specifies multiple (x) · weight · linespacing · tracking, and the size in parentheses is the type size rendered on screen at 1x = 28px.
 
 - **D1** — 6x / Medium / 80% / -2.5%. One or two words, such as a tagline or core keyword, on a poster or key visual
 - **H1** — 2.5x / Medium / 100% / -1.5% (70px). Main headline · page title
@@ -606,9 +606,9 @@ A seven-level preset based on Line Unit 1x = 28px. The first letter of a level n
 
 The recommended weight for each level follows these criteria: Medium for display and headlines (D1 · H1), Regular for sub-display and sub-headlines (D2 · H2 · H3), Light for body copy (T1), Mono Regular for informational text (C1). Use Founders Grotesk Semibold only in a limited way, at the designer's discretion, for optical correction when Medium-level display text is inverted onto a light background and set small. To emphasize keywords within body copy, do not change the weight; use the Builder Neon color with an underline.
 
-Set level multiples in steps of 1x · 0.5x · 0.25x, and refine linespacing and tracking so that the tonal value carries consistently between adjacent levels on either side. For the adjusted values for Korean and Vietnamese, see [[#multilingual|Multilingual]].
+Set level multiples in steps of 1x · 0.5x · 0.25x, and refine linespacing and tracking so that the tonal value carries consistently from each level to its neighbors. For the adjusted values for Korean and Vietnamese, see [[#multilingual|Multilingual]].
 
-Founders Grotesk has narrow apertures and tight spacing, so at body level set it in Light with generous linespacing and slightly opened tracking. The presets are designed with a focus on visual communication: we recommend T1 for content where the text read in one go runs to only a few paragraphs, and T2 where the readability of body copy matters most.
+Founders Grotesk has narrow apertures and tight tracking, so at body level set it in Light with generous linespacing and slightly opened tracking. The presets are designed with a focus on visual communication: we recommend T1 for content where the text read in one go runs to only a few paragraphs, and T2 where the readability of body copy matters most.
 
 All the presets above assume Air White text on a Solid Gray background. When Air White text is used on a Space Black background, apply 0.5% wider tracking to the relatively small levels H3 · T1 · T2.
 ![reference-scale]{bg-color}
@@ -616,10 +616,10 @@ All the presets above assume Air White text on a Solid Gray background. When Air
 
 ### Typographic Framework
 #### + Setting Up {layout=grid-3}
-How to set up typography in a new medium or format. Rather than following the written order to the letter, it is closer to a process of converging on the best state while tuning steps 3-4 against each other.
+How to set up typography in a new medium or format. This is less a fixed sequence than a process of converging on the best result by tuning steps 3-4 against each other.
 
-1. Decide the number of typography levels. Divide the levels to use according to the amount of information to show on the page. For details, see [[#levelling-and-sizing|Levelling & Sizing]].
-2. Set the Line Unit and set a baseline grid in the content area of the page. As a rule, size the Line Unit from the content, or the component of it, that carries the most weight or occupies the most of the page. For details on the Line Unit, see [[#line-unit|Line Unit]]; for grid setting, [[#margin|Margin]] · [[#compound-grid|Compound Grid]].
+1. Decide the number of typography levels. Decide which levels to use based on the amount of information shown on the page. For details, see [[#levelling-and-sizing|Levelling & Sizing]].
+2. Set the Line Unit and set a baseline grid in the content area of the page. As a rule, size the Line Unit from the content, or the component of it, that carries the most weight or occupies the most space on the page. For details on the Line Unit, see [[#line-unit|Line Unit]]; for grid setting, [[#margin|Margin]] · [[#compound-grid|Compound Grid]].
 3. Place the content on the grid and set the hierarchy with each level's multiple. Set the multiples in steps of 1x · 0.5x · 0.25x. For details, see [[#levelling-and-sizing|Levelling & Sizing]]. Starting from the values in [[#reference-scale|Reference Scale]] and adjusting them to the medium also works well.
 4. Refine weight · linespacing · tracking · color · line breaks for each level to match the tonal value. Tonal value is the brightness of a block of text seen from a distance; it is right when every level looks like the same text enlarged · reduced, at the same brightness. Place the levels side by side and squint, or zoom the screen out, and the differences show. As a rule, the larger the type, the lower the linespacing; the smaller the type, the higher. For details, see [[#linespacing-founders-grotesk-medium|Linespacing]].
 5. Repeat steps 3-4 until the levels reach a balance in which they look consistently enlarged · reduced according to the hierarchy.
@@ -634,9 +634,9 @@ How to set up typography in a new medium or format. Rather than following the wr
 #### + Levelling & Sizing {layout=wide}
 Divide levels by the role of the content. The one or two words that represent the page are display (D), the point where reading starts is headline (H), the text read down the page is text (T), and the information supporting the text is caption (C). Numbers within a role run in order of size.
 
-- **Number of levels** — headline and body, or headline · body · caption. Dividing levels by role is the default, but too many levels make consistent typography steeply harder, so first consider whether information of similar role and priority can be merged into one level.
-- **Contrast between levels** — the overall impression of typography's look and feel is decided by the degree of contrast between adjacent levels. Going from body (1x) to headline, the step should be two times or more (2-3x), and from headline to display also two times or more, for the roles to be told apart at a glance. Within a role that handles detailed content (H2 → H3), a multiple of about 1.5 is appropriate. Divide all multiples in steps of 1x · 0.5x · 0.25x so that they fit the baseline grid.
-- **Symbol and levels** — treat the symbol like a level. Setting 1x or 0.5x of the symbol height as the Line Unit ties the symbol and the typography to the same unit. The size of the symbol follows [[symbol#scalability]].
+- **Number of levels** — Headline and body, or headline · body · caption. Dividing levels by role is the default, but the difficulty of keeping typography consistent rises steeply with too many levels, so first consider whether information of similar role and priority can be merged into one level.
+- **Contrast between levels** — The look and feel of typography is largely decided by the degree of contrast between adjacent levels. For roles to be told apart at a glance, the step from body (1x) to headline must be at least double (2-3x), and so must the step from headline to display. Within a role that handles detailed content (H2 → H3), a multiple of about 1.5 is appropriate. Keep all multiples to steps of 1x · 0.5x · 0.25x so that they fit the baseline grid.
+- **Symbol and levels** — Treat the symbol like a level. Setting 1x or 0.5x of the symbol height as the Line Unit ties the symbol and the typography to the same unit. The size of the symbol follows [[symbol#scalability]].
 
 As a rule, the larger the level, the heavier the weight and the tighter the linespacing and tracking. In practice, though, levelling is less a linear procedure in table-of-contents order than a process of tuning [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · weight against each other at the same time. For the preset values, see [[#reference-scale|Reference Scale]].
 ![levelling-sizing]{bg-color}
@@ -660,7 +660,7 @@ Sub-headlines often sit directly above body copy, so also check that their leadi
 
 ### Linespacing
 #### Founders Grotesk Light
-Body copy creates its reading rhythm with leading wider than the type size. The longer a line, the slightly wider the leading must be, so the eye does not lose the next line. Too wide, though, and the lines drift apart, the paragraph scatters and the visual finish suffers. Within the range that secures readability without strain, tighten the leading little by little until a consistent gray mass forms.
+Body copy creates its reading rhythm with leading wider than the type size. The longer a line, the more leading it needs, so the eye does not lose the next line. Too wide, though, and the lines drift apart, the paragraph scatters and the visual finish suffers. Within the range that secures readability without strain, tighten the leading little by little until a consistent gray mass forms.
 
 In content-centered layouts, the leading of the body copy becomes the [[#line-unit|Line Unit]]. Changing the body's Line Unit stretches or shrinks the whole digital layout vertically at the same ratio.
 ![linespacing-light]{bg-color}
@@ -668,7 +668,7 @@ In content-centered layouts, the leading of the body copy becomes the [[#line-un
 
 ### Linespacing
 #### Founders Grotesk Mono Regular
-Captions · labels · tags · specs (C1) are short, one or two lines, with small type. The Mono has wide letters and a large x-height, so with leading as open as body copy the lines look as if they float; set it at a tighter ratio than body copy.
+Captions · labels · tags · specs (C1) are short, one or two lines, with small type. Mono has wide letters and a large x-height, so with leading as open as body copy the lines look as if they float; set it at a tighter ratio than body copy.
 
 The leading of C1 is half the Line Unit. Two lines of caption equal the height of one line of body copy, so informational text also sits on the same baseline grid.
 ![linespacing-mono]{bg-color}
@@ -676,7 +676,7 @@ The leading of C1 is half the Line Unit. Two lines of caption equal the height o
 
 ### + Letterspacing
 #### Founders Grotesk Medium
-In large type the spaces between letters look larger too, so tighten the tracking. The reference point is where the letters sit together like one block but the strokes barely avoid touching (some horizontally open glyphs may touch each other). Too tight, and combinations of consecutive vertical strokes read as one mass; any wider, and words scatter into letters and the headline loses its weight.
+In large type the spaces between letters look larger too, so tighten the tracking. The reference point is where the letters sit together like one block but the strokes stop just short of touching (some horizontally open glyphs may touch each other). Too tight, and combinations of consecutive vertical strokes read as one mass; too loose, and words scatter into letters and the headline loses its weight.
 ![letterspacing-medium]{bg-color}
 
 
@@ -694,19 +694,19 @@ In small type the spaces look relatively small, so open the tracking to around 1
 
 ### Letterspacing
 #### Founders Grotesk Mono Regular
-By nature the Mono is highly distinguishable even at small sizes, but its readability as running text is low, so tighten the tracking to around -7%. If many long words make the lines run long, consider switching to the body typeface.
+By nature, Mono is highly distinguishable even at small sizes, but its readability as running text is low, so tighten the tracking to around -7%. If many long words make the lines run long, consider switching to the body typeface.
 ![letterspacing-mono]{bg-color}
 
 
 
 ### + Alignment {layout=grid-2}
-Content in EO brand communication is left aligned by default. Center alignment is allowed only when the text is a single line, as with standalone symbol icons and merch back prints; do not use justified text. When body copy runs in several columns, align the first-line baselines of all columns. Align the symbol and the caption left and right to the left and right edges of an image respectively. A single left alignment line becomes the reference line of the page: headline · sub-headline · body start from the same line, and the reader starts reading at the same place on every line. Right alignment loses that reference because the start of each line moves, and justified text opens the word spaces and makes the tonal value uneven. This criterion is the same regardless of weight.
+Content in EO brand communication is left aligned by default. Center alignment is allowed only when the text is a single line, as with standalone symbol icons and merch back prints; do not use justified text. When body copy runs in several columns, align the first-line baselines of all columns. Align the symbol left to the image's left edge and the caption right to its right edge. A single left alignment line becomes the reference line of the page: headline · sub-headline · body start from the same line, and the reader starts reading at the same place on every line. Right alignment loses that reference because the start of each line moves, and justified text opens the word spaces and makes the tonal value uneven. This rule applies to every weight.
 
 The exception is informational text (C1 · Mono). A caption beneath an image may be right aligned to the right edge, paired with the symbol left aligned to the left edge, and a caption attached to a simple graphic such as an icon · shape · illustration may be center aligned above or below it. All other Mono text is left aligned like the other levels, and justified text is not used for Mono either.
 ![alignment-medium]{bg-color} Headline (Medium) — left aligned by default; center · right · justified are not used
 ![alignment-regular]{bg-color} Sub-headline (Regular) — same rule as the headline
 ![alignment-light]{bg-color} Body (Light) — same rule as the headline
-![alignment-mono]{bg-color} Informational text (Mono) — captions at an image edge may be right aligned and captions of simple icons · shapes may be center aligned. Only justified is not used
+![alignment-mono]{bg-color} Informational text (Mono) — captions at an image edge may be right aligned and captions of simple icons · shapes may be center aligned. Justified is never used
 
 
 ### + Ragging
@@ -718,11 +718,11 @@ Headlines are short with few lines, so the rag shows plainly. Break lines so tha
 
 ### Grid Setting
 #### + Zoning {layout=grid-2}
-Divide the page into a graphic pattern area and a content area. Ideally the graphic pattern area is close to a square on 3:4 · A-series · business card formats, takes around 70% of the page on horizontal wide formats, and around half on vertical roll-ups. Pages for communication with little information may also be divided into four, with content alternating with the pattern or gathered to one side. Typography in the content area runs left and top aligned, so when splitting the page side by side, prefer placing the graphic pattern area on the right; when splitting it top and bottom, at the top.
+Divide the page into a graphic pattern area and a content area. Ideally the graphic pattern area is close to a square on 3:4 · A-series · business card formats, takes around 70% of the page on horizontal wide formats, and around half on vertical roll-ups. Communication pages with little information may also be divided into four, with content alternating with the pattern or gathered to one side. Typography in the content area runs left and top aligned, so when splitting the page side by side, prefer placing the graphic pattern area on the right; when splitting it top and bottom, at the top.
 
-Place the graphic pattern area full bleed, ignoring the margin, and arrange its units following [[graphic-pattern#zoning]]. For the boundary between the two areas, set the [[#compound-grid|Compound Grid]] first, check the right proportion of the areas against its columns · rows, and align the boundary to that line. If it does not fall exactly on a line, adjust it to the midline of a column · row or to a baseline.
+Place the graphic pattern area full bleed, ignoring the margin, and arrange its units following [[graphic-pattern#zoning]]. For the boundary between the two areas, set the [[#compound-grid|Compound Grid]] first, check the right proportion of the areas against its columns · rows, and align the boundary to the nearest line. If it does not fall exactly on a line, adjust it to the midline of a column · row or to a baseline.
 
-The content area is what remains, and margin and grid are set from this area. A four-way division is based on one of the divided content areas. For pages whose front and back are linked, such as business cards, use the side that carries the main content.
+The content area is what remains, and margin and grid are set from this area. In a four-way division, use one of the divided content areas as the reference. For pages whose front and back are linked, such as business cards, use the side that carries the main content.
 
 
 ![zoning-ratio]{bg-color} Examples of the proportion between graphic pattern area and content area
@@ -740,13 +740,13 @@ On a side where typography meets the [[graphic-pattern#pattern-margin|graphic pa
 
 ### Grid Setting
 #### + Compound Grid {layout=grid-2}
-The base grid is a baseline grid in whole multiples of the Line Unit. The margin is set first in [[#margin|Margin]] from the content area, and settles between 1/22 and 1/25 as the number of baseline cells N is matched. Then verify that the ratio of margin to Line Unit falls within margin = 0.8-1.1 times the Line Unit on pages read up close, and 0.7-0.8 times on pages seen from a distance.
+The base grid is a baseline grid in whole multiples of the Line Unit. The margin is set first in [[#margin|Margin]] from the content area, and settles between 1/22 and 1/25 as the number of baseline cells N is matched. Then verify that the margin falls within 0.8-1.1 times the Line Unit on pages read up close, and 0.7-0.8 times on pages seen from a distance.
 
 For large pages or layouts with complex components, we recommend the Compound Grid, which combines a modular grid with this baseline grid. It is a modular grid that divides the content area evenly with gutters of one Line Unit, and since the height of a module cell is also a whole multiple of the Line Unit, it is fully compatible with the baseline grid.
 
-- **Compound Grid rows** — the Compound Grid can be applied when the total number of baseline cells satisfies **N = number of rows R × (Line Units per row n + 1) − 1**. For example, 35 cells divide into 6 rows × 5 cells or 4 rows × 8 cells. 47 cells allow 4 · 6 · 8 · 12 rows alike, making it the most flexible. Widening the gutter between rows to 2 cells, 47 cells also divide into 7 rows × 5 cells.
+- **Compound Grid rows** — the Compound Grid can be applied when the total number of baseline cells satisfies **N = number of rows R × (Line Units per row n + 1) − 1**. For example, 35 cells divide into 6 rows × 5 cells or 4 rows × 8 cells. 47 cells allow 4 · 6 · 8 · 12 rows alike, making it the most flexible. With the gutter between rows widened to 2 cells, 47 cells also divide into 7 rows × 5 cells.
 - **Compound Grid columns** — 12 columns × 6 rows are commonly used on 16:9 pages and 6 columns × 6 rows on A-series formats, but set the number freely at the designer's discretion. On A-series or similarly proportioned pages, set it from the page proportion so that the graphic pattern area comes close to a square. The gutter between columns is 1x the Line Unit.
-![grid-row]{bg-color} 47 cells — 6 rows × 7 cells · 8 rows × 5 cells · 7 rows × 5 cells (2-cell gutter), gutters between rows of 1-2 cells
+![grid-row]{bg-color} 47 cells — 6 rows × 7 cells · 8 rows × 5 cells · 7 rows × 5 cells (2-cell gutter), row gutters of 1-2 cells
 ![grid-column]{bg-color} Column grid — on the same 35 cells, 12 columns for 16:9 · 6 columns for A-series, column gutter of 1x the Line Unit
 
 
@@ -754,7 +754,7 @@ For large pages or layouts with complex components, we recommend the Compound Gr
 #### + Inversion {layout=wide}
 Like the [[symbol#inversion|symbol]], EO typography is built primarily for light text, such as Air White · Medium Gray, on dark backgrounds such as Solid Gray · Space Black. When you want dark text on a light background and simply invert the colors, an optical illusion occurs: at the same weight and tracking, the letters look one step thinner and the spaces between them look wider. It is the same phenomenon as in the [[signature#inversion|signature's descriptor]].
 
-In that case, keep the Line Unit · level multiples · weights as they are, apply 95% to each level's linespacing (so the type size becomes 1.05 times), and tighten the tracking by 0.5%. The tonal value then stays almost the same as light text even on a light background, and because the space the type occupies is unchanged, the layout stays as it is.
+In that case, keep the Line Unit · level multiples · weights as they are, scale each level's linespacing to 95% (so the type size becomes 1.05 times), and tighten the tracking by 0.5%. The tonal value then stays almost the same as that of light text on a dark background, and because the space the type occupies is unchanged, the layout stays as it is.
 
 Below is an example of the same presets applied to the seven-level [[#reference-scale|Reference Scale]] and set in light mode.
 ![inversion]{bg-color}
@@ -782,7 +782,7 @@ Below are the things not to do with typography in brand communication. To keep c
 ![dont-5]{dont bg-color} Do not center or right align headlines
 ![dont-6]{dont bg-color} Do not use two or more weights within one level
 ![dont-7]{dont bg-color} Do not apply outlines · italics to type
-![dont-8]{dont bg-cover} Do not overlap typography on the graphic pattern
+![dont-8]{dont bg-cover} Do not overlay typography on the graphic pattern
 ![dont-9]{dont bg-color} Do not use Mono for headlines or body copy
 ![dont-10]{dont bg-color} Do not use typefaces other than those specified
 ![dont-11]{dont bg-color} Do not place text off the baseline grid
@@ -794,20 +794,20 @@ Below are the things not to do with typography in brand communication. To keep c
 
 ### Primary Color
 #### Builder Neon
-Builder Neon stands for the window of a hacker house whose lights never go out, and for the optimism of the builders making something inside. At night it is a signal that stays lit through a builder's loneliest hours; by day, set against the blue sky of San Francisco, it is the first mark to catch the eye.
+Builder Neon stands for the window of a hacker house whose lights stay on all night, and for the optimism of the builders making something inside. At night it is a signal that stays lit through a builder's loneliest hours; by day, set against the blue sky of San Francisco, it is the first mark to catch the eye.
 ![builder-neon] 
 
 
 ### Secondary Colors
 #### Day Blue & Bay Green
-Day Blue and Bay Green are cool tones drawn from the nature of the Bay Area. Day Blue takes its cue from the crisp air of San Francisco, Bay Green from the green of the chaparral hills that run along the coastal ridges. As supporting colors, both make their complement, Builder Neon, appear even more vivid.
+Day Blue and Bay Green are cool tones drawn from the nature of the Bay Area. Day Blue takes its cue from the crisp air of San Francisco, Bay Green from the greenery of the chaparral hills that run along the coastal ridges. As supporting colors, both make their complement, Builder Neon, appear even more vivid.
 ![builder-blue-green]
 
 ### Color
 #### EO Palette {layout=grid-4}
-The EO palette consists of Builder Neon · Day Blue · Bay Green and four neutral colors that support them. Solid Gray and Medium Gray carry the neutrality of media: use the darker for background color and the lighter for graphic elements. Space Black and Air White are the foundation for backgrounds and text.
+The EO palette consists of Builder Neon · Day Blue · Bay Green and four neutral colors that support them. Solid Gray and Medium Gray carry the neutrality of media: use the darker one as a background color and the lighter one for graphic elements. Space Black and Air White are the foundation for backgrounds and text.
 
-Each color is specified in HEX · RGB for screen and in CMYK · Pantone for print. Use the color mode that matches the medium. Air White can be replaced by white paper instead of ink.
+Each color is specified in HEX · RGB for screen and in CMYK · Pantone for print. Use the color mode that matches the medium. In print, Air White can be left as unprinted white paper.
 [swatch] Builder Neon | #F9EE3A | R249 G238 B58 | C5 M0 Y95 K0 | PANTONE 3945 C
 [swatch] Day Blue | #6EC6D2 | R110 G198 B210 | C60 M0 Y10 K0 | PANTONE 298 C
 [swatch] Bay Green | #66B88A | R102 G184 B138 | C60 M0 Y50 K0 | PANTONE 2248 C
@@ -820,7 +820,7 @@ Each color is specified in HEX · RGB for screen and in CMYK · Pantone for prin
 ### Color
 #### Usage Ratio
 
-Use Solid Gray or Space Black as the default background; in media that allow photography, the San Francisco sky itself becomes the background. For graphic elements placed on the background, the recommended ratio is Builder Neon 50%, Day Blue · Bay Green 30%, and Medium Gray · Air White 20%. Set text in Air White or Space Black, at around 10% of the overall composition. Text-led media carry more background; pattern-led media carry more Builder Neon. In contexts where the EO brand is already clearly recognized, such as social channels or series artwork, Day Blue · Bay Green may be used more widely than the recommended ratio.
+Use Solid Gray or Space Black as the default background; in media that allow photography, the San Francisco sky itself becomes the background. For graphic elements placed on the background, the recommended ratio is Builder Neon 50%, Day Blue · Bay Green 30%, and Medium Gray · Air White 20%. Set text in Air White or Space Black, at around 10% of the overall composition. In text-led media, the share of background rises; in pattern-led media, the share of Builder Neon rises. In contexts where the EO brand is already clearly recognized, such as social channels or series artwork, Day Blue · Bay Green may be used more freely than the recommended ratio allows.
 
 For detailed application by element, see the Color section of each page.
 
@@ -861,7 +861,7 @@ To keep EO's colors consistent, avoid the following. For the minimum contrast be
 
 ### Graphic Unit
 #### + Motif {layout=grid-2}
-Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (the unit) takes its motif from the three elements of a screw: shaft, thread and head.
+Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (hereafter, the unit) takes its motif from the three elements of a screw: shaft, thread and head.
 
 - Thread — One turn of the thread symbolizes one cycle of problem solving. The harder the wall it meets, the stronger the resistance and the longer it takes to break through. The tighter the threads, the more densely the builder's time is filled (Build thorough).
 - Shaft — The shaft symbolizes the process of building and the builder's journey. The shaft size expresses how strong the core qualities of that process are.
@@ -871,10 +871,10 @@ Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (the unit) takes it
 
 
 ### + Parameters {layout=grid-3}
-The **EO graphic unit** (the unit) is the smallest element of the graphic system. The logo's E block, the pattern library and application graphics are all built with the same system. Units are generated from parameters in EO Graphic Builder; for detailed instructions, see the Help menu inside the tool.
+The **EO graphic unit** (hereafter, the unit) is the smallest element of the graphic system. The logo's E block, the pattern library and application graphics are all built with the same system. Units are generated from parameters in EO Graphic Builder; for detailed instructions, see the Help menu inside the tool.
 
-- shaft size — The thickness of the shaft rectangle, as a percentage of the unit's total height including the threads on both sides. At around the default of 35%, the shaft size keeps visual density ideal even in relatively complex graphic patterns.
-- thread top, bottom width — The width of the thread's top and bottom edges. The thread is a trapezoid abstracted from a screw thread: its right side stands vertically at the end of the column, its left side slants, and the lower thread is the upper one rotated 180° about the column center. The difference between the two values sets the thread's slope. Defaults are top 40% · bottom 0% (the amount reduced from the column width).
+- shaft size — The thickness of the shaft rectangle, as a percentage of the unit's total height including the threads on both sides. At around the default of 35%, the shaft size makes it easy to keep visual density ideal even in relatively complex graphic patterns.
+- thread top, bottom width — The width of the thread's top and bottom edges. The thread is a trapezoid abstracted from a screw thread: its right side stands vertically at the end of the column, its left side slants, and the lower thread is the upper one rotated 180° about the column center. The difference between the two values sets the thread's slope. Defaults are top 40% · bottom 0% (the percentage taken off the column width).
 - thread sides — With double, threads attach to both the top and bottom of the shaft; with single, threads attach to one side only and the shaft rests at the bottom.
 - thread amount — The number of threads attached to each of the top and bottom of the shaft.
 - thread compression — How much the thread width narrows progressively toward one side. At 0, all threads have equal width; the higher the value, the stronger the compression toward one side. Negative and positive values set the direction of compression; the slope of each thread stays as it is and does not flip.
@@ -890,7 +890,7 @@ The **EO graphic unit** (the unit) is the smallest element of the graphic system
 
 ### Graphic Unit
 #### + Color {layout=grid-2} {ratio=16:9} {zoom=1.042}
-Color shows who the protagonist of a graphic is, what forms the environment, and where a state changes. Use it as a supporting means that complements the nuance of Vocabulary. For more specific combination rules, see [[graphic-pattern#color]].
+Color shows who the protagonist of a graphic is, what forms the environment, and where a state changes. Use it as a supporting device that complements the nuance of Vocabulary. For more specific combination rules, see [[graphic-pattern#color]].
 
 **Apply only one color to each unit.**
 - Builder Neon — The main color, highest in hierarchy, expressing the nuance of the builder · protagonist · focus · highlighting. It works best when it covers 20-50% of the whole page.
@@ -917,7 +917,7 @@ This section mainly covers keyword expression; for guidance on visual quality, s
 
 ### Vocabulary
 #### Thread {layout=grid-3} {zoom=1.15}
-A thread is one turn of a screw thread and stands for one act of problem solving. How tight the threads are within a unit · which way they lean · how long they run expresses the character of that time. Keywords expressed with thread: adversity · acceleration · lightning · builder.
+A thread is one turn of a screw thread and stands for one act of problem solving. How tight the threads are within a unit · which way they lean · how long they run express the character of that time. Keywords expressed with thread: adversity · acceleration · lightning · builder.
 
 - Adversity — A time of difficulty, resistance from the environment. Expressed by laying the unit horizontally. Tighter threads express greater difficulty; which end is tighter shows whether the hardest stretch comes at the start or at the end.
 - Acceleration — A change in thread density can feel like acceleration, a stretch where momentum builds. When compression tightens in the direction of travel, it reads as acceleration; reversed, as deceleration. Units repeated end to end can also read as a recurring, routine-like flow.
@@ -944,19 +944,19 @@ The shaft is the axis of the screw and symbolizes the timeline of the building p
 
 ### Vocabulary
 #### Pair {layout=grid-3} {zoom=1.1}
-Connecting two units creates a new relationship. Whether they combine horizontally or vertically, and whether they face the same or opposite directions, expresses a different context. Keywords expressed with pair: journey · momentum · wave · peers · rivals · house.
+Connecting two units creates a new relationship. Different contexts arise from whether they combine horizontally or vertically, and whether they face the same or opposite directions. Keywords expressed with pair: journey · momentum · wave · peers · rivals · house.
 
 - Journey — Length of time, a recurring process. Expressed by docking two horizontal units with the same compression direction. It shows one chapter ending and the next beginning; repeated, it becomes a routine · cycle. Apply the same color to a docked unit pair.
-- Momentum — The moment acceleration crosses a threshold and changes direction. Expressed by inverting two horizontal units about the center and docking them at their loose ends. Adjust compression so that in both states the eye is drawn to the middle.
-- Wave — Pulse · frequency · a spreading signal. Expressed by inverting two lightning units with point or mirror symmetry and joining them at their loose ends.
+- Momentum — The moment acceleration crosses a threshold and changes direction. Expressed by inverting two horizontal units about the center and docking them at the ends where their threads are loosest. Adjust compression so that in both states the eye is drawn to the middle.
+- Wave — Pulse · frequency · a spreading signal. Expressed by inverting two lightning units with point or mirror symmetry and joining them at the ends where their threads are loosest.
 - Peers — Two figures standing together. Expressed by standing two vertical units side by side, facing the same direction. Apply Builder Neon to the unit representing EO or the protagonist, and another color that suits the peer's character to the peer unit.
 - Rivals — Opposition · competition. Expressed by standing two vertical units side by side, facing each other. Apply Builder Neon to the unit representing EO or the protagonist, and Air White · Medium Gray to the rival unit.
 - House — Shelter · community · EO House. Expressed by standing two vertical units side by side, facing outward, so their silhouette forms a roof. For EO House, apply Builder Neon to both units, or Builder Neon to the left unit and Day Blue to the right.
 ![pair-journey] Journey · routine — docked in the same direction
 ![pair-momentum] Momentum — two states docked after center inversion
 ![pair-pulse] Wave — two lightning units docked with point · mirror symmetry
-![pair-peers] {zoom=1.36} Peers — two vertical, same direction
-![pair-rivals] {zoom=1.36} Rivals — two vertical, facing each other
+![pair-peers] {zoom=1.36} Peers — two vertical units, same direction
+![pair-rivals] {zoom=1.36} Rivals — two vertical units, facing each other
 ![pair-house] {zoom=1.15} House — roof silhouette (EO House)
 
 
@@ -964,7 +964,7 @@ Connecting two units creates a new relationship. Whether they combine horizontal
 #### Formation {layout=grid-3} {zoom=1.12}
 Extending the metaphors so far into larger arrangements expresses the relationships · spaces · worlds · dimensions they belong to. Keywords expressed with Formation: scale · dimension · direction · radiation · crossing.
 
-- Scale — Multiple entities · processes · states. Repeat an existing metaphor. Consider using color even more actively: a single Builder Neon among many Medium Gray, for example, is the protagonist within them.
+- Scale — Multiple entities · processes · states. Repeat an existing metaphor. Consider using color even more actively: a single Builder Neon among many Medium Gray units, for example, is the protagonist within them.
 - Dimension — Parallel worlds. Blend a pair in geometric progression. If one line is a single timeline, stacked lines become multidimensional space-time or parallel worlds. A single Builder Neon among Medium Gray timelines is the present timeline.
 - Direction — Expresses drive · flow. Place mirrored units in parallel along the shaft axis so that the negative space between them takes the shape of arrows, pointing regularly to one side.
 - Radiation — Bursting energy · resonance. Mirror the directional pattern above. Consider Builder Neon at the source of the energy.
@@ -1061,9 +1061,9 @@ However, three-dimensional extensions that project the entire plane holding the 
 
 ### + Grammar
 The EO graphic system is built in three layers, like a language.
-- [[graphic-unit#vocabulary|Vocabulary]] is the word. It covers what units and pairs mean: their significance and metaphors.
-- [[graphic-unit#morphology|Morphology]] is the form of the word. Even when the meaning stays the same, it defines how a unit should ideally look: the proportion and rhythm of a single unit.
-- Grammar is the set of rules that turns words into sentences. It is the layout system for placing multiple units on one page.
+- [[graphic-unit#vocabulary|Vocabulary]] is the words. It covers what units and pairs mean: their significance and metaphors.
+- [[graphic-unit#morphology|Morphology]] is the form of the word. Even when the meaning stays the same, it covers how a unit should ideally look: the proportion and rhythm of a single unit.
+- Grammar is the set of rules that turns words into sentences. It is the layout rules for placing multiple units on one page.
 
 Vocabulary covers what a unit means and Morphology covers how it looks, so the Grammar section deals with layout form rather than meaning. The library in References shows representative examples of these rules in action; designers can reinterpret them to create new patterns.
 ![grammar] {zoom=1.1} {bg-cover}
@@ -1073,7 +1073,7 @@ Vocabulary covers what a unit means and Morphology covers how it looks, so the G
 #### + Zoning
 To build a new layout, first set up the Compound Grid, then use the modular grid as the primary guide to divide the page into the graphic pattern area and the content area, and finally complete the pattern inside the graphic pattern area. For detailed guidance on the Compound Grid, see [[typography#compound-grid|Compound Grid]]. Do not set a margin between the two areas explicitly; treat it as part of the content area's margin.
 
-The graphic pattern area is a rectangular area that corresponds to the Frame in EO Graphic Builder. Stacking units inside it, interlocked like Tetris pieces with no empty space, is a separate system. Unit placement inside the graphic pattern area does not need to align with the typography grid. The two systems, the graphic pattern area and the typography-led content area, create a contrast of strong and quiet on a single page. Because typography in the content area runs left and top aligned, place the graphic pattern area on the right when dividing the page horizontally, and at the top when dividing it vertically.
+The graphic pattern area is a rectangular area that corresponds to the Frame in EO Graphic Builder. Stacking units inside it, interlocked like Tetris pieces with no empty space, is a separate system. Unit placement inside the graphic pattern area does not need to align with the typography grid. The two systems, the graphic pattern area and the typography-led content area, create a contrast between strong and soft on a single page. Because typography in the content area runs left and top aligned, prefer placing the graphic pattern area on the right when splitting the page side by side, and at the top when splitting it top and bottom.
 
 When drafting graphics for a new metaphor in the EO Graphic Builder workspace, you set up an independent grid inside the Frame and place graphic units on it in a regular order. This is a separate system, entirely independent of the Compound Grid that this guideline focuses on.
 ![grid-do-1]{do} Areas divided in ideal proportion
@@ -1084,9 +1084,9 @@ When drafting graphics for a new metaphor in the EO Graphic Builder workspace, y
 
 ### Grammar {layout=grid-2}
 #### + Pattern Margin
-Set the pattern margin to 0 so the pattern fills 100% of the graphic pattern area on the page. Depending on the nuance of the metaphor, the pattern can extend past the page margin to the edge of the page. Placing a section of tight unit [[graphic-unit#parameters|compression]] against the edge of the page creates the illusion that the unit enters from, or reaches beyond, the page, adding visual interest. As an exception, a standalone graphic pattern application with no content area can take a margin similar to the pattern gutter.
+Set the pattern margin to 0 so the pattern fills 100% of the graphic pattern area on the page. Depending on the nuance of the metaphor, the pattern can extend past the page margin to the edge of the page. Placing a stretch of tight [[graphic-unit#parameters|compression]] in a unit against the edge of the page creates the illusion that the unit enters from, or reaches beyond, the page, adding visual interest. As an exception, a standalone graphic pattern application with no content area can take a margin similar to the pattern gutter.
 
-![margin-crop-do]{do} A graphic pattern that strengthens its metaphor by placing graphic unit compression at the edge of the page
+![margin-crop-do]{do} A graphic pattern that strengthens its metaphor by placing the compressed end of a graphic unit at the edge of the page
 ![margin-crop-dont]{dont} A graphic pattern in a content layout that does not fill 100% to the margin
 
 
@@ -1094,7 +1094,7 @@ Set the pattern margin to 0 so the pattern fills 100% of the graphic pattern are
 #### + Pattern Gutter
 The pattern gutter is the space between units within a graphic pattern. Set it based on unit density and the size of the thinnest thread; tighter is generally better. Balance the pattern gutter with the [[graphic-unit#parameters|thread gutter]]. A well-set pattern gutter keeps the eye fully on the visual elements of the graphic pattern and builds visual tension.
 
-- **Set the pattern gutter to 1.5-2 times the thread gutter.** For typical digital assets, the thread gutter stays between 10-20px, so a pattern gutter of 20-25px is ideal.
+- **Set the pattern gutter to 1.5-2 times the thread gutter.** For typical digital assets, the thread gutter stays between 10 and 20px, so a pattern gutter of 20-25px is ideal.
 - When needed, set the pattern gutter to 0 so units touch.
 - Using the pattern gutter irregularly to overlap units has potential for experimental patterns, but it introduces too many variables; avoid it for now.
 ![gutter-do]{do} A pattern gutter balanced with the thread gutter
@@ -1108,8 +1108,8 @@ The pattern gutter is the space between units within a graphic pattern. Set it b
 #### + Alignment
 There are no specific restrictions on combining horizontal and vertical units, but keeping each unit's form close to the recommendations in [[graphic-unit#morphology|Morphology]] helps create a fluid pattern.
 
-- Once the units are aligned in the graphic pattern area, look closely at the shaft and thread lines that happen to form between intersecting units. Unintended misalignment can undermine the quality of the entire pattern. Fine-tune the [[graphic-unit#parameters|compression]] of vertical units and the shaft size of horizontal units so the shaft lines of horizontal units meet the thread lines of vertical units. We recommend this as the final step in completing a layout.
-![alignment-dont-1]{dont} A pattern with scattered shaft and thread lines
+- Once the units are aligned in the graphic pattern area, look closely at the shaft and thread lines that happen to form between intersecting units. Unintended misalignment can undermine the quality of the entire pattern. Fine-tune the [[graphic-unit#parameters|compression]] of vertical units and the shaft size of horizontal units so the shaft lines of horizontal units line up with the thread lines of vertical units. We recommend this as the final step in completing a layout.
+![alignment-dont-1]{dont} A pattern with misaligned shaft and thread lines
 ![alignment-do-1]{do} A pattern with shaft and thread lines deliberately aligned
 ![alignment-do-2]{do} An application of a pattern with deliberately aligned lines
 ![alignment-dont-2]{dont} A pattern with noticeably unbalanced lines
@@ -1117,7 +1117,7 @@ There are no specific restrictions on combining horizontal and vertical units, b
 
 ### Graphic Pattern {layout=grid-4}
 #### + Color
-By default, use Builder Neon · Air White · Day Blue · Bay Green · Medium Gray as [[graphic-unit#color|unit colors]], and Solid Gray · Space Black as background colors. When placing several units side by side, either arrange Day Blue · Bay Green · Medium Gray, which are close in value, with even weight · position · movement, or use the high-value Builder Neon · Air White as focal points to deliberately control the sense of depth on the page.
+By default, use Builder Neon · Air White · Day Blue · Bay Green · Medium Gray as [[graphic-unit#color|unit colors]], and Solid Gray · Space Black as background colors. When placing several units side by side, either arrange Day Blue · Bay Green · Medium Gray, which are close in lightness, with even weight · position · movement, or use the brighter Builder Neon · Air White as focal points to deliberately control the sense of depth on the page.
 
 Use Builder Neon as a background color, with Space Black units on top, only on pages that must project the brand's presence most strongly and carry little information.
 
@@ -1131,7 +1131,7 @@ Use Builder Neon as a background color, with Space Black units on top, only on p
   - On Builder Neon · Day Blue · Bay Green · Air White backgrounds, use only Space Black units.
   - Do not use Medium Gray as a background color in digital environments. For merch, only when the physical material's color can be matched to Medium Gray, Builder Neon · Space Black units may be used on it in limited cases, with approval from the EO design team.
 
-The Do · Don't below is a reference chart that gathers, on one sheet, the unit colors allowed on each background color. The number of colors actually used in one pattern follows the rules above.
+The Do · Don't examples below form a reference chart that gathers, on one sheet, the unit colors allowed on each background color. The number of colors actually used in one pattern follows the rules above.
 ![color-do-1] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Solid Gray]
 ![color-do-2] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Space Black]
 ![color-do-3] {do}[Space Black] on [Builder Neon] · [Day Blue] · [Bay Green] · [Air White]
@@ -1184,16 +1184,16 @@ Designers are free to extend the keywords and create new graphics, but adding a 
 
 ### Graphic Pattern
 #### + Don'ts {layout=grid-3}
-The graphic pattern is the most vivid and dense visual element in all of EO's visual expression, so it plays the protagonist that draws the eye on the page. Give one side of the page (usually the right or top, about 70%) entirely to it as a rectangular area, set the headline left aligned at the edge of the content area on the opposite side, and place the logo in the content area's margin. You can crop a pattern, but crop at a column boundary so the diagonal sections of a thread are not cut midway.
+The graphic pattern is the most vivid and dense visual element in all of EO's visual expression, so it plays the protagonist, drawing the eye on the page. Give one side of the page (usually the right or top, about 70%) entirely to it as a rectangular area, set the headline left aligned at the edge of the content area on the opposite side, and place the logo in the content area's margin. You can crop a pattern, but crop at a column boundary so the diagonal sections of a thread are not cut midway.
 
 The following are typical cases where the pattern loses its role as protagonist. Stretching or distorting a pattern breaks the proportion of its units, and placing something on a pattern, or a pattern on something, makes the two elements compete for hierarchy. Masking or repeating a pattern breaks down the rhythm created by unit density, and a pattern too complex for its display size turns its threads into an illegible blur.
 
-![pattern-dont-1] {dont} Do not stretch or distort the pattern.
-![pattern-dont-2] {dont} Do not overlay content such as the symbol or text on the pattern.
-![pattern-dont-3] {dont} Do not place the pattern over photos or other graphics.
-![pattern-dont-4] {dont} Do not mask the graphic pattern area into a circle or freeform shape.
-![pattern-dont-5] {dont} Do not tile the pattern as a background texture.
-![pattern-dont-6] {dont} Do not use a pattern that is too complex for its display size on the page.
+![pattern-dont-1] {dont} Do not stretch or distort the pattern
+![pattern-dont-2] {dont} Do not overlay content such as the symbol or text on the pattern
+![pattern-dont-3] {dont} Do not place the pattern over photos or other graphics
+![pattern-dont-4] {dont} Do not mask the graphic pattern area into a circle or freeform shape
+![pattern-dont-5] {dont} Do not tile the pattern as a background texture
+![pattern-dont-6] {dont} Do not use a pattern that is too complex for its display size on the page
 
 
 ### Usage
@@ -1212,7 +1212,7 @@ Four rules to follow when placing the [[graphic-pattern#donts|graphic pattern]] 
 
 - **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through density; keep posters seen up close at medium complexity. This is a general tendency, however: designers use their judgment and put visual quality first.
 - **One sheet can hold several variations.** Place several variations of the same motif in one composition to create rhythm.
-- **A pattern fits any proportion.** Divide the page into sub layouts to carry several messages on one page.
+- **A pattern fits any proportion.** Divide the page into sub-layouts to carry several messages on one page.
 - **Lead the eye with the direction of the threads.** Converge all threads on a single point to draw the eye to the mark or message placed there.
 ![app-principles]
 
@@ -1245,7 +1245,7 @@ A merch line of tees · hoodies · caps. Single-color screen-printed graphics ar
 ::: split
 ### Thank You {span=6}
 Thank you for reading the EO brand guidelines to the end.
-This document is not a declared final version but a standard that grows and changes with EO. If you see a better way anywhere, let us know at any time.
+This document is not a fixed, final edition but a standard that grows and changes with EO. If you see a better way to do something, let us know anytime.
 
 For anything that needs confirmation from the EO design team, such as descriptors · patterns · color combinations, please get in touch.
 
