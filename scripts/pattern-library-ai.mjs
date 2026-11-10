@@ -23,7 +23,7 @@ const SVG_DIR = path.join(ROOT, 'public/assets/05-graphic-system/02-graphic-patt
 const MD = fs.readFileSync(path.join(ROOT, 'content/guide.ko.md'), 'utf8');
 
 // 이름은 md 캡션에서: "![pattern-05] 05/ Rivals"
-const items = [...MD.matchAll(/^!\[pattern-(\d\d)\]\s+\d\d\/\s+(.+?)\s*$/gm)].map(m => ({
+const items = [...MD.matchAll(/^!\[pattern-(\d\d)\]\s+\d\d\.\s+(.+?)\s*$/gm)].map(m => ({
   n: m[1], name: m[2],
   file: fs.readdirSync(SVG_DIR).map(f => path.join(SVG_DIR, f)).find(f => new RegExp(`-pattern-${m[1]}\\.svg$`).test(f)),
 }));
