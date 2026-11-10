@@ -433,10 +433,10 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
         smoother?.paused(false);
         document.documentElement.classList.remove('lightbox-open');
         for (const t of SCROLL_EVENTS) window.removeEventListener(t, blockScroll);
+        opener?.focus({ preventScroll: true });                   // inert 를 푼 뒤에 돌려줌 (inert 요소는 포커스를 받지 못함)
+        opener = null;
       }
     });
-    opener?.focus({ preventScroll: true });
-    opener = null;
   };
 
   const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset);
