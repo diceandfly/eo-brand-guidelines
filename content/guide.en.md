@@ -209,13 +209,13 @@ The E block, which depicts the facade of a screw, consists of a shaft and three 
 #### + Clearspace
 Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the page. With H as the vertical height of one E block, always keep clear space of at least H/2 on all four sides between the symbol and every adjacent element.
 
-When the symbol sits at the center of a small frame, such as an app icon or profile image, its visual weight drifts to the left the smaller it is seen. Correct this by narrowing only the right clearspace, which pushes the symbol to the right. **Right clearspace = H × (0.42 + 0.0012 × S)**, where S is the symbol height actually seen on screen (mm); at S of 67mm or more, keep H/2 as is. The symbol moves right within the frame by (H/2 − right clearspace) ÷ 2, which equals the correction value n in [[#app-and-social-icons-alignment|App & Social Icons › Alignment]].
+When the symbol sits at the center of a small frame, such as an app icon or profile image, its visual weight drifts to the left the smaller it is seen. Correct this by narrowing only the right clearspace, which pushes the symbol to the right. **Right clearspace = H × (0.42 + 0.0012 × S)**, where S is the symbol height actually seen on screen (mm); at S of 67mm or more, keep H/2 as is. The symbol moves right within the frame by (H/2 − right clearspace) ÷ 2, which equals the correction value n in [[#app-and-social-icons-alignment|App & Social Icons › Alignment]]. This is an approximation derived from measurements at a desktop viewing distance of 500mm across seen heights of 4-50mm, with a maximum error of ±0.02mm.
 ![clearspace] {zoom=1.05}
 
 
 ### Symbol
 #### + Scalability
-The EO symbol is designed and tested to work across a range of sizes.
+The EO symbol is designed and tested to work across a range of sizes. Every size rule is based on the height seen at a distance of 500mm; for media viewed from farther away, apply it to the height converted to the end user's typical viewing distance (actual height × 500 ÷ distance).
 
 - Optimal range — a height of 40-100px (about 8-20mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/25 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
 - Recommended maximum size — a height of 70px (about 15mm, 1/33 of the viewing distance). On typical pages, we recommend staying within this size.
@@ -307,13 +307,7 @@ In such cases, optically scale the partner logo up or down to create a more equa
 
 ### + App & Social Icons
 #### Alignment
-When the EO symbol is placed exactly in the center of an app icon or profile image, its center of gravity appears to shift slightly to the left, and the smaller it is seen, the more it shifts. When applying the symbol inside a small icon frame, shift it to the right by n px according to the following rule.
-
-**n = H × (4 − 0.06 × S) %**
-
-H is the height of the symbol in the working file (px), and S is the height (mm) at which the symbol is actually rendered on screen or in the end user's view. When n is positive, shift to the right; when n is negative, apply no correction. This formula is an approximation derived from correction values measured for each symbol size under typical desktop working conditions. The tested range is a visible symbol height S of 4-50mm (viewing distance 500mm), and the margin of error is at most ±0.02mm
-
-When applying the symbol to screens larger than a desktop monitor, take the end user's typical viewing distances as the range, and apply the formula above to the average visible size across the main part of that range. For the same correction expressed as a clearspace value, see [[#clearspace|Clearspace]].
+In an app icon or profile image, do not simply center the symbol itself. Center the clearspace box with the right-side correction from [[#clearspace|Clearspace]] in the frame instead. This corrects the visual weight that drifts to the left the smaller the symbol is seen. The correction value for a given frame size and viewing distance follows the clearspace rule.
 ![icon-alignment] {zoom=1.05}
 
 
