@@ -176,8 +176,9 @@
   --pair-symbol-w: 50%;            /* 심볼 폭 = 썸네일 × 비율 (라이트 박스 기준) */
   --pair-off-o:    0.2;            /* 시그니처에서 쓰지 않는 페어 불투명도 */
   --pair-pad-b:    0px;            /* 썸네일 아래 여백 */
-  --pair-on-w:     2px;            /* 선택 테두리 두께 (칸 경계선 자리에 겹쳐 그림) */
-  --pair-hover-w:  var(--line-w);  /* 호버 테두리 두께 — 선택보다 얇게 */
+  --pair-on-w:     var(--line-w);  /* 선택 테두리 두께 = 칸 경계선과 같은 1px (경계선 자리에 겹쳐 그림) */
+  --pair-hover-w:  var(--line-w);  /* 호버 테두리 두께 */
+  --pair-hover-mix: 45%;           /* 호버 테두리 = 선택 색을 이만큼만 (선택보다 옅게) */
   --pair-on-c:     var(--accent);  /* 선택 · 호버 테두리 색 (밝은 바탕 칸은 Space Black) */
 
   /* ── B-6 체크박스 ── */
@@ -393,8 +394,8 @@ input[type=checkbox]:checked::after { content: ''; position: absolute; inset: 0;
 .preset svg { width: var(--pair-symbol-w); height: auto; display: block; overflow: visible; }   /* 실제 심볼(현재 크기 · 모드, 다크면 반전 보정 포함) */
 .preset::before { content: ''; position: absolute; inset: 0; left: calc(var(--line-w) * -1); border: var(--pf-w, 0) solid var(--pf, transparent); pointer-events: none; }   /* 선택 = 칸 테두리 (왼쪽은 앞 칸과 공유하는 경계선까지 덮음) */
 .preset:first-child::before { left: 0; }
-.preset:hover, .preset:focus-visible { outline: none; --pf: var(--pair-on-c); --pf-w: var(--pair-hover-w); }   /* 호버 = 얇은 테두리 (미리 보기) */
-.preset.on { --pf: var(--pair-on-c); --pf-w: var(--pair-on-w); }   /* 선택 = 두꺼운 테두리 */
+.preset:hover, .preset:focus-visible { outline: none; --pf: color-mix(in srgb, var(--pair-on-c) var(--pair-hover-mix), transparent); --pf-w: var(--pair-hover-w); }   /* 호버 = 옅은 테두리 (미리 보기) */
+.preset.on { --pf: var(--pair-on-c); --pf-w: var(--pair-on-w); }   /* 선택 = 1px 테두리 */
 .preset[data-bg="Builder Neon"], .preset[data-bg="Air White"] { --pair-on-c: var(--c-black); }   /* 밝은 바탕 칸(네온 · Air White)은 검정 테두리 — 네온이 묻히므로 */
 
 /* ===== 14. 작업공간 (B-7) — 보이는 크기(As seen) 심볼을 가운데에 ===== */
