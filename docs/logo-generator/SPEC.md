@@ -3,7 +3,7 @@
 정적 웹 도구 `public/tools/logo-generator/`. 가이드(content/guide.ko.md › Symbol · Signature)의 규칙대로 EO 심볼과 시그니처를 **보이는 크기 기준**으로 생성해 내보낸다(화면 SVG · PNG, 인쇄 CMYK PDF · dpi PNG). 디자인 툴 대체가 아니라 "보이는 크기 기준 시각 보정 계산기". 가이드 목차 Logo › Download(`## Download {href=/tools/logo-generator/index.html}`)가 새 탭으로 연다.
 
 ## 0. 파일 · 실행 · 의존성
-- 파일: `index.html`(마크업) · `fonts.css`(서체 선언) · `tokens.css`(모든 수치 · 색 — 가이드 tokens.css 와 같은 규칙: A 시스템 · B 요소, `--<요소>-<부분>-<속성>-<상태>`) · `tool.css`(토큰만 참조하는 규칙, 블록 순서 = tokens.css 목차) · `geom.js`(심볼 지오메트리, 확정 — GEOM-START/END) · `app.js`(상태 · 시그니처 조판 · 목업 · 내보내기 · 툴팁, geom.js 다음에 읽는 같은 전역 공간) · `sig-font.js`(서체 읽는 모듈) · `vendor/`(polygon-clipping 0.15.7 · fontkitten 1.0.3, 둘 다 MIT, 라이선스 동봉).
+- 파일: `index.html`(마크업) · `fonts.css`(서체 선언) · `tokens.css`(모든 수치 · 색 — 가이드 tokens.css 와 같은 규칙: A 시스템 · B 요소, `--<요소>-<부분>-<속성>-<상태>`) · `tool.css`(토큰만 참조하는 규칙, 블록 순서 = tokens.css 목차) · `geom.js`(심볼 지오메트리, 확정 — GEOM-START/END) · `app.js`(상태 · 시그니처 조판 · 목업 · 내보내기 · 툴팁, geom.js 다음에 읽는 같은 전역 공간. 맨 위 RULES-START/END 블록 = 가이드에서 온 수치 — 크기 구간 · 시그니처 규격 · 면적 상한, npm test [5] 가 고정) · `sig-font.js`(서체 읽는 모듈) · `vendor/`(polygon-clipping 0.15.7 · fontkitten 1.0.3, 둘 다 MIT, 라이선스 동봉).
 - 실행: `npm run dev` → `http://localhost:4321/tools/logo-generator/index.html` (빌드하면 `dist/tools/logo-generator/` 로 그대로 복사). 빌드 단계 없음 — Astro 는 public 을 복사만 한다. file:// 로 열면 시그니처 서체를 못 읽는다(심볼은 동작, 경고 표시).
 - 서체: 가이드와 같은 `public/fonts/`(git 제외, 클라이언트가 넣음). 시그니처는 `founders-grotesk-regular.woff2` 의 아웃라인을 쓴다(출력에는 아웃라인만). 없으면 Signature 가 "Signature font missing" 으로 잠긴다.
 - 가이드 링크(i · 이름 클릭)는 같은 서버의 `/en/02-logo/…`.
