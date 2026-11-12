@@ -265,7 +265,7 @@ function update() {
     + (st.guide ? csGuideSvg(c, gf, gx, gy, aH) : '');
   renderArt(c);   // 로고를 먼저 그린 뒤 — 그림이 로고에 닿지 않게 높이를 묶음
   $('pngScale').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', st.unit === 'mm' ? DPI_OPTS[i] === printDpi() : +b.dataset.v === st.pngScale));
-  document.querySelectorAll('aside .tg button, .preset').forEach(b => b.setAttribute('aria-pressed', b.classList.contains('on')));   // 고른 상태 = 화면 읽기 프로그램에도
+  document.querySelectorAll('aside .tg:not(.saves) button, .preset').forEach(b => b.setAttribute('aria-pressed', b.classList.contains('on')));   // 고른 상태 = 화면 읽기 프로그램에도
 }
 
 // ===== 16. 내보내기 =====

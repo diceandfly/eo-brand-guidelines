@@ -196,7 +196,6 @@
   --tg-divider-pad: calc(var(--lh-unit) * 0.5); /* 토글 세로선 양옆 여백 */
   --tg-divider-h: 0.875em; /* 세로선 길이 = 토글 글자 크기 × 0.875 */
   --tg-on-stroke: 0.4px; /* 선택 글자 외곽선 — Light 를 Regular 처럼 굵혀 보이게 (웨이트를 바꾸면 글자 폭이 변해 간격이 흔들림) */
-  --save-gap: calc(var(--tg-divider-pad) * 2); /* Export › Save 글자 버튼 사이 (SVG ↓   PNG ↓) = 토글 세로선 자리와 같은 폭 */
   --btn-primary-hover-mix: 85%; /* 주 버튼 호버 = accent 85% + Air White */
   --btn-bg: color-mix(in srgb, var(--c-solid-gray) 66%, var(--c-space-black)); /* 채움 버튼 면 — 메뉴창(76%)보다 은은하게 어둡게 */
   --tg-divider-c: color-mix(in srgb, var(--c-medium-gray) 60%, var(--c-space-black)); /* 세로선 색 (#555555) */
@@ -231,10 +230,11 @@
   /* 크기 슬라이더 구간 색 — 이름 끝(out · optimal · over)은 JS 가 조합 (app.js zoneAt) */
   --slider-zone-mix: 50%; /* 구간 색 = 상태색 × 이 비율 + 바탕 */
   --slider-zone-base: color-mix(in srgb, var(--c-medium-gray) 15%, var(--c-space-black)); /* 구간 색 바탕 (#151515) */
-  --slider-zone-l: 0.45; /* 구간 색 밝기 (OKLCH L) — 세 구간을 같은 밝기로. 밝기가 다르면 같은 2px 도 두께가 달라 보임 */
-  --slider-zone-out: oklch(from color-mix(in srgb, var(--state-bad) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h); /* 가이드 밖 */
-  --slider-zone-optimal: oklch(from color-mix(in srgb, var(--state-ok) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h); /* 최적 */
-  --slider-zone-over: oklch(from color-mix(in srgb, var(--state-warn) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h); /* 권장 최대 초과 */
+  --slider-zone-l: 0.45; /* 구간 색 밝기 (OKLCH L) — 세 구간의 기준 밝기. 밝아 보이는 선일수록 굵어 보여 같은 2px 도 두께가 달라 보임 */
+  --slider-zone-hk: 0.45; /* 채도 보정 — 같은 밝기라도 채도가 높으면 더 밝아 보이므로(Helmholtz–Kohlrausch) L 을 채도 × 이 값만큼 낮춤. 0 = 보정 없음, 올리면 색 구간이 더 가늘어 보임 */
+  --slider-zone-out: oklch(from color-mix(in srgb, var(--state-bad) var(--slider-zone-mix), var(--slider-zone-base)) calc(var(--slider-zone-l) - c * var(--slider-zone-hk)) c h); /* 가이드 밖 */
+  --slider-zone-optimal: oklch(from color-mix(in srgb, var(--state-ok) var(--slider-zone-mix), var(--slider-zone-base)) calc(var(--slider-zone-l) - c * var(--slider-zone-hk)) c h); /* 최적 */
+  --slider-zone-over: oklch(from color-mix(in srgb, var(--state-warn) var(--slider-zone-mix), var(--slider-zone-base)) calc(var(--slider-zone-l) - c * var(--slider-zone-hk)) c h); /* 권장 최대 초과 */
 
   /* ------------------------------------------------------------------
      B-6 상태 메시지 (크기 슬라이더 아래 한 줄) — 넘치면 옆으로 흐름 (JS)

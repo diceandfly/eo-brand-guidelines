@@ -338,16 +338,8 @@ button.link.on {
   background: var(--tg-divider-c);
   transform: translateY(var(--border-w));
 }
-/* Export › Save — 글자 버튼 (면 없음). 토글과 같은 행 문법, ↓ = 누르면 저장 */
-.saves {
-  display: flex;
-  align-items: center;
-  gap: var(--save-gap);
-}
+/* Export › Save — 토글과 같은 글자 버튼 + 세로선 (SVG ↓ | PNG ↓). 고르는 게 아니라 누르면 저장이라 흰 글, 밑줄 없음 */
 .saves button {
-  height: var(--row-h);
-  padding: 0;
-  background: none;
   color: var(--fg);
 }
 #saveRow {
