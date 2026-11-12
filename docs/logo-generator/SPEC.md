@@ -20,7 +20,7 @@
 - **Visual height(= Symbol height, S)** 가 사용자 결정값. 500mm 에서 보이는 심볼 높이(mm), 슬라이더 4-30mm. 거리 · 매체 때문에 자동으로 바뀌지 않는다(매체를 고를 때만 그 매체의 처음 값으로 한 번 맞춤).
 - 실제 높이 = S × 거리 ÷ 500. 출력 px = 실제 높이 × 매체 px/mm(화면) 또는 dpi ÷ 25.4(인쇄).
 - Viewing 섹션에서 Real size height · Output height 를 직접 넣으면 S 로 역산.
-- 경고(심볼): 4mm 미만 Outside guide · 4mm Minimum visual size · 15mm 까지 Within optimal range · 15-25mm Not quite recommended · 25mm 초과 Not recommended. 슬라이더 구간 색도 같다(4-15 최적 · 15-25 권장 초과 · 그 밖 가이드 밖). 가이드 문장의 최적 8-20mm 보다 권장 최대 15mm 를 우선.
+- 경고(심볼): 4mm 미만 Outside guide · 4mm Minimum visual size · 15mm 까지 Within optimal range · 15-25mm Above recommended size · 25mm 초과 Not recommended. 슬라이더 구간 색도 같다(4-15 최적 · 15-25 권장 초과 · 그 밖 가이드 밖). 가이드 문장의 최적 8-20mm 보다 권장 최대 15mm 를 우선.
 - 경고(시그니처): 4mm 미만 없음 · 가로형 4-10mm(10 초과 Use vertical) · 세로형 10mm 부터(10 미만 Use horizontal, 15 초과 권장 초과, 25 초과 Not recommended). 구간 색도 형별.
 - 상태 색: ok = Bay Green · warn = Medium Gray · bad = 경고 주황 #DD5A2D(가이드 사이트 `--warn-orange`, 브랜드 컬러 아님).
 
@@ -34,7 +34,7 @@
   - 다크: 심볼은 [[symbol#inversion]] 변환 후 라이트 심볼 자리에 x · y 가운데. 글자는 세로형 0.48H · 가로형 1.35H, 자간 세로형 −1% · 가로형 −2%(공백 −7%, 2026-11-12 확정), 바깥 오프셋 H/200. 세로형은 원래 캡 박스 가운데, 가로형은 원래 캡 박스 왼변에 맞추고 베이스라인 유지. 전체를 다시 옮기지 않는다.
 - 시그니처 컬러 = 여섯 페어 중 넷(Builder Neon 글자 페어 5 · 6 제외, 가이드 Signature › Color). 제외 페어는 심볼만 흐리게(칸 · 테두리 유지), 시그니처로 바꿀 때 쓰던 페어가 제외면 같은 모드의 첫 페어로.
 - 시그니처는 Right side correction 을 쓰지 않는다(자동 비활성). 내보내는 틀 = 라이트 기준 박스 ± 독자 클리어스페이스.
-- 저장 잠금(Save 의 SVG ↓ · PNG ↓ 회색): Descriptor 가 비면 “No descriptor — use the symbol”, 서체에 없는 글자가 있으면 “Font lacks: 한, 글”(빠진 글자 나열), 서체를 못 읽었을 때도 잠김. 메시지는 크기 경고 줄에 주황. 빈 Descriptor 는 EO 를 채우지 않고 캡 박스 자리만 둔다.
+- 저장 잠금(Save 의 SVG ↓ · PNG ↓ 회색): Descriptor 가 비면 “No descriptor — use the symbol instead”, 서체에 없는 글자가 있으면 “Missing glyphs: 한, 글”(빠진 글자 나열), 서체를 못 읽었을 때도 잠김. 메시지는 크기 경고 줄에 주황. 빈 Descriptor 는 EO 를 채우지 않고 캡 박스 자리만 둔다.
 
 ## 4. Viewing 섹션 — 매체
 매체 = 프리셋(대표 거리 · 출력 단위 · px/mm 또는 dpi · 처음 Visual height · 목업). 고른 뒤 거리는 자유.

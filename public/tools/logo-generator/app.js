@@ -63,7 +63,7 @@ function warnings(S) {   // 판정 = zoneAt (슬라이더 구간 색과 같은 �
     if (sig && h) return [['bad', 'Use vertical at this size']];   // 가로형 10mm 초과
     return [['bad', 'Not recommended']];   // 25mm 초과 = 그래픽 패턴 영역 (가이드 Scalability)
   }
-  if (z === 'over') return [['warn', 'Not quite recommended']];   // 권장 최대(15mm) 초과
+  if (z === 'over') return [['warn', 'Above recommended size']];   // 권장 최대(15mm) 초과
   if (S <= RULES.minVis + ZONE_EPS) return [['warn', 'Minimum visual size']];
   return [['ok', sig && h ? 'Within guide range' : 'Within optimal range']];
 }
@@ -232,7 +232,7 @@ function update() {
   if (document.activeElement !== $('dist')) showDist();
   $('openCalib').classList.toggle('nudge', !st.calibrated); $('openCalib').textContent = st.calibrated ? 'Calibrated' : 'Not calibrated';   // 상태 그대로 — 보정 전 깜빡임 유도 · 보정 후 멈춤 (누르면 다시 맞춤)
   const sigBlock = st.kind === 'signature' && (!SIG_FONT || (sym.sig && (!sym.text || sym.missing.length)));   // 시그니처 저장 잠금 — 서체 못 읽음 · 빈 디스크립터 · 서체에 없는 글자
-  const list = [...(st.artLimit ? [['bad', 'Too large for this layout']] : []), ...(sym.sig && !sym.text ? [['bad', 'No descriptor — use the symbol']] : sym.sig && sym.missing.length ? [['bad', `Font lacks: ${sym.missing.join(', ')}`]] : []), ...warnings(z.S)];
+  const list = [...(st.artLimit ? [['bad', 'Too large for this layout']] : []), ...(sym.sig && !sym.text ? [['bad', 'No descriptor — use the symbol instead']] : sym.sig && sym.missing.length ? [['bad', `Missing glyphs: ${sym.missing.join(', ')}`]] : []), ...warnings(z.S)];
   $('dlSvg').disabled = $('dlPng').disabled = sigBlock;   // 대형 매체 단계가 먼저
   const wh = list.slice(0, 1).map(([k, m]) => `<div class="msg ${k}"><span>${m}</span></div>`).join('');   // 한 줄: 안내 > bad > warn > ok/info
   if ($('warns').dataset.h !== wh) { $('warns').dataset.h = wh; $('warns').innerHTML = wh; marquee(); }
@@ -423,6 +423,11 @@ const PHONE_BODY = {   // 폰 본체 선 (세로 v · 가로 h) — 콘텐츠마
   iphone: { v: `<rect class="ln" width="71.9" height="150" rx="11"/><rect class="ln" x="1.6" y="1.6" width="68.7" height="146.8" rx="9.6"/><rect class="ln" x="25.95" y="4.6" width="20" height="6.2" rx="3.1"/><line class="ln" x1="23.95" y1="145" x2="47.95" y2="145"/>`, h: `<rect class="ln" width="150" height="71.9" rx="11"/><rect class="ln" x="1.6" y="1.6" width="146.8" height="68.7" rx="9.6"/><rect class="ln" x="4.6" y="25.95" width="6.2" height="20" rx="3.1"/><line class="ln" x1="63.0" y1="66.9" x2="87.0" y2="66.9"/>` },
   iphonePM: { v: `<rect class="ln" width="78" height="163.4" rx="12"/><rect class="ln" x="1.7" y="1.7" width="74.6" height="160.0" rx="10.4"/><rect class="ln" x="29.0" y="4.8" width="20" height="6.2" rx="3.1"/><line class="ln" x1="27.0" y1="158.4" x2="51.0" y2="158.4"/>`, h: `<rect class="ln" width="163.4" height="78" rx="12"/><rect class="ln" x="1.7" y="1.7" width="160.0" height="74.6" rx="10.4"/><rect class="ln" x="4.8" y="29.0" width="6.2" height="20" rx="3.1"/><line class="ln" x1="69.7" y1="73" x2="93.7" y2="73"/>` },
 };
+const SCREEN_BODY = {   // 노트북 · 모니터 본체 선 — 영상 · 웹이 같고, 다른 건 맨 뒤 콘텐츠 영역(zn)만
+  'macbook': `<rect class="ln" x="6" width="358" height="246" rx="9"/><rect class="ln" x="12.5" y="7" width="345" height="223" rx="2"/><path class="ln" d="M170 7 V11.5 Q170 13 171.5 13 H198.5 Q200 13 200 11.5 V7"/><path class="ln" d="M0 246 H370 V250 Q370 253 367 253 H3 Q0 253 0 250 Z M160 246 V248.5 H210 V246"/>`,
+  'desktop-24': `<rect class="ln" width="545" height="315" rx="6"/><rect class="ln" x="7" y="7" width="531" height="299"/><path class="ln" d="M248.5 315 L240.5 410 M296.5 315 L304.5 410"/><rect class="ln" x="162.5" y="410" width="220" height="12" rx="6"/>`,
+  'desktop-27': `<rect class="ln" width="611.7" height="352.2" rx="6"/><rect class="ln" x="7" y="7" width="597.7" height="336.2"/><path class="ln" d="M281.85 352.2 L273.85 447.2 M329.85 352.2 L337.85 447.2"/><rect class="ln" x="195.85" y="447.2" width="220" height="12" rx="6"/>`,
+};
 const ART = {
   'iphone': {
     feed: { w: 71.9, h: 150, spec: { size: [66.6, 144.8], res: '402 × 874 px' }, slots: [[[1.6, 29.2, 68.7, 91.6], 91.6 / 24, 'tr', ['tl', 'tc', 'tr', 'c', 'bl', 'bc', 'br']]],   // iPhone 18 피드 3:4 (1080 × 1440)
@@ -441,17 +446,17 @@ const ART = {
   'a4': { w: 210, h: 297, boost: 1.2, spec: { size: [210, 297] }, slots: [[[0, 0, 210, 297], 297 / 24, 'tl', ['tl', 'tc', 'tr', 'bl', 'bc', 'br']]],   // A4 document — 종이 실루엣, 왼쪽 위 (레터헤드 자리)
     d: `<rect class="ln" width="210" height="297"/>` },
   'macbook': { video: { w: 370, h: 253, ref: true, spec: { size: [345, 223], res: '1728 × 1117 px' }, slots: [[[12.5, 21.47, 345, 194.06], 345 / 24, 'tr', ['tr', 'c']]],   // MacBook 16″ 영상 16:9 (화면 16:10 안 가운데)
-    d: `<rect class="ln" x="6" width="358" height="246" rx="9"/><rect class="ln" x="12.5" y="7" width="345" height="223" rx="2"/><path class="ln" d="M170 7 V11.5 Q170 13 171.5 13 H198.5 Q200 13 200 11.5 V7"/><path class="ln" d="M0 246 H370 V250 Q370 253 367 253 H3 Q0 253 0 250 Z M160 246 V248.5 H210 V246"/><rect class="zn" x="12.5" y="21.47" width="345" height="194.06"/>` },
+    d: `${SCREEN_BODY['macbook']}<rect class="zn" x="12.5" y="21.47" width="345" height="194.06"/>` },
     web: { w: 370, h: 253, ref: true, spec: { size: [345, 223], res: '1728 × 1117 px' }, slots: [[[12.5, 30.4, 345, 199.6], 345 / 48, 'tc', ['tl', 'tc', 'tr', 'c', 'bl', 'bc', 'br']]],   // MacBook 16″ 웹사이트 — 메뉴 막대 24pt + 브라우저 막대 약 93pt(≈ 23.4mm) 아래 뷰포트, 로고 처음 = 위 가운데 (헤더) · 여백은 사방 모두 일반 지면의 절반 (긴 변 1/48, 클리어스페이스 H/2 는 지킴)
-    d: `<rect class="ln" x="6" width="358" height="246" rx="9"/><rect class="ln" x="12.5" y="7" width="345" height="223" rx="2"/><path class="ln" d="M170 7 V11.5 Q170 13 171.5 13 H198.5 Q200 13 200 11.5 V7"/><path class="ln" d="M0 246 H370 V250 Q370 253 367 253 H3 Q0 253 0 250 Z M160 246 V248.5 H210 V246"/><rect class="zn" x="12.5" y="30.4" width="345" height="199.6"/>` } },
+    d: `${SCREEN_BODY['macbook']}<rect class="zn" x="12.5" y="30.4" width="345" height="199.6"/>` } },
   'desktop-24': { video: { w: 545, h: 422, ref: true, spec: { size: [531, 299], res: '1920 × 1080 px' }, slots: [[[7, 7, 531, 299], 531 / 24, 'tr', ['tr', 'c']]],   // Desktop 24″ 영상 16:9 (화면 전체)
-    d: `<rect class="ln" width="545" height="315" rx="6"/><rect class="ln" x="7" y="7" width="531" height="299"/><path class="ln" d="M248.5 315 L240.5 410 M296.5 315 L304.5 410"/><rect class="ln" x="162.5" y="410" width="220" height="12" rx="6"/>` },
+    d: SCREEN_BODY['desktop-24'] },
     web: { w: 545, h: 422, ref: true, spec: { size: [531, 299], res: '1920 × 1080 px' }, slots: [[[7, 35.9, 531, 270.1], 531 / 48, 'tc', ['tl', 'tc', 'tr', 'c', 'bl', 'bc', 'br']]],   // Desktop 24″ 웹사이트 — 메뉴 막대 + 브라우저 막대 약 104px(≈ 28.9mm) 아래 뷰포트
-    d: `<rect class="ln" width="545" height="315" rx="6"/><rect class="ln" x="7" y="7" width="531" height="299"/><path class="ln" d="M248.5 315 L240.5 410 M296.5 315 L304.5 410"/><rect class="ln" x="162.5" y="410" width="220" height="12" rx="6"/><rect class="zn" x="7" y="35.9" width="531" height="270.1"/>` } },
+    d: `${SCREEN_BODY['desktop-24']}<rect class="zn" x="7" y="35.9" width="531" height="270.1"/>` } },
   'desktop-27': { video: { w: 611.7, h: 459.2, ref: true, spec: { size: [597.7, 336.2], res: '2560 × 1440 px' }, slots: [[[7, 7, 597.7, 336.2], 597.7 / 24, 'tr', ['tr', 'c']]],   // Desktop 27″ 영상 16:9 (화면 전체) — Desktop 24″ 와 같은 짜임: 베젤 7 · 아래 턱 9 · 받침(목 95 · 발 220 × 12)은 같은 실물 크기
-    d: `<rect class="ln" width="611.7" height="352.2" rx="6"/><rect class="ln" x="7" y="7" width="597.7" height="336.2"/><path class="ln" d="M281.85 352.2 L273.85 447.2 M329.85 352.2 L337.85 447.2"/><rect class="ln" x="195.85" y="447.2" width="220" height="12" rx="6"/>` },
+    d: SCREEN_BODY['desktop-27'] },
     web: { w: 611.7, h: 459.2, ref: true, spec: { size: [597.7, 336.2], res: '2560 × 1440 px' }, slots: [[[7, 31.28, 597.7, 311.92], 597.7 / 48, 'tc', ['tl', 'tc', 'tr', 'c', 'bl', 'bc', 'br']]],   // Desktop 27″ 웹사이트 — 메뉴 막대 + 브라우저 막대 104px(Desktop 24″ 와 같은 px, 4.28px/mm 라 ≈ 24.3mm) 아래 뷰포트
-    d: `<rect class="ln" width="611.7" height="352.2" rx="6"/><rect class="ln" x="7" y="7" width="597.7" height="336.2"/><path class="ln" d="M281.85 352.2 L273.85 447.2 M329.85 352.2 L337.85 447.2"/><rect class="ln" x="195.85" y="447.2" width="220" height="12" rx="6"/><rect class="zn" x="7" y="31.28" width="597.7" height="311.92"/>` } },
+    d: `${SCREEN_BODY['desktop-27']}<rect class="zn" x="7" y="31.28" width="597.7" height="311.92"/>` } },
   'a2': { w: 420, h: 594, boost: 1.2, spec: { size: [420, 594], space: [420, 178.2] }, slots: [[[0, 415.8, 420, 178.2], 420 / 24, 'br', ['tl', 'tr', 'bl', 'br']]],   // Poster A2 — 조닝: 위 70% 그래픽 패턴 · 아래 30% 콘텐츠 (가이드 Typography › Zoning A판형), 로고 = 콘텐츠 영역 오른쪽 아래, 마진 = 콘텐츠 긴 변 1/24
     d: `<rect class="ln" width="420" height="594"/><path class="zn" d="M0 415.8 H420 M0 0 L420 415.8 M420 0 L0 415.8"/>` },
   'billboard': { w: 15830, h: 10870, boost: 1.55, spec: { size: [14630, 4270], space: [4389, 4270] }, slots: [[[600, 0, 4389, 4270], 4389 / 24, 'bl', ['tl', 'bl']]],   // Billboard — 48 × 14ft 보드 + 발판 + 기둥 하나 (가이드 Pattern › In Use 빌보드). 조닝: 왼쪽 30% 콘텐츠 · 오른쪽 70% 그래픽 패턴, 로고 = 콘텐츠 영역 왼쪽 아래
@@ -546,27 +551,27 @@ function csGuideInner(c, gf, aH) {   // 좌표 = 화면 px (aH = 심볼 높이 p
 // ===== 19. 툴팁 — 켜진 행의 이름 · 인쇄 dpi 버튼에 마우스를 올리면 (보정 창과 같은 자리 · 모양) =====
 const TIPS = {
   'Type': 'Company is EO Studio. Service uses your own descriptor.',
-  'Layout': 'Horizontal for 4–10mm, vertical from 10mm.',
-  'Descriptor': 'Service name. The first letter is capitalized.',
+  'Layout': 'Horizontal at 4–10mm, vertical from 10mm up.',
+  'Descriptor': 'The service name. Its first letter is capitalized automatically.',
   'Medium': 'Sets a typical viewing distance, output unit and resolution.',
-  'Content': 'What the logo sits on. Changes the mockup and the positions.',
-  'Distance': 'Changes the real size, not the visual size.',
+  'Content': 'What the logo sits on. Changes the mockup and the available positions.',
+  'Distance': 'Changes the real size. The visual size stays the same.',
   'Real size height': 'Symbol height as printed or displayed on the medium.',
   'Output height': 'Symbol height in the saved file.',
-  'Scale': 'Multiplies the saved PNG. Use 2x or more for sharp, high-density screens.',
-  'Resolution': 'Pixel density of the saved PNG. Hover a value to see what it suits.',
+  'Scale': 'Multiplies the size of the saved PNG. Use 2x or higher for high-density screens.',
+  'Resolution': 'Pixel density of the saved PNG. Hover over a value to see what it suits.',
   'Save': 'Saves the logo with the settings above. Vector for print and design work, PNG for quick use.',
-  'Symbol height': 'Visual height at 500mm — the size rule of the guide.',
+  'Symbol height': 'Height as seen from 500mm — the measure the guide’s size rules are based on.',
   'Color': 'Color pairings from the guide. The signature uses four of the six.',
   'Logo': 'Symbol alone, or the signature with EO Studio or a service name.',
   'Viewing': 'Where and from how far the logo is seen. Sets the output unit and the mockup.',
-  'Visual size': 'How big the logo looks, as seen from 500mm. The decision value of this tool.',
+  'Visual size': 'How big the logo looks from 500mm. This is the value you choose; the other sizes follow from it.',
   'Export': 'Saves outlined artwork with a transparent background. Clearspace and correction are set below.',
-  'Include clearspace': 'Adds the clearspace around the logo in the saved file — H/2 for the symbol, the signature has its own.',
-  'Right side correction': 'Narrows the right clearspace so the symbol looks optically centered — always on in the guide. Symbol only.',
+  'Include clearspace': 'Adds the clearspace around the logo in the saved file — H/2 for the symbol; the signature uses its own.',
+  'Right side correction': 'Narrows the right clearspace so the symbol looks optically centered. The guide always applies it. Symbol only.',
   'Show clearspace guide': 'Shows the clearspace on the preview only. Not saved.',
 };
-const TIP_ABOUT = 'Calculates the optical corrections of the EO logo for the size it is seen at, so every use stays on brand.\n\n1. Choose the logo.\n2. Choose the medium it is used on.\n3. Set the size it should look, using the mockup as a reference.\n4. Pick a color pairing from the guide.\n5. Save the file format the job needs.';
+const TIP_ABOUT = 'Calculates the optical corrections of the EO logo for the size it is seen at, so every use stays on brand.\n\n1. Choose the logo.\n2. Choose the medium it is used on.\n3. Set how big it should look, using the mockup as a reference.\n4. Pick a color pairing from the guide.\n5. Save in the format the job needs.';
 const TIP_ABOUT_HINT = 'For anything unclear about using the logo, contact the EO design team.';   // 타이틀에 올리면 = 사용법
 const TIP_I = { 'Include clearspace': 1, 'Right side correction': 1 };   // 토글 = 오른쪽 i 가 가이드
 const PG = () => st.kind === 'signature' ? 'signature' : 'symbol';
@@ -582,7 +587,7 @@ function btnTip(b) {   // 저장 · 배율 버튼 = 지금 설정으로 나갈 �
   const i = [...b.parentNode.querySelectorAll('button')].indexOf(b);   // 세로선(i) 빼고 버튼 순서
   return pr ? DPI_TIPS[i] : `PNG at ${i + 1} times the output size — ${px(i + 1)}.`;
 }
-const DPI_TIPS = ['Billboards printed at actual size, seen from 10m and more.', 'Banners and signage seen from 2–5m.', 'Posters seen from about 1m, such as A2.', 'Hand-held print such as A4 and business cards. Higher only makes files bigger.'];
+const DPI_TIPS = ['Billboards printed at actual size, seen from 10m or more.', 'Banners and signage seen from 2–5m.', 'Posters seen from about 1m, such as A2.', 'Hand-held print such as A4 and business cards. A higher value only makes the file bigger.'];
 let tipTimer = 0, tipHot = null;
 const noOrphan = t => t.replace(/ (\S+)$/, '\u00A0$1');   // 고아 단어 방지 — 마지막 두 단어 사이 = 줄바꿈 없는 공백 (가이드 사이트 guide.ts 와 같은 방식, text-wrap: pretty 의 폴백)
 const setHot = (el, key) => {   // 가리킨 이름 = 바로 색이 바뀜 (툴팁보다 먼저 피드백), 링크가 있으면 손가락 커서
@@ -609,7 +614,7 @@ document.querySelector('aside').addEventListener('pointerover', e => {
   setHot(null);
   if (e.target.closest('.brand .help')) return tipShow(e.target.closest('.brand'), 'EO Logo Generator', TIP_ABOUT, TIP_ABOUT_HINT);   // ? 에 올릴 때만
   if (e.target.closest('#openCalib')) return tipShow($('openCalib'), 'Card calibration', () => st.calibrated
-    ? `Done — the preview shows the true visual size (${st.pxmm.toFixed(2)} px/mm). Calibrate again on another screen.`
+    ? `Done — the preview shows the true visual size (${st.pxmm.toFixed(2)} px/mm). Calibrate again if you change screens.`
     : 'Screens differ in pixel density, so the preview can look bigger or smaller than it really is. Match a credit card once and the preview shows the true visual size. Do this before judging sizes.');
   if (b && !b.disabled && !(b.closest('#pngScale') && st.unit === 'px')) return tipShow(b, b.closest('#pngScale') ? b.textContent + ' dpi' : 'Save ' + b.textContent.replace(' ↓', ''), () => btnTip(b));   // 저장 버튼 제목 = Save SVG 처럼 풀어서
   tipHide();
