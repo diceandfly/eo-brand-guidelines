@@ -2,9 +2,11 @@
 import Logo from './Logo.astro';
 import Search from './Search.astro';
 import { LANGS, LANG_LABEL, UI_TEXT, type Guide, type Sub, type Lang } from '../lib/guide';
+import { ARCHIVE_ENV } from '../lib/archive';
 
 interface Props { guide: Guide; current?: Sub; lang: Lang; alt: Partial<Record<Lang, string>>; }
 const { guide, current, lang, alt } = Astro.props;
+const archived = process.env[ARCHIVE_ENV];   // 핸드오프 아카이브 빌드(npm run archive)에만 값 = 기준 날짜
 ---
 <nav class="sidebar t-ui" aria-label={UI_TEXT[lang].toc}>
   <a class="nav__logo" href={`/${lang}`}><Logo /></a>
@@ -49,6 +51,11 @@ const { guide, current, lang, alt } = Astro.props;
     })}
   </ul>
   </div>
+
+  <!-- 핸드오프 아카이브 표시 (아카이브 빌드에만). 링크는 같은 페이지의 현재 가이드 — data-archive-exit 는 scripts/archive.mjs 가 경로를 아카이브로 바꾸지 않는 표시 -->
+  {archived && (
+    <p class="nav__archive"><span>{UI_TEXT[lang].archive} · {archived}</span><a data-archive-exit href={current?.url ?? `/${lang}`}>{UI_TEXT[lang].archiveExit}</a></p>
+  )}
 
   <!-- 언어 전환. 같은 페이지의 다른 언어판으로 이동, 없으면 그 언어의 첫 페이지 -->
   <div class="nav__lang" role="group" aria-label={UI_TEXT[lang].language}>

@@ -21,6 +21,18 @@ const found = { zero: ui.found(0), many: ui.found(999).replace('999', '{n}') }; 
 
 <script>
   import type { SearchEntry as Entry } from '../lib/guide';
+  import { ARCHIVE_BASE, ARCHIVE_KEY } from '../lib/archive';
+
+  // 이스터에그: 검색어 = ARCHIVE_KEY → 핸드오프 아카이브의 같은 페이지로 (아카이브 안이면 현재 가이드로).
+  // 아카이브에 없는 페이지면 아카이브의 같은 언어 첫 페이지, 아카이브가 아직 없으면(핸드오프 전) 아무 일 없음
+  const reachable = (u: string) => fetch(u, { method: 'HEAD' }).then(r => r.ok, () => false);
+  const toArchive = async () => {
+    const p = location.pathname, hash = location.hash;
+    if (p.startsWith(ARCHIVE_BASE + '/')) return location.assign(p.slice(ARCHIVE_BASE.length) + hash);
+    if (await reachable(ARCHIVE_BASE + p)) return location.assign(ARCHIVE_BASE + p + hash);
+    const first = await fetch(`${ARCHIVE_BASE}/${document.documentElement.lang}/search-index.json`).then(r => r.ok ? r.json() as Promise<Entry[]> : null, () => null);
+    if (first?.[0]) location.assign(first[0].u.split('#')[0]);   // 아카이브 색인의 첫 항목 = 그 언어 첫 페이지 (주소는 이미 아카이브 경로)
+  };
 
   for (const form of document.querySelectorAll<HTMLFormElement>('[data-search]')) {
     const input = form.querySelector<HTMLInputElement>('[data-search-input]')!;
@@ -103,7 +115,7 @@ const found = { zero: ui.found(0), many: ui.found(999).replace('999', '{n}') }; 
 
     // 입력이 있을 때만 × 버튼 표시. 누르면 비우고 다시 입력 상태로
     const syncClear = () => { clear.hidden = !input.value; };
-    input.addEventListener('input', () => { syncClear(); render(); });
+    input.addEventListener('input', () => { syncClear(); if (input.value.trim().toLowerCase() === ARCHIVE_KEY) toArchive(); render(); });
     clear.addEventListener('click', () => { input.value = ''; syncClear(); render(); input.focus(); });
     syncClear();
     input.addEventListener('focus', () => { load(); if (input.value.trim()) open(true); });   // 포커스 때 색인을 미리 받아 첫 글자부터 바로 결과

@@ -511,6 +511,21 @@ html.js .main {
   margin: 0 var(--nav-lang-divider-gap);
   color: var(--nav-fg);
 }
+/* 핸드오프 아카이브 표시 (아카이브 빌드에만 그려짐). 언어 전환 위에 바닥 고정 — 목차가 보이는 동안 늘 보임 */
+.nav__archive {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--nav-archive-gap);
+  color: var(--nav-archive-fg);
+}
+.nav__archive a {
+  color: var(--nav-fg);
+  transition: color var(--dur) var(--ease);
+}
+.nav__archive a:hover {
+  color: var(--nav-fg-active);
+}
 
 /* ---------------------------------------------------------------------
    검색 (목차 상단)

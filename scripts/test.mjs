@@ -116,6 +116,28 @@ for (const r of checkFonts(ROOT)) note(`${r.css}: ${r.total - r.missing.length} 
 console.log('\n[5] 로고 생성기 (public/tools/logo-generator)');
 try { checkLogoGenerator(ROOT, { ok, fail }); } catch (e) { fail(`생성기 검사 중 오류 — ${e.message}`); }
 
+// ── 6. 핸드오프 아카이브 ─────────────────────────────────────────────────
+// 경로 상수가 사이트(src/lib/archive.ts) · 만드는 스크립트(scripts/archive.mjs)에서 같은지, 아카이브가 있으면 기록 · 경로가 온전한지
+console.log('\n[6] 핸드오프 아카이브 (public/archive/handoff, npm run archive)');
+{
+  const base = f => fs.readFileSync(path.join(ROOT, f), 'utf8').match(/(?:ARCHIVE_BASE|BASE) = '([^']+)'/)?.[1];
+  const a = base('src/lib/archive.ts'), b = base('scripts/archive.mjs');
+  if (!a || a !== b) fail(`아카이브 경로가 다름 — src/lib/archive.ts ${a} · scripts/archive.mjs ${b}`);
+  const dir = path.join(ROOT, 'public', a ?? '');
+  if (!a || !fs.existsSync(dir)) ok(`경로 ${a} 일치 · 아카이브는 아직 없음 (최종 핸드오프 때 npm run archive)`);
+  else {
+    const meta = fs.existsSync(path.join(dir, 'archive.json')) ? JSON.parse(fs.readFileSync(path.join(dir, 'archive.json'), 'utf8')) : null;
+    const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
+    const files = walk(dir), html = files.filter(f => f.endsWith('.html'));
+    const leaks = html.filter(f => /["'(=]\/(en|ko|assets|_astro)\//.test(fs.readFileSync(f, 'utf8').replaceAll(/data-archive-exit href="[^"]*"/g, '')));
+    const fonts = files.filter(f => /\.(woff2?|ttf|otf|eot)$/i.test(f));
+    if (!meta) fail('아카이브에 archive.json 이 없음 — npm run archive 로 다시 만드세요');
+    if (leaks.length) fail(`아카이브 밖을 가리키는 경로: ${leaks.slice(0, 3).map(f => path.relative(dir, f)).join(', ')}${leaks.length > 3 ? ` 외 ${leaks.length - 3}` : ''}`);
+    if (fonts.length) fail(`아카이브에 서체 파일 ${fonts.length}개 — 라이선스상 넣으면 안 됨`);
+    if (meta && !leaks.length && !fonts.length) ok(`아카이브 ${meta.ref} (${meta.commit.slice(0, 7)} · ${meta.date}) — HTML ${html.length}개, 경로 · 서체 이상 없음`);
+  }
+}
+
 // ── 4. astro check ──────────────────────────────────────────────────────
 if (!process.argv.includes('--no-check')) {
   console.log('\n[4] astro check');

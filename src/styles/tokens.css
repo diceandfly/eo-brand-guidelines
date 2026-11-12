@@ -248,6 +248,9 @@
   --nav-lang-gap: 40px; /* 목록 ↔ EN | KR 최소 간격. 목록을 스크롤하면 이 간격이 아래쪽 페이드가 됨 */
   --nav-lang-divider-gap: 0.6em; /* EN | KR 구분선 좌우 간격 */
 
+  /* 핸드오프 아카이브 표시 (/archive/handoff 빌드에만, npm run archive) — 언어 전환 바로 위 */
+  --nav-archive-gap: 14px; /* 아카이브 표시 ↔ EN | KR */
+
   /* 웨이트 — 위계별 (크기·자간은 A-1 ui 레벨) */
   --nav-w-chapter: 400; /* 01 Logo */
   --nav-w-sub: 400; /* 서브챕터 = 페이지 타이틀 */
@@ -270,6 +273,7 @@
   --nav-fg-active: var(--c-air-white); /* 활성 항목, 호버 */
   --nav-fg-current: var(--nav-fg-active); /* 현재 페이지의 챕터 · 서브챕터 (클릭으로 펼친 다른 챕터는 --nav-fg-active 로 같음). 네온으로 하려면 var(--c-builder-neon) */
   --nav-fg-section-active: var(--nav-fg-current); /* 스크롤스파이로 켜진 섹션 (지금 보고 있는 섹션). 본문 섹션 헤드와 같은 네온 */
+  --nav-archive-fg: var(--c-builder-neon); /* 핸드오프 아카이브 표시 — 현재 가이드와 헷갈리지 않게 네온 */
   /* 색 — 검색창 */
   --search-bg: transparent; /* 검색창 배경. 목차 배경에 묻힘 */
   --search-bg-focus: transparent; /* 입력 중 배경. 밑줄만 바뀌므로 그대로 투명 */
