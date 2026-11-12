@@ -6,6 +6,8 @@ Founders Grotesk 는 유료 서체라 폰트 파일을 git 에 넣지 않습니�
 - `.githooks/pre-commit` 이 폰트 파일(과 `dist/`)이 든 커밋을 거부합니다. `git add -f` 로 강제해도 막힙니다.
 - `.githooks/pre-push` 가 푸시되는 모든 커밋을 다시 검사합니다(폰트 · `dist/` · `research/`).
 
+가이드 목차 Logo › Download 로 여는 로고 생성기(`public/tools/logo-generator/`)도 이 폴더의 같은 파일을 씁니다. 시그니처 글자는 `founders-grotesk-regular.woff2` 의 아웃라인으로 만들므로, 이 파일이 없으면 생성기의 Signature 가 "Signature font missing" 으로 잠깁니다.
+
 훅은 `npm install` 때 `prepare` 스크립트가 `git config core.hooksPath .githooks` 로 켭니다(새 클론도 자동). 사이트는 이 폴더에 파일이 있어야 제대로 보입니다.
 
 ## 배포 담당자(클라이언트)가 할 일

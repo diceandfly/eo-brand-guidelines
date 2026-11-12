@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const guides = loadAllGuides();
   return LANGS.flatMap(lang =>
     guides[lang].chapters.flatMap(ch =>
-      ch.subs.map(sub => ({
+      ch.subs.filter(sub => !sub.href).map(sub => ({   // 링크 항목(href)은 페이지 없음
         params: { lang, chapter: ch.slug, sub: sub.slug },
         props: { guide: guides[lang], sub, lang, alt: Object.fromEntries(LANGS.filter(l => l !== lang).map(l => [l, altUrl(guides, sub, l)])) }
       }))

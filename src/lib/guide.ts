@@ -62,6 +62,7 @@ export interface Sub {
   sections: Section[];
   navSections: { id: string; head: string; key: string }[];   // 목차에 오르는 섹션 (key = 중복 판정용: 라벨, 서브헤드 라벨은 "헤드 / 서브헤드"). ### + 표시가 하나라도 있으면 표시된 것만, 없으면 전부(자동)
   tocSections: boolean;   // false 면 목차에서 섹션 목록을 펼치지 않음 (## 이름 {toc=none})
+  href?: string;          // 링크 항목 (## 이름 {href=…}): 페이지를 만들지 않고 목차에서 그 주소를 새 탭으로 엶 (로고 생성기)
   prev?: SubRef;
   next?: SubRef;
 }
@@ -484,10 +485,10 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       const slug = slugify(name);
       sub = {
         name, slug,
-        url: `/${lang}/${chapter.slug}/${slug}`,
+        url: attrs.href ?? `/${lang}/${chapter.slug}/${slug}`, href: attrs.href,
         chapterNum: chapter.num, chapterName: chapter.name, chapterSlug: chapter.slug,
         sections: [], navSections: [],
-        tocSections: attrs.toc !== 'none'
+        tocSections: attrs.toc !== 'none' && !attrs.href
       };
       chapter.subs.push(sub);
       idsInSub = new Map();
@@ -600,7 +601,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
   });
 
   // prev / next 연결 (챕터 경계를 넘어 순서대로)
-  const flat = chapters.flatMap(c => c.subs);
+  const flat = chapters.flatMap(c => c.subs).filter(s => !s.href);   // 링크 항목은 이전/다음 · 참조 대상에서 뺌
   flat.forEach((s, i) => {
     const ref = (t: Sub): SubRef => ({ url: t.url, name: t.name, chapterNum: t.chapterNum, chapterName: t.chapterName });
     if (i > 0) s.prev = ref(flat[i - 1]);

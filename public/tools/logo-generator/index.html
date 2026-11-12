@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EO Logo Generator</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-1.2 -1.2 28 28'><rect x='-1.2' y='-1.2' width='28' height='28' fill='%23F9EE3A'/><polygon fill='%23000000' transform='translate(12.8 12.8) scale(1.1) translate(-12.8 -12.8)' points='21.7 5.3 21.7 3.6 17.4 3.6 8.2 3.6 3.9 6.8 3.9 8.4 8.2 8.4 8.2 10.4 3.9 13.5 3.9 15.2 8.2 15.2 8.2 17.2 3.9 20.3 3.9 22 17.4 22 21.7 18.8 21.7 17.2 17.4 17.2 17.4 15.2 21.7 12.1 21.7 10.4 17.4 10.4 17.4 8.4 21.7 5.3'/></svg>">   <!-- 파비콘: 반전 E 서브심볼(Space Black on Builder Neon, 1.1배, 네 변 t 여백) -->
+<script src="vendor/polygon-clipping/polygon-clipping.umd.min.js"></script>   <!-- polygon-clipping 0.15.7 (MIT) — 인터넷 없이 동작하게 함께 둠 -->
+<link rel="stylesheet" href="tool.css">
+</head>
+<body>
+<div class="app">
+<aside>
+<div class="scroll">
+  <div class="brand">
+    <h1><span id="logo"></span>EO Logo Generator</h1>
+  </div>
+
+
+  <div class="sections">
+    <section>
+      <div class="secHead"><h2>Logo</h2><div class="tg"><button id="kSym" class="on">Symbol</button><i></i><button id="kSig">Signature</button></div></div>
+      <div class="settings" id="sigSet">
+        <div class="row" id="typeRow"><span class="label">Type</span><div class="tg"><button id="tCo" class="on">Company</button><i></i><button id="tSv">Service</button></div></div>
+        <div class="row" id="layRow"><span class="label">Layout</span><div class="tg"><button id="oV" class="on">Vertical</button><i></i><button id="oH">Horizontal</button></div></div>
+        <div class="row" id="nameRow"><span class="label">Descriptor</span><label class="sf wide"><input type="text" id="sigName" value="Magazine" spellcheck="false" autocomplete="off" aria-label="Service descriptor"></label></div>
+      </div>
+    </section>
+
+    <section id="mediumSec">
+      <div class="secHead"><h2>Viewing</h2></div>
+      <div class="settings">
+        <div class="row"><span class="label">Medium</span><label class="dd"><span class="ddVal" id="deviceVal">MacBook 16″</span><span class="chev"></span><select id="distPreset" autocomplete="off" aria-label="Medium — sets a typical viewing distance, output unit and resolution"><option value="iphone">iPhone 18</option><option value="iphone-pm">iPhone 18 Pro Max</option><option value="macbook" selected>MacBook 16″</option><option value="desktop-24">Desktop 24″</option><option value="desktop-27">Desktop 27″</option><option value="a4">A4 document</option><option value="a2">A2 poster</option><option value="billboard">Billboard</option></select></label></div>
+        <div class="row" id="contRow"><span class="label">Content</span><label class="dd"><span class="ddVal" id="contVal">Feed 3:4</span><span class="chev"></span><select id="contSel" autocomplete="off" aria-label="Content — digital media only"></select></label></div>
+        <div class="row"><span class="label">Distance</span><label class="sf"><input type="number" id="dist" min="0" step="any" value="50"><span class="suffix" id="distUnit">cm</span></label></div>
+        <div class="row"><span class="label">Real size height</span><label class="sf"><input type="number" id="hreal" min="0" step="any" value="8"><span class="suffix">mm</span></label></div>
+        <div class="row"><span class="label" id="hpxLabel">Output height</span><label class="sf"><input type="number" id="hpx" min="0" step="any" value="40"><span class="suffix">px</span></label></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="secHead" id="sizeHead"><h2>Visual size</h2><div class="calLink"><button class="link" id="openCalib" aria-label="Match your screen scale to a credit card — makes the visual height on screen accurate">Not calibrated</button></div></div>
+      <div class="settings">
+        <div class="sliderSet">
+          <div class="row"><span class="label">Symbol height</span><label class="sf"><input type="number" id="hmm" min="4" max="30" step="0.1" value="12"><span class="suffix">mm</span></label></div>
+          <div class="tight">
+            <input type="range" class="rg" id="hSlider" min="4" max="30" step="any">
+            <div id="warns"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="boxed">
+      <div class="secHead"><h2>Color</h2><div class="tg"><button id="modeLight" class="on">Light</button><i></i><button id="modeDark">Dark</button></div></div>
+      <div class="presets" id="presets"></div>
+    </section>
+
+    <section class="export boxed">
+      <div class="secHead"><h2>Export</h2></div>
+      <div class="settings">
+        <div class="block">
+          <div class="seg4" id="pngScale"><button data-v="1" class="on">1x</button><button data-v="2">2x</button><button data-v="3">3x</button><button data-v="4">4x</button></div>
+          <div class="btns2"><button class="ghost" id="dlSvg">Save SVG</button><button class="ghost" id="dlPng">Save PNG</button></div>
+        </div>
+        <div class="chkRow"><label class="chk"><input type="checkbox" id="clear" checked> Include clearspace</label><a class="info" id="clearInfo" href="#" target="_blank" rel="noopener" aria-label="Guide: Symbol › Clearspace">i</a></div>
+        <div class="chkRow"><label class="chk disabled" id="iconWrap"><input type="checkbox" id="icon" checked> Right side correction</label><a class="info" id="iconInfo" href="#" target="_blank" rel="noopener" aria-label="Guide: Symbol › Clearspace">i</a></div>
+        <div class="chkRow"><label class="chk"><input type="checkbox" id="guide"> Show clearspace guide</label></div>
+      </div>
+    </section>
+  </div>
+</div>
+</aside>
+
+<main>
+  <div class="err lbl" id="err"></div>
+  <div id="cardLayer"><div id="card"><span>85.6 × 54mm</span>
+    <div id="cardHandle"></div></div>
+  </div>
+  <div id="tip" hidden><div class="calHead"><div class="secHead"><h2 id="tipT"></h2></div><p class="calText" id="tipB"></p><p class="calText tipHint" id="tipH"></p></div></div>
+  <div id="calib" hidden>
+    <div class="calHead">
+      <div class="secHead"><h2>Card calibration</h2></div>
+      <p class="calText">Hold a credit card to the screen and drag the slider or the corner until the yellow frame matches it. Arrow keys fine-tune.</p>
+    </div>
+    <div class="sliderSet">
+      <div class="row"><span class="label">px/mm</span><span class="sf ro"><input type="text" id="calOut" value="5.00" readonly tabindex="-1"></span></div>
+      <input type="range" class="rg" id="calSlider" min="3" max="15" step="0.01">
+    </div>
+    <div class="calBtns"><button id="calReset" aria-label="Reset to 5 px/mm">Reset</button><button class="ghost" id="calCancel" aria-label="Cancel (Esc)">Cancel</button><button class="primary" id="calSave" aria-label="Save (Enter)">Save</button></div>
+  </div>
+  <div class="stage workspace" id="workspace">
+    <div id="actual" class="actual"></div>
+    <div class="artLayer"><div id="mediumArt" aria-hidden="true"></div></div>
+  </div>
+</main>
+</div>
+
+<script src="geom.js"></script>
+
+
+<script src="app.js"></script>
+<script type="importmap">{ "imports": { "tiny-inflate": "data:text/javascript,export%20default%20()%3D%3E%7Bthrow%20new%20Error('WOFF1')%7D" } }</script>
+<script type="module" src="sig-font.js"></script>
+</body>
+</html>

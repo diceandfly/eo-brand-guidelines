@@ -8,6 +8,7 @@
  *      이미지를 채워 수가 줄면 통과하고, 줄었다고 알려 줍니다 → 그때 MAX_PLACEHOLDERS 를 낮춰 두세요.
  *   3. 모션 대체값 — src/lib/motion.ts 의 ms() · num() · easeOf() 대체값이 tokens.css 값과 같아야 함 (토큰을 못 읽어도 같은 모션).
  *   4. astro check — 타입 오류 0.
+ *   5. 로고 생성기 — GEOM 확정 수치(다크 총높이 · 오른쪽 클리어스페이스 식) · HEX/CMYK ↔ 가이드 스와치 (scripts/lib/logo-generator-check.mjs).
  * 리포트만 하는 것 (실패 아님)
  *   - EN/KO 구조 패리티: 페이지 목록, 페이지별 섹션 헤드 수 · 순서, 이미지 토큰 순서. 영문은 국문과 구조가 다를 수 있음.
  *   - 폰트 파일: public/fonts 에 빠진 woff2 (scripts/lib/check-fonts.mjs, 빌드도 경고).
@@ -20,6 +21,7 @@ import { spawnSync } from 'node:child_process';
 import { loadGuide, LANGS } from '../src/lib/guide.ts';
 import { parseTokens } from '../src/lib/tokens.ts';
 import { checkFonts } from './lib/check-fonts.mjs';
+import { checkLogoGenerator } from './lib/logo-generator-check.mjs';
 
 const ROOT = process.cwd();
 const MAX_PLACEHOLDERS = { ko: 11, en: 11 };   // 2026-11-10 기준. 이미지를 채우면 낮출 것
@@ -109,6 +111,10 @@ console.log('\n[리포트] EN/KO 구조 패리티 (국문 기준, 실패 아님)
 // ── 리포트: 폰트 파일 ─────────────────────────────────────────────────────
 console.log('\n[리포트] 폰트 파일 (실패 아님)');
 for (const r of checkFonts(ROOT)) note(`${r.css}: ${r.total - r.missing.length} / ${r.total}${r.missing.length ? ` — 빠짐 ${r.missing.length}. ${r.fix}` : ''}`);
+
+// ── 5. 로고 생성기 ─────────────────────────────────────────────────────
+console.log('\n[5] 로고 생성기 (public/tools/logo-generator)');
+try { checkLogoGenerator(ROOT, { ok, fail }); } catch (e) { fail(`생성기 검사 중 오류 — ${e.message}`); }
 
 // ── 4. astro check ──────────────────────────────────────────────────────
 if (!process.argv.includes('--no-check')) {

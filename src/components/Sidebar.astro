@@ -27,7 +27,9 @@ const { guide, current, lang, alt } = Astro.props;
                 const isCur = current?.url === s.url;
                 return (
                   <li class:list={['nav__sub', { 'is-active': isCur }]} style={`--i: ${si}`}>
-                    <a class="nav__sub-link" href={s.url} aria-current={isCur ? 'page' : undefined}>{s.name}</a>
+                    {s.href
+                      ? <a class="nav__sub-link" href={s.href} target="_blank" rel="noopener">{s.name}</a>
+                      : <a class="nav__sub-link" href={s.url} aria-current={isCur ? 'page' : undefined}>{s.name}</a>}
                     {s.tocSections && s.navSections.length > 1 && (
                       <div class:list={['nav__fold', { 'is-open': isCur }]} inert={!isCur}>
                         <ul class="nav__sections" data-scrollspy={isCur ? '' : undefined}>
