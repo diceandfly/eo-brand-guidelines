@@ -117,20 +117,16 @@
 
   /* UI 전용 색 — 팔레트 밖이라 --c- 접두를 쓰지 않고, 브랜드 컬러로도 쓰지 않습니다 */
   --warn-orange: #dd5a2d; /* 경고 주황 — 가이드 사이트 --warn-orange 와 같은 값 (Don't 배지 · 대각선) */
-  /* Figma(EO Graphic Builder) 회색 — 가이드 규칙상 중간 톤은 color-mix() 로 쓰지만, 팔레트를 섞어서는 같은 값이 나오지 않아 HEX 로 둠 */
-  --gray-line: #262626; /* 모든 선 */
-  --gray-line-strong: #4b4b4b; /* 면 경계선 */
-  --gray-divider: #555555; /* 토글 세로선 */
-  --gray-zone-base: #151515; /* 슬라이더 구간 색 바탕 */
 
-  /* 기본 시맨틱 — 요소 블록의 색은 모두 여기서 파생합니다 */
+  /* 기본 시맨틱 — 요소 블록의 색은 모두 여기서 파생합니다 (중간 톤은 새 HEX 대신 팔레트를 color-mix)
+     무채색 회색 = Medium Gray × % + Space Black — 퍼센트만 바꿈. Figma(EO Graphic Builder) 값과 8비트로 같음 (% 옆 주석) */
   --bg: var(--c-space-black); /* 페이지 바탕 */
   --fg: var(--c-air-white); /* title · menu · 값 · 저장 버튼 */
   --fg-soft: color-mix(in srgb, var(--c-air-white) 60%, var(--c-medium-gray)); /* text — 행 라벨 · 버튼 · 토글 */
   --fg-muted: var(--c-medium-gray); /* label */
   --fg-off: color-mix(in srgb, var(--c-medium-gray) 45%, var(--c-solid-gray)); /* 비활성 */
-  --border: var(--gray-line); /* 모든 선 — 테두리 · 구분선 · 입력칸 밑줄 · 스크롤바 */
-  --border-strong: var(--gray-line-strong); /* 면 경계 — 메뉴창 · 팝업 테두리, 기본 슬라이더 트랙, i 테두리, 썸네일 칸 */
+  --border: color-mix(in srgb, var(--c-medium-gray) 27%, var(--c-space-black)); /* #262626 · 모든 선 — 테두리 · 구분선 · 입력칸 밑줄 · 스크롤바 */
+  --border-strong: color-mix(in srgb, var(--c-medium-gray) 53%, var(--c-space-black)); /* #4b4b4b · 면 경계 — 메뉴창 · 팝업 테두리, 기본 슬라이더 트랙, i 테두리, 썸네일 칸 */
   --accent: var(--c-builder-neon); /* 선택 · 체크 · 주 버튼 · 호버 (본문 글에는 안 씀) */
   --focus-c: var(--accent); /* 키보드 포커스 테두리 */
   --state-ok: var(--c-bay-green); /* 상태 메시지 · 슬라이더 구간 (UI 전용) */
@@ -203,7 +199,7 @@
   --save-gap: calc(var(--tg-divider-pad) * 2); /* Export › Save 글자 버튼 사이 (SVG ↓   PNG ↓) = 토글 세로선 자리와 같은 폭 */
   --btn-primary-hover-mix: 85%; /* 주 버튼 호버 = accent 85% + Air White */
   --btn-bg: color-mix(in srgb, var(--c-solid-gray) 66%, var(--c-space-black)); /* 채움 버튼 면 — 메뉴창(76%)보다 은은하게 어둡게 */
-  --tg-divider-c: var(--gray-divider); /* 세로선 색 */
+  --tg-divider-c: color-mix(in srgb, var(--c-medium-gray) 60%, var(--c-space-black)); /* 세로선 색 (#555555) */
 
   /* ------------------------------------------------------------------
      B-4 입력칸 · 셀렉트
@@ -234,7 +230,7 @@
   --slider-track-c: var(--border-strong); /* 기본 트랙 (보정) — 메뉴창 면 위에서 보이게 */
   /* 크기 슬라이더 구간 색 — 이름 끝(out · optimal · over)은 JS 가 조합 (app.js zoneAt) */
   --slider-zone-mix: 50%; /* 구간 색 = 상태색 × 이 비율 + 바탕 */
-  --slider-zone-base: var(--gray-zone-base); /* 구간 색 바탕 */
+  --slider-zone-base: color-mix(in srgb, var(--c-medium-gray) 15%, var(--c-space-black)); /* 구간 색 바탕 (#151515) */
   --slider-zone-l: 0.45; /* 구간 색 밝기 (OKLCH L) — 세 구간을 같은 밝기로. 밝기가 다르면 같은 2px 도 두께가 달라 보임 */
   --slider-zone-out: oklch(from color-mix(in srgb, var(--state-bad) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h); /* 가이드 밖 */
   --slider-zone-optimal: oklch(from color-mix(in srgb, var(--state-ok) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h); /* 최적 */

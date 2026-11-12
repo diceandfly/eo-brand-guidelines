@@ -1,6 +1,36 @@
 // EO Logo Generator — 화면 · 상태 · 시그니처 조판 · 목업 · 내보내기 · 툴팁 (geom.js 다음에 읽음, 같은 전역 공간)
 // ===== 11. 상태 · 컬러 =====
 const HEX = { 'Builder Neon': '#F9EE3A', 'Day Blue': '#6EC6D2', 'Bay Green': '#66B88A', 'Medium Gray': '#8E8E8E', 'Solid Gray': '#2A2B2B', 'Space Black': '#000000', 'Air White': '#FCFBF5' };
+/*RULES-START*/
+// ===== 브랜드 규칙 수치 — 가이드에서 온 값만 모음. 화면 · UI 코드는 읽기만 함 (npm test [5] 가 이 블록을 따로 돌려 값을 고정) =====
+// 보이는 높이 S(mm, 500mm 환산) 구간 — 가이드 Symbol · Signature › Scalability. [시작 mm, 구간] … 마지막 [Infinity].
+// 경계값은 더 나은 구간에 속함 (optimal > over > out): 4 · 15mm = 최적, 25mm = 권장 최대 초과, 시그니처 10mm = 두 형 모두 최적
+const RULES = {
+  minVis: 4,   // 어느 형도 4mm 미만은 없음
+  zones: {
+    symbol: [[0, 'out'], [4, 'optimal'], [15, 'over'], [25, 'out'], [Infinity]],   // 최적 4-15 · 권장 최대 초과 15-25
+    sigH: [[0, 'out'], [4, 'optimal'], [10, 'out'], [Infinity]],                    // 가로형 시그니처 4-10
+    sigV: [[0, 'out'], [10, 'optimal'], [15, 'over'], [25, 'out'], [Infinity]],     // 세로형 시그니처 10mm 부터
+  },
+};
+const ZONE_EPS = 1e-6, ZONE_RANK = { optimal: 2, over: 1, out: 0 };
+function zoneOf(zones, S) {   // S 가 든 구간 (닫힌 구간, 경계에서는 더 나은 쪽)
+  let best = null;
+  for (let i = 0; i < zones.length - 1; i++) {
+    const [a, k] = zones[i], b = zones[i + 1][0];
+    if (S >= a - ZONE_EPS && S <= b + ZONE_EPS && (best === null || ZONE_RANK[k] > ZONE_RANK[best])) best = k;
+  }
+  return best;
+}
+// 시그니처 규격 (가이드 Signature › Descriptor · Clearspace · Inversion) — H = 심볼 높이(E 블록 높이), W = E 블록 폭, 자간 = 1/1000 em
+const SIG = {
+  v: { em: 58.8 / 125, emDark: .48, trackDark: -10, drop: 1 / 5, nudge: -1 / 100 },       // 세로형: 조판 = 일러 장표 58.8pt / 심볼 125 (가이드 문장 0.46H 는 반올림 표기) · 캡 박스 윗변 = 심볼 아래 H/5 · 심볼 가운데에서 왼쪽으로 H/100 · 클리어스페이스 H/2
+  h: { em: 1.3, emDark: 1.35, trackDark: -20, gapW: 1 / 2, lift: 1 / 10, space: -60, spaceDark: -70 },   // 가로형: 캡 박스 왼변 = 심볼 오른쪽 + W/2 · 베이스라인 = 심볼 바닥 − H/10 · 공백만 자간 −6% · 클리어스페이스 = 캡 하이트
+  darkOffset: 1 / 200,                                                       // 다크: 자간 세로형 −1% · 가로형 −2%(2026-11-12 확정, 공백 −7%) · 글자 바깥 오프셋 H/200
+};
+const ART_AREA_MAX = 0.10;   // 로고(심볼 박스) 면적 ÷ 로고가 놓인 공간 면적 — 가이드 Symbol › Usage "실질 점유 면적은 빈 공간 전체의 5-10%" 의 상한. 공간 = 조닝 매체는 콘텐츠 영역(spec.space), 나머지는 화면 · 지면 전체
+const MM_MIN = RULES.minVis, MM_MAX = 30;   // 보이는 높이 슬라이더 범위 (UI — 최대 25mm 를 조금 넘는 데까지만, 빨간 구간은 짧게). 거리와 무관하게 고정
+/*RULES-END*/
 const PRESETS = [
   { n: 1, fg: 'Space Black', bg: 'Builder Neon', mode: 'dark' },
   { n: 2, fg: 'Air White', bg: 'Space Black', mode: 'light' },
@@ -22,21 +52,20 @@ function sizes() {
   const outPx = physMm * pxPerMm();   // 출력 px = 실제 높이 × 매체의 px/mm (화면 = 대상 화면 값 · 인쇄 = 매체 dpi)
   return { physMm, S, outPx };
 }
-function warnings(S) {   // 판정은 보이는 높이 S (경계 4 · 15 · 25mm, 시그니처는 4 · 10 · 15 · 25mm), 문구엔 숫자 없음 — 숫자는 Visual height 칸, 범위는 슬라이더 구간 색이 보여줌
-  const w = [];
-  if (st.kind === 'signature') {   // 시그니처 (가이드 Signature › Scalability): 4mm 미만 없음 · 10mm 미만 가로형만 · 10mm 이상 세로형만 (권장 최대 15 · 최대 25)
-    if (!SIG_FONT) return [[SIG_FONT_ERR ? 'bad' : 'info', SIG_FONT_ERR || 'Loading signature font']];
-    if (S < 4) w.push(['bad', 'Outside guide']);
-    else if (st.orient === 'h') w.push(S > 10 ? ['bad', 'Use vertical at this size'] : S <= 4 + 1e-6 ? ['warn', 'Minimum visual size'] : ['ok', 'Within guide range']);
-    else w.push(S < 10 ? ['bad', 'Use horizontal at this size'] : S > 25 ? ['bad', 'Not recommended'] : S > 15 ? ['warn', 'Not quite recommended'] : ['ok', 'Within optimal range']);
-    return w;
+function warnings(S) {   // 판정 = zoneAt (슬라이더 구간 색과 같은 경계 — RULES.zones 하나), 문구엔 숫자 없음 — 숫자는 Visual height 칸, 범위는 슬라이더 구간 색이 보여줌
+  const sig = st.kind === 'signature', h = st.orient === 'h';
+  if (sig && !SIG_FONT) return [[SIG_FONT_ERR ? 'bad' : 'info', SIG_FONT_ERR || 'Loading signature font']];
+  const z = zoneAt(S);
+  if (z === 'out') {
+    if (S < RULES.minVis) return [['bad', 'Outside guide']];   // 4mm 미만 = 어느 형도 없음
+    const lo = sizeZones().find(([, k]) => k === 'optimal')[0];   // 최적 구간 시작
+    if (sig && S < lo) return [['bad', 'Use horizontal at this size']];   // 세로형 10mm 미만
+    if (sig && h) return [['bad', 'Use vertical at this size']];   // 가로형 10mm 초과
+    return [['bad', 'Not recommended']];   // 25mm 초과 = 그래픽 패턴 영역 (가이드 Scalability)
   }
-  if (S < 4) w.push(['bad', 'Outside guide']);
-  else if (S > 25) w.push(['bad', 'Not recommended']);   // 25mm 넘으면 그래픽 패턴 영역 (가이드 Scalability)
-  else if (S > 15) w.push(['warn', 'Not quite recommended']);   // 15-25mm = 권장 최대(15mm) 초과
-  else if (S <= 4 + 1e-6) w.push(['warn', 'Minimum visual size']);
-  else w.push(['ok', 'Within optimal range']);   // 최적 = 4-15mm (슬라이더 구간 색과 같음 · 권장 최대 15mm 까지)
-  return w;
+  if (z === 'over') return [['warn', 'Not quite recommended']];   // 권장 최대(15mm) 초과
+  if (S <= RULES.minVis + ZONE_EPS) return [['warn', 'Minimum visual size']];
+  return [['ok', sig && h ? 'Within guide range' : 'Within optimal range']];
 }
 
 // ===== 13. 시그니처 디스크립터 — 서체 아웃라인 · 커닝(GPOS) · 캡 박스 =====
@@ -120,12 +149,6 @@ function setLineRaw(F, text, em, track, spaceTrack) {
   const mp = polys.length ? polygonClipping.union(...polys) : [];   // 글자끼리 겹쳐도 한 덩어리
   return { mp, capL, capR, capH: F.cap * k, missing };
 }
-// 시그니처 규격 (가이드 Signature › Descriptor · Clearspace · Inversion) — H = 심볼 높이(E 블록 높이), W = E 블록 폭, 자간 = 1/1000 em
-const SIG = {
-  v: { em: 58.8 / 125, emDark: .48, trackDark: -10, drop: 1 / 5, nudge: -1 / 100 },       // 세로형: 조판 = 일러 장표 58.8pt / 심볼 125 (가이드 문장 0.46H 는 반올림 표기) · 캡 박스 윗변 = 심볼 아래 H/5 · 심볼 가운데에서 왼쪽으로 H/100 · 클리어스페이스 H/2
-  h: { em: 1.3, emDark: 1.35, trackDark: -20, gapW: 1 / 2, lift: 1 / 10, space: -60, spaceDark: -70 },   // 가로형: 캡 박스 왼변 = 심볼 오른쪽 + W/2 · 베이스라인 = 심볼 바닥 − H/10 · 공백만 자간 −6% · 클리어스페이스 = 캡 하이트
-  darkOffset: 1 / 200,                                                       // 다크: 자간 세로형 −1% · 가로형 −2%(2026-11-12 확정, 공백 −7%) · 글자 바깥 오프셋 H/200
-};
 const GUIDE = '/en/02-logo/';   // 가이드 사이트 Logo 챕터 (같은 서버의 상대 주소)
 const FONTKIT_URL = './vendor/fontkitten/index.js', FONT_URL = '/fonts/founders-grotesk-regular.woff2';   // 시그니처 의존 — fontkitten 1.0.3 (MIT) 은 함께 둠, 서체는 가이드와 같은 public/fonts (git 제외, 클라이언트가 넣음)
 let SIG_FONT = null, SIG_FONT_ERR = /^https?:$/.test(location.protocol) ? '' : 'Signature needs the guide server — run npm run dev and open /tools/logo-generator/index.html';   // 서체는 아래 모듈 스크립트가 읽어 넣음. 파일을 직접 열면(file://) 브라우저가 모듈 · 폰트 읽기를 막아 시그니처가 안 됨 → 서버 주소로 열라고 알림
@@ -289,12 +312,9 @@ function pdfMarkup(c) {   // 한 쪽짜리 PDF — 쪽 크기 = 내보내는 틀
 }
 
 // ===== 17. 컨트롤 연결 =====
-const MM_MIN = 4, MM_MAX = 30;   // 보이는 높이 슬라이더 범위 (최대 25mm 를 조금 넘는 데까지만 — 빨간 구간은 짧게). 거리와 무관하게 고정
 const mmText = v => (Math.round(v * 10) / 10).toFixed(1);   // 항상 소수 한 자리 — 자릿수가 바뀌며 숫자가 뛰지 않게 (실제 값과 같은 자리까지)
-const sizeZones = () => st.kind !== 'signature' ? [[0, 'out'], [4, 'optimal'], [15, 'over'], [25, 'out'], [Infinity]]   // 심볼
-  : st.orient === 'h' ? [[0, 'out'], [4, 'optimal'], [10, 'out'], [Infinity]]                                              // 가로형 시그니처 4-10mm
-  : [[0, 'out'], [10, 'optimal'], [15, 'over'], [25, 'out'], [Infinity]];                                                    // 세로형 시그니처 10mm 부터
-const zoneAt = v => { let k = 'out'; for (const [a, n] of sizeZones()) if (n && v >= a) k = n; return k; };
+const sizeZones = () => RULES.zones[st.kind !== 'signature' ? 'symbol' : st.orient === 'h' ? 'sigH' : 'sigV'];   // 지금 형의 구간 (RULES)
+const zoneAt = v => zoneOf(sizeZones(), v);   // 슬라이더 색 · 눈금 · 상태 메시지가 모두 이것 하나로 판정
 function zoneTrack() {   // 보이는 높이 구간(warnings 와 같은 경계)을 슬라이더 위치로
   const lo = MM_MIN, hi = MM_MAX;
   const pct = S => { const f = Math.max(0, Math.min(1, (S - lo) / (hi - lo))); return f <= 0 ? '0%' : f >= 1 ? '100%' : `calc(var(--slider-thumb-w) * 0.5 + ${(f * 100).toFixed(3)}% - var(--slider-thumb-w) * ${f.toFixed(5)})`; };   // 트랙은 패널 폭 전체, 구간 경계는 썸 가운데가 지나는 자리
@@ -486,7 +506,6 @@ let artHov = false;   // 마우스가 목업 위에 있나 — 다시 그릴 때
 document.addEventListener('pointerover', e => { const on = !!(e.target.closest && e.target.closest('svg.mock')); if (on !== artHov) { artHov = on; document.querySelectorAll('svg.mock').forEach(s => s.classList.toggle('hov', on)); } });
 document.addEventListener('click', e => { const g = e.target.closest && e.target.closest('.artGhost'); if (!g) return; (st.place[artKey()] ||= [])[+g.dataset.slot] = g.dataset.where; update(); });
 const ART_REF = () => ART['desktop-24'].video, ART_REF_BOOST = 1.25;   // 화면 목업 배율 기준 = Desktop 24″ 를 기본 상자에 맞춘 배율 × 1.25 (MacBook 이 작아 보이지 않게 셋을 같이 키움)
-const ART_AREA_MAX = 0.10;   // 로고(심볼 박스) 면적 ÷ 로고가 놓인 공간 면적 — 가이드 Symbol › Usage "실질 점유 면적은 빈 공간 전체의 5-10%" 의 상한. 공간 = 조닝 매체는 콘텐츠 영역(spec.space), 나머지는 화면 · 지면 전체
 function renderArt(c) {
   const a = artFor(), el = $('mediumArt'), m0 = medium();
   if (!a) { el.innerHTML = ''; return; }   // 목업이 없는 매체 = 그림 없음

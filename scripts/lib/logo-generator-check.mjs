@@ -4,6 +4,8 @@
  *      다크 심볼 총높이 1.0867H (H + 2/30H + 2/100H) · 다크 간격 3/30H · 라이트 폭(regular) · 오른쪽 클리어스페이스 식(가이드 Symbol › Clearspace)
  *   b. app.js 의 HEX · CMYK 가 국문 가이드 Color 스와치와 같은지 (팔레트 7색)
  *   c. tokens.css 팔레트(--c-*) = 가이드 tokens.css · 참조하는 토큰이 모두 정의됨
+ *   d. app.js RULES 블록(크기 구간 · 경계 · 시그니처 규격 · 면적 상한)의 가이드 수치
+ *   e. 생성기가 쓰는 서체 파일 ⊂ 가이드 src/styles/fonts.css
  * 생성기는 빌드 없는 단일 HTML 이라 여기서만 검사합니다. 실패 메시지는 fail(), 통과는 ok() 로 test.mjs 에 보고.
  */
 import fs from 'node:fs';
@@ -61,4 +63,33 @@ export function checkLogoGenerator(ROOT, { ok, fail }) {
   for (const d of palDiff) fail(`생성기 팔레트 ${d}`);
   if (missing.length) fail(`생성기 정의 안 된 토큰: ${missing.join(' · ')}`);
   if (!palDiff.length && !missing.length) ok(`생성기 토큰 — 팔레트 ${Object.keys(tPal).length}색 = 가이드 · 참조 ${new Set(refs).size}개 모두 정의됨`);
+
+  // d. 브랜드 규칙 — app.js 의 RULES 블록(/*RULES-START*/ … /*RULES-END*/)을 따로 돌려 가이드 수치를 고정
+  const rb = appSrc.match(/\/\*RULES-START\*\/([\s\S]*?)\/\*RULES-END\*\//);
+  if (!rb) { fail('생성기 RULES 블록 표시를 찾을 수 없음'); return; }
+  const rc = vm.createContext({});
+  vm.runInContext(rb[1] + '\n;globalThis.__r = { RULES, SIG, ART_AREA_MAX, MM_MIN, MM_MAX, zoneOf };', rc);
+  const R = rc.__r, pins = [
+    ['구간 심볼', JSON.stringify(R.RULES.zones.symbol), JSON.stringify([[0, 'out'], [4, 'optimal'], [15, 'over'], [25, 'out'], [null]])],
+    ['구간 가로형 시그니처', JSON.stringify(R.RULES.zones.sigH), JSON.stringify([[0, 'out'], [4, 'optimal'], [10, 'out'], [null]])],
+    ['구간 세로형 시그니처', JSON.stringify(R.RULES.zones.sigV), JSON.stringify([[0, 'out'], [10, 'optimal'], [15, 'over'], [25, 'out'], [null]])],
+    ['최소 보이는 높이', R.RULES.minVis, 4], ['슬라이더 범위', `${R.MM_MIN}-${R.MM_MAX}`, '4-30'], ['로고 면적 상한', R.ART_AREA_MAX, 0.1],
+    ['세로형 em', R.SIG.v.em.toFixed(4), '0.4704'], ['세로형 다크 em', R.SIG.v.emDark, 0.48], ['세로형 다크 자간', R.SIG.v.trackDark, -10], ['세로형 drop', R.SIG.v.drop, 0.2], ['세로형 nudge', R.SIG.v.nudge, -0.01],
+    ['가로형 em', R.SIG.h.em, 1.3], ['가로형 다크 em', R.SIG.h.emDark, 1.35], ['가로형 다크 자간', R.SIG.h.trackDark, -20], ['가로형 gapW', R.SIG.h.gapW, 0.5], ['가로형 lift', R.SIG.h.lift, 0.1],
+    ['가로형 공백 자간', `${R.SIG.h.space}/${R.SIG.h.spaceDark}`, '-60/-70'], ['다크 글자 오프셋', R.SIG.darkOffset, 0.005],
+    // 경계값 = 더 나은 구간 (상태 메시지와 슬라이더 색이 같게)
+    ['경계 심볼 4 · 15 · 25 · 25.1', ['symbol', 4, 15, 25, 25.1].slice(1).map(S => R.zoneOf(R.RULES.zones.symbol, S)).join(), 'optimal,optimal,over,out'],
+    ['경계 시그니처 10 (가로 · 세로)', [R.zoneOf(R.RULES.zones.sigH, 10), R.zoneOf(R.RULES.zones.sigV, 10)].join(), 'optimal,optimal'],
+  ];
+  const off = pins.filter(([, got, want]) => got !== want);
+  for (const [name, got, want] of off) fail(`생성기 규칙 ${name} — ${got} (기대 ${want})`);
+  if (!off.length) ok(`생성기 브랜드 규칙 ${pins.length}항목 (크기 구간 · 경계 · 시그니처 규격 · 면적 상한)`);
+
+  // e. 서체 — 생성기가 쓰는 woff2 가 가이드 fonts.css 에 선언된 파일인지 (public/fonts 공유, 이름이 어긋나면 생성기만 시스템 서체로 떨어짐)
+  const files = s => new Set([...s.matchAll(/\/fonts\/([\w-]+\.woff2)/g)].map(m => m[1]));
+  const gFonts = files(fs.readFileSync(path.join(ROOT, 'src/styles/fonts.css'), 'utf8'));
+  const tFonts = files(['fonts.css', 'index.html', 'app.js'].map(f => fs.readFileSync(path.join(dir, f), 'utf8')).join('\n'));
+  const strays = [...tFonts].filter(f => !gFonts.has(f));
+  if (strays.length) fail(`생성기 서체 파일이 가이드 fonts.css 에 없음: ${strays.join(' · ')}`);
+  else ok(`생성기 서체 ${tFonts.size}개 ⊂ 가이드 fonts.css`);
 }
