@@ -224,7 +224,7 @@ function update() {
     ['typeRow', 'layRow'].forEach(id => $(id).classList.toggle('off', !sig)); $('nameRow').classList.toggle('off', !sig || co);
     if (document.activeElement !== $('sigName')) $('sigName').value = co ? 'EO Studio' : st.sigName; $('sigName').disabled = !sig || co; }
   $('hSlider').style.setProperty('--zones', zoneTrack());   // 슬라이더 구간 색
-  { const m = medium(), v = (m.contents?.find(([k]) => k === curContent()) || [])[2] ?? m.vis, f = (v - MM_MIN) / (MM_MAX - MM_MIN), x = `calc(var(--slider-thumb) * 0.5 + ${(f * 100).toFixed(3)}% - var(--slider-thumb) * ${f.toFixed(5)})`;   // 매체 · 콘텐츠 처음 값 자리 = 눈금 (Website 7 등)
+  { const m = medium(), v = (m.contents?.find(([k]) => k === curContent()) || [])[2] ?? m.vis, f = (v - MM_MIN) / (MM_MAX - MM_MIN), x = `calc(var(--slider-thumb-w) * 0.5 + ${(f * 100).toFixed(3)}% - var(--slider-thumb-w) * ${f.toFixed(5)})`;   // 매체 · 콘텐츠 처음 값 자리 = 눈금 (Website 7 등)
     const zc = `var(--slider-zone-${zoneAt(v)})`;   // 눈금 색 = 그 자리 구간 색
     $('hSlider').style.setProperty('--vis-mark', v ? `linear-gradient(to right, transparent calc(${x} - var(--slider-tick-w) / 2), ${zc} calc(${x} - var(--slider-tick-w) / 2) calc(${x} + var(--slider-tick-w) / 2), transparent calc(${x} + var(--slider-tick-w) / 2))` : 'none'); }
 
@@ -297,7 +297,7 @@ const sizeZones = () => st.kind !== 'signature' ? [[0, 'out'], [4, 'optimal'], [
 const zoneAt = v => { let k = 'out'; for (const [a, n] of sizeZones()) if (n && v >= a) k = n; return k; };
 function zoneTrack() {   // 보이는 높이 구간(warnings 와 같은 경계)을 슬라이더 위치로
   const lo = MM_MIN, hi = MM_MAX;
-  const pct = S => { const f = Math.max(0, Math.min(1, (S - lo) / (hi - lo))); return f <= 0 ? '0%' : f >= 1 ? '100%' : `calc(var(--slider-thumb) * 0.5 + ${(f * 100).toFixed(3)}% - var(--slider-thumb) * ${f.toFixed(5)})`; };   // 트랙은 패널 폭 전체, 구간 경계는 썸 가운데가 지나는 자리
+  const pct = S => { const f = Math.max(0, Math.min(1, (S - lo) / (hi - lo))); return f <= 0 ? '0%' : f >= 1 ? '100%' : `calc(var(--slider-thumb-w) * 0.5 + ${(f * 100).toFixed(3)}% - var(--slider-thumb-w) * ${f.toFixed(5)})`; };   // 트랙은 패널 폭 전체, 구간 경계는 썸 가운데가 지나는 자리
   const z = sizeZones();
   const stops = z.slice(0, -1).map(([a, k], i) => `var(--slider-zone-${k}) ${pct(a)} ${pct(z[i + 1][0])}`);
   return `linear-gradient(to right, ${stops.join(', ')})`;
@@ -584,7 +584,7 @@ document.querySelector('aside').addEventListener('pointerover', e => {
   const key = lab ? lab.textContent.replace(/ ·.*$/, '').trim() : h2 ? h2.textContent.trim() : chk ? chk.textContent.trim() : null, hot = lab ? row : h2 || chk;
   if (key && TIPS[key]) { setHot(hot, key); return tipShow(hot, key, TIPS[key], TIP_LINKS[key] ? 'Click the name to open the guide ↗' : TIP_I[key] ? 'The i on the right opens the guide ↗' : ''); }
   setHot(null);
-  if (e.target.closest('.brand')) return tipShow(e.target.closest('.brand'), 'EO Logo Generator', TIP_ABOUT, TIP_ABOUT_HINT);
+  if (e.target.closest('.brand .help')) return tipShow(e.target.closest('.brand'), 'EO Logo Generator', TIP_ABOUT, TIP_ABOUT_HINT);   // ? 에 올릴 때만
   if (e.target.closest('#openCalib')) return tipShow($('openCalib'), 'Card calibration', () => st.calibrated
     ? `Done — the preview shows the true visual size (${st.pxmm.toFixed(2)} px/mm). Calibrate again on another screen.`
     : 'Screens differ in pixel density, so the preview can look bigger or smaller than it really is. Match a credit card once and the preview shows the true visual size. Do this before judging sizes.');
