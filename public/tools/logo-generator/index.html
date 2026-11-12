@@ -9,7 +9,9 @@
 <link rel="preload" href="/fonts/founders-grotesk-light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/founders-grotesk-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/founders-grotesk-mono-regular.woff2" as="font" type="font/woff2" crossorigin>   <!-- 서체를 CSS 보다 먼저 받기 시작 (툴이 쓰는 3개: Light · Regular · Mono) — 새로고침 때 글자가 바뀌며 튀지 않게, @font-face 는 font-display: block -->
-<link rel="stylesheet" href="tool.css">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">   <!-- 수치 · 색 토큰 (튜닝은 이 파일만) -->
+<link rel="stylesheet" href="tool.css">     <!-- 규칙 (토큰만 참조) -->
 </head>
 <body>
 <div class="app">

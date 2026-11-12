@@ -235,7 +235,7 @@ function update() {
   const aH = z.S * st.pxmm;   // 가운데 로고 = 정한 Visual height (거리에 반응하지 않음)   // As seen — 이 화면을 50cm 에서 볼 때, 현장에서 그 거리로 보는 것과 같은 크기 (500mm 환산 S × 화면 보정값). 매체가 달라도 S 가 같으면 같은 크기
   $('workspace').style.background = c.bgView;   // 작업공간 전체 = 선택한 페어의 배경색 (보기 전용 — 내보내기는 늘 투명)
   { const h = c.bgView.replace('#', ''), [rr, gg, bb] = [0, 2, 4].map(k => parseInt(h.substr(k, 2), 16) / 255), L = 0.2126 * rr + 0.7152 * gg + 0.0722 * bb;   // 바탕 밝기
-    $('workspace').style.setProperty('--art-line-w', L > 0.5 ? 'var(--art-line-w-light)' : 'var(--line-w)'); }   // 밝은 바탕이면 목업 · 가이드 선을 조금 굵게
+    $('workspace').style.setProperty('--art-line-w', L > 0.5 ? 'var(--art-line-w-on-light)' : 'var(--border-w)'); }   // 밝은 바탕이면 목업 · 가이드 선을 조금 굵게
   $('clear').checked = st.clear; $('icon').checked = st.icon && !sym.sig; $('guide').checked = st.guide;   // 새로고침 때 브라우저가 복원한 체크 상태를 st 기준으로 맞춤
   const gf = frameFor(c, true), gx = (gf.x0 - frame.x0) * aH, gy = (gf.y0 - frame.y0) * aH;   // 화면용 클리어스페이스 박스 — 내보내기 설정과 별개로 (Show clearspace guide)
   if (!medium().real) $('actual').innerHTML = svgMarkup(c, H, { cssW: frame.w * aH, cssH: frame.h * aH })   // 폰은 renderArt 가 실물 목업으로 채움 (한 번만 그림)
@@ -378,7 +378,7 @@ function marquee() {
   const over = box.scrollWidth - box.clientWidth;
   if (over <= 1 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;   // 다 들어가거나 모션 줄이기 설정이면 말줄임 그대로
   box.classList.add('mq');
-  const wait = tokenSec('--msg-mq-wait'), fade = tokenSec('--msg-mq-fade'), move = over / (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--msg-mq-speed')) || 40);
+  const wait = tokenSec('--msg-mq-wait'), fade = tokenSec('--msg-mq-fade-dur'), move = over / (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--msg-mq-speed')) || 40);
   const T = wait + move + wait + fade, o = t => t / T, x = `translateX(${-over}px)`;
   sp.animate([
     { transform: 'translateX(0)', opacity: 1, offset: 0 },

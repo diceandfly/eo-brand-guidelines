@@ -1,437 +1,1055 @@
-/* EO Logo Generator — 스타일 · 디자인 토큰 (맨 위 :root 가 모든 수치, 아래는 토큰만 참조). 서체 = font-display: block + index.html 의 preload (가이드와 같은 방식, 시스템 서체가 스치지 않게) */
-/* ===== 서체 — 로컬 라이선스 파일 (이 폴더는 gitignore) ===== */
-@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-light.woff2') format('woff2'); font-weight: 300; font-display: block; }
-@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-regular.woff2') format('woff2'); font-weight: 400; font-display: block; }
-@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-medium.woff2') format('woff2'); font-weight: 500; font-display: block; }
-@font-face { font-family: 'Founders Grotesk Mono'; src: url('/fonts/founders-grotesk-mono-regular.woff2') format('woff2'); font-weight: 400; font-display: block; }
-
 /* =====================================================================
-   토큰 — 손으로 조정할 값은 전부 여기. 아래 규칙은 이 변수만 참조.
-   크롬(면 · 선 · 컨트롤 · 간격)은 EO Graphic Builder, 자간 · 웨이트 · 회색도는 가이드 Typography 기준.
-   치수는 대부분 u(--lh-unit) × 배수 — 배수만 바꾸면 됨 (곱셈만, ¼ 단위 권장).
+   EO Logo Generator — 레이아웃 · 컴포넌트 규칙
+   숫자는 tokens.css 의 변수만 사용합니다. (브레이크포인트 · 구조값 0 · 1 · 100% 제외)
+   블록 순서는 tokens.css 목차(A · B-1 … B-11)와 같습니다.
+   JS 가 그때그때 넣는 값: --art-fg · --art-bg · --art-line-w(작업공간), --zones · --vis-mark(크기 슬라이더)
    ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   기본 · 리셋
+   --------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+}
+
+/* ---------------------------------------------------------------------
+   타이포 4레벨 (A-1) — 행간 = lh-unit × m, 폰트 = 행간 ÷ p
+   --------------------------------------------------------------------- */
 :root {
-  /* ================= A. 시스템 — 사이트 전체에서 같은 뜻 ================= */
-
-  /* ── A-1 서체 ── */
-  --font-text:  'Founders Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  --font-label: 'Founders Grotesk Mono', 'SF Mono', Menlo, Consolas, monospace;   /* 단위 · 경고 · 노트 */
-
-  /* ── A-2 타이포 4레벨 ──
-     title  최상단 타이틀 (가로형 시그니처 디스크립터 규격)
-     menu   섹션 제목 · 보정 팝업 제목
-     text   행 라벨 · 버튼 · 토글 · 체크 — 같은 크기에서 웨이트만 바꿈
-     label  단위 · 노트 · 경고 · 파일명 (모노)
-     value  입력칸 · 읽기 전용 숫자 = text 크기 · Regular · fg-1
-     행간 = u × m,  글자 크기 = 행간 ÷ p,  ls = 자간,  w = 웨이트 */
-  --lh-unit: 24px;   /* 라인 유닛 u — 행간 · 컨트롤 높이 · 간격이 모두 이 값의 배수 */
-
-  /*        m                  p                   ls                    w */
-  --title-m: 1;   --title-p: 1.17;   --title-ls: 0;        --title-w: 400;
-  --menu-m:  1;   --menu-p:  1.5;   --menu-ls:  0;        --menu-w:  400;
-  --text-m:  1;   --text-p:  1.5;   --text-ls:  0;        --text-w:  300;   --text-w-strong: 400;   /* strong = 주 버튼 · 저장 버튼만 */
-  --label-m: 1;   --label-p: 1.5;   --label-ls: -0.06em;  --label-w: 400;
-
-  /* 계산값 — 손대지 않음 */
-  --title-lh: calc(var(--lh-unit) * var(--title-m));   --title-size: calc(var(--title-lh) / var(--title-p));
-  --menu-lh:  calc(var(--lh-unit) * var(--menu-m));    --menu-size:  calc(var(--menu-lh) / var(--menu-p));
-  --text-lh:  calc(var(--lh-unit) * var(--text-m));    --text-size:  calc(var(--text-lh) / var(--text-p));
-  --label-lh: calc(var(--lh-unit) * var(--label-m));   --label-size: calc(var(--label-lh) / var(--label-p));
-
-  /* 예외 */
-  --text-ls-strong: calc(var(--text-ls) - 0.01em);   /* strong 자간 = 기본 − 1% */
-  --field-num-ls:   0;                               /* 입력칸 숫자 자간 (label 서체 × text 크기) */
-  --value-w:        400;                             /* 숫자 값 웨이트 (Regular) */
-
-  /* ── A-3 컬러 ── */
-
-  /* 브랜드 팔레트 — 바꾸지 않음 */
-  --c-neon:  #F9EE3A;
-  --c-solid: #2A2B2B;
-  --c-black: #000000;
-  --c-white: #FCFBF5;
-  --c-gray:  #8E8E8E;
-  --c-green: #66B88A;
-
-  /* 면 · 선 */
-  --page-bg:  var(--c-black);   /* 페이지 바탕 */
-  --panel-bg: color-mix(in srgb, var(--c-solid) 76%, var(--c-black));   /* 메뉴창 면 = 브랜드 가이드 페이지 바탕(--bg: Solid Gray + Space Black 24%) */
-  --panel-line: #4B4B4B;        /* 메뉴창 ↔ 작업공간 경계선 — 작업공간이 Solid Gray 여도 보이게 */
-  --line-c:   #262626;          /* 모든 선 — 테두리 · 구분선 · 슬라이더 트랙 (Builder) */
-
-  /* 글 — 밝은 것부터 */
-  --fg-1:   var(--c-white);                                       /* title · menu · 입력칸 값 · 저장 버튼 */
-  --fg-2:   color-mix(in srgb, var(--c-white) 60%, var(--c-gray));   /* text — 행 라벨 · 버튼 · 토글 */
-  --fg-3:   var(--c-gray);                                        /* label */
-  --fg-off: color-mix(in srgb, var(--c-gray) 45%, var(--c-solid));   /* 비활성 */
-
-  /* 강조 · 상태 */
-  --accent:            var(--c-neon);   /* 선택 · 썸 · 체크 · 주 버튼 · 호버 (본문 글에는 안 씀) */
-  --primary-hover-mix: 85%;             /* 주 버튼 호버 = accent 85% + white */
-  --state-ok:   var(--c-green);         /* 상태 메시지 (UI 전용) */
-  --state-warn: var(--c-gray);         /* 권장은 아님 — Medium Gray (가이드 사이트 조건부 배지처럼 중립) */
-  --state-bad:  #DD5A2D;               /* 가이드 밖 — 가이드 사이트 경고 주황 (--warn-orange, Don't 배지 · 대각선). 브랜드 컬러 아님 */
-
-  /* ── A-4 공통 치수 ── */
-  --line-w:       1px;                           /* 선 두께 */
-  --radius:       0;                             /* UI 모서리 */
-  --row-h:        calc(var(--lh-unit) * 1);      /* 컨트롤 한 행 — 글자 행 · 토글 · 입력칸 · 셀렉트 · 섹션 머리 */
-  --btn-h:        calc(var(--lh-unit) + 2 * var(--line-w));      /* 버튼 = 글 한 줄 + 위아래 선 자리 — 채움 버튼 · 1x–4x */
-  --btn-bg:       color-mix(in srgb, var(--c-solid) 66%, var(--c-black));   /* 버튼 면 (테두리 없이 채움) — 메뉴창(76%)보다 은은하게 어둡게 */
-  --suffix-w:     calc(var(--lh-unit) * 1);      /* 입력칸 단위 자리 — 숫자 오른쪽 끝을 행마다 맞춤 */
-  --btn-pad-x:    0px;                           /* 버튼 좌우 안쪽 */
-  --chevron-size: calc(var(--lh-unit) * 0.7);    /* 프리셋 메뉴 화살표 */
-  --scrollbar-w:  0px;                           /* 메뉴창 스크롤바 */
-
-  /* ── A-5 간격 — Figma 그룹 구조 그대로, 바깥 → 안 ──
-     메뉴창 (pad) ── 타이틀(위에 겹쳐 놓임)
-                  └ 섹션 묶음 (위 sections-top) ── 섹션 ↕ gap-section 섹션 …
-                       섹션 = 제목 ↕ gap-sec-head 설정
-                       설정 = 행 ↕ gap-row 행 …   (행 묶음 = 행 ↕ gap-block 슬라이더 묶음, 아래 gap-block)
-                       슬라이더 묶음 = 슬라이더 ↕ gap-tight 메시지 */
-  --panel-pad-x:    calc(var(--lh-unit) * 0.7);    /* 메뉴창 안쪽 — 좌우 (기준 열 폭도 이 값으로 계산) */
-  --panel-pad-y:    calc(var(--lh-unit) * 0.75);    /* 메뉴창 안쪽 — 위아래 */
-  --sections-top:   calc(var(--lh-unit) * 3.5);      /* 섹션 묶음 위 여백 — 타이틀 자리 포함 */
-  --gap-section:    calc(var(--lh-unit) * 1.5);      /* 섹션 ↔ 섹션 */
-  --gap-sec-head:   calc(var(--lh-unit) * 0);      /* 제목 ↔ 설정 (Calibration · Size) */
-  --gap-box-offset: calc(var(--lh-unit) * 0.5);    /*   └ 첫 내용이 경계 있는 박스면 더 띄움 (썸네일 · Export 버튼) */
-  --gap-row:        calc(var(--lh-unit) * 0);      /* 설정: 행 ↔ 행 */
-  --gap-block:      calc(var(--lh-unit) * 0.5);    /* 행 묶음: Symbol height ↔ 슬라이더 묶음, 묶음 아래 */
-  --gap-tight:      calc(var(--lh-unit) * 0.25);   /* 슬라이더 ↔ 상태 메시지 */
-  --gap-inline:     calc(var(--lh-unit) * 0.25);   /* 행 안 가로: 라벨 ↔ 셰브론 · 체크 ↔ 글 · 숫자 ↔ 단위 */
-  --stage-pad:      calc(var(--lh-unit) * 0.5);    /* 작업공간 가장자리 */
-
-  /* ================= B. 요소 — 메뉴창 위에서 아래 순서, 마지막에 작업공간 ================= */
-
-  /* ── B-1 메뉴창 · 기준 열 ── */
-  --panel-w:     332px;                                           /* 메뉴창 폭 */
-  --col-w:       calc((var(--panel-w) - var(--line-w) - 2 * var(--panel-pad-x)) / 4);   /* 1칸 = 1x–4x 한 칸 (메뉴창 오른쪽 경계선 제외) */
-  --field-w:     calc(var(--col-w) * 1.2);                        /* 입력칸 = 버튼 1.2칸 (밑줄 길이) */
-  --field-num-w: 56px;                                            /* 입력칸 안 숫자 영역 (단위는 나머지) */
-  --field-text-w: calc(var(--col-w) * 1.5);                       /* 글 입력칸 = 버튼 1.5칸 (시그니처 Descriptor) */
-
-  /* 글자 토글 (Screen | Print · Light | Dark) */
-  --tg-divider-pad: calc(var(--lh-unit) * 0.5);       /* 세로선 양옆 여백 */
-  --tg-divider-h:   calc(var(--text-size) * 0.875);   /* 세로선 길이 */
-  --tg-divider-c:   #555555;                          /* 세로선 색 */
-  --save-gap:       calc(var(--tg-divider-pad) * 2);   /* 저장 글자 버튼 사이 (SVG ↓   PNG ↓) = 토글 세로선 자리와 같은 폭 */
-  --tg-on-stroke:   0.4px;                            /* 선택 글자 외곽선 — Light 를 Regular 처럼 굵혀 보이게 (웨이트를 바꾸면 글자 폭이 변해 간격이 흔들림) */
-
-  /* ── B-2 타이틀 로고 (가로형 시그니처 규격) ── */
-  --logo-unit: calc(var(--title-size) / 1.3);     /* H = 디스크립터 조판 1.3H ÷ 1.3 */
-  --logo-h:    var(--logo-unit);                  /* 심볼 높이 */
-  --logo-gap:  calc(var(--logo-unit) * 29 / 60);  /* 심볼 ↔ 글 = W/2 */
-  --logo-drop: calc(var(--logo-unit) / 10);       /* 심볼 바닥 = 베이스라인 − H/10 */
-
-  /* ── B-3 Calibration ── */
-
-  /* 보정 팝업 (메뉴창 옆, 제목 줄을 Calibration 제목과 같은 높이에) — 타이포 레벨이 적은 만큼 간격으로 묶음을 나눔
-     팝업 (panel-pad-y · panel-pad-x) ─ 머리(제목 ↕ gap-sec-head 안내문) ↕ calib-group 값 · 슬라이더 ↕ calib-group 버튼(Reset | Cancel · Save) */
-  --calib-w:    var(--panel-w);              /* 폭 = 메뉴창 */
-  --calib-gap:  calc(var(--lh-unit) * 0.5);  /* 메뉴창 ↔ 팝업 */
-  --cal-nudge-c:   var(--accent);   /* 보정 전 Not calibrated 글색 (유도) — 보정 후엔 기본 글색 · Calibrated */
-  --cal-done-c:    var(--fg-3);    /* 보정 후 Calibrated 글색 — 위계를 낮춤 (비활성 색은 '못 누름'으로 읽혀 쓰지 않음), 호버 시 밝게 */
-  --cal-nudge-dur: 2.4s;            /* 깜빡임 한 번 (밝음 → 흐림 → 밝음) */
-  --cal-nudge-min: 0.2;             /* 깜빡임 가장 흐릴 때 불투명도 */
-  --tip-delay:  0.25s;                         /* 툴팁이 뜨기까지 */
-  --tip-para-gap: var(--text-lh);              /* 타이틀 도움말: 단계 목록 ↔ 마지막 안내 문단 = 빈 줄 하나 (본문 문단 사이와 같음) */
-  --calib-group: calc(var(--lh-unit) * 1); /* 팝업 안 묶음 ↔ 묶음 (머리 · 값 · 버튼) */
-  --calib-bg:   var(--panel-bg);             /* 면 */
-  --calib-line: var(--panel-line);           /* 테두리 — 작업공간 위에서 경계가 보이게 */
-
-  /* 카드 틀 (작업공간 가운데) */
-  --card-line-w:   2px;      /* 테두리 */
-  --card-radius:   3.18mm;   /* 실물 카드 모서리 */
-  --card-tint:     6%;       /* 안쪽 accent 물들임 — 반투명 (뒤의 로고가 비쳐 보임) */
-  --card-min-pxmm: 3;        /* 최소 px/mm (단위 없음, JS 가 읽음) — 27" 4K 3.22 까지 */
-
-  /* ── B-4 슬라이더 (컴포넌트: Viewing distance · Symbol height · 보정 팝업) — 값 행 ↕ slider-gap-top 슬라이더 (↕ gap-tight 메시지) ↕ slider-gap-bottom 다음 행 ── */
-  --slider-gap-top:    calc(var(--lh-unit) * 0.5);   /* 위: 값 행 ↔ 슬라이더 */
-  --slider-gap-bottom: calc(var(--lh-unit) * 0.25);   /* 아래: 슬라이더 묶음 ↔ 다음 행 (메뉴창 안에서만 — 팝업은 묶음 간격) */
-  --slider-h:        calc(var(--lh-unit) * 0.5);  /* 슬라이더 줄 높이 */
-  --slider-thumb:    calc(var(--lh-unit) * 0.4);   /* 썸 높이 */
-  --slider-thumb-w:  calc(var(--slider-thumb) * 1.12);   /* 썸 폭 — 정사각형은 트랙 위에서 세로로 길어 보여 가로 보정 */
-  --slider-thumb-c:  var(--fg-1);                  /* 썸 색 = 흰색 */
-  --slider-track:    2px;                          /* 트랙 두께 */
-  --slider-track-c:  var(--panel-line);            /* 기본 트랙 색 (거리 · 보정) — 메뉴창 면 위에서 보이게 */
-  --slider-tick-w:   var(--slider-track);          /* 크기 슬라이더 눈금 (매체 · 콘텐츠 처음 값) — 두께 = 트랙과 같게, 색은 그 자리 구간 색 */
-  --slider-tick-h:   calc(var(--slider-thumb) * 0.6);
-
-  /* 크기 슬라이더 구간 색 */
-  --slider-zone-mix: 50%;                          /* 구간 색 = 상태색 × 이 비율 + 바탕 */
-  --slider-zone-base: #151515;                     /* 구간 색 바탕 (Figma 값 유지) */
-  --slider-zone-l:   0.45;                         /* 구간 색 밝기 (OKLCH L) — 세 구간을 같은 밝기로 맞춤. 밝기가 다르면 같은 2px 도 두께가 달라 보임 */
-  --slider-zone-out:     oklch(from color-mix(in srgb, var(--state-bad)  var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h);   /* 4mm 미만 · 25mm 초과 */
-  --slider-zone-optimal: oklch(from color-mix(in srgb, var(--state-ok)   var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h);   /* 4–15mm 최적 */
-  --slider-zone-over:    oklch(from color-mix(in srgb, var(--state-warn) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h);   /* 15–25mm 권장 최대 초과 */
-
-  /* 상태 메시지 (크기 슬라이더 아래) — 슬라이더 ↕ gap-tight 메시지 */
-  --msg-mq-wait:     1.5s;   /* 메시지가 한 줄을 넘칠 때: 처음 · 끝에서 멈추는 시간 (첫 대기 = 읽기 시작할 시간) */
-  --msg-mq-speed:    40;     /* 흐르는 속도 (px/초, 단위 없음) */
-  --msg-mq-fade:     0.4s;   /* 끝 → 처음으로 돌아갈 때 사라졌다 나타나는 시간 */
-
-  /* ── B-5 Color 썸네일 ── */
-  --pair-cols:     4;              /* 한 줄 개수 */
-  --pair-ratio:    0.97;           /* 높이 ÷ 폭 — 1 보다 작을수록 납작 (정사각형으로 보이게 보정) */
-  --pair-line:     #4B4B4B;        /* 썸네일 테두리 (이웃과 1px 공유) */
-  --pair-symbol-w: 50%;            /* 심볼 폭 = 썸네일 × 비율 (라이트 박스 기준) */
-  --pair-off-o:    0.2;            /* 시그니처에서 쓰지 않는 페어 불투명도 */
-  --pair-pad-b:    0px;            /* 썸네일 아래 여백 */
-  --pair-on-w:     calc(var(--line-w) * 0.3);  /* 선택 테두리 두께 = 칸 경계선과 같은 1px (경계선 자리에 겹쳐 그림) */
-  --pair-hover-w:  var(--line-w);  /* 호버 테두리 두께 */
-  --pair-hover-mix: 45%;           /* 호버 테두리 = 선택 색을 이만큼만 (선택보다 옅게) */
-  --pair-on-c:     color-mix(in srgb, var(--accent) 100%, transparent);  /* 선택 · 호버 테두리 색 (밝은 바탕 칸은 Space Black) */
-
-  /* ── B-6 체크박스 ── */
-  --check-size:      calc(var(--lh-unit) * 0.5);   /* 네모 한 변 (카드 손잡이도 같은 값) */
-  --check-mark-size: 9px;                          /* 체크 표시 */
-  --check-line:      color-mix(in srgb, var(--c-gray) 60%, var(--panel-bg));   /* 꺼진 체크박스 테두리 — 메뉴창 위에서 보이게 */
-  --check-off:       var(--fg-off);               /* 비활성 체크박스 테두리 · 체크 = 비활성 글색 */
-  --check-mark-url:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6L9 17l-5-5' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");   /* 체크 모양 (마스크) — 체크박스 · 썸네일 선택 표시 공용 */
-  --info-size:   var(--check-size);   /* 옵션 오른쪽 i 네모 한 변 (체크박스와 같은 크기) */
-  --info-glyph:  10px;                /* i 글자 크기 (Figma Label info — 새 레벨 아님, i 하나 전용) */
-  --info-c:      var(--fg-3);         /* i 글자 */
-  --info-line:   var(--panel-line);   /* i 테두리 */
-
-  /* ── B-7 작업공간 ── */
-  --stage-bg: var(--c-black);   /* 기본 바탕 (선택한 페어 배경이 덮어씀) */
-  --art-w:     calc(var(--lh-unit) * 13);   /* 미디엄 그림 기본 상자 (이 안에 비율 유지로 맞춤) — 작업공간 오른쪽 아래 */
-  --art-h:     calc(var(--lh-unit) * 10);
-  --art-inset: calc(var(--lh-unit) * 1);   /* 작업공간 오른쪽 · 아래 가장자리 ↔ 미디엄 정보 */
-  --logo-lift:   0px;   /* 가운데 로고를 위로 올리는 양 — 목업이 오른쪽 아래 모서리로 가서 0 (정가운데) */
-  --art-line-w: var(--line-w);             /* 선 두께 (확대 · 축소와 무관) — 어두운 바탕 */
-  --art-line-w-light: calc(var(--line-w) * 1.5);   /* 밝은 바탕(반전 페어)일 때 선 두께 — 같은 두께도 밝은 바탕에선 가늘어 보여 보정 */
-  --art-name-mix: 70%;                     /* 캡션 첫 줄(매체 이름) = 선보다 조금 밝게 */
-  --art-cap-gap: calc(var(--lh-unit) * 0.5);   /* 그림 ↔ 캡션 */
-  --art-dim: 0.8;                          /* 목업 그림 + 그림 속 로고 전체 딤 (묶음 불투명도 — 겹친 선이 진해지지 않음). 가운데 로고가 주인공 */
-  --art-zone-dash: 2 2;                    /* 조닝 점선 (px) */
-  --ghost-o: 0.215;                         /* 목업 호버 — 다른 자리 후보 심볼 */
-  --ghost-o-hover: 0.6;                    /* 후보 위에 올렸을 때 */
-  --ghost-hit: calc(var(--lh-unit) * 0.5); /* 후보를 누르기 쉬운 여유 (화면 px) */
-  --cs-line-mix-guide: 45%;                /* 가운데 로고 클리어스페이스 점선 */
-  --cs-dash:      1px 2px;                 /* 점선 = 장표처럼 촘촘하게 */
-  --cs-text-mix:  55%;                     /* 모서리 칸 H/2 글자 */
-  --cs-e-o:       0.25;                    /* 가로형 시그니처 모서리 E 불투명도 */
-  --cs-label-scale: 0.6;                   /* 모서리 칸 H/2 글자 = label × 이 배율 (작게) */
-  --cs-label-min: calc(var(--lh-unit) * 0.8);   /* 모서리 칸이 이보다 작으면 H/2 를 쓰지 않음 */
-  --art-line-mix: 40%;                     /* 선 색 = 페어 글자색 × 이 비율 + 바탕색 (불투명 — 겹친 선이 진해지지 않게) */
-  --art-sym-opacity: 1;                    /* 그림 속 심볼 = 또렷하게 */
+  /* 행간 % 토큰(--t-*-p, 예 150%)을 숫자(150)로 바꾸는 자리 — 가이드 base.css 와 같은 방법.
+     calc() 는 퍼센트로 나눌 수 없어 tan(atan2(150%, 1%)) = 150 으로 바꿈 (항등식, 값 손실 없음).
+     "불필요한 삼각함수" 로 보고 지우면 폰트 크기 선언이 통째로 무효가 됩니다. --_*-size 는 font-size 에서만 씀 */
+  --_p-title: tan(atan2(var(--t-title-p), 1%));
+  --_p-menu: tan(atan2(var(--t-menu-p), 1%));
+  --_p-text: tan(atan2(var(--t-text-p), 1%));
+  --_p-label: tan(atan2(var(--t-label-p), 1%));
+  --_title-lh: calc(var(--lh-unit) * var(--t-title-m));
+  --_menu-lh: calc(var(--lh-unit) * var(--t-menu-m));
+  --_text-lh: calc(var(--lh-unit) * var(--t-text-m));
+  --_label-lh: calc(var(--lh-unit) * var(--t-label-m));
+  --_title-size: calc(var(--_title-lh) * 100 / var(--_p-title));
+  --_menu-size: calc(var(--_menu-lh) * 100 / var(--_p-menu));
+  --_text-size: calc(var(--_text-lh) * 100 / var(--_p-text));
+  --_label-size: calc(var(--_label-lh) * 100 / var(--_p-label));
 }
-
-/* ===== 1. 기본 · 리셋 ===== */
-* { box-sizing: border-box; }
-[hidden] { display: none !important; }
-html, body { margin: 0; height: 100%; overflow: hidden; }
-
-/* ===== 2. 타이포 레벨 — A-2 의 4레벨을 요소에 연결 (text = 기본, label = 모노 목록, menu = h2, title = h1) ===== */
-body, button, select, input {
-  font-family: var(--font-text); font-weight: var(--text-w); font-size: var(--text-size); line-height: var(--text-lh); letter-spacing: var(--text-ls); color: var(--fg-2);
+/* text — 기본 (행 라벨 · 버튼 · 토글 · 체크 · 안내문) */
+body,
+button,
+select,
+input {
+  font-family: var(--font-en);
+  font-weight: var(--t-text-w);
+  font-size: var(--_text-size);
+  line-height: var(--_text-lh);
+  letter-spacing: var(--t-text-ls);
+  color: var(--t-text-c);
 }
-body { background: var(--page-bg); -webkit-font-smoothing: antialiased; text-align: left; }
-.lbl, .note, .suffix, .msg, #card span {
-  font-family: var(--font-label); font-weight: var(--label-w); font-size: var(--label-size); line-height: var(--label-lh); letter-spacing: var(--label-ls); color: var(--fg-3);
+/* label — 모노 (단위 · 상태 메시지 · 오류 줄 · 카드 치수) */
+.lbl,
+.suffix,
+.msg,
+#card span {
+  font-family: var(--font-mono);
+  font-weight: var(--t-label-w);
+  font-size: var(--_label-size);
+  line-height: var(--_label-lh);
+  letter-spacing: var(--t-label-ls);
+  color: var(--t-label-c);
   font-variant-numeric: tabular-nums;
 }
-section > .secHead h2 { text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: from-font; }   /* 섹션 제목 밑줄 */
-h2 { margin: 0; font-weight: var(--menu-w); font-size: var(--menu-size); line-height: var(--menu-lh); letter-spacing: var(--menu-ls); color: var(--fg-1); }   /* 2 menu 레벨 */
-h1 { margin: 0; font-weight: var(--title-w); font-size: var(--title-size); line-height: var(--title-lh); letter-spacing: var(--title-ls); color: var(--fg-1); display: flex; align-items: baseline; gap: var(--logo-gap); }
-h1 .logo { height: var(--logo-h); width: auto; display: inline-block; vertical-align: baseline; flex: none; position: relative; top: var(--logo-drop); }   /* 심볼 높이 H, 바닥은 베이스라인에서 H/10 아래 (가로형 시그니처) */   /* EO 심볼 — 지오메트리에서 그림 */
+/* menu — 섹션 · 팝업 · 툴팁 제목 */
+h2 {
+  margin: 0;
+  font-weight: var(--t-menu-w);
+  font-size: var(--_menu-size);
+  line-height: var(--_menu-lh);
+  letter-spacing: var(--t-menu-ls);
+  color: var(--t-menu-c);
+}
+/* title — 최상단 타이틀 (로고 자리는 B-2) */
+h1 {
+  margin: 0;
+  font-weight: var(--t-title-w);
+  font-size: var(--_title-size);
+  line-height: var(--_title-lh);
+  letter-spacing: var(--t-title-ls);
+  color: var(--t-title-c);
+}
+/* 밑줄 — 제목 · 고른 토글 · 글자 링크 · 툴팁 피드백이 같은 밑줄 (서체가 정한 위치 · 두께) */
+section > .secHead h2,
+#calib .calHead h2,
+#tip h2,
+.secHead h2.tipHot:not(.tipLink),
+.tg button.on,
+button.link {
+  text-decoration: underline;
+  text-underline-position: from-font;
+  text-decoration-thickness: from-font;
+}
 
-/* ===== 3. 레이아웃 — 메뉴창(스크롤 영역 + 하단 Export) | 작업공간 ===== */
-.app { display: grid; grid-template-columns: var(--panel-w) 1fr; height: 100%; }
+/* ---------------------------------------------------------------------
+   메뉴창 · 그룹 구조 (B-1) — 메뉴창(스크롤 영역) | 작업공간
+   Figma 와 같은 층: 메뉴창 > 타이틀(겹침) | 섹션 묶음 > 섹션 > 제목 | 설정 > 행 (간격은 각 층의 gap 하나)
+   --------------------------------------------------------------------- */
+.app {
+  display: grid;
+  grid-template-columns: var(--panel-w) 1fr;
+  height: 100%;
+}
 aside {
-  background: var(--panel-bg); border-right: var(--line-w) solid var(--panel-line);
-  padding: 0; height: 100%; overflow: hidden;
-  display: flex; flex-direction: column;
-  scrollbar-width: thin; scrollbar-color: var(--line-c) transparent;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: var(--panel-bg);
+  border-right: var(--border-w) solid var(--panel-line);
 }
-aside, #calib { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; cursor: default; } aside input[type=text], aside input[type=number] { cursor: default; }   /* 커서 = 일반 화살표 (글 커서 없음), 누르는 것만 손가락 */ aside input[type=text], aside input[type=number], #calib input { -webkit-user-select: text; user-select: text; }   /* 메뉴창 · 보정 창 = 글 선택 · 끌기 금지 (입력칸만 선택 가능) */
-aside .scroll { position: relative; flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: var(--panel-pad-y) var(--panel-pad-x); display: flex; flex-direction: column; scrollbar-width: thin; scrollbar-color: var(--line-c) transparent; }
-aside .scroll::-webkit-scrollbar { width: var(--scrollbar-w); }
-aside .scroll::-webkit-scrollbar-thumb { background: var(--line-c); }
-main { min-width: 0; height: 100%; display: flex; flex-direction: column; }
-.err { background: var(--state-bad); color: var(--c-white); padding: var(--panel-pad-y) var(--panel-pad-x); display: none; }
+/* 메뉴창 · 보정 팝업 = 글 선택 · 끌기 금지, 커서는 일반 화살표 (누르는 것만 손가락). 입력칸만 글 선택 가능 */
+aside,
+#calib {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: default;
+}
+aside input[type=text],
+aside input[type=number] {
+  cursor: default;
+}
+aside input[type=text],
+aside input[type=number],
+#calib input {
+  -webkit-user-select: text;
+  user-select: text;
+}
+aside .scroll {
+  position: relative; /* 타이틀(.brand)의 기준 */
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--panel-pad-y) var(--panel-pad-x);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+aside .scroll::-webkit-scrollbar {
+  width: var(--scrollbar-w);
+}
+aside .scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+}
+/* 오류 줄 (생성 실패 · PNG 한계) — 작업공간 위 */
+.err {
+  display: none;
+  padding: var(--panel-pad-y) var(--panel-pad-x);
+  background: var(--state-bad);
+  color: var(--fg);
+}
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  padding-top: var(--sections-top);
+}
+section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-head-gap);
+}
+/* 첫 내용이 경계 있는 박스인 섹션 (Color 썸네일) */
+section.boxed {
+  gap: calc(var(--section-head-gap) + var(--section-box-gap));
+}
+.secHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--inline-gap);
+  min-height: var(--row-h);
+}
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--row-gap);
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--inline-gap);
+  min-height: var(--row-h);
+}
+.row > .label {
+  flex: 1;
+  display: flex;
+  align-items: center; /* 라벨 글을 줄 가운데로 */
+}
+/* 비활성 행 (.row.off) — 인쇄 매체의 Content, Symbol 일 때 시그니처 행, Company 의 Descriptor. 고른 칸도 강조 없이 회색 */
+.row.off .label,
+.row.off .ddVal,
+.row.off .sf input,
+.row.off .tg button {
+  color: var(--fg-off);
+}
+.row.off .sf {
+  border-bottom-color: transparent;
+}
+.row.off .sf input,
+.row.off .tg button,
+.row.off .tg i::before,
+.row.off .dd,
+.row.off select {
+  pointer-events: none;
+}
+.row.off .dd,
+.row.off select {
+  cursor: default;
+}
+.row.off .tg button.on {
+  -webkit-text-stroke: 0;
+  text-decoration: none;
+}
+.row.off .tg i::before {
+  background: var(--fg-off);
+}
+.row.off .chev {
+  opacity: var(--chevron-opacity-off);
+}
 
-/* ===== 4. 그룹 구조 — Figma 와 같은 층: 메뉴창 > 타이틀(겹침) | 섹션 묶음 > 섹션 > 제목 | 설정 > 행 (간격은 각 층의 gap 하나) ===== */
-.brand { position: absolute; top: 0; left: 0; right: 0; padding: var(--panel-pad-y) var(--panel-pad-x); display: flex; align-items: center; gap: var(--gap-inline); }
-.brand h1 { flex: 1; }
-.brand .help { cursor: default; } .brand .help:hover { border-color: var(--fg-1); color: var(--fg-1); }   /* 타이틀 오른쪽 ? = 도움말 (토글 i 와 같은 네모). ? 에 올릴 때만 도움말, 링크가 아니라 흰색 피드백 */   /* 타이틀 — 섹션 묶음 위 여백 안에 겹쳐 놓음 */
-.sections { display: flex; flex-direction: column; gap: var(--gap-section); padding-top: var(--sections-top); }
-section { display: flex; flex-direction: column; gap: var(--gap-sec-head); }
-section.boxed { gap: calc(var(--gap-sec-head) + var(--gap-box-offset)); }   /* 첫 내용이 박스인 섹션 (Color 썸네일) */
-.secHead { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-inline); min-height: var(--row-h); }
-.settings { display: flex; flex-direction: column; gap: var(--gap-row); }
-.block { display: flex; flex-direction: column; gap: var(--gap-block); padding-bottom: var(--gap-block); }   /* 설정 안 묶음 (Export 배율 ↔ 저장) */
-.sliderSet { display: flex; flex-direction: column; gap: var(--slider-gap-top); }   /* 슬라이더 컴포넌트 = 값 행 + 슬라이더 (거리 · 크기 · 보정) */
-.settings > .sliderSet { padding-bottom: var(--slider-gap-bottom); }   /* 설정 안에서는 아래 행과 slider-gap-bottom */
-.tight { display: flex; flex-direction: column; gap: var(--gap-tight); }   /* 슬라이더 + 상태 메시지 */
-.row { display: flex; justify-content: space-between; align-items: center; gap: var(--gap-inline); min-height: var(--row-h); }
-.row > .label { flex: 1; display: flex; align-items: center; }   /* 라벨 글을 줄 가운데로 */
-.ctl { display: flex; align-items: center; gap: var(--gap-inline); }
+/* ---------------------------------------------------------------------
+   타이틀 로고 (B-2) — 섹션 묶음 위 여백 안에 겹쳐 놓음. 심볼은 지오메트리에서 그림 (app.js)
+   --------------------------------------------------------------------- */
+.brand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--inline-gap);
+  padding: var(--panel-pad-y) var(--panel-pad-x);
+}
+.brand h1 {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: var(--logo-gap);
+}
+/* 심볼 높이 H, 바닥은 베이스라인에서 H/10 아래 (가로형 시그니처) */
+h1 .logo {
+  position: relative;
+  top: var(--logo-drop);
+  display: inline-block;
+  flex: none;
+  width: auto;
+  height: var(--logo-h);
+  vertical-align: baseline;
+}
+/* 타이틀 오른쪽 ? = 도움말 (i 와 같은 네모, B-8). ? 에 올릴 때만 도움말 — 링크가 아니라 흰색 피드백 */
+.brand .help {
+  cursor: default;
+}
+.brand .help:hover {
+  border-color: var(--fg);
+  color: var(--fg);
+}
 
-/* ===== 5. 버튼 — 채움(기본) · primary(네온) · ghost(저장, 흰 글) · 링크(Calibrate) ===== */
+/* ---------------------------------------------------------------------
+   버튼 · 글자 토글 (B-3)
+   채움 버튼 = 보정 팝업 Reset · Cancel(흰 글) · Save(네온). 메뉴창 = 면 없는 글자 버튼 (토글 · Save ↓ · Calibrate)
+   --------------------------------------------------------------------- */
 button {
-  height: var(--btn-h); padding: 0 var(--btn-pad-x); border: none; border-radius: var(--radius); background: var(--btn-bg);
-  cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: var(--gap-inline); white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--inline-gap);
+  height: var(--btn-h);
+  padding: 0 var(--btn-pad-x);
+  border: none;
+  border-radius: var(--radius);
+  background: var(--btn-bg);
+  white-space: nowrap;
+  cursor: pointer;
 }
-button:hover { color: var(--accent); }
-button:focus-visible { outline: var(--line-w) solid var(--accent); outline-offset: calc(var(--line-w) * -1); }
-button.primary { background: var(--accent); color: var(--c-black); font-weight: var(--text-w-strong); letter-spacing: var(--text-ls-strong); }
-button.primary:hover { background: color-mix(in srgb, var(--accent) var(--primary-hover-mix), var(--c-white)); color: var(--c-black); }
-button.ghost { color: var(--fg-1); }   /* 저장 버튼: 흰 글 */
-button:disabled, button:disabled:hover { color: var(--fg-off); cursor: default; }   /* 잠긴 버튼 (시그니처 저장 잠금) */
-button.link { height: var(--row-h); padding: 0; background: none; text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: from-font; }   /* 글자 링크 버튼 (Calibrate) */
-button.link.on { color: var(--accent); }   /* 보정 중, 다시 누르면 취소 */
+button:focus-visible {
+  outline: var(--focus-w) solid var(--focus-c);
+  outline-offset: calc(var(--focus-w) * -1);
+}
+button.ghost {
+  color: var(--fg);
+}
+/* 글자 링크 버튼 (Calibrate) */
+button.link {
+  height: var(--row-h);
+  padding: 0;
+  background: none;
+}
+button.link.on {
+  color: var(--accent); /* 보정 중, 다시 누르면 취소 */
+}
+/* 글자 토글 (Screen | Print · Light | Dark · 1x | 2x …) */
+.tg {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+.tg button {
+  height: var(--row-h);
+  padding: 0;
+  background: none;
+}
+.tg button.on {
+  -webkit-text-stroke: var(--tg-on-stroke) currentColor;
+  color: var(--accent);
+}
+.tg i {
+  display: flex;
+  align-items: center;
+  height: var(--row-h);
+  padding: 0 var(--tg-divider-pad);
+}
+/* 세로선 — 글자 x높이 쪽으로 선 두께만큼 내림 */
+.tg i::before {
+  content: '';
+  width: var(--border-w);
+  height: var(--tg-divider-h);
+  background: var(--tg-divider-c);
+  transform: translateY(var(--border-w));
+}
+/* Export › Save — 글자 버튼 (면 없음). 토글과 같은 행 문법, ↓ = 누르면 저장 */
+.saves {
+  display: flex;
+  align-items: center;
+  gap: var(--save-gap);
+}
+.saves button {
+  height: var(--row-h);
+  padding: 0;
+  background: none;
+  color: var(--fg);
+}
+#saveRow {
+  padding-bottom: var(--block-gap); /* 저장 ↔ 아래 체크 옵션 */
+}
+/* 호버 = 네온 (버튼 공통 — 흰 글 버튼보다 뒤에 둬야 이김) */
+button:hover {
+  color: var(--accent);
+}
+button.primary {
+  background: var(--accent);
+  color: var(--c-space-black);
+  font-weight: var(--t-text-strong-w);
+  letter-spacing: var(--t-text-strong-ls);
+}
+button.primary:hover {
+  background: color-mix(in srgb, var(--accent) var(--btn-primary-hover-mix), var(--c-air-white));
+  color: var(--c-space-black);
+}
+/* 잠긴 버튼 (시그니처 저장 잠금) */
+button:disabled,
+button:disabled:hover {
+  color: var(--fg-off);
+  cursor: default;
+}
 
-/* ===== 6. 토글 — 글자 토글(Screen | Print · Light | Dark) · 채움 seg(1x–4x) ===== */
-.tg { display: flex; align-items: center; flex: none; }
-.tg button { height: var(--row-h); padding: 0; background: none; }
-.tg button.on { -webkit-text-stroke: var(--tg-on-stroke) currentColor; color: var(--accent); text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: from-font; }
-.tg i { padding: 0 var(--tg-divider-pad); height: var(--row-h); display: flex; align-items: center; }
-.tg i::before { content: ''; width: var(--line-w); height: var(--tg-divider-h); background: var(--tg-divider-c); transform: translateY(var(--line-w)); }   /* 세로선 — 글자 x높이 쪽으로 1px 내림 */
-.saves { display: flex; align-items: center; gap: var(--save-gap); }   /* Export › Save — 글자 버튼 (면 없음). 토글과 같은 행 문법, ↓ = 누르면 저장 */
-.saves button { height: var(--row-h); padding: 0; background: none; color: var(--fg-1); }   /* 흰 글자, 호버 = 네온 (버튼 공통) */
-#saveRow { padding-bottom: var(--gap-block); }   /* 저장 ↔ 아래 체크 옵션 */
-
-/* ===== 7. 입력칸 — 하단 선 · 단위 내장 · 스피너 없음 / 읽기 전용 = 선 없음 · 회색 ===== */
-input[type=number] { -moz-appearance: textfield; appearance: textfield; }
-input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.sf { display: flex; align-items: center; height: var(--row-h); width: var(--field-w); border: none; border-bottom: var(--line-w) solid var(--line-c); border-radius: 0; cursor: default; }   /* 입력칸 = 하단 선만 (버튼 · 토글 · 목록의 네모와 구분) */
-.sf input { flex: 1 1 auto; min-width: 0; }
-.sf:focus-within { border-color: var(--accent); }   /* 입력 중 밑줄 = 네온 */
+/* ---------------------------------------------------------------------
+   입력칸 · 셀렉트 (B-4)
+   입력칸 = 하단 선만 (버튼 · 토글 · 목록의 네모와 구분) · 단위 내장 · 스피너 없음. 읽기 전용 = 선 없음
+   --------------------------------------------------------------------- */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.sf {
+  display: flex;
+  align-items: center;
+  width: var(--field-w);
+  height: var(--row-h);
+  border: none;
+  border-bottom: var(--border-w) solid var(--border);
+  border-radius: 0;
+  cursor: default;
+}
+.sf:focus-within {
+  border-color: var(--accent); /* 입력 중 밑줄 = 네온 */
+}
+/* value — text 서체 Regular, 흰색, 오른쪽 맞춤 */
 .sf input {
-  width: var(--field-num-w); height: 100%; padding: 0 var(--gap-inline) 0 0; text-align: right; border: none; background: none; outline: none; color: var(--fg-1);   /* 값은 라벨보다 밝게 */
-  font-family: var(--font-text); font-weight: var(--value-w); letter-spacing: var(--field-num-ls); font-variant-numeric: tabular-nums;   /* value: text 서체 Regular */
+  flex: 1 1 auto;
+  min-width: 0;
+  width: var(--field-num-w);
+  height: 100%;
+  padding: 0 var(--inline-gap) 0 0;
+  border: none;
+  outline: none;
+  background: none;
+  text-align: right;
+  font-family: var(--font-en);
+  font-weight: var(--t-value-w);
+  letter-spacing: var(--t-value-ls);
+  color: var(--t-value-c);
+  font-variant-numeric: tabular-nums;
 }
-.sf .suffix { flex: none; width: var(--suffix-w); pointer-events: none; }   /* 단위 = 고정 폭, 오른쪽 끝까지 */
-.sf.ro { border-bottom-color: transparent; }   /* 읽기 전용 값칸 (보정 팝업 px/mm) — 선 없이 값만, 입력할 수 없다는 표시 */
-.sf.ro input { color: var(--fg-1); }   /* 읽기 전용 값도 흰색 — 하단 선이 없는 것으로 구분 */
-.sf.ro, .sf.ro input { cursor: default; }   /* 읽기 전용 값칸 — 입력칸과 같은 자리 · 크기 */
-.sf.ro input { padding: 0 var(--gap-inline); }   /* 단위 없는 칸(px/mm)은 숫자가 오른쪽 안쪽 여백까지 */
-.sf.wide { width: var(--field-text-w); }   /* 글 입력칸 (시그니처 Descriptor) */
-.sf.wide input { width: 100%; padding: 0; text-align: right; letter-spacing: var(--text-ls); font-variant-numeric: normal; }   /* 값 = 숫자 칸과 같은 흰색 Regular, 오른쪽 끝 맞춤 */
-.row.off .sf { border-bottom-color: transparent; } .row.off .sf input { color: var(--fg-off); pointer-events: none; }   /* 비활성 입력칸 = 선 없이 회색 값 (Company 는 EO Studio 고정) */
-.row.off .tg button, .row.off .tg button.on, .row.off .tg i::before { color: var(--fg-off); pointer-events: none; } .row.off .tg button.on { -webkit-text-stroke: 0; text-decoration: none; }   /* 비활성 = 고른 칸도 강조 없이 일반 비활성 */ .row.off .tg i::before { background: var(--fg-off); }   /* 비활성 토글 (Symbol 일 때 시그니처 행) */
+.sf .suffix {
+  flex: none;
+  width: var(--field-suffix-w); /* 단위 = 고정 폭, 오른쪽 끝까지 */
+  pointer-events: none;
+}
+/* 읽기 전용 값칸 (보정 팝업 px/mm) — 선 없이 값만. 단위가 없어 숫자가 오른쪽 안쪽 여백까지 */
+.sf.ro {
+  border-bottom-color: transparent;
+}
+.sf.ro input {
+  padding: 0 var(--inline-gap);
+  cursor: default;
+}
+/* 글 입력칸 (시그니처 Descriptor) — 숫자 칸과 같은 흰색 Regular, 오른쪽 끝 맞춤 */
+.sf.wide {
+  width: var(--field-text-w);
+}
+.sf.wide input {
+  width: 100%;
+  padding: 0;
+  letter-spacing: var(--t-text-ls);
+  font-variant-numeric: normal;
+}
+/* 드롭다운 (Medium · Content) = 이름 + 셰브론, 위에 투명 셀렉트 — 어디를 눌러도 목록이 뜸 */
+select option {
+  background: var(--panel-bg);
+  color: var(--fg);
+}
+.dd {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--inline-gap);
+  cursor: pointer;
+}
+.dd .ddVal {
+  font-weight: var(--t-value-w);
+  color: var(--t-value-c);
+}
+.dd:hover .ddVal,
+.dd:focus-within .ddVal {
+  color: var(--accent); /* 키보드로 목록에 들어와도 호버와 같은 표시 */
+}
+.dd .chev {
+  flex: none;
+  width: var(--chevron-size);
+  height: var(--chevron-size);
+  background: var(--chevron-c);
+  -webkit-mask: var(--chevron-mark-url) center / var(--chevron-size) no-repeat;
+  mask: var(--chevron-mark-url) center / var(--chevron-size) no-repeat;
+}
+.dd select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  opacity: 0;
+  cursor: pointer;
+}
 
-/* ===== 8. 셀렉트 · 프리셋 메뉴 — 항목명 + 셰브론 위에 투명 셀렉트 ===== */
-select option { background: var(--panel-bg); color: var(--fg-1); }
-.dd { position: relative; display: inline-flex; align-items: center; gap: var(--gap-inline); cursor: pointer; }   /* 드롭다운 (Medium) = 이름 + 셰브론, 위에 투명 셀렉트 — 어디를 눌러도 목록이 뜨고, 펼친 목록에만 거리 표시 */
-.dd .ddVal { color: var(--fg-1); font-weight: var(--value-w); }   /* 고른 이름 = 숫자 값과 같은 흰색 Regular */
-.dd .chev { width: var(--chevron-size); height: var(--chevron-size); flex: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9.5 12 15.5 18 9.5' fill='none' stroke='%238E8E8E' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E") center / var(--chevron-size) no-repeat; }
-.row.off .label, .row.off .ddVal { color: var(--fg-off); } .row.off .chev { opacity: 0.4; } .row.off .dd, .row.off select { cursor: default; pointer-events: none; }   /* 인쇄 매체 = 콘텐츠 비활성 */
-.dd:focus-within .ddVal { color: var(--accent); }   /* 키보드로 목록에 들어오면 = 호버와 같은 표시 */
-.dd select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; padding: 0; border: none; cursor: pointer; }
-.dd:hover .ddVal { color: var(--accent); }
+/* ---------------------------------------------------------------------
+   슬라이더 (B-5) — 슬라이더 컴포넌트 = 값 행 + 슬라이더 (크기 · 보정). 트랙은 가운데 선, 썸은 흰 사각
+   --------------------------------------------------------------------- */
+.sliderSet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--slider-top-gap);
+}
+.settings > .sliderSet {
+  padding-bottom: var(--slider-bottom-gap); /* 메뉴창 안에서만 — 팝업은 묶음 간격 */
+}
+/* 슬라이더 + 상태 메시지 */
+.tight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--slider-msg-gap);
+}
+.rg {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: var(--slider-h);
+  margin: 0;
+  outline: none;
+  background: linear-gradient(var(--slider-track-c), var(--slider-track-c)) center / 100% var(--slider-track-h) no-repeat;
+  cursor: pointer;
+}
+/* 크기 슬라이더 트랙 = 가이드 구간 색 (--zones, JS) + 매체 · 콘텐츠 처음 값 눈금 (--vis-mark, JS) */
+#hSlider {
+  background:
+    var(--vis-mark, none) center / 100% var(--slider-tick-h) no-repeat,
+    var(--zones, linear-gradient(var(--border), var(--border))) center / 100% var(--slider-track-h) no-repeat;
+}
+.rg::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: var(--slider-thumb-w);
+  height: var(--slider-thumb-h);
+  border: none;
+  border-radius: var(--radius);
+  background: var(--slider-thumb-c);
+  cursor: pointer;
+}
+.rg::-moz-range-thumb {
+  width: var(--slider-thumb-w);
+  height: var(--slider-thumb-h);
+  border: none;
+  border-radius: var(--radius);
+  background: var(--slider-thumb-c);
+  cursor: pointer;
+}
+.rg:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 var(--slider-track-h) var(--panel-bg),
+    0 0 0 calc(var(--slider-track-h) * 2) var(--focus-c);
+}
 
-/* ===== 9. 슬라이더 — 2px 트랙 + 사각 네온 썸 (B-4) ===== */
-.rg { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: var(--slider-h); margin: 0; outline: none; cursor: pointer; background: linear-gradient(var(--slider-track-c), var(--slider-track-c)) center / 100% var(--slider-track) no-repeat; }   /* 높이 = 썸, 트랙은 가운데 선으로 — 위 행과 행 간격(6), 아래 묶음과 묶음 간격(16) */
-#hSlider { background: var(--vis-mark, none) center / 100% var(--slider-tick-h) no-repeat, var(--zones, linear-gradient(var(--line-c), var(--line-c))) center / 100% var(--slider-track) no-repeat; }   /* 크기 슬라이더 트랙 = 가이드 구간 색 (보는 거리에 따라 위치 이동), 썸 중심 이동 범위에 맞춤 */
-.rg::-webkit-slider-thumb { -webkit-appearance: none; width: var(--slider-thumb-w); height: var(--slider-thumb); background: var(--slider-thumb-c); border: none; border-radius: var(--radius); cursor: pointer; }
-.rg::-moz-range-thumb { width: var(--slider-thumb-w); height: var(--slider-thumb); background: var(--slider-thumb-c); border: none; border-radius: var(--radius); cursor: pointer; }
-.rg:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 var(--slider-track) var(--panel-bg), 0 0 0 calc(var(--slider-track) * 2) var(--accent); }
+/* ---------------------------------------------------------------------
+   상태 메시지 (B-6) — 고정 높이 한 줄(우선순위 하나), 색만 다름. 넘치면 옆으로 흐름 (JS)
+   --------------------------------------------------------------------- */
+#warns {
+  height: var(--_label-lh); /* 빈 줄이 간격처럼 보이지 않게 */
+}
+.msg {
+  flex: none;
+  height: var(--_label-lh);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.msg.mq {
+  text-overflow: clip; /* 흐르는 동안은 말줄임 없음 */
+}
+.msg.mq > span {
+  display: inline-block;
+}
+.msg.ok {
+  color: var(--state-ok);
+}
+.msg.warn {
+  color: var(--state-warn);
+}
+.msg.bad {
+  color: var(--state-bad);
+}
+.msg.info {
+  color: var(--fg-muted); /* 서체 불러오는 중 등 */
+}
 
-/* ===== 10. 체크박스 · 옵션 토글 (B-6) — 체크 색은 --check-c 로 상태별 ===== */
-input[type=checkbox] { -webkit-appearance: none; appearance: none; flex: none; width: var(--check-size); height: var(--check-size); margin: 0; border: var(--line-w) solid var(--check-line); border-radius: var(--radius); background: none; cursor: pointer; position: relative; --check-c: var(--accent); }
-input[type=checkbox]:checked { border-color: var(--check-c); }
-input[type=checkbox]:checked::after { content: ''; position: absolute; inset: 0; background: var(--check-c); -webkit-mask: var(--check-mark-url) center / var(--check-mark-size) no-repeat; mask: var(--check-mark-url) center / var(--check-mark-size) no-repeat; }   /* 체크 표시 = 마스크 + --check-c (상태별 색을 토큰으로) */
-.chk { display: flex; gap: var(--gap-inline); align-items: center; min-height: var(--row-h); cursor: pointer; }
-.chk:hover input { border-color: var(--accent); }
-.chk.disabled { color: var(--fg-off); pointer-events: none; }
-.chk.disabled input { border-color: var(--check-off); --check-c: var(--check-off); }   /* 비활성 = 테두리 · 체크 모두 비활성 색 (글색과 같음) */
-.chkRow { display: flex; align-items: center; gap: var(--gap-inline); }   /* 옵션 한 줄 = 체크 토글 + 오른쪽 i (i 는 label 밖 — 비활성이어도 눌림) */
-.chkRow .chk { flex: 1; }
-.info { flex: none; display: flex; align-items: center; justify-content: center; width: var(--info-size); height: var(--info-size); border: var(--line-w) solid var(--info-line); border-radius: var(--radius); font-family: var(--font-label); font-size: var(--info-glyph); line-height: 1; color: var(--info-c); text-decoration: none; }   /* 누르면 가이드 해당 섹션 (새 탭) */
-.info:hover, .info:focus-visible { outline: none; border-color: var(--accent); color: var(--accent); }
+/* ---------------------------------------------------------------------
+   Color 썸네일 (B-7) — 4단 그리드, 칸 경계선은 이웃과 공유. 선택 · 호버 = 칸 테두리
+   --------------------------------------------------------------------- */
+.presets {
+  display: grid;
+  grid-template-columns: repeat(var(--pair-cols), 1fr);
+  gap: 0;
+  padding-bottom: var(--pair-pad-bottom);
+}
+/* 면 = 배경색(인라인). 테두리 위 · 아래 · 오른쪽 — 왼쪽은 앞 칸 선과 공유 */
+.preset {
+  --_line: var(--pair-line);
+  --_select: var(--pair-select);
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / var(--pair-ratio);
+  padding: 0;
+  box-shadow:
+    inset 0 var(--border-w) var(--_line),
+    inset 0 calc(var(--border-w) * -1) var(--_line),
+    inset calc(var(--border-w) * -1) 0 var(--_line);
+}
+.preset:first-child {
+  box-shadow: inset 0 0 0 var(--border-w) var(--_line); /* 첫 칸만 네 변 */
+}
+/* 밝은 바탕 칸(Builder Neon · Air White) — 네온 테두리가 묻히므로 */
+.preset[data-bg="Builder Neon"],
+.preset[data-bg="Air White"] {
+  --_select: var(--pair-select-on-light);
+}
+/* 실제 심볼 (현재 크기 · 모드, 다크면 반전 보정 포함) */
+.preset svg {
+  display: block;
+  width: var(--pair-symbol-w);
+  height: auto;
+  overflow: visible;
+}
+/* 선택 테두리 — 왼쪽은 앞 칸과 공유하는 경계선까지 덮음 */
+.preset::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: calc(var(--border-w) * -1);
+  border: var(--_frame-w, 0) solid var(--_frame, transparent);
+  pointer-events: none;
+}
+.preset:first-child::before {
+  left: 0;
+}
+.preset:hover,
+.preset:focus-visible {
+  outline: none;
+  --_frame: color-mix(in srgb, var(--_select) var(--pair-select-hover-mix), transparent); /* 옅은 테두리 (미리 보기) */
+  --_frame-w: var(--pair-select-w-hover);
+}
+.preset.on {
+  --_frame: var(--_select);
+  --_frame-w: var(--pair-select-w);
+}
+/* 시그니처에서 쓰지 않는 페어 = 심볼만 흐리게 (칸 · 테두리는 그대로) */
+.preset.off {
+  pointer-events: none;
+}
+.preset.off svg {
+  opacity: var(--pair-opacity-off);
+}
 
-/* ===== 11. 보정 카드 (B-3) — 카드는 작업공간 가운데, 보정 묶음은 메뉴창 옆 팝업 ===== */
-#cardLayer { position: fixed; top: 0; bottom: 0; left: var(--panel-w); right: 0; display: none; align-items: center; justify-content: center; z-index: 9; pointer-events: none; padding-bottom: calc(var(--logo-lift) * 2); box-sizing: border-box; }   /* 가운데 = 로고 · 기준 카드와 같은 자리 (작업공간과 같은 아래 여백) */   /* 카드 오버레이: 작업공간 중앙 */
-#cardLayer.open { display: flex; }
-#cardLayer #card { pointer-events: auto; margin: 0; }
-#card { position: relative; border: var(--card-line-w) solid var(--accent); border-radius: var(--card-radius); background: color-mix(in srgb, var(--accent) var(--card-tint), transparent); margin: var(--stage-pad) 0; }   /* 실물 카드 모서리 3.18mm, 불투명 — 뒤 심볼이 안내문과 겹치지 않게 */
-#card span { position: absolute; left: calc(var(--card-line-w) * -1); bottom: calc(100% + var(--card-line-w) + var(--gap-inline)); color: var(--accent); white-space: nowrap; }   /* 치수 표기: 카드 바깥 위 왼쪽 */
-#cardHandle { position: absolute; right: calc(var(--check-size) / -2); bottom: calc(var(--check-size) / -2); width: var(--check-size); height: var(--check-size); background: var(--accent); cursor: nwse-resize; touch-action: none; }
-#calib { position: fixed; z-index: 10; width: var(--calib-w); padding: var(--panel-pad-y) var(--panel-pad-x); background: var(--calib-bg); border: var(--line-w) solid var(--calib-line); display: flex; flex-direction: column; gap: var(--calib-group); }   /* 보정 팝업: 메뉴창 오른쪽, Size 제목 줄 높이 (위치는 JS) */
-#calib[hidden] { display: none; }
-#tip { position: fixed; z-index: 11; width: var(--calib-w); padding: var(--panel-pad-y) var(--panel-pad-x); background: var(--calib-bg); border: var(--line-w) solid var(--calib-line); pointer-events: none; }   /* 툴팁 = 보정 창과 같은 면 · 테두리 · 자리(메뉴창 오른쪽, 가리킨 행 높이) — 제목(밑줄 속성 이름) + 다음 줄 설명 */
-#tip[hidden] { display: none; }
-#tip .calHead { display: flex; flex-direction: column; gap: var(--gap-sec-head); }
-#tip h2 { text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: from-font; }
-#tip .calText { margin: 0; text-wrap: pretty; white-space: pre-line; }   /* 줄바꿈(\n) = 단계 목록 (타이틀 툴팁) */
-#tip .tipHint { color: var(--fg-3); } #tip .tipHint.para { margin-top: var(--tip-para-gap); color: inherit; }   /* 타이틀 도움말의 마지막 안내 문단 = 본문과 같은 색 (흐리게 하지 않음) */   /* 마지막 줄 = 이름을 누르면 가이드 (링크 있는 이름만) */
-.row.tipHot > .label, .secHead h2.tipHot, .chk.tipHot { color: var(--fg-1); } .secHead h2.tipHot:not(.tipLink) { text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: from-font; }   /* 제목은 이미 흰색 → 밑줄로 피드백 */   /* 툴팁 있는 이름에 올리면 바로 밝게 */
-.row.tipLink, .secHead h2.tipLink { cursor: pointer; } .row.tipLink > .label, .secHead h2.tipLink { color: var(--accent); }   /* 가이드 링크가 있는 이름 = 손가락 + 네온 (버튼 호버와 같은 문법) */
-.preset.off { pointer-events: none; } .preset.off svg { opacity: var(--pair-off-o); }   /* 시그니처에서 쓰지 않는 페어 (Builder Neon 글자) = 심볼만 흐리게 (칸 · 테두리는 그대로) */
-#calib .calHead { display: flex; flex-direction: column; gap: var(--gap-sec-head); }   /* 제목 줄 + 안내문 = 메뉴창 섹션과 같은 문법 */
-#calib .calHead h2 { text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: from-font; }
-.calLink { display: flex; align-items: center; }   /* Size 제목 줄 오른쪽: Calibrate (보이는 크기를 정확하게) */
-#openCalib.nudge { color: var(--cal-nudge-c); animation: calNudge var(--cal-nudge-dur) ease-in-out infinite; }   /* 보정 전 = 네온 + 천천히 깜빡임 (팝업이 열려 있으면 멈춤) */
-#openCalib.nudge.on { animation: none; }
-#openCalib:not(.nudge):not(.on) { color: var(--cal-done-c); }
-#openCalib:not(.nudge):not(.on):hover { color: var(--fg-1); }
-@keyframes calNudge { 50% { opacity: var(--cal-nudge-min); } }
-@media (prefers-reduced-motion: reduce) { #openCalib.nudge { animation: none; } }   /* 모션 줄이기 = 색만 */
-#calib .calText { margin: 0; }   /* 안내문 = text 레벨 */
-#calib .calBtns { display: grid; grid-template-columns: repeat(4, 1fr); }   /* 버튼 두 묶음: Reset (1칸) | 빈 칸 | Cancel · Save (붙은 2칸) — 메뉴창 4칸 그리드 */
-#calib .calBtns #calReset { grid-column: 1; }
-#calib .calBtns #calCancel { grid-column: 3; }
+/* ---------------------------------------------------------------------
+   체크박스 · i (B-8) — 옵션 한 줄 = 체크 토글 + 오른쪽 i (i 는 label 밖 — 비활성이어도 눌림)
+   --------------------------------------------------------------------- */
+input[type=checkbox] {
+  --_check: var(--check-c);
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  flex: none;
+  width: var(--check-size);
+  height: var(--check-size);
+  margin: 0;
+  border: var(--border-w) solid var(--check-line);
+  border-radius: var(--radius);
+  background: none;
+  cursor: pointer;
+}
+input[type=checkbox]:checked {
+  border-color: var(--_check);
+}
+/* 체크 표시 = 마스크 + 색 */
+input[type=checkbox]:checked::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--_check);
+  -webkit-mask: var(--check-mark-url) center / var(--check-mark-size) no-repeat;
+  mask: var(--check-mark-url) center / var(--check-mark-size) no-repeat;
+}
+.chk {
+  display: flex;
+  align-items: center;
+  gap: var(--inline-gap);
+  min-height: var(--row-h);
+  cursor: pointer;
+}
+.chk:hover input {
+  border-color: var(--accent);
+}
+.chk.disabled {
+  color: var(--fg-off);
+  pointer-events: none;
+}
+/* 비활성 = 테두리 · 체크 모두 비활성 색 (글색과 같음) */
+.chk.disabled input {
+  --_check: var(--check-off);
+  border-color: var(--check-off);
+}
+.chkRow {
+  display: flex;
+  align-items: center;
+  gap: var(--inline-gap);
+}
+.chkRow .chk {
+  flex: 1;
+}
+/* i = 누르면 가이드 해당 섹션 (새 탭). 타이틀 ? 도 같은 네모 */
+.info {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--info-size);
+  height: var(--info-size);
+  border: var(--border-w) solid var(--info-line);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--info-glyph-size);
+  line-height: 1;
+  color: var(--info-c);
+  text-decoration: none;
+}
+.info:hover,
+.info:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  color: var(--accent);
+}
 
-/* ===== 12. 상태 메시지 (B-4) — 고정 높이 한 줄, 색만 다름 ===== */
-#warns { height: var(--label-lh); }   /* 상태 메시지 한 줄(우선순위 하나) — 빈 줄이 간격처럼 보이지 않게 */
-.msg { height: var(--label-lh); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: none; }
-.msg.mq { text-overflow: clip; }   /* 흐르는 동안은 말줄임 없음 */
-.msg.mq > span { display: inline-block; }
-.msg.ok { color: var(--state-ok); }
-.msg.warn { color: var(--state-warn); }
-.msg.bad { color: var(--state-bad); }
-.msg.info { color: var(--fg-3); }   /* 서체 불러오는 중 등 */
+/* ---------------------------------------------------------------------
+   보정 (B-9) — 카드는 작업공간 가운데, 보정 묶음은 메뉴창 옆 팝업 (위치는 JS)
+   --------------------------------------------------------------------- */
+/* 카드 층: 가운데 = 로고 자리와 같은 곳 (작업공간과 같은 아래 여백) */
+#cardLayer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: var(--panel-w);
+  right: 0;
+  z-index: var(--z-card);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: calc(var(--stage-logo-lift) * 2);
+  pointer-events: none;
+}
+#cardLayer.open {
+  display: flex;
+}
+#cardLayer #card {
+  margin: 0;
+  pointer-events: auto;
+}
+/* 실물 카드 틀 */
+#card {
+  position: relative;
+  margin: var(--stage-pad) 0;
+  border: var(--card-line-w) solid var(--accent);
+  border-radius: var(--card-radius);
+  background: color-mix(in srgb, var(--accent) var(--card-tint-mix), transparent);
+}
+/* 치수 표기: 카드 바깥 위 왼쪽 */
+#card span {
+  position: absolute;
+  left: calc(var(--card-line-w) * -1);
+  bottom: calc(100% + var(--card-line-w) + var(--inline-gap));
+  white-space: nowrap;
+  color: var(--accent);
+}
+/* 크기 손잡이 (오른쪽 아래 모서리) */
+#cardHandle {
+  position: absolute;
+  right: calc(var(--check-size) / -2);
+  bottom: calc(var(--check-size) / -2);
+  width: var(--check-size);
+  height: var(--check-size);
+  background: var(--accent);
+  cursor: nwse-resize;
+  touch-action: none;
+}
+/* 보정 팝업: 메뉴창 오른쪽, Visual size 제목 줄 높이 */
+#calib {
+  position: fixed;
+  z-index: var(--z-calib);
+  display: flex;
+  flex-direction: column;
+  gap: var(--calib-group-gap);
+  width: var(--calib-w);
+  padding: var(--panel-pad-y) var(--panel-pad-x);
+  border: var(--border-w) solid var(--calib-line);
+  background: var(--calib-bg);
+}
+#calib[hidden] {
+  display: none;
+}
+/* 제목 줄 + 안내문 = 메뉴창 섹션과 같은 문법 (툴팁도 같음) */
+#calib .calHead,
+#tip .calHead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-head-gap);
+}
+#calib .calText {
+  margin: 0;
+}
+/* 버튼 두 묶음: Reset (1칸) | 빈 칸 | Cancel · Save (붙은 2칸) — 메뉴창 기준 열 */
+#calib .calBtns {
+  display: grid;
+  grid-template-columns: repeat(var(--panel-cols), 1fr);
+}
+#calib .calBtns #calReset {
+  grid-column: 1;
+}
+#calib .calBtns #calCancel {
+  grid-column: 3;
+}
+/* Visual size 제목 줄 오른쪽: Calibrate */
+.calLink {
+  display: flex;
+  align-items: center;
+}
+/* 보정 전 = 네온 + 천천히 깜빡임 (팝업이 열려 있으면 멈춤), 보정 후 = 회색 */
+#openCalib.nudge {
+  color: var(--calib-nudge-c);
+  animation: calNudge var(--calib-nudge-dur) var(--ease-inout) infinite;
+}
+#openCalib.nudge.on {
+  animation: none;
+}
+#openCalib:not(.nudge):not(.on) {
+  color: var(--calib-done-c);
+}
+#openCalib:not(.nudge):not(.on):hover {
+  color: var(--fg);
+}
+@keyframes calNudge {
+  50% {
+    opacity: var(--calib-nudge-opacity);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #openCalib.nudge {
+    animation: none; /* 모션 줄이기 = 색만 */
+  }
+}
 
-/* ===== 13. 컬러 페어 목록 (B-5) — seg 처럼 한 박스, 행은 윗선으로 구분, 선택 행은 인셋 네온 테두리 ===== */
-.presets { display: grid; grid-template-columns: repeat(var(--pair-cols), 1fr); gap: 0; padding-bottom: var(--pair-pad-b); }   /* 컬러 페어 = 썸네일 4단 */
-.preset { --pl: var(--pair-line); width: 100%; height: auto; aspect-ratio: 1 / var(--pair-ratio); padding: 0; position: relative;
-  box-shadow: inset 0 var(--line-w) var(--pl), inset 0 calc(var(--line-w) * -1) var(--pl), inset calc(var(--line-w) * -1) 0 var(--pl); }   /* 면 = 배경색(인라인). 테두리 위 · 아래 · 오른쪽 — 왼쪽은 앞 썸네일 선과 공유 */
-.preset:first-child { box-shadow: inset 0 0 0 var(--line-w) var(--pl); }   /* 첫 칸만 네 변 */
-.preset svg { width: var(--pair-symbol-w); height: auto; display: block; overflow: visible; }   /* 실제 심볼(현재 크기 · 모드, 다크면 반전 보정 포함) */
-.preset::before { content: ''; position: absolute; inset: 0; left: calc(var(--line-w) * -1); border: var(--pf-w, 0) solid var(--pf, transparent); pointer-events: none; }   /* 선택 = 칸 테두리 (왼쪽은 앞 칸과 공유하는 경계선까지 덮음) */
-.preset:first-child::before { left: 0; }
-.preset:hover, .preset:focus-visible { outline: none; --pf: color-mix(in srgb, var(--pair-on-c) var(--pair-hover-mix), transparent); --pf-w: var(--pair-hover-w); }   /* 호버 = 옅은 테두리 (미리 보기) */
-.preset.on { --pf: var(--pair-on-c); --pf-w: var(--pair-on-w); }   /* 선택 = 1px 테두리 */
-.preset[data-bg="Builder Neon"], .preset[data-bg="Air White"] { --pair-on-c: var(--c-black); }   /* 밝은 바탕 칸(네온 · Air White)은 검정 테두리 — 네온이 묻히므로 */
+/* ---------------------------------------------------------------------
+   툴팁 (B-10) — 보정 팝업과 같은 면 · 테두리 · 자리. 제목(밑줄 속성 이름) + 설명 + 마지막 안내
+   --------------------------------------------------------------------- */
+#tip {
+  position: fixed;
+  z-index: var(--z-tip);
+  width: var(--calib-w);
+  padding: var(--panel-pad-y) var(--panel-pad-x);
+  border: var(--border-w) solid var(--calib-line);
+  background: var(--calib-bg);
+  pointer-events: none;
+}
+#tip[hidden] {
+  display: none;
+}
+#tip .calText {
+  margin: 0;
+  text-wrap: pretty;
+  white-space: pre-line; /* 줄바꿈(\n) = 단계 목록 (타이틀 도움말) */
+}
+/* 마지막 줄 = 이름을 누르면 가이드 (링크 있는 이름만) */
+#tip .tipHint {
+  color: var(--fg-muted);
+}
+/* 타이틀 도움말의 마지막 안내 문단 = 빈 줄 하나 띄우고 본문과 같은 색 */
+#tip .tipHint.para {
+  margin-top: var(--tip-para-gap);
+  color: inherit;
+}
+/* 툴팁 있는 이름에 올리면 바로 밝게 (제목은 이미 흰색 → 밑줄, 위 밑줄 묶음) */
+.row.tipHot > .label,
+.secHead h2.tipHot,
+.chk.tipHot {
+  color: var(--fg);
+}
+/* 가이드 링크가 있는 이름 = 손가락 + 네온 (버튼 호버와 같은 문법) */
+.row.tipLink,
+.secHead h2.tipLink {
+  cursor: pointer;
+}
+.row.tipLink > .label,
+.secHead h2.tipLink {
+  color: var(--accent);
+}
 
-/* ===== 14. 작업공간 (B-7) — 보이는 크기(As seen) 심볼을 가운데에 ===== */
-.stage { background: var(--stage-bg); display: flex; align-items: center; justify-content: center; }
-.workspace { flex: 1; min-height: 0; position: relative; overflow: hidden; padding-bottom: calc(var(--logo-lift) * 2); }   /* 아래 여백 = 로고를 logo-lift 만큼 위로 */
-.actual { position: relative; z-index: 1; display: flex; }
-.artLayer { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }   /* 그림이 커져도 작업공간 스크롤이 생기지 않게 잘라 줌 */
-#mediumArt { position: absolute; right: var(--art-inset); bottom: var(--art-inset); min-width: var(--art-w); display: flex; flex-direction: column; align-items: flex-end; gap: var(--art-cap-gap); }   /* 미디엄 정보 = 오른쪽 아래 고정: 경고 줄 · 그림 · 이름 / 사양 (오른쪽 정렬). 폰은 그림 대신 가운데 실물 목업 */
-#mediumArt .artStage { position: relative; width: 100%; height: var(--art-h); opacity: var(--art-dim); }   /* 그림 자리 (높이 = 기본 상자) — 그림은 아랫변 가운데 기준으로 커지고 작아짐, 캡션은 고정 */
-#mediumArt .artStage > svg { position: absolute; right: 0; bottom: 0; overflow: visible; }   /* 그림 = 오른쪽 아래 기준 */
-#mediumArt .ln, .realArt .ln { fill: none; stroke: color-mix(in srgb, var(--art-fg) var(--art-line-mix), var(--art-bg)); stroke-width: var(--art-line-w); vector-effect: non-scaling-stroke; }
-#mediumArt .zn, .realArt .zn { fill: none; stroke: color-mix(in srgb, var(--art-fg) var(--art-line-mix), var(--art-bg)); stroke-width: var(--art-line-w); vector-effect: non-scaling-stroke; stroke-dasharray: var(--art-zone-dash); }   /* 조닝 — 그래픽 패턴 영역 경계 + 대각 X (점선, 가이드 Zoning 도식과 같은 문법) */
-.workspace.realMode { padding-bottom: 0; }   /* 실물 크기 폰은 작업공간 정가운데 */
-.realArt { display: flex; align-items: center; justify-content: center; }   /* 폰 = 실물 크기 목업 (캘리브레이션 px/mm 로) — 가운데 로고 대신, 정보는 오른쪽 아래 */
-.actual .realArt > svg { overflow: hidden; display: block; }   /* 세로만 보일 때 가로 폰이 viewBox 밖으로 새지 않게 */
-#mediumArt svg.mock, .realArt svg.mock { pointer-events: auto; }   /* 목업 = 심볼 자리 바꾸기 (작업공간 그림 층은 원래 클릭을 통과) */
-.artGhost { cursor: pointer; opacity: 0; }   /* 전환 없음 — 다시 그릴 때 흐려졌다 나타나며 깜빡이지 않게 */
-.artGhost .hit { fill: transparent; }
-.artGhost .sym { pointer-events: none; }   /* 누르는 곳 = 클릭 영역(hit)만 — 겹친 후보는 중심 사이에서 나눈 영역으로 */
-svg.mock.hov .artGhost { opacity: var(--ghost-o); }   /* 목업에 올리면 다른 자리 후보가 흐리게 */
-svg.mock.hov .artGhost:hover { opacity: var(--ghost-o-hover); }
-.csGuide { position: absolute; overflow: visible; pointer-events: none; }   /* 가운데 로고의 클리어스페이스 (화면용) — 장표처럼 점선 격자 + 모서리 칸 */
-.csGuide line { stroke: color-mix(in srgb, var(--art-fg) var(--cs-line-mix-guide), var(--art-bg)); stroke-width: var(--line-w); stroke-dasharray: var(--cs-dash); }
-.csGuide text { font-family: var(--font-label); font-size: calc(var(--label-size) * var(--cs-label-scale)); letter-spacing: var(--label-ls); fill: color-mix(in srgb, var(--art-fg) var(--cs-text-mix), var(--art-bg)); }   /* 모서리 칸 H/2 */
-.csGuide .csE { fill: var(--art-fg); opacity: var(--cs-e-o); }   /* 가로형 시그니처 모서리 칸 = 캡 하이트 E */
-#mediumArt .sym, .realArt .sym { fill: currentColor; opacity: var(--art-sym-opacity); }
-#mediumArt .artName, #mediumArt .artSpec { white-space: nowrap; font-family: var(--font-text); font-weight: var(--text-w); font-size: var(--text-size); line-height: var(--text-lh); letter-spacing: var(--text-ls); color: color-mix(in srgb, var(--art-fg) var(--art-line-mix), var(--art-bg)); }   /* text 레벨 (모노보다 짧게) */
-#mediumArt .artCap { display: flex; flex-direction: column; align-items: flex-end; }   /* 그림 아래 오른쪽 정렬 두 줄: 이름 / 사양 */
-#mediumArt.real .artStage { display: none; }   /* 폰 = 그림은 가운데 실물 목업, 여기는 정보만 */
-#mediumArt .artWarn { font-family: var(--font-text); font-weight: var(--text-w); font-size: var(--text-size); line-height: var(--text-lh); letter-spacing: var(--text-ls); white-space: nowrap; color: var(--state-bad); }   /* 목업 위 알림 (가이드보다 큰 로고 · 빌보드 시그니처) = 경고 주황 */
-#mediumArt .artName { color: color-mix(in srgb, var(--art-fg) var(--art-name-mix), var(--art-bg)); }   /* 매체 이름 = 조금 밝게 / 사양 = 디지털: 화면 크기 · 해상도, 인쇄: 크기 · dpi */
-.actual svg { overflow: visible; }   /* 가이드 선이 소수점 크기에서도 잘리지 않게 (안전장치) */
+/* ---------------------------------------------------------------------
+   작업공간 (B-11) — 가운데 로고(As seen) · 오른쪽 아래 매체 정보 · 목업 · 클리어스페이스 가이드
+   --------------------------------------------------------------------- */
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--stage-bg);
+}
+.workspace {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: calc(var(--stage-logo-lift) * 2); /* 로고를 stage-logo-lift 만큼 위로 */
+}
+.workspace.realMode {
+  padding-bottom: 0; /* 실물 크기 폰은 정가운데 */
+}
+.actual {
+  position: relative;
+  z-index: var(--z-actual);
+  display: flex;
+}
+.actual svg {
+  overflow: visible; /* 가이드 선이 소수점 크기에서도 잘리지 않게 */
+}
+/* 폰 = 실물 크기 목업 (캘리브레이션 px/mm) — 가운데 로고 대신, 정보는 오른쪽 아래 */
+.realArt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.actual .realArt > svg {
+  display: block;
+  overflow: hidden; /* 세로만 보일 때 가로 폰이 viewBox 밖으로 새지 않게 */
+}
+/* 그림 층 — 그림이 커져도 작업공간 스크롤이 생기지 않게 잘라 줌, 클릭은 통과 */
+.artLayer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+/* 매체 정보 = 오른쪽 아래 고정: 경고 줄 · 그림 · 이름 / 사양 (오른쪽 정렬) */
+#mediumArt {
+  position: absolute;
+  right: var(--art-inset);
+  bottom: var(--art-inset);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--art-cap-gap);
+  min-width: var(--art-w);
+}
+/* 그림 자리 (높이 = 기본 상자) — 그림은 오른쪽 아래 기준으로 커지고 작아짐, 캡션은 고정 */
+#mediumArt .artStage {
+  position: relative;
+  width: 100%;
+  height: var(--art-h);
+  opacity: var(--art-opacity);
+}
+#mediumArt .artStage > svg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: visible;
+}
+#mediumArt.real .artStage {
+  display: none; /* 폰 = 그림은 가운데 실물 목업, 여기는 정보만 */
+}
+/* 목업 선 — 페어 글자색 × 비율 + 바탕색 (불투명 — 겹친 선이 진해지지 않게) */
+#mediumArt .ln,
+.realArt .ln,
+#mediumArt .zn,
+.realArt .zn {
+  fill: none;
+  stroke: color-mix(in srgb, var(--art-fg) var(--art-line-mix), var(--art-bg));
+  stroke-width: var(--art-line-w);
+  vector-effect: non-scaling-stroke;
+}
+/* 조닝 — 그래픽 패턴 영역 경계 + 대각 X (점선, 가이드 Zoning 도식과 같은 문법) */
+#mediumArt .zn,
+.realArt .zn {
+  stroke-dasharray: var(--art-zone-dash);
+}
+#mediumArt .sym,
+.realArt .sym {
+  fill: currentColor;
+  opacity: var(--art-sym-opacity);
+}
+/* 목업 = 심볼 자리 바꾸기 (그림 층은 원래 클릭을 통과) */
+#mediumArt svg.mock,
+.realArt svg.mock {
+  pointer-events: auto;
+}
+/* 다른 자리 후보 — 전환 없음 (다시 그릴 때 깜빡이지 않게). 누르는 곳 = 클릭 영역(hit)만 */
+.artGhost {
+  opacity: 0;
+  cursor: pointer;
+}
+.artGhost .hit {
+  fill: transparent;
+}
+.artGhost .sym {
+  pointer-events: none;
+}
+svg.mock.hov .artGhost {
+  opacity: var(--ghost-opacity);
+}
+svg.mock.hov .artGhost:hover {
+  opacity: var(--ghost-opacity-hover);
+}
+/* 캡션: 이름 / 사양 — text 레벨, 선보다 조금 밝게(이름) */
+#mediumArt .artCap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+#mediumArt .artName,
+#mediumArt .artSpec {
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--art-fg) var(--art-line-mix), var(--art-bg));
+}
+#mediumArt .artName {
+  color: color-mix(in srgb, var(--art-fg) var(--art-name-mix), var(--art-bg));
+}
+/* 목업 위 알림 (가이드보다 큰 로고 · 빌보드 시그니처) = 경고 주황 */
+#mediumArt .artWarn {
+  white-space: nowrap;
+  color: var(--state-bad);
+}
+/* 가운데 로고의 클리어스페이스 (화면용) — 장표처럼 점선 격자 + 모서리 칸 H/2 */
+.csGuide {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+.csGuide line {
+  stroke: color-mix(in srgb, var(--art-fg) var(--cs-line-mix), var(--art-bg));
+  stroke-width: var(--border-w);
+  stroke-dasharray: var(--cs-dash);
+}
+.csGuide text {
+  font-family: var(--font-mono);
+  font-size: calc(var(--_label-size) * var(--cs-label-scale));
+  letter-spacing: var(--t-label-ls);
+  fill: color-mix(in srgb, var(--art-fg) var(--cs-text-mix), var(--art-bg));
+}
+.csGuide .csE {
+  fill: var(--art-fg); /* 가로형 시그니처 모서리 칸 = 캡 하이트 E */
+  opacity: var(--cs-e-opacity);
+}
 
-
-@media (max-width: 899px) {   /* 좁은 창 = 메뉴창 위 · 작업공간 아래로 쌓기만 (데스크탑 도구, 가이드와 같은 경계)
-  html, body { overflow: auto; height: auto; }
-  .app { grid-template-columns: 1fr; height: auto; }
-  aside { height: auto; border-right: 0; border-bottom: var(--line-w) solid var(--line-c); }
-  main { height: 100vh; }
+/* ---------------------------------------------------------------------
+   좁은 창 — 메뉴창 위 · 작업공간 아래로 쌓기만 (데스크탑 도구, 가이드와 같은 경계 899px)
+   --------------------------------------------------------------------- */
+@media (max-width: 899px) {
+  html,
+  body {
+    height: auto;
+    overflow: auto;
+  }
+  .app {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  aside {
+    height: auto;
+    border-right: 0;
+    border-bottom: var(--border-w) solid var(--border);
+  }
+  main {
+    height: 100vh;
+  }
 }

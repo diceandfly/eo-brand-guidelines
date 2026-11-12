@@ -1,0 +1,36 @@
+/* =====================================================================
+   Webfont declarations — EO Logo Generator
+   ---------------------------------------------------------------------
+   가이드와 같은 public/fonts/ 의 woff2 를 씁니다 (저장소에는 없음 — 라이선스, .gitignore).
+   파일이 없으면 tokens.css 의 --font-en / --font-mono 폴백 서체로 렌더되고, 시그니처 조판(sig-font.js)은 꺼집니다.
+   font-display: block — 폰트가 준비될 때까지 글자를 잠깐 비워 두어 시스템 폰트가 스치지 않게. 쓰는 파일은 index.html 에서 preload.
+
+   보유 웨이트
+     Founders Grotesk       Light 300 · Regular 400 · Medium 500
+     Founders Grotesk Mono  Regular 400
+   ===================================================================== */
+
+@font-face {
+  font-family: 'Founders Grotesk';
+  src: url('/fonts/founders-grotesk-light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Founders Grotesk';
+  src: url('/fonts/founders-grotesk-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Founders Grotesk';
+  src: url('/fonts/founders-grotesk-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Founders Grotesk Mono';
+  src: url('/fonts/founders-grotesk-mono-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: block;
+}

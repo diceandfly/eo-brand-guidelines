@@ -1,0 +1,330 @@
+/* =====================================================================
+   EO Logo Generator — Style Tokens
+   ---------------------------------------------------------------------
+   이 파일 하나만 수정하면 생성기의 레이아웃·타이포·컬러가 바뀝니다.
+   tool.css 는 여기 있는 변수만 참조하고, 숫자를 직접 쓰지 않습니다.
+   가이드(src/styles/tokens.css)와 같은 규칙으로 정리했지만 값은 별개입니다 — 생성기는 빌드 없이 이 파일을 그대로 읽습니다.
+
+   정리 원칙 — 생성기 전체에 같은 뜻으로 쓰이는 값(서체 · 컬러 · 공통 치수 · 공통 모션)은 종류별로,
+   그 밖의 값은 요소별로 묶습니다. 요소 블록 안에서는 치수 → 비율 → 색 → 모션 순서입니다.
+   크롬(면 · 선 · 컨트롤 · 간격)은 EO Graphic Builder, 자간 · 웨이트 · 회색도는 가이드 Typography 기준.
+   치수는 대부분 lh-unit × 배수 — 배수만 바꾸면 됩니다 (¼ 단위 권장).
+
+   이름 규칙 (가이드와 같음)
+     --<요소>-<부분>-<속성>-<상태>      예) --slider-thumb-w, --ghost-opacity-hover, --art-line-w-on-light
+     속성   -w 폭·두께 (타이포는 웨이트) · -h 높이 · -size 정사각 한 변 · -gap 사이 · -pad-x/-y 안쪽
+            -c 색 · -line 선 색 · -bg 면 · -mix 섞는 비율 · -opacity 불투명도 · -dur 시간 · -delay 대기
+     --c-*  브랜드 팔레트 7색만. 그 밖의 색은 시맨틱(--bg · --fg · --border …) 또는 요소 블록
+     --z-*  쌓임 순서
+     --_*   계산값 · 지역 변수 (tool.css 안에서만 만들고 씀, 손대지 않음)
+     JS 가 읽는 토큰은 주석에 (JS) — 이름을 바꾸면 app.js 도 같이
+
+   목차
+     A. 시스템
+       A-1 타입      행간 기준 단위, 서체, 4레벨 (title / menu / text / label) + value
+       A-2 컬러      브랜드 팔레트 7색, UI 전용 색, 기본 시맨틱 (바탕 · 글자 · 선 · 강조 · 상태)
+       A-3 공통 치수  라운드, 선, 포커스, 컨트롤 한 행, 쌓임 순서
+       A-4 공통 모션  곡선
+     B. 요소 (메뉴창 위에서 아래 순서 → 떠 있는 창 → 작업공간)
+       B-1 메뉴창 · 그룹 구조   폭, 안쪽, 섹션 › 제목 › 설정 › 행 간격, 기준 열
+       B-2 타이틀 로고
+       B-3 버튼 · 글자 토글
+       B-4 입력칸 · 셀렉트
+       B-5 슬라이더
+       B-6 상태 메시지
+       B-7 Color 썸네일
+       B-8 체크박스 · i
+       B-9 보정 (팝업 · 카드)
+       B-10 툴팁
+       B-11 작업공간 (가운데 로고 · 매체 그림 · 클리어스페이스 가이드)
+
+   좁은 창(899px 이하)은 메뉴창 위 · 작업공간 아래로 쌓기만 합니다 (tool.css 맨 아래 @media, 숫자는 가이드와 같은 경계).
+   ===================================================================== */
+
+:root {
+  /* ==================================================================
+     A. 시스템
+     ================================================================== */
+
+  /* ------------------------------------------------------------------
+     A-1 타입
+     행간이 먼저입니다.
+       행간      = lh-unit × m
+       글자 크기  = 행간 ÷ p              (p = 행간 %, 디자인 툴의 "Line height 150%" 와 같은 뜻)
+     계산은 tool.css 맨 위 --_* 가 합니다 (가이드 base.css 와 같은 방식). 글자 크기 기준 치수는 em 으로 적습니다.
+     ------------------------------------------------------------------ */
+  /*
+    레벨마다 m · p · ls · w · c 다섯 토큰만 가지며 뜻은 모든 레벨에 같습니다.
+      m   행간 배수      p   행간 %      ls  자간      w   웨이트      c   색 (A-2 시맨틱)
+    title  최상단 타이틀 (가로형 시그니처 디스크립터 규격)
+    menu   섹션 제목 · 보정 팝업 · 툴팁 제목
+    text   행 라벨 · 버튼 · 토글 · 체크 — 같은 크기에서 웨이트만 바꿈
+    label  단위 · 경고 · 카드 치수 (모노)
+    value  입력칸 · 읽기 전용 숫자 · 드롭다운 값 = text 크기 · Regular · 흰색 (레벨 아님, text 의 변형)
+  */
+  --lh-unit: 24px; /* 라인 유닛 — 행간 · 컨트롤 높이 · 간격이 모두 이 값의 배수 */
+
+  /* 서체 스택 — 파일은 fonts.css (public/fonts 공유, 저장소에는 없음). 뒤는 못 읽을 때의 대체 */
+  --font-en: 'Founders Grotesk', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; /* title · menu · text · value */
+  --font-mono: 'Founders Grotesk Mono', 'SF Mono', Menlo, Consolas, monospace; /* label */
+
+  /* title — 최상단 타이틀 */
+  --t-title-m: 1;
+  --t-title-p: 117%;
+  --t-title-ls: 0;
+  --t-title-w: 400;
+  --t-title-c: var(--fg);
+
+  /* menu — 섹션 제목 */
+  --t-menu-m: 1;
+  --t-menu-p: 150%;
+  --t-menu-ls: 0;
+  --t-menu-w: 400;
+  --t-menu-c: var(--fg);
+
+  /* text — 기본 */
+  --t-text-m: 1;
+  --t-text-p: 150%;
+  --t-text-ls: 0;
+  --t-text-w: 300;
+  --t-text-c: var(--fg-soft);
+  --t-text-strong-w: 400; /* 보정 팝업 Save(주 버튼)만 */
+  --t-text-strong-ls: calc(var(--t-text-ls) - 0.01em); /* strong 자간 = 기본 − 1% */
+
+  /* label — 모노 */
+  --t-label-m: 1;
+  --t-label-p: 150%;
+  --t-label-ls: -0.06em;
+  --t-label-w: 400;
+  --t-label-c: var(--fg-muted);
+
+  /* value — 입력칸 숫자 · 드롭다운 값 */
+  --t-value-w: 400; /* Regular */
+  --t-value-ls: 0; /* 입력칸 숫자 자간 */
+  --t-value-c: var(--fg); /* 값은 라벨보다 밝게 */
+
+  /* ------------------------------------------------------------------
+     A-2 컬러
+     ------------------------------------------------------------------ */
+  /* 브랜드 팔레트 7색 — 가이드와 같은 값. 바꾸지 않습니다 (Export 의 HEX · CMYK 는 app.js, npm test [5] 가 가이드와 대조) */
+  --c-builder-neon: #f9ee3a;
+  --c-day-blue: #6ec6d2; /* 생성기 UI 에는 쓰지 않음 — 팔레트를 온전히 둠 */
+  --c-bay-green: #66b88a;
+  --c-medium-gray: #8e8e8e;
+  --c-solid-gray: #2a2b2b;
+  --c-space-black: #000000;
+  --c-air-white: #fcfbf5;
+
+  /* UI 전용 색 — 팔레트 밖이라 --c- 접두를 쓰지 않고, 브랜드 컬러로도 쓰지 않습니다 */
+  --warn-orange: #dd5a2d; /* 경고 주황 — 가이드 사이트 --warn-orange 와 같은 값 (Don't 배지 · 대각선) */
+  /* Figma(EO Graphic Builder) 회색 — 가이드 규칙상 중간 톤은 color-mix() 로 쓰지만, 팔레트를 섞어서는 같은 값이 나오지 않아 HEX 로 둠 */
+  --gray-line: #262626; /* 모든 선 */
+  --gray-line-strong: #4b4b4b; /* 면 경계선 */
+  --gray-divider: #555555; /* 토글 세로선 */
+  --gray-zone-base: #151515; /* 슬라이더 구간 색 바탕 */
+
+  /* 기본 시맨틱 — 요소 블록의 색은 모두 여기서 파생합니다 */
+  --bg: var(--c-space-black); /* 페이지 바탕 */
+  --fg: var(--c-air-white); /* title · menu · 값 · 저장 버튼 */
+  --fg-soft: color-mix(in srgb, var(--c-air-white) 60%, var(--c-medium-gray)); /* text — 행 라벨 · 버튼 · 토글 */
+  --fg-muted: var(--c-medium-gray); /* label */
+  --fg-off: color-mix(in srgb, var(--c-medium-gray) 45%, var(--c-solid-gray)); /* 비활성 */
+  --border: var(--gray-line); /* 모든 선 — 테두리 · 구분선 · 입력칸 밑줄 · 스크롤바 */
+  --border-strong: var(--gray-line-strong); /* 면 경계 — 메뉴창 · 팝업 테두리, 기본 슬라이더 트랙, i 테두리, 썸네일 칸 */
+  --accent: var(--c-builder-neon); /* 선택 · 체크 · 주 버튼 · 호버 (본문 글에는 안 씀) */
+  --focus-c: var(--accent); /* 키보드 포커스 테두리 */
+  --state-ok: var(--c-bay-green); /* 상태 메시지 · 슬라이더 구간 (UI 전용) */
+  --state-warn: var(--c-medium-gray); /* 권장은 아님 — 가이드 조건부 배지처럼 중립 */
+  --state-bad: var(--warn-orange); /* 가이드 밖 */
+
+  /* ------------------------------------------------------------------
+     A-3 공통 치수
+     ------------------------------------------------------------------ */
+  --radius: 0; /* UI 모서리 */
+  --border-w: 1px; /* 선 두께 (JS: 목업 선 기본값) */
+  --focus-w: var(--border-w); /* 키보드 포커스 테두리 두께 */
+  --row-h: calc(var(--lh-unit) * 1); /* 컨트롤 한 행 — 글자 행 · 토글 · 입력칸 · 셀렉트 · 섹션 머리 */
+  /* 쌓임 순서 (z-index). 큰 값이 위 */
+  --z-actual: 1; /* 가운데 로고 (매체 그림 위) */
+  --z-card: 9; /* 보정 카드 */
+  --z-calib: 10; /* 보정 팝업 */
+  --z-tip: 11; /* 툴팁 */
+
+  /* ------------------------------------------------------------------
+     A-4 공통 모션
+     ------------------------------------------------------------------ */
+  --ease-inout: ease-in-out; /* 양끝 천천히 (보정 버튼 깜빡임) */
+
+  /* ==================================================================
+     B. 요소 — 메뉴창 위에서 아래 순서 → 떠 있는 창 → 작업공간. 블록 안은 치수 → 비율 → 색 → 모션
+     ================================================================== */
+
+  /* ------------------------------------------------------------------
+     B-1 메뉴창 · 그룹 구조 — Figma 그룹 구조 그대로, 바깥 → 안
+       메뉴창 (pad) ── 타이틀(위에 겹쳐 놓임)
+                    └ 섹션 묶음 (위 sections-top) ── 섹션 ↕ section-gap 섹션 …
+                         섹션 = 제목 ↕ section-head-gap 설정
+                         설정 = 행 ↕ row-gap 행 …   (행 묶음 = 행 ↕ block-gap 묶음, 아래 block-gap)
+     ------------------------------------------------------------------ */
+  --panel-w: 332px; /* 메뉴창 폭 (JS) */
+  --panel-pad-x: calc(var(--lh-unit) * 0.7); /* 메뉴창 안쪽 — 좌우 (기준 열 폭도 이 값으로 계산) */
+  --panel-pad-y: calc(var(--lh-unit) * 0.75); /* 메뉴창 안쪽 — 위아래 (JS: 툴팁 자리) */
+  --sections-top: calc(var(--lh-unit) * 3.5); /* 섹션 묶음 위 여백 — 타이틀 자리 포함 */
+  --section-gap: calc(var(--lh-unit) * 1.5); /* 섹션 ↔ 섹션 */
+  --section-head-gap: calc(var(--lh-unit) * 0); /* 제목 ↔ 설정 */
+  --section-box-gap: calc(var(--lh-unit) * 0.5); /*   └ 첫 내용이 경계 있는 박스면 더 띄움 (Color 썸네일) */
+  --row-gap: calc(var(--lh-unit) * 0); /* 설정: 행 ↔ 행 */
+  --block-gap: calc(var(--lh-unit) * 0.5); /* 행 묶음 ↔ 다음 행 (Export › Save ↔ 체크 옵션) */
+  --inline-gap: calc(var(--lh-unit) * 0.25); /* 행 안 가로: 라벨 ↔ 셰브론 · 체크 ↔ 글 · 숫자 ↔ 단위 */
+  --scrollbar-w: 0px; /* 메뉴창 스크롤바 */
+  /* 기준 열 — 메뉴창 안쪽을 4칸으로 나눈 한 칸. 입력칸 · 보정 버튼이 이 칸 단위 */
+  --panel-cols: 4;
+  --col-w: calc((var(--panel-w) - var(--border-w) - 2 * var(--panel-pad-x)) / var(--panel-cols)); /* 한 칸 (메뉴창 오른쪽 경계선 제외) */
+  --panel-bg: color-mix(in srgb, var(--c-solid-gray) 76%, var(--c-space-black)); /* 메뉴창 면 = 브랜드 가이드 페이지 바탕(Solid Gray + Space Black 24%) */
+  --panel-line: var(--border-strong); /* 메뉴창 ↔ 작업공간 경계선 — 작업공간이 Solid Gray 여도 보이게 */
+
+  /* ------------------------------------------------------------------
+     B-2 타이틀 로고 (가로형 시그니처 규격)
+     ------------------------------------------------------------------ */
+  --logo-unit: calc(1em / 1.3); /* H = 디스크립터 조판 1.3H ÷ 1.3 (1em = 타이틀 글자 크기 — 타이틀 안에서만 씀) */
+  --logo-h: var(--logo-unit); /* 심볼 높이 */
+  --logo-gap: calc(var(--logo-unit) * 29 / 60); /* 심볼 ↔ 글 = W/2 */
+  --logo-drop: calc(var(--logo-unit) / 10); /* 심볼 바닥 = 베이스라인 − H/10 */
+
+  /* ------------------------------------------------------------------
+     B-3 버튼 · 글자 토글
+     버튼 = 보정 팝업 Reset · Cancel · Save (채움 · 흰 글 · 네온). 메뉴창은 면 없는 글자 버튼(토글 · Save ↓ · Calibrate)
+     ------------------------------------------------------------------ */
+  --btn-h: calc(var(--lh-unit) + 2 * var(--border-w)); /* 채움 버튼 = 글 한 줄 + 위아래 선 자리 */
+  --btn-pad-x: 0px; /* 버튼 좌우 안쪽 */
+  --tg-divider-pad: calc(var(--lh-unit) * 0.5); /* 토글 세로선 양옆 여백 */
+  --tg-divider-h: 0.875em; /* 세로선 길이 = 토글 글자 크기 × 0.875 */
+  --tg-on-stroke: 0.4px; /* 선택 글자 외곽선 — Light 를 Regular 처럼 굵혀 보이게 (웨이트를 바꾸면 글자 폭이 변해 간격이 흔들림) */
+  --save-gap: calc(var(--tg-divider-pad) * 2); /* Export › Save 글자 버튼 사이 (SVG ↓   PNG ↓) = 토글 세로선 자리와 같은 폭 */
+  --btn-primary-hover-mix: 85%; /* 주 버튼 호버 = accent 85% + Air White */
+  --btn-bg: color-mix(in srgb, var(--c-solid-gray) 66%, var(--c-space-black)); /* 채움 버튼 면 — 메뉴창(76%)보다 은은하게 어둡게 */
+  --tg-divider-c: var(--gray-divider); /* 세로선 색 */
+
+  /* ------------------------------------------------------------------
+     B-4 입력칸 · 셀렉트
+     ------------------------------------------------------------------ */
+  --field-w: calc(var(--col-w) * 1.2); /* 숫자 입력칸 = 1.2칸 (밑줄 길이) */
+  --field-num-w: 56px; /* 입력칸 안 숫자 영역 (단위는 나머지) */
+  --field-suffix-w: calc(var(--lh-unit) * 1); /* 단위 자리 — 숫자 오른쪽 끝을 행마다 맞춤 */
+  --field-text-w: calc(var(--col-w) * 1.5); /* 글 입력칸 = 1.5칸 (시그니처 Descriptor) */
+  --chevron-size: calc(var(--lh-unit) * 0.7); /* 드롭다운 화살표 */
+  --chevron-mark-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9.5 12 15.5 18 9.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E"); /* 화살표 모양 (마스크 — 색은 아래) */
+  --chevron-c: var(--fg-muted); /* 화살표 색 */
+  --chevron-opacity-off: 0.4; /* 비활성 행의 화살표 */
+
+  /* ------------------------------------------------------------------
+     B-5 슬라이더 (Symbol height · 보정 팝업)
+       값 행 ↕ slider-top-gap 슬라이더 (↕ slider-msg-gap 메시지) ↕ slider-bottom-gap 다음 행
+     ------------------------------------------------------------------ */
+  --slider-top-gap: calc(var(--lh-unit) * 0.5); /* 값 행 ↔ 슬라이더 */
+  --slider-bottom-gap: calc(var(--lh-unit) * 0.25); /* 슬라이더 묶음 ↔ 다음 행 (메뉴창 안에서만 — 팝업은 묶음 간격) */
+  --slider-msg-gap: calc(var(--lh-unit) * 0.25); /* 슬라이더 ↔ 상태 메시지 */
+  --slider-h: calc(var(--lh-unit) * 0.5); /* 슬라이더 줄 높이 */
+  --slider-thumb-h: calc(var(--lh-unit) * 0.4); /* 썸 높이 */
+  --slider-thumb-w: calc(var(--slider-thumb-h) * 1.12); /* 썸 폭 — 정사각형은 트랙 위에서 세로로 길어 보여 가로 보정 (JS) */
+  --slider-track-h: 2px; /* 트랙 두께 */
+  --slider-tick-w: var(--slider-track-h); /* 크기 슬라이더 눈금 (매체 · 콘텐츠 처음 값) — 두께 = 트랙, 색은 그 자리 구간 색 (JS) */
+  --slider-tick-h: calc(var(--slider-thumb-h) * 0.6);
+  --slider-thumb-c: var(--fg); /* 썸 = 흰색 */
+  --slider-track-c: var(--border-strong); /* 기본 트랙 (보정) — 메뉴창 면 위에서 보이게 */
+  /* 크기 슬라이더 구간 색 — 이름 끝(out · optimal · over)은 JS 가 조합 (app.js zoneAt) */
+  --slider-zone-mix: 50%; /* 구간 색 = 상태색 × 이 비율 + 바탕 */
+  --slider-zone-base: var(--gray-zone-base); /* 구간 색 바탕 */
+  --slider-zone-l: 0.45; /* 구간 색 밝기 (OKLCH L) — 세 구간을 같은 밝기로. 밝기가 다르면 같은 2px 도 두께가 달라 보임 */
+  --slider-zone-out: oklch(from color-mix(in srgb, var(--state-bad) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h); /* 가이드 밖 */
+  --slider-zone-optimal: oklch(from color-mix(in srgb, var(--state-ok) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h); /* 최적 */
+  --slider-zone-over: oklch(from color-mix(in srgb, var(--state-warn) var(--slider-zone-mix), var(--slider-zone-base)) var(--slider-zone-l) c h); /* 권장 최대 초과 */
+
+  /* ------------------------------------------------------------------
+     B-6 상태 메시지 (크기 슬라이더 아래 한 줄) — 넘치면 옆으로 흐름 (JS)
+     ------------------------------------------------------------------ */
+  --msg-mq-speed: 40; /* 흐르는 속도 (px/초, 단위 없음) */
+  --msg-mq-wait: 1.5s; /* 처음 · 끝에서 멈추는 시간 (첫 대기 = 읽기 시작할 시간) */
+  --msg-mq-fade-dur: 0.4s; /* 끝 → 처음으로 돌아갈 때 사라졌다 나타나는 시간 */
+
+  /* ------------------------------------------------------------------
+     B-7 Color 썸네일
+     ------------------------------------------------------------------ */
+  --pair-cols: 4; /* 한 줄 개수 */
+  --pair-pad-bottom: 0px; /* 썸네일 아래 여백 */
+  --pair-select-w: calc(var(--border-w) * 0.3); /* 선택 테두리 두께 (칸 경계선 자리에 겹쳐 그림) */
+  --pair-select-w-hover: var(--border-w); /* 호버 테두리 두께 */
+  --pair-ratio: 0.97; /* 높이 ÷ 폭 — 1 보다 작을수록 납작 (정사각형으로 보이게 보정) */
+  --pair-symbol-w: 50%; /* 심볼 폭 = 썸네일 × 비율 (라이트 기준) */
+  --pair-select-hover-mix: 45%; /* 호버 테두리 = 선택 색을 이만큼만 (선택보다 옅게) */
+  --pair-opacity-off: 0.2; /* 시그니처에서 쓰지 않는 페어 (Builder Neon 글자) 의 심볼 */
+  --pair-line: var(--border-strong); /* 칸 경계선 (이웃과 1px 공유) */
+  --pair-select: color-mix(in srgb, var(--accent) 100%, transparent); /* 선택 · 호버 테두리 색 */
+  --pair-select-on-light: var(--c-space-black); /* 밝은 바탕 칸(Builder Neon · Air White) — 네온이 묻히므로 */
+
+  /* ------------------------------------------------------------------
+     B-8 체크박스 · i (Export 옵션)
+     ------------------------------------------------------------------ */
+  --check-size: calc(var(--lh-unit) * 0.5); /* 네모 한 변 (보정 카드 손잡이도 같은 값) */
+  --check-mark-size: 9px; /* 체크 표시 */
+  --info-size: var(--check-size); /* 옵션 오른쪽 i · 타이틀 ? 네모 한 변 (체크박스와 같은 크기) */
+  --info-glyph-size: 10px; /* i 글자 크기 (Figma Label info — 새 레벨 아님, i 하나 전용) */
+  --check-mark-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6L9 17l-5-5' fill='none' stroke='%23000' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); /* 체크 모양 (마스크) */
+  --check-c: var(--accent); /* 켜진 체크 · 테두리 */
+  --check-line: color-mix(in srgb, var(--c-medium-gray) 60%, var(--panel-bg)); /* 꺼진 체크박스 테두리 — 메뉴창 위에서 보이게 */
+  --check-off: var(--fg-off); /* 비활성 체크박스 테두리 · 체크 = 비활성 글색 */
+  --info-c: var(--fg-muted); /* i 글자 */
+  --info-line: var(--border-strong); /* i 테두리 */
+
+  /* ------------------------------------------------------------------
+     B-9 보정 — 팝업(메뉴창 옆, 제목 줄을 Visual size 제목과 같은 높이에) · 카드(작업공간 가운데)
+       팝업 (panel-pad) ─ 머리(제목 ↕ section-head-gap 안내문) ↕ calib-group-gap 값 · 슬라이더 ↕ calib-group-gap 버튼(Reset | Cancel · Save)
+     ------------------------------------------------------------------ */
+  --calib-w: var(--panel-w); /* 팝업 폭 = 메뉴창 */
+  --calib-gap: calc(var(--lh-unit) * 0.5); /* 메뉴창 ↔ 팝업 · 툴팁, 화면 가장자리 여유 (JS) */
+  --calib-group-gap: calc(var(--lh-unit) * 1); /* 팝업 안 묶음 ↔ 묶음 (머리 · 값 · 버튼) */
+  --card-line-w: 2px; /* 카드 테두리 */
+  --card-radius: 3.18mm; /* 실물 카드 모서리 */
+  --card-min-pxmm: 3; /* 최소 px/mm (단위 없음, JS) — 27" 4K 3.22 까지 */
+  --calib-nudge-opacity: 0.2; /* 보정 전 깜빡임 가장 흐릴 때 */
+  --card-tint-mix: 6%; /* 카드 안쪽 accent 물들임 — 반투명 (뒤의 로고가 비쳐 보임) */
+  --calib-bg: var(--panel-bg); /* 팝업 면 */
+  --calib-line: var(--panel-line); /* 팝업 테두리 — 작업공간 위에서 경계가 보이게 */
+  --calib-nudge-c: var(--accent); /* 보정 전 "Not calibrated" (유도) */
+  --calib-done-c: var(--fg-muted); /* 보정 후 "Calibrated" — 위계를 낮춤 (비활성 색은 '못 누름'으로 읽혀 쓰지 않음), 호버 시 밝게 */
+  --calib-nudge-dur: 2.4s; /* 깜빡임 한 번 (밝음 → 흐림 → 밝음) */
+
+  /* ------------------------------------------------------------------
+     B-10 툴팁 — 보정 팝업과 같은 면 · 테두리 · 자리 (메뉴창 오른쪽, 가리킨 행 높이)
+     ------------------------------------------------------------------ */
+  --tip-para-gap: var(--_text-lh); /* 타이틀 도움말: 단계 목록 ↔ 마지막 안내 문단 = 빈 줄 하나 */
+  --tip-delay: 0.25s; /* 툴팁이 뜨기까지 (JS) */
+
+  /* ------------------------------------------------------------------
+     B-11 작업공간 — 가운데 로고(As seen) · 오른쪽 아래 매체 그림 · 클리어스페이스 가이드
+     목업 선 색은 페어 글자색(--art-fg) · 바탕색(--art-bg)을 섞음 — 두 값은 JS 가 그때그때 넣음
+     ------------------------------------------------------------------ */
+  --stage-pad: calc(var(--lh-unit) * 0.5); /* 작업공간 가장자리 (JS) */
+  --stage-logo-lift: 0px; /* 가운데 로고를 위로 올리는 양 — 목업이 오른쪽 아래로 가서 0 (정가운데) */
+  --art-w: calc(var(--lh-unit) * 13); /* 매체 그림 기본 상자 (이 안에 비율 유지로 맞춤, JS) */
+  --art-h: calc(var(--lh-unit) * 10); /* (JS) */
+  --art-inset: calc(var(--lh-unit) * 1); /* 작업공간 오른쪽 · 아래 가장자리 ↔ 매체 정보 */
+  --art-cap-gap: calc(var(--lh-unit) * 0.5); /* 그림 ↔ 캡션 */
+  --art-line-w: var(--border-w); /* 목업 선 두께 (확대 · 축소와 무관) — 어두운 바탕. JS 가 바탕 밝기에 따라 바꿔 끼움 */
+  --art-line-w-on-light: calc(var(--border-w) * 1.5); /* 밝은 바탕(반전 페어) — 같은 두께도 밝은 바탕에선 가늘어 보여 보정 (JS) */
+  --art-zone-dash: 2 2; /* 조닝 점선 (px) */
+  --ghost-hit: calc(var(--lh-unit) * 0.5); /* 목업 위 후보 자리를 누르기 쉬운 여유 (화면 px, JS) */
+  --cs-dash: 1px 2px; /* 클리어스페이스 점선 = 장표처럼 촘촘하게 */
+  --cs-label-min: calc(var(--lh-unit) * 0.8); /* 모서리 칸이 이보다 작으면 H/2 를 쓰지 않음 (JS) */
+  --cs-label-scale: 0.6; /* 모서리 칸 H/2 글자 = label × 이 배율 (새 레벨 아님) */
+  --art-opacity: 0.8; /* 목업 그림 + 그림 속 로고 전체 (묶음 불투명도 — 겹친 선이 진해지지 않음). 가운데 로고가 주인공 */
+  --art-sym-opacity: 1; /* 그림 속 심볼 = 또렷하게 */
+  --ghost-opacity: 0.215; /* 목업에 올렸을 때 다른 자리 후보 심볼 */
+  --ghost-opacity-hover: 0.6; /* 후보 위에 올렸을 때 */
+  --cs-e-opacity: 0.25; /* 가로형 시그니처 모서리 칸 E */
+  --art-line-mix: 40%; /* 목업 선 · 사양 글자 = 페어 글자색 × 이 비율 + 바탕색 (불투명 — 겹친 선이 진해지지 않게) */
+  --art-name-mix: 70%; /* 캡션 첫 줄(매체 이름) = 선보다 조금 밝게 */
+  --cs-line-mix: 45%; /* 클리어스페이스 점선 */
+  --cs-text-mix: 55%; /* 모서리 칸 H/2 글자 */
+  --stage-bg: var(--c-space-black); /* 기본 바탕 (선택한 페어 배경이 덮어씀) */
+}

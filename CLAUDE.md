@@ -12,7 +12,7 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 - `src/lib/imageTone.ts` — 빌드 때 이미지 가장자리 밝기를 재서(sharp) 카드 호버 테두리를 밝은 회색/어두운 회색 중 어느 쪽으로 할지 정함(`data-tone`). 색·두께·시간은 tokens.css `--img-border-hover*` / `--img-border-w-hover*` / `--img-border-hover-dur`.
 - `src/lib/motion.ts` — GSAP 모션(스무스 스크롤 ScrollSmoother, 앵커 이동, 이미지 라이트박스). 수치는 tokens.css B-9(페이지 전환 · 스크롤) · B-8(라이트박스) · B-2(목차 슬라이드) 의 모션 토큰에서 읽음. 고정 요소(목차·상단 바·라이트박스)는 `#smooth-wrapper` 밖에 둘 것.
 - `public/archive/handoff/` — 최종 핸드오프 시점 가이드의 고정 빌드(`npm run archive` = scripts/archive.mjs, git 태그 `handoff-final` 기준, 서체 · 생성기 제외). 손으로 고치지 않음. 검색창 `designisgood` 이스터에그가 같은 페이지로 왕복(`src/lib/archive.ts`, Search.astro), 목차에 아카이브 표시(빌드 환경 변수 EO_ARCHIVE). 튜토리얼 docs/file-management.md §8.
-- `public/tools/logo-generator/` — 로고 생성기(빌드 없는 정적 도구: index.html · tool.css · geom.js(확정, 손대지 않음) · app.js · sig-font.js · vendor/). 목차 Logo › Download(`## Download {href=…}` 링크 항목, 새 탭)로 열림. 서체는 public/fonts 공유, 수치 토큰은 tool.css 맨 위(가이드 tokens.css 와 별개). 사양 · 부채 기록은 `docs/logo-generator/`, 회귀 검사는 npm test [5].
+- `public/tools/logo-generator/` — 로고 생성기(빌드 없는 정적 도구: index.html · fonts.css · tokens.css · tool.css · geom.js(확정, 손대지 않음) · app.js · sig-font.js · vendor/). 목차 Logo › Download(`## Download {href=…}` 링크 항목, 새 탭)로 열림. 서체는 public/fonts 공유. 디자인 튜닝은 생성기 tokens.css 만(가이드 tokens.css 와 이름 · 블록 순서 · 주석 규칙은 같고 값은 별개), tool.css 는 토큰만 참조하는 규칙. 사양 · 부채 기록은 `docs/logo-generator/`, 회귀 검사는 npm test [5].
 
 ## 용어 (대화에서 이 이름으로 통일)
 챕터(`# 02 Logo`) > 페이지(`## Logo`, 화면 하나 = URL 하나; `{toc=none}` 을 붙이면 목차에 섹션 목록을 펼치지 않음) > 섹션(`### Head`, 선택적 `#### Subhead`). `### ++ Head` 는 목차에 올릴 섹션 표시 — 한 페이지에 `+` 가 하나라도 있으면 표시된 것만, 없으면 전부 자동.

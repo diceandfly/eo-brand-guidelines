@@ -3,6 +3,7 @@
  *   a. geom.js 의 GEOM 블록(/*GEOM-START*\/ … /*GEOM-END*\/)을 함께 둔 polygon-clipping 과 node vm 에서 돌려 확정 수치를 고정:
  *      다크 심볼 총높이 1.0867H (H + 2/30H + 2/100H) · 다크 간격 3/30H · 라이트 폭(regular) · 오른쪽 클리어스페이스 식(가이드 Symbol › Clearspace)
  *   b. app.js 의 HEX · CMYK 가 국문 가이드 Color 스와치와 같은지 (팔레트 7색)
+ *   c. tokens.css 팔레트(--c-*) = 가이드 tokens.css · 참조하는 토큰이 모두 정의됨
  * 생성기는 빌드 없는 단일 HTML 이라 여기서만 검사합니다. 실패 메시지는 fail(), 통과는 ok() 로 test.mjs 에 보고.
  */
 import fs from 'node:fs';
@@ -46,4 +47,18 @@ export function checkLogoGenerator(ROOT, { ok, fail }) {
   if (Object.keys(sw).length < 7) diffs.push(`가이드 스와치를 ${Object.keys(sw).length}개만 읽음 (7색 기대)`);
   if (diffs.length) for (const d of diffs) fail(`생성기 ${d}`);
   else ok(`생성기 HEX · CMYK = 가이드 스와치 (${Object.keys(sw).length}색)`);
+
+  // c. 토큰 — tokens.css 팔레트(--c-*) = 가이드 tokens.css, tool.css · tokens.css · app.js 가 참조하는 var(--…) 는 모두 정의됨
+  const noCmt = s => s.replace(/\/\*[\s\S]*?\*\//g, '');
+  const tok = noCmt(fs.readFileSync(path.join(dir, 'tokens.css'), 'utf8')), rules = noCmt(fs.readFileSync(path.join(dir, 'tool.css'), 'utf8'));
+  const pal = s => Object.fromEntries([...s.matchAll(/(--c-[\w-]+)\s*:\s*(#[0-9a-fA-F]{6})/g)].map(m => [m[1], m[2].toLowerCase()]));
+  const gPal = pal(noCmt(fs.readFileSync(path.join(ROOT, 'src/styles/tokens.css'), 'utf8'))), tPal = pal(tok);
+  const palDiff = [...new Set([...Object.keys(gPal), ...Object.keys(tPal)])].filter(k => gPal[k] !== tPal[k]).map(k => `${k} ${tPal[k] ?? '없음'} ≠ 가이드 ${gPal[k] ?? '없음'}`);
+  const defined = new Set([...(tok + rules).matchAll(/(--[\w-]+)\s*:/g)].map(m => m[1]));
+  const RUNTIME = ['--art-fg', '--art-bg', '--zones', '--vis-mark'];   // JS 가 그때그때 넣는 값 (tool.css 머리 주석)
+  const refs = [...(tok + rules + appSrc).matchAll(/var\((--[\w-]+)[,)]/g)].map(m => m[1]);
+  const missing = [...new Set(refs)].filter(n => !defined.has(n) && !RUNTIME.includes(n));
+  for (const d of palDiff) fail(`생성기 팔레트 ${d}`);
+  if (missing.length) fail(`생성기 정의 안 된 토큰: ${missing.join(' · ')}`);
+  if (!palDiff.length && !missing.length) ok(`생성기 토큰 — 팔레트 ${Object.keys(tPal).length}색 = 가이드 · 참조 ${new Set(refs).size}개 모두 정의됨`);
 }
