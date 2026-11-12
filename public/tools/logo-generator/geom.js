@@ -260,10 +260,10 @@ function buildSymbol(S, mode) {
   const lightW = ox + bboxOf(g.oct).w;
   const info = { t, P, lightW, lightH: 1 };
   if (mode === 'light') return { mp: [...E, ...O], box: bboxOf(mpPoints([...E, ...O])), ...info };
-  // 1) H/100 바깥 오프셋 (구멍은 안쪽으로)  2) 블록별 중심 기준 정비율 스케일업 (높이 +2/30)  3) 간격 3/30
+  // 1) H/100 바깥 오프셋 (구멍은 안쪽으로)  2) 블록별 중심 기준 정비율 스케일업 (높이 +2/30) — 바깥 윤곽만, 십자 구멍은 1) 그대로 (가이드 장표와 같음, 2026-11-13)  3) 간격 3/30
   const blocks = [offsetMP(E, DARK_OFFSET), offsetMP(O, DARK_OFFSET)].map(mp => {
     const b = bboxOf(mpPoints(mp)), k = (b.h + DARK_GROW) / b.h, cx = (b.x0 + b.x1) / 2, cy = (b.y0 + b.y1) / 2;
-    const m = mapMP(mp, (x, y) => [cx + (x - cx) * k, cy + (y - cy) * k]);
+    const m = mp.map(poly => poly.map((ring, i) => i === 0 ? ring.map(([x, y]) => [cx + (x - cx) * k, cy + (y - cy) * k]) : ring));   // 구멍(i > 0)은 키우지 않음 — 키우면 다크에서 밝은 십자가 번져 커 보임
     return { mp: m, b: bboxOf(mpPoints(m)), k };
   });
   const [dE, dO] = blocks;
