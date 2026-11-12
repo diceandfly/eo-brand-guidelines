@@ -39,7 +39,7 @@ function warnings(S) {   // 판정은 보이는 높이 S (경계 4 · 15 · 25mm
   return w;
 }
 
-// ===== 18. 시그니처 디스크립터 — 서체 아웃라인 · 커닝(GPOS) · 캡 박스 =====
+// ===== 13. 시그니처 디스크립터 — 서체 아웃라인 · 커닝(GPOS) · 캡 박스 =====
 // 서체 = 로컬 Founders Grotesk Regular (public/fonts, git 제외). 출력에는 글자 아웃라인 패스만 들어감 (서체 파일은 안 나감)
 function gposKerner(bytes, off) {   // GPOS 'kern' 피처의 PairPos(형식 1 · 2, 확장 9) → (왼 글리프, 오른 글리프) → x 전진 보정 (폰트 단위)
   const dv = new DataView(bytes.buffer, bytes.byteOffset + off), u16 = p => dv.getUint16(p), i16 = p => dv.getInt16(p), u32 = p => dv.getUint32(p);
@@ -157,7 +157,7 @@ function frameFor(c, clear) {   // 내보내는 틀 — 심볼은 GEOM 의 frame
   return { x0: b.x0 - cs, y0: b.y0 - cs, w: b.x1 - b.x0 + 2 * cs, h: b.y1 - b.y0 + 2 * cs, left: cs, right: cs };
 }
 
-// ===== 13. 렌더 — SVG 마크업 생성 =====
+// ===== 14. 렌더 — SVG 마크업 생성 =====
 function compose() {
   const z = sizes(), symOnly = symOf(z.S, st.mode), sig = st.kind === 'signature' && SIG_FONT, sym = sig ? buildSig(z.S, st.mode) : symOnly, frame = frameFor({ z, sym }, st.clear);   // 시그니처 = 서체를 읽은 뒤부터 (그 전엔 심볼)
   const p = PRESETS.find(q => q.n === st.preset);
@@ -175,7 +175,7 @@ function fileBase(c) {
   return `${kind}-${st.mode}-${st.unit === 'px' ? H + 'px' : mmText(c.z.physMm) + 'mm'}${st.clear ? '-clearspace' : ''}${!s.sig && st.clear && st.icon ? '-icon' : ''}`;
 }
 
-// ===== 14. 화면 갱신 =====
+// ===== 15. 화면 갱신 =====
 const sigPair = p => p.fg !== 'Builder Neon';   // 시그니처 컬러 = 여섯 페어 중 넷 (가이드 Signature › Color: Builder Neon 글자 페어 제외)
 function renderPresets(sym) {   // 썸네일 = 지금 크기 · 모드의 실제 심볼. 프레임은 라이트 심볼 박스(0..lightW × 0..1) → 다크 심볼이 반전 보정만큼 크게 보임
   const f = v => (Math.round(v * 1000) / 1000).toString(), H = 100, frame = { x0: 0, y0: 0 };
@@ -238,14 +238,14 @@ function update() {
     $('workspace').style.setProperty('--art-line-w', L > 0.5 ? 'var(--art-line-w-light)' : 'var(--line-w)'); }   // 밝은 바탕이면 목업 · 가이드 선을 조금 굵게
   $('clear').checked = st.clear; $('icon').checked = st.icon && !sym.sig; $('guide').checked = st.guide;   // 새로고침 때 브라우저가 복원한 체크 상태를 st 기준으로 맞춤
   const gf = frameFor(c, true), gx = (gf.x0 - frame.x0) * aH, gy = (gf.y0 - frame.y0) * aH;   // 화면용 클리어스페이스 박스 — 내보내기 설정과 별개로 (Show clearspace guide)
-  $('actual').innerHTML = svgMarkup(c, H, { cssW: frame.w * aH, cssH: frame.h * aH })
+  if (!medium().real) $('actual').innerHTML = svgMarkup(c, H, { cssW: frame.w * aH, cssH: frame.h * aH })   // 폰은 renderArt 가 실물 목업으로 채움 (한 번만 그림)
     + (st.guide ? csGuideSvg(c, gf, gx, gy, aH) : '');
   renderArt(c);   // 로고를 먼저 그린 뒤 — 그림이 로고에 닿지 않게 높이를 묶음
   $('pngScale').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', st.unit === 'mm' ? DPI_OPTS[i] === printDpi() : +b.dataset.v === st.pngScale));
   document.querySelectorAll('aside .tg button, aside .seg4 button, .preset').forEach(b => b.setAttribute('aria-pressed', b.classList.contains('on')));   // 고른 상태 = 화면 읽기 프로그램에도
 }
 
-// ===== 15. 내보내기 =====
+// ===== 16. 내보내기 =====
 function download(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
 $('dlSvg').onclick = () => { const c = compose();
   if (st.unit === 'mm') download(new Blob([pdfMarkup(c)], { type: 'application/pdf' }), fileBase(c) + '-cmyk.pdf');   // 인쇄 = PDF (mm · 가이드 CMYK)
@@ -288,7 +288,7 @@ function pdfMarkup(c) {   // 한 쪽짜리 PDF — 쪽 크기 = 내보내는 틀
   return pdf;
 }
 
-// ===== 16. 컨트롤 연결 =====
+// ===== 17. 컨트롤 연결 =====
 const MM_MIN = 4, MM_MAX = 30;   // 보이는 높이 슬라이더 범위 (최대 25mm 를 조금 넘는 데까지만 — 빨간 구간은 짧게). 거리와 무관하게 고정
 const mmText = v => (Math.round(v * 10) / 10).toFixed(1);   // 항상 소수 한 자리 — 자릿수가 바뀌며 숫자가 뛰지 않게 (실제 값과 같은 자리까지)
 const sizeZones = () => st.kind !== 'signature' ? [[0, 'out'], [4, 'optimal'], [15, 'over'], [25, 'out'], [Infinity]]   // 심볼
@@ -391,28 +391,32 @@ function marquee() {
 }
 addEventListener('resize', () => marquee());
 document.fonts && document.fonts.ready.then(() => marquee());   // 서체가 늦게 오면 폭을 다시 잼
-// ===== 미디엄 그림 — 선 그림(mm 좌표) 안에 심볼을 실제 높이로. w · h = 그림 전체, at = 심볼 왼쪽 위 (심볼 폭 · 높이를 받아) =====
+// ===== 18. 미디엄 그림 — 선 그림(mm 좌표) 안에 심볼을 실제 높이로. w · h = 그림 전체, at = 심볼 왼쪽 위 (심볼 폭 · 높이를 받아) =====
 const artPlace = (box, w, h, m, where) => {
     // box = 콘텐츠 영역 [x, y, 폭, 높이] 안 모서리에 심볼 (가이드 Symbol › Placement 사인오프)
   // 여백 = 가이드 Typography › Margin: 콘텐츠 영역 긴 변의 1/24 (m), 가로는 10% 좁게 · 단 클리어스페이스 H/2 이상 (Symbol › Clearspace). 심볼이 커서 못 들어가면 줄임
   const [bx, by, bw, bh] = box, my = Math.max(0, Math.min(Math.max(m, h / 2), (bh - h) / 2)), mx = Math.max(0, Math.min(Math.max(m * 0.9, h / 2), (bw - w) / 2));
   return { c: [bx + (bw - w) / 2, by + (bh - h) / 2], tl: [bx + mx, by + my], tr: [bx + bw - mx - w, by + my], br: [bx + bw - mx - w, by + bh - my - h], bl: [bx + mx, by + bh - my - h], tc: [bx + (bw - w) / 2, by + my], bc: [bx + (bw - w) / 2, by + bh - my - h] }[where];
 };
+const PHONE_BODY = {   // 폰 본체 선 (세로 v · 가로 h) — 콘텐츠마다 다른 건 맨 뒤 콘텐츠 영역(zn)뿐
+  iphone: { v: `<rect class="ln" width="71.9" height="150" rx="11"/><rect class="ln" x="1.6" y="1.6" width="68.7" height="146.8" rx="9.6"/><rect class="ln" x="25.95" y="4.6" width="20" height="6.2" rx="3.1"/><line class="ln" x1="23.95" y1="145" x2="47.95" y2="145"/>`, h: `<rect class="ln" width="150" height="71.9" rx="11"/><rect class="ln" x="1.6" y="1.6" width="146.8" height="68.7" rx="9.6"/><rect class="ln" x="4.6" y="25.95" width="6.2" height="20" rx="3.1"/><line class="ln" x1="63.0" y1="66.9" x2="87.0" y2="66.9"/>` },
+  iphonePM: { v: `<rect class="ln" width="78" height="163.4" rx="12"/><rect class="ln" x="1.7" y="1.7" width="74.6" height="160.0" rx="10.4"/><rect class="ln" x="29.0" y="4.8" width="20" height="6.2" rx="3.1"/><line class="ln" x1="27.0" y1="158.4" x2="51.0" y2="158.4"/>`, h: `<rect class="ln" width="163.4" height="78" rx="12"/><rect class="ln" x="1.7" y="1.7" width="160.0" height="74.6" rx="10.4"/><rect class="ln" x="4.8" y="29.0" width="6.2" height="20" rx="3.1"/><line class="ln" x1="69.7" y1="73" x2="93.7" y2="73"/>` },
+};
 const ART = {
   'iphone': {
     feed: { w: 71.9, h: 150, spec: { size: [66.6, 144.8], res: '402 × 874 px' }, slots: [[[1.6, 29.2, 68.7, 91.6], 91.6 / 24, 'tr', ['tl', 'tc', 'tr', 'c', 'bl', 'bc', 'br']]],   // iPhone 18 피드 3:4 (1080 × 1440)
-      d: `<rect class="ln" width="71.9" height="150" rx="11"/><rect class="ln" x="1.6" y="1.6" width="68.7" height="146.8" rx="9.6"/><rect class="ln" x="25.95" y="4.6" width="20" height="6.2" rx="3.1"/><line class="ln" x1="23.95" y1="145" x2="47.95" y2="145"/><rect class="zn" x="1.6" y="29.2" width="68.7" height="91.6"/>` },
+      d: `${PHONE_BODY.iphone.v}<rect class="zn" x="1.6" y="29.2" width="68.7" height="91.6"/>` },
     story: { w: 71.9, h: 150, spec: { size: [66.6, 144.8], res: '402 × 874 px' }, slots: [[[1.6, 13.94, 68.7, 122.13], 122.13 / 24, 'tr', ['tl', 'tc', 'tr', 'c', 'bl', 'bc', 'br']]],   // iPhone 18 스토리 9:16 — 화면 폭에 맞춰 가운데 (위아래 여백 = 영상 16:9 의 좌우 여백과 같은 방식). 로고 자리 = 9:16 프레임 전체 — 위 · 아래 줄은 프레임 위아래 끝에서 여백(긴 변 1/24)만큼 (피드 3:4 줄과 다르게)
-      d: `<rect class="ln" width="71.9" height="150" rx="11"/><rect class="ln" x="1.6" y="1.6" width="68.7" height="146.8" rx="9.6"/><rect class="ln" x="25.95" y="4.6" width="20" height="6.2" rx="3.1"/><line class="ln" x1="23.95" y1="145" x2="47.95" y2="145"/><rect class="zn" x="1.6" y="13.94" width="68.7" height="122.13"/>` },
+      d: `${PHONE_BODY.iphone.v}<rect class="zn" x="1.6" y="13.94" width="68.7" height="122.13"/>` },
     video: { w: 150, h: 71.9, spec: { size: [66.6, 144.8], res: '402 × 874 px' }, slots: [[[13.94, 1.6, 122.13, 68.7], 122.13 / 24, 'tr', ['tr', 'c']]],   // iPhone 18 영상 16:9 (가로)
-      d: `<rect class="ln" width="150" height="71.9" rx="11"/><rect class="ln" x="1.6" y="1.6" width="146.8" height="68.7" rx="9.6"/><rect class="ln" x="4.6" y="25.95" width="6.2" height="20" rx="3.1"/><line class="ln" x1="63.0" y1="66.9" x2="87.0" y2="66.9"/><rect class="zn" x="13.94" y="1.6" width="122.13" height="68.7"/>` } },
+      d: `${PHONE_BODY.iphone.h}<rect class="zn" x="13.94" y="1.6" width="122.13" height="68.7"/>` } },
   'iphone-pm': {
     feed: { w: 78, h: 163.4, spec: { size: [72.9, 158.4], res: '440 × 956 px' }, slots: [[[1.7, 31.96, 74.6, 99.47], 99.47 / 24, 'tr', ['tl', 'tc', 'tr', 'c', 'bl', 'bc', 'br']]],   // iPhone 18 Pro Max 피드 3:4 (1080 × 1440)
-      d: `<rect class="ln" width="78" height="163.4" rx="12"/><rect class="ln" x="1.7" y="1.7" width="74.6" height="160.0" rx="10.4"/><rect class="ln" x="29.0" y="4.8" width="20" height="6.2" rx="3.1"/><line class="ln" x1="27.0" y1="158.4" x2="51.0" y2="158.4"/><rect class="zn" x="1.7" y="31.96" width="74.6" height="99.47"/>` },
+      d: `${PHONE_BODY.iphonePM.v}<rect class="zn" x="1.7" y="31.96" width="74.6" height="99.47"/>` },
     story: { w: 78, h: 163.4, spec: { size: [72.9, 158.4], res: '440 × 956 px' }, slots: [[[1.7, 15.39, 74.6, 132.62], 132.62 / 24, 'tr', ['tl', 'tc', 'tr', 'c', 'bl', 'bc', 'br']]],   // iPhone 18 Pro Max 스토리 9:16 — 화면 폭에 맞춰 가운데 (위아래 여백 = 영상 16:9 의 좌우 여백과 같은 방식). 로고 자리 = 9:16 프레임 전체 — 위 · 아래 줄은 프레임 위아래 끝에서 여백(긴 변 1/24)만큼 (피드 3:4 줄과 다르게)
-      d: `<rect class="ln" width="78" height="163.4" rx="12"/><rect class="ln" x="1.7" y="1.7" width="74.6" height="160.0" rx="10.4"/><rect class="ln" x="29.0" y="4.8" width="20" height="6.2" rx="3.1"/><line class="ln" x1="27.0" y1="158.4" x2="51.0" y2="158.4"/><rect class="zn" x="1.7" y="15.39" width="74.6" height="132.62"/>` },
+      d: `${PHONE_BODY.iphonePM.v}<rect class="zn" x="1.7" y="15.39" width="74.6" height="132.62"/>` },
     video: { w: 163.4, h: 78, spec: { size: [72.9, 158.4], res: '440 × 956 px' }, slots: [[[15.39, 1.7, 132.62, 74.6], 132.62 / 24, 'tr', ['tr', 'c']]],   // iPhone 18 Pro Max 영상 16:9 (가로)
-      d: `<rect class="ln" width="163.4" height="78" rx="12"/><rect class="ln" x="1.7" y="1.7" width="160.0" height="74.6" rx="10.4"/><rect class="ln" x="4.8" y="29.0" width="6.2" height="20" rx="3.1"/><line class="ln" x1="69.7" y1="73" x2="93.7" y2="73"/><rect class="zn" x="15.39" y="1.7" width="132.62" height="74.6"/>` } },
+      d: `${PHONE_BODY.iphonePM.h}<rect class="zn" x="15.39" y="1.7" width="132.62" height="74.6"/>` } },
   'a4': { w: 210, h: 297, boost: 1.2, spec: { size: [210, 297] }, slots: [[[0, 0, 210, 297], 297 / 24, 'tl', ['tl', 'tc', 'tr', 'bl', 'bc', 'br']]],   // A4 document — 종이 실루엣, 왼쪽 위 (레터헤드 자리)
     d: `<rect class="ln" width="210" height="297"/>` },
   'macbook': { video: { w: 370, h: 253, ref: true, spec: { size: [345, 223], res: '1728 × 1117 px' }, slots: [[[12.5, 21.47, 345, 194.06], 345 / 24, 'tr', ['tr', 'c']]],   // MacBook 16″ 영상 16:9 (화면 16:10 안 가운데)
@@ -440,7 +444,7 @@ function artLabel(a) {
 }
 const artTooBig = (a, sw, sh) => { const [w, h] = a.spec.space || a.spec.size; return sw * sh / (w * h) > ART_AREA_MAX; };   // 로고 면적 ÷ 로고가 놓인 공간
 // 폰: 캘리브레이션 px/mm 로 고른 콘텐츠의 실물 크기 목업을 가운데에 — 그 안의 로고도 실제 크기
-function renderReal(c, a, m) {   // 폰 = 고른 콘텐츠의 실물 크기 목업 하나 (캘리브레이션 px/mm) — 로고 · 클리어스페이스 윤곽도 실제 크기
+function renderReal(c, a) {   // 폰 = 고른 콘텐츠의 실물 크기 목업 하나 (캘리브레이션 px/mm) — 로고 · 클리어스페이스 윤곽도 실제 크기
   const f2 = frameFor(c, false), H = c.z.physMm, sw = f2.w * H, sh = f2.h * H, spots = artSpots(a, sw, sh, c), r = v => +v.toFixed(3), gf = frameFor(c, true);   // 클리어스페이스 윤곽 = 화면용 가이드 (내보내기와 별개)
   const syms = spots.map(([x, y]) => symMark(c, f2, x, y, sw, sh, r)
     + (st.guide ? `<g class="csGuide" transform="translate(${r(x + (gf.x0 - f2.x0) * H)} ${r(y + (gf.y0 - f2.y0) * H)}) scale(${1 / st.pxmm})">${csGuideInner(c, gf, H * st.pxmm)}</g>` : '')).join('');   // 클리어스페이스 = 가운데 로고와 같은 장표 문법 (화면 px 로 그려 mm 좌표에 맞춤)
@@ -460,9 +464,9 @@ function placeSym(c, sl, sw, sh, where) {
 }
 const artSpots = (a, sw, sh, c) => a.slots.map((sl, i) => placeSym(c, sl, sw, sh, slotWhere(i, sl)));
 const symMark = (c, f2, x, y, sw, sh, r) => `<svg class="sym" x="${r(x)}" y="${r(y)}" width="${r(sw)}" height="${r(sh)}" viewBox="0 0 ${r(f2.w)} ${r(f2.h)}"><path fill-rule="evenodd" d="${pathD(c.sym.mp, f2, 1)}"/></svg>`;
-function ghostMarks(c, a, f2, sw, sh, k, r, nSlots = a.slots.length) {   // 다른 자리 후보마다 흐린 심볼 + 누르기 쉬운 투명 영역 (화면 기준 최소 크기)
+function ghostMarks(c, a, f2, sw, sh, k, r) {   // 다른 자리 후보마다 흐린 심볼 + 누르기 쉬운 투명 영역 (화면 기준 최소 크기)
   const pad = tokenPx('--ghost-hit') / k;
-  return a.slots.slice(0, nSlots).flatMap((sl, i) => {
+  return a.slots.flatMap((sl, i) => {
     const cur = slotWhere(i, sl), cand = (sl[3] || ['tl', 'tr', 'bl', 'br']).filter(w => w !== cur).map(w => ({ w, p: placeSym(c, sl, sw, sh, w) }));
     const all = [...cand.map(o => o.p), placeSym(c, sl, sw, sh, cur)];   // 지금 자리도 장애물 (누를 일 없음)
     const cen = p => [p[0] + sw / 2, p[1] + sh / 2];
@@ -486,7 +490,7 @@ function renderArt(c) {
   const a = artFor(), el = $('mediumArt'), m0 = medium();
   if (!a) { el.innerHTML = ''; return; }   // 목업이 없는 매체 = 그림 없음
   el.classList.toggle('real', !!m0.real); $('workspace').classList.toggle('realMode', !!m0.real);
-  if (m0.real) renderReal(c, a, m0);   // 폰 = 가운데에 실물 크기 목업 (아래에서 오른쪽 아래 정보는 그대로 그림)
+  if (m0.real) renderReal(c, a);   // 폰 = 가운데에 실물 크기 목업 (아래에서 오른쪽 아래 정보는 그대로 그림)
   const f2 = frameFor(c, false), H = c.z.physMm, sw = f2.w * H, sh = f2.h * H, spots = artSpots(a, sw, sh, c);   // 심볼 자리 — 클리어스페이스 없이 심볼만
   const b = a.ref ? ART_REF() : a, k0 = Math.min(tokenPx('--art-w') / b.w, tokenPx('--art-h') / b.h) * (a.ref ? ART_REF_BOOST : 1);   // ref = 실물 비율 묶음 (MacBook · Desktop 24″ · 27″) — 모두 Desktop 24″ 를 기본 상자에 맞춘 배율로 그려, 서로 실제 크기 비율이 맞음
   const k = k0 * (a.boost || 1), r = v => +v.toFixed(3);   // boost = 세로로 긴 지면(A4 · A2)은 기본 상자에서 작아 보여 키움 — 면적이 Desktop · MacBook 본체와 비슷한 무게감 (A4 · A2 1.2, Billboard 보드 1.55)   // 목업 크기는 고정 (거리에 따라 변하지 않음) — 거리를 바꾸면 그 안의 로고 비율과 캡션 숫자만 변함
@@ -519,7 +523,7 @@ function csGuideInner(c, gf, aH) {   // 좌표 = 화면 px (aH = 심볼 높이 p
   return g;
 }
 
-// ===== 16b. 툴팁 — 켜진 행의 이름 · 인쇄 dpi 버튼에 마우스를 올리면 (보정 창과 같은 자리 · 모양) =====
+// ===== 19. 툴팁 — 켜진 행의 이름 · 인쇄 dpi 버튼에 마우스를 올리면 (보정 창과 같은 자리 · 모양) =====
 const TIPS = {
   'Type': 'Company is EO Studio. Service uses your own descriptor.',
   'Layout': 'Horizontal for 4–10mm, vertical from 10mm.',
@@ -591,7 +595,7 @@ document.querySelector('aside').addEventListener('pointerleave', () => { setHot(
 document.addEventListener('pointerdown', tipHide);
 document.querySelector('aside').addEventListener('click', e => { const hot = e.target.closest('.tipLink'); if (hot && !e.target.closest(CTL)) window.open(GUIDE + TIP_LINKS[hot.dataset.tipKey](), '_blank', 'noopener'); });
 
-// ===== 17. 신용카드 보정 =====
+// ===== 20. 신용카드 보정 =====
 let calV = st.pxmm;
 let CAL_MIN = 3;   // 카드 최소 px/mm — 열 때 토큰 --card-min-pxmm 에서 다시 읽음
 const calSet = v => { calV = Math.min(+$('calSlider').max, Math.max(CAL_MIN, v)); drawCard(); };

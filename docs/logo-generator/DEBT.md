@@ -4,7 +4,8 @@
 
 ## 처리 현황 (2026-11-12 메인 세션)
 - 처리: A1 · A2(주석에 삼킨 코드 복구) · A3(가이드 국문 · 영문 −2% · 공백 −7%, 장표 재수출) · A4(취소) · B5(→ `public/tools/logo-generator/` git 편입, 가이드 목차 Logo › Download) · B6(vendor 고정 + 실패 메시지 분기) · B7(GUIDE 상수, 상대 주소) · B8 · B10(`npm test` [5]) · B9(MEDIA 키 = 매체 id, dist 분리) · C: c.bg · iconNote/fileOut 제거, setVis 통합(+ visReq 로 상한이 값을 지우지 않음), resize rAF, tokenPx 캐시, buildSymbol · setLine 메모, aria-pressed, 단일 HTML → index.html · tool.css · geom.js · app.js · sig-font.js 분리. D20(툴 최적 4-15) · D21(0.47H) · D22(유지).
-- 남음: 스크립트 섹션 번호 정리, 899px 미디어쿼리, ART 폰 d 문자열 중복, paramsOf(GEOM 안이라 손대지 않음).
+- 이어서 처리: 섹션 번호 11-20 순서대로, 안 쓰는 인자(renderReal m · ghostMarks nSlots) · 죽은 select 스타일 제거, 폰 본체 선 PHONE_BODY 로 한 번만, 폰은 가운데 로고를 그리지 않고 실물 목업만(한 번 그림). 899px 쿼리는 좁은 창 쌓기 폴백으로 유지(가이드와 같은 경계).
+- 유지: paramsOf — geom.js(확정) 안이라 손대지 않음. 결과는 안 쓰지만 buildSymbol 메모로 비용은 거의 없음.
 - 아래 줄 번호는 분리 전 단일 index.html 기준.
 
 ## A. 버그 (확실)

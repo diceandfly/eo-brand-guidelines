@@ -90,8 +90,8 @@
                        섹션 = 제목 ↕ gap-sec-head 설정
                        설정 = 행 ↕ gap-row 행 …   (행 묶음 = 행 ↕ gap-block 슬라이더 묶음, 아래 gap-block)
                        슬라이더 묶음 = 슬라이더 ↕ gap-tight 메시지 */
-  --panel-pad-x:    calc(var(--lh-unit) * 0.6);    /* 메뉴창 안쪽 — 좌우 (기준 열 폭도 이 값으로 계산) */
-  --panel-pad-y:    calc(var(--lh-unit) * 0.65);    /* 메뉴창 안쪽 — 위아래 */
+  --panel-pad-x:    calc(var(--lh-unit) * 0.7);    /* 메뉴창 안쪽 — 좌우 (기준 열 폭도 이 값으로 계산) */
+  --panel-pad-y:    calc(var(--lh-unit) * 0.75);    /* 메뉴창 안쪽 — 위아래 */
   --sections-top:   calc(var(--lh-unit) * 3.5);      /* 섹션 묶음 위 여백 — 타이틀 자리 포함 */
   --gap-section:    calc(var(--lh-unit) * 1.5);      /* 섹션 ↔ 섹션 */
   --gap-sec-head:   calc(var(--lh-unit) * 0);      /* 제목 ↔ 설정 (Calibration · Size) */
@@ -105,7 +105,7 @@
   /* ================= B. 요소 — 메뉴창 위에서 아래 순서, 마지막에 작업공간 ================= */
 
   /* ── B-1 메뉴창 · 기준 열 ── */
-  --panel-w:     320px;                                           /* 메뉴창 폭 */
+  --panel-w:     332px;                                           /* 메뉴창 폭 */
   --col-w:       calc((var(--panel-w) - var(--line-w) - 2 * var(--panel-pad-x)) / 4);   /* 1칸 = 1x–4x 한 칸 (메뉴창 오른쪽 경계선 제외) */
   --field-w:     calc(var(--col-w) * 1.2);                        /* 입력칸 = 버튼 1.2칸 (밑줄 길이) */
   --field-num-w: 56px;                                            /* 입력칸 안 숫자 영역 (단위는 나머지) */
@@ -307,14 +307,6 @@ input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner
 .row.off .tg button, .row.off .tg button.on, .row.off .tg i::before { color: var(--fg-off); pointer-events: none; } .row.off .tg button.on { -webkit-text-stroke: 0; text-decoration: none; }   /* 비활성 = 고른 칸도 강조 없이 일반 비활성 */ .row.off .tg i::before { background: var(--fg-off); }   /* 비활성 토글 (Symbol 일 때 시그니처 행) */
 
 /* ===== 8. 셀렉트 · 프리셋 메뉴 — 항목명 + 셰브론 위에 투명 셀렉트 ===== */
-select {
-  height: var(--row-h); border: var(--line-w) solid var(--line-c); border-radius: var(--radius); background: none;
-  padding: 0 calc(var(--chevron-size) + var(--btn-pad-x)) 0 var(--btn-pad-x); cursor: pointer; -webkit-appearance: none; appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9.5 12 15.5 18 9.5' fill='none' stroke='%238E8E8E' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E");
-  background-size: var(--chevron-size); background-position: right var(--gap-inline) center; background-repeat: no-repeat;
-}
-select:hover { border-color: var(--accent); }
-select:focus-visible { outline: var(--line-w) solid var(--accent); outline-offset: calc(var(--line-w) * -1); }
 select option { background: var(--panel-bg); color: var(--fg-1); }
 .dd { position: relative; display: inline-flex; align-items: center; gap: var(--gap-inline); cursor: pointer; }   /* 드롭다운 (Medium) = 이름 + 셰브론, 위에 투명 셀렉트 — 어디를 눌러도 목록이 뜨고, 펼친 목록에만 거리 표시 */
 .dd .ddVal { color: var(--fg-1); font-weight: var(--value-w); }   /* 고른 이름 = 숫자 값과 같은 흰색 Regular */
@@ -432,7 +424,7 @@ svg.mock.hov .artGhost:hover { opacity: var(--ghost-o-hover); }
 .actual svg { overflow: visible; }   /* 가이드 선이 소수점 크기에서도 잘리지 않게 (안전장치) */
 
 
-@media (max-width: 899px) {
+@media (max-width: 899px) {   /* 좁은 창 = 메뉴창 위 · 작업공간 아래로 쌓기만 (데스크탑 도구, 가이드와 같은 경계)
   html, body { overflow: auto; height: auto; }
   .app { grid-template-columns: 1fr; height: auto; }
   aside { height: auto; border-right: 0; border-bottom: var(--line-w) solid var(--line-c); }
