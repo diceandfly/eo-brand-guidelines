@@ -571,7 +571,7 @@ const tipHide = () => { clearTimeout(tipTimer); $('tip').hidden = true; };
 function tipShow(el, title, body, link) {
   clearTimeout(tipTimer);
   tipTimer = setTimeout(() => { if (!$('calib').hidden) return;   // 보정 중엔 안 띄움 (같은 자리)
-    $('tipT').textContent = title; $('tipB').textContent = noOrphan(typeof body === 'function' ? body() : body); $('tipH').hidden = !link; if (link) $('tipH').textContent = link; const t = $('tip'); t.hidden = false;
+    $('tipT').textContent = title; $('tipB').textContent = noOrphan(typeof body === 'function' ? body() : body); $('tipH').hidden = !link; if (link) $('tipH').textContent = link; $('tipH').classList.toggle('para', el.classList.contains('brand')); const t = $('tip'); t.hidden = false;
     const ar = document.querySelector('aside').getBoundingClientRect(), r = (el.closest('.row, .seg4, .btns2, .chkRow, .secHead, .brand') || el).getBoundingClientRect();
     t.style.left = (ar.right + tokenPx('--calib-gap')) + 'px';
     t.style.top = Math.max(tokenPx('--calib-gap'), Math.min(r.top - tokenPx('--panel-pad-y'), innerHeight - t.offsetHeight - tokenPx('--calib-gap'))) + 'px';   // 첫 줄 = 가리킨 행 높이 (아래로 넘치면 올림)
