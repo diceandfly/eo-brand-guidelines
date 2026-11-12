@@ -9,7 +9,8 @@ import { fontWarnings } from './scripts/lib/check-fonts.mjs';
 // 빌드(npm run build, npm run assets)는 개발 서버와 다른 Vite 캐시 폴더를 씁니다.
 // 같은 폴더를 쓰면 개발 서버가 켜진 채 빌드했을 때 개발 서버의 GSAP 등 의존성 캐시가 덮여
 // 브라우저에 "504 Outdated Optimize Dep" 가 나고 스크립트(스무스 스크롤, 이미지 확대)가 통째로 멈춥니다.
-const isBuild = process.argv.includes('build');
+// astro check · sync(npm test) 도 같은 문제를 일으키므로, 개발 서버(astro dev)만 기본 폴더를 쓰고 나머지는 전부 빌드용 폴더.
+const isDev = process.argv.includes('dev');
 
 // public/assets 에 이미지를 넣거나 지우면 브라우저를 새로고침한다 (색인은 src/lib/content.ts 가 폴더 mtime 으로 다시 계산).
 const watchAssets = () => ({
@@ -53,7 +54,7 @@ const checkFontsOnBuild = () => ({
 export default defineConfig({
   integrations: [checkFontsOnBuild()],
   site: 'http://localhost:4321',
-  vite: { cacheDir: isBuild ? 'node_modules/.vite-build' : 'node_modules/.vite', plugins: [watchAssets(), serveArchive()] },
+  vite: { cacheDir: isDev ? 'node_modules/.vite' : 'node_modules/.vite-build', plugins: [watchAssets(), serveArchive()] },
   trailingSlash: 'never',
   build: { format: 'file' },
   devToolbar: { enabled: false }

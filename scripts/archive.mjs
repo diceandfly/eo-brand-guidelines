@@ -22,7 +22,7 @@ import { toTrash } from './lib/trash.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = '/archive/handoff';                        // src/lib/archive.ts 의 ARCHIVE_BASE 와 같아야 함 (npm test 가 확인)
 const DEST = path.join(ROOT, 'public', BASE);
-const SKIP = new Set(['fonts', 'tools', 'archive']);    // 아카이브에 넣지 않는 최상위 항목
+const SKIP = new Set(['fonts', 'tools', 'archive']);    // 아카이브에 넣지 않는 최상위 항목 (+ 빌드 부산물 *.mjs)
 const ref = process.argv[2] ?? 'handoff-final';
 
 const git = (...a) => execFileSync('git', a, { cwd: ROOT, encoding: 'utf8' }).trim();
@@ -31,7 +31,7 @@ const die = m => { console.error(`✗ ${m}`); process.exit(1); };
 let commit;
 try { commit = git('rev-parse', '--verify', '--quiet', `${ref}^{commit}`); } catch { die(`git ref "${ref}" 가 없습니다. 최종 핸드오프 커밋에서 git tag handoff-final 을 먼저 하세요.`); }
 try { git('cat-file', '-e', `${commit}:src/lib/archive.ts`); } catch { die(`${ref} 에는 아카이브 기능(src/lib/archive.ts)이 없습니다. 기능이 들어간 뒤의 커밋이어야 합니다.`); }
-const date = git('log', '-1', '--format=%cs', commit);   // 커밋 날짜 (YYYY-MM-DD) = 목차의 기준 날짜
+const date = git('log', '-1', '--format=%ci', commit).slice(0, 10);   // 커밋 날짜 (YYYY-MM-DD) = 목차의 기준 날짜
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'eo-archive-'));
 const work = path.join(tmp, 'src'), out = path.join(tmp, 'out');
@@ -48,7 +48,7 @@ try {
   const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
   const staging = path.join(tmp, 'archive');
   fs.mkdirSync(staging);
-  for (const name of fs.readdirSync(out)) if (!SKIP.has(name)) fs.cpSync(path.join(out, name), path.join(staging, name), { recursive: true });
+  for (const name of fs.readdirSync(out)) if (!SKIP.has(name) && !name.endsWith('.mjs')) fs.cpSync(path.join(out, name), path.join(staging, name), { recursive: true });
   for (const f of walk(staging)) {
     const ext = path.extname(f);
     if (['.html', '.json', '.css'].includes(ext)) {
@@ -69,7 +69,7 @@ try {
 } catch (e) {
   console.error(`✗ ${e.message}`); process.exitCode = 1;   // 실패해도 public/archive 는 그대로 (임시 폴더에서만 작업)
 } finally {
-  fs.rmSync(path.join(work, 'node_modules'), { force: true });
-  try { git('worktree', 'remove', '--force', work); } catch { /* 이미 없음 */ }
+  try { fs.unlinkSync(path.join(work, 'node_modules')); } catch { /* 링크 전에 실패 */ }   // 링크만 끊음 (대상 node_modules 는 그대로)
   fs.rmSync(tmp, { recursive: true, force: true });
+  git('worktree', 'prune');   // 임시 worktree 기록 정리 (git 2.15 도 되게 worktree remove 대신 폴더 삭제 + prune)
 }
