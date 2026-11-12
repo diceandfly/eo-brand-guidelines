@@ -6,3 +6,4 @@ if (create) try {
   SIG_FONT = sigFontFrom(create(new Uint8Array(await r.arrayBuffer())));
 } catch (e) { SIG_FONT_ERR = 'Signature font missing — add founders-grotesk-regular.woff2 to public/fonts'; console.warn('signature font', e); }
 update();
+document.fonts?.ready.then(() => update());   // 서체가 다 준비되면 한 번 더 (글자 폭으로 재는 메시지 흐름 등)

@@ -1,9 +1,9 @@
-/* EO Logo Generator — 스타일 · 디자인 토큰 (맨 위 :root 가 모든 수치, 아래는 토큰만 참조) */
+/* EO Logo Generator — 스타일 · 디자인 토큰 (맨 위 :root 가 모든 수치, 아래는 토큰만 참조). 서체 = font-display: block + index.html 의 preload (가이드와 같은 방식, 시스템 서체가 스치지 않게) */
 /* ===== 서체 — 로컬 라이선스 파일 (이 폴더는 gitignore) ===== */
-@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
-@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
-@font-face { font-family: 'Founders Grotesk Mono'; src: url('/fonts/founders-grotesk-mono-regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-light.woff2') format('woff2'); font-weight: 300; font-display: block; }
+@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-regular.woff2') format('woff2'); font-weight: 400; font-display: block; }
+@font-face { font-family: 'Founders Grotesk'; src: url('/fonts/founders-grotesk-medium.woff2') format('woff2'); font-weight: 500; font-display: block; }
+@font-face { font-family: 'Founders Grotesk Mono'; src: url('/fonts/founders-grotesk-mono-regular.woff2') format('woff2'); font-weight: 400; font-display: block; }
 
 /* =====================================================================
    토큰 — 손으로 조정할 값은 전부 여기. 아래 규칙은 이 변수만 참조.
