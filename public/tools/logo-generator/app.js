@@ -242,7 +242,7 @@ function update() {
     + (st.guide ? csGuideSvg(c, gf, gx, gy, aH) : '');
   renderArt(c);   // 로고를 먼저 그린 뒤 — 그림이 로고에 닿지 않게 높이를 묶음
   $('pngScale').querySelectorAll('button').forEach((b, i) => b.classList.toggle('on', st.unit === 'mm' ? DPI_OPTS[i] === printDpi() : +b.dataset.v === st.pngScale));
-  document.querySelectorAll('aside .tg button, aside .seg4 button, .preset').forEach(b => b.setAttribute('aria-pressed', b.classList.contains('on')));   // 고른 상태 = 화면 읽기 프로그램에도
+  document.querySelectorAll('aside .tg button, .preset').forEach(b => b.setAttribute('aria-pressed', b.classList.contains('on')));   // 고른 상태 = 화면 읽기 프로그램에도
 }
 
 // ===== 16. 내보내기 =====
@@ -349,8 +349,9 @@ function syncDevice() {   // 고른 매체 이름 · 출력 기준
   $('contVal').textContent = m.contents ? m.contents.find(([v]) => v === cur)[1] : '—';
   $('hpxLabel').innerHTML = m.unit === 'mm' ? `Output height · ${printDpi()} dpi` : 'Output height';   // 인쇄 매체만 출력 해상도를 라벨에
   const pr = m.unit === 'mm';   // 인쇄 = 1x-4x 자리가 dpi 버튼 · Save SVG 자리가 Save PDF (CMYK)
-  $('pngScale').querySelectorAll('button').forEach((b, i) => b.textContent = pr ? (i ? DPI_OPTS[i] : DPI_OPTS[0] + 'dpi') : (i + 1) + 'x');   // 단위는 첫 칸에만 (칸이 꽉 차지 않게)
-  $('dlSvg').textContent = pr ? 'Save PDF' : 'Save SVG';
+  $('pngScale').querySelectorAll('button').forEach((b, i) => b.textContent = pr ? DPI_OPTS[i] : (i + 1) + 'x');   // 단위(dpi)는 행 이름에
+  $('scaleLabel').textContent = pr ? 'Resolution · dpi' : 'Scale';
+  $('dlSvg').textContent = pr ? 'PDF ↓' : 'SVG ↓';
 }
 const setMode = m => { st.mode = m; if (PRESETS.find(p => p.n === st.preset).mode !== m) st.preset = PRESETS.find(p => p.mode === m).n; update(); };
 $('modeLight').onclick = () => setMode('light');
@@ -533,6 +534,9 @@ const TIPS = {
   'Distance': 'Changes the real size, not the visual size.',
   'Real size height': 'Symbol height as printed or displayed on the medium.',
   'Output height': 'Symbol height in the saved file.',
+  'Scale': 'Multiplies the saved PNG. Use 2x or more for sharp, high-density screens.',
+  'Resolution': 'Pixel density of the saved PNG. Hover a value to see what it suits.',
+  'Save': 'Saves the logo with the settings above. Vector for print and design work, PNG for quick use.',
   'Symbol height': 'Visual height at 500mm — the size rule of the guide.',
   'Color': 'Color pairings from the guide. The signature uses four of the six.',
   'Logo': 'Symbol alone, or the signature with EO Studio or a service name.',
@@ -556,7 +560,7 @@ function btnTip(b) {   // 저장 · 배율 버튼 = 지금 설정으로 나갈 �
   const c = compose(), pr = st.unit === 'mm', fw = c.frame.w, fh = c.frame.h, px = k => `${Math.round(fw * c.z.outPx * k)} × ${Math.round(fh * c.z.outPx * k)} px`;
   if (b.id === 'dlSvg') return pr ? `Vector PDF, ${+(fw * c.z.physMm).toFixed(1)} × ${+(fh * c.z.physMm).toFixed(1)} mm, CMYK values from the guide. For print.` : `Vector SVG, one outlined path, ${px(1)}, RGB.`;
   if (b.id === 'dlPng') return pr ? `PNG ${px(1)} at ${printDpi()} dpi (saved in the file), RGB.` : `PNG ${px(st.pngScale)}${st.pngScale > 1 ? ` (${st.pngScale}x)` : ''}, RGB.`;
-  const i = [...b.parentNode.children].indexOf(b);
+  const i = [...b.parentNode.querySelectorAll('button')].indexOf(b);   // 세로선(i) 빼고 버튼 순서
   return pr ? DPI_TIPS[i] : `PNG at ${i + 1} times the output size — ${px(i + 1)}.`;
 }
 const DPI_TIPS = ['Billboards printed at actual size, seen from 10m and more.', 'Banners and signage seen from 2–5m.', 'Posters seen from about 1m, such as A2.', 'Hand-held print such as A4 and business cards. Higher only makes files bigger.'];
@@ -572,7 +576,7 @@ function tipShow(el, title, body, link) {
   clearTimeout(tipTimer);
   tipTimer = setTimeout(() => { if (!$('calib').hidden) return;   // 보정 중엔 안 띄움 (같은 자리)
     $('tipT').textContent = title; $('tipB').textContent = noOrphan(typeof body === 'function' ? body() : body); $('tipH').hidden = !link; if (link) $('tipH').textContent = link; $('tipH').classList.toggle('para', el.classList.contains('brand')); const t = $('tip'); t.hidden = false;
-    const ar = document.querySelector('aside').getBoundingClientRect(), r = (el.closest('.row, .seg4, .btns2, .chkRow, .secHead, .brand') || el).getBoundingClientRect();
+    const ar = document.querySelector('aside').getBoundingClientRect(), r = (el.closest('.row, .chkRow, .secHead, .brand') || el).getBoundingClientRect();
     t.style.left = (ar.right + tokenPx('--calib-gap')) + 'px';
     t.style.top = Math.max(tokenPx('--calib-gap'), Math.min(r.top - tokenPx('--panel-pad-y'), innerHeight - t.offsetHeight - tokenPx('--calib-gap'))) + 'px';   // 첫 줄 = 가리킨 행 높이 (아래로 넘치면 올림)
   }, tokenSec('--tip-delay') * 1000);
@@ -588,7 +592,7 @@ document.querySelector('aside').addEventListener('pointerover', e => {
   if (e.target.closest('#openCalib')) return tipShow($('openCalib'), 'Card calibration', () => st.calibrated
     ? `Done — the preview shows the true visual size (${st.pxmm.toFixed(2)} px/mm). Calibrate again on another screen.`
     : 'Screens differ in pixel density, so the preview can look bigger or smaller than it really is. Match a credit card once and the preview shows the true visual size. Do this before judging sizes.');
-  if (b && !b.disabled && !(b.closest('#pngScale') && st.unit === 'px')) return tipShow(b, b.closest('#pngScale') ? b.textContent.replace(/^(\d+)$/, st.unit === 'mm' ? '$1dpi' : '$1') : b.textContent, () => btnTip(b));
+  if (b && !b.disabled && !(b.closest('#pngScale') && st.unit === 'px')) return tipShow(b, b.closest('#pngScale') ? b.textContent + ' dpi' : 'Save ' + b.textContent.replace(' ↓', ''), () => btnTip(b));   // 저장 버튼 제목 = Save SVG 처럼 풀어서
   tipHide();
 });
 document.querySelector('aside').addEventListener('pointerleave', () => { setHot(null); tipHide(); });

@@ -34,7 +34,7 @@
   - 다크: 심볼은 [[symbol#inversion]] 변환 후 라이트 심볼 자리에 x · y 가운데. 글자는 세로형 0.48H · 가로형 1.35H, 자간 세로형 −1% · 가로형 −2%(공백 −7%, 2026-11-12 확정), 바깥 오프셋 H/200. 세로형은 원래 캡 박스 가운데, 가로형은 원래 캡 박스 왼변에 맞추고 베이스라인 유지. 전체를 다시 옮기지 않는다.
 - 시그니처 컬러 = 여섯 페어 중 넷(Builder Neon 글자 페어 5 · 6 제외, 가이드 Signature › Color). 제외 페어는 심볼만 흐리게(칸 · 테두리 유지), 시그니처로 바꿀 때 쓰던 페어가 제외면 같은 모드의 첫 페어로.
 - 시그니처는 Right side correction 을 쓰지 않는다(자동 비활성). 내보내는 틀 = 라이트 기준 박스 ± 독자 클리어스페이스.
-- 저장 잠금(Save SVG · PNG 회색): Descriptor 가 비면 “No descriptor — use the symbol”, 서체에 없는 글자가 있으면 “Font lacks: 한, 글”(빠진 글자 나열), 서체를 못 읽었을 때도 잠김. 메시지는 크기 경고 줄에 주황. 빈 Descriptor 는 EO 를 채우지 않고 캡 박스 자리만 둔다.
+- 저장 잠금(Save 의 SVG ↓ · PNG ↓ 회색): Descriptor 가 비면 “No descriptor — use the symbol”, 서체에 없는 글자가 있으면 “Font lacks: 한, 글”(빠진 글자 나열), 서체를 못 읽었을 때도 잠김. 메시지는 크기 경고 줄에 주황. 빈 Descriptor 는 EO 를 채우지 않고 캡 박스 자리만 둔다.
 
 ## 4. Viewing 섹션 — 매체
 매체 = 프리셋(대표 거리 · 출력 단위 · px/mm 또는 dpi · 처음 Visual height · 목업). 고른 뒤 거리는 자유.
@@ -72,19 +72,19 @@
 - HEX: Builder Neon #F9EE3A · Day Blue #6EC6D2 · Bay Green #66B88A · Medium Gray #8E8E8E · Solid Gray #2A2B2B · Space Black #000000 · Air White #FCFBF5.
 
 ## 7. Export 섹션
-- PNG 배율 1x-4x · Save SVG · Save PNG. 배경은 늘 투명.
+- Export 는 다른 섹션과 같은 글자 행(2026-11-12, 채운 버튼 폐기): Scale `1x | 2x | 3x | 4x`(토글 문법, 고른 값 = 네온 글자 + 밑줄) · Save `SVG ↓  PNG ↓`(흰 글자, 호버 네온, ↓ = 누르면 저장). 배경은 늘 투명.
 - Include clearspace(기본 켜짐, 옛 Output clearspace): 심볼 네 변 H/2, 시그니처는 독자 클리어스페이스.
 - Right side correction(심볼만, 기본 켜짐 — 가이드도 2026-11-12 부터 “항상 보정”): 오른쪽 클리어스페이스 = H × (0.42 + 0.0012 × S), S ≥ 67mm 면 H/2(가이드 Symbol › Clearspace). 다크 심볼은 라이트 기준 박스에 가운데.
 - Output height(Viewing) = 저장될 파일의 심볼 높이 px — 화면은 1x-4x 배율 반영, 인쇄는 고른 dpi 기준. 직접 고치면 그 배율로 크기를 역산.
 - 화면 매체: SVG(evenodd 패스 하나, fill = 페어 글자색, 크기 = 출력 px) · PNG 1x-4x.
 - PNG 가 브라우저 캔버스 한계(한 변 16384px)를 넘으면 저장하지 않고 위쪽 빨간 띠에 안내(낮은 dpi 또는 PDF). 파일명은 누른 순간의 설정.
-- 인쇄 매체(A4 · A2 · Billboard): 1x-4x 자리가 dpi 버튼 `20dpi · 72dpi · 150dpi · 300dpi`(처음 선택 = 매체 dpi: A4 300 · A2 150 · Billboard 20), Save SVG 자리가 Save PDF. PDF = 쪽 크기 mm(틀 그대로) · 벡터 짝홀 채우기 · 가이드 CMYK 값(Builder Neon C5 M0 Y95 K0, Space Black C60 M60 Y0 K100, Air White C1 M2 Y2 K0 …), 파일명 `-cmyk.pdf`. PNG = 고른 dpi 의 px + pHYs(dpi) 정보, 파일명 `@300dpi`. Output height 도 고른 dpi 기준.
+- 인쇄 매체(A4 · A2 · Billboard): Scale 행이 `Resolution · dpi  20 | 72 | 150 | 300`(처음 선택 = 매체 dpi: A4 300 · A2 150 · Billboard 20), Save 의 SVG ↓ 자리가 PDF ↓. PDF = 쪽 크기 mm(틀 그대로) · 벡터 짝홀 채우기 · 가이드 CMYK 값(Builder Neon C5 M0 Y95 K0, Space Black C60 M60 Y0 K100, Air White C1 M2 Y2 K0 …), 파일명 `-cmyk.pdf`. PNG = 고른 dpi 의 px + pHYs(dpi) 정보, 파일명 `@300dpi`. Output height 도 고른 dpi 기준.
 - 파일명: `eo-symbol-{light|dark}-{H}px|{mm}mm[-clearspace][-icon]` / `eo-signature-{descriptor}-{vertical|horizontal}-{light|dark}-…`, PNG 는 `@2x` 등 접미.
 
 ## 8. UI 원칙
 - 메뉴 순서: Logo → Viewing → Visual size → Color → Export. 디자인 수치는 `<style>` 맨 위 토큰(A 시스템 · B 요소)에서만.
 - 메뉴창 · 보정 창: 글 선택 · 끌기 금지, 커서는 일반 화살표(누르는 것만 손가락).
-- 툴팁: 켜진 행의 이름(행의 조작부 밖 어디든) · 섹션 제목 5개 · 체크 토글 · 1x-4x / dpi 버튼 · Save 버튼(지금 설정으로 나갈 크기 · 해상도 · 컬러 모드)에 0.25s 머물면 보정 창과 같은 면 · 자리(메뉴창 오른쪽, 가리킨 행 높이)에 제목(밑줄 속성 이름) + 다음 줄 설명. 비활성 행은 없음. 올리는 즉시 이름이 밝아짐(툴팁만) 또는 네온 + 손가락(가이드 링크 있음). 링크 있는 이름은 툴팁 마지막 줄 “Click the name to open the guide.”, 누르면 새 탭: Type → Signature › Usage(Symbol or Signature) · Descriptor → Signature › Descriptor · Distance · Symbol height → 지금 로고의 Scalability · Color → 지금 로고의 Color · Logo → Symbol › Overview · Visual size → 지금 로고의 Scalability. 제목(이미 흰색)은 밑줄로 피드백. Layout · Content 는 링크 없음. 체크 토글은 이름 = 체크라 오른쪽 i 가 가이드 링크(툴팁 마지막 줄 “The i opens the guide.”).
+- 툴팁: 켜진 행의 이름(행의 조작부 밖 어디든) · 섹션 제목 5개 · 체크 토글 · dpi 값(1x-4x 는 없음) · Save 의 SVG · PNG · PDF(제목은 Save SVG 처럼, 지금 설정으로 나갈 크기 · 해상도 · 컬러 모드)에 0.25s 머물면 보정 창과 같은 면 · 자리(메뉴창 오른쪽, 가리킨 행 높이)에 제목(밑줄 속성 이름) + 다음 줄 설명. 비활성 행은 없음. 올리는 즉시 이름이 밝아짐(툴팁만) 또는 네온 + 손가락(가이드 링크 있음). 링크 있는 이름은 툴팁 마지막 줄 “Click the name to open the guide.”, 누르면 새 탭: Type → Signature › Usage(Symbol or Signature) · Descriptor → Signature › Descriptor · Distance · Symbol height → 지금 로고의 Scalability · Color → 지금 로고의 Color · Logo → Symbol › Overview · Visual size → 지금 로고의 Scalability. 제목(이미 흰색)은 밑줄로 피드백. Layout · Content 는 링크 없음. 체크 토글은 이름 = 체크라 오른쪽 i 가 가이드 링크(툴팁 마지막 줄 “The i opens the guide.”).
 - 강조색 = Builder Neon(선택 · 슬라이더 손잡이 · 주 버튼). 입력 중 밑줄 = Air White.
 - 서체 = Founders Grotesk(본문) · Founders Grotesk Mono(라벨), 행간 단위 기준.
 

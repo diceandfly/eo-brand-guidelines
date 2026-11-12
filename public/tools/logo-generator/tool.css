@@ -78,7 +78,6 @@
   --row-h:        calc(var(--lh-unit) * 1);      /* 컨트롤 한 행 — 글자 행 · 토글 · 입력칸 · 셀렉트 · 섹션 머리 */
   --btn-h:        calc(var(--lh-unit) + 2 * var(--line-w));      /* 버튼 = 글 한 줄 + 위아래 선 자리 — 채움 버튼 · 1x–4x */
   --btn-bg:       color-mix(in srgb, var(--c-solid) 66%, var(--c-black));   /* 버튼 면 (테두리 없이 채움) — 메뉴창(76%)보다 은은하게 어둡게 */
-  --btn-divider-c: var(--panel-bg);             /* 붙은 버튼 사이 선 (Save SVG | Save PNG) — 메뉴창 면 색 = 틈처럼 보이게 */
   --suffix-w:     calc(var(--lh-unit) * 1);      /* 입력칸 단위 자리 — 숫자 오른쪽 끝을 행마다 맞춤 */
   --btn-pad-x:    0px;                           /* 버튼 좌우 안쪽 */
   --chevron-size: calc(var(--lh-unit) * 0.7);    /* 프리셋 메뉴 화살표 */
@@ -115,6 +114,7 @@
   --tg-divider-pad: calc(var(--lh-unit) * 0.5);       /* 세로선 양옆 여백 */
   --tg-divider-h:   calc(var(--text-size) * 0.875);   /* 세로선 길이 */
   --tg-divider-c:   #555555;                          /* 세로선 색 */
+  --save-gap:       calc(var(--tg-divider-pad) * 2);   /* 저장 글자 버튼 사이 (SVG ↓   PNG ↓) = 토글 세로선 자리와 같은 폭 */
   --tg-on-stroke:   0.4px;                            /* 선택 글자 외곽선 — Light 를 Regular 처럼 굵혀 보이게 (웨이트를 바꾸면 글자 폭이 변해 간격이 흔들림) */
 
   /* ── B-2 타이틀 로고 (가로형 시그니처 규격) ── */
@@ -177,10 +177,10 @@
   --pair-symbol-w: 50%;            /* 심볼 폭 = 썸네일 × 비율 (라이트 박스 기준) */
   --pair-off-o:    0.2;            /* 시그니처에서 쓰지 않는 페어 불투명도 */
   --pair-pad-b:    0px;            /* 썸네일 아래 여백 */
-  --pair-on-w:      calc(var(--line-w) * 0,5);  /* 선택 테두리 두께 = 칸 경계선과 같은 1px (경계선 자리에 겹쳐 그림) */
+  --pair-on-w:     calc(var(--line-w) * 0.3);  /* 선택 테두리 두께 = 칸 경계선과 같은 1px (경계선 자리에 겹쳐 그림) */
   --pair-hover-w:  var(--line-w);  /* 호버 테두리 두께 */
   --pair-hover-mix: 45%;           /* 호버 테두리 = 선택 색을 이만큼만 (선택보다 옅게) */
-  --pair-on-c:     var(--accent);  /* 선택 · 호버 테두리 색 (밝은 바탕 칸은 Space Black) */
+  --pair-on-c:     color-mix(in srgb, var(--accent) 100%, transparent);  /* 선택 · 호버 테두리 색 (밝은 바탕 칸은 Space Black) */
 
   /* ── B-6 체크박스 ── */
   --check-size:      calc(var(--lh-unit) * 0.5);   /* 네모 한 변 (카드 손잡이도 같은 값) */
@@ -258,7 +258,7 @@ main { min-width: 0; height: 100%; display: flex; flex-direction: column; }
 .brand .help { cursor: default; } .brand .help:hover { border-color: var(--fg-1); color: var(--fg-1); }   /* 타이틀 오른쪽 ? = 도움말 (토글 i 와 같은 네모). ? 에 올릴 때만 도움말, 링크가 아니라 흰색 피드백 */   /* 타이틀 — 섹션 묶음 위 여백 안에 겹쳐 놓음 */
 .sections { display: flex; flex-direction: column; gap: var(--gap-section); padding-top: var(--sections-top); }
 section { display: flex; flex-direction: column; gap: var(--gap-sec-head); }
-section.boxed { gap: calc(var(--gap-sec-head) + var(--gap-box-offset)); }   /* 첫 내용이 박스인 섹션 (Color · Export) */
+section.boxed { gap: calc(var(--gap-sec-head) + var(--gap-box-offset)); }   /* 첫 내용이 박스인 섹션 (Color 썸네일) */
 .secHead { display: flex; align-items: center; justify-content: space-between; gap: var(--gap-inline); min-height: var(--row-h); }
 .settings { display: flex; flex-direction: column; gap: var(--gap-row); }
 .block { display: flex; flex-direction: column; gap: var(--gap-block); padding-bottom: var(--gap-block); }   /* 설정 안 묶음 (Export 배율 ↔ 저장) */
@@ -280,8 +280,6 @@ button.primary { background: var(--accent); color: var(--c-black); font-weight: 
 button.primary:hover { background: color-mix(in srgb, var(--accent) var(--primary-hover-mix), var(--c-white)); color: var(--c-black); }
 button.ghost { color: var(--fg-1); }   /* 저장 버튼: 흰 글 */
 button:disabled, button:disabled:hover { color: var(--fg-off); cursor: default; }   /* 잠긴 버튼 (시그니처 저장 잠금) */
-.btns2 { display: grid; grid-template-columns: 1fr 1fr; }
-.export .btns2 button + button { box-shadow: inset var(--line-w) 0 0 var(--btn-divider-c); }   /* Save SVG | Save PNG 사이 선 */
 button.link { height: var(--row-h); padding: 0; background: none; text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: from-font; }   /* 글자 링크 버튼 (Calibrate) */
 button.link.on { color: var(--accent); }   /* 보정 중, 다시 누르면 취소 */
 
@@ -291,9 +289,9 @@ button.link.on { color: var(--accent); }   /* 보정 중, 다시 누르면 취�
 .tg button.on { -webkit-text-stroke: var(--tg-on-stroke) currentColor; color: var(--accent); text-decoration: underline; text-underline-position: from-font; text-decoration-thickness: from-font; }
 .tg i { padding: 0 var(--tg-divider-pad); height: var(--row-h); display: flex; align-items: center; }
 .tg i::before { content: ''; width: var(--line-w); height: var(--tg-divider-h); background: var(--tg-divider-c); transform: translateY(var(--line-w)); }   /* 세로선 — 글자 x높이 쪽으로 1px 내림 */
-.seg4 { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }   /* PNG 배율: 네 칸 */
-.seg4 button { min-width: 0; }
-.seg4 button.on { background: var(--accent); color: var(--c-black); }   /* 선택 배율 = 네온 채움 */
+.saves { display: flex; align-items: center; gap: var(--save-gap); }   /* Export › Save — 글자 버튼 (면 없음). 토글과 같은 행 문법, ↓ = 누르면 저장 */
+.saves button { height: var(--row-h); padding: 0; background: none; color: var(--fg-1); }   /* 흰 글자, 호버 = 네온 (버튼 공통) */
+#saveRow { padding-bottom: var(--gap-block); }   /* 저장 ↔ 아래 체크 옵션 */
 
 /* ===== 7. 입력칸 — 하단 선 · 단위 내장 · 스피너 없음 / 읽기 전용 = 선 없음 · 회색 ===== */
 input[type=number] { -moz-appearance: textfield; appearance: textfield; }
