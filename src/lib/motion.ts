@@ -63,8 +63,26 @@ const hashArrival = !!location.hash;
 const STARTUP_SMOOTH = 0.01;   // 초. 사실상 즉시
 if (smoothAmount > 0 && wrapper && content) {
   smoother = createSmoother(hashArrival ? smoothAmount : STARTUP_SMOOTH);
-  if (!hashArrival) setTimeout(() => { if (!findMode) smoother?.smooth(smoothAmount); }, ms('--scroll-guard-hold', 0.41) * 1000);   // 페이지 검색 중이면 복구 때 smoothAmount 로 새로 만듦
+  if (!hashArrival) setTimeout(() => { if (!findMode) smoother?.smooth(smoothAmount); }, ms('--scroll-guard-hold', 0.41) * 1000);   // 폴백(아래 endGsapStartup 이 못 찾은 경우). 페이지 검색 중이면 복구 때 smoothAmount 로 새로 만듦
 }
+
+/* GSAP 시작 단계를 바로 끝냄. ScrollTrigger(_startup) · ScrollSmoother(startupPhase)는 만들어진 뒤 gsap.delayedCall(0.5) 동안
+   스크럽을 건너뛰어 스크롤 입력을 부드럽게 따라가지 않고 바로 점프합니다. 이 0.5초는 GSAP 시계라, 첫 방문처럼 로드가 무거워
+   프레임이 밀리면(lagSmoothing) 실제로는 1초 넘게 이어져 "로드 직후 스무스 스크롤이 풀린다" 로 보였음(2026-11-14 실측: 0.6초까지 즉시 추종).
+   첫 refresh 로 스크롤 범위를 잰 뒤에는 기다릴 이유가 없으므로, 전역 타임라인에서 그 두 타이머(지연 0.5 · 길이 0 · 진행 중)를 찾아 바로 실행합니다.
+   GSAP 내부 구현에 기대는 부분이라 못 찾으면(버전 변경) 아무것도 안 하고 위 폴백(--scroll-guard-hold 뒤 smooth 복구)이 그대로 동작. 반환 = 끝낸 타이머 수 */
+const endGsapStartup = () => {
+  let n = 0;
+  for (const t of gsap.globalTimeline.getChildren(false, true, false)) {
+    const done = t.vars.onComplete;
+    if (t.duration() === 0 && t.delay() === 0.5 && !t.paused() && typeof done === 'function') {
+      t.kill();
+      done();
+      n++;
+    }
+  }
+  return n;
+};
 
 /* 모바일 목차 드로어(Layout.astro)가 열린 동안 본문 스크롤 정지. 드로어는 eo:nav 이벤트(detail.open)만 보내고 스무더는 모름.
    스무더를 다시 만들 때(아래 페이지 검색 복구)도 열린 상태를 이어받음.
@@ -94,6 +112,7 @@ const resumeSmoother = () => {
   smoother.scrollTo(y, false);                                  // 0 에서 y 까지 달려오지 않도록 현재 위치에 바로 놓음
   if (navOpen) smoother.paused(true);
   ScrollTrigger.refresh();
+  endGsapStartup();                                             // 새 스무더의 시작 단계(0.5초 점프)도 바로 끝냄
 };
 // 복구는 휠 · 터치가 멈춘 뒤에: 스무더는 만들어진 직후 0.5초간 입력을 부드럽게 따라가지 않으므로, 굴리는 도중에 만들면 튑니다
 let resumeTimer: ReturnType<typeof setTimeout> | undefined;
@@ -112,6 +131,7 @@ let guardReleased = false;
 const releaseGuard = () => {
   document.dispatchEvent(new Event('eo:scroll-ready'));
   ScrollTrigger.refresh();                                      // 잠금 중(body 고정)에는 문서 스크롤 범위가 0 이라, 풀린 뒤 다시 잼
+  if (smoother && !findMode && endGsapStartup()) smoother.smooth(smoothAmount);   // 시작 단계를 끝냈으면 첫 입력부터 목표값으로 부드럽게
   guardReleased = true;
   arriveAtHash();                                               // #섹션으로 들어온 경우, 스크롤 범위가 생긴 뒤에 이동
 };
