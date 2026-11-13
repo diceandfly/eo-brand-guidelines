@@ -23,6 +23,8 @@ export interface ImageItem {
   zoom?: number;          // 카드 안 배율. {zoom=1.2} 로 직접 지정, {nozoom} 이면 1 (Do/Don't 그리드 기본 배율도 끔)
   bg?: string | true;     // 확대 보기 배경: {bg-color} = 거울 확장 대신 가장자리 색(빌드 때 측정)으로 채움(true), {bg-color=solid-gray} = 팔레트 색 (var(--c-…))
   cover?: boolean;        // 확대 보기 {bg-cover}: 이미지를 화면에 꽉 채움 (object-fit: cover, 넘치는 쪽은 잘림). 거울 확장 · 배경색 없음. 모바일은 기본 보기
+  scroll?: boolean;       // {scroll}: 카드보다 세로로 긴 이미지(웹 페이지 전체 등)를 카드 안에서 위 → 아래로 몇 번에 나눠 내려 보이고 처음으로 (motion.ts 4, --card-scroll-*)
+  slide?: boolean;        // {slide}: 연달아 놓인 {slide} 이미지들이 카드 하나에서 옆으로 넘어감 (무한 반복). 캡션은 첫 이미지 것 (Section.astro 가 묶음, motion.ts 4, --card-slide-*)
   caption?: string;       // HTML. 한글 구간은 <span class="ko"> 로 래핑됨
 }
 export interface SwatchItem {
@@ -103,7 +105,7 @@ export const EXTS = ['svg', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'avif'];   // �
 
 const GRID_COLS = 12;
 /** 이미지 줄 ![이름]{…} 에 쓸 수 있는 플래그 (= 로 끝나면 값을 받음) */
-const IMAGE_FLAGS = ['do', 'dont', 'con', 'nostrike', 'zoom=', 'nozoom', 'bg-color', 'bg-color=', 'bg-cover', 'bg-mirror'];   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음). {span} 의 상한
+const IMAGE_FLAGS = ['do', 'dont', 'con', 'nostrike', 'zoom=', 'nozoom', 'bg-color', 'bg-color=', 'bg-cover', 'bg-mirror', 'scroll', 'slide'];   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음). {span} 의 상한
 
 function slugify(s: string): string {
   return s
@@ -563,6 +565,9 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       const bg = flags.find(f => f === 'bg-color' || f.startsWith('bg-color='));   // {bg-color} · {bg-color=palette-name}
       if (bg) item.bg = bgValue(bg === 'bg-color' ? '' : bg.slice(9), ctx, where);
       if (flags.includes('bg-cover')) item.cover = true;                     // {bg-cover}: 화면에 꽉 채움
+      if (flags.includes('scroll')) item.scroll = true;                      // {scroll}: 카드 안 세로 흐름
+      if (flags.includes('slide')) item.slide = true;                        // {slide}: 연달아 놓인 것끼리 한 카드의 가로 슬라이드
+      if (item.scroll && item.slide) { warn(`[guide] ${where}: {scroll} 과 {slide} 는 함께 쓸 수 없습니다. {slide} 만 적용합니다`); item.scroll = undefined; }
       if (!bg && !item.cover && !flags.includes('bg-mirror')) { item.bg = section.bg; item.cover = section.cover; }   // 이미지에 표시가 없으면 섹션 기본(헤드 · 서브헤드의 {bg-color}/{bg-cover}). {bg-mirror} 는 기본 거울 확장으로
       // 캡션은 한 줄. 본문처럼 \ 가 줄바꿈 (<br>): "위 줄 \ 아래 줄". 앞뒤 공백은 줄바꿈에 흡수
       if (m[3].trim()) {

@@ -8,7 +8,7 @@
  */
 import Figure from './Figure.astro';
 import Swatch from './Swatch.astro';
-import type { Section } from '../lib/guide';
+import type { Section, Item, ImageItem } from '../lib/guide';
 import { TOKENS } from '../lib/content';
 import { tokenNumber } from '../lib/tokens';
 
@@ -27,6 +27,13 @@ const defaultRatio = isGrid ? 'var(--ratio-card)' : s.layout === 'wide' ? 'var(-
 const allDoDont = s.items.length > 0 && s.items.every(it => it.kind === 'image' && it.badge);
 const ratio = s.ratio ?? (allDoDont ? 'var(--ratio-dodont)' : defaultRatio);   // Do/Don't 시리즈는 --ratio-dodont ({ratio=} 가 있으면 그 값)
 const stacked = s.layout === 'wide' ? s.items : s.items.slice(0, 1);
+// {slide}: 연달아 놓인 {slide} 이미지는 카드 하나로 (첫 이미지가 카드의 캡션 · 배지를 맡고, 나머지는 그 카드 안에서 옆으로 넘어감 — Figure slides)
+const cards: { it: Item; i: number; slides?: ImageItem[] }[] = [];
+s.items.forEach((it, i) => {
+  const prev = cards[cards.length - 1];
+  if (it.kind === 'image' && it.slide && prev?.slides && i > 0 && s.items[i - 1].kind === 'image' && (s.items[i - 1] as ImageItem).slide) prev.slides.push(it);
+  else cards.push({ it, i, slides: it.kind === 'image' && it.slide ? [it] : undefined });
+});
 ---
 <section class:list={['sec', `sec--${kind}`]} id={s.id} style={vars || undefined}>
   <div class="sec__text">
@@ -45,7 +52,7 @@ const stacked = s.layout === 'wide' ? s.items : s.items.slice(0, 1);
 
   {isGrid && (
     <div class:list={['sec__grid', { 'sec__grid--swatch': s.items.some(it => it.kind === 'swatch') }]} style={`--n: ${n}`} data-n={n}>
-      {s.items.map((it, i) => it.kind === 'image' ? <Figure item={it} ratio={ratio} zoom={s.zoom} label={s.subhead ?? s.head} eager={eager(i)} toneZoom={toneZoom(it)} /> : <Swatch item={it} ratio={s.ratio} />)}
+      {cards.map(({ it, i, slides }) => it.kind === 'image' ? <Figure item={it} ratio={ratio} zoom={s.zoom} label={s.subhead ?? s.head} eager={eager(i)} toneZoom={toneZoom(it)} slides={slides} /> : <Swatch item={it} ratio={s.ratio} />)}
     </div>
   )}
 </section>

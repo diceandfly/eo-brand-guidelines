@@ -4,7 +4,8 @@
  *  2. 앵커 이동 — 같은 페이지의 #섹션 링크는 스무스 스크롤로, --anchor-offset 만큼 위를 띄움.
  *  2.5 스크롤스파이 — 스크롤 위치에 따라 목차의 섹션 목록에서 현재 섹션을 강조 (--spy-line).
  *  1.5 페이지 전환 — 다른 페이지 링크를 누르면 본문을 먼저 사라지게 한 뒤 이동 (들어올 때는 CSS).
- *  3. 이미지 확대 보기 — .fig__frame 의 <img> 를 누르면 라이트박스. 디졸브 + 스케일.
+ *  3. 이미지 확대 보기 — .fig__frame 의 <img> 를 누르면 라이트박스. 디졸브 + 스케일. {slide} 묶음은 ← → 로 넘김.
+ *  4. 카드 안 움직임 — {scroll} 세로로 긴 이미지를 몇 번에 나눠 내림 · {slide} 여러 장을 옆으로 넘김 (--card-scroll-* · --card-slide-*).
  * 수치는 전부 tokens.css 의 모션 토큰(B-9 페이지 전환 · 스크롤, B-8 라이트박스, B-2 목차 슬라이드)에서 읽습니다 (Don't 대각선 영역만 B-6 의 --ratio-dodont).
  * 시간 토큰은 "0.4" 처럼 초로 써도, "400ms" 처럼 ms 로 써도 됩니다. 아래 대체값은 토큰을 못 읽을 때만 쓰며 토큰과 같게 유지
  * (npm test 가 ms() · num() · easeOf() 의 대체값을 tokens.css 와 대조해, 다르면 실패).
@@ -523,7 +524,30 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     });
   };
 
-  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset, 'lbWide' in img.dataset);
+  // {slide} 묶음(.fig__track)에서 열면 그 묶음의 장들을 ← → 로 넘김. 끝에 붙은 첫 장 사본(data-clone)은 첫 장으로 침
+  let group: HTMLImageElement[] = [];
+  let groupAt = 0;
+  const openFrom = (img: HTMLImageElement) => {
+    const track = img.closest('.fig__track');
+    group = track ? Array.from(track.querySelectorAll<HTMLImageElement>('img:not([data-clone])')) : [];
+    if (img.hasAttribute('data-clone') && group[0]) img = group[0];
+    groupAt = Math.max(0, group.indexOf(img));
+    open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset, 'lbWide' in img.dataset);
+  };
+  const stepGroup = (d: number) => {
+    if (group.length < 2 || !current) return;
+    groupAt = (groupAt + d + group.length) % group.length;
+    const img = group[groupAt];
+    const edge = img.dataset.lbBg || null, fill = img.dataset.lbFill, cover = 'lbCover' in img.dataset;
+    if (edge) box.style.setProperty('--lightbox-edge', edge); else box.style.removeProperty('--lightbox-edge');
+    box.classList.toggle('has-edge', !!edge);
+    if (fill) box.style.setProperty('--lightbox-fill', fill); else box.style.removeProperty('--lightbox-fill');
+    box.classList.toggle('has-fill', !!fill && !cover);
+    current = { src: img.currentSrc || img.src, fill, cover };
+    applyMode();
+    boxImg.src = current.src;
+    boxImg.alt = img.alt;
+  };
   document.addEventListener('click', e => {
     const img = (e.target as HTMLElement).closest('.fig__frame img') as HTMLImageElement | null;
     if (img) { e.preventDefault(); openFrom(img); }
@@ -532,6 +556,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
   document.addEventListener('keydown', e => {
     if (opened) {
       if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); close(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); stepGroup(e.key === 'ArrowLeft' ? -1 : 1); }   // {slide} 묶음만 (한 장짜리는 아무 일 없음)
       else if (e.key === 'Tab' || SCROLL_KEYS.has(e.key)) {
         e.preventDefault();                                     // 열려 있는 동안 포커스는 라이트박스에 머물고, 키로도 뒤 페이지를 스크롤하지 않음
         const x = box.querySelector<HTMLElement>('.lightbox__close');
@@ -542,4 +567,46 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     const img = (e.target as HTMLElement).closest?.('.fig__frame img') as HTMLImageElement | null;
     if (img && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openFrom(img); }   // 키보드로 열기
   });
+}
+
+/* ---------- 4. 카드 안 움직임 ----------
+   {scroll}(.fig__frame[data-scroll]): 프레임보다 세로로 긴 이미지를 맨 위에서 맨 아래까지 --card-scroll-steps 번에 나눠 내리고(휠을 굴린 듯),
+   맨 아래에서 잠시 머문 뒤 맨 위로 돌아가 반복. 보이는 위치는 CSS 변수 --_pan(0…1, base.css object-position).
+   {slide}(.fig__frame[data-slides] .fig__track): 한 장씩 옆으로 넘김. 띠 끝의 첫 장 사본까지 넘어간 뒤 처음(--_slide 0)으로 순간 이동해 끊김 없이 반복.
+   둘 다 화면에 보이는 동안만 돌고, 마우스를 올리면 멈춤(자세히 보거나 눌러서 확대). '동작 줄이기' 면 만들지 않음(첫 장면 그대로). */
+if (!reduced) {
+  const state = new Map<Element, { tl: gsap.core.Timeline; inView: boolean; hover: boolean }>();
+  const sync = (el: Element) => { const st = state.get(el); if (st) st.tl.paused(!st.inView || st.hover); };
+  const io = 'IntersectionObserver' in window
+    ? new IntersectionObserver(entries => { for (const e of entries) { const st = state.get(e.target); if (st) { st.inView = e.isIntersecting; sync(e.target); } } })
+    : null;
+  const add = (frame: HTMLElement, tl: gsap.core.Timeline) => {
+    state.set(frame, { tl, inView: !io, hover: false });
+    frame.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { state.get(frame)!.hover = true; sync(frame); } });
+    frame.addEventListener('pointerleave', () => { state.get(frame)!.hover = false; sync(frame); });
+    if (io) io.observe(frame); else sync(frame);
+  };
+
+  const steps = Math.max(1, Math.round(num('--card-scroll-steps', 3)));
+  const scrollMove = ms('--card-scroll-move', 1.1), scrollHold = ms('--card-scroll-hold', 1.2), scrollEnd = ms('--card-scroll-end-hold', 2.4);
+  const scrollEase = easeOf('--card-scroll-ease', 'expo.out');
+  for (const frame of document.querySelectorAll<HTMLElement>('.fig__frame[data-scroll]')) {
+    const tl = gsap.timeline({ repeat: -1, paused: true });
+    tl.set(frame, { '--_pan': 0 });
+    for (let i = 1; i <= steps; i++) tl.to(frame, { '--_pan': i / steps, duration: scrollMove, ease: scrollEase }, `+=${scrollHold}`);
+    tl.to({}, { duration: scrollEnd });                           // 맨 아래에서 머문 뒤 반복 → 맨 위로
+    add(frame, tl);
+  }
+
+  const slideMove = ms('--card-slide-move', 0.7), slideHold = ms('--card-slide-hold', 2.4);
+  const slideEase = easeOf('--card-slide-ease', 'cubic-bezier(0.7, 0, 0.3, 1)');
+  for (const frame of document.querySelectorAll<HTMLElement>('.fig__frame[data-slides]')) {
+    const track = frame.querySelector<HTMLElement>('.fig__track');
+    const n = Number(frame.dataset.slides);
+    if (!track || !(n > 1)) continue;
+    const tl = gsap.timeline({ repeat: -1, paused: true });
+    tl.set(track, { '--_slide': 0 });
+    for (let i = 1; i <= n; i++) tl.to(track, { '--_slide': i, duration: slideMove, ease: slideEase }, `+=${slideHold}`);   // i = n 은 첫 장 사본 → 반복 때 0 으로 돌아가도 같은 그림
+    add(frame, tl);
+  }
 }

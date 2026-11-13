@@ -935,6 +935,22 @@ html.fonts-wait .main {
   object-fit: var(--img-fit);
   cursor: zoom-in; /* 클릭하면 확대 보기 */
 }
+/* {scroll}: 프레임보다 세로로 긴 이미지(웹 페이지 전체 등). 폭에 맞춰 꽉 채우고, 보이는 세로 위치만 --_pan(0 = 맨 위 … 1 = 맨 아래)으로 옮김 — motion.ts 4 */
+.fig__frame[data-scroll] img {
+  object-fit: cover;
+  object-position: 50% calc(var(--_pan, 0) * 100%);
+}
+/* {slide}: 여러 장을 옆으로 이어 붙인 띠. 한 장 = 프레임 폭, --_slide(0 · 1 · 2 …)만큼 왼쪽으로 — motion.ts 4. picture 는 display: contents 라 img 가 띠의 칸 */
+.fig__track {
+  display: flex;
+  height: 100%;
+  transform: translateX(calc(var(--_slide, 0) * -100%));
+}
+.fig__track img,
+.fig__track .fig__placeholder {
+  flex: 0 0 100%;
+  min-width: 0;
+}
 /* Don't 대각선: 왼쪽 아래 → 오른쪽 위. 끝점은 영역 높이 × --strike-inset 만큼 네 변에서 안쪽,
    굵기는 영역 높이 × --strike-w. 전부 영역 크기에 대한 비율이라 화면 크기가 바뀌어도 같은 모양.
    카드에서는 프레임 전체, 확대 보기에서는 이미지 가운데 4:3 영역 */

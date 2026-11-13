@@ -118,6 +118,9 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
   섹션 추가     : ### 헤드 한 줄 + 본문 + ![이미지]를 원하는 위치에 끼워 넣으면 끝.
   섹션 순서 변경 : 블록째 잘라 붙이기.
   페이지 추가  : ## 이름 한 줄. 목차·URL·다음 버튼이 자동으로 갱신됩니다.
+  카드 안 움직임 : ![web-main] {scroll} 캡션  ← 카드보다 세로로 긴 이미지(웹 페이지 전체 등)를 카드 안에서 위 → 아래로 몇 번에 나눠 내려 보이고 반복.
+                   ![feed-1] {slide} 캡션  ← {slide} 를 붙인 이미지를 연달아 쓰면 카드 하나에서 한 장씩 옆으로 넘어감(무한 반복).
+                   ![feed-2] {slide}          캡션은 첫 줄 것만 씀. 확대 보기에서는 ← → 로 넘김. 속도는 tokens.css --card-scroll-* · --card-slide-*
   섹션 목록 숨김 : ## 이름 {toc=none}  ← 이 페이지는 목차에서 섹션 목록을 펼치지 않음 (섹션이 하나뿐이면 자동으로 숨김)
   링크 항목     : ## 이름 {href=/tools/logo-generator/index.html}  ← 페이지 대신 목차에 링크만 (새 탭). 본문 · 섹션 없음, 이전/다음 버튼에서 빠짐
   같은 헤드 반복 : 가능합니다 (예: Character Set 3개). 목차에는 한 번만 표시되고 첫 번째로 이동합니다.
@@ -1221,25 +1224,44 @@ Four rules to follow when placing the graphic pattern on a page.
 ![app-principles]
 
 
-### Digital {layout=grid-3}
-Digital touchpoints such as the web magazine · social feed · video thumbnails. In motion, a unit's [[graphic-unit#parameters|compression]] can change over time; in thumbnails, use only part of the pattern and crop at a column boundary so that no diagonal section of a thread is cut. Margins and grids of web layouts follow [[typography#margin|Margin]] · [[typography#compound-grid|Compound Grid]].
-![app-web] Web Magazine
-![app-social] Social Feed
-![app-thumbnail] Video Thumbnail
+### Digital {layout=grid-3} {ratio=3:4} {bg-color}
+Digital applications such as the web magazine · social feed · video thumbnails. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
+![app-web] {scroll} 1. Web Magazine
+![app-social-1] {slide} 2. Social Feed
+![app-social-2] {slide}
+![app-social-3] {slide}
+![app-social-4] {slide}
+![app-social-5] {slide}
+![app-social-6] {slide}
+![app-social-7] {slide}
+![app-social-8] {slide}
+![app-social-9] {slide}
+![app-social-10] {slide}
+![app-sns-channel] 3. SNS Channel
+![app-feed-neon] 4. Text Post — Builder Neon
+![app-feed-blue] 5. Text Post — Day Blue
+![app-feed-green] 6. Text Post — Bay Green
+
+
+### Advertisement {layout=grid-3}
+Outdoor advertising such as billboards · street banners · signage. Because these media are read from afar and in a short time, give the graphic pattern area generous room and reduce the message to about a single headline. Match the pattern density to the viewing distance, and set the logo size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom, following the exception in [[graphic-pattern#zoning]].
+![app-billboard] 1. Billboard
+![app-street-banner] 2. Street Banner
+![app-signage] 3. Signage
 
 
 ### Print {layout=grid-3}
-Printed matter such as posters · hang tags · stickers · pins. Color combinations follow [[graphic-pattern#color]]: a Solid Gray background comes first, and a Builder Neon background is used, with Space Black units, only on pages that must assert the brand strongly and carry little information. Hang tags carry the pattern on the front and size and material information set in Founders Grotesk Mono Regular on the back.
-![app-poster] Poster
-![app-hangtag] Hang Tag
-![app-sticker] Sticker Pack & Pin
+Printed matter such as posters · hang tags · stickers. Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
+![app-poster] 1. Poster
+![app-hangtag] 2. Hang Tag
+![app-sticker] 3. Sticker Pack
 
 
 ### Merch {layout=grid-3}
-A merch line of tees · hoodies · caps. Single-color screen-printed graphics are the default. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front. Choose the fabric color from Space Black · Builder Neon · Day Blue, and pick the graphic colors by treating the fabric as the background color under [[graphic-pattern#color]]. On Builder Neon · Day Blue fabric, use Space Black graphics only.
-![app-tee] Oversized Tee
-![app-hoodie] Hoodie
-![app-cap] 5-panel Cap
+A merch line of tees · hoodies · caps · pins. Single-color screen-printed graphics are the default. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
+![app-tee] 1. Oversized Tee
+![app-hoodie] 2. Hoodie
+![app-cap] 3. 5-panel Cap & Pin
 
 
 

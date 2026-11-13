@@ -118,6 +118,9 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
   섹션 추가     : ### 헤드 한 줄 + 본문 + ![이미지]를 원하는 위치에 끼워 넣으면 끝.
   섹션 순서 변경 : 블록째 잘라 붙이기.
   페이지 추가  : ## 이름 한 줄. 목차·URL·다음 버튼이 자동으로 갱신됩니다.
+  카드 안 움직임 : ![web-main] {scroll} 캡션  ← 카드보다 세로로 긴 이미지(웹 페이지 전체 등)를 카드 안에서 위 → 아래로 몇 번에 나눠 내려 보이고 반복.
+                   ![feed-1] {slide} 캡션  ← {slide} 를 붙인 이미지를 연달아 쓰면 카드 하나에서 한 장씩 옆으로 넘어감(무한 반복).
+                   ![feed-2] {slide}          캡션은 첫 줄 것만 씀. 확대 보기에서는 ← → 로 넘김. 속도는 tokens.css --card-scroll-* · --card-slide-*
   섹션 목록 숨김 : ## 이름 {toc=none}  ← 이 페이지는 목차에서 섹션 목록을 펼치지 않음 (섹션이 하나뿐이면 자동으로 숨김)
   링크 항목     : ## 이름 {href=/tools/logo-generator/index.html}  ← 페이지 대신 목차에 링크만 (새 탭). 본문 · 섹션 없음, 이전/다음 버튼에서 빠짐
   같은 헤드 반복 : 가능합니다 (예: Character Set 3개). 목차에는 한 번만 표시되고 첫 번째로 이동합니다.
@@ -1223,25 +1226,44 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-principles]
 
 
-### Digital {layout=grid-3}
-웹 매거진 · 소셜 피드 · 영상 썸네일 등 디지털 접점입니다. 모션에서는 유닛의 [[graphic-unit#parameters|compression]]이 시간에 따라 변할 수 있으며, 썸네일에서는 패턴의 일부만 쓰되 thread의 대각선 구간이 잘리지 않도록 컬럼 경계에서 크롭합니다. 웹 레이아웃의 마진과 그리드는 [[typography#margin|Margin]] · [[typography#compound-grid|Compound Grid]]의 기준을 따릅니다.
-![app-web] Web Magazine
-![app-social] Social Feed
-![app-thumbnail] Video Thumbnail
+### Digital {layout=grid-3} {ratio=3:4} {bg-color}
+웹 매거진 · 소셜 피드 · 영상 썸네일 등 디지털 어플리케이션입니다. 웹 레이아웃의 마진과 그리드는 정적 레이아웃에 초점을 맞춘 본 가이드라인의 지침보다, 각 사용 환경에 적합한 반응형 레이아웃 시스템 구축을 권장합니다. 
+![app-web] {scroll} 1. Web Magazine
+![app-social-1] {slide} 2. Social Feed
+![app-social-2] {slide}
+![app-social-3] {slide}
+![app-social-4] {slide}
+![app-social-5] {slide}
+![app-social-6] {slide}
+![app-social-7] {slide}
+![app-social-8] {slide}
+![app-social-9] {slide}
+![app-social-10] {slide}
+![app-sns-channel] 3. SNS Channel
+![app-feed-neon] 4. Text Post — Builder Neon
+![app-feed-blue] 5. Text Post — Day Blue
+![app-feed-green] 6. Text Post — Bay Green
+
+
+### Advertisement {layout=grid-3}
+빌보드 · 거리 배너 · 사이니지 등 옥외 광고입니다. 멀리서 짧은 시간에 읽히는 매체이므로 그래픽 패턴 영역을 크게 잡고, 메시지는 헤드라인 한 줄 수준으로 줄입니다. 패턴의 밀도는 보는 거리에 맞추고, 로고의 크기는 [[symbol#scalability]]의 보는 거리 대비 비율로 정합니다. 거리 배너처럼 바닥에 세우거나 기둥에 매다는 세로 매체는 [[graphic-pattern#zoning]]의 예외대로 그래픽 패턴 영역을 하단에 둘 수 있습니다.
+![app-billboard] 1. Billboard
+![app-street-banner] 2. Street Banner
+![app-signage] 3. Signage
 
 
 ### Print {layout=grid-3}
-포스터 · 행택 · 스티커 · 핀 등 인쇄물입니다. 컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray 바탕을 우선하고, Builder Neon 바탕은 브랜드의 존재감을 강하게 드러내야 하고 정보량이 적은 지면에 한해 Space Black 유닛과 함께 씁니다. 행택은 앞면에 패턴을, 뒷면에 사이즈와 소재 정보를 Founders Grotesk Mono Regular로 적습니다.
-![app-poster] Poster
-![app-hangtag] Hang Tag
-![app-sticker] Sticker Pack & Pin
+포스터 · 행택 · 스티커 등 인쇄물입니다. 컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray · Space Black 바탕을 우선하고, Builder Neon 바탕은 제한적으로 사용해 브랜드으로 존재감을 강하게 드러내세요.
+![app-poster] 1. Poster
+![app-hangtag] 2. Hang Tag
+![app-sticker] 3. Sticker Pack
 
 
 ### Merch {layout=grid-3}
-티셔츠 · 후디 · 캡으로 구성된 굿즈 라인입니다. 실크스크린 단색 그래픽을 기본으로 합니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후디는 앞면에 pair를 등비로 블렌드한 패턴([[graphic-unit#vocabulary-formation|차원]])을 올립니다. 원단 컬러는 Space Black · Builder Neon · Day Blue 중 하나를 고르고, 그래픽 컬러는 원단을 배경 컬러로 보고 [[graphic-pattern#color]]를 따릅니다. Builder Neon · Day Blue 원단에는 Space Black 그래픽만 올립니다.
-![app-tee] Oversized Tee
-![app-hoodie] Hoodie
-![app-cap] 5-panel Cap
+티셔츠 · 후디 · 캡 · 핀으로 구성된 굿즈 라인입니다. 실크스크린 단색 그래픽을 기본으로 합니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후디는 앞면에 pair를 등비로 블렌드한 패턴([[graphic-unit#vocabulary-formation|차원]])을 올립니다. 
+![app-tee] 1. Oversized Tee
+![app-hoodie] 2. Hoodie
+![app-cap] 3. 5-panel Cap & Pin
 
 
 

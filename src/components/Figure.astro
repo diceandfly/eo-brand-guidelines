@@ -3,6 +3,8 @@
  * 이미지 1장. 파일이 있으면 <img>, 없으면 토큰 경로를 적은 플레이스홀더.
  * badge: do | dont | con  → 캡션 줄 맨 앞에 체크 / 엑스 / 삼각형(conditional) 아이콘 (레퍼런스와 같은 "아이콘 + 문구" 페어링)
  * caption 이 있으면 이미지 아래 캡션 (카드). 배지만 있고 캡션이 없으면 "Do" / "Don't" 를 기본 문구로 씁니다.
+ * slides: {slide} 묶음(Section.astro 가 모음) — 프레임 안에 여러 장을 옆으로 이어 붙이고 motion.ts 4 가 넘김. 끝에 첫 장 사본(data-clone)을 하나 더 두어 끊김 없이 반복.
+ * item.scroll({scroll}): 세로로 긴 이미지를 프레임 안에서 위 → 아래로 (data-scroll, motion.ts 4).
  */
 import { UI_TEXT, langFromPath, type ImageItem } from '../lib/guide';
 import { imageEdge } from '../lib/imageTone';
@@ -10,8 +12,8 @@ import { TOKENS } from '../lib/content';
 import { tokenHex, tokenNumber } from '../lib/tokens';
 import { optimizedOf } from '../../scripts/lib/optimize-images.mjs';
 
-interface Props { item: ImageItem; ratio: string; zoom?: number; label?: string; eager?: boolean; toneZoom?: number; wide?: boolean; }   // zoom: 섹션 배율 (이미지 태그가 우선), label: 섹션 이름, eager: 첫 화면 이미지 → 바로 로드, toneZoom: 톤 판정용 실제 배율 (Section 이 계산), wide: wide 레이아웃 장표 → 모바일 확대 보기에서 가로 전체를 왼쪽부터 밀어 봄 (data-lb-wide)
-const { item, ratio, label, eager = false, toneZoom = 1, wide = false } = Astro.props;
+interface Props { item: ImageItem; ratio: string; zoom?: number; label?: string; eager?: boolean; toneZoom?: number; wide?: boolean; slides?: ImageItem[]; }   // zoom: 섹션 배율 (이미지 태그가 우선), label: 섹션 이름, eager: 첫 화면 이미지 → 바로 로드, toneZoom: 톤 판정용 실제 배율 (Section 이 계산), wide: wide 레이아웃 장표 → 모바일 확대 보기에서 가로 전체를 왼쪽부터 밀어 봄 (data-lb-wide)
+const { item, ratio, label, eager = false, toneZoom = 1, wide = false, slides } = Astro.props;
 const ui = UI_TEXT[langFromPath(Astro.url.pathname)];
 // 대체 텍스트: 캡션(태그·HTML 엔티티를 벗긴 글자) > 섹션 이름 > 이미지 이름
 const plain = (html: string) => html.replace(/<[^>]+>/g, '').replace(/&(amp|lt|gt|quot|#39|#x27);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", '#x27': "'" } as Record<string, string>)[e]);
@@ -24,10 +26,28 @@ const info = item.src ? await imageEdge(item.src, toneZoom, tokenHex(TOKENS, '--
 const tone = info?.tone;
 // 빌드에서만: 가벼운 사본(.png.webp 무손실 · .jpg.avif)을 <picture> 로 먼저, 원본은 폴백. 개발 서버엔 사본이 없어 원본만 (astro.config.mjs eo-optimize-images)
 const opt = import.meta.env.PROD && item.src ? optimizedOf(item.src) : null;
+// {slide} 묶음: 장마다 가장자리 색 · 사본을 따로 구함. 대체 텍스트는 카드 캡션 + 순번
+const shots = slides && slides.length > 1 ? await Promise.all(slides.map(async (it, i) => ({
+  it, alt: `${alt} (${i + 1}/${slides.length})`,
+  info: it.src ? await imageEdge(it.src, toneZoom, tokenHex(TOKENS, '--surface', '#000000'), tokenNumber(TOKENS, '--lightbox-bg-uniform', 40)) : undefined,
+  opt: import.meta.env.PROD && it.src ? optimizedOf(it.src) : null,
+}))) : null;
 ---
 <figure class:list={['fig', { 'fig--dodont': item.badge }]} style={`--ratio: ${ratio}${(item.zoom ?? Astro.props.zoom) !== undefined ? `; --img-zoom: ${item.zoom ?? Astro.props.zoom}` : ''}`}>
-  <div class="fig__frame" data-tone={tone}>
-    {item.src && opt
+  <div class="fig__frame" data-tone={tone} data-scroll={item.scroll && !shots ? '' : undefined} data-slides={shots ? shots.length : undefined}>
+    {shots
+      ? <div class="fig__track">
+          {[...shots, { ...shots[0], clone: true }].map((s, i) => {
+            const clone = 'clone' in s;
+            const attrs = { src: s.it.src!, alt: clone ? '' : s.alt, loading: (eager && i === 0 ? 'eager' : 'lazy') as 'eager' | 'lazy', role: clone ? undefined : 'button' as const, tabindex: clone ? -1 : 0, 'aria-haspopup': clone ? undefined : 'dialog' as const, 'aria-hidden': clone ? 'true' as const : undefined, 'data-clone': clone ? '' : undefined, 'data-lb-bg': s.info?.edge ?? undefined, 'data-lb-fill': s.it.bg === true ? (s.info?.edge ?? '') : s.it.bg, 'data-lb-cover': s.it.cover ? '' : undefined };
+            return !s.it.src
+              ? <div class="fig__placeholder t-label"><span>assets/{s.it.path}</span><span>{ratioLabel}</span></div>
+              : s.opt
+              ? <picture><source srcset={s.opt.src} type={s.opt.type} /><img {...attrs} /></picture>
+              : <img {...attrs} />;
+          })}
+        </div>
+      : item.src && opt
       ? <picture><source srcset={opt.src} type={opt.type} /><img src={item.src} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : undefined} role="button" tabindex="0" aria-haspopup="dialog" data-lb-bg={info?.edge ?? undefined} data-lb-fill={item.bg === true ? (info?.edge ?? '') : item.bg} data-lb-cover={item.cover ? '' : undefined} data-lb-wide={wide ? '' : undefined} /></picture>
       : item.src
       ? <img src={item.src} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : undefined} role="button" tabindex="0" aria-haspopup="dialog" data-lb-bg={info?.edge ?? undefined} data-lb-fill={item.bg === true ? (info?.edge ?? '') : item.bg} data-lb-cover={item.cover ? '' : undefined} data-lb-wide={wide ? '' : undefined} />
