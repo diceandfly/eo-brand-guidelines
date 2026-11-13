@@ -258,8 +258,8 @@ The EO symbol is built by default as a light symbol in bright colors such as Bui
 
 In that case, convert the light symbol in the following order.
 
-1. Offset the outline outward by H/100.
-2. Scale each of the two blocks up proportionally by H/30 in all four directions.
+1. Scale each of the two blocks up proportionally by H/30 in all four directions. The cross inside the O block keeps its original size.
+2. Offset the outline by H/60. The outer edges of the blocks move outward, and the cross moves inward.
 3. Reduce the gap between the two enlarged blocks from the original (4/30)H to (3/30)H to complete the dark symbol.
 
 This converts a light symbol of any size into a dark symbol of the same level.
