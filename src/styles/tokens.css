@@ -216,6 +216,10 @@
   --nav-pad-right: 28px; /* 오른쪽 */
   --nav-pad-bottom: 28px; /* 아래 (언어 전환 아래 여백) */
   --nav-pad-left: 28px; /* 왼쪽 */
+  /* 모바일 드로어: 로고를 목차 버튼(햄버거 · ×)과 한 줄에, 좌우는 페이지 여백 선(버튼 아이콘 오른쪽 끝과 같은 선)에 맞춤 */
+  --nav-pad-top-m: calc(var(--topbar-menu-inset) + (var(--topbar-menu-size) - var(--nav-logo-h)) / 2); /* 위: 로고 세로 가운데 = 버튼 세로 가운데 (안전 영역은 base.css 가 더함) */
+  --nav-pad-right-m: var(--page-margin-m); /* 오른쪽 = 페이지 여백 (× 아이콘 오른쪽 끝 선) */
+  --nav-pad-left-m: var(--page-margin-m); /* 왼쪽 = 페이지 여백 (본문 왼쪽 선) */
   --nav-logo-h: 21px; /* 로고 높이 */
   --nav-logo-text-ls: -0.02em; /* 로고 SVG 가 없을 때 대신 뜨는 "EO" 글자의 자간 */
   --nav-logo-gap: 49px; /* 로고 ↔ 검색창 */
@@ -320,7 +324,7 @@
   --next-gap: 168px; /* 마지막 섹션 ↔ 다음 버튼 */
   --page-pad-bottom: 126px; /* 다음 버튼 ↔ 페이지 바닥 */
   /* 모바일 (899px 이하) — base.css 가 위 PC 이름을 이 값으로 바꿔 끼움 */
-  --title-pad-top-m: 28px; /* 모바일: 페이지 상단 ↔ 타이틀 */
+  --title-pad-top-m: 14px; /* 모바일: 페이지 상단 ↔ 타이틀 */
   --title-gap-m: 84px; /* 모바일: 타이틀 ↔ 첫 섹션 */
   --section-gap-m:84px; /* 모바일: 섹션 ↔ 섹션 */
   --next-gap-m: 96px; /* 모바일: 마지막 섹션 ↔ 다음 버튼 */
@@ -411,7 +415,7 @@
   --dodont-zoom-3: 1; /* grid-3 */
   --dodont-zoom-4: 1; /* grid-4 */
   --img-zoom-factor: 1; /* 카드 안 줌(md 의 {zoom=…} · 섹션 zoom · Do/Don't 배율)을 얼마나 적용할지. 실제 배율 = 1 + (설정 배율 − 1) × 이 값. 1 = 설정 그대로 */
-  --img-zoom-factor-m: 0; /* 모바일 일괄 계수. 0 = 줌 없음(원본 비율 그대로), 0.5 = 설정한 줌의 절반(1.4 → 1.2), 1 = 데스크탑과 같음 */
+  --img-zoom-factor-m: 0.5; /* 모바일 일괄 계수. 0 = 줌 없음(원본 비율 그대로), 0.5 = 설정한 줌의 절반(1.4 → 1.2), 1 = 데스크탑과 같음 */
   /* Don't 대각선 */
   --strike-inset: 0.125; /* 대각선 끝점: 영역 높이 × 값만큼 네 변에서 안쪽 (1/8) */
   --strike-w: 0.007; /* 대각선 굵기 = 영역 높이 × 값. px 고정 없이 화면 크기에 비례 */

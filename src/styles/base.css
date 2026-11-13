@@ -770,6 +770,9 @@ html.js .main {
     --head-gap: var(--head-gap-m);
     --sec-row-gap: var(--sec-row-gap-m);
     --img-zoom-factor: var(--img-zoom-factor-m);
+    --nav-pad-top: calc(var(--nav-pad-top-m) + env(safe-area-inset-top, 0px)); /* 목차 버튼처럼 노치 · 상태바 아래로 */
+    --nav-pad-right: var(--nav-pad-right-m);
+    --nav-pad-left: var(--nav-pad-left-m);
   }
   .sec--basic .sec__media {
     grid-row: 2; /* basic 도 텍스트 아래로 */
