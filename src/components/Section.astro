@@ -28,7 +28,7 @@ const allDoDont = s.items.length > 0 && s.items.every(it => it.kind === 'image' 
 const ratio = s.ratio ?? (allDoDont ? 'var(--ratio-dodont)' : defaultRatio);   // Do/Don't 시리즈는 --ratio-dodont ({ratio=} 가 있으면 그 값)
 const stacked = s.layout === 'wide' ? s.items : s.items.slice(0, 1);
 ---
-<section class:list={['sec', `sec--${kind}`]} id={s.id} data-section style={vars || undefined}>
+<section class:list={['sec', `sec--${kind}`]} id={s.id} style={vars || undefined}>
   <div class="sec__text">
     <h2 class="sec__head t-heading">{s.head}</h2>
     {s.subhead && <h3 class="sec__subhead t-heading t-subhead">{s.subhead}</h3>}

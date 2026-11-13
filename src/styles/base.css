@@ -1386,16 +1386,16 @@ html.js .main {
   position: relative;
   pointer-events: none;
   opacity: var(--lightbox-mirror-opacity);
-  /* 마스크 정지점 (hold → fade 구간을 S 커브로). 직선 그라데이션은 시작·끝의 꺾임이 선으로 보이므로 ease-in-out 에 가깝게 6단계 */
+  /* 마스크 정지점 (hold → fade 구간을 S 커브로). 직선 그라데이션은 시작·끝의 꺾임이 선으로 보이므로 ease-in-out 에 가깝게 6단계. rgb(0 0 0) 은 색이 아니라 마스크 불투명도(알파만 쓰임) */
   --_mx:
-    #000 var(--lightbox-mirror-hold-x),
+    rgb(0 0 0) var(--lightbox-mirror-hold-x),
     rgb(0 0 0 / var(--lightbox-mirror-a1)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.2),
     rgb(0 0 0 / var(--lightbox-mirror-a2)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.4),
     rgb(0 0 0 / var(--lightbox-mirror-a3)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.6),
     rgb(0 0 0 / var(--lightbox-mirror-a4)) calc(var(--lightbox-mirror-hold-x) + (var(--lightbox-mirror-fade-x) - var(--lightbox-mirror-hold-x)) * 0.8),
     transparent var(--lightbox-mirror-fade-x);
   --_my:
-    #000 var(--lightbox-mirror-hold-y),
+    rgb(0 0 0) var(--lightbox-mirror-hold-y),
     rgb(0 0 0 / var(--lightbox-mirror-a1)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.2),
     rgb(0 0 0 / var(--lightbox-mirror-a2)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.4),
     rgb(0 0 0 / var(--lightbox-mirror-a3)) calc(var(--lightbox-mirror-hold-y) + (var(--lightbox-mirror-fade-y) - var(--lightbox-mirror-hold-y)) * 0.6),

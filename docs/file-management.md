@@ -26,6 +26,10 @@ src/components/           ← Section / Figure / Swatch · SwatchVal / Sidebar /
 src/layouts/Layout.astro  ← 페이지 셸 (목차 + 본문 + 모바일 드로어)
 src/pages/                ← 라우팅. 건드릴 일 거의 없음
 src/lib/guide.ts          ← guide.<lang>.md 파서
+src/lib/tokens.ts         ← tokens.css 를 코드에서 읽는 파서 · 모바일 경계 MOBILE_MAX
+src/lib/ui-markup.ts      ← 파서와 컴포넌트가 함께 쓰는 마크업(호버 알약)
+scripts/test.mjs          ← npm test (파서 경고 · HTML 짝 · 모션 대체값 · 생성기 · 규칙 검사 · astro check)
+scripts/typo-chart.mjs    ← 타이포 Linespacing · Letterspacing 장표 생성 (내부 도구, 아래 §3 끝)
 docs/                     ← 이 문서
 public/archive/handoff/   ← 최종 핸드오프 시점 가이드의 고정 사본 (npm run archive 가 만듦, 손으로 고치지 않음)
 ```
@@ -58,6 +62,8 @@ npm run import                      # 페이지 목록 보기
 - `clearspace`, `dont-1` 처럼 여러 페이지에 같은 이름이 있으므로, 폴더 안에 페이지 이름의 하위 폴더(`temp/symbol/`, `temp/typography/` …)를 만들어 나눠 두면 섞이지 않습니다. 하위 폴더가 있으면 그 폴더에서만 가져옵니다.
 
 파일명은 소문자와 하이픈만 씁니다. `brand/logo.svg` 는 콘텐츠 이미지가 아니라 목차 상단 로고이며 이 규칙과 별개입니다.
+
+**타이포 차트 장표 (내부 도구)**. Typography 챕터의 Linespacing · Letterspacing 차트는 `node scripts/typo-chart.mjs [출력 폴더]` 로 만듭니다(기본 출력 다운로드/temp/typography, SVG + PNG). 수치는 tokens.css 에서 읽고, 장표 규칙은 파일 머리 주석에 있습니다. 만든 뒤 `npm run import -- typography` 로 넣습니다. PNG 래스터에는 설치된 Founders Grotesk 가 필요합니다.
 
 ## 4. 폰트 넣기
 

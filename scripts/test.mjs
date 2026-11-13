@@ -3,16 +3,19 @@
  *
  * 실패(종료 코드 1)로 보는 것
  *   1. 파서 경고 — 두 md(content/guide.ko.md · guide.en.md)를 파싱해 경고(없는 레이아웃 · 모르는 플래그 · 깨진 참조 …)가 0 이어야 함.
+ *      파서가 만든 HTML(섹션 본문 · 캡션)의 태그 짝 · 속성 따옴표 짝도 봄 (scripts/lib/check-rules.mjs).
  *      astro build 는 같은 경고를 오류로 멈추므로(src/lib/content.ts) 여기서 먼저 잡힙니다.
  *   2. 플레이스홀더 수 — 파일이 없어 플레이스홀더로 나오는 이미지가 아래 MAX_PLACEHOLDERS 보다 많으면 (이미지가 끊긴 것).
  *      이미지를 채워 수가 줄면 통과하고, 줄었다고 알려 줍니다 → 그때 MAX_PLACEHOLDERS 를 낮춰 두세요.
  *   3. 모션 대체값 — src/lib/motion.ts 의 ms() · num() · easeOf() 대체값이 tokens.css 값과 같아야 함 (토큰을 못 읽어도 같은 모션).
  *   4. astro check — 타입 오류 0.
  *   5. 로고 생성기 — GEOM 확정 수치(다크 총높이 · 오른쪽 클리어스페이스 식) · HEX/CMYK ↔ 가이드 스와치 (scripts/lib/logo-generator-check.mjs).
- *   7. 모바일 경계 — base.css · 생성기 tool.css 의 @media 폭이 src/lib/tokens.ts MOBILE_MAX(max 899 / min 900)와 같고, 스크립트에 숫자가 따로 적혀 있지 않은지.
+ *   7. 프로젝트 규칙 — base.css raw HEX 0 · !important 0 · 정의 안 된 var() 0 · src 의 window.__ 전역 0 (scripts/lib/check-rules.mjs),
+ *      모바일 경계: base.css · 생성기 tool.css 의 @media 폭이 src/lib/tokens.ts MOBILE_MAX(max 899 / min 900)와 같고, 스크립트에 숫자가 따로 적혀 있지 않은지.
  * 리포트만 하는 것 (실패 아님)
  *   - EN/KO 구조 패리티: 페이지 목록, 페이지별 섹션 헤드 수 · 순서, 이미지 토큰 순서. 영문은 국문과 구조가 다를 수 있음.
  *   - 폰트 파일: public/fonts 에 빠진 woff2 (scripts/lib/check-fonts.mjs, 빌드도 경고).
+ *   - 안 쓰는 토큰: tokens.css 에 있지만 아무 데서도 안 읽는 이름 ([7] 안에서).
  *
  * 옵션: --no-check  astro check 를 건너뜀 (빠르게 돌릴 때)
  */
@@ -23,6 +26,7 @@ import { loadGuide, LANGS } from '../src/lib/guide.ts';
 import { parseTokens, MOBILE_MAX } from '../src/lib/tokens.ts';
 import { checkFonts } from './lib/check-fonts.mjs';
 import { checkLogoGenerator } from './lib/logo-generator-check.mjs';
+import { htmlProblems, checkRules } from './lib/check-rules.mjs';
 
 const ROOT = process.cwd();
 const MAX_PLACEHOLDERS = { ko: 11, en: 11 };   // 2026-11-10 기준. 이미지를 채우면 낮출 것
@@ -46,6 +50,17 @@ for (const lang of LANGS) {
   finally { console.warn = origWarn; }
   if (warnings.length) { fail(`guide.${lang}.md 경고 ${warnings.length}개`); for (const w of warnings) console.log(`      ${w}`); }
   else ok(`guide.${lang}.md 경고 0`);
+
+  // 파서 출력 HTML — 속성 따옴표 · 태그 짝 (따옴표 하나 빠져도 빌드는 통과하고 화면만 깨지므로)
+  const htmlBad = [];
+  let pieces = 0;
+  for (const c of guides[lang].chapters) for (const sub of c.subs) for (const sec of sub.sections)
+    for (const [where, html] of [['본문', sec.bodyHtml], ...sec.items.filter(it => it.kind === 'image' && it.caption).map(it => [`캡션 ${it.token}`, it.caption])]) {
+      pieces++;
+      for (const p of htmlProblems(html ?? '')) htmlBad.push(`${sub.url}#${sec.id} ${where}: ${p}`);
+    }
+  if (htmlBad.length) { fail(`guide.${lang}.md HTML 문제 ${htmlBad.length}개`); for (const b of htmlBad.slice(0, 10)) console.log(`      ${b}`); }
+  else ok(`guide.${lang}.md HTML ${pieces}조각 태그 · 따옴표 짝 정상`);
 
   const images = guides[lang].chapters.flatMap(c => c.subs.flatMap(s => s.sections.flatMap(sec => sec.items.filter(it => it.kind === 'image'))));
   const holes = images.filter(it => !it.src);
@@ -141,7 +156,8 @@ console.log('\n[6] 핸드오프 아카이브 (public/archive/handoff, npm run ar
 
 // ── 7. 모바일 경계 ───────────────────────────────────────────────────────
 // CSS 변수는 @media 에 못 쓰므로 CSS 쪽은 숫자, 스크립트는 tokens.ts 상수. 숫자가 상수와 어긋나면 실패
-console.log('\n[7] 모바일 경계 (src/lib/tokens.ts MOBILE_MAX)');
+console.log('\n[7] 프로젝트 규칙 · 모바일 경계 (src/lib/tokens.ts MOBILE_MAX)');
+try { checkRules(ROOT, { ok, fail, note }); } catch (e) { fail(`규칙 검사 중 오류 — ${e.message}`); }
 {
   const bad = [];
   let n = 0;

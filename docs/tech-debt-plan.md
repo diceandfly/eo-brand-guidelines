@@ -51,7 +51,7 @@
 - 가이드 tokens.css: 아무 데서도 안 쓰는 토큰 리포트(모션 토큰은 motion.ts 이름 참조 포함)
 - `window.__` 0(TD-1 고정) · 경계 899/900(TD-2)
 파서 출력 HTML 건전성(TD-3 에서 발견: 칩 class 따옴표가 빠진 HTML 도 npm test 는 통과했음 — 섹션 bodyHtml · 캡션의 태그 안 따옴표 짝 · 열고 닫힘을 [1] 에서 검사).
-문서 · 잔재 정리(2026-11-13 재검증에서 편입): `scripts/typo-chart.mjs` 사용법을 docs/file-management.md 에 한 줄(내부 장표 도구) · CLAUDE.md 의 "스크롤스파이는 후속 라운드" 문장 갱신(motion.ts 2.5 에 이미 구현) · 안 쓰는 `Section.astro` `data-section` 속성 정리 · 튜토리얼 `[[symbol#color]]` 예시가 실제 해석 규칙과 맞는지 확인.
+문서 · 잔재 정리(2026-11-13 재검증에서 편입): `scripts/typo-chart.mjs` 사용법을 docs/file-management.md 에 한 줄(내부 장표 도구) · CLAUDE.md 의 "스크롤스파이는 후속 라운드" 문장 갱신(motion.ts 2.5 에 이미 구현) · 안 쓰는 `Section.astro` `data-section` 속성 정리 · 튜토리얼 `[[symbol#color]]` 예시가 실제 해석 규칙과 맞는지 확인(→ 확인 결과 튜토리얼 예시는 모두 페이지 슬러그 형식이고 파서도 페이지 슬러그로 찾음, 해당 없음).
 CI: 로컬 전용이라 지금은 안 둠. 클라이언트가 GitHub Actions 를 쓰면 핸드오프 때 `npm ci && npm test` 한 줄 워크플로 추가(폰트 없는 환경에서도 test 는 통과하도록 이미 리포트 처리됨).
 완료 기준: 새 검사가 현재 상태에서 통과 · 일부러 어긴 경우 실패.
 크로스체크: 검사가 오탐 없이 현재 통과하는지 · 일부러 어긴 3가지(raw HEX · 없는 토큰 · window.__)를 잡는지.
