@@ -1226,7 +1226,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 - **한 지면에 여러 변형을 둘 수 있습니다.** 같은 메타포의 변형 여러 개를 한 구성에 놓아 리듬을 만듭니다.
 - **패턴은 어떤 비율에도 맞습니다.** [[typography#zoning|4분할]]처럼 지면을 나누면 한 지면에 여러 메시지를 실을 수 있습니다.
 - **thread의 방향으로 시선을 이끕니다.** 모든 thread가 한 점으로 모이게 놓으면 그 자리의 마크나 메시지로 시선이 갑니다.
-![app-principles]
+![app-principles] {bg-cover}
 
 
 ### Digital {layout=grid-2} {bg-color}
@@ -1245,29 +1245,29 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-social-10] {slide}
 ![app-social-11] {slide}
 ![app-social-12] {slide}
-![app-sns-channel] 3. SNS Channel
-![app-sns-component] 4. Web Component
+![app-sns-channel] {bg-cover} 3. SNS Channel
+![app-sns-component] {bg-cover} 4. Web Component
 
 
 ### Advertisement {layout=grid-3}
 빌보드 · 거리 배너 · 사이니지 등 옥외 광고입니다. 멀리서 짧은 시간에 읽히는 매체이므로 그래픽 패턴 영역을 크게 잡고, 메시지는 헤드라인 한 줄 수준으로 줄입니다. 패턴의 밀도는 보는 거리에 맞추고, 로고의 크기는 [[symbol#scalability]]의 보는 거리 대비 비율로 정합니다. 거리 배너처럼 바닥에 세우거나 기둥에 매다는 세로 매체는 [[graphic-pattern#zoning]]의 예외대로 그래픽 패턴 영역을 하단에 둘 수 있습니다.
-![app-billboard] 1. Billboard
-![app-street-banner] 2. Street Banner
-![app-signage] 3. Signage
+![app-billboard] {bg-cover} 1. Billboard
+![app-street-banner] {bg-cover} 2. Street Banner
+![app-signage] {bg-cover} 3. Signage
 
 
 ### Print {layout=grid-3}
 포스터 · 행택 · 스티커 등 인쇄물입니다. 컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray · Space Black 바탕을 우선하고, Builder Neon 바탕은 제한적으로 사용해 브랜드으로 존재감을 강하게 드러내세요.
-![app-poster] 1. Poster
-![app-hangtag] 2. Hang Tag
-![app-sticker] 3. Sticker Pack
+![app-poster] {bg-cover} {zoom=1.25} 1. Poster
+![app-hangtag] {bg-cover} 2. Hang Tag
+![app-sticker] {bg-cover} 3. Sticker Pack
 
 
 ### Merch {layout=grid-3}
 티셔츠 · 후디 · 캡 · 핀으로 구성된 굿즈 라인입니다. 실크스크린 단색 그래픽을 기본으로 합니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후디는 앞면에 pair를 등비로 블렌드한 패턴([[graphic-unit#vocabulary-formation|차원]])을 올립니다. 
-![app-tee] 1. Oversized Tee
-![app-hoodie] 2. Hoodie
-![app-cap] 3. 5-panel Cap & Pin
+![app-tee] {bg-cover} 1. Oversized Tee
+![app-hoodie] {bg-cover} 2. Hoodie
+![app-cap] {bg-cover} 3. 5-panel Cap & Pin
 
 
 

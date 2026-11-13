@@ -1224,7 +1224,7 @@ Four rules to follow when placing the graphic pattern on a page.
 - **One page can hold several variations.** Place several variations of the same metaphor in one composition to create rhythm.
 - **A pattern fits any proportion.** Divide the page, as in a [[typography#zoning|four-way division]], to carry several messages on one page.
 - **Lead the eye with the direction of the threads.** Converge all threads on a single point to draw the eye to the mark or message placed there.
-![app-principles]
+![app-principles] {bg-cover}
 
 
 ### Digital {layout=grid-2} {bg-color}
@@ -1243,29 +1243,29 @@ Digital applications such as the web magazine · social feed · video thumbnails
 ![app-social-10] {slide}
 ![app-social-11] {slide}
 ![app-social-12] {slide}
-![app-sns-channel] 3. SNS Channel
-![app-sns-component] 4. Web Component
+![app-sns-channel] {bg-cover} 3. SNS Channel
+![app-sns-component] {bg-cover} 4. Web Component
 
 
 ### Advertisement {layout=grid-3}
 Outdoor advertising such as billboards · street banners · signage. Because these media are read from afar and in a short time, give the graphic pattern area generous room and reduce the message to about a single headline. Match the pattern density to the viewing distance, and set the logo size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom, following the exception in [[graphic-pattern#zoning]].
-![app-billboard] 1. Billboard
-![app-street-banner] 2. Street Banner
-![app-signage] 3. Signage
+![app-billboard] {bg-cover} 1. Billboard
+![app-street-banner] {bg-cover} 2. Street Banner
+![app-signage] {bg-cover} 3. Signage
 
 
 ### Print {layout=grid-3}
 Printed matter such as posters · hang tags · stickers. Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
-![app-poster] 1. Poster
-![app-hangtag] 2. Hang Tag
-![app-sticker] 3. Sticker Pack
+![app-poster] {bg-cover} 1. Poster
+![app-hangtag] {bg-cover} 2. Hang Tag
+![app-sticker] {bg-cover} 3. Sticker Pack
 
 
 ### Merch {layout=grid-3}
 A merch line of tees · hoodies · caps · pins. Single-color screen-printed graphics are the default. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
-![app-tee] 1. Oversized Tee
-![app-hoodie] 2. Hoodie
-![app-cap] 3. 5-panel Cap & Pin
+![app-tee] {bg-cover} 1. Oversized Tee
+![app-hoodie] {bg-cover} 2. Hoodie
+![app-cap] {bg-cover} 3. 5-panel Cap & Pin
 
 
 
