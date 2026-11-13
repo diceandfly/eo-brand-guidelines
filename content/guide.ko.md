@@ -1113,7 +1113,7 @@ pattern gutter는 그래픽 패턴 내 유닛과 유닛 사이의 간격입니�
 
 - 그래픽 패턴 영역에 유닛을 정렬하고 나면, 교차하는 유닛들 사이의 우연히 만들어진 shaft와 thread의 라인들을 잘 살펴보세요. 의도치 않은 어긋남이 전체 패턴의 완성도를 해칠 수 있습니다. 가로 유닛의 shaft 라인과 세로 유닛의 thread 라인이 일치하도록, 세로 유닛의 [[graphic-unit#parameters|compression]]과 가로 유닛의 shaft size를 미세 조정합니다. 레이아웃을 완성하는 마지막 작업 순서로 권장합니다.
 ![alignment-dont-1]{dont} 교차하는 유닛의 thread 라인이 흐트러진 패턴
-![alignment-do-1]{do} 교차하는 유닛의 thread 라인이 의도적으로 정리된 패턴
+![alignment-do-1]{do} 교차하는 유닛의 thread 라인이 의도적으로 정렬된 패턴
 ![alignment-do-2]{do} shaft 라인과 thread 라인이 의도적으로 정렬된 패턴
 ![alignment-dont-2]{dont} 라인이 흐트러지거나 어긋남의 의도가 모호한 패턴
 
