@@ -72,18 +72,14 @@ button {
    타이포 5레벨 — 행간 = lh-unit × m, 폰트 = 행간 ÷ p
    --------------------------------------------------------------------- */
 :root {
-  /* 행간 % 토큰(--t-*-p, 예 140%)을 숫자(140)로 바꾸는 자리.
-     삼각함수가 있는 이유: 삼각법 계산이 아니라 CSS 에서 <percentage> 를 <number> 로 바꾸는 유일한 방법입니다.
-     calc() 는 퍼센트로 나눌 수 없고(140% ÷ 1% 도 허용되지 않음), atan2() 는 같은 종류의 두 값을 받아 각도를 돌려주므로
-     tan(atan2(140%, 1%)) = tan(atan(140)) = 140 이 됩니다. 수학적으로 항등식이라 값 손실이 없습니다.
-     "불필요한 삼각함수" 로 보고 지우거나 var(--t-*-p) 로 바꾸면 폰트 크기 선언이 통째로 무효가 됩니다.
-     지원: Chrome 111 · Safari 15.4 · Firefox 118 이상 (이 사이트가 쓰는 color-mix() 와 같은 범위).
-     폰트 크기 = 행간 × 100 ÷ 이 값. 레벨 규칙은 아래 --_p-* 만 읽습니다. */
-  --_p-display: tan(atan2(var(--t-display-p), 1%));
-  --_p-heading: tan(atan2(var(--t-heading-p), 1%));
-  --_p-body: tan(atan2(var(--t-body-p), 1%));
-  --_p-ui: tan(atan2(var(--t-ui-p), 1%));
-  --_p-label: tan(atan2(var(--t-label-p), 1%));
+  /* 행간 비율 토큰(--t-*-p, 숫자 1.4 = 140%)을 백분율 숫자(140)로. 폰트 크기 = 행간 × 100 ÷ 이 값. 레벨 규칙은 아래 --_p-* 만 읽습니다.
+     토큰을 % 로 적고 tan(atan2(p, 1%)) 로 바꾸던 방식은 아이폰(웹킷)에서 틀린 값이 나와(본문 0px · 타이틀 304px) 2026-11-13 숫자 토큰으로 바꿈.
+     % 로 되돌리지 말 것 — public/zz 시험 결과: 크롬 정상, iOS 26 웹킷 실패 */
+  --_p-display: calc(var(--t-display-p) * 100);
+  --_p-heading: calc(var(--t-heading-p) * 100);
+  --_p-body: calc(var(--t-body-p) * 100);
+  --_p-ui: calc(var(--t-ui-p) * 100);
+  --_p-label: calc(var(--t-label-p) * 100);
 }
 .t-display {
   font-family: var(--font-en);

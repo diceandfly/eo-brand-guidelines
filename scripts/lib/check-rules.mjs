@@ -52,7 +52,14 @@ export function checkRules(ROOT, { ok, fail, note }) {
   const globals = code.filter(([, s]) => /window\.__|\(window as any\)\.__/.test(s.replace(/\/\/.*$|\/\*[\s\S]*?\*\//gm, ''))).map(([f]) => f);
   if (globals.length) { bad++; fail(`window.__ 전역 사용: ${globals.join(' · ')} — 문서 이벤트(eo:…)로`); }
 
-  if (!bad) ok(`base.css raw HEX 0 · !important 0 · 참조 토큰 ${refs.length}개 모두 정의됨 · window.__ 0`);
+  // 아이폰(웹킷) 깨짐 방지: 행간 비율 토큰(--t-*-p)은 숫자로, CSS 에 tan(atan2(…)) % → 숫자 변환 금지 (2026-11-13 본문 0px · 타이틀 304px)
+  for (const [f, css] of [['src/styles/tokens.css', tokensCss], ['src/styles/base.css', baseCss], ['public/tools/logo-generator/tokens.css', noCssComments(read('public/tools/logo-generator/tokens.css'))], ['public/tools/logo-generator/tool.css', noCssComments(read('public/tools/logo-generator/tool.css'))]]) {
+    const pct = [...css.matchAll(/(--t-[\w-]+-p)\s*:\s*[^;]*%/g)].map(m => m[1]);
+    if (pct.length) { bad++; fail(`${f} 행간 비율 토큰을 % 로 씀: ${pct.join(' · ')} — 숫자로(140% = 1.4)`); }
+    if (/atan2\(/.test(css)) { bad++; fail(`${f} 에 atan2() — 아이폰(웹킷)에서 틀린 값이 나옴, 숫자 토큰으로`); }
+  }
+
+  if (!bad) ok(`base.css raw HEX 0 · !important 0 · 참조 토큰 ${refs.length}개 모두 정의됨 · window.__ 0 · 행간 비율 숫자 토큰 · atan2 0`);
 
   // 리포트: tokens.css 에 정의됐지만 아무 데서도 안 읽는 토큰 (모바일 -m 은 base.css 가 PC 이름에 끼우므로 짝 이름이 쓰이면 쓰는 것으로 봄)
   const used = new Set([...(tokensCss + baseCss).matchAll(/var\((--[\w-]+)/g), ...codeNoCmt.matchAll(/(--[\w-]+)/g)].map(m => m[1]));

@@ -50,12 +50,12 @@
      A-1 타입
      행간이 먼저입니다.
        행간      = lh-unit × m
-       글자 크기  = 행간 ÷ p              (p = 행간 %, 디자인 툴의 "Line height 150%" 와 같은 뜻)
+       글자 크기  = 행간 ÷ p              (p = 행간 비율, 디자인 툴의 "Line height 150%" 를 1.5 로 — % 로 적지 말 것: 아이폰 웹킷에서 깨짐)
      계산은 tool.css 맨 위 --_* 가 합니다 (가이드 base.css 와 같은 방식). 글자 크기 기준 치수는 em 으로 적습니다.
      ------------------------------------------------------------------ */
   /*
     레벨마다 m · p · ls · w · c 다섯 토큰만 가지며 뜻은 모든 레벨에 같습니다.
-      m   행간 배수      p   행간 %      ls  자간      w   웨이트      c   색 (A-2 시맨틱)
+      m   행간 배수      p   행간 비율(1.5 = 150%)  ls  자간      w   웨이트      c   색 (A-2 시맨틱)
     title  최상단 타이틀 (가로형 시그니처 디스크립터 규격)
     menu   섹션 제목 · 보정 팝업 · 툴팁 제목
     text   행 라벨 · 버튼 · 토글 · 체크 — 같은 크기에서 웨이트만 바꿈
@@ -70,21 +70,21 @@
 
   /* title — 최상단 타이틀 */
   --t-title-m: 1;
-  --t-title-p: 117%;
+  --t-title-p: 1.17;
   --t-title-ls: 0;
   --t-title-w: 400;
   --t-title-c: var(--fg);
 
   /* menu — 섹션 제목 */
   --t-menu-m: 1;
-  --t-menu-p: 150%;
+  --t-menu-p: 1.5;
   --t-menu-ls: 0;
   --t-menu-w: 400;
   --t-menu-c: var(--fg);
 
   /* text — 기본 */
   --t-text-m: 1;
-  --t-text-p: 150%;
+  --t-text-p: 1.5;
   --t-text-ls: 0;
   --t-text-w: 300;
   --t-text-c: var(--fg-soft);
@@ -93,7 +93,7 @@
 
   /* label — 모노 */
   --t-label-m: 1;
-  --t-label-p: 150%;
+  --t-label-p: 1.5;
   --t-label-ls: -0.06em;
   --t-label-w: 400;
   --t-label-c: var(--fg-muted);

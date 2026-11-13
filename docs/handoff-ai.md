@@ -65,6 +65,7 @@ docs/                   file-management.md(사람용 튜토리얼) · logo-gener
 - 아카이브가 없으면 이스터에그는 아무 일도 하지 않음. 로고 생성기와 서체는 아카이브에서도 현재 것을 공유.
 
 ## 6. 런타임 주의점 (실제로 겪은 함정)
+- **행간 비율 토큰(`--t-*-p`)은 숫자(1.4 = 140%)로.** % 로 적고 CSS 에서 `tan(atan2(p, 1%))` 로 숫자로 바꾸던 방식은 아이폰(크롬 포함, 모두 웹킷)에서 본문 0px · 타이틀 300px 대로 깨졌음(데스크탑 크롬의 모바일 흉내로는 안 보임). [7] 이 % 토큰 · atan2 를 막음. 모바일 확인은 실기기(`npm run dev -- --host` → 같은 와이파이에서 맥 IP:포트).
 - **ScrollSmoother 를 smooth 0 으로 만들지 말 것.** 래퍼 고정 · transform · 스크럽 트윈이 안 만들어져 나중에 `smooth()` 로 올려도 네이티브 스크롤과 겹침(덜 부드러움 + 페이지 끝 빈 공간). 시작 단계용으로는 `STARTUP_SMOOTH = 0.01`(motion.ts 1).
 - **#섹션 으로 들어온 페이지**는 스크롤 가드를 `--scroll-guard-hold` 동안 유지(기본 앵커 이동과 도착 트윈이 겹치지 않게).
 - **이미지 사본은 빌드에만.** Figure 는 `import.meta.env.PROD` 에서만 `<picture>`. 개발 서버 화면 ≠ 빌드 화면(이미지 파일만 다름) → 확인은 `npm run preview`. 선택자는 `.fig__frame img`(picture 가 끼므로 `> img` 쓰지 말 것), `.fig__frame picture { display: contents }`.

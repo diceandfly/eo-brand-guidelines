@@ -30,13 +30,12 @@ body {
    타이포 4레벨 (A-1) — 행간 = lh-unit × m, 폰트 = 행간 ÷ p
    --------------------------------------------------------------------- */
 :root {
-  /* 행간 % 토큰(--t-*-p, 예 150%)을 숫자(150)로 바꾸는 자리 — 가이드 base.css 와 같은 방법.
-     calc() 는 퍼센트로 나눌 수 없어 tan(atan2(150%, 1%)) = 150 으로 바꿈 (항등식, 값 손실 없음).
-     "불필요한 삼각함수" 로 보고 지우면 폰트 크기 선언이 통째로 무효가 됩니다. --_*-size 는 font-size 에서만 씀 */
-  --_p-title: tan(atan2(var(--t-title-p), 1%));
-  --_p-menu: tan(atan2(var(--t-menu-p), 1%));
-  --_p-text: tan(atan2(var(--t-text-p), 1%));
-  --_p-label: tan(atan2(var(--t-label-p), 1%));
+  /* 행간 비율 토큰(--t-*-p, 숫자 1.5 = 150%)을 백분율 숫자(150)로 — 가이드 base.css 와 같은 방법.
+     % 토큰 + tan(atan2(p, 1%)) 는 아이폰(웹킷)에서 틀린 값이 나와 2026-11-13 숫자 토큰으로 바꿈. --_*-size 는 font-size 에서만 씀 */
+  --_p-title: calc(var(--t-title-p) * 100);
+  --_p-menu: calc(var(--t-menu-p) * 100);
+  --_p-text: calc(var(--t-text-p) * 100);
+  --_p-label: calc(var(--t-label-p) * 100);
   --_title-lh: calc(var(--lh-unit) * var(--t-title-m));
   --_menu-lh: calc(var(--lh-unit) * var(--t-menu-m));
   --_text-lh: calc(var(--lh-unit) * var(--t-text-m));
