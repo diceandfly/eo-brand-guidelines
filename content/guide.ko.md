@@ -1239,10 +1239,10 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-social-8] {slide}
 ![app-social-9] {slide}
 ![app-social-10] {slide}
+![app-social-11] {slide}
+![app-social-12] {slide}
+![app-social-13] {slide}
 ![app-sns-channel] 3. SNS Channel
-![app-feed-neon] 4. Text Post — Builder Neon
-![app-feed-blue] 5. Text Post — Day Blue
-![app-feed-green] 6. Text Post — Bay Green
 
 
 ### Advertisement {layout=grid-3}
