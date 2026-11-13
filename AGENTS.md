@@ -28,6 +28,7 @@
 | E14 | 2026-11-13 | Typography › Reference Scale 자간 값의 `[Solid Gray]` · `[Space Black]` | 대괄호 문법이라 이름 없이 색 칩만 보임 | 가독성을 위해 의도적으로 칩만 둠 |
 | E15 | 2026-11-13 | Graphic Unit › Pair › 파동(`pair-pulse`) | 본문 "중심대칭 또는 좌우대칭" ↔ 장표는 좌우대칭 하나 | 장표는 경우 하나를 보여 줌. 본문 유지 |
 | E16 | 2026-11-13 | Applications 페이지 본문(예: Print "Air White 바탕 기본") | 다른 페이지 · 장표와 어긋남 | 디자이너가 페이지 전체를 다시 쓸 예정 — 그 전까지 지적 · 수정 보류 |
+| E17 | 2026-11-13 | 참조 링크 "유닛 컬러" — Graphic Unit › Shaft › 다양성 → Graphic Pattern › Color, Graphic Pattern › Color → Graphic Unit › Color | 같은 라벨이 서로 반대 페이지로 감 | 문맥마다 가리키는 내용이 다름(다양성 = 여러 색을 쓰는 조합 규칙, Pattern › Color = 색의 뜻). 그대로 둠 |
 
 결정 대기 중인 항목은 `research/content-check/findings.csv`(로컬 전용, git 제외)에 있습니다 — 여기 오르기 전까지는 예외가 아닙니다.
 

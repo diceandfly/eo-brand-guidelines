@@ -222,13 +222,13 @@ The EO symbol is designed and tested to work across a range of sizes. Every size
 - Optimal range — A height of 40-70px (about 8-15mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/33 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
 - Recommended maximum size — A height of 70px (about 15mm, 1/33 of the viewing distance), the top of the optimal range. We recommend not using the symbol larger than this. Sizes above it are a range prepared for cases that still need a larger symbol.
 - Minimum size — A height of 20px on screen (about 4mm, 1/125 of the viewing distance) and 4mm in print. Below this, the threads of the E block blur together, so ask the EO design team to review.
-- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Never use it larger than this in any case. Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#donts|graphic pattern]] instead of the symbol.
+- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Never use it larger than this in any case. Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#in-use|graphic pattern]] instead of the symbol.
 ![scalability] {zoom=1.05}
 
 
 ### + Usage
 #### Placement
-The EO symbol is a strong but simple shape. On typical pages, we therefore recommend using it as a sign-off in one of the four corners of the content area. In a video thumbnail that invites the click, the main content should be the protagonist; on a poster that catches the eye, the [[graphic-pattern#donts|graphic pattern]] should be. The symbol's presence should step back to let them lead.
+The EO symbol is a strong but simple shape. On typical pages, we therefore recommend using it as a sign-off in one of the four corners of the content area. In a video thumbnail that invites the click, the main content should be the protagonist; on a poster that catches the eye, the [[graphic-pattern#in-use|graphic pattern]] should be. The symbol's presence should step back to let them lead.
 
 As a sign-off, place the symbol in the corner farthest from the person or graphic pattern that is the protagonist of the layout, with appropriate space from the other visual elements around it. This keeps symbol placement simple and consistent, while leaving enough flexibility to accommodate a dynamic graphic system.
 ![usage-placement]
@@ -1209,7 +1209,7 @@ The following are typical cases where the pattern loses its role as protagonist.
 ## Applications
 
 ### + Principles
-Four rules to follow when placing the [[graphic-pattern#donts|graphic pattern]] on a page.
+Four rules to follow when placing the graphic pattern on a page.
 
 - **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through density; keep posters seen up close at medium complexity. This is a general tendency, however: designers use their judgment and put visual quality first.
 - **One page can hold several variations.** Place several variations of the same motif in one composition to create rhythm.
