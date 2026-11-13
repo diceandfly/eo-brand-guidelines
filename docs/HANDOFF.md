@@ -6,7 +6,7 @@ EO 리브랜딩의 웹 브랜드 가이드라인과 로고 생성기입니다. �
 1. 저장소를 받고 `public/fonts/` 에 Founders Grotesk 파일 5개를 넣습니다(목록은 [public/fonts/README.md](../public/fonts/README.md)).
 2. `npm install` → `npm run fonts:ko`(한글 서체, 처음 한 번).
 3. `npm run dev` → 브라우저에서 http://localhost:4321
-4. 배포용 정적 사이트: `npm run build` → `dist/` 폴더. 배포 전에 `npm run preview` 로 한 번 확인하세요(빌드에서만 이미지가 가벼운 사본으로 바뀝니다).
+4. 배포용 정적 사이트: `npm run build` → `dist/` 폴더. 배포 전에 `npm run preview` 로 한 번 확인하세요(빌드에서만 이미지가 가벼운 사본으로 바뀝니다). 배포 서버에서는 `/fonts/*` · `/assets/*` 에 긴 캐시(`Cache-Control: public, max-age=31536000, immutable`)를 걸어 주세요 — 페이지를 옮길 때마다 서체를 다시 확인하지 않아 폰에서 글자 깜빡임이 줄어듭니다.
 
 ## 2. 무엇을 어디서 고치나
 | 바꾸고 싶은 것 | 파일 |

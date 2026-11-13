@@ -331,6 +331,9 @@ html.nav-open .topbar__menu-close {
 html.js .main {
   animation: page-in var(--page-in-dur) var(--page-in-ease) both;
 }
+html.fonts-wait .main {
+  animation-play-state: paused; /* 웹폰트 준비 전엔 첫 장면(투명)에서 대기 — Layout.astro 가 fonts.ready 또는 --page-in-font-wait 뒤 풀어 줌 */
+}
 @media (prefers-reduced-motion: reduce) {
   html.js .main {
     animation: none;

@@ -19,7 +19,22 @@ const ui = UI_TEXT[lang];
     <title>{title} - {ui.siteName}</title>
     <meta name="robots" content="noindex" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <!-- 웹폰트(font-display: block)가 늦게 오면 글자가 빈 칸이었다가 나타나 깜빡여 보임(폰 · 느린 연결).
+         폰트가 준비될 때까지 본문 들어오기(page-in)를 첫 장면에서 멈춰 두었다가 함께 시작. 최대 --page-in-font-wait 까지만 기다림 -->
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js', 'fonts-wait');
+        var go = function () { root.classList.remove('fonts-wait'); };
+        document.addEventListener('DOMContentLoaded', function () {
+          var wait = parseFloat(getComputedStyle(root).getPropertyValue('--page-in-font-wait'));
+          setTimeout(go, wait >= 0 ? wait : 1000);
+          // 쓰이는 폰트는 첫 레이아웃 때 로딩 목록에 오르므로, 한 장면이 그려진 뒤(두 프레임) fonts.ready 를 봄
+          if (document.fonts && document.fonts.ready) requestAnimationFrame(function () { requestAnimationFrame(function () { document.fonts.ready.then(go); }); });
+          else go();
+        });
+      })();
+    </script>
     <!-- 스무스 스크롤(motion.ts, GSAP)이 준비되기 전 잠깐은 브라우저 기본 스크롤이라 휠이 튄다.
          그 사이에는 html.scroll-hold(overflow: hidden)로 페이지 자체를 못 굴리게 하고, 휠·터치·키 이벤트도 막아 둔다.
          (이벤트 막기만으로는 부족: 직전 페이지에서 시작된 관성 스크롤(트랙패드·매직 마우스)은 취소할 수 없는 이벤트로 들어온다)

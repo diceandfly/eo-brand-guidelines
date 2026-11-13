@@ -70,6 +70,7 @@ docs/                   file-management.md(사람용 튜토리얼) · logo-gener
 - **ScrollSmoother 를 smooth 0 으로 만들지 말 것.** 래퍼 고정 · transform · 스크럽 트윈이 안 만들어져 나중에 `smooth()` 로 올려도 네이티브 스크롤과 겹침(덜 부드러움 + 페이지 끝 빈 공간). 시작 단계용으로는 `STARTUP_SMOOTH = 0.01`(motion.ts 1).
 - **#섹션 으로 들어온 페이지**는 스크롤 가드를 `--scroll-guard-hold` 동안 유지(기본 앵커 이동과 도착 트윈이 겹치지 않게).
 - **이미지 사본은 빌드에만.** Figure 는 `import.meta.env.PROD` 에서만 `<picture>`. 개발 서버 화면 ≠ 빌드 화면(이미지 파일만 다름) → 확인은 `npm run preview`. 선택자는 `.fig__frame img`(picture 가 끼므로 `> img` 쓰지 말 것), `.fig__frame picture { display: contents }`.
+- **폰트 대기.** 웹폰트는 `font-display: block`. 본문 page-in 은 `html.fonts-wait` 동안 첫 장면(투명)에서 멈춤 — Layout.astro 인라인 스크립트가 DOMContentLoaded → 두 프레임 → `document.fonts.ready` 또는 `--page-in-font-wait`(1000ms) 뒤 해제. dev · preview 서버는 `/fonts/*` 가 no-cache(매 페이지 재검증)라 폰에서 대기가 보일 수 있음 — 배포 서버는 긴 캐시.
 - **헤드리스/숨김 브라우저에서는 rAF · ResizeObserver 가 멈춤.** 스크롤 · 애니메이션 · 라이트박스 열림 상태를 측정할 때 값이 고정돼 보이면 환경 탓을 먼저 의심하고 보이는 실제 브라우저 창에서 확인.
 - **런타임 회귀 점검 고정 항목**: 로드 뒤 `#smooth-wrapper` 가 position fixed, 로드 2초 뒤 끝까지 스크롤해 `.next` 아래 0–200px(데스크탑 · 500px 리사이즈), 콘솔 오류 0.
 
