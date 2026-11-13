@@ -9,8 +9,8 @@ import { imageEdge } from '../lib/imageTone';
 import { TOKENS } from '../lib/content';
 import { tokenHex, tokenNumber } from '../lib/tokens';
 
-interface Props { item: ImageItem; ratio: string; zoom?: number; label?: string; eager?: boolean; toneZoom?: number; }   // zoom: 섹션 배율 (이미지 태그가 우선), label: 섹션 이름, eager: 첫 화면 이미지 → 바로 로드, toneZoom: 톤 판정용 실제 배율 (Section 이 계산)
-const { item, ratio, label, eager = false, toneZoom = 1 } = Astro.props;
+interface Props { item: ImageItem; ratio: string; zoom?: number; label?: string; eager?: boolean; toneZoom?: number; wide?: boolean; }   // zoom: 섹션 배율 (이미지 태그가 우선), label: 섹션 이름, eager: 첫 화면 이미지 → 바로 로드, toneZoom: 톤 판정용 실제 배율 (Section 이 계산), wide: wide 레이아웃 장표 → 모바일 확대 보기에서 90° 돌려 꽉 채움 (data-lb-rotate)
+const { item, ratio, label, eager = false, toneZoom = 1, wide = false } = Astro.props;
 const ui = UI_TEXT[langFromPath(Astro.url.pathname)];
 // 대체 텍스트: 캡션(태그·HTML 엔티티를 벗긴 글자) > 섹션 이름 > 이미지 이름
 const plain = (html: string) => html.replace(/<[^>]+>/g, '').replace(/&(amp|lt|gt|quot|#39|#x27);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", '#x27': "'" } as Record<string, string>)[e]);
@@ -25,7 +25,7 @@ const tone = info?.tone;
 <figure class:list={['fig', { 'fig--dodont': item.badge }]} style={`--ratio: ${ratio}${(item.zoom ?? Astro.props.zoom) !== undefined ? `; --img-zoom: ${item.zoom ?? Astro.props.zoom}` : ''}`}>
   <div class="fig__frame" data-tone={tone}>
     {item.src
-      ? <img src={item.src} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : undefined} role="button" tabindex="0" aria-haspopup="dialog" data-lb-bg={info?.edge ?? undefined} data-lb-fill={item.bg === true ? (info?.edge ?? '') : item.bg} data-lb-cover={item.cover ? '' : undefined} />
+      ? <img src={item.src} alt={alt} loading={eager ? 'eager' : 'lazy'} fetchpriority={eager ? 'high' : undefined} role="button" tabindex="0" aria-haspopup="dialog" data-lb-bg={info?.edge ?? undefined} data-lb-fill={item.bg === true ? (info?.edge ?? '') : item.bg} data-lb-cover={item.cover ? '' : undefined} data-lb-rotate={wide ? '' : undefined} />
       : <div class="fig__placeholder t-label">
           <span>assets/{item.path}</span>
           <span>{ratioLabel}</span>

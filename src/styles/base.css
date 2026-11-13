@@ -1379,6 +1379,34 @@ html.js .main {
   .lightbox.has-edge {
     background: var(--lightbox-bg); /* 모바일은 가장자리 색도 쓰지 않고 기본 막(검정) */
   }
+  /* wide 레이아웃 장표(data-lb-rotate → .is-rotated): 옆으로 미는 창 대신 화면을 꽉 채움(cover — 비율이 다르면 넘치는 쪽이 잘림).
+     세로 화면에서는 창을 --lightbox-m-rotate 만큼 돌려 화면 세로 = 장표 가로 → 폰을 옆으로 돌려 봄. 가로 화면에서는 돌리지 않고 그대로 꽉 채움 */
+  .lightbox.is-rotated .lightbox__pan {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .lightbox.is-rotated .lightbox__crop {
+    width: 100%;
+  }
+  .lightbox.is-rotated .lightbox__crop .lightbox__img {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    object-fit: cover;
+  }
+}
+@media (max-width: 899px) and (orientation: portrait) { /* 모바일 경계 = src/lib/tokens.ts MOBILE_MAX (npm test [7] 이 대조) */
+  .lightbox.is-rotated .lightbox__pan {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    width: 100dvh; /* 돌린 뒤 화면 세로를 채울 길이 = 장표 가로 (dvh 를 모르는 브라우저는 위 vh) */
+    height: 100vw;
+    translate: -50% -50%;
+    rotate: var(--lightbox-m-rotate);
+  }
 }
 /* 거울 확장 — 이미지와 같은 크기의 상자(motion.ts 가 크기를 맞춤)를 중심으로, 8방향에 뒤집은 사본을 이어 붙임. 사본은 --lightbox-mirror-overlap 만큼 이미지 밑으로 겹쳐 틈이 없게 (이미지가 DOM 에서 뒤라 위에 그려짐).
    사본마다 이미지에 닿은 쪽부터 --lightbox-mirror-hold 까지는 그대로, --lightbox-mirror-fade 에서 완전히 사라지는 마스크 */

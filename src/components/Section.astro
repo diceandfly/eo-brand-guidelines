@@ -38,7 +38,7 @@ const stacked = s.layout === 'wide' ? s.items : s.items.slice(0, 1);
   {!isGrid && stacked.length > 0 && (
     <div class="sec__media">
       {stacked.map((it, i) => it.kind === 'image'
-        ? <Figure item={it} ratio={ratio} zoom={s.zoom} label={s.subhead ?? s.head} eager={eager(i)} toneZoom={toneZoom(it)} />
+        ? <Figure item={it} ratio={ratio} zoom={s.zoom} label={s.subhead ?? s.head} eager={eager(i)} toneZoom={toneZoom(it)} wide={s.layout === 'wide'} />
         : <Swatch item={it} ratio={s.ratio} />)}
     </div>
   )}

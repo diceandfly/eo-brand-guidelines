@@ -418,7 +418,7 @@ const blockScroll = (e: Event) => {
 const behind = [document.getElementById('smooth-wrapper'), document.querySelector('.sidebar'), document.querySelector('.topbar')].filter((el): el is HTMLElement => !!el);
 
   let opener: HTMLElement | null = null;   // 닫을 때 포커스를 돌려줄 요소
-  const open = (src: string, alt: string, strike = false, edge: string | null = null, fill: string | undefined = undefined, cover = false) => {   // fill: {bg-color} 이미지 — 거울 확장 없이 이 색으로 배경을 채움 ('' 이면 색 없음 → 기본 막). cover: {bg-cover} — 화면에 꽉 채움
+  const open = (src: string, alt: string, strike = false, edge: string | null = null, fill: string | undefined = undefined, cover = false, rotate = false) => {   // fill: {bg-color} 이미지 — 거울 확장 없이 이 색으로 배경을 채움 ('' 이면 색 없음 → 기본 막). cover: {bg-cover} — 화면에 꽉 채움. rotate: wide 레이아웃 장표 — 모바일에서 90° 돌려 화면을 꽉 채움(base.css .is-rotated)
     if (opened) return;
     opened = true;
     opener = document.activeElement as HTMLElement | null;
@@ -429,6 +429,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     if (fill) box.style.setProperty('--lightbox-fill', fill); else box.style.removeProperty('--lightbox-fill');
     box.classList.toggle('has-fill', !!fill && !cover);
     box.classList.toggle('has-cover', cover && !isMobile());         // 모바일은 옆으로 미는 기본 보기 유지
+    box.classList.toggle('is-rotated', rotate);                     // 모바일에서만 효과(CSS @media). 세로 화면 = 90° 돌려 꽉 채움, 가로 화면 = 그대로 꽉 채움
     const mirror = useMirror && !isMobile() && fill === undefined && !cover;   // 모바일 · {bg-color} · {bg-cover} 이미지는 거울 확장 없음
     box.classList.toggle('has-mirror', mirror);
     if (mirror) for (const im of mirrorImgs) im.src = src;      // 거울 사본 8장 (같은 파일이라 캐시에서 옴)
@@ -461,6 +462,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
         for (const el of behind) el.removeAttribute('inert');
         boxImg.removeAttribute('src');
         for (const im of mirrorImgs) im.removeAttribute('src');
+        box.classList.remove('is-rotated');
         smoother?.paused(false);
         document.documentElement.classList.remove('lightbox-open');
         for (const t of SCROLL_EVENTS) window.removeEventListener(t, blockScroll);
@@ -470,7 +472,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     });
   };
 
-  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset);
+  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset, 'lbRotate' in img.dataset);
   document.addEventListener('click', e => {
     const img = (e.target as HTMLElement).closest('.fig__frame > img') as HTMLImageElement | null;
     if (img) { e.preventDefault(); openFrom(img); }

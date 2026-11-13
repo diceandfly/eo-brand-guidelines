@@ -482,6 +482,7 @@
   --lightbox-mirror-overlap: 1px; /* 사본을 이미지 밑으로 이만큼 밀어 넣음. 이미지 크기가 소수점 px 일 때 경계에 1px 틈이 비치는 것을 막음 */
   --lightbox-mirror-blur: 0px; /* 사본 블러 반경. 0 = 선명 (기본). 켜면 사본을 이 값만큼 더 이미지 밑으로 밀어 넣어 흐린 가장자리가 경계에 비치지 않음 */
   --lightbox-m-ratio: 2 / 3; /* 모바일 확대 보기 창의 비율 (가로 / 세로). 이 창 안에 원본의 가운데 4:3(--ratio-dodont)만 잘라 넣고 옆으로 밀어 봄 */
+  --lightbox-m-rotate: 90deg; /* 모바일 세로 화면에서 wide 레이아웃 장표를 확대할 때 돌리는 각도 — 화면을 꽉 채우고 폰을 옆으로 돌려 봄 (90deg = 장표 위쪽이 화면 오른쪽) */
   /* 색 */
   --lightbox-bg: color-mix(in srgb, var(--c-space-black), transparent 8%); /* 뒤를 덮는 막 */
   --lightbox-bg-mix: 100%; /* 가장자리 색 배경에 --lightbox-bg-mix-c 를 섞는 비율. 100% = 항상 검정 (거울 띠가 검정으로 사라지도록 통일), 0% = 이미지 가장자리 색 그대로 */
