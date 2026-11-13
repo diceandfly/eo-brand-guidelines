@@ -79,6 +79,7 @@ B 착수 조건: A 뒤에도 잠금 > 300ms 이거나 사용자가 튐을 재현
 
 ## TD-7 접근성 소묶음 — 작음 (2026-11-13 재검증에서 편입)
 - 마크업만: Sidebar.astro 챕터 토글 `<a role="button" aria-current="true">` · 언어 표시 `aria-current="true"` 를 의미에 맞게(토글은 aria-expanded, 현재 언어는 aria-current="page" 또는 표시만).
+  → 실행(2026-11-13): 챕터 토글의 aria-current 제거(상태는 aria-expanded, 현재 위치는 안의 페이지 링크 aria-current="page" 가 알림 — 게다가 챕터를 옮겨도 갱신되지 않던 값), role="button" 계약대로 Space 키로도 접고 폄. 언어 표시 `<span aria-current="true">` 는 그대로 — aria-current 는 모든 요소에 쓸 수 있고 "이 묶음에서 지금 것" 뜻이 맞음(링크가 아니라 page 는 부적절).
 - 화면이 달라지는 것은 사용자 결정 후: 검색 입력 · 컬러 값 버튼의 `:focus-visible` 표시(지금 outline: none, 키보드 포커스에만 보임), 라이트박스 닫기 버튼(지금 Esc · 클릭만).
 완료 기준: dist 차이 = 해당 aria 속성뿐 · 키보드로 목차 · 검색 · 라이트박스 순회.
 크로스체크: 낭독기 의미(aria) · 키보드 순회.

@@ -18,8 +18,9 @@ const archived = process.env[ARCHIVE_ENV];   // 핸드오프 아카이브 빌드
       const active = current?.chapterSlug === ch.slug;
       return (
         <li class:list={['nav__chapter', { 'is-active': active }]}>
-          <!-- 챕터는 이동하지 않고 페이지 목록만 접고 폅니다 (JS). 페이지가 하나뿐인 챕터도 같은 동작 (경험 일관). JS 가 없으면 첫 페이지로 가는 링크 -->
-          <a class="nav__chapter-link" href={ch.subs[0]?.url ?? `/${lang}`} aria-current={active ? 'true' : undefined} aria-expanded={active ? 'true' : 'false'} data-chapter-toggle role="button">
+          <!-- 챕터는 이동하지 않고 페이지 목록만 접고 폅니다 (JS). 페이지가 하나뿐인 챕터도 같은 동작 (경험 일관). JS 가 없으면 첫 페이지로 가는 링크.
+               접고 펴는 버튼이라 상태는 aria-expanded 로만 알림 — 현재 위치는 안의 페이지 링크(aria-current="page")가 알림 -->
+          <a class="nav__chapter-link" href={ch.subs[0]?.url ?? `/${lang}`} aria-expanded={active ? 'true' : 'false'} data-chapter-toggle role="button">
             <span class="nav__num">{ch.num}</span><span>{ch.name}</span>
           </a>
           <!-- 접고 펴는 묶음(nav__fold). 모든 목록을 미리 그려 두고 활성 쪽만 열어 둡니다. 클릭하면 아래 스크립트가 슬라이드로 전환 -->
@@ -104,6 +105,12 @@ const archived = process.env[ARCHIVE_ENV];   // 핸드오프 아카이브 빌드
     sidebar.querySelectorAll('.nav__chapter.is-active, .nav__sub.is-active').forEach(el => el.classList.remove('is-active'));
     chapter?.classList.add('is-active');
     sub?.classList.add('is-active');
+  });
+
+  // role="button" 인 챕터 토글은 Space 로도 눌림 (링크는 Enter 만 기본 동작)
+  sidebar?.addEventListener('keydown', e => {
+    const a = (e.target as HTMLElement).closest?.<HTMLAnchorElement>('[data-chapter-toggle]');
+    if (a && e.key === ' ') { e.preventDefault(); a.click(); }
   });
 
   // 목록 스크롤: 페이지를 옮겨도 목록의 스크롤 위치를 유지하고, 활성 항목이 페이드에 걸리면 보이는 곳까지만 스크롤.
