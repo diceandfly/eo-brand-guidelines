@@ -87,6 +87,10 @@ const ui = UI_TEXT[lang];
 
     <!-- 이미지 확대 보기. 클릭하면 열리고, 아무 곳이나 클릭하거나 Esc 로 닫힘 -->
     <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label={ui.lightbox} tabindex="-1">
+      <!-- 모바일: 목차 버튼(햄버거) 자리에 × — 누르면 닫힘(라이트박스 어디를 눌러도 닫히므로 클릭은 그대로 위로 전달). PC 에서는 숨김 -->
+      <button class="lightbox__close" type="button" aria-label={ui.lightboxClose}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" /></svg>
+      </button>
       <!-- 거울 확장: 이미지를 상하좌우·대각으로 뒤집어 이어 붙이고, 이미지에 닿은 띠만 보이게 그라데이션으로 가림 (motion.ts 3). 꼭짓점은 세로·가로 마스크를 겹쳐 씀 -->
       <div class="lightbox__mirror" aria-hidden="true">
         <div class="lb-m lb-m--l"><img alt="" /></div>

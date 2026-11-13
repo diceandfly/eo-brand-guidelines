@@ -252,6 +252,24 @@ html.nav-open .topbar__menu-open {
 html.nav-open .topbar__menu-close {
   display: block;
 }
+/* 확대 보기 닫기 × — 모바일에서만, 목차 버튼과 같은 자리 · 크기 · 선 굵기 (아래 @media) */
+.lightbox__close {
+  display: none;
+  position: fixed;
+  top: calc(var(--topbar-menu-inset) + env(safe-area-inset-top, 0px));
+  right: calc(var(--page-margin-m) * (1 - var(--topbar-menu-pull)) + env(safe-area-inset-right, 0px));
+  z-index: 1; /* 라이트박스 안에서 이미지 · 창 위 */
+  width: var(--topbar-menu-size);
+  height: var(--topbar-menu-size);
+  place-items: center;
+  color: var(--fg);
+  background: var(--topbar-menu-bg);
+}
+.lightbox__close svg {
+  stroke-width: var(--topbar-menu-stroke);
+  width: var(--topbar-menu-icon);
+  height: var(--topbar-menu-icon);
+}
 
 .sidebar {
   position: fixed;
@@ -1382,6 +1400,16 @@ html.js .main {
   }
   .lightbox.has-edge {
     background: var(--lightbox-bg); /* 모바일은 가장자리 색도 쓰지 않고 기본 막(검정) */
+  }
+  .lightbox__close {
+    display: grid; /* 모바일: 햄버거 자리에 × */
+  }
+  .lightbox__pan {
+    overscroll-behavior: contain; /* 창 안 밀기가 끝에 닿아도 뒤 페이지로 넘어가지 않게 */
+    touch-action: pan-x; /* 창 안에서는 옆으로 밀기만 — 세로 밀기로 뒤 페이지가 스크롤되지 않게 */
+  }
+  html.lightbox-open {
+    overflow: hidden; /* 모바일(스무스 스크롤 없음): 확대 보기가 열린 동안 페이지 세로 스크롤 정지 */
   }
 }
 /* 거울 확장 — 이미지와 같은 크기의 상자(motion.ts 가 크기를 맞춤)를 중심으로, 8방향에 뒤집은 사본을 이어 붙임. 사본은 --lightbox-mirror-overlap 만큼 이미지 밑으로 겹쳐 틈이 없게 (이미지가 DOM 에서 뒤라 위에 그려짐).
