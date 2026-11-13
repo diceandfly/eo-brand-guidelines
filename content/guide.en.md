@@ -365,7 +365,7 @@ The signature also needs space around it, on the same principle as the EO symbol
 
 ### Signature
 #### + Scalability
-As in the Symbol section, sizes on this page are given as the symbol height on a 16-inch Mac display (about 5px/mm) viewed from 500mm. On other media, convert using the ratio in parentheses (symbol height relative to viewing distance).
+As on the Symbol page, sizes on this page are given as the symbol height on a 16-inch Mac display (about 5px/mm) viewed from 500mm. On other media, convert using the ratio in parentheses (symbol height relative to viewing distance).
 
 The smaller the signature is seen, the more the symbol and descriptor read as a single mass; the larger it is seen, the more each letter of the descriptor comes into focus. The form therefore depends on the visible size, and the threshold is a symbol height of 10mm (50px, 1/50).
 
@@ -805,7 +805,7 @@ Day Blue and Bay Green are cool tones drawn from the nature of the Bay Area. Day
 
 ### Color
 #### EO Palette {layout=grid-4}
-The EO palette consists of Builder Neon · Day Blue · Bay Green and four neutral colors that support them. Solid Gray and Medium Gray carry the the neutral stance of a media brand: use the darker one as a background color and the lighter one for graphic elements. Space Black and Air White are the foundation for backgrounds and text.
+The EO palette consists of Builder Neon · Day Blue · Bay Green and four neutral colors that support them. Solid Gray and Medium Gray carry the neutral stance of a media brand: use the darker one as a background color and the lighter one for graphic elements. Space Black and Air White are the foundation for backgrounds and text.
 
 Each color is specified in HEX · RGB for screen and in CMYK · Pantone for print. Use the color mode that matches the medium. In print, Air White can be left as unprinted white paper.
 [swatch] Builder Neon | #F9EE3A | R249 G238 B58 | C5 M0 Y95 K0 | PANTONE 3945 C
