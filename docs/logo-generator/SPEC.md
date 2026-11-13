@@ -49,7 +49,7 @@
 | Desktop 27″ | 70cm | 4.28 px/mm (2560 × 1440) | 12 | Video 16:9 · Website(7) |
 | A4 document | 40cm | 300dpi | 10 | — |
 | A2 poster | 120cm | 150dpi | 7 | — |
-| Billboard 48 × 14ft | 40m | 20dpi | 4 | — |
+| Billboard 48 × 14ft | 40m | 20dpi | 5 | — |
 
 - 콘텐츠에 처음 값이 있으면(Website 7) 그 값, 없으면 매체 값.
 

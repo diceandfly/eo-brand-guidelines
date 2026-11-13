@@ -342,7 +342,7 @@ const MEDIA = {   // 출력 기준 — 화면: 그 매체의 표준 px/mm · 인
   'desktop-27': { dist: 700, unit: 'px', pxmm: 2560 / 597.7, vis: 12, contents: [['video', 'Video 16:9'], ['web', 'Website', 7]] },   // Desktop 27″ (화면 597.7 × 336.2mm, QHD 100% · 4K 150% 와 같은 2560 × 1440 · 4.28px/mm) · 70cm
   'a4': { dist: 400, unit: 'mm', dpi: 300, vis: 10 },   // A4 document (210 × 297mm)   // 인쇄 매체 dpi = Export 의 dpi 버튼 처음 선택 (A4 300 · A2 150 · Billboard 20)
   'a2': { dist: 1200, unit: 'mm', dpi: 150, vis: 7 },   // A2 poster (420 × 594mm), 일반 인쇄 — 정면 = 갤러리 기준 대각선(727mm)의 1.5-2배 ≈ 1.2m · 지나가며 2.4m (같은 로고가 4mm 로 보이는 거리)
-  'billboard': { dist: 40000, unit: 'mm', dpi: 20, vis: 4 },   // Billboard 48 × 14ft — 처음 값 4mm = 40m 에서 320mm (보드 높이의 약 7.5%). 실물 크기 출력 10-20dpi. 상황은 일반적인 하나만 (먼 거리는 로고가 가이드보다 커져 다루지 않음)
+  'billboard': { dist: 40000, unit: 'mm', dpi: 20, vis: 5 },   // Billboard 48 × 14ft — 처음 값 5mm = 40m 에서 400mm (보드 높이의 약 9.4%, 2026-11-13 4 → 5). 실물 크기 출력 10-20dpi. 상황은 일반적인 하나만 (먼 거리는 로고가 가이드보다 커져 다루지 않음)
 };
 const medium = () => MEDIA[$('distPreset').value];
 const DPI_OPTS = [20, 72, 150, 300];   // 인쇄 매체 PNG 해상도 버튼 — 20 빌보드 · 72 배너 · 사인 · 150 포스터 · 300 손에 드는 인쇄 (그 이상은 파일만 커짐)
