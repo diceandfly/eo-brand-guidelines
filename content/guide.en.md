@@ -151,14 +151,14 @@ The EO Brand Team
 ## Legal Brand Guidelines {toc=none}
 
 ### Legal Brand Guidelines
-EO · the EO monogram · the block symbol · "Build Anyway" · "Entrepreneur Onwards" and other trademarks owned by EO Studio (hereafter the **EO Logos**), together with the brand's distinctive aesthetic features such as the symbol · graphic units · patterns · EO's look and feel (hereafter the Brand Assets), are the exclusive property of EO Studio. Except as permitted here, any use of the EO Logos or Brand Assets requires the prior permission of EO Studio.
+EO · the EO symbol · the signature · the sub symbol · "Build Anyway" · "Entrepreneur Onwards" and other trademarks owned by EO Studio (hereafter the **EO Logos**), together with the brand's distinctive aesthetic features such as graphic units · patterns · EO's look and feel (hereafter the Brand Assets), are the exclusive property of EO Studio. Except as permitted here, any use of the EO Logos or Brand Assets requires the prior permission of EO Studio.
 
 ::: split
 ### Do's
 - Always follow these brand guidelines when using the EO Logos and Brand Assets.
 - You may use the EO Logos to indicate that you have appeared in EO content or taken part in an EO program. Do not, however, give the impression that EO endorses or sponsors your product or service.
 - When citing EO videos and articles, credit the source clearly as "EO" and provide a link to the original.
-- Use the EO Logos and Brand Assets only as provided in the original files, unaltered, and only within the approved color pairings.
+- Use the EO Logos and Brand Assets only as provided in the original files, unaltered, and only within the approved color combinations.
 
 
 ### Don'ts
@@ -245,7 +245,7 @@ When using the symbol for display, **do not raise its visual hierarchy simply by
 
 ### Symbol
 #### + Color{layout=grid-3} {zoom=1.6}
-The EO symbol has six basic color pairings. **Always render the symbol in a single color,** and when you are unsure of the background color, use one of the following.
+The EO symbol has six basic color combinations. **Always render the symbol in a single color,** and when you are unsure of the background color, use one of the following.
 ![color-1] 1. Space Black on Builder Neon
 ![color-2] 2. Air White on Space Black
 ![color-3] 3. Air White on Solid Gray
@@ -425,7 +425,7 @@ If you are unsure, first check whether the deliverable truly needs the company n
 
 ### Signature
 #### + Color {layout=grid-2}
-The signature uses four of the six color pairings of the EO symbol. **Always render the symbol and the type in the same color.**
+The signature uses four of the six color combinations of the EO symbol. **Always render the symbol and the type in the same color.**
 ![color-1] {zoom=1.05} 1. Air White on Space Black
 ![color-2] {zoom=1.05} 2. Air White on Solid Gray
 ![color-3] {zoom=1.6} 3. Space Black on Air White
@@ -1085,7 +1085,7 @@ When drafting graphics for a new metaphor in the EO Graphic Builder workspace, y
 
 ### Grammar {layout=grid-2}
 #### + Pattern Margin
-Set the pattern margin to 0 so the pattern fills 100% of the graphic pattern area on the page. Depending on the nuance of the metaphor, the pattern can extend past the page margin to the edge of the page. Placing a stretch of tight [[graphic-unit#parameters|compression]] in a unit against the edge of the page creates the illusion that the unit enters from, or reaches beyond, the page, adding visual interest. As an exception, a standalone graphic pattern application with no content area can take a margin similar to the pattern gutter.
+Set the pattern margin to 0 so the pattern fills 100% of the graphic pattern area on the page. Depending on the nuance of the metaphor, the pattern can extend past the page margin to the edge of the page. Placing a stretch of tight [[graphic-unit#parameters|compression]] in a unit against the edge of the page creates the illusion that the unit enters from, or reaches beyond, the page, adding visual interest. As an exception, a piece made of the graphic pattern alone, with no content area, can take a margin similar to the pattern gutter.
 
 ![margin-crop-do]{do} A graphic pattern that strengthens its metaphor by placing the compressed end of a graphic unit at the edge of the page
 ![margin-crop-dont]{dont} A graphic pattern in a content layout that does not fill 100% to the margin
