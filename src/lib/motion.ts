@@ -136,7 +136,7 @@ if (smoother && content && 'ResizeObserver' in window) {
   }).observe(content);
 }
 
-const anchorOffset = () => num('--anchor-offset', 64);
+const anchorOffset = () => num('--anchor-offset', 56);
 
 /**
  * 브라우저는 주소의 #앵커로 들어오면 overflow:hidden 인 래퍼까지 안쪽에서 몰래 스크롤해 버립니다.
@@ -275,7 +275,7 @@ const main = document.querySelector<HTMLElement>('.main');
 if (main) {
   const outDur = ms('--page-out-dur', 0.46);
   const navSlide = ms('--nav-slide-dur', 0.46);             // 목차 링크면 하위 목록 슬라이드가 끝날 때까지 기다림
-  const shift = num('--page-shift', 8);
+  const shift = num('--page-shift', 7);
   const ease = easeOf('--page-ease', 'cubic-bezier(0.7, 0, 0.3, 1)');
   const buffer = ms('--page-out-buffer', 0.04);
   document.addEventListener('click', e => {
