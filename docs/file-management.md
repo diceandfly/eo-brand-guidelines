@@ -30,7 +30,7 @@ src/lib/tokens.ts         ← tokens.css 를 코드에서 읽는 파서 · 모�
 src/lib/ui-markup.ts      ← 파서와 컴포넌트가 함께 쓰는 마크업(호버 알약)
 scripts/test.mjs          ← npm test (파서 경고 · HTML 짝 · 모션 대체값 · 생성기 · 규칙 검사 · astro check)
 scripts/typo-chart.mjs    ← 타이포 Linespacing · Letterspacing 장표 생성 (내부 도구, 아래 §3 끝)
-docs/                     ← 이 문서
+docs/                     ← 이 문서 · HANDOFF.md(핸드오프 한 장 요약) · handoff-ai.md(AI 작업자용)
 public/archive/handoff/   ← 최종 핸드오프 시점 가이드의 고정 사본 (npm run archive 가 만듦, 손으로 고치지 않음)
 ```
 

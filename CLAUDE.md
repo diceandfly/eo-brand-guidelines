@@ -34,7 +34,7 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 - 사용자는 한국어, 두괄식 소통을 선호하며 미확정 사항은 착수 전에 토론한다.
 - 데스크탑 우선. 모바일(899px 이하)은 목차 드로어와 세로 스택만 보장. 경계 정본 = `src/lib/tokens.ts` `MOBILE_MAX`(@media 숫자는 npm test [7] 이 대조).
 - 스크롤스파이: motion.ts 2.5 — 목차 `[data-scrollspy]`(현재 페이지) 안 `a[data-target]` 을 섹션 id 기준으로 강조(`--spy-line`).
-- 상세 튜토리얼: `docs/file-management.md`.
+- 상세 튜토리얼: `docs/file-management.md`. 핸드오프 안내: 사람용 `docs/HANDOFF.md` · AI 작업자용 `docs/handoff-ai.md`(불변식 · 작업 순서 · 검증 · 런타임 함정).
 
 ## 실행
 `npm run dev` → http://localhost:4321  /  `npm run build` → `dist/`(md 경고가 있으면 오류로 멈춤. 끝에 이미지 사본 생성 — PNG → 무손실 `.png.webp` · JPG → AVIF q90 4:4:4 `.jpg.avif`, 원본 불변, `scripts/lib/optimize-images.mjs`, Figure 가 빌드에서만 `<picture>`. 개발 서버는 원본만이라 사본 결과는 `npm run preview` 로 확인)  /  `npm test` → scripts/test.mjs (경고 0 · 플레이스홀더 수 · 모션 대체값 · astro check, EN/KO 패리티는 리포트)
