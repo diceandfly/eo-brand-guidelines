@@ -43,7 +43,7 @@ const ms = (name: string, fallback: number) => parseSeconds(token(name)) ?? fall
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- 1. 스무스 스크롤 ---------- */
-const smoothAmount = reduced ? 0 : ms('--scroll-smooth', 1);
+const smoothAmount = reduced ? 0 : ms('--scroll-smooth', 0.8);
 const wrapper = document.getElementById('smooth-wrapper');
 const content = document.getElementById('smooth-content');
 let smoother: ScrollSmoother | null = null;
