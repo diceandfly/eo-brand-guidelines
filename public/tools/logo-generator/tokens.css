@@ -170,7 +170,7 @@
   --section-head-gap: calc(var(--lh-unit) * 0); /* 제목 ↔ 설정 */
   --section-box-gap: calc(var(--lh-unit) * 0.5); /*   └ 첫 내용이 경계 있는 박스면 더 띄움 (Color 썸네일) */
   --row-gap: calc(var(--lh-unit) * 0); /* 설정: 행 ↔ 행 */
-  --block-gap: calc(var(--lh-unit) * 0.5); /* 행 묶음 ↔ 다음 행 (Export › Save ↔ 체크 옵션) */
+  --block-gap: calc(var(--lh-unit) * 0.375); /* 행 묶음 ↔ 다음 행 (Export › Save ↔ 체크 옵션) */
   --inline-gap: calc(var(--lh-unit) * 0.25); /* 행 안 가로: 라벨 ↔ 셰브론 · 체크 ↔ 글 · 숫자 ↔ 단위 */
   --scrollbar-w: 0px; /* 메뉴창 스크롤바 */
   /* 기준 열 — 메뉴창 안쪽을 4칸으로 나눈 한 칸. 입력칸 · 보정 버튼이 이 칸 단위 */
