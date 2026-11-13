@@ -48,8 +48,16 @@ const wrapper = document.getElementById('smooth-wrapper');
 const content = document.getElementById('smooth-content');
 let smoother: ScrollSmoother | null = null;
 
-const createSmoother = () => ScrollSmoother.create({ wrapper: wrapper!, content: content!, smooth: smoothAmount, effects: false, smoothTouch: 0 });
-if (smoothAmount > 0 && wrapper && content) smoother = createSmoother();
+const createSmoother = (smooth = smoothAmount) => ScrollSmoother.create({ wrapper: wrapper!, content: content!, smooth, effects: false, smoothTouch: 0 });
+// 첫 생성은 smooth 0(입력을 바로 따라감)으로: ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계"라 부드럽게 따라가지 않고 점프하는데,
+// smooth 0 이면 점프가 곧 정상 동작이라 튀어 보이지 않음 → 스크롤 가드를 모듈이 뜨자마자 풀 수 있음. --scroll-guard-hold 뒤 목표값으로 올림.
+// 단 #섹션 으로 들어온 경우는 예전 방식 그대로(처음부터 smoothAmount + 가드 유지): smooth 0 으로 시작하면 브라우저 기본 앵커 이동과
+// 아래 arriveAtHash 트윈이 겹쳐 섹션을 지나침(2026-11-13 측정 -2381px). 어차피 자동으로 섹션까지 내려가는 경우라 잠금이 길어도 무방
+const hashArrival = !!location.hash;
+if (smoothAmount > 0 && wrapper && content) {
+  smoother = createSmoother(hashArrival ? smoothAmount : 0);
+  if (!hashArrival) setTimeout(() => { if (!findMode) smoother?.smooth(smoothAmount); }, ms('--scroll-guard-hold', 0.41) * 1000);   // 페이지 검색 중이면 복구 때 smoothAmount 로 새로 만듦
+}
 
 /* 모바일 목차 드로어(Layout.astro)가 열린 동안 본문 스크롤 정지. 드로어는 eo:nav 이벤트(detail.open)만 보내고 스무더는 모름.
    스무더를 다시 만들 때(아래 페이지 검색 복구)도 열린 상태를 이어받음.
@@ -92,7 +100,7 @@ window.addEventListener('wheel', scheduleResume, { passive: true });
 window.addEventListener('touchstart', scheduleResume, { passive: true });
 window.addEventListener('touchmove', scheduleResume, { passive: true });
 // 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품 — eo:scroll-ready 이벤트를 보내면 가드가 스스로 풂.
-// ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계" 라서 스크롤을 부드럽게 따라가지 않고 바로 점프하므로, 그 시간이 지난 뒤에 풉니다.
+// 스무더를 smooth 0 으로 만들었으므로(위) 시작 단계를 기다리지 않고 모듈이 뜨자마자 풂. 가드가 남는 구간 = HTML 파싱 ~ 이 모듈 실행까지
 let guardReleased = false;
 const releaseGuard = () => {
   document.dispatchEvent(new Event('eo:scroll-ready'));
@@ -100,8 +108,12 @@ const releaseGuard = () => {
   guardReleased = true;
   arriveAtHash();                                               // #섹션으로 들어온 경우, 스크롤 범위가 생긴 뒤에 이동
 };
-// setTimeout 으로 잡습니다: gsap.delayedCall 은 rAF 기반이라 백그라운드 탭(Cmd+클릭 등)에서는 멈춰 가드가 3초 폴백까지 안 풀리고, #섹션 도착 이동도 못 합니다.
-if (smoother) setTimeout(releaseGuard, ms('--scroll-guard-hold', 0.41) * 1000); else releaseGuard();
+// 주소에 #섹션 이 없으면 바로(마이크로태스크) 풂. 모듈 평가 중에 바로 부르면 releaseGuard → arriveAtHash 가 아래쪽 let(loaded · arrived)을
+// 초기화 전에 읽어 ReferenceError 라 한 박자 뒤로 (예전 reduced-motion 경로에 숨어 있던 문제).
+// #섹션 으로 들어오면 예전처럼 --scroll-guard-hold 뒤에 풂(위 스무더 생성 주석). setTimeout: gsap.delayedCall 은 rAF 기반이라
+// 백그라운드 탭(Cmd+클릭 등)에서 멈춰 가드가 3초 폴백까지 안 풀리고, 도착 이동도 못 함
+if (smoother && hashArrival) setTimeout(releaseGuard, ms('--scroll-guard-hold', 0.41) * 1000);
+else queueMicrotask(releaseGuard);
 
 const anchorOffset = () => num('--anchor-offset', 64);
 
