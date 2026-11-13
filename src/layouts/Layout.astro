@@ -23,7 +23,7 @@ const ui = UI_TEXT[lang];
     <!-- 스무스 스크롤(motion.ts, GSAP)이 준비되기 전 잠깐은 브라우저 기본 스크롤이라 휠이 튄다.
          그 사이에는 html.scroll-hold(overflow: hidden)로 페이지 자체를 못 굴리게 하고, 휠·터치·키 이벤트도 막아 둔다.
          (이벤트 막기만으로는 부족: 직전 페이지에서 시작된 관성 스크롤(트랙패드·매직 마우스)은 취소할 수 없는 이벤트로 들어온다)
-         스무더가 만들어지고 시작 단계가 지나면 motion.ts 가 풀어 준다. 못 풀면 3초 뒤 자동 해제 -->
+         스무더가 만들어지고 시작 단계가 지나면 motion.ts 가 eo:scroll-ready 이벤트를 보내 풀어 준다. 못 풀면 3초 뒤 자동 해제 -->
     <script is:inline>
       (function () {
         document.documentElement.classList.add('scroll-hold');
@@ -34,15 +34,17 @@ const ui = UI_TEXT[lang];
         addEventListener('wheel', block, opts);
         addEventListener('touchmove', block, opts);
         addEventListener('keydown', keyBlock);
+        var done = false;
         var off = function () {
+          if (done) return;
+          done = true;
           document.documentElement.classList.remove('scroll-hold');
           removeEventListener('wheel', block, opts);
           removeEventListener('touchmove', block, opts);
           removeEventListener('keydown', keyBlock);
-          window.__scrollGuardOff = null;
         };
-        window.__scrollGuardOff = off;
-        setTimeout(function () { if (window.__scrollGuardOff) off(); }, 3000);
+        document.addEventListener('eo:scroll-ready', off, { once: true });
+        setTimeout(off, 3000);
       })();
     </script>
     <!-- 매 페이지에서 쓰는 웹폰트를 CSS 파싱 전에 미리 받습니다 (페이지 전환 시 시스템 폰트가 스치는 것 방지).
@@ -142,7 +144,7 @@ const ui = UI_TEXT[lang];
         root.classList.toggle('nav-open', open);
         btn?.setAttribute('aria-expanded', String(open));
         sidebar?.toggleAttribute('inert', !open && !desktop.matches);
-        (window as any).__smoother?.paused(open);   // 드로어가 열린 동안 본문 스크롤 정지
+        document.dispatchEvent(new CustomEvent('eo:nav', { detail: { open } }));   // 열린 동안 본문 스크롤 정지 (motion.ts 가 받음)
       };
       btn?.addEventListener('click', () => set(!root.classList.contains('nav-open')));
       // 목차·검색 결과(나중에 만들어지는 것 포함)의 링크를 누르면 닫힘. 챕터는 목록만 접고 펴므로 제외

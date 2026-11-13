@@ -50,7 +50,14 @@ let smoother: ScrollSmoother | null = null;
 
 const createSmoother = () => ScrollSmoother.create({ wrapper: wrapper!, content: content!, smooth: smoothAmount, effects: false, smoothTouch: 0 });
 if (smoothAmount > 0 && wrapper && content) smoother = createSmoother();
-(window as any).__smoother = smoother;
+
+/* 모바일 목차 드로어(Layout.astro)가 열린 동안 본문 스크롤 정지. 드로어는 eo:nav 이벤트(detail.open)만 보내고 스무더는 모름.
+   스무더를 다시 만들 때(아래 페이지 검색 복구)도 열린 상태를 이어받음 */
+let navOpen = false;
+document.addEventListener('eo:nav', e => {
+  navOpen = !!(e as CustomEvent<{ open: boolean }>).detail?.open;
+  smoother?.paused(navOpen);
+});
 
 /* 브라우저 페이지 검색(Cmd/Ctrl+F): 검색창은 transform 으로 움직이는 본문을 스크롤하지 못하고, 찾은 글자도 검색창을 닫기 전까지는 선택 영역으로 드러나지 않습니다.
    그래서 검색 단축키가 눌리면 스무더를 끄고 네이티브 스크롤로 두었다가(브라우저가 직접 굴릴 수 있게), 다음 휠 · 터치 입력 때 같은 위치에서 다시 만듭니다. */
@@ -61,7 +68,6 @@ const suspendSmoother = () => {
   const y = smoother.scrollTop();
   smoother.kill();
   smoother = null;
-  (window as any).__smoother = null;
   window.scrollTo(0, y);
 };
 const resumeSmoother = () => {
@@ -70,7 +76,7 @@ const resumeSmoother = () => {
   const y = window.scrollY;
   smoother = createSmoother();
   smoother.scrollTo(y, false);                                  // 0 에서 y 까지 달려오지 않도록 현재 위치에 바로 놓음
-  (window as any).__smoother = smoother;
+  if (navOpen) smoother.paused(true);
   ScrollTrigger.refresh();
 };
 // 복구는 휠 · 터치가 멈춘 뒤에: 스무더는 만들어진 직후 0.5초간 입력을 부드럽게 따라가지 않으므로, 굴리는 도중에 만들면 튑니다
@@ -84,11 +90,11 @@ document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && !e.a
 window.addEventListener('wheel', scheduleResume, { passive: true });
 window.addEventListener('touchstart', scheduleResume, { passive: true });
 window.addEventListener('touchmove', scheduleResume, { passive: true });
-// 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품.
+// 로드 중 막아 둔 휠·터치·키 스크롤(Layout.astro 의 인라인 가드)을 품 — eo:scroll-ready 이벤트를 보내면 가드가 스스로 풂.
 // ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계" 라서 스크롤을 부드럽게 따라가지 않고 바로 점프하므로, 그 시간이 지난 뒤에 풉니다.
 let guardReleased = false;
 const releaseGuard = () => {
-  (window as any).__scrollGuardOff?.();
+  document.dispatchEvent(new Event('eo:scroll-ready'));
   ScrollTrigger.refresh();                                      // 잠금 중(body 고정)에는 문서 스크롤 범위가 0 이라, 풀린 뒤 다시 잼
   guardReleased = true;
   arriveAtHash();                                               // #섹션으로 들어온 경우, 스크롤 범위가 생긴 뒤에 이동
