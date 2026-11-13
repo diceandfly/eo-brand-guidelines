@@ -49,13 +49,16 @@ const content = document.getElementById('smooth-content');
 let smoother: ScrollSmoother | null = null;
 
 const createSmoother = (smooth = smoothAmount) => ScrollSmoother.create({ wrapper: wrapper!, content: content!, smooth, effects: false, smoothTouch: 0 });
-// 첫 생성은 smooth 0(입력을 바로 따라감)으로: ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계"라 부드럽게 따라가지 않고 점프하는데,
-// smooth 0 이면 점프가 곧 정상 동작이라 튀어 보이지 않음 → 스크롤 가드를 모듈이 뜨자마자 풀 수 있음. --scroll-guard-hold 뒤 목표값으로 올림.
+// 첫 생성은 거의 0 인 smooth(STARTUP_SMOOTH, 입력을 바로 따라감)로: ScrollSmoother 는 만들어진 뒤 0.5초 동안 "시작 단계"라 부드럽게 따라가지 않고
+// 점프하는데, 즉시 따라가는 상태면 점프가 곧 정상 동작이라 튀어 보이지 않음 → 스크롤 가드를 모듈이 뜨자마자 풀 수 있음. --scroll-guard-hold 뒤 목표값으로 올림.
+// 정확히 0 은 안 됨: smooth 0 으로 만들면 ScrollSmoother 가 래퍼 고정(position: fixed) · 본문 transform · expo 감속 트윈을 아예 안 만들어서,
+// 나중에 smooth() 로 올려도 반쪽짜리(네이티브 스크롤 + transform 이 겹쳐 덜 부드러움)가 됨 — 2026-11-13 "안 스무스해졌다" 원인.
 // 단 #섹션 으로 들어온 경우는 예전 방식 그대로(처음부터 smoothAmount + 가드 유지): smooth 0 으로 시작하면 브라우저 기본 앵커 이동과
 // 아래 arriveAtHash 트윈이 겹쳐 섹션을 지나침(2026-11-13 측정 -2381px). 어차피 자동으로 섹션까지 내려가는 경우라 잠금이 길어도 무방
 const hashArrival = !!location.hash;
+const STARTUP_SMOOTH = 0.01;   // 초. 사실상 즉시
 if (smoothAmount > 0 && wrapper && content) {
-  smoother = createSmoother(hashArrival ? smoothAmount : 0);
+  smoother = createSmoother(hashArrival ? smoothAmount : STARTUP_SMOOTH);
   if (!hashArrival) setTimeout(() => { if (!findMode) smoother?.smooth(smoothAmount); }, ms('--scroll-guard-hold', 0.41) * 1000);   // 페이지 검색 중이면 복구 때 smoothAmount 로 새로 만듦
 }
 
