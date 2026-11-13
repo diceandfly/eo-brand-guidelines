@@ -589,10 +589,10 @@ if (!reduced) {
   };
 
   // 본문 스무스 스크롤(ScrollSmoother)과 같은 방식으로 움직임: 타임라인은 "휠 입력"에 해당하는 목표 위치(goal.v)만 짧게 옮기고,
-  // 화면(--_pan)은 그 목표를 expo 감속 · --scroll-smooth 초로 따라감(목표가 바뀔 때마다 다시 따라붙음). 그래서 출발이 부드럽고 끝이 길게 잦아듦
+  // 화면(--_pan)은 그 목표를 expo 감속 · --card-scroll-follow 초로 따라감(목표가 바뀔 때마다 다시 따라붙음). 그래서 출발이 부드럽고 끝이 길게 잦아듦
   const steps = Math.max(1, Math.round(num('--card-scroll-steps', 3)));
-  const scrollInput = ms('--card-scroll-input', 1.4), scrollHold = ms('--card-scroll-hold', 2), scrollEnd = ms('--card-scroll-end-hold', 2.4);
-  const follow = Math.max(0.01, ms('--scroll-smooth', 0.8));
+  const scrollInput = ms('--card-scroll-input', 2.4), scrollHold = ms('--card-scroll-hold', 2.6), scrollEnd = ms('--card-scroll-end-hold', 2.4);
+  const follow = Math.max(0.01, ms('--card-scroll-follow', 1.6));
   for (const frame of document.querySelectorAll<HTMLElement>('.fig__frame[data-scroll]')) {
     const goal = { v: 0 };
     const chase = () => gsap.to(frame, { '--_pan': goal.v, duration: follow, ease: 'expo', overwrite: true });
