@@ -27,7 +27,8 @@ const ui = UI_TEXT[lang];
         root.classList.add('js', 'fonts-wait');
         var go = function () { root.classList.remove('fonts-wait'); };
         document.addEventListener('DOMContentLoaded', function () {
-          var wait = parseFloat(getComputedStyle(root).getPropertyValue('--page-in-font-wait'));
+          var raw = getComputedStyle(root).getPropertyValue('--page-in-font-wait').trim();
+          var wait = parseFloat(raw) * (/\ds$/.test(raw) ? 1000 : 1);   // '1000ms' · '1s' 둘 다
           setTimeout(go, wait >= 0 ? wait : 1000);
           // 쓰이는 폰트는 첫 레이아웃 때 로딩 목록에 오르므로, 한 장면이 그려진 뒤(두 프레임) fonts.ready 를 봄
           if (document.fonts && document.fonts.ready) requestAnimationFrame(function () { requestAnimationFrame(function () { document.fonts.ready.then(go); }); });

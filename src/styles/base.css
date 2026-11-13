@@ -338,6 +338,9 @@ html.fonts-wait .main {
   html.js .main {
     animation: none;
   }
+  html.fonts-wait .main {
+    opacity: 0; /* 움직임 없이: 웹폰트 준비 전엔 숨겼다가 바로 나타남 (빈 칸 → 글자 깜빡임 방지는 같게) */
+  }
   .sidebar {
     transition: none; /* 모바일 드로어도 미끄러지지 않고 바로 열고 닫힘 */
   }
