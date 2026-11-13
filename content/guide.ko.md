@@ -23,6 +23,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
   [[→ graphic-pattern#color]]          → "→ Graphic Pattern › Color" (화살표까지 한 밑줄. 화살표는 → 한 글자만)
   [[graphic-pattern#grammar|문법 원칙]]         → 링크 글자를 직접 지정
   [[https://eopla.net|EO Planet]]      → 외부 링크 (새 탭). 라벨이 없으면 "eopla.net" 처럼 주소가 글자로
+  [[download|로고 생성기]]               → 목차 링크 항목(## Download {href=…})의 주소로 (새 탭). 라벨이 없으면 항목 이름
     → 페이지 이름 = URL의 slug (symbol, signature, graphic-pattern …), 섹션 = 앵커 id = 헤드(헤드가 페이지 이름과 같으면 서브헤드).
       헤드가 페이지 이름과 다르고 서브헤드가 있으면 id 는 헤드-서브헤드 (morphology-proportion).
       없는 대상은 개발 서버(npm run dev)에서는 경고 후 글자만 남고, npm run build 는 오류로 멈춥니다. 페이지 이름은 사이트 전체에서 하나여야 합니다.
@@ -141,7 +142,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
 ### Welcome to the EO Brand Guidelines
 EO는 빌더를 위한 미디어입니다. 빌더를 불러 모으고(Rallying), 소신 있는 빌더의 편에 서고(Conviction), 그들의 등 뒤를 지킵니다(Backing). 창업가의 여정을 있는 그대로 기록하고, 그 이야기가 다음 빌더에게 닿게 하는 것. 그것이 EO가 하는 일입니다.
 
-이 가이드라인은 EO 아이덴티티 시스템의 기본 요소인 로고 · 타이포그래피 · 컬러 · 그래픽 시스템을 설명합니다. 샌프란시스코 · 서울 · 베트남 어디서든 브랜드의 콘텐츠와 서비스가 하나의 EO로 보이고 읽히게 하는 데 목적을 두고 있습니다.
+이 가이드라인은 EO 아이덴티티 시스템의 기본 요소인 로고 · 타이포그래피 · 컬러 · 그래픽 시스템을 설명합니다. 샌프란시스코 · 서울 · 베트남 어디서든 브랜드의 콘텐츠와 서비스가 하나의 EO로 보이고 읽히게 하는 데 목적을 두고 있습니다. 일부 장표에는 설명을 위해 예외적인 표현이나 조합이 쓰였을 수 있으며, 장표와 본문이 다를 때는 본문을 우선합니다.
 
 Build Anyway.
 
@@ -212,7 +213,7 @@ EO 심볼은 나사의 3요소인 나사축(Shaft) · 나사산(Thread) · 나�
 #### + Clearspace 
 클리어스페이스는 타이포그래피 · 그래픽 유닛 · 이미지 · 지면 가장자리 등 다른 시각 요소와 인접할 때 심볼을 지켜 주는 최소한의 안전 장치입니다. E 블록 하나의 수직 방향 높이를 H라 할 때, 심볼과 인접한 모든 요소에 대해 상하좌우 각 H/2 이상의 최소 여백을 반드시 확보해야 합니다.
 
-EO 심볼은 작게 볼수록 무게중심이 왼쪽으로 치우쳐 보이므로, 오른쪽 클리어스페이스는 항상 줄여 보정합니다. **오른쪽 클리어스페이스 = H × (0.42 + 0.0012 × S)**, S는 화면에서 실제 보이는 심볼 높이(mm)이며 S가 67mm 이상이면 H/2 그대로 둡니다. 앱 아이콘 · 프로필 이미지처럼 클리어스페이스 박스를 틀의 중앙에 놓는 자리에서는 심볼이 (H/2 − 오른쪽 클리어스페이스) ÷ 2만큼 오른쪽으로 이동합니다. 적용 방법은 [[#app-and-social-icons-alignment|App & Social Icons › Alignment]]를 참조하세요. 이 식은 500mm 거리의 데스크탑 조건에서 보이는 높이 4-50mm 구간을 실측해 도출한 근사식이며, 오차는 최대 ±0.02mm입니다.
+EO 심볼은 작게 볼수록 무게중심이 왼쪽으로 치우쳐 보이므로, 오른쪽 클리어스페이스를 줄여 보정합니다. 보정량은 보이는 크기 S로 정합니다. S는 보는 거리 500mm 를 기준으로 환산한 심볼 높이(mm)로, 실제 높이 × 500 ÷ 보는 거리로 구하거나 [[download|로고 생성기]]의 Symbol height 값을 그대로 씁니다. 오른쪽 클리어스페이스 = H × (0.42 + 0.0012 × S)이며, 심볼의 허용 크기인 4–25mm 구간을 기준으로 합니다. 앱 아이콘 · 프로필 이미지처럼 클리어스페이스 박스를 틀의 중앙에 놓는 자리에서는 심볼이 (H/2 − 오른쪽 클리어스페이스) ÷ 2만큼 오른쪽으로 이동하며, 생성기의 Right side correction 이 이 값을 자동으로 적용합니다. 적용 방법은 [[#app-and-social-icons-alignment|App & Social Icons]]를 참조하세요.
 ![clearspace] {zoom=1.05}
 
 
@@ -280,7 +281,7 @@ EO 심볼은 사진 위에서도 항상 또렷하게 읽혀야 하므로 충분�
 본 섹션의 지침은 화면 구성이 변화하는 영상 시퀀스보다는 정지된 이미지의 오버레이 상황에 초점을 맞추고 있습니다.
 ![imagery-do-1]{do} {bg-cover} 배경과 대비가 충분한 곳에 심볼을 둡니다
 ![imagery-do-2]{do} {bg-cover} 밝기가 고르지 않은 사진을 써야 할 경우 투명도 30% 수준의 그라데이션을 오버레이해 대비를 확보합니다
-![imagery-dont-1]{dont} {bg-cover} 사진이 조명하는 인물 · 오브제의 주요한 실루엣 위에 심볼을 두지 마세요
+![imagery-dont-1]{dont} {bg-cover} 사진 속 오브제의 실루엣이 심볼의 경계와 겹치게 하지 마세요
 ![imagery-dont-2]{dont} {bg-cover} 사진과 대비가 부족한 곳에 심볼을 두지 마세요
 
 
@@ -763,7 +764,7 @@ EO 타이포그래피는 Solid Gray · Space Black 등 어두운 배경 위에 A
 
 
 ### + Multilingual {layout=wide}
-한국어에는 Pretendard를, 베트남어에는 Noto Sans를 사용합니다. 기존 레이아웃에서 다국어 서체로 변경할 때, Line Unit과 레벨의 배수가 그대로이므로 언어를 바꿔도 레이아웃이 움직이지 않고, 글자 크기와 행간 비율만 서체에 맞춰 달라집니다. 다음은 [[#reference-scale|Reference Scale]]의 T1 · H3에 대응하는 다국어 전환 예시입니다. 
+한국어에는 Pretendard를, 베트남어에는 Noto Sans를 사용합니다. 기존 레이아웃에서 다국어 서체로 변경할 때, Line Unit과 레벨의 배수가 그대로이므로 언어를 바꿔도 레이아웃이 움직이지 않게 됩니다. 다음은 [[#reference-scale|Reference Scale]]의 T1 · H3에 대응하는 다국어 전환 예시입니다. 
 
 - 한국어 Pretendard — T1은 Regular · 165% · -1.5% · 베이스라인 +0.2x, H3는 Medium · 165% · -2.5% · 베이스라인 -0.05x입니다. 렌더링되는 실제 글자 크기는 같은 레벨의 Founders Grotesk의 0.85배 수준입니다.
 - 베트남어 Noto Sans — T1은 DemiLight · 175% · -1% · 베이스라인 +0.05x, H3는 Regular · 175% · -3% · 베이스라인 +0.05x입니다. 렌더링되는 실제 글자 크기는 같은 레벨의 Founders Grotesk의 0.8배 수준입니다.
@@ -822,7 +823,7 @@ EO 팔레트는 Builder Neon · Day Blue · Bay Green과 이를 받쳐 주는 �
 ### Color
 #### Usage Ratio
 
-배경은 Solid Gray 또는 Space Black을 기본으로 하며, 사진을 쓸 수 있는 매체에서는 샌프란시스코의 하늘 그 자체가 배경이 됩니다. 배경 위에 놓이는 그래픽 요소의 권장 비율은 Builder Neon 50%, Day Blue · Bay Green 30%, Medium Gray · Air White 20%입니다. 텍스트는 Air White 또는 Space Black으로, 전체 구성의 10% 안팎을 차지합니다. 텍스트 중심 매체에서는 배경 비중이, 패턴 중심 매체에서는 Builder Neon 비중이 높아집니다. 소셜 채널이나 시리즈 아트워크처럼 EO 브랜드로 충분히 인지되는 맥락에서는 Day Blue · Bay Green을 권장 비율보다 폭넓게 활용할 수 있습니다.
+배경은 Solid Gray 또는 Space Black을 기본으로 하며, 사진을 쓸 수 있는 매체에서는 샌프란시스코의 하늘 그 자체가 배경이 됩니다. 배경 위에 놓이는 그래픽 요소의 권장 비율은 Builder Neon 50%, Day Blue · Bay Green 30%, Medium Gray · Air White 20%입니다. 텍스트는 Air White · Space Black을 중심으로, 전체 구성의 10% 안팎을 차지합니다. 텍스트 중심 매체에서는 배경 비중이, 패턴 중심 매체에서는 Builder Neon 비중이 높아집니다. 소셜 채널이나 시리즈 아트워크처럼 EO 브랜드로 충분히 인지되는 맥락에서는 Day Blue · Bay Green을 권장 비율보다 폭넓게 활용할 수 있습니다.
 
 요소별 세부 적용 기준은 각 페이지별 컬러 섹션을 참조하세요.
 
@@ -866,7 +867,7 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 **EO 그래픽 유닛**(이하 유닛)은 [[symbol#motif|EO 심볼]]과 같이 나사의 3요소인 나사축(Shaft) · 나사산(Thread) · 나사머리(Head)를 모티프로 고안되었습니다.
 
 - 나사산(Thread) — thread 한 바퀴는 문제 해결의 사이클을 상징합니다. 단단한 벽에 맞닥뜨릴수록 저항도 세고 뚫는 시간도 오래 걸립니다. thread가 촘촘할수록 빌더의 시간이 그만큼 밀도 있게 채워져 있음(Build through)을 나타냅니다.
-- 나사축(Shaft) — shaft는 빌딩의 과정이자 빌더의 여정을 상징합니다. shaft size는 그 과정의 핵심 속성이 얼마나 강한지를 표현합니다. 
+- 나사축(Shaft) — shaft는 빌딩의 과정이자 빌더의 여정을 상징합니다. shaft size는 그 과정의 핵심 속성이 얼마나 강한지를 표현합니다. shaft가 두꺼울수록 앞으로 나아가는 힘도 강해집니다(Build anyway).
 - 나사머리(Head) — head는 작은 문제 해결 하나, 또는 빌더 한 사람을 상징합니다. 작은 나사도 여럿이 모이면 무엇이든 만들 수 있습니다(Build anything). 마찬가지로 빌더 한 사람이 풀지 못하는 난제도, 여러 빌더가 함께 마주하면 결국 풀립니다(Build together).
 ![motif-1] {zoom=1.17}
 ![motif-2]
@@ -899,13 +900,13 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 - Air White — 위계는 높지만 아이덴티티가 없는 뉴트럴 컬러로서, 에너지 · 맞은편의 주체 · 세미 하이라이팅의 뉘앙스를 표현합니다. 사용 면적이 지면 전체 기준 10-30% 수준일 때 가장 이상적입니다.
 - Day Blue — 다른 성격의 빌더 · 커뮤니티 · 주변 요소. 푸른 하늘에서 오는 긍정적 에너지 · 낙관의 뉘앙스를 강조합니다.
 - Bay Green — 다른 성격의 빌더 · 커뮤니티 · 주변 요소. 캘리포니아의 채퍼럴 언덕 녹음에서 오는 부드러움 · 친화적 뉘앙스를 강조합니다. (team, teamwork, co-working, diversity, nature)
-- Medium Gray — 비활성 · 타자 · 무관심 · 보수성 등 기계적 중립의 뉘앙스를 표현합니다.
-- Space Black — 시각적 임팩트 최우선 상황에서, Builder Neon 배경과 고정 조합으로 제한적으로 사용하며 압도성을 표현합니다.
+- Medium Gray — 비활성 · 타자 · 무관심 · 보수성 · 물질세계 등 기계적 중립의 뉘앙스를 표현합니다.
+- Space Black — 시각적 임팩트가 최우선인 상황에서 Builder Neon 배경과 조합하는 것을 권장하며, 압도성을 표현합니다.
 - Solid Gray는 유닛 컬러로는 사용하지 않습니다.
 ![color-neon-white] [Builder Neon]빌더 · 주인공 · 핵심, [Air White]에너지 · 맞은편 · 균형
 ![color-blue-green] [Day Blue]다른 빌더 · 주변 요소 · 낙관, [Bay Green]다른 빌더 · 주변 요소 · 친화성
 ![color-gray] [Medium Gray] 비활성 · 타자 · 보수성 · 물질세계
-![color-black-on-neon] [Space Black] on [Builder Neon] 고정 조합, 압도성
+![color-black-on-neon] [Space Black] on [Builder Neon] 권장 조합, 압도성
 
 
 ### + Vocabulary
@@ -937,11 +938,11 @@ shaft는 나사의 축이자 빌딩 과정의 타임라인을 상징하고, shaf
 
 - 성장 — 확신 · 힘의 크기. 3개 이상의 shaft가 단계적으로 두꺼워지는 방식으로 표현합니다.
 - 다양성 — 성격의 차이. shaft size가 다른 여러 유닛을 무작위 순서로 나란히 배치하는 방식으로 표현합니다. shaft size가 클수록 thread의 폭 역시 짧아져 유닛의 인상이 크게 달라지고, 두꺼울수록 좋은 것이 아니라 각기 다른 것이란 뉘앙스에 가깝습니다. 다양한 [[graphic-pattern#color|유닛 컬러]]를 고루 씁니다.
-- 지지 — 무게를 받쳐 주거나(Backing) 받아주는 한쪽. thread를 한쪽에만 두면 한쪽의 shaft가 바닥이 되고 그 위에 thread가 서는데, 이때 thread가 높고 기울기가 가파를수록 더 극적인 표현이 됩니다.
+- 지지 — 무게를 받쳐 주거나(Backing) 받아주는 한쪽. thread를 한쪽에만 두면 한쪽의 shaft가 바닥이 되고 그 위에 thread가 서는데, 이때 thread가 높고 기울기가 가파를수록 더 극적인 표현이 됩니다. 아래에서 받쳐 주는 유닛의 shaft는 두껍게, 위의 유닛은 가늘게 해 무게를 받치는 관계를 분명히 합니다.
 - EO나 주인공을 대변하는 유닛에 Builder Neon을 적용하세요.
 ![shaft-growth] 성장 — 단계적으로 두꺼워지는 shaft
 ![shaft-diversity] 다양성 — shaft size가 제각각인 여러 유닛을 무작위 순서로 나란히 배치
-![shaft-support] 지지 — shaft size가 다른 두 개의 thread 간 관계성을 통해 표현
+![shaft-support] 지지 — 두꺼운 shaft의 유닛이 아래에서 가는 유닛을 받쳐 주는 관계
 
 
 ### Vocabulary
@@ -1075,7 +1076,7 @@ EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다.
 #### + Zoning
 새로운 레이아웃을 만들 때의 작업 순서는 먼저 Compound Grid를 세우고, 모듈러 그리드를 큰 기준으로 그래픽 패턴 영역과 콘텐츠 영역을 나눈 뒤, 그래픽 패턴 영역 안에서 패턴을 완성하는 것입니다. Compound Grid의 세부 지침은 [[typography#compound-grid|Compound Grid]]를 참조하세요. 두 영역 사이의 마진은 명시적으로 설정하지 않고 콘텐츠 영역의 마진에 포함된 것으로 처리합니다.
 
-그래픽 패턴 영역은 EO Graphic Builder의 프레임에 해당하는 사각 영역이며, 그 안에 유닛을 테트리스처럼 빈 공간 없이 맞물려 쌓는 것이 별도의 시스템입니다. 그래픽 패턴 영역 안의 유닛 배치는 타이포그래피의 그리드와 맞출 필요가 없습니다. 그래픽 패턴 영역과 타이포그래피 중심의 콘텐츠 영역 두 시스템은 한 지면에서 강약의 대비를 이룹니다. 콘텐츠 영역의 타이포그래피가 좌측 · 상단 정렬로 전개되므로, 지면을 가로로 나눌 때는 그래픽 패턴 영역을 우측에, 세로로 나눌 때는 상단에 두는 것을 우선합니다.
+그래픽 패턴 영역은 EO Graphic Builder의 프레임에 해당하는 사각 영역이며, 그 안에 유닛을 테트리스처럼 빈 공간 없이 맞물려 쌓는 것이 별도의 시스템입니다. 그래픽 패턴 영역 안의 유닛 배치는 타이포그래피의 그리드와 맞출 필요가 없습니다. 그래픽 패턴 영역과 타이포그래피 중심의 콘텐츠 영역 두 시스템은 한 지면에서 강약의 대비를 이룹니다. 콘텐츠 영역의 타이포그래피가 좌측 · 상단 정렬로 전개되므로, 지면을 가로로 나눌 때는 그래픽 패턴 영역을 우측에, 세로로 나눌 때는 상단에 두는 것을 우선합니다. 단, 롤업 배너 · 거리 배너처럼 바닥에 세우는 세로 매체는 예외로 하단 배치가 어울릴 수 있습니다. 빌더나 집이 땅 위에 선 형상으로 읽히도록 compression이 촘촘한 쪽을 바닥에 붙이면, 촘촘한 thread가 땅을 연상시킵니다([[graphic-unit#vocabulary-thread|빌더]] 참조).
 
 EO Graphic Builder의 워크스페이스에서 새로운 메타포의 그래픽 초안을 만들 때는, 프레임 안에 독자적인 그리드를 설정해 그래픽 유닛을 규칙적으로 배치하는 과정을 거치는데, 이것은 본 가이드라인에서 중점적으로 다루는 Compound Grid와는 완전히 독립된 별도의 시스템입니다. 
 ![grid-do-1]{do} 이상적인 비율의 영역 구획
@@ -1126,7 +1127,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 - 유닛 컬러
   - **하나의 유닛에는 반드시 하나의 컬러만 적용합니다.** 
   - **하나의 그래픽 패턴에 동시에 사용하는 유닛 컬러는 최대 3가지까지** 권장되며, Builder Neon · Day Blue · Bay Green · Medium Gray 고정 조합에 한해 최대 네 가지까지 사용할 수 있습니다.
-  - Medium Gray는 보조 역할의 컬러이므로, 단독으로 사용하지 말고 반드시 다른 컬러의 유닛과 조합하여 사용합니다. 
+  - Medium Gray는 보조 역할의 컬러이므로 다른 컬러의 유닛과 조합하는 것을 기본으로 합니다. 저항 · 정체처럼 부정적인 상황을 의도적으로 묘사할 때에 한해 Medium Gray만으로 구성할 수 있습니다.
   - Solid Gray는 유닛 컬러로 사용하지 않습니다.
 - 배경 컬러
   - Solid Gray를 배경 컬러로 사용하면, 5개의 유닛 컬러와의 대비가 한 단계 낮아져 모든 컬러가 차분하게 묶이므로 우선적으로 고려합니다. 
@@ -1137,14 +1138,14 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![color-do-1] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Solid Gray]
 ![color-do-2] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Space Black]
 ![color-do-3] {do}[Space Black] on [Builder Neon] · [Day Blue] · [Bay Green] · [Air White]
-![color-con] {con}[Builder Neon] · [Space Black] on [Medium Gray]
+![color-con-1] {con}[Builder Neon] · [Space Black] on [Medium Gray]
+![color-con-2] {con}[Medium Gray] alone on [Solid Gray] · [Space Black]
 ![color-dont-1] {dont}[Space Black] on [Solid Gray] or vice versa
-![color-dont-2] {dont}[Medium Gray] alone on [Solid Gray] · [Space Black]
-![color-dont-3] {dont}[Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Builder Neon]
-![color-dont-4] {dont}[Builder Neon] · [Bay Green] · [Medium Gray] · [Air White] on [Day Blue]
-![color-dont-5] {dont}[Builder Neon] · [Day Blue] · [Medium Gray] · [Air White] on [Bay Green]
-![color-dont-6] {dont}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] on [Air White]
-![color-dont-7] {dont}[Day Blue] · [Bay Green] · [Air White] on [Medium Gray]
+![color-dont-2] {dont}[Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Builder Neon]
+![color-dont-3] {dont}[Builder Neon] · [Bay Green] · [Medium Gray] · [Air White] on [Day Blue]
+![color-dont-4] {dont}[Builder Neon] · [Day Blue] · [Medium Gray] · [Air White] on [Bay Green]
+![color-dont-5] {dont}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] on [Air White]
+![color-dont-6] {dont}[Day Blue] · [Bay Green] · [Air White] on [Medium Gray]
 
 
 ### Graphic Pattern {layout=grid-4} {ratio=16:9} {zoom=1.0} {bg-color}

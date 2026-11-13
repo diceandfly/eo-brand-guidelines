@@ -614,10 +614,12 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
   //   [[→ graphic-pattern#grammar]] → "→ Graphic Pattern › Grammar" (화살표도 링크 글자의 일부라 밑줄이 이어짐)
   //   [[graphic-pattern#grammar|문법 원칙]] → 라벨 직접 지정.   대상이 없으면 빌드 로그에 경고하고 글자만 남긴다
   //   [[https://eopla.net|EO Planet]] → 외부 링크 (새 탭). 라벨 없으면 "eopla.net"
+  //   [[download|로고 생성기]]   → 목차 링크 항목(## Download {href=…})의 주소로 (새 탭). 라벨 없으면 항목 이름
   // 원문은 마크다운 변환 전에 자리표시자로 빠져 있었으므로(stashXrefs) 여기서 링크로 복원한다. 라벨은 본문과 같은 글자 처리(따옴표·한글 래핑)를 거친다.
   const NB = '\u00A0';
   const text = (plain: string) => wrapKo(smartQuotes(escapeHtml(plain)));
   const bySlug = (slug: string) => flat.find(x => x.slug === slug);
+  const links = chapters.flatMap(c => c.subs).filter(s => s.href);
   // 호버 알약(Jump · Open · Mail + 화살표)은 컬러 칩의 Copy 알약과 같은 부품 — src/lib/ui-markup.ts tipHtml
   const xrefHtml = (inner: string, here: Sub): string => {
     const bar = inner.indexOf('|');
@@ -634,6 +636,8 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     }
     const [pagePart, ...secParts] = target.split('#');
     const secId = secParts.length ? secParts.join('-') : undefined;            // page#head#subhead → id "head-subhead"
+    const linkItem = !secParts.length && links.find(x => x.slug === pagePart);   // 목차 링크 항목(## 이름 {href=…}, 로고 생성기 등): 그 주소를 새 탭으로
+    if (linkItem) return `<a class="xref xref--open" href="${escapeHtml(linkItem.href!)}" target="_blank" rel="noopener">${arrow}${label ?? text(linkItem.name)}${tipHtml('open')}</a>`;
     const s = !pagePart ? here : bySlug(pagePart);
     if (!s) { warn(`[guide] [[${target}]]: "${pagePart}" 페이지가 없습니다 (${here.url})`); return fallback(); }
     let href = s.url, auto = text(s.name);

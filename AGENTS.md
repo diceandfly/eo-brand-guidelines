@@ -21,6 +21,13 @@
 | E7 | 2026-11-10 | Graphic Unit › Morphology | `rhythm-uniform-do` = `proportion-line-do`, `rhythm-excess-do` = `density-mass-do` 같은 그림 | "이상적인 형태" 라 같은 그림이 맞음 |
 | E8 | 2026-11-10 | In Use 섹션 캡션 | "1. …" 번호, 한 장짜리(아이콘 · 파비콘)는 번호 없음 | 전 챕터 통일 규칙 |
 | E9 | 2026-11-13 | 장표 속 제3자 상표(차량 · 앱 아이콘 · 협업 로고) · 더미 문구 | 실제 상표 · 더미 텍스트 노출 | 현 단계 허용(디자이너 "대체로 문제없음"). 외부 공개 전 확인은 디자이너 몫 |
+| E10 | 2026-11-13 | 장표 전반 — 예: Graphic Unit › Shaft › 다양성(`shaft-diversity` 회색 3 + 네온 1 ↔ 본문 "고루") | 장표의 색 · 조합이 본문 규칙과 조금 다름 | 설명을 위해 일부 장표에 예외적 표현 · 조합을 썼을 수 있고, 다르면 본문 우선(Overview › Welcome 에 안내 문장). 장표를 고치지 말 것 |
+| E11 | 2026-11-13 | Graphic Unit › Parameters (`param-thread-width`) ↔ `shape-do` | 노란 선 길이(컬럼의 40%)가 본문 "컬럼 폭에서 줄어드는 비율" 과 안 맞아 보임 | 왼쪽 장표는 파라미터가 어느 변인지 가리키는 그림이지 값을 정하는 그림이 아님, 오른쪽은 가능한 경우 하나 |
+| E12 | 2026-11-13 | Graphic Unit › Don'ts (`unit-dont-4` Solid Gray 유닛) ↔ Graphic Pattern › Color `color-do-3` (Space Black on Neon) | 화면에서 둘 다 "Neon 위 어두운 유닛" 으로 보임 | 유닛 색이 분명히 다르고, 색에 대한 금지 · 허용을 보여 주는 장표라 문제없음 |
+| E13 | 2026-11-13 | 슬로건 표기 — `alignment-do-2` · Graphic Pattern In Use 포스터 | "Build Anyway." 와 "Build anyway," 혼용 | 헤드카피냐 문장 속이냐는 형식 차이라 재량 허용 |
+| E14 | 2026-11-13 | Typography › Reference Scale 자간 값의 `[Solid Gray]` · `[Space Black]` | 대괄호 문법이라 이름 없이 색 칩만 보임 | 가독성을 위해 의도적으로 칩만 둠 |
+| E15 | 2026-11-13 | Graphic Unit › Pair › 파동(`pair-pulse`) | 본문 "중심대칭 또는 좌우대칭" ↔ 장표는 좌우대칭 하나 | 장표는 경우 하나를 보여 줌. 본문 유지 |
+| E16 | 2026-11-13 | Applications 페이지 본문(예: Print "Air White 바탕 기본") | 다른 페이지 · 장표와 어긋남 | 디자이너가 페이지 전체를 다시 쓸 예정 — 그 전까지 지적 · 수정 보류 |
 
 결정 대기 중인 항목은 `research/content-check/findings.csv`(로컬 전용, git 제외)에 있습니다 — 여기 오르기 전까지는 예외가 아닙니다.
 

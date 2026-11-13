@@ -350,7 +350,7 @@
   --sec-textonly-cols: 10; /* text / wide / half / grid: 텍스트 컬럼 수 (글 상자의 폭) */
   --sec-text-measure: 48em; /* text / wide / half / grid 본문의 최대 줄 길이. em = 본문 글자 크기 (한글 1자 ≈ 1em). 컬럼 폭이 이보다 넓어지는 큰 화면에서만 걸림. none = 제한 없음 */
   --sec-split-text-pad: 0.4; /* ::: split 안 섹션의 글 오른쪽 여백 (그리드 컬럼 폭 × 값). 단 사이 거터에 더해져 글이 옆 단에 붙지 않게 */
-  --head-gap: calc(var(--lh-unit) * 2); /* 헤드(+서브헤드) ↔ 본문 */
+  --head-gap: calc(var(--lh-unit) * 1.5); /* 헤드(+서브헤드) ↔ 본문 */
   --sec-row-gap: calc(var(--lh-unit) * 1.5); /* 세로 간격 하나로 통일: 텍스트 ↔ 이미지(wide · half · grid · 모바일 basic), grid 카드 행 ↔ 행, wide 여러 장 장 ↔ 장 */
   /* 모바일 (899px 이하) — base.css 가 위 PC 이름을 이 값으로 바꿔 끼움 */
   --sec-text-cols-m: 6; /* 모바일: basic 텍스트 컬럼 (전폭) */

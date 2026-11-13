@@ -23,6 +23,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
   [[→ graphic-pattern#color]]          → "→ Graphic Pattern › Color" (화살표까지 한 밑줄. 화살표는 → 한 글자만)
   [[graphic-pattern#grammar|grammar rules]]         → 링크 글자를 직접 지정
   [[https://eopla.net|EO Planet]]      → 외부 링크 (새 탭). 라벨이 없으면 "eopla.net" 처럼 주소가 글자로
+  [[download|로고 생성기]]               → 목차 링크 항목(## Download {href=…})의 주소로 (새 탭). 라벨이 없으면 항목 이름
     → 페이지 이름 = URL의 slug (symbol, signature, graphic-pattern …), 섹션 = 앵커 id = 헤드(헤드가 페이지 이름과 같으면 서브헤드).
       헤드가 페이지 이름과 다르고 서브헤드가 있으면 id 는 헤드-서브헤드 (morphology-proportion).
       없는 대상은 개발 서버(npm run dev)에서는 경고 후 글자만 남고, npm run build 는 오류로 멈춥니다. 페이지 이름은 사이트 전체에서 하나여야 합니다.
@@ -139,7 +140,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
 ### Welcome to the EO Brand Guidelines
 EO is a media brand for builders. It rallies builders (Rallying), stands with builders of conviction (Conviction), and has their backs (Backing). Recording the founder's journey as it is, and carrying that story to the next builder: that is what EO does.
 
-These guidelines describe the fundamental elements of the EO identity system: logo · typography · color · graphic system. Their purpose is to make the brand's content and services look and read as one EO, in San Francisco · Seoul · Vietnam alike.
+These guidelines describe the fundamental elements of the EO identity system: logo · typography · color · graphic system. Their purpose is to make the brand's content and services look and read as one EO, in San Francisco · Seoul · Vietnam alike. Some slides may use exceptional expressions or combinations for the sake of explanation; where a slide and the text differ, the text takes precedence.
 
 Build Anyway.
 
@@ -210,7 +211,7 @@ The E block, which depicts the facade of a screw, consists of a shaft and three 
 #### + Clearspace
 Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the page. With H as the vertical height of one E block, always keep a clearspace of at least H/2 on all four sides between the symbol and every adjacent element.
 
-Because the visual weight of the EO symbol drifts to the left the smaller it is seen, always correct it by narrowing the right clearspace. **Right clearspace = H × (0.42 + 0.0012 × S)**, where S is the symbol height actually seen on screen (mm); at S of 67mm or more, keep H/2 as is. Where the clearspace box is centered in a frame, such as an app icon or profile image, the symbol moves right within the frame by (H/2 − right clearspace) ÷ 2. For how to apply it, see [[#app-and-social-icons-alignment|App & Social Icons › Alignment]]. This is an approximation derived from measurements at a desktop viewing distance of 500mm across seen heights of 4-50mm, with a maximum error of ±0.02mm.
+Because the visual weight of the EO symbol drifts to the left the smaller it is seen, correct it by narrowing the right clearspace. The amount of correction is set by the seen size S. S is the symbol height (mm) converted to a viewing distance of 500mm: calculate it as actual height × 500 ÷ viewing distance, or use the Symbol height value of the [[download|logo generator]] as is. Right clearspace = H × (0.42 + 0.0012 × S), based on the symbol's allowed size range of 4–25mm. Where the clearspace box is centered in a frame, such as an app icon or profile image, the symbol moves right by (H/2 − right clearspace) ÷ 2, and the generator's Right side correction applies this value automatically. For how to apply it, see [[#app-and-social-icons-alignment|App & Social Icons]].
 ![clearspace] {zoom=1.05}
 
 
@@ -278,7 +279,7 @@ The composition of the photo should be simple enough for the symbol to stand out
 The guidance in this section focuses on overlays on still images rather than on video sequences whose composition changes.
 ![imagery-do-1]{do} {bg-cover} The symbol placed where it has sufficient contrast with the background
 ![imagery-do-2]{do} {bg-cover} When a photo with uneven brightness must be used, a gradient overlay at about 30% opacity secures contrast
-![imagery-dont-1]{dont} {bg-cover} Do not place the symbol over the main silhouette of the person · object the photo focuses on
+![imagery-dont-1]{dont} {bg-cover} Do not let the silhouette of an object in the photo overlap the edge of the symbol
 ![imagery-dont-2]{dont} {bg-cover} Do not place the symbol where it lacks contrast with the photo
 
 
@@ -761,7 +762,7 @@ Below is an example of the same presets applied to the seven-level [[#reference-
 
 
 ### + Multilingual {layout=wide}
-Use Pretendard for Korean and Noto Sans for Vietnamese. When an existing layout is changed to a multilingual typeface, the Line Unit and level multiples stay the same, so the layout does not move when the language changes; only the type size and linespacing change to suit the typeface. Below are multilingual conversions for T1 · H3 of the [[#reference-scale|Reference Scale]].
+Use Pretendard for Korean and Noto Sans for Vietnamese. When an existing layout is changed to a multilingual typeface, the Line Unit and level multiples stay the same, so the layout does not move when the language changes. Below are multilingual conversions for T1 · H3 of the [[#reference-scale|Reference Scale]].
 
 - Korean Pretendard — T1 is Regular · 165% · -1.5% · baseline +0.2x, and H3 is Medium · 165% · -2.5% · baseline -0.05x. The rendered type size is about 0.85 times that of Founders Grotesk at the same level.
 - Vietnamese Noto Sans — T1 is DemiLight · 175% · -1% · baseline +0.05x, and H3 is Regular · 175% · -3% · baseline +0.05x. The rendered type size is about 0.8 times that of Founders Grotesk at the same level.
@@ -820,7 +821,7 @@ Each color is specified in HEX · RGB for screen and in CMYK · Pantone for prin
 ### Color
 #### Usage Ratio
 
-Use Solid Gray or Space Black as the default background; in media that allow photography, the San Francisco sky itself becomes the background. For graphic elements placed on the background, the recommended ratio is Builder Neon 50%, Day Blue · Bay Green 30%, and Medium Gray · Air White 20%. Set text in Air White or Space Black, at around 10% of the overall composition. In text-led media, the share of background rises; in pattern-led media, the share of Builder Neon rises. In contexts where the EO brand is already clearly recognized, such as social channels or series artwork, Day Blue · Bay Green may be used more freely than the recommended ratio allows.
+Use Solid Gray or Space Black as the default background; in media that allow photography, the San Francisco sky itself becomes the background. For graphic elements placed on the background, the recommended ratio is Builder Neon 50%, Day Blue · Bay Green 30%, and Medium Gray · Air White 20%. Set text mainly in Air White · Space Black, at around 10% of the overall composition. In text-led media, the share of background rises; in pattern-led media, the share of Builder Neon rises. In contexts where the EO brand is already clearly recognized, such as social channels or series artwork, Day Blue · Bay Green may be used more freely than the recommended ratio allows.
 
 For detailed application by element, see the Color section of each page.
 
@@ -864,7 +865,7 @@ To keep EO's colors consistent, avoid the following. For the minimum contrast be
 Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (hereafter, the unit) takes its motif from the three parts of a screw: shaft · thread · head.
 
 - Thread — One turn of the thread symbolizes one cycle of problem solving. The harder the wall it meets, the stronger the resistance and the longer it takes to break through. The tighter the threads, the more densely the builder's time is filled (Build through).
-- Shaft — The shaft symbolizes the process of building and the builder's journey. The shaft size expresses how strong the core qualities of that process are.
+- Shaft — The shaft symbolizes the process of building and the builder's journey. The shaft size expresses how strong the core qualities of that process are. The thicker the shaft, the stronger the push forward (Build anyway).
 - Head — The head symbolizes one small problem solved, or one builder. Many small screws together can build anything (Build anything). Likewise, a problem one builder cannot solve is eventually solved when many builders face it together (Build together).
 ![motif-1] {zoom=1.17}
 ![motif-2]
@@ -897,13 +898,13 @@ Color shows who the protagonist of a graphic is, what forms the environment, and
 - Air White — A neutral color, high in hierarchy but without identity, expressing the nuance of energy · the counterpart · semi-highlighting. It works best when it covers 10-30% of the whole page.
 - Day Blue — Builders of a different character · community · surrounding elements. Emphasizes the nuance of positive energy · optimism drawn from a blue sky.
 - Bay Green — Builders of a different character · community · surrounding elements. Emphasizes the nuance of softness · friendliness drawn from the green of California's chaparral hills. (team, teamwork, co-working, diversity, nature)
-- Medium Gray — Expresses the nuance of mechanical neutrality: inactivity · the other · indifference · conservatism.
-- Space Black — For situations where visual impact comes first. Use it sparingly, only in a fixed combination with a Builder Neon background, to express overwhelming presence.
+- Medium Gray — Expresses the nuance of mechanical neutrality: inactivity · the other · indifference · conservatism · the material world.
+- Space Black — For situations where visual impact comes first, a combination with a Builder Neon background is recommended, expressing overwhelming presence.
 - Solid Gray is not used as a unit color.
 ![color-neon-white] [Builder Neon]builder · protagonist · core, [Air White]energy · counterpart · balance
 ![color-blue-green] [Day Blue]other builders · surrounding elements · optimism, [Bay Green]other builders · surrounding elements · friendliness
 ![color-gray] [Medium Gray] inactivity · the other · conservatism · the material world
-![color-black-on-neon] [Space Black] on [Builder Neon] fixed combination, overwhelming presence
+![color-black-on-neon] [Space Black] on [Builder Neon] recommended combination, overwhelming presence
 
 
 ### + Vocabulary
@@ -917,44 +918,44 @@ This section mainly covers keyword expression; for guidance on visual quality, s
 
 ### Vocabulary
 #### Thread {layout=grid-3} {zoom=1.15}
-A thread is one turn of a screw thread and stands for one act of problem solving. How tight the threads are within a unit · which way they lean · how long they run express the character of that time. Keywords expressed with thread: adversity · acceleration · lightning · builder.
+A thread is one turn of a screw thread and stands for one act of problem solving. How tight the threads are within a unit · which way they lean · how long they run express the character of that time. Keywords expressed with thread: adversity · acceleration · spark · builder.
 
 - Adversity — A time of difficulty, resistance from the environment. Expressed by laying the unit horizontally. Tighter threads express greater difficulty; which end is tighter shows whether the hardest stretch comes at the start or at the end.
 - Acceleration — A change in thread density can feel like acceleration, a stretch where momentum builds. When compression tightens in the direction of travel, it reads as acceleration; reversed, as deceleration. Units repeated end to end can also read as a recurring, routine-like flow.
-- Lightning — Spark · inspiration · energy. When the shaft is long enough and the thread compression spreads relatively gently, the unit can resemble a bolt of lightning. Use only Builder Neon · Air White for this metaphor.
+- Spark — Lightning · inspiration · energy. When the shaft is long enough and the thread compression spreads relatively gently, the unit can resemble a bolt of lightning. Use only Builder Neon · Air White for this metaphor.
 - Builder — A single builder · person · entity. Expressed by standing the unit vertically. Compression tightens the bottom, and the direction in which the upper threads lean is the direction the figure faces. Use Builder Neon for a unit that represents EO or the protagonist, Air White for a unit with a stake in the story but not the protagonist, Day Blue · Bay Green for peers · friends, and Medium Gray for others · hostile presences.
 ![thread-adversity] Adversity — threads tightening along the timeline
 ![thread-acceleration] Acceleration — threads with compression weighted in the direction of travel
-![thread-lightning] Lightning — long, thin threads with gentle compression
+![thread-lightning] Spark — long, thin threads with gentle compression
 ![thread-builder] Builder — compression weighted at the bottom, as if standing on the ground
 
 
 ### Vocabulary
 #### Shaft {layout=grid-3} {zoom=1.15}
-The shaft is the axis of the screw and symbolizes the timeline of the building process; the shaft size expresses how strong the core qualities of that process are. Keywords expressed with shaft: growth · diversity · support.
+The shaft is the axis of the screw and symbolizes the timeline of the building process; the shaft size expresses how strong the core qualities of that process are. Keywords expressed with shaft: growth · diversity · backing.
 
 - Growth — Conviction · magnitude of strength. Expressed by three or more shafts thickening step by step.
 - Diversity — Differences in character. Expressed by placing several units with different shaft sizes side by side in random order. The larger the shaft size, the shorter the threads, so each unit's impression changes markedly; the nuance is not that thicker is better, but that each is different. Use an even mix of [[graphic-pattern#color|unit colors]].
-- Support — The side that bears or receives weight (Backing). With threads on one side only, the shaft on that side becomes the ground and the threads stand on it; the taller the threads and the steeper their slope, the more dramatic the expression.
+- Backing — The side that bears or receives weight. With threads on one side only, the shaft on that side becomes the ground and the threads stand on it; the taller the threads and the steeper their slope, the more dramatic the expression. Make the shaft of the supporting unit below thick and the unit above thin, so the relationship of bearing weight is clear.
 - Apply Builder Neon to the unit that represents EO or the protagonist.
 ![shaft-growth] Growth — shafts thickening step by step
 ![shaft-diversity] Diversity — several units of varying shaft size placed side by side in random order
-![shaft-support] Support — expressed through the relationship between two threads with different shaft sizes
+![shaft-support] Backing — a unit with a thick shaft supporting a thin unit from below
 
 
 ### Vocabulary
 #### Pair {layout=grid-3} {zoom=1.1}
-Connecting two units creates a new relationship. Different contexts arise from whether they combine horizontally or vertically, and whether they face the same or opposite directions. Keywords expressed with pair: journey · momentum · wave · peers · rivals · house.
+Connecting two units creates a new relationship. Different contexts arise from whether they combine horizontally or vertically, and whether they face the same or opposite directions. Keywords expressed with pair: journey · momentum · pulse · peers · rivals · house.
 
 - Journey — Length of time, a recurring process. Expressed by docking two horizontal units with the same compression direction. It shows one chapter ending and the next beginning; repeated, it becomes a routine · cycle. Apply the same color to a docked unit pair.
 - Momentum — The moment acceleration crosses a threshold and changes direction. Expressed by inverting two horizontal units about the center and docking them at the ends where their threads are loosest. Adjust compression so that in both states the eye is drawn to the middle.
-- Wave — Pulse · frequency · a spreading signal. Expressed by inverting two lightning units with point or mirror symmetry and joining them at the ends where their threads are loosest.
+- Pulse — Wave · frequency · a spreading signal. Expressed by inverting two spark units with point or mirror symmetry and joining them at the ends where their threads are loosest.
 - Peers — Two figures standing together. Expressed by standing two vertical units side by side, facing the same direction. Apply Builder Neon to the unit representing EO or the protagonist, and another color that suits the peer's character to the peer unit.
 - Rivals — Opposition · competition. Expressed by standing two vertical units side by side, facing each other. Apply Builder Neon to the unit representing EO or the protagonist, and Air White · Medium Gray to the rival unit.
 - House — Shelter · community · EO House. Expressed by standing two vertical units side by side, facing outward, so their silhouette forms a roof. For EO House, apply Builder Neon to both units, or Builder Neon to the left unit and Day Blue to the right.
 ![pair-journey] Journey · routine — docked in the same direction
 ![pair-momentum] Momentum — two states docked after center inversion
-![pair-pulse] Wave — two lightning units docked with point · mirror symmetry
+![pair-pulse] Pulse — two spark units docked with point · mirror symmetry
 ![pair-peers] {zoom=1.36} Peers — two vertical units, same direction
 ![pair-rivals] {zoom=1.36} Rivals — two vertical units, facing each other
 ![pair-house] {zoom=1.15} House — roof silhouette (EO House)
@@ -968,7 +969,7 @@ Extending the metaphors so far into larger arrangements expresses the relationsh
 - Dimension — Parallel worlds. Blend a pair in geometric progression. If one line is a single timeline, stacked lines become multidimensional space-time or parallel worlds. A single Builder Neon among Medium Gray timelines is the present timeline.
 - Direction — Expresses drive · flow. Place units, inverted so that the negative space between them takes the shape of arrows, in parallel along the shaft axis, so that the arrows point regularly to one side.
 - Radiation — Bursting energy · resonance. Mirror the directional pattern above. Consider Builder Neon at the source of the energy.
-- Crossing — Simultaneous · instantaneous sync. Stack lightning units in alternating order, placing their vertices · edges with tension.
+- Crossing — Simultaneous · instantaneous sync. Stack spark units in alternating order, placing their vertices · edges with tension.
 ![formation-scale] Scale — extending the metaphor of the same unit · group
 ![formation-dimension] Dimension — space-time · parallel worlds
 ![formation-direction] Direction — drive · flow
@@ -1073,7 +1074,7 @@ Vocabulary covers what a unit means and Morphology covers how it looks, so the G
 #### + Zoning
 To build a new layout, first set up the Compound Grid, then use the modular grid as the primary guide to divide the page into the graphic pattern area and the content area, and finally complete the pattern inside the graphic pattern area. For detailed guidance on the Compound Grid, see [[typography#compound-grid|Compound Grid]]. Do not set a margin between the two areas explicitly; treat it as part of the content area's margin.
 
-The graphic pattern area is a rectangular area that corresponds to the Frame in EO Graphic Builder. Stacking units inside it, interlocked like Tetris pieces with no empty space, is a separate system. Unit placement inside the graphic pattern area does not need to align with the typography grid. The two systems, the graphic pattern area and the typography-led content area, create a contrast between strong and soft on a single page. Because typography in the content area runs left and top aligned, prefer placing the graphic pattern area on the right when splitting the page side by side, and at the top when splitting it top and bottom.
+The graphic pattern area is a rectangular area that corresponds to the Frame in EO Graphic Builder. Stacking units inside it, interlocked like Tetris pieces with no empty space, is a separate system. Unit placement inside the graphic pattern area does not need to align with the typography grid. The two systems, the graphic pattern area and the typography-led content area, create a contrast between strong and soft on a single page. Because typography in the content area runs left and top aligned, prefer placing the graphic pattern area on the right when splitting the page side by side, and at the top when splitting it top and bottom. The exception is vertical media that stand on the ground, such as roll-up banners · street banners, where placing the pattern at the bottom can suit better. Set the side with dense compression against the ground so the unit reads as a builder or house standing on the ground; the dense threads then evoke the ground (see [[graphic-unit#vocabulary-thread|Builder]]).
 
 When drafting graphics for a new metaphor in the EO Graphic Builder workspace, you set up an independent grid inside the Frame and place graphic units on it in a regular order. This is a separate system, entirely independent of the Compound Grid that this guideline focuses on.
 ![grid-do-1]{do} Areas divided in ideal proportion
@@ -1124,7 +1125,7 @@ Use Builder Neon as a background color, with Space Black units on top, only on p
 - Unit color
   - **Apply only one color to each unit.**
   - **We recommend no more than three unit colors at once in one graphic pattern;** up to four are allowed only for the fixed combination of Builder Neon · Day Blue · Bay Green · Medium Gray.
-  - Medium Gray is a supporting color. Do not use it alone; always combine it with units in other colors.
+  - Medium Gray is a supporting color; combining it with units in other colors is the default. Only when deliberately depicting a negative situation, such as resistance · stagnation, may a pattern be composed of Medium Gray alone.
   - Do not use Solid Gray as a unit color.
 - Background color
   - Consider Solid Gray first as a background color: it lowers the contrast with all five unit colors by one step, holding every color together calmly.
@@ -1135,14 +1136,14 @@ The Do · Don't examples below form a reference chart that gathers, on one sheet
 ![color-do-1] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Solid Gray]
 ![color-do-2] {do}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Space Black]
 ![color-do-3] {do}[Space Black] on [Builder Neon] · [Day Blue] · [Bay Green] · [Air White]
-![color-con] {con}[Builder Neon] · [Space Black] on [Medium Gray]
+![color-con-1] {con}[Builder Neon] · [Space Black] on [Medium Gray]
+![color-con-2] {con}[Medium Gray] alone on [Solid Gray] · [Space Black]
 ![color-dont-1] {dont}[Space Black] on [Solid Gray] or vice versa
-![color-dont-2] {dont}[Medium Gray] alone on [Solid Gray] · [Space Black]
-![color-dont-3] {dont}[Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Builder Neon]
-![color-dont-4] {dont}[Builder Neon] · [Bay Green] · [Medium Gray] · [Air White] on [Day Blue]
-![color-dont-5] {dont}[Builder Neon] · [Day Blue] · [Medium Gray] · [Air White] on [Bay Green]
-![color-dont-6] {dont}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] on [Air White]
-![color-dont-7] {dont}[Day Blue] · [Bay Green] · [Air White] on [Medium Gray]
+![color-dont-2] {dont}[Day Blue] · [Bay Green] · [Medium Gray] · [Air White] on [Builder Neon]
+![color-dont-3] {dont}[Builder Neon] · [Bay Green] · [Medium Gray] · [Air White] on [Day Blue]
+![color-dont-4] {dont}[Builder Neon] · [Day Blue] · [Medium Gray] · [Air White] on [Bay Green]
+![color-dont-5] {dont}[Builder Neon] · [Day Blue] · [Bay Green] · [Medium Gray] on [Air White]
+![color-dont-6] {dont}[Day Blue] · [Bay Green] · [Air White] on [Medium Gray]
 
 
 ### Graphic Pattern {layout=grid-4} {ratio=16:9} {zoom=1.0} {bg-color}
