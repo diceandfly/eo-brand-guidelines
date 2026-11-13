@@ -448,7 +448,7 @@ This keeps the [[typography#inversion|tonal value]] balance between the symbol a
 #### Horizontal
 The EO signature can be locked up with the logos of partner brands and collaborators. The images in this section show examples of the basic lockup.
 
-Optically adjust the elements so that they appear the same size. After matching the size of each logo, you can insert a gap and a divider · collaboration mark between them. Based on the width of one E block (W), set the gap between the EO symbol and the partner logo to 1.5W with a divider and 2W with a collaboration mark.
+Optically adjust the elements so that they appear the same size. After matching the size of each logo, you can insert a gap and a divider · collaboration mark between them. Based on the width of one E block (W), set the gap between the EO signature and the partner logo to 1.5W with a divider and 2W with a collaboration mark.
 ![partner-h] {zoom=1.05}
 
 
