@@ -6,8 +6,8 @@
  * slides: {slide} 묶음(Section.astro 가 모음) — 프레임 안에 여러 장을 옆으로 이어 붙이고 motion.ts 4 가 넘김. 끝에 첫 장 사본(data-clone)을 하나 더 두어 끊김 없이 반복.
  *   첫 이미지에 {slide=3:4} 처럼 비율을 적으면 한 장을 그 비율로 카드 높이에 맞춰(자르지 않음) 나란히 놓고 일정한 속도로 흘려보냄 (data-slide-ratio, --_r).
  * item.scroll({scroll}): 세로로 긴 이미지를 프레임 안에서 위 → 아래로 (data-scroll, motion.ts 4).
- * screen: {device} 목업(item)의 화면 안에 들어갈 이미지. 목업의 흰 화면 자리를 빌드 때 재서(deviceScreen) 그 자리에 놓고, 목업은 위에 곱하기 합성으로 얹음
- *   — 흰 면은 화면 내용이 그대로 비치고 테두리 · 노치 · 둥근 모서리는 그대로 남음. 확대 보기는 화면 내용 이미지를 엶. 자리는 전부 % 라 카드 크기 · 비율이 바뀌어도 맞음.
+ * screen: {device} 목업(item, 화면 자리가 투명한 PNG)의 화면 안에 들어갈 이미지. 목업의 투명한 화면 자리를 빌드 때 재서(deviceScreen) 그 자리에 놓고 목업을 위에 얹음.
+ *   자리는 전부 % 라 카드 크기 · 비율이 바뀌어도 맞음. 카드 전체가 확대 보기 버튼이고, 확대 보기도 목업째 커지며 화면 안에서 같은 움직임이 이어짐 (motion.ts 3 setDevice).
  */
 import { UI_TEXT, langFromPath, type ImageItem } from '../lib/guide';
 import { imageEdge, deviceScreen } from '../lib/imageTone';
@@ -39,7 +39,6 @@ const shots = slides && slides.length > 1 ? await Promise.all(slides.map(async (
 const marquee = !!shots && !!item.slideRatio;
 // {device}: 목업의 화면 자리 + 화면 내용 이미지의 가장자리 색 · 사본
 const box = item.device && item.src && screen?.src ? await deviceScreen(item.src) : undefined;
-const screenInfo = box && screen?.src ? await imageEdge(screen.src, 1, tokenHex(TOKENS, '--surface', '#000000'), tokenNumber(TOKENS, '--lightbox-bg-uniform', 40)) : undefined;
 const screenOpt = box && import.meta.env.PROD && screen?.src ? optimizedOf(screen.src) : null;
 const lead = 0;
 const reel = shots ? [...shots, ...(marquee ? [0, 1, 2] : [0]).map(k => ({ ...shots[k % shots.length], clone: true }))] : [];
@@ -50,12 +49,12 @@ const reel = shots ? [...shots, ...(marquee ? [0, 1, 2] : [0]).map(k => ({ ...sh
       ? <div class="fig__stage">
           <div class="fig__screen">
             {screenOpt
-              ? <picture><source srcset={screenOpt.src} type={screenOpt.type} /><img src={screen.src} alt={alt} loading={eager ? 'eager' : 'lazy'} role="button" tabindex="0" aria-haspopup="dialog" data-lb-bg={screenInfo?.edge ?? undefined} data-lb-fill={screen.bg === true ? (screenInfo?.edge ?? '') : screen.bg} data-lb-cover={screen.cover ? '' : undefined} /></picture>
-              : <img src={screen.src} alt={alt} loading={eager ? 'eager' : 'lazy'} role="button" tabindex="0" aria-haspopup="dialog" data-lb-bg={screenInfo?.edge ?? undefined} data-lb-fill={screen.bg === true ? (screenInfo?.edge ?? '') : screen.bg} data-lb-cover={screen.cover ? '' : undefined} />}
+              ? <picture><source srcset={screenOpt.src} type={screenOpt.type} /><img src={screen.src} alt="" aria-hidden="true" loading={eager ? 'eager' : 'lazy'} /></picture>
+              : <img src={screen.src} alt="" aria-hidden="true" loading={eager ? 'eager' : 'lazy'} />}
           </div>
           {opt
-            ? <picture><source srcset={opt.src} type={opt.type} /><img class="fig__device" src={item.src} alt="" aria-hidden="true" loading={eager ? 'eager' : 'lazy'} /></picture>
-            : <img class="fig__device" src={item.src} alt="" aria-hidden="true" loading={eager ? 'eager' : 'lazy'} />}
+            ? <picture><source srcset={opt.src} type={opt.type} /><img class="fig__device" src={item.src} alt={alt} loading={eager ? 'eager' : 'lazy'} role="button" tabindex="0" aria-haspopup="dialog" data-lb-device data-lb-bg={info?.edge ?? undefined} data-lb-fill={item.bg === true ? (info?.edge ?? '') : item.bg} /></picture>
+            : <img class="fig__device" src={item.src} alt={alt} loading={eager ? 'eager' : 'lazy'} role="button" tabindex="0" aria-haspopup="dialog" data-lb-device data-lb-bg={info?.edge ?? undefined} data-lb-fill={item.bg === true ? (info?.edge ?? '') : item.bg} />}
         </div>
       : shots
       ? <div class="fig__track">

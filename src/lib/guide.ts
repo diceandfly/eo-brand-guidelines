@@ -24,7 +24,7 @@ export interface ImageItem {
   bg?: string | true;     // 확대 보기 배경: {bg-color} = 거울 확장 대신 가장자리 색(빌드 때 측정)으로 채움(true), {bg-color=solid-gray} = 팔레트 색 (var(--c-…))
   cover?: boolean;        // 확대 보기 {bg-cover}: 이미지를 화면에 꽉 채움 (object-fit: cover, 넘치는 쪽은 잘림). 거울 확장 · 배경색 없음. 모바일은 기본 보기
   scroll?: boolean;       // {scroll}: 카드보다 세로로 긴 이미지(웹 페이지 전체 등)를 카드 안에서 위 → 아래로 몇 번에 나눠 내려 보이고 처음으로 (motion.ts 4, --card-scroll-*)
-  device?: boolean;       // {device}: 기기 목업(화면 자리가 흰 면인 이미지). 바로 다음 이미지가 그 화면 안에 들어감 — 다음 이미지는 따로 카드가 되지 않음 (Section.astro 가 묶음, Figure screen)
+  device?: boolean;       // {device}: 기기 목업(화면 자리만 투명한 PNG). 바로 다음 이미지가 그 화면 안에 들어감 — 다음 이미지는 따로 카드가 되지 않음 (Section.astro 가 묶음, Figure screen)
   slide?: boolean;        // {slide}: 연달아 놓인 {slide} 이미지들이 카드 하나에서 옆으로 넘어감 (무한 반복). 캡션은 첫 이미지 것 (Section.astro 가 묶음, motion.ts 4, --card-slide-*)
   slideRatio?: number;    // {slide=3:4}: 한 장의 비율(가로 ÷ 세로). 카드와 비율이 다른 장(세로형 피드 등)을 자르지 않고 카드 높이에 맞춰 나란히 놓고, 한 장씩 넘기는 대신 일정한 속도로 흘려보냄(마퀴). 묶음의 첫 이미지에 적음
   caption?: string;       // HTML. 한글 구간은 <span class="ko"> 로 래핑됨

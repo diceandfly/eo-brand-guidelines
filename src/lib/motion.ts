@@ -42,6 +42,8 @@ const ms = (name: string, fallback: number) => parseSeconds(token(name)) ?? fall
 
 // 운영체제의 "동작 줄이기"를 켠 사용자: 스무스 스크롤 끔, 섹션 이동은 바로 점프, 라이트박스는 배율 없이 짧은 디졸브
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// 카드 안 움직임(4)의 '마우스를 올리면 멈춤' 을 푸는 함수 — 확대 보기(3)가 {device} 카드를 열 때 부름(화면 안 움직임이 확대 보기에서도 이어지도록). 4 에서 채움
+let releaseCardHover: (frame: Element) => void = () => {};
 
 /* ---------- 1. 스무스 스크롤 ---------- */
 // 터치 전용 기기(폰 · 태블릿)는 스무스 스크롤을 만들지 않고 브라우저 기본 관성 스크롤을 씀. ScrollSmoother 는 터치에서 smoothTouch 0 이면 스스로 네이티브 모드로
@@ -512,6 +514,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
         box.setAttribute('aria-hidden', 'true');
         for (const el of behind) el.removeAttribute('inert');
         boxImg.removeAttribute('src');
+        clearDevice();
         current = null;
         for (const im of mirrorImgs) im.removeAttribute('src');
         box.classList.remove('is-wide');
@@ -527,12 +530,41 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
   // {slide} 묶음(.fig__track)에서 열면 그 묶음의 장들을 ← → 로 넘김. 끝에 붙은 첫 장 사본(data-clone)은 첫 장으로 침
   let group: HTMLImageElement[] = [];
   let groupAt = 0;
+  // {device} 카드(목업 안에 화면 내용): 확대 보기도 목업째. 목업 이미지의 투명한 화면 자리로 화면 내용이 비치도록 .lightbox__img 의 배경으로 깔고,
+  // 카드의 화면 위치(--_pan)를 매 프레임 옮겨 받아 같은 움직임이 이어지게 함. 배경이라 확대 보기의 크기 · 모바일 배치 · 열림 애니메이션을 그대로 따라감
+  let deviceTick: (() => void) | null = null;
+  const clearDevice = () => {
+    if (deviceTick) { gsap.ticker.remove(deviceTick); deviceTick = null; }
+    box.classList.remove('has-device');
+    boxImg.style.backgroundImage = boxImg.style.backgroundSize = boxImg.style.backgroundPosition = '';
+  };
+  const setDevice = (img: HTMLImageElement) => {
+    const frame = img.closest<HTMLElement>('.fig__frame');
+    const page = frame?.querySelector<HTMLImageElement>('.fig__screen img');
+    if (!frame || !page) return;
+    const pct = (name: string) => parseFloat(frame.style.getPropertyValue(name)) / 100;
+    const sx = pct('--_sx'), sy = pct('--_sy'), sw = pct('--_sw'), sh = pct('--_sh');
+    box.classList.add('has-device');
+    boxImg.style.backgroundImage = `url("${page.currentSrc || page.src}")`;
+    releaseCardHover(frame);
+    deviceTick = () => {
+      const W = boxImg.offsetWidth, H = boxImg.offsetHeight;
+      if (!W || !H || !page.naturalWidth) return;
+      const bw = sw * W, bh = bw * page.naturalHeight / page.naturalWidth;      // 화면 폭에 맞춘 내용 크기
+      const pan = parseFloat(frame.style.getPropertyValue('--_pan')) || 0;
+      boxImg.style.backgroundSize = `${bw}px ${bh}px`;
+      boxImg.style.backgroundPosition = `${sx * W}px ${sy * H - pan * Math.max(0, bh - sh * H)}px`;
+    };
+    gsap.ticker.add(deviceTick);
+    deviceTick();
+  };
   const openFrom = (img: HTMLImageElement) => {
     const track = img.closest('.fig__track');
     group = track ? Array.from(track.querySelectorAll<HTMLImageElement>('img:not([data-clone])')) : [];
     if (img.hasAttribute('data-clone') && group[0]) img = group[0];
     groupAt = Math.max(0, group.indexOf(img));
     open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset, 'lbWide' in img.dataset);
+    if ('lbDevice' in img.dataset) setDevice(img);
   };
   const stepGroup = (d: number) => {
     if (group.length < 2 || !current) return;
@@ -585,14 +617,15 @@ if (!reduced) {
     state.set(frame, { tl, inView: !io, hover: false });
     frame.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { state.get(frame)!.hover = true; sync(frame); } });
     frame.addEventListener('pointerleave', () => { state.get(frame)!.hover = false; sync(frame); });
+    releaseCardHover = el => { const st = state.get(el); if (st) { st.hover = false; sync(el); } };
     if (io) io.observe(frame); else sync(frame);
   };
 
   // 본문 스무스 스크롤(ScrollSmoother)과 같은 방식으로 움직임: 타임라인은 "휠 입력"에 해당하는 목표 위치(goal.v)만 짧게 옮기고,
   // 화면(--_pan)은 그 목표를 expo 감속 · --card-scroll-follow 초로 따라감(목표가 바뀔 때마다 다시 따라붙음). 그래서 출발이 부드럽고 끝이 길게 잦아듦
   const steps = Math.max(1, Math.round(num('--card-scroll-steps', 3)));
-  const scrollInput = ms('--card-scroll-input', 2.4), scrollHold = ms('--card-scroll-hold', 1.5), scrollStart = ms('--card-scroll-start-hold', 0.8), scrollEnd = ms('--card-scroll-end-hold', 3.4);
-  const follow = Math.max(0.01, ms('--card-scroll-follow', 2.2));
+  const scrollInput = ms('--card-scroll-input', 2.6), scrollHold = ms('--card-scroll-hold', 0.7), scrollStart = ms('--card-scroll-start-hold', 0.3), scrollEnd = ms('--card-scroll-end-hold', 1.4);
+  const follow = Math.max(0.01, ms('--card-scroll-follow', 2.8));
   for (const frame of document.querySelectorAll<HTMLElement>('.fig__frame[data-scroll]')) {
     const goal = { v: 0 };
     const chase = () => gsap.to(frame, { '--_pan': goal.v, duration: follow, ease: 'expo', overwrite: true });
