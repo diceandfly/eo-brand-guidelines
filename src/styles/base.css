@@ -955,6 +955,7 @@ html.fonts-wait .main {
    프레임을 크기 컨테이너로 두어 한 장의 폭을 프레임 높이(cqh)로 계산. --_slide = 지나간 장 수(소수) — motion.ts 4 */
 .fig__frame[data-slide-ratio] {
   container-type: size;
+  background: var(--card-slide-gap-bg); /* 장 사이 틈으로 보이는 띠 */
 }
 .fig__frame[data-slide-ratio] .fig__track {
   --_w: calc(100cqh * var(--_r));
