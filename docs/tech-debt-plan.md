@@ -88,6 +88,9 @@ B 착수 조건: A 뒤에도 잠금 > 300ms 이거나 사용자가 튐을 재현
 완료 기준: dist 차이 = 해당 aria 속성뿐 · 키보드로 목차 · 검색 · 라이트박스 순회.
 크로스체크: 낭독기 의미(aria) · 키보드 순회.
 
+→ 적용(2026-11-13): 사용자 목표 = 나중에 배포 · 외부 공개 가능, 화질 최우선. PNG 228장 무손실 WebP(빌드 사본 픽셀 대조 228/228 동일), JPG 7장은 WebP95 대신 AVIF q90 4:4:4(같은 용량, 크로마 ΔE p99 12.2 → 3.5). dist/assets 이미지 전송량 53.6 → 22.9MB(방문자가 받는 양). 원본을 폴백으로 함께 두므로 dist 폴더 자체는 커짐(이미지 합계 ≈77MB).
+  설계: astro:build:done 통합(scripts/lib/optimize-images.mjs, 해시 캐시, 사본 누락 시 빌드 실패) · Figure 는 import.meta.env.PROD 에서만 <picture> · .fig__frame picture { display: contents } · 선택자 `.fig__frame > img` → `.fig__frame img`(base.css 2곳 + :has 4곳, motion.ts 2곳). 라이트박스 · 거울은 currentSrc 로 사본을 씀.
+
 ## 하지 않음 (이유)
 - 스크롤스파이 매 프레임 읽기: 체감 문제 없음.
 - research/tech-debt-2026-11-10.md 33건 재검증(2026-11-13 서브 세션): 23건 처리됨, 남은 6건 중 20 · 33a · 32a → TD-4, 31a → TD-7, 26b(pretendard 다운로드 체크섬)는 위험 낮아 안 함, 30a(assets 워크) 체감 없어 안 함.

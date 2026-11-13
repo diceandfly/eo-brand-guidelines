@@ -474,7 +474,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
 
   const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset, 'lbRotate' in img.dataset);
   document.addEventListener('click', e => {
-    const img = (e.target as HTMLElement).closest('.fig__frame > img') as HTMLImageElement | null;
+    const img = (e.target as HTMLElement).closest('.fig__frame img') as HTMLImageElement | null;
     if (img) { e.preventDefault(); openFrom(img); }
   });
   box.addEventListener('click', close);                        // 아무 곳이나 클릭·탭하면 닫힘 (모바일에서 옆으로 민 뒤에는 click 이 오지 않음)
@@ -484,7 +484,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
       else if (e.key === 'Tab' || SCROLL_KEYS.has(e.key)) e.preventDefault();   // 열려 있는 동안 포커스는 라이트박스에 머물고, 키로도 뒤 페이지를 스크롤하지 않음
       return;
     }
-    const img = (e.target as HTMLElement).closest?.('.fig__frame > img') as HTMLImageElement | null;
+    const img = (e.target as HTMLElement).closest?.('.fig__frame img') as HTMLImageElement | null;
     if (img && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openFrom(img); }   // 키보드로 열기
   });
 }

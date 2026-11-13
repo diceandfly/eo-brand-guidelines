@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fontWarnings } from './scripts/lib/check-fonts.mjs';
+import { optimizeImages } from './scripts/lib/optimize-images.mjs';
 
 // 콘텐츠(content/guide.*.md)는 src/lib/guide.ts 가 Vite 모듈로 읽으므로
 // 저장하면 라우트 재계산과 브라우저 새로고침이 자동으로 일어납니다. 별도 감시 플러그인은 필요 없습니다.
@@ -51,8 +52,19 @@ const checkFontsOnBuild = () => ({
   },
 });
 
+// 빌드가 끝나면 dist/assets 의 PNG · JPG 옆에 가벼운 사본(.png.webp 무손실 · .jpg.avif 고화질)을 만듦 — 원본(public/assets)은 그대로.
+// Figure.astro 가 빌드에서만 <picture> 로 사본을 먼저 냄. 규칙 · 캐시는 scripts/lib/optimize-images.mjs
+const optimizeImagesOnBuild = () => ({
+  name: 'eo-optimize-images',
+  hooks: {
+    'astro:build:done': async ({ dir, logger }) => {
+      await optimizeImages(fileURLToPath(dir), fileURLToPath(new URL('./node_modules/.cache/eo-images', import.meta.url)), m => logger.info(m));
+    },
+  },
+});
+
 export default defineConfig({
-  integrations: [checkFontsOnBuild()],
+  integrations: [checkFontsOnBuild(), optimizeImagesOnBuild()],
   site: 'http://localhost:4321',
   vite: { cacheDir: isDev ? 'node_modules/.vite' : 'node_modules/.vite-build', plugins: [watchAssets(), serveArchive()] },
   trailingSlash: 'never',

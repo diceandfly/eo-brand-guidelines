@@ -37,4 +37,4 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 - 상세 튜토리얼: `docs/file-management.md`.
 
 ## 실행
-`npm run dev` → http://localhost:4321  /  `npm run build` → `dist/`(md 경고가 있으면 오류로 멈춤)  /  `npm test` → scripts/test.mjs (경고 0 · 플레이스홀더 수 · 모션 대체값 · astro check, EN/KO 패리티는 리포트)
+`npm run dev` → http://localhost:4321  /  `npm run build` → `dist/`(md 경고가 있으면 오류로 멈춤. 끝에 이미지 사본 생성 — PNG → 무손실 `.png.webp` · JPG → AVIF q90 4:4:4 `.jpg.avif`, 원본 불변, `scripts/lib/optimize-images.mjs`, Figure 가 빌드에서만 `<picture>`. 개발 서버는 원본만이라 사본 결과는 `npm run preview` 로 확인)  /  `npm test` → scripts/test.mjs (경고 0 · 플레이스홀더 수 · 모션 대체값 · astro check, EN/KO 패리티는 리포트)

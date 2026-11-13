@@ -161,7 +161,7 @@ button {
   border: 0;
 }
 /* 키보드 포커스 표시 (마우스 클릭에는 나타나지 않음) */
-.fig__frame > img:focus-visible {
+.fig__frame img:focus-visible {
   outline: var(--focus-w) solid var(--focus-c);
   outline-offset: calc(var(--focus-w) * -1); /* 프레임이 overflow:hidden 이라 안쪽에 그림 */
 }
@@ -859,18 +859,18 @@ html.js .main {
 /* 확대 가능한 이미지(플레이스홀더 제외)에 마우스를 올리면 테두리 색·두께만 바뀜. 프레임 크기는 그대로.
    어두운 이미지(기본): 밝은 회색으로, 밝은 선이 굵어 보이는 착시만큼 두께를 살짝 줄임.
    밝은 이미지(data-tone="light", 빌드 때 가장자리 밝기로 판정): 어두운 회색으로, 두께는 그대로 */
-.fig__frame:has(> img:hover) {
+.fig__frame:has(img:hover) {
   --_hover-w: var(--img-border-w-hover);
   --_bw: var(--_hover-w);
   --_bc: max(0px, calc(var(--img-chamfer) - var(--_hover-w) * var(--_k)));
 }
-.fig__frame:has(> img:hover)::after {
+.fig__frame:has(img:hover)::after {
   background: var(--img-border-hover);
 }
-.fig__frame[data-tone='light']:has(> img:hover) {
+.fig__frame[data-tone='light']:has(img:hover) {
   --_hover-w: var(--img-border-w-hover-on-light);
 }
-.fig__frame[data-tone='light']:has(> img:hover)::after {
+.fig__frame[data-tone='light']:has(img:hover)::after {
   background: var(--img-border-hover-on-light);
 }
 /* 카드 안 배율: 가운데를 기준으로 이미지를 키우고 가장자리는 프레임 밖으로 잘림. 확대 보기에서는 원본 그대로.
@@ -884,7 +884,11 @@ html.js .main {
 .sec__grid[data-n='4'] > .fig--dodont {
   --img-zoom: var(--dodont-zoom-4);
 }
-.fig__frame > img {
+/* 빌드에서는 <picture>(가벼운 사본 + 원본 폴백, Figure.astro)로 감싸므로 picture 상자를 없애 img 가 프레임의 직접 자식처럼 배치되게 */
+.fig__frame picture {
+  display: contents;
+}
+.fig__frame img {
   transform: scale(var(--img-zoom, 1));
   width: 100%;
   height: 100%;

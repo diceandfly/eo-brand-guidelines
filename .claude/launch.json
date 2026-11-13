@@ -21,6 +21,17 @@
         "127.0.0.1"
       ],
       "port": 4400
+    },
+    {
+      "name": "preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "astro",
+        "preview",
+        "--port",
+        "4399"
+      ],
+      "port": 4399
     }
   ]
 }
