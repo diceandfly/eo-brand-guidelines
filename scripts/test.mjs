@@ -29,7 +29,7 @@ import { checkLogoGenerator } from './lib/logo-generator-check.mjs';
 import { htmlProblems, checkRules } from './lib/check-rules.mjs';
 
 const ROOT = process.cwd();
-const MAX_PLACEHOLDERS = { ko: 9, en: 9 };   // 2026-11-14 기준(Applications 8 · Colors In Use 1). 이미지를 채우면 낮출 것
+const MAX_PLACEHOLDERS = { ko: 8, en: 8 };   // 2026-11-14 기준(Applications 7 · Colors In Use 1). 이미지를 채우면 낮출 것
 
 let failed = 0;
 const fail = msg => { failed++; console.log(`  ✗ ${msg}`); };
