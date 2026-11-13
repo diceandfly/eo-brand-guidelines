@@ -4,6 +4,7 @@
  * badge: do | dont | con  → 캡션 줄 맨 앞에 체크 / 엑스 / 삼각형(conditional) 아이콘 (레퍼런스와 같은 "아이콘 + 문구" 페어링)
  * caption 이 있으면 이미지 아래 캡션 (카드). 배지만 있고 캡션이 없으면 "Do" / "Don't" 를 기본 문구로 씁니다.
  * slides: {slide} 묶음(Section.astro 가 모음) — 프레임 안에 여러 장을 옆으로 이어 붙이고 motion.ts 4 가 넘김. 끝에 첫 장 사본(data-clone)을 하나 더 두어 끊김 없이 반복.
+ *   첫 이미지에 {slide=3:4} 처럼 비율을 적으면 한 장을 그 비율로 카드 높이에 맞춰(자르지 않음) 나란히 놓고 일정한 속도로 흘려보냄 (data-slide-ratio, --_r).
  * item.scroll({scroll}): 세로로 긴 이미지를 프레임 안에서 위 → 아래로 (data-scroll, motion.ts 4).
  */
 import { UI_TEXT, langFromPath, type ImageItem } from '../lib/guide';
@@ -32,14 +33,18 @@ const shots = slides && slides.length > 1 ? await Promise.all(slides.map(async (
   info: it.src ? await imageEdge(it.src, toneZoom, tokenHex(TOKENS, '--surface', '#000000'), tokenNumber(TOKENS, '--lightbox-bg-uniform', 40)) : undefined,
   opt: import.meta.env.PROD && it.src ? optimizedOf(it.src) : null,
 }))) : null;
+// 끊김 없는 반복을 위한 사본(data-clone): 기본은 끝에 첫 장 하나. {slide=비율}(일정한 속도로 흐르는 띠)은 프레임에 여러 장이 걸치므로 끝에 첫 세 장
+const marquee = !!shots && !!item.slideRatio;
+const lead = 0;
+const reel = shots ? [...shots, ...(marquee ? [0, 1, 2] : [0]).map(k => ({ ...shots[k % shots.length], clone: true }))] : [];
 ---
 <figure class:list={['fig', { 'fig--dodont': item.badge }]} style={`--ratio: ${ratio}${(item.zoom ?? Astro.props.zoom) !== undefined ? `; --img-zoom: ${item.zoom ?? Astro.props.zoom}` : ''}`}>
-  <div class="fig__frame" data-tone={tone} data-scroll={item.scroll && !shots ? '' : undefined} data-slides={shots ? shots.length : undefined}>
+  <div class="fig__frame" data-tone={tone} data-scroll={item.scroll && !shots ? '' : undefined} data-slides={shots ? shots.length : undefined} data-slide-ratio={marquee ? '' : undefined} style={marquee ? `--_r: ${item.slideRatio}` : undefined}>
     {shots
       ? <div class="fig__track">
-          {[...shots, { ...shots[0], clone: true }].map((s, i) => {
+          {reel.map((s, i) => {
             const clone = 'clone' in s;
-            const attrs = { src: s.it.src!, alt: clone ? '' : s.alt, loading: (eager && i === 0 ? 'eager' : 'lazy') as 'eager' | 'lazy', role: clone ? undefined : 'button' as const, tabindex: clone ? -1 : 0, 'aria-haspopup': clone ? undefined : 'dialog' as const, 'aria-hidden': clone ? 'true' as const : undefined, 'data-clone': clone ? '' : undefined, 'data-lb-bg': s.info?.edge ?? undefined, 'data-lb-fill': s.it.bg === true ? (s.info?.edge ?? '') : s.it.bg, 'data-lb-cover': s.it.cover ? '' : undefined };
+            const attrs = { src: s.it.src!, alt: clone ? '' : s.alt, loading: (eager && i === lead ? 'eager' : 'lazy') as 'eager' | 'lazy', role: clone ? undefined : 'button' as const, tabindex: clone ? -1 : 0, 'aria-haspopup': clone ? undefined : 'dialog' as const, 'aria-hidden': clone ? 'true' as const : undefined, 'data-clone': clone ? '' : undefined, 'data-lb-bg': s.info?.edge ?? undefined, 'data-lb-fill': s.it.bg === true ? (s.info?.edge ?? '') : s.it.bg, 'data-lb-cover': s.it.cover ? '' : undefined };
             return !s.it.src
               ? <div class="fig__placeholder t-label"><span>assets/{s.it.path}</span><span>{ratioLabel}</span></div>
               : s.opt

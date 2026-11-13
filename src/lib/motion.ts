@@ -570,9 +570,10 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
 }
 
 /* ---------- 4. 카드 안 움직임 ----------
-   {scroll}(.fig__frame[data-scroll]): 프레임보다 세로로 긴 이미지를 맨 위에서 맨 아래까지 --card-scroll-steps 번에 나눠 내리고(휠을 굴린 듯),
+   {scroll}(.fig__frame[data-scroll]): 프레임보다 세로로 긴 이미지를 맨 위에서 맨 아래까지 --card-scroll-steps 번에 나눠 내리고(본문 스무스 스크롤과 같은 감속),
    맨 아래에서 잠시 머문 뒤 맨 위로 돌아가 반복. 보이는 위치는 CSS 변수 --_pan(0…1, base.css object-position).
    {slide}(.fig__frame[data-slides] .fig__track): 한 장씩 옆으로 넘김. 띠 끝의 첫 장 사본까지 넘어간 뒤 처음(--_slide 0)으로 순간 이동해 끊김 없이 반복.
+   {slide=비율}([data-slide-ratio]): 장을 자르지 않고 나란히 놓은 띠가 일정한 속도(--card-marquee-dur 초에 한 장)로 흐름.
    둘 다 화면에 보이는 동안만 돌고, 마우스를 올리면 멈춤(자세히 보거나 눌러서 확대). '동작 줄이기' 면 만들지 않음(첫 장면 그대로). */
 if (!reduced) {
   const state = new Map<Element, { tl: gsap.core.Timeline; inView: boolean; hover: boolean }>();
@@ -587,25 +588,35 @@ if (!reduced) {
     if (io) io.observe(frame); else sync(frame);
   };
 
-  const steps = Math.max(1, Math.round(num('--card-scroll-steps', 3)));
-  const scrollMove = ms('--card-scroll-move', 1.1), scrollHold = ms('--card-scroll-hold', 1.2), scrollEnd = ms('--card-scroll-end-hold', 2.4);
-  const scrollEase = easeOf('--card-scroll-ease', 'expo.out');
+  // 본문 스무스 스크롤(ScrollSmoother)과 같은 방식으로 움직임: 타임라인은 "휠 입력"에 해당하는 목표 위치(goal.v)만 짧게 옮기고,
+  // 화면(--_pan)은 그 목표를 expo 감속 · --scroll-smooth 초로 따라감(목표가 바뀔 때마다 다시 따라붙음). 그래서 출발이 부드럽고 끝이 길게 잦아듦
+  const steps = Math.max(1, Math.round(num('--card-scroll-steps', 4)));
+  const scrollInput = ms('--card-scroll-input', 0.35), scrollHold = ms('--card-scroll-hold', 1.6), scrollEnd = ms('--card-scroll-end-hold', 2.4);
+  const follow = Math.max(0.01, ms('--scroll-smooth', 0.8));
   for (const frame of document.querySelectorAll<HTMLElement>('.fig__frame[data-scroll]')) {
+    const goal = { v: 0 };
+    const chase = () => gsap.to(frame, { '--_pan': goal.v, duration: follow, ease: 'expo', overwrite: true });
     const tl = gsap.timeline({ repeat: -1, paused: true });
-    tl.set(frame, { '--_pan': 0 });
-    for (let i = 1; i <= steps; i++) tl.to(frame, { '--_pan': i / steps, duration: scrollMove, ease: scrollEase }, `+=${scrollHold}`);
-    tl.to({}, { duration: scrollEnd });                           // 맨 아래에서 머문 뒤 반복 → 맨 위로
+    tl.call(() => { goal.v = 0; gsap.killTweensOf(frame); gsap.set(frame, { '--_pan': 0 }); }, undefined, 0);   // 반복할 때 맨 위로 바로
+    for (let i = 1; i <= steps; i++) tl.to(goal, { v: i / steps, duration: scrollInput, ease: 'power1.out', onUpdate: chase }, `+=${scrollHold}`);
+    tl.to({}, { duration: follow + scrollEnd });                  // 따라붙는 시간 + 맨 아래에서 머무는 시간 → 반복
     add(frame, tl);
   }
 
   const slideMove = ms('--card-slide-move', 0.7), slideHold = ms('--card-slide-hold', 2.4);
   const slideEase = easeOf('--card-slide-ease', 'cubic-bezier(0.7, 0, 0.3, 1)');
+  const marqueeDur = ms('--card-marquee-dur', 5);
   for (const frame of document.querySelectorAll<HTMLElement>('.fig__frame[data-slides]')) {
     const track = frame.querySelector<HTMLElement>('.fig__track');
     const n = Number(frame.dataset.slides);
     if (!track || !(n > 1)) continue;
     const tl = gsap.timeline({ repeat: -1, paused: true });
     tl.set(track, { '--_slide': 0 });
+    if ('slideRatio' in frame.dataset) {                           // {slide=비율}: 일정한 속도로 흐르는 띠 — n 장을 지나면 첫 장 사본이 같은 자리에 와 있어 0 으로 돌아가도 이어짐
+      tl.to(track, { '--_slide': n, duration: n * marqueeDur, ease: 'none' });
+      add(frame, tl);
+      continue;
+    }
     for (let i = 1; i <= n; i++) tl.to(track, { '--_slide': i, duration: slideMove, ease: slideEase }, `+=${slideHold}`);   // i = n 은 첫 장 사본 → 반복 때 0 으로 돌아가도 같은 그림
     add(frame, tl);
   }

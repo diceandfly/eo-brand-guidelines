@@ -951,6 +951,20 @@ html.fonts-wait .main {
   flex: 0 0 100%;
   min-width: 0;
 }
+/* {slide=3:4}: 한 장을 그 비율(--_r = 가로 ÷ 세로)로 프레임 높이에 맞춰 자르지 않고 나란히 놓은 띠가 일정한 속도로 왼쪽으로 흐름(마퀴).
+   프레임을 크기 컨테이너로 두어 한 장의 폭을 프레임 높이(cqh)로 계산. --_slide = 지나간 장 수(소수) — motion.ts 4 */
+.fig__frame[data-slide-ratio] {
+  container-type: size;
+}
+.fig__frame[data-slide-ratio] .fig__track {
+  --_w: calc(100cqh * var(--_r));
+  gap: var(--card-slide-gap);
+  transform: translateX(calc(var(--_slide, 0) * -1 * (var(--_w) + var(--card-slide-gap))));
+}
+.fig__frame[data-slide-ratio] .fig__track img,
+.fig__frame[data-slide-ratio] .fig__track .fig__placeholder {
+  flex: 0 0 var(--_w);
+}
 /* Don't 대각선: 왼쪽 아래 → 오른쪽 위. 끝점은 영역 높이 × --strike-inset 만큼 네 변에서 안쪽,
    굵기는 영역 높이 × --strike-w. 전부 영역 크기에 대한 비율이라 화면 크기가 바뀌어도 같은 모양.
    카드에서는 프레임 전체, 확대 보기에서는 이미지 가운데 4:3 영역 */
