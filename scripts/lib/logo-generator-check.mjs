@@ -31,7 +31,7 @@ export function checkLogoGenerator(ROOT, { ok, fail }) {
   for (const S of [4, 20, 50]) checks.push([`오른쪽 클리어스페이스 S=${S} = 0.42 + 0.0012S`, frameOf(buildSymbol(S, 'light'), S, true, true).right, 0.42 + 0.0012 * S]);
   checks.push(['오른쪽 클리어스페이스 S=70 = H/2', frameOf(buildSymbol(70, 'light'), 70, true, true).right, 0.5]);
   const holeH = sym => { const r = sym.mp.find(p => p.length > 1)[1], ys = r.map(p => p[1]); return Math.max(...ys) - Math.min(...ys); };   // 팔각형 속 십자 구멍 높이
-  for (const S of [4, 20]) checks.push([`다크 십자 = 라이트 − 2/100H (구멍은 키우지 않음) S=${S}`, holeH(buildSymbol(S, 'dark')), holeH(buildSymbol(S, 'light')) - 2 / 100]);
+  for (const S of [4, 20]) checks.push([`다크 십자 = 라이트 − 2/80H (구멍은 키우지 않고 안으로 H/80) S=${S}`, holeH(buildSymbol(S, 'dark')), holeH(buildSymbol(S, 'light')) - 2 / 80]);
   const bad = checks.filter(([, got, want]) => !near(got, want));
   if (bad.length) for (const [name, got, want] of bad) fail(`생성기 ${name} — ${got.toFixed(4)} (기대 ${want.toFixed(4)})`);
   else ok(`생성기 지오메트리 ${checks.length}항목 (다크 총높이 · 라이트 높이 · 오른쪽 클리어스페이스 식 · 다크 십자)`);
