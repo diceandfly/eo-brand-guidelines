@@ -37,7 +37,17 @@ const archived = process.env[ARCHIVE_ENV];   // 핸드오프 아카이브 빌드
                       <div class:list={['nav__fold', { 'is-open': isCur }]} inert={!isCur}>
                         <ul class="nav__sections" data-scrollspy={isCur ? '' : undefined}>
                           {s.navSections.map((ns, ni) => (
-                            <li style={`--i: ${ni}`}><a class="nav__section-link" href={isCur ? `#${ns.id}` : `${s.url}#${ns.id}`} data-target={ns.id}>{ns.head}</a></li>
+                            <li style={`--i: ${ni}`}>
+                              <a class="nav__section-link" href={isCur ? `#${ns.id}` : `${s.url}#${ns.id}`} data-target={ns.id}>{ns.head}</a>
+                              {/* toc=group 묶음(Vocabulary · Morphology · Grammar)의 서브헤드: 한 단계 들여쓰고 한 톤 연하게. 스크롤스파이가 켜면 위 묶음 항목도 함께 밝아짐 (motion.ts 2.5) */}
+                              {ns.children && (
+                                <ul class="nav__subsections">
+                                  {ns.children.map(c => (
+                                    <li><a class="nav__section-link nav__section-link--child" href={isCur ? `#${c.id}` : `${s.url}#${c.id}`} data-target={c.id}>{c.head}</a></li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
                           ))}
                         </ul>
                       </div>

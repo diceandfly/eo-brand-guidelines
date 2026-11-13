@@ -51,6 +51,7 @@ export interface Section {
   items: Item[];
   tocMark: boolean;       // ### + 로 목차에 올리라고 표시한 섹션
   markOnSubhead?: boolean; // + 가 서브헤드 줄(#### + …)에 있었음 → 목차 라벨은 서브헤드
+  tocGroup?: boolean;      // ### + Head {toc=group}: 바로 뒤에 이어지는 같은 헤드의 서브헤드 섹션들을 목차에서 이 항목 아래 하위 목록으로 (Vocabulary · Morphology · Grammar)
 }
 export interface SubRef { url: string; name: string; chapterNum: string; chapterName: string; }
 export interface Sub {
@@ -61,7 +62,7 @@ export interface Sub {
   chapterName: string;
   chapterSlug: string;
   sections: Section[];
-  navSections: { id: string; head: string; key: string }[];   // 목차에 오르는 섹션 (key = 중복 판정용: 라벨, 서브헤드 라벨은 "헤드 / 서브헤드"). ### + 표시가 하나라도 있으면 표시된 것만, 없으면 전부(자동)
+  navSections: { id: string; head: string; key: string; children?: { id: string; head: string }[] }[];   // 목차에 오르는 섹션 (key = 중복 판정용: 라벨, 서브헤드 라벨은 "헤드 / 서브헤드"). ### + 표시가 하나라도 있으면 표시된 것만, 없으면 전부(자동). children = {toc=group} 묶음의 서브헤드
   tocSections: boolean;   // false 면 목차에서 섹션 목록을 펼치지 않음 (## 이름 {toc=none})
   href?: string;          // 링크 항목 (## 이름 {href=…}): 페이지를 만들지 않고 목차에서 그 주소를 새 탭으로 엶 (로고 생성기)
   prev?: SubRef;
@@ -449,10 +450,26 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     const marked = s.sections.filter(sec => sec.tocMark);
     const pool = marked.length ? marked : s.sections;
     s.navSections = [];
+    // {toc=group}: 묶음 섹션 바로 뒤에 이어지는 같은 헤드 · 서브헤드 섹션들을 하위 목록으로. 그 섹션들은 위 목록에서는 빠짐(+ 표시가 있어도)
+    const childOf = new Set<Section>();
+    const children = new Map<Section, { id: string; head: string }[]>();
+    s.sections.forEach((sec, i) => {
+      if (!sec.tocGroup) return;
+      const list: { id: string; head: string }[] = [];
+      for (let j = i + 1; j < s.sections.length; j++) {
+        const c = s.sections[j];
+        if (c.head !== sec.head || !c.subhead) break;
+        childOf.add(c);
+        list.push({ id: c.id, head: c.subhead });
+      }
+      if (list.length) children.set(sec, list);
+      else warn(`[guide] "${sec.head}" {toc=group}: 바로 뒤에 같은 헤드(### ${sec.head})의 서브헤드 섹션이 없습니다 (${s.url}). 무시합니다`);
+    });
     for (const sec of pool) {
+      if (childOf.has(sec)) continue;
       const label = sec.label;
       const key = sec.markOnSubhead && sec.subhead ? `${sec.head} / ${sec.subhead}` : label;   // 서브헤드 라벨은 헤드까지 묶어 비교 (다른 헤드 아래 같은 서브헤드는 따로)
-      if (!s.navSections.some(n => n.key === key)) s.navSections.push({ id: sec.id, head: label, key });
+      if (!s.navSections.some(n => n.key === key)) s.navSections.push({ id: sec.id, head: label, key, children: children.get(sec) });
     }
   };
 
@@ -502,8 +519,11 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
         id: '', label: head, crumb: [head], head, bodyHtml: '', layout: 'basic',   // id 는 flushSection 에서 (서브헤드까지 읽은 뒤)
         ratio: normalizeRatio(attrs.ratio), items: [], tocMark, split,
         zoom: Number.isFinite(parseFloat(attrs.zoom)) ? parseFloat(attrs.zoom) : undefined,
-        bg: 'bg-color' in attrs ? bgValue(attrs['bg-color'], ctx, `"${head}" (${sub.url})`) : undefined, cover: 'bg-cover' in attrs || undefined
+        bg: 'bg-color' in attrs ? bgValue(attrs['bg-color'], ctx, `"${head}" (${sub.url})`) : undefined, cover: 'bg-cover' in attrs || undefined,
+        tocGroup: attrs.toc === 'group' || undefined
       };
+      if (attrs.toc !== undefined && attrs.toc !== 'group') warn(`[guide] "${head}": 섹션의 {toc=…} 는 group 만 됩니다 (${sub.url}). 무시합니다`);
+      if (section.tocGroup && !tocMark) warn(`[guide] "${head}" {toc=group}: 목차에 오르도록 ### + ${head} 로 표시하세요 (${sub.url})`);
       pendingLayout = attrs.layout;
       if (attrs.span !== undefined) {                                 // {span=N}: ::: split 안에서 차지하는 컬럼 수
         const n = parseInt(attrs.span, 10);
@@ -516,6 +536,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     if ((m = line.match(/^####\s+(\+\s*)?(.+?)\s*$/)) && section) { // #### Subhead  /  #### + Subhead {layout=…}  (+ 와 {…} 는 헤드 줄과 동일하게 동작)
       const [subhead, attrs] = takeAttrs(smartQuotes(m[2]));
       if (m[1]) { section.tocMark = true; section.markOnSubhead = true; }
+      if (section.tocGroup) { warn(`[guide] "${section.head}" {toc=group}: 묶음 섹션은 헤드만 둡니다(서브헤드 "${subhead}" 없이) (${sub!.url}). 무시합니다`); section.tocGroup = undefined; }
       if (attrs.layout) pendingLayout = attrs.layout;
       if (attrs.ratio) section.ratio = normalizeRatio(attrs.ratio);
       if (Number.isFinite(parseFloat(attrs.zoom))) section.zoom = parseFloat(attrs.zoom);

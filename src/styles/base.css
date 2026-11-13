@@ -505,6 +505,22 @@ html.fonts-wait .main {
 .nav__section-link:hover {
   color: var(--nav-fg-active);
 }
+.nav__subsections {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nav-item-gap);
+  padding: 0 0 0 var(--nav-subsections-indent);
+}
+.nav__section-link--child {
+  color: var(--nav-fg-child);
+}
+.nav__section-link--child:hover {
+  color: var(--nav-fg-active);
+}
+.nav__section-link.has-active-child {
+  color: var(--nav-fg-group-active); /* {toc=group} 묶음: 하위 섹션이 활성이면 묶음 항목도 밝게 (스트로크 없이, motion.ts 2.5) */
+}
 .nav__section-link.is-active {
   color: var(--nav-fg-section-active); /* 스크롤스파이: 지금 보고 있는 섹션 (motion.ts 2.5). 호버보다 뒤에 두어 활성 항목은 호버해도 이 색 */
   font-weight: var(--nav-w-section-active); /* 기본은 웨이트 변화 없음 */

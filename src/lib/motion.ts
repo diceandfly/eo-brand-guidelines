@@ -364,10 +364,14 @@ else arriveAtHash();
   if (targets.length) {
     let current: HTMLAnchorElement | null = null;
     let lastY = -1;
+    // {toc=group} 하위 섹션이면 그 묶음 항목(바깥 li 의 첫 링크)도 함께 밝힘
+    const groupOf = (a: HTMLAnchorElement | null) => a?.closest('.nav__subsections')?.parentElement?.querySelector<HTMLAnchorElement>(':scope > .nav__section-link') ?? null;
     const setActive = (a: HTMLAnchorElement | null) => {
       if (a === current) return;
       current?.classList.remove('is-active'); current?.removeAttribute('aria-current');
+      groupOf(current)?.classList.remove('has-active-child');
       a?.classList.add('is-active'); a?.setAttribute('aria-current', 'location');
+      groupOf(a)?.classList.add('has-active-child');
       current = a;
     };
     const spy = () => {

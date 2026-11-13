@@ -178,7 +178,7 @@
        1. 레이아웃 치수(간격 · 패딩 · 들여쓰기 · 레이아웃 폭)  calc(var(--lh-unit) * N), N 은 0.25 단위. 바꿀 때는 N 만 바꿈
             → --lh-unit(본문 행간) 하나로 타이포와 레이아웃이 함께 커지고 작아짐. npm test [7] 이 이 꼴 · ¼ 단위를 검사
             목록: B-1 --sidebar-w · B-2 --nav-pad-* · --nav-logo-h · --nav-logo-gap · --search-h · --search-gap · --search-clear-size · --search-clear-hit ·
-                  --search-result-pad-x/y · --nav-indent · --nav-sections-indent · --nav-sections-pad-top/bottom · --nav-archive-gap · --nav-lang-gap ·
+                  --search-result-pad-x/y · --nav-indent · --nav-sections-indent · --nav-subsections-indent · --nav-sections-pad-top/bottom · --nav-archive-gap · --nav-lang-gap ·
                   B-3 --page-margin-m · --title-pad-top · --title-gap · --section-gap · --next-gap · --page-pad-bottom · --head-gap · --sec-row-gap (각 -m 포함) ·
                   B-6 --card-gap
        2. 범위값(줄어들거나 늘어나는 한계)                      px 숫자 그대로: --page-margin-min · --content-max · --swatch-min-w
@@ -259,6 +259,7 @@
   --nav-item-gap: 0px; /* 서브챕터 ↔ 서브챕터, 섹션 ↔ 섹션 */
   --nav-indent: calc(var(--lh-unit) * 0.75); /* 위계당 들여쓰기 (서브챕터, 섹션) */
   --nav-sections-indent: calc(var(--lh-unit) * 0.75); /* 섹션 들여쓰기 (서브챕터 기준). 더 밀어 넣으려면 키움 */
+  --nav-subsections-indent: calc(var(--lh-unit) * 0.75); /* {toc=group} 묶음의 하위 섹션 들여쓰기 (섹션 기준) */
   --nav-sections-pad-top: calc(var(--lh-unit) * 0.25); /* 활성 서브챕터 ↔ 첫 섹션 (서브챕터 이름과 섹션 목록 사이 숨) */
   --nav-sections-pad-bottom: calc(var(--lh-unit) * 0.25); /* 마지막 섹션 ↔ 다음 서브챕터 */
   --nav-sub-pad-bottom: calc(var(--lh-unit) * 0); /* 마지막 서브챕터(와 섹션 묶음) ↔ 다음 챕터 */
@@ -291,6 +292,8 @@
   --nav-fg: color-mix(in srgb, var(--c-air-white), transparent 35%); /* 비활성 항목 */
   --nav-fg-active: var(--c-air-white); /* 활성 항목, 호버 */
   --nav-fg-current: var(--nav-fg-active); /* 현재 페이지의 챕터 · 서브챕터 (클릭으로 펼친 다른 챕터는 --nav-fg-active 로 같음). 네온으로 하려면 var(--c-builder-neon) */
+  --nav-fg-child: color-mix(in srgb, var(--c-air-white), transparent 55%); /* {toc=group} 묶음의 하위 섹션 (한 톤 연하게) */
+  --nav-fg-group-active: var(--nav-fg-active); /* 하위 섹션이 활성일 때 그 묶음 항목 */
   --nav-fg-section-active: var(--nav-fg-current); /* 스크롤스파이로 켜진 섹션 (지금 보고 있는 섹션). 본문 섹션 헤드와 같은 네온 */
   --nav-archive-fg: var(--c-builder-neon); /* 핸드오프 아카이브 표시 — 현재 가이드와 헷갈리지 않게 네온 */
   /* 색 — 검색창 */

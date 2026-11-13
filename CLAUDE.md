@@ -19,7 +19,7 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 - `public/tools/logo-generator/` — 로고 생성기(빌드 없는 정적 도구: index.html · fonts.css · tokens.css · tool.css · geom.js(확정, 손대지 않음) · app.js · sig-font.js · vendor/). 목차 Logo › Download(`## Download {href=…}` 링크 항목, 새 탭)로 열림. 서체는 public/fonts 공유. 디자인 튜닝은 생성기 tokens.css 만(가이드 tokens.css 와 이름 · 블록 순서 · 주석 규칙은 같고 값은 별개), tool.css 는 토큰만 참조하는 규칙. 사양 · 부채 기록은 `docs/logo-generator/`, 회귀 검사는 npm test [5].
 
 ## 용어 (대화에서 이 이름으로 통일)
-챕터(`# 02 Logo`) > 페이지(`## Logo`, 화면 하나 = URL 하나; `{toc=none}` 을 붙이면 목차에 섹션 목록을 펼치지 않음) > 섹션(`### Head`, 선택적 `#### Subhead`). `### ++ Head` 는 목차에 올릴 섹션 표시 — 한 페이지에 `+` 가 하나라도 있으면 표시된 것만, 없으면 전부 자동.
+챕터(`# 02 Logo`) > 페이지(`## Logo`, 화면 하나 = URL 하나; `{toc=none}` 을 붙이면 목차에 섹션 목록을 펼치지 않음) > 섹션(`### Head`, 선택적 `#### Subhead`). `### + Head` 는 목차에 올릴 섹션 표시 — 한 페이지에 `+` 가 하나라도 있으면 표시된 것만, 없으면 전부 자동. `### + Head {toc=group}`(헤드만 있는 섹션)은 바로 뒤에 연달아 오는 같은 헤드의 서브헤드 섹션들을 목차에서 그 항목 아래 하위 목록으로 보여 줌 — 체계적인 묶음 전용(Vocabulary · Morphology · Grammar), 흩어진 같은 헤드는 안 묶임.
 레이아웃: `text`(이미지 없음) / `basic`(텍스트 5컬럼 + 이미지 6컬럼, `--sec-text-cols` / `--sec-media-cols`) / `wide`(12컬럼, 여러 장이면 세로로 쌓임) / `half`(6컬럼) / `grid-2|3|4` / `text-2|3|4`(본문 문단을 N단으로, 모바일은 한 단). 섹션 여러 개를 한 12컬럼 행에 놓으려면 `::: split` … `:::` 로 감싸고 섹션마다 `{span=N}`(생략 시 균등 분배; `sectionBlocks`, `.sec-split`).
 아이템: 이미지, 카드(이미지+캡션), 스와치. 배지 `{do}` `{dont}` `{con}`(conditional, 흰 삼각형).
 

@@ -123,6 +123,9 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
   같은 헤드 반복 : 가능합니다 (예: Character Set 3개). 목차에는 한 번만 표시되고 첫 번째로 이동합니다.
   목차에 올릴 섹션 고르기 : ### + Construction  ← 헤드 앞에 + 를 붙이면 그 섹션만 목차에 오름 (에디터에서는 제목으로 보임).
                         한 페이지에 + 가 하나라도 있으면 + 붙은 것만, 하나도 없으면 전부(자동) 올라갑니다.
+  목차 하위 목록 : ### + Vocabulary {toc=group}  ← 헤드만 있는 이 섹션 바로 뒤에 같은 헤드의 섹션(### Vocabulary + #### Thread …)이
+                        연달아 오면, 그 서브헤드들을 목차에서 이 항목 아래 한 단계 들여쓴 목록으로 보여 줌. 헤드 · 서브헤드가
+                        체계적으로 이어지는 묶음에만 (Vocabulary · Morphology · Grammar). 흩어진 같은 헤드는 묶이지 않음
                         헤드가 반복되는 섹션은 서브헤드 줄에 붙여도 됩니다: #### + Clearspace
                         {layout=…} 속성도 헤드 줄·서브헤드 줄 어느 쪽에 써도 됩니다. 단 {span=N} 은 헤드 줄에만 (서브헤드 줄에서는 무시).
                   헤드가 페이지 이름이나 챕터 이름과 같으면(Colors 페이지의 "Color" — 대소문자 · 기호 · 끝의 s 는 무시하고 비교) 목차에는 서브헤드가 표시됩니다.
@@ -909,7 +912,7 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 ![color-black-on-neon] [Space Black] on [Builder Neon] 권장 조합, 압도성
 
 
-### + Vocabulary
+### + Vocabulary {toc=group}
 유닛은 놓는 방향 · 개수 · 밀도만으로 새로운 의미를 가집니다. 이를테면 shaft는 시간의 흐름, thread는 문제 해결의 단위이므로, 좁은 구간에 thread가 촘촘히 모일수록 그만큼 힘들고 긴 시간을 표현할 수 있습니다. 자연히 그 부분의 시각적 세기도 함께 커지는데, 이처럼 파라미터 기반의 형태와 브랜드가 전하려는 가치가 같은 방향을 가리키는 것을 **비주얼과 브랜딩의 맵핑(Mapping)** 이라 정의합니다.
 
 Vocabulary는 이러한 맵핑 규칙을 모은 EO 그래픽 시스템의 어휘 사전이며, 특정한 가치 키워드를 표현하려면 어떤 시각 속성과 컬러를 조합하는지에 대한 포괄적인 지침을 다룹니다. 단, 이하 내용은 지금까지 정리된 규칙일 뿐 전부는 아니며 새로운 메타포는 언제든 더해질 수 있습니다. 
@@ -979,7 +982,7 @@ shaft는 나사의 축이자 빌딩 과정의 타임라인을 상징하고, shaf
 ![formation-crossing] 교차 — 동시다발적 · 순간적 싱크
 
 
-### + Morphology
+### + Morphology {toc=group}
 어떤 유닛이든 파라미터 몇 개로 간단히 만들 수 있지만, 좋은 형태의 유닛은 절대적 값이 아니라 비례와 리듬에서 나옵니다.
 
 - Vocabulary에서는 유닛과 pair가 가진 의미와 메타포에 대해 다룹니다.
@@ -1062,7 +1065,7 @@ thread 윗변과 아랫변의 폭 차이입니다. thread의 날카로움과 점
 
 ## Graphic Pattern
 
-### + Grammar
+### + Grammar {toc=group}
 EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다. 
 - [[graphic-unit#vocabulary|Vocabulary]]는 단어입니다. 유닛과 pair가 어떤 뜻을 갖는지, 의미와 메타포에 대해 다룹니다.
 - [[graphic-unit#morphology|Morphology]]는 그 단어의 형태입니다. 뜻은 같아도 어떻게 생겨야 이상적인지, 유닛 하나의 비례와 리듬에 대해 다룹니다. 
@@ -1189,7 +1192,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 #### + In Use {layout=grid-2}
 다음 이미지들은 EO 그래픽 패턴이 다양한 디자인에 적용된 예시입니다.
 ![pattern-in-use-1] 1. 세로로 긴 비율의 중형 포스터
-![pattern-in-use-2] 2. 가로로 긴 비율의 넓은 초대형 빌보드
+![pattern-in-use-2] 2. 가로로 긴 비율의 넓은 대형 빌보드
 ![pattern-in-use-3] 3. 가로로 긴 비율의 작은 명함 
 ![pattern-in-use-4] 4. 가로로 긴 소셜 미디어 배너
 

@@ -123,6 +123,9 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
   같은 헤드 반복 : 가능합니다 (예: Character Set 3개). 목차에는 한 번만 표시되고 첫 번째로 이동합니다.
   목차에 올릴 섹션 고르기 : ### + Construction  ← 헤드 앞에 + 를 붙이면 그 섹션만 목차에 오름 (에디터에서는 제목으로 보임).
                         한 페이지에 + 가 하나라도 있으면 + 붙은 것만, 하나도 없으면 전부(자동) 올라갑니다.
+  목차 하위 목록 : ### + Vocabulary {toc=group}  ← 헤드만 있는 이 섹션 바로 뒤에 같은 헤드의 섹션(### Vocabulary + #### Thread …)이
+                        연달아 오면, 그 서브헤드들을 목차에서 이 항목 아래 한 단계 들여쓴 목록으로 보여 줌. 헤드 · 서브헤드가
+                        체계적으로 이어지는 묶음에만 (Vocabulary · Morphology · Grammar). 흩어진 같은 헤드는 묶이지 않음
                         서브헤드 줄에 붙이면(#### + Clearspace) 목차에는 서브헤드가 올라갑니다. 헤드가 반복되는 섹션에 유용합니다.
                         {layout=…} 속성도 헤드 줄·서브헤드 줄 어느 쪽에 써도 됩니다. 단 {span=N} 은 헤드 줄에만 (서브헤드 줄에서는 무시).
                   헤드가 페이지 이름이나 챕터 이름과 같으면(Colors 페이지의 "Color" — 대소문자 · 기호 · 끝의 s 는 무시하고 비교) 목차에는 서브헤드가 표시됩니다.
@@ -907,7 +910,7 @@ Color shows who the protagonist of a graphic is, what forms the environment, and
 ![color-black-on-neon] [Space Black] on [Builder Neon] recommended combination, overwhelming presence
 
 
-### + Vocabulary
+### + Vocabulary {toc=group}
 A unit takes on new meaning through its direction, number and density alone. The shaft, for example, is the passage of time and the thread a unit of problem solving, so the more tightly threads gather in a narrow stretch, the harder and longer the time they express. The visual intensity of that stretch naturally grows with it. When a parameter-based shape and the value the brand wants to convey point in the same direction like this, we call it **visual-to-brand mapping**.
 
 Vocabulary is the dictionary of the EO graphic system that collects these mapping rules. It gives comprehensive guidance on which visual properties and colors to combine to express a given value keyword. The rules below are those defined so far, not a complete set; new metaphors can be added at any time.
@@ -977,7 +980,7 @@ Extending the metaphors so far into larger arrangements expresses the relationsh
 ![formation-crossing] Crossing — simultaneous · instantaneous sync
 
 
-### + Morphology
+### + Morphology {toc=group}
 Any unit can be made easily with a few parameters, but a well-formed unit comes from proportion and rhythm, not from absolute values.
 
 - Vocabulary covers the meanings and metaphors that units and pairs carry.
@@ -1060,7 +1063,7 @@ However, three-dimensional extensions that project the entire plane holding the 
 
 ## Graphic Pattern
 
-### + Grammar
+### + Grammar {toc=group}
 The EO graphic system is built in three layers, like a language.
 - [[graphic-unit#vocabulary|Vocabulary]] is the words. It covers what units and pairs mean: their significance and metaphors.
 - [[graphic-unit#morphology|Morphology]] is the form of the word. Even when the meaning stays the same, it covers how a unit should ideally look: the proportion and rhythm of a single unit.
@@ -1187,7 +1190,7 @@ Designers are free to extend the keywords and create new graphics, but adding a 
 #### + In Use {layout=grid-2}
 The following images show the EO graphic pattern applied across a range of designs.
 ![pattern-in-use-1] 1. Medium-sized poster in a tall vertical format
-![pattern-in-use-2] 2. Extra-large billboard in a wide horizontal format
+![pattern-in-use-2] 2. Large billboard in a wide horizontal format
 ![pattern-in-use-3] 3. Small business card in a wide horizontal format
 ![pattern-in-use-4] 4. Horizontal social media banner
 
