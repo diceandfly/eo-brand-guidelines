@@ -162,15 +162,15 @@
                          섹션 = 제목 ↕ section-head-gap 설정
                          설정 = 행 ↕ row-gap 행 …   (행 묶음 = 행 ↕ block-gap 묶음, 아래 block-gap)
      ------------------------------------------------------------------ */
-  --panel-w: 332px; /* 메뉴창 폭 (JS) */
-  --panel-pad-x: calc(var(--lh-unit) * 0.7); /* 메뉴창 안쪽 — 좌우 (기준 열 폭도 이 값으로 계산) */
-  --panel-pad-y: calc(var(--lh-unit) * 0.75); /* 메뉴창 안쪽 — 위아래 (JS: 툴팁 자리) */
-  --sections-top: calc(var(--lh-unit) * 3.5); /* 섹션 묶음 위 여백 — 타이틀 자리 포함 */
+  --panel-w: 320px; /* 메뉴창 폭 (JS) */
+  --panel-pad-x: calc(var(--lh-unit) * 0.75); /* 메뉴창 안쪽 — 좌우 (기준 열 폭도 이 값으로 계산) */
+  --panel-pad-y: calc(var(--lh-unit) * 1); /* 메뉴창 안쪽 — 위아래 (JS: 툴팁 자리) */
+  --sections-top: calc(var(--lh-unit) * 3.75); /* 섹션 묶음 위 여백 — 타이틀 자리 포함 */
   --section-gap: calc(var(--lh-unit) * 1.5); /* 섹션 ↔ 섹션 */
   --section-head-gap: calc(var(--lh-unit) * 0); /* 제목 ↔ 설정 */
   --section-box-gap: calc(var(--lh-unit) * 0.5); /*   └ 첫 내용이 경계 있는 박스면 더 띄움 (Color 썸네일) */
   --row-gap: calc(var(--lh-unit) * 0); /* 설정: 행 ↔ 행 */
-  --block-gap: calc(var(--lh-unit) * 0.375); /* 행 묶음 ↔ 다음 행 (Export › Save ↔ 체크 옵션) */
+  --block-gap: calc(var(--lh-unit) * 0.25); /* 행 묶음 ↔ 다음 행 (Export › Save ↔ 체크 옵션) */
   --inline-gap: calc(var(--lh-unit) * 0.25); /* 행 안 가로: 라벨 ↔ 셰브론 · 체크 ↔ 글 · 숫자 ↔ 단위 */
   --scrollbar-w: 0px; /* 메뉴창 스크롤바 */
   /* 기준 열 — 메뉴창 안쪽을 4칸으로 나눈 한 칸. 입력칸 · 보정 버튼이 이 칸 단위 */
@@ -247,7 +247,7 @@
      B-7 Color 썸네일
      ------------------------------------------------------------------ */
   --pair-cols: 4; /* 한 줄 개수 */
-  --pair-pad-bottom: 0px; /* 썸네일 아래 여백 */
+  --pair-pad-bottom: calc(var(--lh-unit) * 0.25); /* 썸네일 아래 여백 */
   --pair-select-w: calc(var(--border-w) * 0.3); /* 선택 테두리 두께 (칸 경계선 자리에 겹쳐 그림) */
   --pair-select-w-hover: var(--border-w); /* 호버 테두리 두께 */
   --pair-ratio: 0.97; /* 높이 ÷ 폭 — 1 보다 작을수록 납작 (정사각형으로 보이게 보정) */
@@ -261,7 +261,7 @@
   /* ------------------------------------------------------------------
      B-8 체크박스 · i (Export 옵션)
      ------------------------------------------------------------------ */
-  --check-size: calc(var(--lh-unit) * 0.5); /* 네모 한 변 (보정 카드 손잡이도 같은 값) */
+  --check-size: calc(var(--lh-unit) * 0.45); /* 네모 한 변 (보정 카드 손잡이도 같은 값) */
   --check-mark-size: 9px; /* 체크 표시 */
   --info-size: var(--check-size); /* 옵션 오른쪽 i · 타이틀 ? 네모 한 변 (체크박스와 같은 크기) */
   --info-glyph-size: 10px; /* i 글자 크기 (Figma Label info — 새 레벨 아님, i 하나 전용) */

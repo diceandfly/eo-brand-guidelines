@@ -118,6 +118,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
   섹션 순서 변경 : 블록째 잘라 붙이기.
   페이지 추가  : ## 이름 한 줄. 목차·URL·다음 버튼이 자동으로 갱신됩니다.
   섹션 목록 숨김 : ## 이름 {toc=none}  ← 이 페이지는 목차에서 섹션 목록을 펼치지 않음 (섹션이 하나뿐이면 자동으로 숨김)
+  링크 항목     : ## 이름 {href=/tools/logo-generator/index.html}  ← 페이지 대신 목차에 링크만 (새 탭). 본문 · 섹션 없음, 이전/다음 버튼에서 빠짐
   같은 헤드 반복 : 가능합니다 (예: Character Set 3개). 목차에는 한 번만 표시되고 첫 번째로 이동합니다.
   목차에 올릴 섹션 고르기 : ### + Construction  ← 헤드 앞에 + 를 붙이면 그 섹션만 목차에 오름 (에디터에서는 제목으로 보임).
                         한 페이지에 + 가 하나라도 있으면 + 붙은 것만, 하나도 없으면 전부(자동) 올라갑니다.
@@ -209,7 +210,7 @@ The E block, which depicts the facade of a screw, consists of a shaft and three 
 #### + Clearspace
 Clearspace is the minimum safeguard that protects the symbol when it sits next to other visual elements such as typography · graphic units · images · the edge of the page. With H as the vertical height of one E block, always keep a clearspace of at least H/2 on all four sides between the symbol and every adjacent element.
 
-When the symbol sits at the center of a small frame, such as an app icon or profile image, its visual weight drifts to the left the smaller it is seen. Correct this by narrowing only the right clearspace, which pushes the symbol to the right. **Right clearspace = H × (0.42 + 0.0012 × S)**, where S is the symbol height actually seen on screen (mm); at S of 67mm or more, keep H/2 as is. The symbol moves right within the frame by (H/2 − right clearspace) ÷ 2. For how to apply it, see [[#app-and-social-icons-alignment|App & Social Icons › Alignment]]. This is an approximation derived from measurements at a desktop viewing distance of 500mm across seen heights of 4-50mm, with a maximum error of ±0.02mm.
+Because the visual weight of the EO symbol drifts to the left the smaller it is seen, always correct it by narrowing the right clearspace. **Right clearspace = H × (0.42 + 0.0012 × S)**, where S is the symbol height actually seen on screen (mm); at S of 67mm or more, keep H/2 as is. Where the clearspace box is centered in a frame, such as an app icon or profile image, the symbol moves right within the frame by (H/2 − right clearspace) ÷ 2. For how to apply it, see [[#app-and-social-icons-alignment|App & Social Icons › Alignment]]. This is an approximation derived from measurements at a desktop viewing distance of 500mm across seen heights of 4-50mm, with a maximum error of ±0.02mm.
 ![clearspace] {zoom=1.05}
 
 
@@ -226,15 +227,15 @@ The EO symbol is designed and tested to work across a range of sizes. Every size
 
 ### + Usage
 #### Placement
-The EO symbol is a strong but simple shape. On typical pages, we therefore recommend using it as a sign-off in one of the four corners of the content area. In a video thumbnail that invites the click, the main content should be the protagonist; on a poster that catches the eye, the graphic pattern should be. The symbol's presence should step back to let them lead.
+The EO symbol is a strong but simple shape. On typical pages, we therefore recommend using it as a sign-off in one of the four corners of the content area. In a video thumbnail that invites the click, the main content should be the protagonist; on a poster that catches the eye, the [[graphic-pattern#donts|graphic pattern]] should be. The symbol's presence should step back to let them lead.
 
-As a sign-off, place the symbol in the corner farthest from the person or [[graphic-pattern#donts|graphic pattern]] that is the protagonist of the layout, with appropriate space from the other visual elements around it. This keeps symbol placement simple and consistent, while leaving enough flexibility to accommodate a dynamic graphic system.
+As a sign-off, place the symbol in the corner farthest from the person or graphic pattern that is the protagonist of the layout, with appropriate space from the other visual elements around it. This keeps symbol placement simple and consistent, while leaving enough flexibility to accommodate a dynamic graphic system.
 ![usage-placement]
 
 
 ### Usage {layout=grid-2}
 #### Do's & Don'ts
-When using the symbol for display, **do not raise its visual hierarchy simply by scaling it up.** Leave ample space around the symbol, so that it keeps its impact at a moderate size. Ideally, the symbol's actual footprint is 5-10% of the whole empty space, with space around it of at least 2-3 times the symbol's width.
+When using the symbol for display, **do not raise its visual hierarchy simply by scaling it up.** Leave ample space around the symbol, so that it keeps its impact at a moderate size. Ideally, the symbol's actual footprint is 5-10% of the whole empty space, and the nearest element is kept at least 2-3 times the symbol's width away.
 ![usage-do-1]{do} Ideally, a symbol at 5-10% of the empty space it sits in
 ![usage-do-2]{do} Generous space around the symbol gives it ample presence at a moderate size
 ![usage-dont-1]{dont} Do not fill the empty space with the symbol alone
@@ -350,7 +351,7 @@ The text part of the signature, excluding the symbol, is called the **descriptor
 When the first or last letter of the descriptor is a glyph with a curved side, such as S · o, keep the text left aligned on its baseline and temporarily replace it with H if it is uppercase or h if it is lowercase, to set the edge of the cap box. For example, “Studio” takes its left edge from “Htudio” and its right edge from “Studih”.
 
 Always get approval from the EO design team when creating a new descriptor or changing an existing one. Do not use temporary names, such as those of campaigns or events, as descriptors.
-![descriptor-v] Vertical — set in Founders Grotesk Regular, type size 0.46H, tracking 0. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then shift it left by H/100. This is because the E block of the EO symbol has the higher tonal value, which shifts the visual center to the left.
+![descriptor-v] Vertical — set in Founders Grotesk Regular, type size 0.47H, tracking 0. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then shift it left by H/100. This is because the E block of the EO symbol has the higher tonal value, which shifts the visual center to the left.
 ![descriptor-h] Horizontal — set in Founders Grotesk Regular, type size 1.3H, tracking 0, with a separate tracking of -6% applied only to the space characters between words. Place the left side of the cap box W/2 from the right edge of the symbol, and raise the baseline H/10 above the bottom edge of the symbol.
 
 
@@ -369,7 +370,7 @@ As in the Symbol section, sizes on this page are given as the symbol height on a
 The smaller the signature is seen, the more the symbol and descriptor read as a single mass; the larger it is seen, the more each letter of the descriptor comes into focus. The form therefore depends on the visible size, and the threshold is a symbol height of 10mm (50px, 1/50).
 
 - **Below 10mm (50px, 1/50), use only the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable, and the signature can appear split into three masses: symbol · EO · Studio. Within the 6-10mm range, consider using the "Studio" version as an alternative.
-- **At 10mm and above, use only the vertical signature.** From this size, the descriptor of the vertical form (cap height about 2.4mm) reads clearly. The recommended maximum size is a symbol height of 15mm (70px, 1/33), and the maximum is a symbol height of 25mm (125px, 1/20).
+- **At 10mm and above, use only the vertical signature.** From this size, the descriptor of the vertical form reads clearly. The recommended maximum size is a symbol height of 15mm (70px, 1/33), and the maximum is a symbol height of 25mm (125px, 1/20).
 - As with the minimum size of the symbol, do not use the signature below 4mm (20px, 1/125) either.
 ![scalability] {zoom=1.05}
 
@@ -435,7 +436,7 @@ The signature uses four of the six color pairings of the EO symbol. **Always ren
 Like the symbol, the signature is built by default as a light signature in bright colors such as Builder Neon · Air White on dark backgrounds such as Space Black · Solid Gray. If you simply invert the colors to use a dark signature on a light background, an optical illusion makes the symbol look thinner and more spread out, and the letters of the descriptor look one step lighter despite the same weight.
 
 - Vertical — Convert the light symbol by the [[symbol#inversion]] rules, and center it in both x · y where the light symbol was. Keep the descriptor centered in its original cap box position, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 0.48H · tracking to -1%, and finish by offsetting the outline outward by H/200.
-- Horizontal — Convert the light symbol by the same rules, and center it in both x · y where the light symbol was. Left align the descriptor to the left edge of the original cap box, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 1.35H · tracking to -1%, and finish by offsetting the outline outward by H/200.
+- Horizontal — Convert the light symbol by the same rules, and center it in both x · y where the light symbol was. Left align the descriptor to the left edge of the original cap box, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 1.35H · tracking to -2% (-7% for the space characters between words), and finish by offsetting the outline outward by H/200.
 
 This keeps the [[typography#inversion|tonal value]] balance between the symbol and the descriptor on a light background the same as in the light signature. Center the finished dark signature in x · y on the clearspace of the light signature of the same level, and use it as is.
 ![inversion-v] {zoom=1.05}
@@ -518,15 +519,18 @@ The sub symbol is part of the EO symbol and follows the same principles. Do not 
 ![dont-6]{dont} {zoom=1.08} Do not use the sub symbol as a standalone identity in place of the EO symbol
 
 
+## Download {href=/tools/logo-generator/index.html}
+
+
 # 03 Typography
 
 ## Typography
 
 ### + Brand Typeface
 #### Founders Grotesk
-EO's typeface is the Founders Grotesk family.
+EO's typefaces are SemiBold · Medium · Regular · Light · Mono Regular · Mono Light of the Founders Grotesk family.
 
-Founders Grotesk reinterprets the early-20th-century grotesques of Miller & Richard and Caslon. Its simple geometry, narrow apertures and tight tracking make it read like solid blocks at large sizes. It gives a clear impression without ornament, and the monospaced member of the same family can evoke the builder's motifs of engineering and spec sheets.
+Founders Grotesk reinterprets the early-20th-century grotesques of Miller & Richard and Caslon, and its simple geometry, narrow apertures and tight tracking make it read like solid blocks at large sizes. Firm and clear, yet with humanist touches in its details, it matches EO's attitude — serious, but pursuing creativity. The family also has a monospaced typeface that can evoke the builder's motifs, such as engineering · spec sheets.
 
 Each weight has a fixed role. Use Medium for display and headlines, Regular for sub-headlines, Light for body copy, and Mono Regular for informational text. For the detailed criteria, see [[#reference-scale|Reference Scale]].
 ![brand-typefaces]{bg-color}
@@ -606,7 +610,7 @@ Set level multiples in steps of 1x · 0.5x · 0.25x, and refine linespacing and 
 
 Founders Grotesk has narrow apertures and tight tracking, so at body level set it in Light with generous linespacing and slightly opened tracking. The presets are designed with a focus on visual communication: we recommend T1 for content where the text read in one go runs to only a few paragraphs, and T2 where the readability of body copy matters most.
 
-All the presets above assume Air White text on a Solid Gray background. When Air White text is used on a Space Black background, apply 0.5% wider tracking to the relatively small levels H3 · T1 · T2.
+All the presets above assume Air White text on a Solid Gray background. For Space Black text on Air White · Builder Neon backgrounds, see [[#inversion]].
 ![reference-scale]{bg-color}
 
 
@@ -642,13 +646,13 @@ As a rule, the larger the level, the heavier the weight and the tighter the line
 #### Founders Grotesk Medium
 Linespacing is the height of the space one line of type occupies divided by the type size, expressed in % as in common office software. In the same space, lower linespacing makes the type larger. It corresponds to Line height % in Figma, line-height in CSS and Auto Leading in InDesign. Linespacing can vary with format and type of communication; for the presets by level, see [[#reference-scale|Reference Scale]].
 
-Headlines and display have linespacing of 100% or less, that is, leading equal to or tighter than the type size. The goal is for the lines to read as one block, and the lower limit is the point just before ascenders and descenders touch. Avoid extremely loose or tight linespacing, and where possible consider revising part of the copy.
+Headlines and display have linespacing of 100% or less, that is, leading equal to or tighter than the type size. Avoid extremely loose or tight linespacing, and where possible also consider revising part of the copy.
 ![linespacing-medium]{bg-color}
 
 
 ### Linespacing
 #### Founders Grotesk Regular
-The linespacing of sub-headlines (H2 · H3) sits between headline and body (115-120%). They often run to 2-4 lines, so apply wider leading than headlines to raise readability somewhat. D2, the Regular at headline size, follows the same leading rule as headlines.
+The linespacing of sub-headlines (H2 · H3) sits between headline and body (115-125%). They often run to 2-4 lines, so apply wider leading than headlines to raise readability somewhat. D2, the Regular at headline size, follows the same leading rule as headlines.
 
 Sub-headlines often sit directly above body copy, so also check that their leading does not fall out of step with the body's baseline grid.
 ![linespacing-regular]{bg-color}
@@ -748,19 +752,19 @@ For large pages or layouts with complex components, we recommend the Compound Gr
 
 ### Typography
 #### + Inversion {layout=wide}
-Like the [[symbol#inversion|symbol]], EO typography is built primarily for light text, such as Air White · Medium Gray, on dark backgrounds such as Solid Gray · Space Black. When you want dark text on a light background and simply invert the colors, an optical illusion occurs: at the same weight and tracking, the letters look one step thinner and the spaces between them look wider. It is the same phenomenon as in the [[signature#inversion|signature's descriptor]].
+EO typography is built primarily for light text, such as Air White · Medium Gray, on dark backgrounds such as Solid Gray · Space Black. As with the [[signature#inversion|signature's descriptor]], when you want dark text on a light background and simply invert the colors, an optical illusion occurs: at the same weight and tracking, the letters look thinner and the tracking looks wider.
 
-In that case, keep the Line Unit · level multiples · weights as they are, scale each level's linespacing to 95% (so the type size becomes 1.05 times), and tighten the tracking by 0.5%. The tonal value then stays almost the same as that of light text on a dark background, and because the space the type occupies is unchanged, the layout stays as it is.
+In that case, keep the Line Unit · level multiples · weights as they are, correct the type size to 1.05 times (linespacing 0.95 times) and apply 1% tighter tracking. The tonal value then stays at a consistent level on light backgrounds too, and because the space the type occupies is unchanged, layout changes are kept to a minimum.
 
 Below is an example of the same presets applied to the seven-level [[#reference-scale|Reference Scale]] and set in light mode.
 ![inversion]{bg-color}
 
 
 ### + Multilingual {layout=wide}
-Use Pretendard for Korean and Noto Sans for Vietnamese. When an existing layout is changed to a multilingual typeface, the Line Unit and level multiples stay the same, so the layout does not move when the language changes; only the type size and linespacing change to suit the typeface.
+Use Pretendard for Korean and Noto Sans for Vietnamese. When an existing layout is changed to a multilingual typeface, the Line Unit and level multiples stay the same, so the layout does not move when the language changes; only the type size and linespacing change to suit the typeface. Below are multilingual conversions for T1 · H3 of the [[#reference-scale|Reference Scale]].
 
-- Korean Pretendard — T1 of the [[#reference-scale|Reference Scale]] is Regular · 165% · -1.5% · baseline +0.2x, and H3 is Medium · 165% · -2.5% · baseline -0.05x. The rendered type size equals 85% of Founders Grotesk at the same level.
-- Vietnamese Noto Sans — T1 is DemiLight · 175% · -1% · baseline +0.05x, and H3 is Regular · 175% · -3% · baseline +0.05x. The rendered type size equals 80% of Founders Grotesk at the same level.
+- Korean Pretendard — T1 is Regular · 165% · -1.5% · baseline +0.2x, and H3 is Medium · 165% · -2.5% · baseline -0.05x. The rendered type size is about 0.85 times that of Founders Grotesk at the same level.
+- Vietnamese Noto Sans — T1 is DemiLight · 175% · -1% · baseline +0.05x, and H3 is Regular · 175% · -3% · baseline +0.05x. The rendered type size is about 0.8 times that of Founders Grotesk at the same level.
 
 The baseline correction is for matching positions relative to the text box in editorial design tools. In digital environments the browser aligns baselines by itself, so on the web the correction is rarely needed, but where type is shown large, as with display fonts, correct it with a separate margin inside the text box.
 
@@ -833,9 +837,9 @@ For detailed application by element, see the Color section of each page.
 ### Color {layout=grid-2}
 #### In Use
 The following images show the EO palette applied across a range of designs.
-![color-in-use-1] 1. ?
-![color-in-use-2] 2. ?
-![color-in-use-3] 3. Street banner
+![color-in-use-1] 1. 
+![color-in-use-2] 2. Clothing and tags
+![color-in-use-3] 3. Hanging banner
 ![color-in-use-4] 4. Outdoor flag
 
 ### Color {layout=grid-3}
@@ -1178,6 +1182,15 @@ Designers are free to extend the keywords and create new graphics, but adding a 
 ![pattern-30] 30. Boom
 
 
+### Usage
+#### + In Use {layout=grid-2}
+The following images show the EO graphic pattern applied across a range of designs.
+![pattern-in-use-1] 1. Medium-sized poster in a tall vertical format
+![pattern-in-use-2] 2. Extra-large billboard in a wide horizontal format
+![pattern-in-use-3] 3. Small business card in a wide horizontal format
+![pattern-in-use-4] 4. Horizontal social media banner
+
+
 ### Graphic Pattern
 #### + Don'ts {layout=grid-3}
 The graphic pattern is the most vivid and dense visual element in all of EO's visual expression, so it plays the protagonist, drawing the eye on the page. Give one side of the page (usually the right or top, about 70%) entirely to it as a rectangular area, set the headline left aligned at the edge of the content area on the opposite side, and place the logo in the content area's margin. You can crop a pattern, but crop at a column boundary so the diagonal sections of a thread are not cut midway.
@@ -1190,15 +1203,6 @@ The following are typical cases where the pattern loses its role as protagonist.
 ![pattern-dont-4] {dont} Do not mask the graphic pattern area into a circle or freeform shape
 ![pattern-dont-5] {dont} Do not tile the pattern as a background texture
 ![pattern-dont-6] {dont} Do not use a pattern that is too complex for its display size on the page
-
-
-### Usage
-#### In Use {layout=grid-2}
-The following images show the EO graphic pattern applied across a range of designs.
-![pattern-in-use-1] 1. Medium-sized poster in a tall vertical format
-![pattern-in-use-2] 2. Extra-large billboard in a wide horizontal format
-![pattern-in-use-3] 3. Small business card in a wide horizontal format
-![pattern-in-use-4] 4. Horizontal social media banner
 
 
 ## Applications
@@ -1259,5 +1263,4 @@ When using others' intellectual property, such as images · illustrations · vid
 Visual identity guideline designed and written by [[https://diceandfly.studio|DiceAndFly.Studio]]\
 Inspired by the Discord brand guidelines ([[https://www.portorocha.com/|Porto Rocha]])
 :::
-
 
