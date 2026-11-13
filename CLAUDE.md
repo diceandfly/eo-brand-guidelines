@@ -31,7 +31,7 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 
 ## 작업 방식
 - 사용자는 한국어, 두괄식 소통을 선호하며 미확정 사항은 착수 전에 토론한다.
-- 데스크탑 우선. 모바일(899px 이하)은 목차 드로어와 세로 스택만 보장.
+- 데스크탑 우선. 모바일(899px 이하)은 목차 드로어와 세로 스택만 보장. 경계 정본 = `src/lib/tokens.ts` `MOBILE_MAX`(@media 숫자는 npm test [7] 이 대조).
 - 스크롤스파이는 후속 라운드. `Sidebar.astro`의 `data-scrollspy` / `data-target`, `Section.astro`의 `data-section`이 그 자리.
 - 상세 튜토리얼: `docs/file-management.md`.
 

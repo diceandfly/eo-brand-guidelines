@@ -9,6 +9,7 @@
  *   3. 모션 대체값 — src/lib/motion.ts 의 ms() · num() · easeOf() 대체값이 tokens.css 값과 같아야 함 (토큰을 못 읽어도 같은 모션).
  *   4. astro check — 타입 오류 0.
  *   5. 로고 생성기 — GEOM 확정 수치(다크 총높이 · 오른쪽 클리어스페이스 식) · HEX/CMYK ↔ 가이드 스와치 (scripts/lib/logo-generator-check.mjs).
+ *   7. 모바일 경계 — base.css · 생성기 tool.css 의 @media 폭이 src/lib/tokens.ts MOBILE_MAX(max 899 / min 900)와 같고, 스크립트에 숫자가 따로 적혀 있지 않은지.
  * 리포트만 하는 것 (실패 아님)
  *   - EN/KO 구조 패리티: 페이지 목록, 페이지별 섹션 헤드 수 · 순서, 이미지 토큰 순서. 영문은 국문과 구조가 다를 수 있음.
  *   - 폰트 파일: public/fonts 에 빠진 woff2 (scripts/lib/check-fonts.mjs, 빌드도 경고).
@@ -19,7 +20,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { loadGuide, LANGS } from '../src/lib/guide.ts';
-import { parseTokens } from '../src/lib/tokens.ts';
+import { parseTokens, MOBILE_MAX } from '../src/lib/tokens.ts';
 import { checkFonts } from './lib/check-fonts.mjs';
 import { checkLogoGenerator } from './lib/logo-generator-check.mjs';
 
@@ -136,6 +137,28 @@ console.log('\n[6] 핸드오프 아카이브 (public/archive/handoff, npm run ar
     if (fonts.length) fail(`아카이브에 서체 파일 ${fonts.length}개 — 라이선스상 넣으면 안 됨`);
     if (meta && !leaks.length && !fonts.length) ok(`아카이브 ${meta.ref} (${meta.commit.slice(0, 7)} · ${meta.date}) — HTML ${html.length}개, 경로 · 서체 이상 없음`);
   }
+}
+
+// ── 7. 모바일 경계 ───────────────────────────────────────────────────────
+// CSS 변수는 @media 에 못 쓰므로 CSS 쪽은 숫자, 스크립트는 tokens.ts 상수. 숫자가 상수와 어긋나면 실패
+console.log('\n[7] 모바일 경계 (src/lib/tokens.ts MOBILE_MAX)');
+{
+  const bad = [];
+  let n = 0;
+  for (const f of ['src/styles/base.css', 'public/tools/logo-generator/tool.css']) {
+    const css = fs.readFileSync(path.join(ROOT, f), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+    for (const m of css.matchAll(/@media[^{]*\((max|min)-width:\s*(\d+)px\)/g)) {
+      n++;
+      const want = m[1] === 'max' ? MOBILE_MAX : MOBILE_MAX + 1;
+      if (+m[2] !== want) bad.push(`${f} @media (${m[1]}-width: ${m[2]}px) — ${want}px 이어야 함`);
+    }
+  }
+  for (const f of ['src/lib/motion.ts', 'src/layouts/Layout.astro']) {
+    const src = fs.readFileSync(path.join(ROOT, f), 'utf8').replace(/\/\*[\s\S]*?\*\/|\/\/.*$|<!--[\s\S]*?-->/gm, '');
+    if (/\b(max|min)-width:\s*\d+px/.test(src)) bad.push(`${f} — 폭 숫자 대신 tokens.ts 의 MQ_MOBILE · MQ_DESKTOP 를 쓸 것`);
+  }
+  for (const b of bad) fail(b);
+  if (!bad.length) ok(`@media ${n}곳 = ${MOBILE_MAX} / ${MOBILE_MAX + 1}px · 스크립트는 상수 사용`);
 }
 
 // ── 4. astro check ──────────────────────────────────────────────────────

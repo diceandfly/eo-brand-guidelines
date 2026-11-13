@@ -82,7 +82,7 @@ npm run import                      # 페이지 목록 보기
 - 컬러: 브랜드 팔레트 7색은 그대로 두고, UI 시맨틱 토큰(`--bg`, `--fg`, `--accent` …)만 바꿉니다. 중간 톤은 `color-mix()` 퍼센트로 조절합니다.
 - 비율: `--ratio-basic`, `--ratio-wide`, `--ratio-card`, `--ratio-swatch`
 
-브레이크포인트(모바일 899px 이하)만 CSS 변수로 쓸 수 없어 `base.css` 의 `@media` 에 직접 적혀 있습니다.
+브레이크포인트(모바일 899px 이하)만 CSS 변수로 쓸 수 없어 `base.css` 의 `@media` 에 직접 적혀 있습니다. 정본은 `src/lib/tokens.ts` 의 `MOBILE_MAX` — 바꿀 때는 그 값과 `base.css` `@media` 3곳(생성기 `tool.css` 1곳 포함)을 함께 고치고, `npm test` [7] 이 어긋난 곳을 알려 줍니다. 스크립트(motion.ts · Layout.astro)는 상수를 그대로 씁니다.
 
 ## 6. 글 편집
 

@@ -135,11 +135,12 @@ const ui = UI_TEXT[lang];
     </script>
     <script>
       // 모바일: 상단 바 버튼으로 목차 드로어 토글. 링크를 누르면 닫힘.
-      // 닫힌 드로어는 화면 밖에 있어도 키보드 탭이 들어가지 않도록 inert. 기준 폭은 base.css 의 @media (max-width: 899px) 와 같게.
+      // 닫힌 드로어는 화면 밖에 있어도 키보드 탭이 들어가지 않도록 inert. 기준 폭 = tokens.ts MOBILE_MAX (base.css @media 와 npm test [7] 이 대조)
+      import { MQ_DESKTOP } from '../lib/tokens';
       const root = document.documentElement;
       const btn = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
       const sidebar = document.querySelector<HTMLElement>('.sidebar');
-      const desktop = window.matchMedia('(min-width: 900px)');   // 모바일 경계 899px — 다른 곳(base.css @media 3곳 · motion.ts mobileMQ · Layout.astro 드로어)과 함께 바꿀 것 (여기는 PC 쪽 900px)
+      const desktop = window.matchMedia(MQ_DESKTOP);
       const set = (open: boolean) => {
         root.classList.toggle('nav-open', open);
         btn?.setAttribute('aria-expanded', String(open));

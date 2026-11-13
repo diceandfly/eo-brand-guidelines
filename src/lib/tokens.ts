@@ -3,9 +3,18 @@
  * 컬러 칩의 복사 HEX(--c-*), Do/Don't 카드 배율(--dodont-zoom-N), 이미지 톤 판정의 배경색(--bg).
  * 순수 함수라 Vite 없이(scripts/*.mjs) 도, 브라우저 스크립트(motion.ts · Layout.astro)에서도 씁니다.
  * 파일은 src/lib/content.ts(Vite) 또는 스크립트가 읽어 넘깁니다.
- * 시간 토큰 해석(parseSeconds)과 휘도 공식(luminance · hexLuminance)도 여기 한 벌만 둡니다.
+ * 시간 토큰 해석(parseSeconds)과 휘도 공식(luminance · hexLuminance), 모바일 경계(MOBILE_MAX)도 여기 한 벌만 둡니다.
  */
 export type Tokens = Map<string, string>;
+
+/**
+ * 모바일 경계 — 이 폭(px) 이하가 모바일(목차 드로어 · 세로 스택). CSS 변수는 @media 에 못 쓰므로
+ * base.css @media 3곳 · 생성기 tool.css @media 는 숫자로 적고, npm test [7] 이 이 값과 대조합니다.
+ * 스크립트(motion.ts 라이트박스 · Layout.astro 드로어)는 아래 쿼리 문자열을 씁니다.
+ */
+export const MOBILE_MAX = 899;
+export const MQ_MOBILE = `(max-width: ${MOBILE_MAX}px)`;
+export const MQ_DESKTOP = `(min-width: ${MOBILE_MAX + 1}px)`;
 
 /** `--name: value;` 를 전부 모읍니다. 같은 이름이 여러 번이면 첫 정의(:root)가 기준 */
 export function parseTokens(css: string): Tokens {
