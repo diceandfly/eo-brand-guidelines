@@ -177,7 +177,7 @@ EO · the EO monogram · the block symbol · "Build Anyway" · "Entrepreneur Onw
 
 ### Logo
 #### + Overview
-The EO logo is the umbrella term covering the EO symbol · [[signature|signature]] · [[sub-symbol|EO sub symbol]] covered in this chapter.
+The EO logo is the umbrella term for the EO symbol · [[signature|signature]] · [[sub-symbol|EO sub symbol]] covered in this chapter.
 
 This page describes how to apply the EO symbol across situations · formats · communications, from a small sign-off to large-scale display use.
 ![hero] {zoom=1.05}
