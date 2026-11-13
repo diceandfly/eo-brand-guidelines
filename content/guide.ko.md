@@ -360,10 +360,10 @@ EO 심볼이 일관되고 강렬하게 유지되도록, 재해석하거나 변�
 
 ### Signature
 #### + Clearspace {layout=grid-2}
-시그니처 주변에도 EO 심볼과 같은 원칙의 여백이 필요합니다. 다만 기준 단위는 형태에 따라 다릅니다.
+시그니처 주변에도 EO 심볼과 같은 원칙의 여백이 필요합니다. 다만 여백의 크기는 형태에 따라 다릅니다.
 
 ![clearspace-v] {zoom=1.05} 세로형 — E 블록 하나의 수직 방향 높이를 H라 할 때, 시그니처 전체를 감싸는 상하좌우 각 H/2 이상의 최소 여백을 확보합니다.
-![clearspace-h] {zoom=1.6} 가로형 — 디스크립터 대문자 E의 캡 하이트를 기준으로, 시그니처 전체를 감싸는 상하좌우 각 캡 하이트 이상의 최소 여백을 확보합니다.
+![clearspace-h] {zoom=1.6} 가로형 — E 블록 하나의 수직 방향 높이를 H라 할 때, 시그니처 전체를 감싸는 상하좌우 각 H 이상의 최소 여백을 확보합니다.
 
 
 ### Signature
@@ -996,9 +996,9 @@ EO 그래픽 유닛의 특징은 크기와 종횡비를 자유롭게 변형할 �
 - shaft 축 방향으로 긴 인상의 유닛을 권장합니다. shaft가 납작해지면 모든 thread가 한데 뭉쳐 버리므로 의도된 메타포를 표현하기에 이상적이지 않습니다. 단 복잡한 패턴의 일부 · 주변부에 쓰이는 유닛은 예외적으로 납작한 형태를 사용할 수 있습니다.
 - shaft 축 방향으로 직선처럼 가늘고 긴 유닛도 이상적이지 않습니다. 이 경우에는 긴 shaft를 따라 thread가 늘어나면서 기존 메타포로 인식되지 않을 만큼 변형되고, 형태적으로는 거터가 과도하게 늘어나기 때문에 지양합니다.
 ![proportion-flat-do]{do} shaft 축 방향으로 적당히 긴 인상의 유닛
-![proportion-flat-dont]{con} 축과 수직 방향으로 넓어져 thread가 한데 뭉친 납작한 유닛
+![proportion-flat-con]{con} 축과 수직 방향으로 넓어져 thread가 한데 뭉친 납작한 유닛
 ![proportion-line-do]{do} 적당한 길이의 shaft가 몸통처럼 균형이 잡힌 유닛
-![proportion-line-dont]{con} shaft가 가는 선처럼 길어지며 thread도 길게 늘어난 유닛
+![proportion-line-con]{con} shaft가 가는 선처럼 길어지며 thread도 길게 늘어난 유닛
 
 
 ### Morphology {layout=grid-4}
@@ -1010,9 +1010,9 @@ compression 값을 올리면 한쪽으로 갈수록 thread가 촘촘해지며 �
 - compression이 과하면, 촘촘한 쪽에서 헤어라인 두께로 압축된 thread들이 반복되면서 마찬가지로 지루한 인상을 주게 됩니다. 그럴 때는 thread amount를 줄이거나 compression을 조금 내려 반복 횟수를 낮춰보세요. 또는 thread gutter를 내려 그 구간을 하나의 회색 띠처럼 뭉치게 하면 반복적인 느낌을 상당 부분 상쇄시킬 수 있습니다.
 - 길이가 짧은 유닛은 thread amount가 작고 compression을 약하게 적용해도, thread 하나하나의 형태가 두드러지며 단조로움이 줄어드는 경향이 있습니다. 반면 길이가 긴 유닛은 thread amount가 크고 compression도 강하게 적용하는 것이 적당한 리듬감을 구성하기 좋습니다.
 ![rhythm-uniform-do]{do} 적당한 리듬감을 만드는 compression
-![rhythm-uniform-dont]{con} 간격이 일정해 단조로운 유닛
+![rhythm-uniform-con]{con} 간격이 일정해 단조로운 유닛
 ![rhythm-length-do]{do} 긴 유닛에 적합한 thread amount와 compression
-![rhythm-length-dont]{con} compression을 약하게 적용해 단조로운 인상을 주는 유닛
+![rhythm-length-con]{con} compression을 약하게 적용해 단조로운 인상을 주는 유닛
 ![rhythm-excess-do]{do} 경계로 수렴하며 동세를 만드는 compression
 ![rhythm-excess-dont]{dont} compression이 과해서 한 끝에 헤어라인이 거듭되는 유닛
 
@@ -1080,9 +1080,9 @@ EO 그래픽 시스템은 언어처럼 세 층위로 짜여 있습니다.
 
 EO Graphic Builder의 워크스페이스에서 새로운 메타포의 그래픽 초안을 만들 때는, 프레임 안에 독자적인 그리드를 설정해 그래픽 유닛을 규칙적으로 배치하는 과정을 거치는데, 이것은 본 가이드라인에서 중점적으로 다루는 Compound Grid와는 완전히 독립된 별도의 시스템입니다. 
 ![grid-do-1]{do} 이상적인 비율의 영역 구획
-![grid-dont-1]{dont} 그래픽 패턴 영역이 너무 작고, 다른 요소와 위계를 경합하는 그래픽 패턴
+![grid-dont]{dont} 그래픽 패턴 영역이 너무 작고, 다른 요소와 위계를 경합하는 그래픽 패턴
 ![grid-do-2]{do} 컬럼 · 로우를 기준으로 나뉘는 그래픽 패턴 영역
-![grid-dont-2]{con} 그래픽 패턴 영역을 좌측 · 하단에 둔 레이아웃
+![grid-con]{con} 그래픽 패턴 영역을 좌측 · 하단에 둔 레이아웃
 
 
 ### Grammar {layout=grid-2}
@@ -1112,10 +1112,10 @@ pattern gutter는 그래픽 패턴 내 유닛과 유닛 사이의 간격입니�
 가로 유닛과 세로 유닛을 함께 조합할 때 특별한 제한 사항이 있는 것은 아니지만, 각 유닛의 형태는 가급적 [[graphic-unit#morphology|Morphology]]의 권장 사항을 따르는 것이 유려한 패턴을 만드는데 도움이 됩니다. 
 
 - 그래픽 패턴 영역에 유닛을 정렬하고 나면, 교차하는 유닛들 사이의 우연히 만들어진 shaft와 thread의 라인들을 잘 살펴보세요. 의도치 않은 어긋남이 전체 패턴의 완성도를 해칠 수 있습니다. 가로 유닛의 shaft 라인과 세로 유닛의 thread 라인이 일치하도록, 세로 유닛의 [[graphic-unit#parameters|compression]]과 가로 유닛의 shaft size를 미세 조정합니다. 레이아웃을 완성하는 마지막 작업 순서로 권장합니다.
-![alignment-dont-1]{dont} 교차하는 유닛의 thread 라인이 흐트러진 패턴
+![alignment-dont]{dont} 교차하는 유닛의 thread 라인이 흐트러진 패턴
 ![alignment-do-1]{do} 교차하는 유닛의 thread 라인이 의도적으로 정리된 패턴
 ![alignment-do-2]{do} shaft 라인과 thread 라인이 의도적으로 정리된 패턴
-![alignment-dont-2]{dont} 라인의 균형이 두드러지게 어긋난 패턴
+![alignment-con]{con} 라인의 균형이 두드러지게 어긋난 패턴
 
 
 ### Graphic Pattern {layout=grid-4}

@@ -1017,10 +1017,6 @@ svg.mock.hov .artGhost:hover {
   letter-spacing: var(--t-label-ls);
   fill: color-mix(in srgb, var(--art-fg) var(--cs-text-mix), var(--art-bg));
 }
-.csGuide .csE {
-  fill: var(--art-fg); /* 가로형 시그니처 모서리 칸 = 캡 하이트 E */
-  opacity: var(--cs-e-opacity);
-}
 
 /* ---------------------------------------------------------------------
    좁은 창 — 메뉴창 위 · 작업공간 아래로 쌓기만 (데스크탑 도구, 가이드와 같은 경계 899px = src/lib/tokens.ts MOBILE_MAX, npm test [7] 이 대조)

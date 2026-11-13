@@ -358,10 +358,10 @@ Always get approval from the EO design team when creating a new descriptor or ch
 
 ### Signature
 #### + Clearspace {layout=grid-2}
-The signature also needs space around it, on the same principle as the EO symbol. The base unit, however, differs by form.
+The signature also needs space around it, on the same principle as the EO symbol. The amount of space, however, differs by form.
 
 ![clearspace-v] {zoom=1.05} Vertical — with H as the vertical height of one E block, keep a clearspace of at least H/2 on all four sides around the whole signature.
-![clearspace-h] {zoom=1.6} Horizontal — based on the cap height of the uppercase E in the descriptor, keep a clearspace of at least one cap height on all four sides around the whole signature.
+![clearspace-h] {zoom=1.6} Horizontal — with H as the vertical height of one E block, keep a clearspace of at least H on all four sides around the whole signature.
 
 
 ### Signature
@@ -994,9 +994,9 @@ A defining feature of the EO graphic unit is that its size and aspect ratio can 
 - We recommend units that read as long along the shaft axis. When the shaft turns squat, all the threads bunch together, which does not suit the intended metaphor. As an exception, units used within a complex pattern · at its periphery may take a squat shape.
 - Units that are thin and long like a straight line along the shaft axis are not ideal either. The threads stretch along the long shaft until the original metaphor is no longer recognizable, and formally the gutters grow excessive, so avoid them.
 ![proportion-flat-do]{do} Unit that reads as moderately long along the shaft axis
-![proportion-flat-dont]{con} Squat unit widened perpendicular to the axis, its threads bunched together
+![proportion-flat-con]{con} Squat unit widened perpendicular to the axis, its threads bunched together
 ![proportion-line-do]{do} Unit whose moderately long shaft is balanced like a body
-![proportion-line-dont]{con} Unit whose shaft stretches into a thin line, its threads stretched long with it
+![proportion-line-con]{con} Unit whose shaft stretches into a thin line, its threads stretched long with it
 
 
 ### Morphology {layout=grid-4}
@@ -1008,9 +1008,9 @@ Raising the compression value tightens the threads toward one side and creates r
 - With too much compression, threads squeezed to hairline thickness repeat at the tight end and become just as dull. In that case, reduce the thread amount or lower the compression slightly to cut the repetitions. Or lower the thread gutter so the stretch merges into a single gray band, which largely offsets the repetitive feel.
 - Short units tend to avoid monotony even with a small thread amount and mild compression, because each thread's shape stands out. Long units, by contrast, reach a good rhythm with a large thread amount and strong compression.
 ![rhythm-uniform-do]{do} Compression that creates a good rhythm
-![rhythm-uniform-dont]{con} Monotonous unit with constant spacing
+![rhythm-uniform-con]{con} Monotonous unit with constant spacing
 ![rhythm-length-do]{do} Thread amount and compression suited to a long unit
-![rhythm-length-dont]{con} Unit made monotonous by mild compression
+![rhythm-length-con]{con} Unit made monotonous by mild compression
 ![rhythm-excess-do]{do} Compression that converges on the edge and creates movement
 ![rhythm-excess-dont]{dont} Unit with excessive compression, hairlines repeating at one end
 
@@ -1078,9 +1078,9 @@ The graphic pattern area is a rectangular area that corresponds to the Frame in 
 
 When drafting graphics for a new metaphor in the EO Graphic Builder workspace, you set up an independent grid inside the Frame and place graphic units on it in a regular order. This is a separate system, entirely independent of the Compound Grid that this guideline focuses on.
 ![grid-do-1]{do} Areas divided in ideal proportion
-![grid-dont-1]{dont} A graphic pattern area that is too small, with a graphic pattern competing for hierarchy with other elements
+![grid-dont]{dont} A graphic pattern area that is too small, with a graphic pattern competing for hierarchy with other elements
 ![grid-do-2]{do} A graphic pattern area divided along columns and rows
-![grid-dont-2]{con} A layout with the graphic pattern area placed at the left or bottom
+![grid-con]{con} A layout with the graphic pattern area placed at the left or bottom
 
 
 ### Grammar {layout=grid-2}
@@ -1110,10 +1110,10 @@ The pattern gutter is the space between units within a graphic pattern. Set it b
 There are no specific restrictions on combining horizontal and vertical units, but keeping each unit's form close to the recommendations in [[graphic-unit#morphology|Morphology]] helps create a fluid pattern.
 
 - Once the units are aligned in the graphic pattern area, look closely at the shaft and thread lines that happen to form between intersecting units. Unintended misalignment can undermine the quality of the entire pattern. Fine-tune the [[graphic-unit#parameters|compression]] of vertical units and the shaft size of horizontal units so the shaft lines of horizontal units line up with the thread lines of vertical units. We recommend this as the final step in completing a layout.
-![alignment-dont-1]{dont} A pattern where the thread lines of crossing units are misaligned
+![alignment-dont]{dont} A pattern where the thread lines of crossing units are misaligned
 ![alignment-do-1]{do} A pattern where the thread lines of crossing units are deliberately aligned
 ![alignment-do-2]{do} A pattern with shaft and thread lines deliberately aligned
-![alignment-dont-2]{dont} A pattern with noticeably unbalanced lines
+![alignment-con]{con} A pattern with noticeably unbalanced lines
 
 
 ### Graphic Pattern {layout=grid-4}

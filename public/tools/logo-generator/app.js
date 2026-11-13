@@ -24,8 +24,8 @@ function zoneOf(zones, S) {   // S 가 든 구간 (닫힌 구간, 경계에서�
 }
 // 시그니처 규격 (가이드 Signature › Descriptor · Clearspace · Inversion) — H = 심볼 높이(E 블록 높이), W = E 블록 폭, 자간 = 1/1000 em
 const SIG = {
-  v: { em: 58.8 / 125, emDark: .48, trackDark: -10, drop: 1 / 5, nudge: -1 / 100 },       // 세로형: 조판 = 일러 장표 58.8pt / 심볼 125 (가이드 문장 0.47H 는 반올림 표기) · 캡 박스 윗변 = 심볼 아래 H/5 · 심볼 가운데에서 왼쪽으로 H/100 · 클리어스페이스 H/2
-  h: { em: 1.3, emDark: 1.35, trackDark: -20, gapW: 1 / 2, lift: 1 / 10, space: -60, spaceDark: -70 },   // 가로형: 캡 박스 왼변 = 심볼 오른쪽 + W/2 · 베이스라인 = 심볼 바닥 − H/10 · 공백만 자간 −6% · 클리어스페이스 = 캡 하이트
+  v: { em: 58.8 / 125, emDark: .48, trackDark: -10, drop: 1 / 5, nudge: -1 / 100, cs: 1 / 2 },       // 세로형: 조판 = 일러 장표 58.8pt / 심볼 125 (가이드 문장 0.47H 는 반올림 표기) · 캡 박스 윗변 = 심볼 아래 H/5 · 심볼 가운데에서 왼쪽으로 H/100 · 클리어스페이스 H/2
+  h: { em: 1.3, emDark: 1.35, trackDark: -20, gapW: 1 / 2, lift: 1 / 10, space: -60, spaceDark: -70, cs: 1 },   // 가로형: 캡 박스 왼변 = 심볼 오른쪽 + W/2 · 베이스라인 = 심볼 바닥 − H/10 · 공백만 자간 −6% · 클리어스페이스 H (2026-11-14, 캡 하이트에서 H 기준으로)
   darkOffset: 1 / 200,                                                       // 다크: 자간 세로형 −1% · 가로형 −2%(2026-11-12 확정, 공백 −7%) · 글자 바깥 오프셋 H/200
 };
 const ART_AREA_MAX = 0.10;   // 로고(심볼 박스) 면적 ÷ 로고가 놓인 공간 면적 — 가이드 Symbol › Usage "실질 점유 면적은 빈 공간 전체의 5-10%" 의 상한. 공간 = 조닝 매체는 콘텐츠 영역(spec.space), 나머지는 화면 · 지면 전체
@@ -162,7 +162,7 @@ function buildSig(S, mode) {   // 반환 = 심볼과 같은 꼴 { mp, box } + �
   const lx = o === 'v' ? lw / 2 + sp.nudge - (L.capL + L.capR) / 2 : lw + Ew * sp.gapW - L.capL;
   const base = o === 'v' ? 1 + sp.drop + L.capH : 1 - sp.lift;
   const cap = { x0: L.capL + lx, x1: L.capR + lx, y0: base - L.capH, y1: base };
-  const lbox = boxU({ x0: 0, y0: 0, x1: lw, y1: 1 }, cap), cs = o === 'v' ? .5 : L.capH;
+  const lbox = boxU({ x0: 0, y0: 0, x1: lw, y1: 1 }, cap), cs = sp.cs;
   let txt = mapMP(L.mp, (x, y) => [x + lx, y + base]), smp = sym.mp;
   if (mode === 'dark') {   // 심볼 = 라이트 심볼 자리에 x · y 가운데 (buildSymbol), 글자 = 세로형 캡 박스 가운데 · 가로형 캡 박스 왼변 그대로, 베이스라인 유지. 전체를 다시 옮기지 않음 (틀 = 라이트 박스 + 클리어스페이스)
     const D = setLine(F, text, sp.emDark, sp.trackDark, o === 'h' ? sp.spaceDark : sp.trackDark);
@@ -529,7 +529,7 @@ function renderArt(c) {
 const TOK_PX = new Map();   // 토큰 px 값 (창 크기가 바뀌면 비움 — lh-unit 이 창에 따라 변할 수 있어서)
 function tokenPx(name) { if (TOK_PX.has(name)) return TOK_PX.get(name); const d = document.createElement('div'); d.style.cssText = `position:absolute;visibility:hidden;width:var(${name})`; document.body.appendChild(d); const v = d.getBoundingClientRect().width; d.remove(); TOK_PX.set(name, v); return v; }
 
-// 클리어스페이스 가이드 (화면용) — 장표 문법: 점선 격자(바깥 + 로고 경계선) · 모서리 칸에 H/2, 가로형 시그니처는 캡 하이트 E (네 칸 90°씩 회전)
+// 클리어스페이스 가이드 (화면용) — 장표 문법: 점선 격자(바깥 + 로고 경계선) · 모서리 칸에 클리어스페이스 값(H/2, 가로형 시그니처는 H)
 function csGuideSvg(c, gf, gx, gy, aH) {
   const r = v => +v.toFixed(2), W = gf.w * aH, Hh = gf.h * aH;
   return `<svg class="csGuide" style="left:${r(gx)}px;top:${r(gy)}px;--art-fg:${artFg(c)};--art-bg:${c.bgView}" width="${r(W)}" height="${r(Hh)}" viewBox="0 0 ${r(W)} ${r(Hh)}">${csGuideInner(c, gf, aH)}</svg>`;
@@ -539,11 +539,9 @@ function csGuideInner(c, gf, aH) {   // 좌표 = 화면 px (aH = 심볼 높이 p
   const xs = [0, L, W - R, W], ys = [0, tb, Hh - tb, Hh];
   let g = xs.map(x => `<line x1="${r(x)}" y1="0" x2="${r(x)}" y2="${r(Hh)}"/>`).join('') + ys.map(y => `<line x1="0" y1="${r(y)}" x2="${r(W)}" y2="${r(y)}"/>`).join('');
   const cells = [[0, 0, L, 0], [W - R, 0, R, 90], [W - R, Hh - tb, R, 180], [0, Hh - tb, L, 270]];   // [x, y, 폭, 회전] — 높이는 tb
-  if (s.sig && s.orient === 'h' && SIG_FONT) {   // 캡 하이트 = 클리어스페이스 → 칸마다 E (가이드 Signature › Clearspace 장표)
-    const E = setLine(SIG_FONT, 'E', SIG.h.em, 0, 0), d = pathD(mapMP(E.mp, (x, y) => [x - E.capL, y + E.capH]), { x0: 0, y0: 0 }, aH), sz = E.capH * aH;
-    g += cells.map(([x, y, , a]) => `<path class="csE" fill-rule="evenodd" transform="translate(${r(x)} ${r(y)}) rotate(${a} ${r(sz / 2)} ${r(sz / 2)})" d="${d}"/>`).join('');
-  } else if (Math.min(L, tb) >= tokenPx('--cs-label-min')) {
-    g += cells.filter(([, , w]) => Math.abs(w - L) < .01).map(([x, y, w]) => `<text x="${r(x + w / 2)}" y="${r(y + tb / 2)}" text-anchor="middle" dominant-baseline="central">H/2</text>`).join('');   // 오른쪽 보정으로 좁아진 칸은 글자 없음
+  if (Math.min(L, tb) >= tokenPx('--cs-label-min')) {
+    const lab = s.sig && s.cs === 1 ? 'H' : 'H/2';   // 가로형 시그니처 = H (가이드 Signature › Clearspace 장표)
+    g += cells.filter(([, , w]) => Math.abs(w - L) < .01).map(([x, y, w]) => `<text x="${r(x + w / 2)}" y="${r(y + tb / 2)}" text-anchor="middle" dominant-baseline="central">${lab}</text>`).join('');   // 오른쪽 보정으로 좁아진 칸은 글자 없음
   }
   return g;
 }
@@ -567,7 +565,7 @@ const TIPS = {
   'Viewing': 'Where and from how far the logo is seen. Sets the output unit and the mockup.',
   'Visual size': 'How big the logo looks from 500mm. This is the value you choose; the other sizes follow from it.',
   'Export': 'Saves outlined artwork with a transparent background. Clearspace and correction are set below.',
-  'Include clearspace': 'Adds the clearspace around the logo in the saved file — H/2 for the symbol; the signature uses its own.',
+  'Include clearspace': 'Adds the clearspace around the logo in the saved file — H/2 for the symbol and vertical signature, H for the horizontal signature.',
   'Right side correction': 'Narrows the right clearspace so the symbol looks optically centered. The guide always applies it. Symbol only.',
   'Show clearspace guide': 'Shows the clearspace on the preview only. Not saved.',
 };
