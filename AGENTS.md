@@ -14,7 +14,7 @@
 |---|---|---|---|---|
 | E1 | 2026-11-10 (11-13 근거 추가) | Graphic Pattern › Zoning (`grid-do-1` 롤업) · Typography › Zoning (`zoning-ratio` 롤업 · `zoning-4-division` 좌측 열) | "세로로 나눌 때 패턴 상단 · 가로로 나눌 때 우측 우선" 규칙과 반대로 패턴이 하단 · 좌측 | 규칙은 "우선"(권장)이라 예외 가능. 롤업 · 거리 배너처럼 바닥에 세우는 매체는 빌더 · 집이 땅에 선 형상이고, compression 이 촘촘한 쪽이 땅을 연상시켜 하단 배치가 어울림. 4분할은 Typography › Zoning 이 "번갈아 두기" 를 허용 |
 | E2 | 2026-11-13 | Graphic Unit › Formation › 규모 (`formation-scale`) | "Peer" 칸 두 유닛의 방향이 본문(같은 방향 나란히)과 달라 보임 | 메타포 장표는 연상에 어느 정도 자유도가 있다는 것을 상정한 그림 |
-| E3 | 2026-11-13 | Sub Symbol › Clearspace (본문 · 장표의 t 단위) | 2026-10-16 "스레드 두께 단위 T/t 폐기, 모든 수치는 H 기준" 결정과 어긋남 | 서브 심볼은 아주 제한적으로만 쓰여 예외 규칙을 그대로 둠 |
+| E3 | 2026-11-13 | Sub Symbol › Clearspace (본문 · 장표의 t 단위) | 2026-10-16 "스레드 두께 단위 T/t 폐기, 모든 수치는 H 기준" 결정과 어긋남 | 서브심볼은 아주 제한적으로만 쓰여 예외 규칙을 그대로 둠 |
 | E4 | 2026-11-12 (11-13 가이드 최적 8-15mm 로 정리) | Symbol › Scalability ↔ 로고 생성기 RULES | 가이드 "최적 8-15mm" · 생성기 "최적 4-15mm" 가 다름 | 두 기준을 의도적으로 공존(docs/logo-generator/DEBT.md D20). 생성기 값 · 가이드 문장을 서로에 맞추지 말 것 |
 | E5 | 2026-11-10 | Signature › 서비스 시그니처 캡션 "EO Studio" ↔ 장표 "Studio" 등 | 디스크립터 표기 불일치 | 디스크립터에 "EO" 를 넣을지는 인하우스가 결정 — 그때까지 차이 유지(md 주석) |
 | E6 | 2026-11-10 | Typography › Reference Scale (8줄) ↔ 본문 "7레벨" | 목록은 T2 포함 8개 | T2 는 T1 의 가독성 우선 대안이라 레벨 수에 세지 않음. T1 과 한 지면에 같이 안 쓰여 Reference Scale · Inversion · Levelling 장표에는 T1 만(md 주석) |
