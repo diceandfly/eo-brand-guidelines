@@ -174,6 +174,19 @@
 
   /* ------------------------------------------------------------------
      A-3 공통 치수
+     레이아웃 치수 규칙 (2026-11-13, 로고 생성기 tokens.css 와 같은 방식)
+       1. 레이아웃 치수(간격 · 패딩 · 들여쓰기 · 레이아웃 폭)  calc(var(--lh-unit) * N), N 은 0.25 단위. 바꿀 때는 N 만 바꿈
+            → --lh-unit(본문 행간) 하나로 타이포와 레이아웃이 함께 커지고 작아짐. npm test [7] 이 이 꼴 · ¼ 단위를 검사
+            목록: B-1 --sidebar-w · B-2 --nav-pad-* · --nav-logo-h · --nav-logo-gap · --search-h · --search-gap · --search-clear-size · --search-clear-hit ·
+                  --search-result-pad-x/y · --nav-indent · --nav-sections-indent · --nav-sections-pad-top/bottom · --nav-archive-gap · --nav-lang-gap ·
+                  B-3 --page-margin-m · --title-pad-top · --title-gap · --section-gap · --next-gap · --page-pad-bottom · --head-gap · --sec-row-gap (각 -m 포함) ·
+                  B-6 --card-gap
+       2. 범위값(줄어들거나 늘어나는 한계)                      px 숫자 그대로: --page-margin-min · --content-max · --swatch-min-w
+       3. 스크립트가 읽는 토큰(motion.ts num() · ms() 가 parseFloat) px · 숫자 그대로 — calc 로 바꾸면 값을 못 읽음:
+            --anchor-offset · --page-shift · --nav-stagger-shift · --nav-wheel-step 과 B-8 · B-9 의 시간 · 비율 토큰. npm test [7] 이 검사
+       4. 조형 디테일(아이콘 · 알약 · 배지 · 2–8px 보정 · 선 두께 · em 값)  px 그대로: --topbar-menu-* · --badge-size · --swatch-gap · --swatch-tip-* ·
+            --search-results-offset · --search-result-gap · --nav-sub-pad-bottom · --border-w · --focus-w 등
+       예외: --gutter 20px(그리드 거터, 사용자 결정으로 배수 아님)
      ------------------------------------------------------------------ */
   --radius: 0px; /* 이미지·카드·컬러 카드·검색창 라운드 */
   --border-w: 1px; /* 플레이스홀더·컬러 카드·Copy 버튼 테두리 두께 */
@@ -200,7 +213,7 @@
   /* ------------------------------------------------------------------
      B-1 페이지 셸
      ------------------------------------------------------------------ */
-  --sidebar-w: 350px; /* PC 목차 폭 */
+  --sidebar-w: calc(var(--lh-unit) * 12.5); /* PC 목차 폭 */
   --topbar-menu-inset: 8px; /* 모바일 목차 버튼 ↔ 화면 위 (안전 영역은 따로 더함) */
   --topbar-menu-size: 40px; /* 모바일 목차 버튼 (누르는 영역). 열리면 같은 버튼이 × */
   --topbar-menu-icon: 22px; /* 그 안의 햄버거 아이콘 */
@@ -212,49 +225,49 @@
      B-2 목차
      ------------------------------------------------------------------ */
   /* 패딩과 로고 (고정) */
-  --nav-pad-top: 56px; /* 목차 내부 패딩: 위 */
-  --nav-pad-right: 28px; /* 오른쪽 */
-  --nav-pad-bottom: 28px; /* 아래 (언어 전환 아래 여백) */
-  --nav-pad-left: 28px; /* 왼쪽 */
+  --nav-pad-top: calc(var(--lh-unit) * 2); /* 목차 내부 패딩: 위 */
+  --nav-pad-right: calc(var(--lh-unit) * 1); /* 오른쪽 */
+  --nav-pad-bottom: calc(var(--lh-unit) * 1); /* 아래 (언어 전환 아래 여백) */
+  --nav-pad-left: calc(var(--lh-unit) * 1); /* 왼쪽 */
   /* 모바일 드로어: 로고를 목차 버튼(햄버거 · ×)과 한 줄에, 좌우는 페이지 여백 선(버튼 아이콘 오른쪽 끝과 같은 선)에 맞춤 */
-  --nav-pad-top-m: 21px; 
+  --nav-pad-top-m: calc(var(--lh-unit) * 0.75); 
   --nav-pad-right-m: var(--page-margin-m); /* 오른쪽 = 페이지 여백 (× 아이콘 오른쪽 끝 선) */
   --nav-pad-left-m: var(--page-margin-m); /* 왼쪽 = 페이지 여백 (본문 왼쪽 선) */
-  --nav-logo-h: 21px; /* 로고 높이 */
+  --nav-logo-h: calc(var(--lh-unit) * 0.75); /* 로고 높이 */
   --nav-logo-text-ls: -0.02em; /* 로고 SVG 가 없을 때 대신 뜨는 "EO" 글자의 자간 */
-  --nav-logo-gap: 56px; /* 로고 ↔ 검색창 */
+  --nav-logo-gap: calc(var(--lh-unit) * 2); /* 로고 ↔ 검색창 */
 
   /* 검색창 (고정) */
-  --search-h: 28px; /* 검색창 높이 */
+  --search-h: calc(var(--lh-unit) * 1); /* 검색창 높이 */
   --search-pad-x: 0px; /* 검색창 내부 좌우 패딩. 0 = 목차 글자와 같은 선에 정렬 */
   --search-line-w: 1px; /* 검색창 밑줄 두께. 0 = 없음 */
-  --search-clear-size: 14px; /* 입력 지우기 × 아이콘 크기 (입력이 있을 때만 표시) */
-  --search-clear-hit: 28px; /* × 버튼을 누를 수 있는 영역 (WCAG 최소 24px). 아이콘 크기는 그대로 */
+  --search-clear-size: calc(var(--lh-unit) * 0.5); /* 입력 지우기 × 아이콘 크기 (입력이 있을 때만 표시) */
+  --search-clear-hit: calc(var(--lh-unit) * 1); /* × 버튼을 누를 수 있는 영역 (WCAG 최소 24px). 아이콘 크기는 그대로 */
   --search-clear-stroke: 1.6; /* × 선 굵기 (SVG 16 기준 단위) */
   --search-results-offset: 7px; /* 검색창 ↔ 결과 패널 */
   --search-results-max-h: 60vh; /* 결과 패널 최대 높이. 넘치면 패널 안에서 스크롤 */
-  --search-result-pad-x: 14px; /* 결과 패널 안쪽 좌우 패딩 (입력창 패딩과 별개) */
-  --search-result-pad-y: 7px; /* 결과 한 행의 상하 패딩 */
+  --search-result-pad-x: calc(var(--lh-unit) * 0.5); /* 결과 패널 안쪽 좌우 패딩 (입력창 패딩과 별개) */
+  --search-result-pad-y: calc(var(--lh-unit) * 0.25); /* 결과 한 행의 상하 패딩 */
   --search-result-gap: 3.5px; /* 결과 인용 줄 ↔ 경로 줄 */
-  --search-gap: 35px; /* 검색창 ↔ 목록 (첫 챕터). 목록을 스크롤하면 이 간격이 위쪽 페이드가 됨 */
+  --search-gap: calc(var(--lh-unit) * 1.25); /* 검색창 ↔ 목록 (첫 챕터). 목록을 스크롤하면 이 간격이 위쪽 페이드가 됨 */
 
   /* 목록 (스크롤 영역: 챕터 → 서브챕터 → 섹션) */
   --nav-chapter-gap: 0px; /* 챕터 ↔ 챕터 */
   --nav-num-gap: 0.6em; /* 챕터 번호 ↔ 이름 (03 Overview) */
   --nav-sub-pad-top: 0px; /* 챕터 ↔ 첫 서브챕터 */
   --nav-item-gap: 0px; /* 서브챕터 ↔ 서브챕터, 섹션 ↔ 섹션 */
-  --nav-indent: 21px; /* 위계당 들여쓰기 (서브챕터, 섹션) */
-  --nav-sections-indent: 21px; /* 섹션 들여쓰기 (서브챕터 기준). 더 밀어 넣으려면 키움 */
-  --nav-sections-pad-top: 7px; /* 활성 서브챕터 ↔ 첫 섹션 (서브챕터 이름과 섹션 목록 사이 숨) */
-  --nav-sections-pad-bottom:7px; /* 마지막 섹션 ↔ 다음 서브챕터 */
+  --nav-indent: calc(var(--lh-unit) * 0.75); /* 위계당 들여쓰기 (서브챕터, 섹션) */
+  --nav-sections-indent: calc(var(--lh-unit) * 0.75); /* 섹션 들여쓰기 (서브챕터 기준). 더 밀어 넣으려면 키움 */
+  --nav-sections-pad-top: calc(var(--lh-unit) * 0.25); /* 활성 서브챕터 ↔ 첫 섹션 (서브챕터 이름과 섹션 목록 사이 숨) */
+  --nav-sections-pad-bottom:calc(var(--lh-unit) * 0.25); /* 마지막 섹션 ↔ 다음 서브챕터 */
   --nav-sub-pad-bottom: 0px; /* 마지막 서브챕터(와 섹션 묶음) ↔ 다음 챕터 */
 
   /* 언어 전환 (바닥 고정) */
-  --nav-lang-gap: 42px; /* 목록 ↔ EN | KR 최소 간격. 목록을 스크롤하면 이 간격이 아래쪽 페이드가 됨 */
+  --nav-lang-gap: calc(var(--lh-unit) * 1.5); /* 목록 ↔ EN | KR 최소 간격. 목록을 스크롤하면 이 간격이 아래쪽 페이드가 됨 */
   --nav-lang-divider-gap: 0.6em; /* EN | KR 구분선 좌우 간격 */
 
   /* 핸드오프 아카이브 표시 (/archive/handoff 빌드에만, npm run archive) — 언어 전환 바로 위 */
-  --nav-archive-gap: 14px; /* 아카이브 표시 ↔ EN | KR */
+  --nav-archive-gap: calc(var(--lh-unit) * 0.5); /* 아카이브 표시 ↔ EN | KR */
 
   /* 웨이트 — 위계별 (크기·자간은 A-1 ui 레벨) */
   --nav-w-chapter: 400; /* 01 Logo */
@@ -314,21 +327,21 @@
   --cols: 12; /* PC 컬럼 수 */
   --content-max: 1320px; /* 본문 최대 폭. 넓은 화면에서는 남는 폭을 양쪽에 균등 분배. 꽉 채우려면 none */
   /* 모바일 (899px 이하) — base.css 가 위 PC 이름을 이 값으로 바꿔 끼움 */
-  --page-margin-m: 21px; /* 모바일 좌우 마진 (고정값) */
+  --page-margin-m: calc(var(--lh-unit) * 0.75); /* 모바일 좌우 마진 (고정값) */
   --cols-m: 6; /* 모바일 컬럼 수 */
 
   /* 페이지 세로 흐름 (위 → 아래) */
-  --title-pad-top: 42px; /* 페이지 상단 ↔ 타이틀 */
-  --title-gap: 84px; /* 타이틀 ↔ 첫 섹션 */
-  --section-gap: 126px; /* 섹션 ↔ 섹션 */
-  --next-gap: 168px; /* 마지막 섹션 ↔ 다음 버튼 */
-  --page-pad-bottom: 126px; /* 다음 버튼 ↔ 페이지 바닥 */
+  --title-pad-top: calc(var(--lh-unit) * 1.5); /* 페이지 상단 ↔ 타이틀 */
+  --title-gap: calc(var(--lh-unit) * 3); /* 타이틀 ↔ 첫 섹션 */
+  --section-gap: calc(var(--lh-unit) * 4.5); /* 섹션 ↔ 섹션 */
+  --next-gap: calc(var(--lh-unit) * 6); /* 마지막 섹션 ↔ 다음 버튼 */
+  --page-pad-bottom: calc(var(--lh-unit) * 4.5); /* 다음 버튼 ↔ 페이지 바닥 */
   /* 모바일 (899px 이하) — base.css 가 위 PC 이름을 이 값으로 바꿔 끼움 */
-  --title-pad-top-m: 14px; /* 모바일: 페이지 상단 ↔ 타이틀 */
-  --title-gap-m: 84px; /* 모바일: 타이틀 ↔ 첫 섹션 */
-  --section-gap-m:84px; /* 모바일: 섹션 ↔ 섹션 */
-  --next-gap-m: 84px; /* 모바일: 마지막 섹션 ↔ 다음 버튼 */
-  --page-pad-bottom-m: 84px; /* 모바일: 다음 버튼 ↔ 페이지 바닥 */
+  --title-pad-top-m: calc(var(--lh-unit) * 0.5); /* 모바일: 페이지 상단 ↔ 타이틀 */
+  --title-gap-m: calc(var(--lh-unit) * 3); /* 모바일: 타이틀 ↔ 첫 섹션 */
+  --section-gap-m:calc(var(--lh-unit) * 3); /* 모바일: 섹션 ↔ 섹션 */
+  --next-gap-m: calc(var(--lh-unit) * 3); /* 모바일: 마지막 섹션 ↔ 다음 버튼 */
+  --page-pad-bottom-m: calc(var(--lh-unit) * 3); /* 모바일: 다음 버튼 ↔ 페이지 바닥 */
 
   /* 섹션 내부 */
   --sec-text-cols: 5; /* basic: 텍스트 컬럼 수 (왼쪽부터) */
@@ -336,13 +349,13 @@
   --sec-textonly-cols: 10; /* text / wide / half / grid: 텍스트 컬럼 수 (글 상자의 폭) */
   --sec-text-measure: 48em; /* text / wide / half / grid 본문의 최대 줄 길이. em = 본문 글자 크기 (한글 1자 ≈ 1em). 컬럼 폭이 이보다 넓어지는 큰 화면에서만 걸림. none = 제한 없음 */
   --sec-split-text-pad: 0.4; /* ::: split 안 섹션의 글 오른쪽 여백 (그리드 컬럼 폭 × 값). 단 사이 거터에 더해져 글이 옆 단에 붙지 않게 */
-  --head-gap: 56px; /* 헤드(+서브헤드) ↔ 본문 */
-  --sec-row-gap: 42px; /* 세로 간격 하나로 통일: 텍스트 ↔ 이미지(wide · half · grid · 모바일 basic), grid 카드 행 ↔ 행, wide 여러 장 장 ↔ 장 */
+  --head-gap: calc(var(--lh-unit) * 2); /* 헤드(+서브헤드) ↔ 본문 */
+  --sec-row-gap: calc(var(--lh-unit) * 1.5); /* 세로 간격 하나로 통일: 텍스트 ↔ 이미지(wide · half · grid · 모바일 basic), grid 카드 행 ↔ 행, wide 여러 장 장 ↔ 장 */
   /* 모바일 (899px 이하) — base.css 가 위 PC 이름을 이 값으로 바꿔 끼움 */
   --sec-text-cols-m: 6; /* 모바일: basic 텍스트 컬럼 (전폭) */
   --sec-textonly-cols-m: 6; /* 모바일: text / wide / half / grid 텍스트 컬럼 (전폭) */
-  --head-gap-m: 28px; /* 모바일: 헤드(+서브헤드) ↔ 본문 */
-  --sec-row-gap-m: 28px; /* 모바일: 텍스트 ↔ 이미지, 카드 행 ↔ 행 */
+  --head-gap-m: calc(var(--lh-unit) * 1); /* 모바일: 헤드(+서브헤드) ↔ 본문 */
+  --sec-row-gap-m: calc(var(--lh-unit) * 1); /* 모바일: 텍스트 ↔ 이미지, 카드 행 ↔ 행 */
 
   /* ------------------------------------------------------------------
      B-4 다음 버튼 (마지막 섹션과의 간격은 B-3 --next-gap)
@@ -389,7 +402,7 @@
   --img-fit: cover; /* 프레임에 넣는 방식. cover = 꽉 채우고 잘림, contain = 전부 보임 */
   --img-chamfer: 0px; /* 좌상·우하 코너 챔퍼(사선 모따기). 0 = 없음 */
   --img-border-w: 1px; /* 프레임 테두리 두께. 0 = 없음. 챔퍼가 있으면 사선을 따라감 */
-  --card-gap: 14px; /* 카드: 이미지 ↔ 캡션 */
+  --card-gap: calc(var(--lh-unit) * 0.5); /* 카드: 이미지 ↔ 캡션 */
   --card-pad: 0px; /* 카드 내부 패딩. 0 = 이미지가 카드 폭에 꽉 참 */
   /* 비율 (가로 / 세로). 섹션 헤드에 {ratio=3:4} 를 쓰면 그 섹션만 바뀝니다 */
   --ratio-basic: 4 / 3; /* 기본 섹션·half 이미지 */

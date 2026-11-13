@@ -59,7 +59,21 @@ export function checkRules(ROOT, { ok, fail, note }) {
     if (/atan2\(/.test(css)) { bad++; fail(`${f} 에 atan2() — 아이폰(웹킷)에서 틀린 값이 나옴, 숫자 토큰으로`); }
   }
 
-  if (!bad) ok(`base.css raw HEX 0 · !important 0 · 참조 토큰 ${refs.length}개 모두 정의됨 · window.__ 0 · 행간 비율 숫자 토큰 · atan2 0`);
+  // 레이아웃 치수 규칙 (tokens.css A-3 주석): 레이아웃 토큰은 calc(var(--lh-unit) * N) · N 은 0.25 단위, 스크립트가 parseFloat 로 읽는 토큰은 calc 금지
+  const UNIT_TOKENS = ['sidebar-w', 'nav-pad-top', 'nav-pad-top-m', 'nav-pad-right', 'nav-pad-bottom', 'nav-pad-left', 'nav-logo-h', 'nav-logo-gap', 'search-h', 'search-gap',
+    'search-clear-size', 'search-clear-hit', 'search-result-pad-x', 'search-result-pad-y', 'nav-indent', 'nav-sections-indent', 'nav-sections-pad-top', 'nav-sections-pad-bottom',
+    'nav-archive-gap', 'nav-lang-gap', 'page-margin-m', 'title-pad-top', 'title-pad-top-m', 'title-gap', 'title-gap-m', 'section-gap', 'section-gap-m', 'next-gap', 'next-gap-m',
+    'page-pad-bottom', 'page-pad-bottom-m', 'head-gap', 'head-gap-m', 'sec-row-gap', 'sec-row-gap-m', 'card-gap'];
+  const tokVal = n => tokensCss.match(new RegExp(`^\\s*--${n}\\s*:\\s*([^;]+);`, 'm'))?.[1].trim();
+  const offUnit = UNIT_TOKENS.filter(n => { const m = tokVal(n)?.match(/^calc\(var\(--lh-unit\) \* ([\d.]+)\)$/); return !m || Math.abs(m[1] * 4 - Math.round(m[1] * 4)) > 1e-9; });
+  if (offUnit.length) { bad++; fail(`레이아웃 토큰이 calc(var(--lh-unit) * N) · ¼ 단위가 아님: ${offUnit.map(n => `--${n}`).join(' · ')}`); }
+  const motionSrc = read('src/lib/motion.ts');
+  const readByScript = [...new Set([...motionSrc.matchAll(/\b(?:num|ms)\('(--[\w-]+)'/g)].map(m => m[1]))];
+  const resolveTok = (n, d = 0) => { const v = tokVal(n.slice(2)); const r = v?.match(/^var\((--[\w-]+)\)$/); return r && d < 8 ? resolveTok(r[1], d + 1) : v; };
+  const calcRead = readByScript.filter(n => /calc\(|var\(/.test(resolveTok(n) ?? ''));
+  if (calcRead.length) { bad++; fail(`스크립트가 parseFloat 로 읽는 토큰에 calc · var 식: ${calcRead.join(' · ')} — 숫자로 (motion.ts 가 값을 못 읽음)`); }
+
+  if (!bad) ok(`base.css raw HEX 0 · !important 0 · 참조 토큰 ${refs.length}개 모두 정의됨 · window.__ 0 · 행간 비율 숫자 토큰 · atan2 0 · 레이아웃 토큰 ${UNIT_TOKENS.length}개 lh-unit 배수 · 스크립트 토큰 ${readByScript.length}개 숫자`);
 
   // 리포트: tokens.css 에 정의됐지만 아무 데서도 안 읽는 토큰 (모바일 -m 은 base.css 가 PC 이름에 끼우므로 짝 이름이 쓰이면 쓰는 것으로 봄)
   const used = new Set([...(tokensCss + baseCss).matchAll(/var\((--[\w-]+)/g), ...codeNoCmt.matchAll(/(--[\w-]+)/g)].map(m => m[1]));
