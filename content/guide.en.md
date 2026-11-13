@@ -769,7 +769,7 @@ Use Pretendard for Korean and Noto Sans for Vietnamese. When an existing layout 
 The baseline correction is for matching positions relative to the text box in editorial design tools. In digital environments the browser aligns baselines by itself, so on the web the correction is rarely needed, but where type is shown large, as with display fonts, correct it with a separate margin inside the text box.
 
 These two typefaces are also the alternatives in environments where Founders Grotesk cannot be used (email, system-font restrictions on external platforms and document tools, and so on). In that case, set English in Pretendard first as well, and use Noto Sans where Pretendard cannot be used or does not support the language.
-![multilingual]{bg-color}
+![multilingual]
 
 
 ### Typography
