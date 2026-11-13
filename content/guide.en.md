@@ -217,12 +217,12 @@ Because the visual weight of the EO symbol drifts to the left the smaller it is 
 
 ### Symbol
 #### + Scalability
-The EO symbol is designed and tested to work across a range of sizes. Every size rule is based on the height seen at a distance of 500mm; for media viewed from farther away, apply it to the height converted to the end user's typical viewing distance (actual height × 500 ÷ distance).
+The EO symbol is designed and tested to work across a range of sizes. Every size rule is based not on the actual pixel · print size but on the height seen by the eye at a distance of 500mm; for media viewed from farther away, apply it to the height converted to the end user's typical viewing distance (actual height × 500 ÷ distance).
 
-- Optimal range — A height of 40-100px (about 8-20mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/25 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
-- Recommended maximum size — A height of 70px (about 15mm, 1/33 of the viewing distance). On typical pages, we recommend staying within this size.
+- Optimal range — A height of 40-70px (about 8-15mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/33 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
+- Recommended maximum size — A height of 70px (about 15mm, 1/33 of the viewing distance), the top of the optimal range. We recommend not using the symbol larger than this. Sizes above it are a range prepared for cases that still need a larger symbol.
 - Minimum size — A height of 20px on screen (about 4mm, 1/125 of the viewing distance) and 4mm in print. Below this, the threads of the E block blur together, so ask the EO design team to review.
-- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#donts|graphic pattern]] instead of the symbol.
+- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Never use it larger than this in any case. Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#donts|graphic pattern]] instead of the symbol.
 ![scalability] {zoom=1.05}
 
 
@@ -370,8 +370,8 @@ As on the Symbol page, sizes on this page are given as the symbol height on a 16
 
 The smaller the signature is seen, the more the symbol and descriptor read as a single mass; the larger it is seen, the more each letter of the descriptor comes into focus. The form therefore depends on the visible size, and the threshold is a symbol height of 10mm (50px, 1/50).
 
-- **Below 10mm (50px, 1/50), use only the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable, and the signature can appear split into three masses: symbol · EO · Studio. Within the 6-10mm range, consider using the "Studio" version as an alternative.
-- **At 10mm and above, use only the vertical signature.** From this size, the descriptor of the vertical form reads clearly. The recommended maximum size is a symbol height of 15mm (70px, 1/33), and the maximum is a symbol height of 25mm (125px, 1/20).
+- **At 10mm (50px, 1/50) and below, use only the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable, and the signature can appear split into three masses: symbol · EO · Studio. Within the 6-10mm range, consider using the "Studio" version as an alternative.
+- **At 10mm and above, use only the vertical signature.** From this size, the descriptor of the vertical form reads clearly. The recommended maximum size is a symbol height of 70px (about 15mm, 1/33), and the maximum is a symbol height of 25mm (125px, 1/20).
 - As with the minimum size of the symbol, do not use the signature below 4mm (20px, 1/125) either.
 ![scalability] {zoom=1.05}
 
