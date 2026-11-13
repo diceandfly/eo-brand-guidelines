@@ -260,10 +260,13 @@ function buildSymbol(S, mode) {
   const lightW = ox + bboxOf(g.oct).w;
   const info = { t, P, lightW, lightH: 1 };
   if (mode === 'light') return { mp: [...E, ...O], box: bboxOf(mpPoints([...E, ...O])), ...info };
-  // 1) H/100 바깥 오프셋 (구멍은 안쪽으로)  2) 블록별 중심 기준 정비율 스케일업 (높이 +2/30) — 바깥 윤곽만, 십자 구멍은 1) 그대로 (가이드 장표와 같음, 2026-11-13)  3) 간격 3/30
-  const blocks = [offsetMP(E, DARK_OFFSET), offsetMP(O, DARK_OFFSET)].map(mp => {
-    const b = bboxOf(mpPoints(mp)), k = (b.h + DARK_GROW) / b.h, cx = (b.x0 + b.x1) / 2, cy = (b.y0 + b.y1) / 2;
-    const m = mp.map(poly => poly.map((ring, i) => i === 0 ? ring.map(([x, y]) => [cx + (x - cx) * k, cy + (y - cy) * k]) : ring));   // 구멍(i > 0)은 키우지 않음 — 키우면 다크에서 밝은 십자가 번져 커 보임
+  // 가이드 Symbol › Inversion (일러 작업 순서 그대로, 2026-11-13)
+  // 1) E 블록 전체 · O 블록 팔각형을 블록 중심 기준 정비율 확대 (높이 +2/30H) — 십자 구멍은 원래 크기
+  // 2) 바깥 윤곽은 밖으로, 십자 구멍은 안으로 H/100 오프셋 (일러: H/50 가운데 정렬 획을 아웃라인)  3) 간격 = 라이트 − H/30 (regular 4/30 → 3/30)
+  const blocks = [E, O].map(mp0 => {
+    const b0 = bboxOf(mpPoints(mp0)), k = (b0.h + DARK_GROW) / b0.h, cx = (b0.x0 + b0.x1) / 2, cy = (b0.y0 + b0.y1) / 2;
+    const grown = mp0.map(poly => poly.map((ring, i) => i === 0 ? ring.map(([x, y]) => [cx + (x - cx) * k, cy + (y - cy) * k]) : ring));   // 구멍(i > 0)은 확대하지 않음
+    const m = offsetMP(grown, DARK_OFFSET);
     return { mp: m, b: bboxOf(mpPoints(m)), k };
   });
   const [dE, dO] = blocks;
