@@ -20,8 +20,8 @@ const SRC_REG = `<svg viewBox="0 0 62 30"><g id="content"><g>
 // ===== 2. 상수 — 가이드 규칙 (H = 1) =====
 const GAP_LIGHT = 4 / 30;      // regular 의 블록 간격 (폴백용). 실제 간격은 두 파일에서 읽어 다른 파라미터처럼 보간 (min100 5.22u → 300 4u)
 const GAP_DARK_DELTA = 1 / 30;  // 다크 심볼은 라이트 간격에서 H/30 줄임 (regular: 4/30 → 3/30)
-const DARK_OFFSET = 1 / 100;   // 다크 오프셋 — E · O 바깥 윤곽 (밖으로)
-const DARK_HOLE_OFFSET = 1 / 80;   // 다크 오프셋 — 십자 구멍 (안으로). 바깥보다 조금 더: 밝은 십자는 다크에서 번져 커 보임 (2026-11-13 사용자 결정, H/100 → H/80)
+const DARK_OFFSET = 1 / 60;   // 다크 오프셋 — E · O 바깥 윤곽 (밖으로). 2026-11-13 사용자 결정 H/100 → H/60
+const DARK_HOLE_OFFSET = 1 / 60;   // 다크 오프셋 — 십자 구멍 (안으로). 지금은 바깥과 같은 값, 따로 둔 건 밝은 십자만 조절할 수 있게 (2026-11-13 H/100 → H/80 → H/60)
 const DARK_GROW = 2 / 30;      // 다크 2단계 블록 폭 · 높이 증가 (네 방향 H/30)
 const S_MIN = 4, S_REG = 14;   // 보간 구간 (S500 mm)
 // 폴백 수치 (파싱 실패 시, u = H/30 로 적음): min100 · 300 파일 실측
@@ -263,7 +263,7 @@ function buildSymbol(S, mode) {
   if (mode === 'light') return { mp: [...E, ...O], box: bboxOf(mpPoints([...E, ...O])), ...info };
   // 가이드 Symbol › Inversion (일러 작업 순서 그대로, 2026-11-13)
   // 1) E 블록 전체 · O 블록 팔각형을 블록 중심 기준 정비율 확대 (높이 +2/30H) — 십자 구멍은 원래 크기
-  // 2) 바깥 윤곽은 밖으로 H/100, 십자 구멍은 안으로 H/80 오프셋  3) 간격 = 라이트 − H/30 (regular 4/30 → 3/30)
+  // 2) 바깥 윤곽은 밖으로, 십자 구멍은 안으로 오프셋 (DARK_OFFSET · DARK_HOLE_OFFSET)  3) 간격 = 라이트 − H/30 (regular 4/30 → 3/30)
   const blocks = [E, O].map(mp0 => {
     const b0 = bboxOf(mpPoints(mp0)), k = (b0.h + DARK_GROW) / b0.h, cx = (b0.x0 + b0.x1) / 2, cy = (b0.y0 + b0.y1) / 2;
     const grown = mp0.map(poly => poly.map((ring, i) => i === 0 ? ring.map(([x, y]) => [cx + (x - cx) * k, cy + (y - cy) * k]) : ring));   // 구멍(i > 0)은 확대하지 않음

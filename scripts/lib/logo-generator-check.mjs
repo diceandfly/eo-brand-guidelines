@@ -1,7 +1,7 @@
 /**
  * 로고 생성기(public/tools/logo-generator/) 회귀 검사 — npm test 의 [5]
  *   a. geom.js 의 GEOM 블록(/*GEOM-START*\/ … /*GEOM-END*\/)을 함께 둔 polygon-clipping 과 node vm 에서 돌려 확정 수치를 고정:
- *      다크 심볼 총높이 1.0867H (H + 2/30H + 2/100H) · 다크 간격 3/30H · 라이트 폭(regular) · 오른쪽 클리어스페이스 식(가이드 Symbol › Clearspace)
+ *      다크 심볼 총높이 1.1H (H + 2/30H + 2/60H) · 다크 간격 3/30H · 라이트 폭(regular) · 오른쪽 클리어스페이스 식(가이드 Symbol › Clearspace)
  *   b. app.js 의 HEX · CMYK 가 국문 가이드 Color 스와치와 같은지 (팔레트 7색)
  *   c. tokens.css 팔레트(--c-*) = 가이드 tokens.css · 참조하는 토큰이 모두 정의됨
  *   d. app.js RULES 블록(크기 구간 · 경계 · 시그니처 규격 · 면적 상한)의 가이드 수치
@@ -26,12 +26,12 @@ export function checkLogoGenerator(ROOT, { ok, fail }) {
   const near = (a, b, tol = 2e-4) => Math.abs(a - b) <= tol;
   const checks = [];
   const reg = buildSymbol(20, 'light'), dark = buildSymbol(20, 'dark');
-  checks.push(['다크 총높이 = 1 + 2/30 + 2/100 H', dark.box.h, 1 + 2 / 30 + 2 / 100]);
+  checks.push(['다크 총높이 = 1 + 2/30 + 2/60 H', dark.box.h, 1 + 2 / 30 + 2 / 60]);
   checks.push(['라이트 높이 = 1H', reg.box.h, 1]);
   for (const S of [4, 20, 50]) checks.push([`오른쪽 클리어스페이스 S=${S} = 0.42 + 0.0012S`, frameOf(buildSymbol(S, 'light'), S, true, true).right, 0.42 + 0.0012 * S]);
   checks.push(['오른쪽 클리어스페이스 S=70 = H/2', frameOf(buildSymbol(70, 'light'), 70, true, true).right, 0.5]);
   const holeH = sym => { const r = sym.mp.find(p => p.length > 1)[1], ys = r.map(p => p[1]); return Math.max(...ys) - Math.min(...ys); };   // 팔각형 속 십자 구멍 높이
-  for (const S of [4, 20]) checks.push([`다크 십자 = 라이트 − 2/80H (구멍은 키우지 않고 안으로 H/80) S=${S}`, holeH(buildSymbol(S, 'dark')), holeH(buildSymbol(S, 'light')) - 2 / 80]);
+  for (const S of [4, 20]) checks.push([`다크 십자 = 라이트 − 2/60H (구멍은 키우지 않고 안으로 H/60) S=${S}`, holeH(buildSymbol(S, 'dark')), holeH(buildSymbol(S, 'light')) - 2 / 60]);
   const bad = checks.filter(([, got, want]) => !near(got, want));
   if (bad.length) for (const [name, got, want] of bad) fail(`생성기 ${name} — ${got.toFixed(4)} (기대 ${want.toFixed(4)})`);
   else ok(`생성기 지오메트리 ${checks.length}항목 (다크 총높이 · 라이트 높이 · 오른쪽 클리어스페이스 식 · 다크 십자)`);
