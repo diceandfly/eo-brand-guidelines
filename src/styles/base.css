@@ -769,6 +769,7 @@ html.js .main {
     --sec-textonly-cols: var(--sec-textonly-cols-m);
     --head-gap: var(--head-gap-m);
     --sec-row-gap: var(--sec-row-gap-m);
+    --img-zoom-factor: var(--img-zoom-factor-m);
   }
   .sec--basic .sec__media {
     grid-row: 2; /* basic 도 텍스트 아래로 */
@@ -885,7 +886,7 @@ html.js .main {
   display: contents;
 }
 .fig__frame img {
-  transform: scale(var(--img-zoom, 1));
+  transform: scale(calc(1 + (var(--img-zoom, 1) - 1) * var(--img-zoom-factor))); /* 설정 배율에 계수(--img-zoom-factor, 모바일 -m)를 곱함 */
   width: 100%;
   height: 100%;
   object-fit: var(--img-fit);
