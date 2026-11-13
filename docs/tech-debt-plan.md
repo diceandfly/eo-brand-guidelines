@@ -39,9 +39,9 @@
 지금: Copy 알약 HTML 이 `guide.ts`(컬러 칩) · `SwatchVal.astro` 두 벌, 참조 알약도 같은 부품을 guide.ts 안에서 따로 조립, 검색 색인용 `stripTags` 가 그 마크업을 정규식으로 다시 벗김(마크업을 바꾸면 세 곳).
 바꿈:
 - `src/lib/ui-markup.ts`(순수 함수) — `tipHtml(kind)` · `copyButtonHtml(...)` 등. guide.ts 와 SwatchVal.astro(`set:html`)가 같은 함수를 씀.
-- 알약 span 에 `data-noindex` 를 달고 stripTags 는 그 표시만 지움(마크업 모양에 덜 의존).
+- ~~알약 span 에 `data-noindex`~~ → 실행 때 바꿈: 알약은 글자가 CSS content 라 태그만 지우면 색인에 남는 글자가 없음 → stripTags 의 알약 전용 정규식을 지우고 불변식(알약에 글자 없음)을 ui-markup.ts 주석으로 고정. 속성 추가도 없음.
 파일: `src/lib/guide.ts`, `src/components/SwatchVal.astro`, 새 `src/lib/ui-markup.ts`.
-완료 기준: dist HTML 차이 = `data-noindex` 속성 추가분만 · 검색 색인(`/<lang>/search-index.json`) 차이 0 · 칩 · 값 · 참조 알약 호버/복사 동작 그대로.
+완료 기준: dist HTML 차이 = 컬러 값 알약 안 공백 문자뿐(inline-flex 라 화면 영향 없음) · 검색 색인(`/<lang>/search-index.json`) 차이 0 · 칩 · 값 · 참조 알약 호버/복사 동작 그대로.
 크로스체크: 색인 차이 0 확인 · 영문/국문 aria-label 그대로 · 알약 글자가 드래그 복사에 섞이지 않는지(글자는 CSS content 유지) · Layout.astro 복사 스크립트 선택자([data-copy] · is-copied)가 공유 함수 출력과 맞는지 · SwatchVal 이 set:html 로 바뀌며 이스케이프가 달라지지 않는지. CLAUDE.md 구조 목록에 ui-markup.ts 추가.
 
 ## TD-4 검사 체계 — 범용 lint 대신 프로젝트 규칙 검사 — 작음
@@ -50,6 +50,7 @@
 - base.css: raw HEX 0(지금도 0) · 정의 안 된 `var(--…)` 참조 0 · `!important` 0(지금 0)
 - 가이드 tokens.css: 아무 데서도 안 쓰는 토큰 리포트(모션 토큰은 motion.ts 이름 참조 포함)
 - `window.__` 0(TD-1 고정) · 경계 899/900(TD-2)
+파서 출력 HTML 건전성(TD-3 에서 발견: 칩 class 따옴표가 빠진 HTML 도 npm test 는 통과했음 — 섹션 bodyHtml · 캡션의 태그 안 따옴표 짝 · 열고 닫힘을 [1] 에서 검사).
 문서 · 잔재 정리(2026-11-13 재검증에서 편입): `scripts/typo-chart.mjs` 사용법을 docs/file-management.md 에 한 줄(내부 장표 도구) · CLAUDE.md 의 "스크롤스파이는 후속 라운드" 문장 갱신(motion.ts 2.5 에 이미 구현) · 안 쓰는 `Section.astro` `data-section` 속성 정리 · 튜토리얼 `[[symbol#color]]` 예시가 실제 해석 규칙과 맞는지 확인.
 CI: 로컬 전용이라 지금은 안 둠. 클라이언트가 GitHub Actions 를 쓰면 핸드오프 때 `npm ci && npm test` 한 줄 워크플로 추가(폰트 없는 환경에서도 test 는 통과하도록 이미 리포트 처리됨).
 완료 기준: 새 검사가 현재 상태에서 통과 · 일부러 어긴 경우 실패.

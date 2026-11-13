@@ -1,14 +1,12 @@
 ---
 /** 컬러 카드의 복사 가능한 값 하나. 호버하면 하이라이트와 Copy 알약이 뜨고, 누르면 그 값만 복사 (Layout.astro 스크립트). 알약 글자(Copy · Copied)는 CSS content 라 드래그 복사에 섞이지 않음 */
 import { UI_TEXT, langFromPath } from '../lib/guide';
+import { tipHtml } from '../lib/ui-markup';
 interface Props { value: string; label: string; }
 const { value, label } = Astro.props;
 const ui = UI_TEXT[langFromPath(Astro.url.pathname)];
 ---
 <button type="button" class="swatch__val" data-copy={value} aria-label={`${ui.copy} ${label} ${value}`}>
   {value}
-  <span class="swatch__tip t-label" aria-hidden="true">
-    <span class="swatch__tip-text swatch__tip-text--copy"></span>
-    <span class="swatch__tip-text swatch__tip-text--done"></span>
-  </span>
+  <Fragment set:html={tipHtml('copy')} />
 </button>

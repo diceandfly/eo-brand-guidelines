@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { marked } from 'marked';
 import { tokenHex, type Tokens } from './tokens.ts';
+import { tipHtml } from './ui-markup.ts';
 
 export type Layout = 'basic' | 'text' | 'wide' | 'half' | 'grid-2' | 'grid-3' | 'grid-4' | 'text-2' | 'text-3' | 'text-4';   // text-N: 본문 문단을 N단으로 (데스크탑)
 
@@ -301,8 +302,7 @@ function colorChips(html: string, ctx: Ctx, seen?: Set<string>): string {
       } else if (forced && seen) seen.add(name);
       // 칩 = 복사 버튼. 호버하면 컬러 카드의 값과 같은 Copy 알약이 뜨고, 누르면 HEX 를 복사 (Layout.astro 의 공통 스크립트)
       const hex = ctx.hex[name];
-      const tip = `<span class="swatch__tip t-label" aria-hidden="true"><span class="swatch__tip-text swatch__tip-text--copy"></span><span class="swatch__tip-text swatch__tip-text--done"></span></span>`;   // 글자는 CSS content (드래그 복사에 섞이지 않게)
-      const chip = `<button type="button" class="cref__btn swatch__val" data-copy="${hex}" aria-label="${ui.copy} ${name} ${hex}"${bracket ? ` title="${name} ${hex}"` : ''}><i class="cref__chip${COLOR_DARK.has(name) ? ` cref__chip--dark cref__chip--${slug}` : ''}" style="--cref:var(--c-${slug})"></i>${tip}</button>`;
+      const chip = `<button type="button" class="cref__btn swatch__val" data-copy="${hex}" aria-label="${ui.copy} ${name} ${hex}"${bracket ? ` title="${name} ${hex}"` : ''}><i class="cref__chip${COLOR_DARK.has(name) ? ` cref__chip--dark cref__chip--${slug}` : ''}" style="--cref:var(--c-${slug})"></i>${tipHtml('copy')}</button>`;
       return bracket ? `<span class="cref cref--only">${chip}<span class="sr-only">${name}</span></span>` : `<span class="cref">${chip}${name}</span>`;
     }), true);
 }
@@ -618,14 +618,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
   const NB = '\u00A0';
   const text = (plain: string) => wrapKo(smartQuotes(escapeHtml(plain)));
   const bySlug = (slug: string) => flat.find(x => x.slug === slug);
-  // 호버 알약: 컬러 칩의 Copy 알약(.swatch__tip)과 같은 부품. 글자(JUMP · OPEN · MAIL)는 CSS content 라 드래그 복사에 섞이지 않음.
-  // 글자 뒤 화살표 SVG: 문서 안 이동(jump)은 →, 밖으로 나가는 링크(open · mail)는 ↗. 둘 다 같은 상자(viewBox 가 선에 딱 맞음)
-  const XREF_ARROWS = {
-    jump: `<svg class="xref__arrow" viewBox="2.75 2.75 8.5 8.5" aria-hidden="true"><path d="M3.5 7h7M7 3.5 10.5 7 7 10.5"/></svg>`,
-    out: `<svg class="xref__arrow" viewBox="2.75 2.75 8.5 8.5" aria-hidden="true"><path d="M3.5 10.5 10.5 3.5M5 3.5h5.5V9"/></svg>`,
-  };
-  const xrefTip = (kind: 'jump' | 'open' | 'mail') =>
-    `<span class="swatch__tip t-label" aria-hidden="true"><span class="swatch__tip-text swatch__tip-text--${kind}"></span>${XREF_ARROWS[kind === 'jump' ? 'jump' : 'out']}</span>`;
+  // 호버 알약(Jump · Open · Mail + 화살표)은 컬러 칩의 Copy 알약과 같은 부품 — src/lib/ui-markup.ts tipHtml
   const xrefHtml = (inner: string, here: Sub): string => {
     const bar = inner.indexOf('|');
     const rawTarget = bar >= 0 ? inner.slice(0, bar) : inner;
@@ -637,7 +630,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     if (/^(https?:)?\/\//i.test(target) || /^mailto:/i.test(target)) {                 // 외부 링크: 새 탭. 라벨이 없으면 주소에서 프로토콜·끝 슬래시를 뺀 글자
       const shown = target.replace(/^(https?:)?\/\//i, '').replace(/^mailto:/i, '').replace(/\/$/, '');
       const kind = /^mailto:/i.test(target) ? 'mail' : 'open';
-      return `<a class="xref xref--${kind}" href="${escapeHtml(target)}" target="_blank" rel="noopener">${arrow}${label ?? escapeHtml(shown)}${xrefTip(kind)}</a>`;
+      return `<a class="xref xref--${kind}" href="${escapeHtml(target)}" target="_blank" rel="noopener">${arrow}${label ?? escapeHtml(shown)}${tipHtml(kind)}</a>`;
     }
     const [pagePart, ...secParts] = target.split('#');
     const secId = secParts.length ? secParts.join('-') : undefined;            // page#head#subhead → id "head-subhead"
@@ -651,7 +644,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       const crumb = sec.crumb.map(text).join(`${NB}›${NB}`);   // 헤드 › 서브헤드 (헤드가 페이지 이름과 같으면 서브헤드만)
       auto = pagePart && s !== here ? `${text(s.name)}${NB}›${NB}${crumb}` : crumb;   // 페이지 이름을 적었어도 대상이 현재 페이지면 경로 없이 섹션만
     }
-    return `<a class="xref xref--jump" href="${href}">${arrow}${label ?? auto}${xrefTip('jump')}</a>`;
+    return `<a class="xref xref--jump" href="${href}">${arrow}${label ?? auto}${tipHtml('jump')}</a>`;
   };
   const resolveXrefs = (html: string, here: Sub): string => html.replace(/%%XREF(\d+)%%/g, (_m, i: string) => xrefHtml(xrefs[Number(i)], here));
   for (const s of flat) for (const sec of s.sections) {
@@ -667,7 +660,8 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
 /** u: url#id, c: 챕터, s: 페이지, h: 섹션 헤드, t: 제목(서브헤드, 없으면 헤드), b: 본문 */
 export interface SearchEntry { u: string; c: string; s: string; h: string; t: string; b: string; }
 const straightQuotes = (t: string) => t.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");   // 검색어는 곧은 따옴표로 입력되므로 색인도 맞춤
-const stripTags = (html: string) => straightQuotes(html.replace(/<span class="swatch__tip[^>]*>(?:<span[^>]*>[^<]*<\/span>)*<\/span>/g, '').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim());
+// 호버 알약(ui-markup.ts tipHtml)은 글자가 CSS content 라 태그만 지우면 색인에 남는 글자가 없음 — 알약 모양에 기대는 정규식을 따로 두지 않음
+const stripTags = (html: string) => straightQuotes(html.replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim());
 export function buildSearchIndex(guide: Guide): SearchEntry[] {
   const out: SearchEntry[] = [];
   for (const ch of guide.chapters) for (const sub of ch.subs) for (const sec of sub.sections) {
