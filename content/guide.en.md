@@ -1110,10 +1110,10 @@ The pattern gutter is the space between units within a graphic pattern. Set it b
 There are no specific restrictions on combining horizontal and vertical units, but keeping each unit's form close to the recommendations in [[graphic-unit#morphology|Morphology]] helps create a fluid pattern.
 
 - Once the units are aligned in the graphic pattern area, look closely at the shaft and thread lines that happen to form between intersecting units. Unintended misalignment can undermine the quality of the entire pattern. Fine-tune the [[graphic-unit#parameters|compression]] of vertical units and the shaft size of horizontal units so the shaft lines of horizontal units line up with the thread lines of vertical units. We recommend this as the final step in completing a layout.
-![alignment-dont]{dont} A pattern where the thread lines of crossing units are misaligned
+![alignment-dont-1]{dont} A pattern where the thread lines of crossing units are misaligned
 ![alignment-do-1]{do} A pattern where the thread lines of crossing units are deliberately aligned
 ![alignment-do-2]{do} A pattern with shaft and thread lines deliberately aligned
-![alignment-con]{con} A pattern with noticeably unbalanced lines
+![alignment-dont-2]{dont} A pattern with misaligned lines, or offsets whose intent is unclear
 
 
 ### Graphic Pattern {layout=grid-4}
