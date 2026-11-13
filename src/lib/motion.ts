@@ -487,7 +487,11 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
   document.addEventListener('keydown', e => {
     if (opened) {
       if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); close(); }
-      else if (e.key === 'Tab' || SCROLL_KEYS.has(e.key)) e.preventDefault();   // 열려 있는 동안 포커스는 라이트박스에 머물고, 키로도 뒤 페이지를 스크롤하지 않음
+      else if (e.key === 'Tab' || SCROLL_KEYS.has(e.key)) {
+        e.preventDefault();                                     // 열려 있는 동안 포커스는 라이트박스에 머물고, 키로도 뒤 페이지를 스크롤하지 않음
+        const x = box.querySelector<HTMLElement>('.lightbox__close');
+        if (e.key === 'Tab' && x && x.offsetParent) x.focus();  // 모바일: 포커스 가능한 것은 닫기 × 하나 — Tab 이면 그리로 (데스크탑은 × 가 숨겨져 있어 그대로)
+      }
       return;
     }
     const img = (e.target as HTMLElement).closest?.('.fig__frame img') as HTMLImageElement | null;
