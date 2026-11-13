@@ -115,6 +115,20 @@ const releaseGuard = () => {
 if (smoother && hashArrival) setTimeout(releaseGuard, ms('--scroll-guard-hold', 0.41) * 1000);
 else queueMicrotask(releaseGuard);
 
+/* 본문 높이가 바뀌면 스크롤 범위를 다시 잼. ScrollSmoother 는 body 높이를 본문 높이로 맞춰 두는데, 창 폭을 바꿔 레이아웃이 다시 짜이거나
+   (데스크탑 ↔ 모바일) 이미지 · 폰트가 늦게 자리 잡아 본문 높이가 달라져도 resize 이벤트 없이는 다시 재지 않아, 끝에 빈 공간이 남거나
+   (body 가 더 김) 끝까지 못 내려감(더 짧음). 2026-11-13 창을 실시간으로 줄였을 때 하단에 한 화면 넘게 비던 문제 */
+if (smoother && content && 'ResizeObserver' in window) {
+  let lastH = content.offsetHeight, timer: ReturnType<typeof setTimeout> | undefined;
+  new ResizeObserver(() => {
+    const h = content.offsetHeight;
+    if (h === lastH) return;
+    lastH = h;
+    clearTimeout(timer);
+    timer = setTimeout(() => ScrollTrigger.refresh(), 150);    // 크기 바꾸는 동안 여러 번 오므로 멈춘 뒤 한 번
+  }).observe(content);
+}
+
 const anchorOffset = () => num('--anchor-offset', 64);
 
 /**
