@@ -310,7 +310,7 @@
   --cols: 12; /* PC 컬럼 수 */
   --content-max: 1320px; /* 본문 최대 폭. 넓은 화면에서는 남는 폭을 양쪽에 균등 분배. 꽉 채우려면 none */
   /* 모바일 (899px 이하) — base.css 가 위 PC 이름을 이 값으로 바꿔 끼움 */
-  --page-margin-m: 20px; /* 모바일 좌우 마진 (고정값) */
+  --page-margin-m: 21px; /* 모바일 좌우 마진 (고정값) */
   --cols-m: 6; /* 모바일 컬럼 수 */
 
   /* 페이지 세로 흐름 (위 → 아래) */
@@ -320,9 +320,9 @@
   --next-gap: 168px; /* 마지막 섹션 ↔ 다음 버튼 */
   --page-pad-bottom: 126px; /* 다음 버튼 ↔ 페이지 바닥 */
   /* 모바일 (899px 이하) — base.css 가 위 PC 이름을 이 값으로 바꿔 끼움 */
-  --title-pad-top-m: 24px; /* 모바일: 페이지 상단 ↔ 타이틀 */
-  --title-gap-m: 56px; /* 모바일: 타이틀 ↔ 첫 섹션 */
-  --section-gap-m: 72px; /* 모바일: 섹션 ↔ 섹션 */
+  --title-pad-top-m: 28px; /* 모바일: 페이지 상단 ↔ 타이틀 */
+  --title-gap-m: 84px; /* 모바일: 타이틀 ↔ 첫 섹션 */
+  --section-gap-m:84px; /* 모바일: 섹션 ↔ 섹션 */
   --next-gap-m: 96px; /* 모바일: 마지막 섹션 ↔ 다음 버튼 */
   --page-pad-bottom-m: 80px; /* 모바일: 다음 버튼 ↔ 페이지 바닥 */
 
@@ -482,8 +482,7 @@
   --lightbox-mirror-a4: 0.12; /* 같은 커브 80% 지점 */
   --lightbox-mirror-overlap: 1px; /* 사본을 이미지 밑으로 이만큼 밀어 넣음. 이미지 크기가 소수점 px 일 때 경계에 1px 틈이 비치는 것을 막음 */
   --lightbox-mirror-blur: 0px; /* 사본 블러 반경. 0 = 선명 (기본). 켜면 사본을 이 값만큼 더 이미지 밑으로 밀어 넣어 흐린 가장자리가 경계에 비치지 않음 */
-  --lightbox-m-ratio: 2 / 3; /* 모바일 확대 보기 창의 비율 (가로 / 세로). 이 창 안에 원본의 가운데 4:3(--ratio-dodont)만 잘라 넣고 옆으로 밀어 봄 */
-  --lightbox-m-rotate: 90deg; /* 모바일 세로 화면에서 wide 레이아웃 장표를 확대할 때 돌리는 각도 — 화면을 꽉 채우고 폰을 옆으로 돌려 봄 (90deg = 장표 위쪽이 화면 오른쪽) */
+  --lightbox-m-ratio: 2 / 3; /* 모바일 확대 보기 창의 비율 (가로 / 세로). 이 창 안에 원본의 가운데 4:3(--ratio-dodont)만 잘라 넣고 옆으로 밀어 봄. wide 레이아웃 장표는 자르지 않고 가로 전체를 같은 높이로 */
   /* 색 */
   --lightbox-bg: color-mix(in srgb, var(--c-space-black), transparent 8%); /* 뒤를 덮는 막 */
   --lightbox-bg-mix: 100%; /* 가장자리 색 배경에 --lightbox-bg-mix-c 를 섞는 비율. 100% = 항상 검정 (거울 띠가 검정으로 사라지도록 통일), 0% = 이미지 가장자리 색 그대로 */

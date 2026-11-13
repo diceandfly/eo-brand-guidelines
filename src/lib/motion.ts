@@ -43,7 +43,11 @@ const ms = (name: string, fallback: number) => parseSeconds(token(name)) ?? fall
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------- 1. 스무스 스크롤 ---------- */
-const smoothAmount = reduced ? 0 : ms('--scroll-smooth', 0.8);
+// 터치 전용 기기(폰 · 태블릿)는 스무스 스크롤을 만들지 않고 브라우저 기본 관성 스크롤을 씀. ScrollSmoother 는 터치에서 smoothTouch 0 이면 스스로 네이티브 모드로
+// 만드는데, 그 위에 smooth() 로 값을 올리면(아래 시작 단계 → 목표값) 네이티브 스크롤 + transform 이 겹쳐 끊기는 느낌이 남 — 2026-11-13 아이폰 실기기 신고.
+// 스무더가 없는 경로는 '동작 줄이기' 와 같고(앵커 이동 · 스크롤스파이 · 라이트박스 모두 window 스크롤로), 드로어는 html.nav-open { overflow: hidden } 이 막음
+const touchOnly = ScrollTrigger.isTouch === 1;
+const smoothAmount = reduced || touchOnly ? 0 : ms('--scroll-smooth', 0.8);
 const wrapper = document.getElementById('smooth-wrapper');
 const content = document.getElementById('smooth-content');
 let smoother: ScrollSmoother | null = null;
@@ -385,17 +389,17 @@ if (box && boxImg) {
   const parts = [boxImg, ...(boxStrike ? [boxStrike] : []), ...(useMirror && boxMirror ? [boxMirror] : [])];   // 이미지·대각선·거울 확장은 함께 커지고 사라짐
 
   // Don't 대각선: 화면에 그려진 이미지의 가운데 --ratio-dodont 영역 (카드에서 보이던 영역과 같음)
-  // 모바일: 2:3 창(.lightbox__pan) 높이에 맞춰, 원본의 가운데 --ratio-dodont(4:3) 폭만 보이게 crop 상자와 이미지 위치를 정함. 처음엔 왼쪽 끝
+  // 모바일: 2:3 창(.lightbox__pan) 높이에 맞춰, 원본의 가운데 --ratio-dodont(4:3) 폭만 보이게 crop 상자와 이미지 위치를 정함. 처음엔 왼쪽 끝.
+  // wide 레이아웃 장표(.is-wide)는 잘라내지 않고 원본 가로 전체를 같은 높이로 — 장표 맨 왼쪽에서 시작해 옆으로 밀어 끝까지 봄
   const placeMobile = () => {
     for (const el of [boxStrike, boxMirror]) if (el) { el.style.width = ''; el.style.height = ''; }   // PC 에서 연 뒤 좁아진 경우: PC 용 px 크기를 지워 CSS(4:3 영역 전체)가 적용되게
     if (!boxPan || !boxCrop || !boxImg.naturalWidth) return;
     const H = boxPan.clientHeight;
     const imgRatio = boxImg.naturalWidth / boxImg.naturalHeight;
-    const cropRatio = Math.min(imgRatio, dodont);
+    const cropRatio = box.classList.contains('is-wide') ? imgRatio : Math.min(imgRatio, dodont);
     boxCrop.style.setProperty('--_crop-w', `${H * cropRatio}px`);
     boxCrop.style.setProperty('--_img-x', `${-(H * imgRatio - H * cropRatio) / 2}px`);
     boxPan.scrollLeft = 0;
-    boxPan.scrollTop = 0;                                       // wide 장표(.is-rotated)는 위쪽에 맞춰 시작
   };
   const placeStrike = () => {
     if (isMobile()) { placeMobile(); return; }
@@ -419,7 +423,7 @@ const blockScroll = (e: Event) => {
 const behind = [document.getElementById('smooth-wrapper'), document.querySelector('.sidebar'), document.querySelector('.topbar')].filter((el): el is HTMLElement => !!el);
 
   let opener: HTMLElement | null = null;   // 닫을 때 포커스를 돌려줄 요소
-  const open = (src: string, alt: string, strike = false, edge: string | null = null, fill: string | undefined = undefined, cover = false, rotate = false) => {   // fill: {bg-color} 이미지 — 거울 확장 없이 이 색으로 배경을 채움 ('' 이면 색 없음 → 기본 막). cover: {bg-cover} — 화면에 꽉 채움. rotate: wide 레이아웃 장표 — 모바일에서 90° 돌려 화면을 꽉 채움(base.css .is-rotated)
+  const open = (src: string, alt: string, strike = false, edge: string | null = null, fill: string | undefined = undefined, cover = false, wide = false) => {   // fill: {bg-color} 이미지 — 거울 확장 없이 이 색으로 배경을 채움 ('' 이면 색 없음 → 기본 막). cover: {bg-cover} — 화면에 꽉 채움. wide: wide 레이아웃 장표 — 모바일에서 가운데를 자르지 않고 가로 전체를 왼쪽부터 밀어 봄(placeMobile)
     if (opened) return;
     opened = true;
     opener = document.activeElement as HTMLElement | null;
@@ -430,7 +434,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     if (fill) box.style.setProperty('--lightbox-fill', fill); else box.style.removeProperty('--lightbox-fill');
     box.classList.toggle('has-fill', !!fill && !cover);
     box.classList.toggle('has-cover', cover && !isMobile());         // 모바일은 옆으로 미는 기본 보기 유지
-    box.classList.toggle('is-rotated', rotate);                     // 모바일에서만 효과(CSS @media). 세로 화면 = 90° 돌려 꽉 채움, 가로 화면 = 그대로 꽉 채움
+    box.classList.toggle('is-wide', wide);                          // 모바일에서만 효과(placeMobile): 가로 전체를 같은 높이로, 왼쪽부터
     const mirror = useMirror && !isMobile() && fill === undefined && !cover;   // 모바일 · {bg-color} · {bg-cover} 이미지는 거울 확장 없음
     box.classList.toggle('has-mirror', mirror);
     if (mirror) for (const im of mirrorImgs) im.src = src;      // 거울 사본 8장 (같은 파일이라 캐시에서 옴)
@@ -463,7 +467,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
         for (const el of behind) el.removeAttribute('inert');
         boxImg.removeAttribute('src');
         for (const im of mirrorImgs) im.removeAttribute('src');
-        box.classList.remove('is-rotated');
+        box.classList.remove('is-wide');
         smoother?.paused(false);
         document.documentElement.classList.remove('lightbox-open');
         for (const t of SCROLL_EVENTS) window.removeEventListener(t, blockScroll);
@@ -473,7 +477,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     });
   };
 
-  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset, 'lbRotate' in img.dataset);
+  const openFrom = (img: HTMLImageElement) => open(img.currentSrc || img.src, img.alt, !!img.parentElement?.querySelector('.strike'), img.dataset.lbBg || null, img.dataset.lbFill, 'lbCover' in img.dataset, 'lbWide' in img.dataset);
   document.addEventListener('click', e => {
     const img = (e.target as HTMLElement).closest('.fig__frame img') as HTMLImageElement | null;
     if (img) { e.preventDefault(); openFrom(img); }
