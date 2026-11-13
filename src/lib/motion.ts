@@ -52,7 +52,8 @@ const createSmoother = () => ScrollSmoother.create({ wrapper: wrapper!, content:
 if (smoothAmount > 0 && wrapper && content) smoother = createSmoother();
 
 /* 모바일 목차 드로어(Layout.astro)가 열린 동안 본문 스크롤 정지. 드로어는 eo:nav 이벤트(detail.open)만 보내고 스무더는 모름.
-   스무더를 다시 만들 때(아래 페이지 검색 복구)도 열린 상태를 이어받음 */
+   스무더를 다시 만들 때(아래 페이지 검색 복구)도 열린 상태를 이어받음.
+   드로어 스크립트가 HTML 에서 먼저 실행돼 초기 set(false) 의 eo:nav 는 여기서 못 받음 — navOpen 기본값 false 가 같은 뜻. 상태를 더 붙이면 초기값을 따로 맞출 것 */
 let navOpen = false;
 document.addEventListener('eo:nav', e => {
   navOpen = !!(e as CustomEvent<{ open: boolean }>).detail?.open;
