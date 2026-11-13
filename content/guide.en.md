@@ -177,7 +177,7 @@ EO · the EO monogram · the block symbol · "Build Anyway" · "Entrepreneur Onw
 
 ### Logo
 #### + Overview
-The EO logo is the umbrella term for the EO symbol · [[signature|signature]] · [[sub-symbol|EO sub symbol]] covered in this chapter.
+The **EO logo** is the umbrella term for the EO symbol · [[signature|signature]] · [[sub-symbol|EO sub symbol]] covered in this chapter.
 
 This page describes how to apply the EO symbol across situations · formats · communications, from a small sign-off to large-scale display use.
 ![hero] {zoom=1.05}
@@ -413,7 +413,7 @@ Examples of the horizontal Service Signature. All are built to the same descript
 #### Symbol or Signature
 Choose between the signature and the EO symbol by who is speaking. Use the signature where the company EO Studio, or a service the company runs, is the speaker, and the EO symbol for content from EO as a media brand. Use only one of the two in a single deliverable.
 
-Because the signature carries text, it needs more room than the EO symbol. Where the space is too small for the text to read clearly (below a symbol height of [20px] in digital or [4mm] in print), use the EO symbol alone instead of the signature.
+Because the signature carries text, it needs more room than the EO symbol. Where the space is too small for the text to read clearly (below a symbol height of 20px in digital or 4mm in print), use the EO symbol alone instead of the signature.
 
 If you are unsure, first check whether the deliverable truly needs the company name EO Studio. If it does not, the EO symbol is enough. If you are still unsure, ask the EO design team.
 ![usage-do-1]{do} The signature on emails · official documents and other materials that speak for the company
@@ -455,7 +455,7 @@ Optically adjust the elements so that they appear the same size. After matching 
 #### Vertical
 The EO signature can also be locked up vertically with the logos of partner brands and collaborators. On the right is an example of the basic vertical lockup.
 
-Optically adjust the elements so that they appear the same size. After matching the size of each logo, you can insert a gap and a divider between them. Set the gap between the two logos to 1.5 times the height of the EO signature (H), and place the divider horizontally at its center.
+Optically adjust the elements so that they appear the same size. After matching the size of each logo, you can insert a gap and a divider between them. Set the gap between the two logos to 1.5 times the EO symbol height (H), and place the divider horizontally at its center.
 
 Always keep the logos optically centered.
 ![partner-v] {zoom=1.05}
@@ -528,7 +528,7 @@ The sub symbol is part of the EO symbol and follows the same principles. Do not 
 
 ### + Brand Typeface
 #### Founders Grotesk
-EO's typefaces are SemiBold · Medium · Regular · Light · Mono Regular · Mono Light of the Founders Grotesk family.
+EO's typefaces are Semibold · Medium · Regular · Light · Mono Regular · Mono Light of the Founders Grotesk family.
 
 Founders Grotesk reinterprets the early-20th-century grotesques of Miller & Richard and Caslon, and its simple geometry, narrow apertures and tight tracking make it read like solid blocks at large sizes. Firm and clear, yet with humanist touches in its details, it matches EO's attitude — serious, but pursuing creativity. The family also has a monospaced typeface that can evoke the builder's motifs, such as engineering · spec sheets.
 
@@ -863,7 +863,7 @@ To keep EO's colors consistent, avoid the following. For the minimum contrast be
 #### + Motif {layout=grid-2}
 Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (hereafter, the unit) takes its motif from the three parts of a screw: shaft · thread · head.
 
-- Thread — One turn of the thread symbolizes one cycle of problem solving. The harder the wall it meets, the stronger the resistance and the longer it takes to break through. The tighter the threads, the more densely the builder's time is filled (Build thorough).
+- Thread — One turn of the thread symbolizes one cycle of problem solving. The harder the wall it meets, the stronger the resistance and the longer it takes to break through. The tighter the threads, the more densely the builder's time is filled (Build through).
 - Shaft — The shaft symbolizes the process of building and the builder's journey. The shaft size expresses how strong the core qualities of that process are.
 - Head — The head symbolizes one small problem solved, or one builder. Many small screws together can build anything (Build anything). Likewise, a problem one builder cannot solve is eventually solved when many builders face it together (Build together).
 ![motif-1] {zoom=1.17}
@@ -966,7 +966,7 @@ Extending the metaphors so far into larger arrangements expresses the relationsh
 
 - Scale — Multiple entities · processes · states. Repeat an existing metaphor. Consider using color even more actively: a single Builder Neon among many Medium Gray units, for example, is the protagonist within them.
 - Dimension — Parallel worlds. Blend a pair in geometric progression. If one line is a single timeline, stacked lines become multidimensional space-time or parallel worlds. A single Builder Neon among Medium Gray timelines is the present timeline.
-- Direction — Expresses drive · flow. Place mirrored units in parallel along the shaft axis so that the negative space between them takes the shape of arrows, pointing regularly to one side.
+- Direction — Expresses drive · flow. Place units, inverted so that the negative space between them takes the shape of arrows, in parallel along the shaft axis, so that the arrows point regularly to one side.
 - Radiation — Bursting energy · resonance. Mirror the directional pattern above. Consider Builder Neon at the source of the energy.
 - Crossing — Simultaneous · instantaneous sync. Stack lightning units in alternating order, placing their vertices · edges with tension.
 ![formation-scale] Scale — extending the metaphor of the same unit · group
@@ -1022,8 +1022,8 @@ Seen up close · large, each thread reads as a distinct shape; seen from afar ·
 - A Space Black unit shrinks visually on a light background, and the gray mass at the tight end can scatter into individual threads, breaking the original rhythm. When inverting from a light to a dark color (or the reverse), reset the thread gutter and compression.
 ![density-mass-do]{do} Tight stretch merged into a gray mass by a small thread gutter
 ![density-mass-dont]{dont} Stretch where a large thread gutter makes each hairline stand out
-![density-inversion-do]{zoom=2} {do} Unit with thread gutter and compression reset on inversion
-![density-inversion-dont]{zoom=2} {dont} Unit with values left unchanged and only the color inverted
+![density-inversion-do] {do} Unit with thread gutter and compression reset on inversion
+![density-inversion-dont] {dont} Unit with values left unchanged and only the color inverted
 
 
 ### Morphology {layout=grid-4}
@@ -1094,7 +1094,7 @@ Set the pattern margin to 0 so the pattern fills 100% of the graphic pattern are
 #### + Pattern Gutter
 The pattern gutter is the space between units within a graphic pattern. Set it based on unit density and the size of the thinnest thread; tighter is generally better. Balance the pattern gutter with the [[graphic-unit#parameters|thread gutter]]. A well-set pattern gutter keeps the eye fully on the visual elements of the graphic pattern and builds visual tension.
 
-- **Set the pattern gutter to 1.5-2 times the thread gutter.** For typical digital assets, the thread gutter stays between 10 and 20px, so a pattern gutter of 20-25px is ideal.
+- **Set the pattern gutter to about 1.5 times the thread gutter.** For typical digital assets, the thread gutter stays between 10 and 20px, so a pattern gutter of 20-25px is ideal.
 - When needed, set the pattern gutter to 0 so units touch.
 - Using the pattern gutter irregularly to overlap units has potential for experimental patterns, but it introduces too many variables; avoid it for now.
 ![gutter-do]{do} A pattern gutter balanced with the thread gutter
