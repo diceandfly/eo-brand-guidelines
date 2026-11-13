@@ -197,11 +197,22 @@ document.addEventListener('selectionchange', () => {
  * 스무스 스크롤이 꺼져 있으면 브라우저 기본 이동(scroll-margin-top 적용).
  */
 let anchorTween: gsap.core.Tween | undefined;
+/* 본문 transform 을 지금 스크롤 위치에 강제로 맞춤. 스무더가 paused 인 동안 scrollTop 을 옮기면 ScrollSmoother 는 위치 값(currentY)만 바꾸고
+   본문은 다음 스크롤 갱신 때 그리는데, 이동 트윈의 마지막 프레임은 그 갱신이 오기 전에 paused 가 풀려 그려지지 않음(그 뒤로는 값이 같아 다시 안 그림).
+   보통은 마지막 프레임의 이동량이 1px 미만이라 안 보이지만, 프레임이 밀리면(빌드본에서 이미지 디코딩이 겹칠 때) 섹션보다 수백 px 위에서 멈춤
+   — 2026-11-14 CC-7: 다른 페이지의 #섹션 링크로 들어올 때 84~356px 모자라게 도착. 1px 옮겼다 되돌려 두 번 그리게 해 맞춤 */
+const syncSmoother = () => {
+  if (!smoother || smoother.paused()) return;
+  const y = smoother.scrollTop();
+  smoother.scrollTop(y > 0 ? y - 1 : y + 1);
+  smoother.scrollTop(y);
+};
 const stopAnchorTween = () => {
   if (!anchorTween) return;
   anchorTween.kill();
   anchorTween = undefined;
   smoother?.paused(false);
+  syncSmoother();
 };
 window.addEventListener('wheel', stopAnchorTween, { passive: true });
 window.addEventListener('touchstart', stopAnchorTween, { passive: true });
@@ -226,7 +237,7 @@ export function scrollToId(id: string, animate = true) {
     resetWrapperScroll();
     stopAnchorTween();
     const y = Math.min(ScrollTrigger.maxScroll(window), Math.max(0, topWithin(el, content) - anchorOffset()));
-    if (!animate) { smoother.scrollTo(y, false); return true; }
+    if (!animate) { smoother.scrollTo(y, false); syncSmoother(); return true; }   // 위치 값이 이미 y 면 scrollTo 는 다시 그리지 않으므로 강제로 맞춤
     smoother.paused(true);                                    // 이동 중 사용자 입력은 wheel/touch 리스너가 받아 트윈을 멈춤
     anchorTween = gsap.to(smoother, {
       scrollTop: y,

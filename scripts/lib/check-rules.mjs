@@ -61,7 +61,7 @@ export function checkRules(ROOT, { ok, fail, note }) {
 
   // 레이아웃 치수 규칙 (tokens.css A-3 주석): 레이아웃 토큰은 calc(var(--lh-unit) * N) · N 은 0.25 단위, 스크립트가 parseFloat 로 읽는 토큰은 calc 금지
   const UNIT_TOKENS = ['sidebar-w', 'nav-pad-top', 'nav-pad-top-m', 'nav-pad-right', 'nav-pad-bottom', 'nav-pad-left', 'nav-logo-h', 'nav-logo-gap', 'search-h', 'search-gap',
-    'search-clear-size', 'search-clear-hit', 'search-result-pad-x', 'search-result-pad-y', 'nav-indent', 'nav-sections-indent', 'nav-sections-pad-top', 'nav-sections-pad-bottom',
+    'search-clear-size', 'search-clear-hit', 'search-result-pad-x', 'search-result-pad-y', 'nav-indent', 'nav-sections-indent', 'nav-subsections-indent', 'nav-sections-pad-top', 'nav-sections-pad-bottom',
     'nav-archive-gap', 'nav-lang-gap', 'page-margin-m', 'title-pad-top', 'title-pad-top-m', 'title-gap', 'title-gap-m', 'section-gap', 'section-gap-m', 'next-gap', 'next-gap-m',
     'page-pad-bottom', 'page-pad-bottom-m', 'head-gap', 'head-gap-m', 'sec-row-gap', 'sec-row-gap-m', 'card-gap'];
   const tokVal = n => tokensCss.match(new RegExp(`^\\s*--${n}\\s*:\\s*([^;]+);`, 'm'))?.[1].trim();
