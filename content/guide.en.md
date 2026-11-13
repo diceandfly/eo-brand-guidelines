@@ -1256,7 +1256,7 @@ Outdoor advertising such as billboards · street banners · signage. Because the
 
 ### Print {layout=grid-3}
 Printed matter such as posters · hang tags · stickers. Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
-![app-poster] {bg-cover} 1. Poster
+![app-poster] {bg-cover} {zoom=1.25} 1. Poster
 ![app-hangtag] {bg-cover} 2. Hang Tag
 ![app-sticker] {bg-cover} 3. Sticker Pack
 
