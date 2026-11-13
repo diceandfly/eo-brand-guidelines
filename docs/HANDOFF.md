@@ -36,4 +36,4 @@ EO 리브랜딩의 웹 브랜드 가이드라인과 로고 생성기입니다. �
 ## 6. 더 알아보기
 - 편집 튜토리얼: [docs/file-management.md](file-management.md)
 - 용어(챕터 › 페이지 › 섹션, 레이아웃 이름): [CLAUDE.md](../CLAUDE.md) 의 "용어"
-- AI 에게 맡길 때: [docs/handoff-ai.md](handoff-ai.md)
+- AI 에게 맡길 때: 먼저 [AGENTS.md](../AGENTS.md)(디자이너가 허용한 예외 · 절대 규칙 · 이스터에그), 그다음 [docs/handoff-ai.md](handoff-ai.md)
