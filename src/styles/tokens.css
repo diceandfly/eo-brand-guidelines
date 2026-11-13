@@ -184,6 +184,7 @@
        2. 범위값(줄어들거나 늘어나는 한계)                      px 숫자 그대로: --page-margin-min · --content-max · --swatch-min-w
        3. 스크립트가 읽는 토큰(motion.ts num() · ms() 가 parseFloat) px · 숫자 그대로 — calc 로 바꾸면 값을 못 읽음:
             --anchor-offset · --page-shift · --nav-stagger-shift · --nav-wheel-step 과 B-8 · B-9 의 시간 · 비율 토큰. npm test [7] 이 검사
+            (이 토큰도 배수로 쓰고 싶으면 motion.ts 가 숨긴 요소의 계산된 폭으로 읽게 바꾸고(생성기 app.js tokenPx 방식) [7] 의 숫자 검사를 풀 것)
        4. 조형 디테일(아이콘 · 알약 · 배지 · 2–8px 보정 · 선 두께 · em 값)  px 그대로: --topbar-menu-* · --badge-size · --swatch-gap · --swatch-tip-* ·
             --search-results-offset · --search-result-gap · --nav-sub-pad-bottom · --border-w · --focus-w 등
        예외: --gutter 20px(그리드 거터, 사용자 결정으로 배수 아님)
