@@ -424,6 +424,17 @@ const blockScroll = (e: Event) => {
 const behind = [document.getElementById('smooth-wrapper'), document.querySelector('.sidebar'), document.querySelector('.topbar')].filter((el): el is HTMLElement => !!el);
 
   let opener: HTMLElement | null = null;   // 닫을 때 포커스를 돌려줄 요소
+  // 보기 방식(모바일 세로 = 2:3 창 · 그 밖 = 데스크탑 방식 + 거울)은 화면 방향으로 정해지므로, 열 때와 폰을 돌렸을 때 같은 함수로 다시 정함
+  let current: { src: string; fill: string | undefined; cover: boolean } | null = null;
+  const applyMode = () => {
+    if (!current) return;
+    const { src, fill, cover } = current;
+    box.classList.toggle('has-cover', cover && !isMobile());         // 모바일 세로는 옆으로 미는 기본 보기 유지
+    const mirror = useMirror && !isMobile() && fill === undefined && !cover;   // 모바일 세로 · {bg-color} · {bg-cover} 이미지는 거울 확장 없음
+    box.classList.toggle('has-mirror', mirror);
+    if (mirror) for (const im of mirrorImgs) if (im.getAttribute('src') !== src) im.src = src;   // 거울 사본 8장 (같은 파일이라 캐시에서 옴)
+  };
+  portraitMQ.addEventListener('change', () => { if (opened) { applyMode(); placeStrike(); } });   // 열린 채 폰을 돌리면 그 방향의 보기로 다시 배치 (2026-11-13 크로스체크: 가로 → 세로에서 어긋나던 문제)
   const open = (src: string, alt: string, strike = false, edge: string | null = null, fill: string | undefined = undefined, cover = false, wide = false) => {   // fill: {bg-color} 이미지 — 거울 확장 없이 이 색으로 배경을 채움 ('' 이면 색 없음 → 기본 막). cover: {bg-cover} — 화면에 꽉 채움. wide: wide 레이아웃 장표 — 모바일에서 가운데를 자르지 않고 가로 전체를 왼쪽부터 밀어 봄(placeMobile)
     if (opened) return;
     opened = true;
@@ -434,11 +445,9 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     box.classList.toggle('has-edge', !!edge);
     if (fill) box.style.setProperty('--lightbox-fill', fill); else box.style.removeProperty('--lightbox-fill');
     box.classList.toggle('has-fill', !!fill && !cover);
-    box.classList.toggle('has-cover', cover && !isMobile());         // 모바일은 옆으로 미는 기본 보기 유지
     box.classList.toggle('is-wide', wide);                          // 모바일에서만 효과(placeMobile): 가로 전체를 같은 높이로, 왼쪽부터
-    const mirror = useMirror && !isMobile() && fill === undefined && !cover;   // 모바일 · {bg-color} · {bg-cover} 이미지는 거울 확장 없음
-    box.classList.toggle('has-mirror', mirror);
-    if (mirror) for (const im of mirrorImgs) im.src = src;      // 거울 사본 8장 (같은 파일이라 캐시에서 옴)
+    current = { src, fill, cover };
+    applyMode();
     boxImg.src = src;
     boxImg.alt = alt;
     if (boxImg.complete) placeStrike();
@@ -467,6 +476,7 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
         box.setAttribute('aria-hidden', 'true');
         for (const el of behind) el.removeAttribute('inert');
         boxImg.removeAttribute('src');
+        current = null;
         for (const im of mirrorImgs) im.removeAttribute('src');
         box.classList.remove('is-wide');
         smoother?.paused(false);
