@@ -24,6 +24,7 @@ export interface ImageItem {
   bg?: string | true;     // 확대 보기 배경: {bg-color} = 거울 확장 대신 가장자리 색(빌드 때 측정)으로 채움(true), {bg-color=solid-gray} = 팔레트 색 (var(--c-…))
   cover?: boolean;        // 확대 보기 {bg-cover}: 이미지를 화면에 꽉 채움 (object-fit: cover, 넘치는 쪽은 잘림). 거울 확장 · 배경색 없음. 모바일은 기본 보기
   scroll?: boolean;       // {scroll}: 카드보다 세로로 긴 이미지(웹 페이지 전체 등)를 카드 안에서 위 → 아래로 몇 번에 나눠 내려 보이고 처음으로 (motion.ts 4, --card-scroll-*)
+  device?: boolean;       // {device}: 기기 목업(화면 자리가 흰 면인 이미지). 바로 다음 이미지가 그 화면 안에 들어감 — 다음 이미지는 따로 카드가 되지 않음 (Section.astro 가 묶음, Figure screen)
   slide?: boolean;        // {slide}: 연달아 놓인 {slide} 이미지들이 카드 하나에서 옆으로 넘어감 (무한 반복). 캡션은 첫 이미지 것 (Section.astro 가 묶음, motion.ts 4, --card-slide-*)
   slideRatio?: number;    // {slide=3:4}: 한 장의 비율(가로 ÷ 세로). 카드와 비율이 다른 장(세로형 피드 등)을 자르지 않고 카드 높이에 맞춰 나란히 놓고, 한 장씩 넘기는 대신 일정한 속도로 흘려보냄(마퀴). 묶음의 첫 이미지에 적음
   caption?: string;       // HTML. 한글 구간은 <span class="ko"> 로 래핑됨
@@ -106,7 +107,7 @@ export const EXTS = ['svg', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'avif'];   // �
 
 const GRID_COLS = 12;
 /** 이미지 줄 ![이름]{…} 에 쓸 수 있는 플래그 (= 로 끝나면 값을 받음) */
-const IMAGE_FLAGS = ['do', 'dont', 'con', 'nostrike', 'zoom=', 'nozoom', 'bg-color', 'bg-color=', 'bg-cover', 'bg-mirror', 'scroll', 'slide', 'slide='];   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음). {span} 의 상한
+const IMAGE_FLAGS = ['do', 'dont', 'con', 'nostrike', 'zoom=', 'nozoom', 'bg-color', 'bg-color=', 'bg-cover', 'bg-mirror', 'scroll', 'slide', 'slide=', 'device'];   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음). {span} 의 상한
 
 function slugify(s: string): string {
   return s
@@ -567,6 +568,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       if (bg) item.bg = bgValue(bg === 'bg-color' ? '' : bg.slice(9), ctx, where);
       if (flags.includes('bg-cover')) item.cover = true;                     // {bg-cover}: 화면에 꽉 채움
       if (flags.includes('scroll')) item.scroll = true;                      // {scroll}: 카드 안 세로 흐름
+      if (flags.includes('device')) item.device = true;                      // {device}: 기기 목업 — 다음 이미지가 화면 안에
       if (flags.includes('slide')) item.slide = true;                        // {slide}: 연달아 놓인 것끼리 한 카드의 가로 슬라이드
       const sr = flags.find(f => f.startsWith('slide='));                    // {slide=3:4}: 한 장의 비율을 지켜 나란히, 일정한 속도로 흐름
       if (sr) {

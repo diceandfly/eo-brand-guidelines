@@ -6,15 +6,17 @@
  * slides: {slide} 묶음(Section.astro 가 모음) — 프레임 안에 여러 장을 옆으로 이어 붙이고 motion.ts 4 가 넘김. 끝에 첫 장 사본(data-clone)을 하나 더 두어 끊김 없이 반복.
  *   첫 이미지에 {slide=3:4} 처럼 비율을 적으면 한 장을 그 비율로 카드 높이에 맞춰(자르지 않음) 나란히 놓고 일정한 속도로 흘려보냄 (data-slide-ratio, --_r).
  * item.scroll({scroll}): 세로로 긴 이미지를 프레임 안에서 위 → 아래로 (data-scroll, motion.ts 4).
+ * screen: {device} 목업(item)의 화면 안에 들어갈 이미지. 목업의 흰 화면 자리를 빌드 때 재서(deviceScreen) 그 자리에 놓고, 목업은 위에 곱하기 합성으로 얹음
+ *   — 흰 면은 화면 내용이 그대로 비치고 테두리 · 노치 · 둥근 모서리는 그대로 남음. 확대 보기는 화면 내용 이미지를 엶. 자리는 전부 % 라 카드 크기 · 비율이 바뀌어도 맞음.
  */
 import { UI_TEXT, langFromPath, type ImageItem } from '../lib/guide';
-import { imageEdge } from '../lib/imageTone';
+import { imageEdge, deviceScreen } from '../lib/imageTone';
 import { TOKENS } from '../lib/content';
 import { tokenHex, tokenNumber } from '../lib/tokens';
 import { optimizedOf } from '../../scripts/lib/optimize-images.mjs';
 
-interface Props { item: ImageItem; ratio: string; zoom?: number; label?: string; eager?: boolean; toneZoom?: number; wide?: boolean; slides?: ImageItem[]; }   // zoom: 섹션 배율 (이미지 태그가 우선), label: 섹션 이름, eager: 첫 화면 이미지 → 바로 로드, toneZoom: 톤 판정용 실제 배율 (Section 이 계산), wide: wide 레이아웃 장표 → 모바일 확대 보기에서 가로 전체를 왼쪽부터 밀어 봄 (data-lb-wide)
-const { item, ratio, label, eager = false, toneZoom = 1, wide = false, slides } = Astro.props;
+interface Props { item: ImageItem; ratio: string; zoom?: number; label?: string; eager?: boolean; toneZoom?: number; wide?: boolean; slides?: ImageItem[]; screen?: ImageItem; }   // zoom: 섹션 배율 (이미지 태그가 우선), label: 섹션 이름, eager: 첫 화면 이미지 → 바로 로드, toneZoom: 톤 판정용 실제 배율 (Section 이 계산), wide: wide 레이아웃 장표 → 모바일 확대 보기에서 가로 전체를 왼쪽부터 밀어 봄 (data-lb-wide)
+const { item, ratio, label, eager = false, toneZoom = 1, wide = false, slides, screen } = Astro.props;
 const ui = UI_TEXT[langFromPath(Astro.url.pathname)];
 // 대체 텍스트: 캡션(태그·HTML 엔티티를 벗긴 글자) > 섹션 이름 > 이미지 이름
 const plain = (html: string) => html.replace(/<[^>]+>/g, '').replace(/&(amp|lt|gt|quot|#39|#x27);/g, (_, e) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", '#x27': "'" } as Record<string, string>)[e]);
@@ -35,12 +37,27 @@ const shots = slides && slides.length > 1 ? await Promise.all(slides.map(async (
 }))) : null;
 // 끊김 없는 반복을 위한 사본(data-clone): 기본은 끝에 첫 장 하나. {slide=비율}(일정한 속도로 흐르는 띠)은 프레임에 여러 장이 걸치므로 끝에 첫 세 장
 const marquee = !!shots && !!item.slideRatio;
+// {device}: 목업의 화면 자리 + 화면 내용 이미지의 가장자리 색 · 사본
+const box = item.device && item.src && screen?.src ? await deviceScreen(item.src) : undefined;
+const screenInfo = box && screen?.src ? await imageEdge(screen.src, 1, tokenHex(TOKENS, '--surface', '#000000'), tokenNumber(TOKENS, '--lightbox-bg-uniform', 40)) : undefined;
+const screenOpt = box && import.meta.env.PROD && screen?.src ? optimizedOf(screen.src) : null;
 const lead = 0;
 const reel = shots ? [...shots, ...(marquee ? [0, 1, 2] : [0]).map(k => ({ ...shots[k % shots.length], clone: true }))] : [];
 ---
 <figure class:list={['fig', { 'fig--dodont': item.badge }]} style={`--ratio: ${ratio}${(item.zoom ?? Astro.props.zoom) !== undefined ? `; --img-zoom: ${item.zoom ?? Astro.props.zoom}` : ''}`}>
-  <div class="fig__frame" data-tone={tone} data-scroll={item.scroll && !shots ? '' : undefined} data-slides={shots ? shots.length : undefined} data-slide-ratio={marquee ? '' : undefined} style={marquee ? `--_r: ${item.slideRatio}` : undefined}>
-    {shots
+  <div class="fig__frame" data-tone={tone} data-scroll={(box ? screen?.scroll : item.scroll) && !shots ? '' : undefined} data-slides={shots ? shots.length : undefined} data-slide-ratio={marquee ? '' : undefined} data-device={box ? '' : undefined} style={marquee ? `--_r: ${item.slideRatio}` : box ? `--_fr: ${box.ratio}; --_sx: ${box.x}%; --_sy: ${box.y}%; --_sw: ${box.w}%; --_sh: ${box.h}%` : undefined}>
+    {box && screen?.src
+      ? <div class="fig__stage">
+          <div class="fig__screen">
+            {screenOpt
+              ? <picture><source srcset={screenOpt.src} type={screenOpt.type} /><img src={screen.src} alt={alt} loading={eager ? 'eager' : 'lazy'} role="button" tabindex="0" aria-haspopup="dialog" data-lb-bg={screenInfo?.edge ?? undefined} data-lb-fill={screen.bg === true ? (screenInfo?.edge ?? '') : screen.bg} data-lb-cover={screen.cover ? '' : undefined} /></picture>
+              : <img src={screen.src} alt={alt} loading={eager ? 'eager' : 'lazy'} role="button" tabindex="0" aria-haspopup="dialog" data-lb-bg={screenInfo?.edge ?? undefined} data-lb-fill={screen.bg === true ? (screenInfo?.edge ?? '') : screen.bg} data-lb-cover={screen.cover ? '' : undefined} />}
+          </div>
+          {opt
+            ? <picture><source srcset={opt.src} type={opt.type} /><img class="fig__device" src={item.src} alt="" aria-hidden="true" loading={eager ? 'eager' : 'lazy'} /></picture>
+            : <img class="fig__device" src={item.src} alt="" aria-hidden="true" loading={eager ? 'eager' : 'lazy'} />}
+        </div>
+      : shots
       ? <div class="fig__track">
           {reel.map((s, i) => {
             const clone = 'clone' in s;

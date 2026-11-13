@@ -28,9 +28,11 @@ const allDoDont = s.items.length > 0 && s.items.every(it => it.kind === 'image' 
 const ratio = s.ratio ?? (allDoDont ? 'var(--ratio-dodont)' : defaultRatio);   // Do/Don't 시리즈는 --ratio-dodont ({ratio=} 가 있으면 그 값)
 const stacked = s.layout === 'wide' ? s.items : s.items.slice(0, 1);
 // {slide}: 연달아 놓인 {slide} 이미지는 카드 하나로 (첫 이미지가 카드의 캡션 · 배지를 맡고, 나머지는 그 카드 안에서 옆으로 넘어감 — Figure slides)
-const cards: { it: Item; i: number; slides?: ImageItem[] }[] = [];
+// {device}: 기기 목업 이미지 바로 다음 이미지는 그 목업의 화면 내용 (따로 카드가 되지 않음 — Figure screen)
+const cards: { it: Item; i: number; slides?: ImageItem[]; screen?: ImageItem }[] = [];
 s.items.forEach((it, i) => {
   const prev = cards[cards.length - 1];
+  if (it.kind === 'image' && prev && prev.i === i - 1 && prev.it.kind === 'image' && prev.it.device && !prev.screen) { prev.screen = it; return; }
   if (it.kind === 'image' && it.slide && prev?.slides && i > 0 && s.items[i - 1].kind === 'image' && (s.items[i - 1] as ImageItem).slide) prev.slides.push(it);
   else cards.push({ it, i, slides: it.kind === 'image' && it.slide ? [it] : undefined });
 });
@@ -52,7 +54,7 @@ s.items.forEach((it, i) => {
 
   {isGrid && (
     <div class:list={['sec__grid', { 'sec__grid--swatch': s.items.some(it => it.kind === 'swatch') }]} style={`--n: ${n}`} data-n={n}>
-      {cards.map(({ it, i, slides }) => it.kind === 'image' ? <Figure item={it} ratio={ratio} zoom={s.zoom} label={s.subhead ?? s.head} eager={eager(i)} toneZoom={toneZoom(it)} slides={slides} /> : <Swatch item={it} ratio={s.ratio} />)}
+      {cards.map(({ it, i, slides, screen }) => it.kind === 'image' ? <Figure item={it} ratio={ratio} zoom={s.zoom} label={s.subhead ?? s.head} eager={eager(i)} toneZoom={toneZoom(it)} slides={slides} screen={screen} /> : <Swatch item={it} ratio={s.ratio} />)}
     </div>
   )}
 </section>

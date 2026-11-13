@@ -119,6 +119,8 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (한국어판)
   섹션 순서 변경 : 블록째 잘라 붙이기.
   페이지 추가  : ## 이름 한 줄. 목차·URL·다음 버튼이 자동으로 갱신됩니다.
   카드 안 움직임 : ![web-main] {scroll} 캡션  ← 카드보다 세로로 긴 이미지(웹 페이지 전체 등)를 카드 안에서 위 → 아래로 몇 번에 나눠 내려 보이고 반복.
+                   ![mac-frame] {device} 캡션  ← 기기 목업(화면 자리가 흰 면인 이미지). 바로 다음 줄의 이미지가 그 화면 안에 들어감({scroll} 과 함께 쓸 수 있음).
+                   ![web-main] {scroll}           화면 자리는 빌드 때 자동으로 재므로 목업 파일만 바꾸면 됨. 다음 줄 이미지는 따로 카드가 되지 않음
                    ![feed-1] {slide} 캡션  ← {slide} 를 붙인 이미지를 연달아 쓰면 카드 하나에서 한 장씩 옆으로 넘어감(무한 반복).
                    ![feed-2] {slide}          캡션은 첫 줄 것만 씀. 확대 보기에서는 ← → 로 넘김. 속도는 tokens.css --card-scroll-* · --card-slide-*
                    첫 줄을 {slide=3:4} 처럼 쓰면 한 장을 그 비율(가로:세로)로 자르지 않고 나란히 놓아, 일정한 속도로 끝없이 흘려보냄 (세로형 피드 등, --card-marquee-dur)
@@ -1227,9 +1229,10 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-principles]
 
 
-### Digital {layout=grid-3} {bg-color}
+### Digital {layout=grid-2} {bg-color}
 웹 매거진 · 소셜 피드 · 영상 썸네일 등 디지털 어플리케이션입니다. 웹 레이아웃의 마진과 그리드는 정적 레이아웃에 초점을 맞춘 본 가이드라인의 지침보다, 각 사용 환경에 적합한 반응형 레이아웃 시스템 구축을 권장합니다. 
-![app-web] {scroll} 1. Web Magazine
+![app-web-frame] {device} 1. Web Magazine
+![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. Social Feed
 ![app-social-2] {slide}
 ![app-social-3] {slide}
@@ -1244,6 +1247,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-social-12] {slide}
 ![app-social-13] {slide}
 ![app-sns-channel] 3. SNS Channel
+![app-sns-component] 4. Web Component
 
 
 ### Advertisement {layout=grid-3}

@@ -129,3 +129,46 @@ function ringAtRect(data: Buffer, w: number, h: number, t: number) {
   for (const [k, c] of count) if (c > best) { best = c; mode = k; }
   return { r: mr, g: mg, b: mb, spread: Math.sqrt(v / (n * 3)), mode: { r: mode >> 16, g: (mode >> 8) & 255, b: mode & 255 } };
 }
+
+/**
+ * 기기 목업 이미지({device})의 화면 자리: 가운데에서 이어지는 흰 면(각 채널 ≥ 235)의 상자를 원본 해상도로 재서 %(이미지 폭 · 높이 기준)로 돌려줍니다.
+ * 가로는 가운데 행, 세로는 화면 폭의 15 · 30 · 70 · 85% 지점 네 열로 잼(가운데 열은 노치에 걸릴 수 있어서). 화면 내용이 흰 면 가장자리에
+ * 실선으로 비치지 않도록 상자를 2px 씩 넓힘 — 넘친 부분은 목업의 어두운 테두리가 곱하기 합성으로 덮음. 못 찾으면 undefined.
+ */
+export interface ScreenBox { x: number; y: number; w: number; h: number; ratio: number; }   // ratio = 목업 이미지의 가로 ÷ 세로
+const screenCache = new Map<string, ScreenBox | undefined>();
+export async function deviceScreen(publicSrc: string): Promise<ScreenBox | undefined> {
+  const file = path.join(process.cwd(), 'public', decodeURI(publicSrc));
+  let st: fs.Stats;
+  try { st = fs.statSync(file); } catch { return undefined; }
+  const key = `${publicSrc}|${st.mtimeMs}|${st.size}`;
+  if (screenCache.has(key)) return screenCache.get(key);
+  let box: ScreenBox | undefined;
+  try {
+    const sharp = (await import('sharp')).default;
+    const { data, info } = await sharp(file).flatten({ background: '#000000' }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const W = info.width, H = info.height;
+    const white = (x: number, y: number) => { const i = (y * W + x) * 3; return Math.min(data[i], data[i + 1], data[i + 2]) >= 235; };
+    const cx = W >> 1, cy = H >> 1;
+    if (white(cx, cy)) {
+      let l = cx, r = cx;
+      while (l > 0 && white(l - 1, cy)) l--;
+      while (r < W - 1 && white(r + 1, cy)) r++;
+      let t = cy, b = cy;
+      for (const f of [0.15, 0.3, 0.7, 0.85]) {
+        const x = Math.round(l + (r - l) * f);
+        let y0 = cy, y1 = cy;
+        while (y0 > 0 && white(x, y0 - 1)) y0--;
+        while (y1 < H - 1 && white(x, y1 + 1)) y1++;
+        t = Math.min(t, y0); b = Math.max(b, y1);
+      }
+      const pad = 2;
+      box = { x: (l - pad) / W * 100, y: (t - pad) / H * 100, w: (r - l + 1 + pad * 2) / W * 100, h: (b - t + 1 + pad * 2) / H * 100, ratio: W / H };
+    }
+  } catch (err) {
+    console.warn(`[imageTone] ${publicSrc} 의 화면 자리를 재지 못했습니다 (${(err as Error).message})`);
+  }
+  if (!box) console.warn(`[imageTone] ${publicSrc}: {device} 목업에서 흰 화면 자리를 찾지 못했습니다. 목업만 표시합니다`);
+  screenCache.set(key, box);
+  return box;
+}
