@@ -892,7 +892,7 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 
 
 ### Graphic Unit
-#### + Color {layout=grid-2} {ratio=16:9} {zoom=1.042}
+#### + Color {layout=grid-2} {ratio=16:9} {zoom=1.042} {bg-color}
 컬러는 그래픽 안에서 누가 주인공이고, 무엇이 환경이며, 어디서 상태가 바뀌는지 표현하며, Vocabulary의 뉘앙스를 보완하는 보조 수단으로 사용합니다. 더 구체적인 조합 규칙은 [[graphic-pattern#color]]를 참조하세요.
 
 **하나의 유닛에는 반드시 하나의 컬러만 적용합니다.**
@@ -1039,7 +1039,7 @@ thread 윗변과 아랫변의 폭 차이입니다. thread의 날카로움과 점
 ![shape-dont]{dont} top · bottom이 권장 범위를 벗어난 thread
 
 
-### Morphology {layout=grid-4}
+### Morphology {layout=grid-4} {zoom=2.4}
 #### Docking
 같은 컬러의 두 유닛을 shaft 축 방향으로 이어 하나의 긴 유닛처럼 만들 때, 그 틈새를 처리하는 방법을 docking이라고 부릅니다. 맞닿는 자리에서 thread 간격이 양쪽의 리듬을 그대로 이어야 하며, 그러려면 두 유닛의 shaft size와 thread gutter가 같아야 합니다. 그냥 붙이기만 하면 이음새에서 간격이 사라져 thread의 리듬감이 튀게 됩니다. 
 ![docking-do]{do} 이음새에서 리듬이 이어지는 docking
@@ -1082,7 +1082,7 @@ EO Graphic Builder의 워크스페이스에서 새로운 메타포의 그래픽 
 ![grid-do-1]{do} 이상적인 비율의 영역 구획
 ![grid-dont-1]{dont} 그래픽 패턴 영역이 너무 작고, 다른 요소와 위계를 경합하는 그래픽 패턴
 ![grid-do-2]{do} 컬럼 · 로우를 기준으로 나뉘는 그래픽 패턴 영역
-![grid-dont-2]{dont} 그래픽 패턴 영역을 좌측 · 하단에 둔 레이아웃
+![grid-dont-2]{con} 그래픽 패턴 영역을 좌측 · 하단에 둔 레이아웃
 
 
 ### Grammar {layout=grid-2}
@@ -1112,9 +1112,9 @@ pattern gutter는 그래픽 패턴 내 유닛과 유닛 사이의 간격입니�
 가로 유닛과 세로 유닛을 함께 조합할 때 특별한 제한 사항이 있는 것은 아니지만, 각 유닛의 형태는 가급적 [[graphic-unit#morphology|Morphology]]의 권장 사항을 따르는 것이 유려한 패턴을 만드는데 도움이 됩니다. 
 
 - 그래픽 패턴 영역에 유닛을 정렬하고 나면, 교차하는 유닛들 사이의 우연히 만들어진 shaft와 thread의 라인들을 잘 살펴보세요. 의도치 않은 어긋남이 전체 패턴의 완성도를 해칠 수 있습니다. 가로 유닛의 shaft 라인과 세로 유닛의 thread 라인이 일치하도록, 세로 유닛의 [[graphic-unit#parameters|compression]]과 가로 유닛의 shaft size를 미세 조정합니다. 레이아웃을 완성하는 마지막 작업 순서로 권장합니다.
-![alignment-dont-1]{dont} shaft 라인과 thread 라인이 흐트러진 패턴
-![alignment-do-1]{do} shaft 라인과 thread 라인이 의도적으로 정리된 패턴
-![alignment-do-2]{do} 라인이 의도적으로 정리된 패턴의 적용 예시
+![alignment-dont-1]{dont} 교차하는 유닛의 thread 라인이 흐트러진 패턴
+![alignment-do-1]{do} 교차하는 유닛의 thread 라인이 의도적으로 정리된 패턴
+![alignment-do-2]{do} shaft 라인과 thread 라인이 의도적으로 정리된 패턴
 ![alignment-dont-2]{dont} 라인의 균형이 두드러지게 어긋난 패턴
 
 

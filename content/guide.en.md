@@ -890,7 +890,7 @@ The **EO graphic unit** (hereafter, the unit) is the smallest element of the gra
 
 
 ### Graphic Unit
-#### + Color {layout=grid-2} {ratio=16:9} {zoom=1.042}
+#### + Color {layout=grid-2} {ratio=16:9} {zoom=1.042} {bg-color}
 Color shows who the protagonist of a graphic is, what forms the environment, and where a state changes. Use it as a supporting device that complements the nuance of Vocabulary. For more specific combination rules, see [[graphic-pattern#color]].
 
 **Apply only one color to each unit.**
@@ -1037,7 +1037,7 @@ The difference between the widths of the thread's top and bottom edges. It deter
 ![shape-dont]{dont} Thread with top · bottom outside the recommended range
 
 
-### Morphology {layout=grid-4}
+### Morphology {layout=grid-4} {zoom=2.4}
 #### Docking
 Docking is the way to handle the seam when two units of the same color are joined along the shaft axis to form one long unit. At the joint, the thread spacing must continue the rhythm of both sides, which requires the two units to share the same shaft size and thread gutter. Simply butting them together removes the spacing at the seam and makes the thread rhythm jump.
 ![docking-do]{do} Docking that carries the rhythm through the seam
@@ -1080,7 +1080,7 @@ When drafting graphics for a new metaphor in the EO Graphic Builder workspace, y
 ![grid-do-1]{do} Areas divided in ideal proportion
 ![grid-dont-1]{dont} A graphic pattern area that is too small, with a graphic pattern competing for hierarchy with other elements
 ![grid-do-2]{do} A graphic pattern area divided along columns and rows
-![grid-dont-2]{dont} A layout with the graphic pattern area placed at the left or bottom
+![grid-dont-2]{con} A layout with the graphic pattern area placed at the left or bottom
 
 
 ### Grammar {layout=grid-2}
@@ -1110,9 +1110,9 @@ The pattern gutter is the space between units within a graphic pattern. Set it b
 There are no specific restrictions on combining horizontal and vertical units, but keeping each unit's form close to the recommendations in [[graphic-unit#morphology|Morphology]] helps create a fluid pattern.
 
 - Once the units are aligned in the graphic pattern area, look closely at the shaft and thread lines that happen to form between intersecting units. Unintended misalignment can undermine the quality of the entire pattern. Fine-tune the [[graphic-unit#parameters|compression]] of vertical units and the shaft size of horizontal units so the shaft lines of horizontal units line up with the thread lines of vertical units. We recommend this as the final step in completing a layout.
-![alignment-dont-1]{dont} A pattern with misaligned shaft and thread lines
-![alignment-do-1]{do} A pattern with shaft and thread lines deliberately aligned
-![alignment-do-2]{do} An application of a pattern with deliberately aligned lines
+![alignment-dont-1]{dont} A pattern where the thread lines of crossing units are misaligned
+![alignment-do-1]{do} A pattern where the thread lines of crossing units are deliberately aligned
+![alignment-do-2]{do} A pattern with shaft and thread lines deliberately aligned
 ![alignment-dont-2]{dont} A pattern with noticeably unbalanced lines
 
 

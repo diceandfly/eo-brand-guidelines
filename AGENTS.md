@@ -29,6 +29,18 @@
 | E15 | 2026-11-13 | Graphic Unit › Pair › 파동(`pair-pulse`) | 본문 "중심대칭 또는 좌우대칭" ↔ 장표는 좌우대칭 하나 | 장표는 경우 하나를 보여 줌. 본문 유지 |
 | E16 | 2026-11-13 | Applications 페이지 본문(예: Print "Air White 바탕 기본") | 다른 페이지 · 장표와 어긋남 | 디자이너가 페이지 전체를 다시 쓸 예정 — 그 전까지 지적 · 수정 보류 |
 | E17 | 2026-11-13 | 참조 링크 "유닛 컬러" — Graphic Unit › Shaft › 다양성 → Graphic Pattern › Color, Graphic Pattern › Color → Graphic Unit › Color | 같은 라벨이 서로 반대 페이지로 감 | 문맥마다 가리키는 내용이 다름(다양성 = 여러 색을 쓰는 조합 규칙, Pattern › Color = 색의 뜻). 그대로 둠 |
+| E18 | 2026-11-14 | Symbol › Don'ts 1번째(`dont-1` 가로 약 10%) · Signature › Don'ts 9번째(`dont-9` 세로 약 6%) | "늘리지 마세요" 인데 왜곡이 약해 잘 안 보임 | 실제로 흔히 일어날 법한 실수의 크기라 이 정도가 맞음 |
+| E19 | 2026-11-14 | Symbol › Usage › Placement (`usage-placement` A3 칸) | 밝은 심볼 · 흐린 심볼이 한 칸에 둘, 범례 없음 | 디자이너가 그대로 두기로 함(의도된 표현) |
+| E20 | 2026-11-14 | Symbol › Geometry · Lockup 가로형 · Signature › Partner Lockup 가로형 장표 | 본문에 없는 값(1 unit = H/30 · W = (29/30)H · 5° · 콜라보 기호 (2/3)W)이 장표에만 있음 | 도면 정보라 장표에만 둠. 본문에 옮기지 말 것 |
+| E21 | 2026-11-14 | Signature › Inversion 세로형(`inversion-v` "Align center") ↔ Descriptor 세로형(`descriptor-v` H/100 왼쪽 보정) | 다크에서 H/100 보정이 빠진 것처럼 보임 | 라이트에서 한 번 보정한 위치를 기준으로 하므로 문제없음 |
+| E22 | 2026-11-14 | Typography › Character Set Mono (`charset-mono` Small figures 행) | 분수 글리프가 두 줄로 깨진 것처럼 보임 | 공간 활용을 위한 원래 글리프 디자인 |
+| E23 | 2026-11-14 | Colors › Don'ts 6장 좌하단 "Typography Checklist" | 컬러 장표에 타이포 라벨 | 이 섹션 공통 샘플 목업이라 문구 내용은 중요하지 않음 |
+| E24 | 2026-11-14 | Colors › In Use 3번째 (`color-in-use-3` "08:00 - 11:00 PM") | 시작 시각에 AM/PM 없음 | 앞 시각은 뒤 표기로 유추하는 흔한 표기 |
+| E25 | 2026-11-14 | Graphic Unit › Parameters (`param-thread-compression` "compression -1 / -2") | + 방향 예시가 없음 | 한 장표에서 둘 다 보이려고 반전하면 직관성이 떨어지고, 파라미터당 장표 2장은 양식 불일치라 타협. − 부호로 유추 |
+| E26 | 2026-11-14 | Graphic Unit › Color (`color-gray` · `color-blue-green` SVG) | 캡션에 없는 Builder Neon 유닛이 섞여 있음 | 그 캔버스 안에서 그레이(블루 · 그린)의 역할을 보여 주는 그림이라 상관없음 |
+| E27 | 2026-11-14 | Graphic Unit › Morphology › Proportion | 4장만 Air White 유닛 | 분위기 환기, 그리고 컬러보다 형태에 집중시키려는 의도 |
+| E28 | 2026-11-14 | Graphic Unit › Pair (`pair-peers` · `pair-rivals` 라벨 Peer · Rival) | 캡션은 복수(Peers · Rivals), 장표 라벨은 단수 | 라벨이 두 유닛 중 하나에 붙어 있어 단수가 맞음 |
+| E29 | 2026-11-14 | Graphic Pattern › Color (`color-do-1` · `color-do-3` 등) | 캡션의 색 나열 순서 ↔ 장표의 색 순서 | 비주얼상 좋아서 장표 순서는 섞음. 캡션도 그대로 |
 
 결정 대기 중인 항목은 `research/content-check/findings.csv`(로컬 전용, git 제외)에 있습니다 — 여기 오르기 전까지는 예외가 아닙니다.
 
