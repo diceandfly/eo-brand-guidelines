@@ -395,6 +395,7 @@ if (box && boxImg) {
     boxCrop.style.setProperty('--_crop-w', `${H * cropRatio}px`);
     boxCrop.style.setProperty('--_img-x', `${-(H * imgRatio - H * cropRatio) / 2}px`);
     boxPan.scrollLeft = 0;
+    boxPan.scrollTop = 0;                                       // wide 장표(.is-rotated)는 위쪽에 맞춰 시작
   };
   const placeStrike = () => {
     if (isMobile()) { placeMobile(); return; }
