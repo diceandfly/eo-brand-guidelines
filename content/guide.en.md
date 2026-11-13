@@ -1211,29 +1211,29 @@ The following are typical cases where the pattern loses its role as protagonist.
 ### + Principles
 Four rules to follow when placing the graphic pattern on a page.
 
-- **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through density; keep posters seen up close at medium complexity. This is a general tendency, however: designers use their judgment and put visual quality first.
-- **One page can hold several variations.** Place several variations of the same motif in one composition to create rhythm.
-- **A pattern fits any proportion.** Divide the page into sub-layouts to carry several messages on one page.
+- **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through density; keep posters seen up close at medium complexity. This is a general tendency, however, so designers use their judgment and put visual quality first.
+- **One page can hold several variations.** Place several variations of the same metaphor in one composition to create rhythm.
+- **A pattern fits any proportion.** Divide the page, as in a [[typography#zoning|four-way division]], to carry several messages on one page.
 - **Lead the eye with the direction of the threads.** Converge all threads on a single point to draw the eye to the mark or message placed there.
 ![app-principles]
 
 
 ### Digital {layout=grid-3}
-Digital touchpoints such as the web magazine · social feed · video thumbnails. Units extend into motion, with [[graphic-unit#parameters|compression]] changing over time; in thumbnails, crop only part of a unit at a column boundary. The web grid (12 columns, 40px gutter · 44px margin @1728) shares the same system as the unit's column grid.
+Digital touchpoints such as the web magazine · social feed · video thumbnails. In motion, a unit's [[graphic-unit#parameters|compression]] can change over time; in thumbnails, use only part of the pattern and crop at a column boundary so that no diagonal section of a thread is cut. Margins and grids of web layouts follow [[typography#margin|Margin]] · [[typography#compound-grid|Compound Grid]].
 ![app-web] Web Magazine
 ![app-social] Social Feed
 ![app-thumbnail] Video Thumbnail
 
 
 ### Print {layout=grid-3}
-Printed matter such as posters · hang tags · stickers · pins. The default is Space Black units on an Air White background; use Builder Neon on one side only. Color combinations follow [[graphic-pattern#color]]. Hang tags carry the pattern on the front and size and material information set in Mono on the back.
+Printed matter such as posters · hang tags · stickers · pins. Color combinations follow [[graphic-pattern#color]]: a Solid Gray background comes first, and a Builder Neon background is used, with Space Black units, only on pages that must assert the brand strongly and carry little information. Hang tags carry the pattern on the front and size and material information set in Founders Grotesk Mono Regular on the back.
 ![app-poster] Poster
 ![app-hangtag] Hang Tag
 ![app-sticker] Sticker Pack & Pin
 
 
 ### Merch {layout=grid-3}
-A merch line of tees · hoodies · caps. Single-color screen-printed graphics are the default. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a blend pattern on the front. Choose the colorway from Space Black · Builder Neon · Day Blue to suit the fabric color that serves as the background.
+A merch line of tees · hoodies · caps. Single-color screen-printed graphics are the default. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front. Choose the fabric color from Space Black · Builder Neon · Day Blue, and pick the graphic colors by treating the fabric as the background color under [[graphic-pattern#color]]. On Builder Neon · Day Blue fabric, use Space Black graphics only.
 ![app-tee] Oversized Tee
 ![app-hoodie] Hoodie
 ![app-cap] 5-panel Cap

@@ -1213,29 +1213,29 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ### + Principles
 그래픽 패턴을 지면에 올릴 때 지키는 네 가지 규칙입니다.
 
-- **밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 지면은 복잡도를 끝까지 올려 밀도로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에 둡니다. 단 이것은 일반적 경향성이므로 디자이너 재량으로 시각적 완성도를 우선하여 판단합니다.
-- **한 장에 여러 변형을 둘 수 있습니다.** 같은 모티프의 변형 여러 개를 한 구성에 놓아 리듬을 만듭니다.
-- **패턴은 어떤 비율에도 맞습니다.** 지면을 서브 레이아웃으로 나누면 한 지면에 여러 메시지를 실을 수 있습니다.
+- **밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 지면은 복잡도를 끝까지 올려 밀도로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에 둡니다. 단, 이는 일반적인 경향이므로 시각적 완성도를 우선해 디자이너가 재량으로 판단합니다.
+- **한 지면에 여러 변형을 둘 수 있습니다.** 같은 메타포의 변형 여러 개를 한 구성에 놓아 리듬을 만듭니다.
+- **패턴은 어떤 비율에도 맞습니다.** [[typography#zoning|4분할]]처럼 지면을 나누면 한 지면에 여러 메시지를 실을 수 있습니다.
 - **thread의 방향으로 시선을 이끕니다.** 모든 thread가 한 점으로 모이게 놓으면 그 자리의 마크나 메시지로 시선이 갑니다.
 ![app-principles]
 
 
 ### Digital {layout=grid-3}
-웹 매거진 · 소셜 피드 · 영상 썸네일 등 디지털 접점입니다. 유닛은 모션으로 확장되어 [[graphic-unit#parameters|compression]]이 시간에 따라 변하며, 썸네일에서는 유닛의 일부만 컬럼 경계에서 크롭해 사용합니다. 웹의 그리드(12컬럼, 거터 40px · 마진 44px @1728)는 유닛의 컬럼 그리드와 같은 체계를 공유합니다.
+웹 매거진 · 소셜 피드 · 영상 썸네일 등 디지털 접점입니다. 모션에서는 유닛의 [[graphic-unit#parameters|compression]]이 시간에 따라 변할 수 있으며, 썸네일에서는 패턴의 일부만 쓰되 thread의 대각선 구간이 잘리지 않도록 컬럼 경계에서 크롭합니다. 웹 레이아웃의 마진과 그리드는 [[typography#margin|Margin]] · [[typography#compound-grid|Compound Grid]]의 기준을 따릅니다.
 ![app-web] Web Magazine
 ![app-social] Social Feed
 ![app-thumbnail] Video Thumbnail
 
 
 ### Print {layout=grid-3}
-포스터 · 행택 · 스티커 · 핀 등 인쇄물입니다. Air White 바탕에 Space Black 유닛을 기본으로 하고, Builder Neon은 한 면에만 사용합니다. 컬러 조합은 [[graphic-pattern#color]]를 따릅니다. 행택은 앞면에 패턴, 뒷면에 사이즈와 소재 정보를 모노로 적습니다.
+포스터 · 행택 · 스티커 · 핀 등 인쇄물입니다. 컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray 바탕을 우선하고, Builder Neon 바탕은 브랜드의 존재감을 강하게 드러내야 하고 정보량이 적은 지면에 한해 Space Black 유닛과 함께 씁니다. 행택은 앞면에 패턴을, 뒷면에 사이즈와 소재 정보를 Founders Grotesk Mono Regular로 적습니다.
 ![app-poster] Poster
 ![app-hangtag] Hang Tag
 ![app-sticker] Sticker Pack & Pin
 
 
 ### Merch {layout=grid-3}
-티셔츠 · 후디 · 캡으로 구성된 굿즈 라인입니다. 실크스크린 단색 그래픽을 기본으로 합니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후디는 앞면에 블렌드 패턴을 올립니다. 컬러웨이는 배경이 되는 원단 컬러에 맞춰 Space Black · Builder Neon · Day Blue 중 하나를 고릅니다.
+티셔츠 · 후디 · 캡으로 구성된 굿즈 라인입니다. 실크스크린 단색 그래픽을 기본으로 합니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후디는 앞면에 pair를 등비로 블렌드한 패턴([[graphic-unit#vocabulary-formation|차원]])을 올립니다. 원단 컬러는 Space Black · Builder Neon · Day Blue 중 하나를 고르고, 그래픽 컬러는 원단을 배경 컬러로 보고 [[graphic-pattern#color]]를 따릅니다. Builder Neon · Day Blue 원단에는 Space Black 그래픽만 올립니다.
 ![app-tee] Oversized Tee
 ![app-hoodie] Hoodie
 ![app-cap] 5-panel Cap
