@@ -373,8 +373,9 @@ const boxStrike = box?.querySelector<HTMLElement>('.lightbox__strike');
 const boxMirror = box?.querySelector<HTMLElement>('.lightbox__mirror');
 const boxPan = box?.querySelector<HTMLElement>('[data-lightbox-pan]');
 const boxCrop = box?.querySelector<HTMLElement>('.lightbox__crop');
-const mobileMQ = matchMedia(MQ_MOBILE);                        // 모바일 경계 = tokens.ts MOBILE_MAX
-const isMobile = () => mobileMQ.matches;
+// 모바일 확대 보기(2:3 창 · 4:3 자르기 · 옆으로 밀기)는 세로 화면에서만. 폰을 가로로 들면 데스크탑과 같은 확대 보기(장표 전체 · 거울 확장) — base.css 와 같은 조건
+const portraitMQ = matchMedia(`${MQ_MOBILE} and (orientation: portrait)`);
+const isMobile = () => portraitMQ.matches;
 const mirrorImgs = boxMirror ? Array.from(boxMirror.querySelectorAll<HTMLImageElement>('img')) : [];
 
 if (box && boxImg) {

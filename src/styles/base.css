@@ -1358,9 +1358,10 @@ html.js .main {
 .lightbox__crop {
   display: contents; /* PC: 래퍼 없음. 모바일에서만 상자가 됨 (아래 @media) */
 }
-/* 모바일 확대 보기: 2:3 창(.lightbox__pan, 가로 스크롤) 안에 원본의 가운데 4:3(.lightbox__crop)을 창 높이에 맞춰 넣음.
-   처음엔 4:3 의 왼쪽 끝에 정렬되고 옆으로 밀어 봄. 크기는 motion.ts 가 이미지 비율로 계산 (--_crop-w, --_img-x) */
-@media (max-width: 899px) { /* 모바일 경계 = src/lib/tokens.ts MOBILE_MAX (CSS 변수는 @media 에 못 써 숫자로, npm test [7] 이 대조) */
+/* 모바일 세로 화면 확대 보기: 2:3 창(.lightbox__pan, 가로 스크롤) 안에 원본의 가운데 4:3(.lightbox__crop)을 창 높이에 맞춰 넣음.
+   처음엔 4:3 의 왼쪽 끝에 정렬되고 옆으로 밀어 봄. 크기는 motion.ts 가 이미지 비율로 계산 (--_crop-w, --_img-x).
+   가로 화면(폰을 옆으로)은 이 블록이 적용되지 않아 데스크탑과 같은 확대 보기 — 장표 전체를 화면 높이에 맞추고 양옆은 거울 확장 (2026-11-13) */
+@media (max-width: 899px) and (orientation: portrait) { /* 모바일 경계 = src/lib/tokens.ts MOBILE_MAX (CSS 변수는 @media 에 못 써 숫자로, npm test [7] 이 대조) */
   .lightbox__pan {
     display: block;
     grid-area: 1 / 1;
@@ -1399,14 +1400,16 @@ html.js .main {
     display: none; /* 모바일은 거울 확장 없음 */
   }
   .lightbox.has-edge {
-    background: var(--lightbox-bg); /* 모바일은 가장자리 색도 쓰지 않고 기본 막(검정) */
-  }
-  .lightbox__close {
-    display: grid; /* 모바일: 햄버거 자리에 × */
+    background: var(--lightbox-bg); /* 모바일 세로는 가장자리 색도 쓰지 않고 기본 막(검정) */
   }
   .lightbox__pan {
     overscroll-behavior: contain; /* 창 안 밀기가 끝에 닿아도 뒤 페이지로 넘어가지 않게 */
     touch-action: pan-x; /* 창 안에서는 옆으로 밀기만 — 세로 밀기로 뒤 페이지가 스크롤되지 않게 */
+  }
+}
+@media (max-width: 899px) { /* 모바일(세로 · 가로 모두). 경계 = src/lib/tokens.ts MOBILE_MAX (npm test [7] 이 대조) */
+  .lightbox__close {
+    display: grid; /* 모바일: 햄버거 자리에 × */
   }
   html.lightbox-open {
     overflow: hidden; /* 모바일(스무스 스크롤 없음): 확대 보기가 열린 동안 페이지 세로 스크롤 정지 */
