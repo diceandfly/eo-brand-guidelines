@@ -456,8 +456,8 @@
   --card-slide-move: 0.7; /* {slide}: 다음 장으로 넘어가는 시간 (초) */
   --card-slide-hold: 2.4; /* 한 장이 머무는 시간 (초) */
   --card-slide-ease: cubic-bezier(0.7, 0, 0.3, 1); /* 넘어가는 곡선 (페이지 전환 · 섹션 이동과 같은 곡선) */
-  --card-slide-gap: 2px; /* {slide=비율}: 나란히 보이는 장 사이 틈 */
-  --card-slide-inset: 5; /* {slide=비율}: 띠 위아래에 두는 여백 — 카드 높이의 % (같은 검은 띠 색). 0 = 카드 높이에 꽉 참 */
+  --card-slide-gap: 14px; /* {slide=비율}: 나란히 보이는 장 사이 틈 */
+  --card-slide-inset: 10; /* {slide=비율}: 띠 위아래에 두는 여백 — 카드 높이의 % (같은 검은 띠 색). 0 = 카드 높이에 꽉 참 */
   --card-slide-gap-bg: var(--c-space-black); /* 그 틈에 보이는 색 — 어두운 회색 장끼리도 경계가 또렷하게 검은 띠 */
   --card-marquee-dur: 5; /* {slide=비율}: 한 장 폭만큼 흘러가는 시간 (초). 일정한 속도로 끝없이 흐름 — 작을수록 빠름 */
 
