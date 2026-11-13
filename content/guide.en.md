@@ -1229,7 +1229,7 @@ Four rules to follow when placing the graphic pattern on a page.
 
 ### Digital {layout=grid-2} {bg-color}
 Digital applications such as the web magazine · social feed · video thumbnails. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
-![app-web-frame] {device} 1. Web Magazine
+![app-web-frame] {device} 1. Web UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. Social Feed
 ![app-social-2] {slide}
@@ -1243,7 +1243,6 @@ Digital applications such as the web magazine · social feed · video thumbnails
 ![app-social-10] {slide}
 ![app-social-11] {slide}
 ![app-social-12] {slide}
-![app-social-13] {slide}
 ![app-sns-channel] 3. SNS Channel
 ![app-sns-component] 4. Web Component
 

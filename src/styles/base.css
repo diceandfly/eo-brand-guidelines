@@ -991,7 +991,10 @@ html.fonts-wait .main {
   background: var(--card-slide-gap-bg); /* 장 사이 틈으로 보이는 띠 */
 }
 .fig__frame[data-slide-ratio] .fig__track {
-  --_w: calc(100cqh * var(--_r));
+  --_pad: calc(var(--card-slide-inset) * 1cqh); /* 위아래 여백 */
+  --_w: calc((100cqh - var(--_pad) * 2) * var(--_r));
+  height: calc(100% - var(--_pad) * 2);
+  margin-top: var(--_pad);
   gap: var(--card-slide-gap);
   transform: translateX(calc(var(--_slide, 0) * -1 * (var(--_w) + var(--card-slide-gap))));
 }

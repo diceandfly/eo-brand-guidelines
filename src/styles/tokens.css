@@ -445,7 +445,7 @@
   --img-border-hover: color-mix(in srgb, var(--border), var(--c-air-white) 10%); /* 호버 테두리 — 어두운 이미지 위 (밝은 회색) */
   --img-border-hover-on-light: color-mix(in srgb, var(--border), var(--c-air-white) 75%); /* 호버 테두리 — 밝은 이미지 위. 띠가 어두운 페이지 배경과 맞닿는 바깥 1px 이라 어두운 선은 배경에 묻혀 안 보임 → 기본 호버보다 더 밝은 회색 */
   --img-border-hover-dur: 200ms; /* 테두리 색·두께 디졸브 (들어갈 때 · 나갈 때 동일) */
-  /* 카드 안 움직임 — {scroll} 세로 흐름 · {slide} 가로 슬라이드 (motion.ts 4). 화면에 보이는 동안만 돌고 마우스를 올리면 멈춤.
+  /* 카드 안 움직임 — {scroll} 세로 흐름 · {slide} 가로 슬라이드 (motion.ts 4). 화면에 보이는 동안만 돎.
      '동작 줄이기' 를 켠 사용자에게는 첫 장면 그대로 */
   --card-scroll-steps: 2; /* {scroll}: 맨 위에서 맨 아래까지 몇 번에 나눠 내릴지 */
   --card-scroll-input: 2.4; /* 한 번 굴리는 "입력" 시간 (초). 화면은 이 입력을 본문 스무스 스크롤과 같은 방식(expo 감속)으로 따라감 — 길수록 천천히 미는 느낌 */
@@ -457,6 +457,7 @@
   --card-slide-hold: 2.4; /* 한 장이 머무는 시간 (초) */
   --card-slide-ease: cubic-bezier(0.7, 0, 0.3, 1); /* 넘어가는 곡선 (페이지 전환 · 섹션 이동과 같은 곡선) */
   --card-slide-gap: 2px; /* {slide=비율}: 나란히 보이는 장 사이 틈 */
+  --card-slide-inset: 5; /* {slide=비율}: 띠 위아래에 두는 여백 — 카드 높이의 % (같은 검은 띠 색). 0 = 카드 높이에 꽉 참 */
   --card-slide-gap-bg: var(--c-space-black); /* 그 틈에 보이는 색 — 어두운 회색 장끼리도 경계가 또렷하게 검은 띠 */
   --card-marquee-dur: 5; /* {slide=비율}: 한 장 폭만큼 흘러가는 시간 (초). 일정한 속도로 끝없이 흐름 — 작을수록 빠름 */
 

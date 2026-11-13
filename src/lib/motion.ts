@@ -42,8 +42,6 @@ const ms = (name: string, fallback: number) => parseSeconds(token(name)) ?? fall
 
 // 운영체제의 "동작 줄이기"를 켠 사용자: 스무스 스크롤 끔, 섹션 이동은 바로 점프, 라이트박스는 배율 없이 짧은 디졸브
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-// 카드 안 움직임(4)의 '마우스를 올리면 멈춤' 을 푸는 함수 — 확대 보기(3)가 {device} 카드를 열 때 부름(화면 안 움직임이 확대 보기에서도 이어지도록). 4 에서 채움
-let releaseCardHover: (frame: Element) => void = () => {};
 
 /* ---------- 1. 스무스 스크롤 ---------- */
 // 터치 전용 기기(폰 · 태블릿)는 스무스 스크롤을 만들지 않고 브라우저 기본 관성 스크롤을 씀. ScrollSmoother 는 터치에서 smoothTouch 0 이면 스스로 네이티브 모드로
@@ -546,7 +544,6 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
     const sx = pct('--_sx'), sy = pct('--_sy'), sw = pct('--_sw'), sh = pct('--_sh');
     box.classList.add('has-device');
     boxImg.style.backgroundImage = `url("${page.currentSrc || page.src}")`;
-    releaseCardHover(frame);
     deviceTick = () => {
       const W = boxImg.offsetWidth, H = boxImg.offsetHeight;
       if (!W || !H || !page.naturalWidth) return;
@@ -606,19 +603,15 @@ const behind = [document.getElementById('smooth-wrapper'), document.querySelecto
    맨 아래에서 잠시 머문 뒤 맨 위로 돌아가 반복. 보이는 위치는 CSS 변수 --_pan(0…1, base.css object-position).
    {slide}(.fig__frame[data-slides] .fig__track): 한 장씩 옆으로 넘김. 띠 끝의 첫 장 사본까지 넘어간 뒤 처음(--_slide 0)으로 순간 이동해 끊김 없이 반복.
    {slide=비율}([data-slide-ratio]): 장을 자르지 않고 나란히 놓은 띠가 일정한 속도(--card-marquee-dur 초에 한 장)로 흐름.
-   둘 다 화면에 보이는 동안만 돌고, 마우스를 올리면 멈춤(자세히 보거나 눌러서 확대). '동작 줄이기' 면 만들지 않음(첫 장면 그대로). */
+   화면에 보이는 동안만 돌고(마우스를 올려도 멈추지 않음), '동작 줄이기' 면 만들지 않음(첫 장면 그대로). */
 if (!reduced) {
-  const state = new Map<Element, { tl: gsap.core.Timeline; inView: boolean; hover: boolean }>();
-  const sync = (el: Element) => { const st = state.get(el); if (st) st.tl.paused(!st.inView || st.hover); };
+  const state = new Map<Element, gsap.core.Timeline>();
   const io = 'IntersectionObserver' in window
-    ? new IntersectionObserver(entries => { for (const e of entries) { const st = state.get(e.target); if (st) { st.inView = e.isIntersecting; sync(e.target); } } })
+    ? new IntersectionObserver(entries => { for (const e of entries) state.get(e.target)?.paused(!e.isIntersecting); })
     : null;
   const add = (frame: HTMLElement, tl: gsap.core.Timeline) => {
-    state.set(frame, { tl, inView: !io, hover: false });
-    frame.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { state.get(frame)!.hover = true; sync(frame); } });
-    frame.addEventListener('pointerleave', () => { state.get(frame)!.hover = false; sync(frame); });
-    releaseCardHover = el => { const st = state.get(el); if (st) { st.hover = false; sync(el); } };
-    if (io) io.observe(frame); else sync(frame);
+    state.set(frame, tl);
+    if (io) io.observe(frame); else tl.play();
   };
 
   // 본문 스무스 스크롤(ScrollSmoother)과 같은 방식으로 움직임: 타임라인은 "휠 입력"에 해당하는 목표 위치(goal.v)만 짧게 옮기고,

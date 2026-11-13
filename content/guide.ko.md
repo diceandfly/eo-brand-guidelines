@@ -1231,7 +1231,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 
 ### Digital {layout=grid-2} {bg-color}
 웹 매거진 · 소셜 피드 · 영상 썸네일 등 디지털 어플리케이션입니다. 웹 레이아웃의 마진과 그리드는 정적 레이아웃에 초점을 맞춘 본 가이드라인의 지침보다, 각 사용 환경에 적합한 반응형 레이아웃 시스템 구축을 권장합니다. 
-![app-web-frame] {device} 1. Web Magazine
+![app-web-frame] {device} 1. Web UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. Social Feed
 ![app-social-2] {slide}
@@ -1245,7 +1245,6 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-social-10] {slide}
 ![app-social-11] {slide}
 ![app-social-12] {slide}
-![app-social-13] {slide}
 ![app-sns-channel] 3. SNS Channel
 ![app-sns-component] 4. Web Component
 
