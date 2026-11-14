@@ -42,6 +42,7 @@
 | E28 | 2026-11-14 | Graphic Unit › Pair (`pair-peers` · `pair-rivals` 라벨 Peer · Rival) | 캡션은 복수(Peers · Rivals), 장표 라벨은 단수 | 라벨이 두 유닛 중 하나에 붙어 있어 단수가 맞음 |
 | E29 | 2026-11-14 | Graphic Pattern › Color (`color-do-1` · `color-do-3` 등) | 캡션의 색 나열 순서 ↔ 장표의 색 순서 | 비주얼상 좋아서 장표 순서는 섞음. 캡션도 그대로 |
 | E30 | 2026-11-15 | Applications › Merch › 핀 배지 (`app-pin-badge` 서브심볼 E 블록 단독) ↔ Sub Symbol › Don'ts 6번째 "서브심볼을 EO 심볼 대신 단독 아이덴티티로 쓰지 마세요" | 서브심볼만 단독으로 쓴 것처럼 보임 | Sub Symbol 본문이 "파비콘 · 핀 배지처럼 … 아주 작은 정사각형 공간에 한하여 사용" 으로 핀 배지를 쓰임새로 명시 |
+| E31 | 2026-11-15 | Signature › Scalability 장표 (`scalability`) | 본문의 권장 최대 크기(70px · 약 15mm · 1/33) 행이 장표에 없음 | 디자이너 결정으로 장표에서는 생략, 본문에만 둠 |
 
 결정 대기 중인 항목은 `research/content-check/findings.csv`(로컬 전용, git 제외)에 있습니다 — 여기 오르기 전까지는 예외가 아닙니다.
 

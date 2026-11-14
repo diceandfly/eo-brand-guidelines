@@ -22,7 +22,7 @@
 - 실제 높이 = S × 거리 ÷ 500. 출력 px = 실제 높이 × 매체 px/mm(화면) 또는 dpi ÷ 25.4(인쇄).
 - Viewing 섹션에서 Real size height · Output height 를 직접 넣으면 S 로 역산.
 - 경고(심볼): 4mm 미만 Outside guide · 4mm Minimum visual size · 15mm 까지 Within optimal range · 15-25mm Above recommended size · 25mm 초과 Not recommended. 슬라이더 구간 색도 같다(4-15 최적 · 15-25 권장 초과 · 그 밖 가이드 밖). 가이드 문장의 최적 8-20mm 보다 권장 최대 15mm 를 우선.
-- 경고(시그니처): 4mm 미만 없음 · 가로형 4-10mm(10 초과 Use vertical) · 세로형 10mm 부터(10 미만 Use horizontal, 15 초과 권장 초과, 25 초과 Not recommended). 구간 색도 형별.
+- 경고(시그니처): 4mm 미만 없음 · 가로형 4mm 이상 10mm 미만(10 이상 Use vertical, 2026-11-15) · 세로형 10mm 부터(10 미만 Use horizontal, 15 초과 권장 초과, 25 초과 Not recommended). 구간 색도 형별.
 - 상태 색: ok = Bay Green · warn = Medium Gray · bad = 경고 주황 #DD5A2D(가이드 사이트 `--warn-orange`, 브랜드 컬러 아님).
 
 ## 3. Logo 섹션 — Symbol | Signature

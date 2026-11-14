@@ -4,21 +4,21 @@ const HEX = { 'Builder Neon': '#F9EE3A', 'Day Blue': '#6EC6D2', 'Bay Green': '#6
 /*RULES-START*/
 // ===== 브랜드 규칙 수치 — 가이드에서 온 값만 모음. 화면 · UI 코드는 읽기만 함 (npm test [5] 가 이 블록을 따로 돌려 값을 고정) =====
 // 보이는 높이 S(mm, 500mm 환산) 구간 — 가이드 Symbol · Signature › Scalability. [시작 mm, 구간] … 마지막 [Infinity].
-// 경계값은 더 나은 구간에 속함 (optimal > over > out): 4 · 15mm = 최적, 25mm = 권장 최대 초과, 시그니처 10mm = 두 형 모두 최적
+// 경계값은 더 나은 구간에 속함 (optimal > over > out): 4 · 15mm = 최적, 25mm = 권장 최대 초과. 단 세 번째 칸이 'hard' 인 구간은 시작점을 자기 것으로 가짐 — 시그니처 10mm = 세로형만(가로형은 10mm 미만, 2026-11-15)
 const RULES = {
   minVis: 4,   // 어느 형도 4mm 미만은 없음
   zones: {
     symbol: [[0, 'out'], [4, 'optimal'], [15, 'over'], [25, 'out'], [Infinity]],   // 최적 4-15 · 권장 최대 초과 15-25
-    sigH: [[0, 'out'], [4, 'optimal'], [10, 'out'], [Infinity]],                    // 가로형 시그니처 4-10
+    sigH: [[0, 'out'], [4, 'optimal'], [10, 'out', 'hard'], [Infinity]],            // 가로형 시그니처 4mm 이상 10mm 미만
     sigV: [[0, 'out'], [10, 'optimal'], [15, 'over'], [25, 'out'], [Infinity]],     // 세로형 시그니처 10mm 부터
   },
 };
 const ZONE_EPS = 1e-6, ZONE_RANK = { optimal: 2, over: 1, out: 0 };
-function zoneOf(zones, S) {   // S 가 든 구간 (닫힌 구간, 경계에서는 더 나은 쪽)
+function zoneOf(zones, S) {   // S 가 든 구간 (닫힌 구간, 경계에서는 더 나은 쪽. 다음 구간이 'hard' 면 그 경계는 다음 구간 것)
   let best = null;
   for (let i = 0; i < zones.length - 1; i++) {
-    const [a, k] = zones[i], b = zones[i + 1][0];
-    if (S >= a - ZONE_EPS && S <= b + ZONE_EPS && (best === null || ZONE_RANK[k] > ZONE_RANK[best])) best = k;
+    const [a, k] = zones[i], b = zones[i + 1][0], hardEnd = zones[i + 1][2] === 'hard';
+    if (S >= a - ZONE_EPS && (hardEnd ? S < b - ZONE_EPS : S <= b + ZONE_EPS) && (best === null || ZONE_RANK[k] > ZONE_RANK[best])) best = k;
   }
   return best;
 }
@@ -60,7 +60,7 @@ function warnings(S) {   // 판정 = zoneAt (슬라이더 구간 색과 같은 �
     if (S < RULES.minVis) return [['bad', 'Outside guide']];   // 4mm 미만 = 어느 형도 없음
     const lo = sizeZones().find(([, k]) => k === 'optimal')[0];   // 최적 구간 시작
     if (sig && S < lo) return [['bad', 'Use horizontal at this size']];   // 세로형 10mm 미만
-    if (sig && h) return [['bad', 'Use vertical at this size']];   // 가로형 10mm 초과
+    if (sig && h) return [['bad', 'Use vertical at this size']];   // 가로형 10mm 이상
     return [['bad', 'Not recommended']];   // 25mm 초과 = 그래픽 패턴 영역 (가이드 Scalability)
   }
   if (z === 'over') return [['warn', 'Above recommended size']];   // 권장 최대(15mm) 초과
@@ -549,7 +549,7 @@ function csGuideInner(c, gf, aH) {   // 좌표 = 화면 px (aH = 심볼 높이 p
 // ===== 19. 툴팁 — 켜진 행의 이름 · 인쇄 dpi 버튼에 마우스를 올리면 (보정 창과 같은 자리 · 모양) =====
 const TIPS = {
   'Type': 'Company is EO Studio. Service uses your own descriptor.',
-  'Layout': 'Horizontal at 4–10mm, vertical from 10mm up.',
+  'Layout': 'Horizontal from 4mm to under 10mm, vertical from 10mm up.',
   'Descriptor': 'The service name. Its first letter is capitalized automatically.',
   'Medium': 'Sets a typical viewing distance, output unit and resolution.',
   'Content': 'What the logo sits on. Changes the mockup and the available positions.',

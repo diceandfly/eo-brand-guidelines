@@ -379,7 +379,7 @@ As on the Symbol page, sizes on this page are given as the symbol height on a 16
 
 The smaller the signature is seen, the more the symbol and descriptor read as a single mass; the larger it is seen, the more each letter of the descriptor comes into focus. The form therefore depends on the visible size, and the threshold is a symbol height of 10mm (50px, 1/50).
 
-- **At 10mm (50px, 1/50) and below, use only the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable, and the signature can appear split into three masses: symbol · EO · Studio. Within the 6-10mm range, consider using the "Studio" version as an alternative.
+- **Below 10mm (50px, 1/50), use only the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable, and the signature can appear split into three masses: symbol · EO · Studio. Within the 6-10mm range, consider using the "Studio" version as an alternative.
 - **At 10mm and above, use only the vertical signature.** From this size, the descriptor of the vertical form reads clearly. The recommended maximum size is a symbol height of 70px (about 15mm, 1/33), and the maximum is a symbol height of 25mm (125px, 1/20).
 - As with the minimum size of the symbol, do not use the signature below 4mm (20px, 1/125) either.
 ![scalability] {zoom=1.05}
@@ -475,7 +475,7 @@ Always keep the logos optically centered.
 #### + Don'ts
 The signature is a fixed combination with a defined relationship between symbol and descriptor. Do not change or rebuild its components separately.
 ![dont-1]{dont} Do not use the vertical signature at a size so small that the descriptor is hard to read
-![dont-2]{dont} {zoom=2.3} Do not use the horizontal signature at a symbol height larger than 10mm (50px, 1/50)
+![dont-2]{dont} {zoom=2.3} Do not use the horizontal signature at a symbol height of 10mm (50px, 1/50) or larger
 ![dont-3]{dont} {zoom=1.6} Do not use a different typeface for the descriptor
 ![dont-4]{dont} {zoom=1.6} Do not change the font settings of the descriptor
 ![dont-5]{dont} {zoom=1.6} Do not break the descriptor onto multiple lines
@@ -1208,7 +1208,7 @@ The following are typical cases where the pattern loses its role as protagonist.
 
 ## Applications
 
-### + Approach
+### Approach
 This page is a set of reference drafts that apply the EO graphic system to various media. Refer to the look and feel, layout composition and media-specific direction of the applied graphic pattern, but actual production may differ by medium and specification, so give priority to the rules in each chapter and proceed with the approval of the EO design team.
 
 When placing the graphic pattern on a page, we recommend following these rules.

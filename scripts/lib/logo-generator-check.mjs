@@ -73,7 +73,7 @@ export function checkLogoGenerator(ROOT, { ok, fail }) {
   vm.runInContext(rb[1] + '\n;globalThis.__r = { RULES, SIG, ART_AREA_MAX, MM_MIN, MM_MAX, zoneOf };', rc);
   const R = rc.__r, pins = [
     ['구간 심볼', JSON.stringify(R.RULES.zones.symbol), JSON.stringify([[0, 'out'], [4, 'optimal'], [15, 'over'], [25, 'out'], [null]])],
-    ['구간 가로형 시그니처', JSON.stringify(R.RULES.zones.sigH), JSON.stringify([[0, 'out'], [4, 'optimal'], [10, 'out'], [null]])],
+    ['구간 가로형 시그니처', JSON.stringify(R.RULES.zones.sigH), JSON.stringify([[0, 'out'], [4, 'optimal'], [10, 'out', 'hard'], [null]])],
     ['구간 세로형 시그니처', JSON.stringify(R.RULES.zones.sigV), JSON.stringify([[0, 'out'], [10, 'optimal'], [15, 'over'], [25, 'out'], [null]])],
     ['최소 보이는 높이', R.RULES.minVis, 4], ['슬라이더 범위', `${R.MM_MIN}-${R.MM_MAX}`, '4-30'], ['로고 면적 상한', R.ART_AREA_MAX, 0.1],
     ['세로형 em', R.SIG.v.em.toFixed(4), '0.4704'], ['세로형 다크 em', R.SIG.v.emDark, 0.48], ['세로형 다크 자간', R.SIG.v.trackDark, -10], ['세로형 drop', R.SIG.v.drop, 0.2], ['세로형 nudge', R.SIG.v.nudge, -0.01],
@@ -81,7 +81,7 @@ export function checkLogoGenerator(ROOT, { ok, fail }) {
     ['가로형 공백 자간', `${R.SIG.h.space}/${R.SIG.h.spaceDark}`, '-60/-70'], ['다크 글자 오프셋', R.SIG.darkOffset, 0.005],
     // 경계값 = 더 나은 구간 (상태 메시지와 슬라이더 색이 같게)
     ['경계 심볼 4 · 15 · 25 · 25.1', ['symbol', 4, 15, 25, 25.1].slice(1).map(S => R.zoneOf(R.RULES.zones.symbol, S)).join(), 'optimal,optimal,over,out'],
-    ['경계 시그니처 10 (가로 · 세로)', [R.zoneOf(R.RULES.zones.sigH, 10), R.zoneOf(R.RULES.zones.sigV, 10)].join(), 'optimal,optimal'],
+    ['경계 시그니처 9.99 · 10 (가로 · 세로)', [R.zoneOf(R.RULES.zones.sigH, 9.99), R.zoneOf(R.RULES.zones.sigH, 10), R.zoneOf(R.RULES.zones.sigV, 10)].join(), 'optimal,out,optimal'],
   ];
   const off = pins.filter(([, got, want]) => got !== want);
   for (const [name, got, want] of off) fail(`생성기 규칙 ${name} — ${got} (기대 ${want})`);
