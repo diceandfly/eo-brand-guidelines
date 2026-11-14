@@ -1213,7 +1213,7 @@ This page is a set of reference drafts that apply the EO graphic system to vario
 
 When placing the graphic pattern on a page, we recommend following these rules.
 
-- **Match the pattern's density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through [[graphic-unit#morphology-density|density]]; keep posters seen up close at medium complexity.
+- **Match the pattern's density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through [[graphic-unit#morphology-density|density]]; keep posters seen up close at medium complexity, and business cards held in the hand simpler still.
 - **Lead the eye with the direction of the [[graphic-unit#vocabulary-thread|threads]].** Arrange the threads so that their compression gathers in one place, leading the eye to the mark or message there.
 - **Rebuild the pattern to fit the format.** Every graphic pattern is a responsive system that can be rearranged to the proportion of its rectangular area, but when stretching or shrinking the same pattern, check that the threads in the compression section have not become too dense.
 ![app-principles] {bg-cover}
@@ -1239,15 +1239,17 @@ Digital touchpoints such as the web · Instagram feed · SNS profile · video th
 ![app-sns-component] {bg-cover} 4. Video Thumbnail
 
 
-### Print {layout=grid-3}
-Print and outdoor media such as posters · billboards · street banners. Outdoor media, read from afar and in a short time, give the graphic pattern area generous room as in the examples in [[graphic-pattern#zoning]], and reduce the message to about one to three lines of headline. Decide the pattern density by weighing both visual impact and viewing distance, and set the symbol size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom.
+### Print {layout=grid-2}
+Print and outdoor media such as posters · billboards · street banners · business cards. Outdoor media, read from afar and in a short time, give the graphic pattern area generous room as in the examples in [[graphic-pattern#zoning]], and reduce the message to about one to three lines of headline. Decide the pattern density by weighing both visual impact and viewing distance, and set the symbol size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom.
 
+- On small pages whose front and back work together, such as business cards, put the graphic pattern on one side and the information on the other, and base the margins and grid on the side with the main content ([[typography#zoning|Zoning]]).
 - Print with the CMYK values in [[colors#eo-palette|EO Palette]]. Screen RGB · HEX values shift in print, so build print files in CMYK mode from the start. Where color fidelity matters, or a Builder Neon background covers a large area, print it as a Pantone spot color.
 - Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
 - Air White can be replaced by white paper instead of ink. The same values look different on different papers and materials, so check the colors with a proof before the final run.
 ![app-billboard] {bg-cover} 1. Billboard
 ![app-street-banner] {bg-cover} 2. Street Banner
 ![app-poster] {bg-cover} 3. Poster
+![app-businesscard] {bg-cover} 4. Business Card
 
 
 ### Merch {layout=grid-3}
