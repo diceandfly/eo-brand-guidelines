@@ -847,7 +847,7 @@ For detailed application by element, see the Color section of each page.
 ### Color {layout=grid-2}
 #### In Use
 The following images show the EO palette applied across a range of designs.
-![color-in-use-1] 1. 
+![color-in-use-1] 1. Poster
 ![color-in-use-2] 2. Clothing
 ![color-in-use-3] 3. Hanging banner
 ![color-in-use-4] 4. Outdoor flag

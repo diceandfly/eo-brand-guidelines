@@ -849,7 +849,7 @@ EO 팔레트는 Builder Neon · Day Blue · Bay Green과 이를 받쳐 주는 �
 ### Color {layout=grid-2}
 #### In Use
 다음 이미지들은 EO 팔레트가 다양한 디자인에 적용된 예시입니다.
-![color-in-use-1] 1. 
+![color-in-use-1] 1. 포스터
 ![color-in-use-2] 2. 의류
 ![color-in-use-3] 3. 행잉 배너
 ![color-in-use-4] 4. 옥외 깃발
