@@ -1227,7 +1227,7 @@ Four rules to follow when placing the graphic pattern on a page.
 ![app-principles] {bg-cover}
 
 
-### Digital {layout=grid-3} {bg-color}
+### Digital {layout=grid-2} {bg-color}
 Digital applications such as the web magazine · social feed · video thumbnails. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
 ![app-web-frame] {device} 1. Web UI
 ![app-web] {scroll}
@@ -1252,9 +1252,7 @@ Print and outdoor media such as posters · billboards · street banners. Outdoor
 
 Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
 
-- Print with the CMYK values in [[colors#eo-palette|EO Palette]]. Screen RGB · HEX values shift in print, so build print files in CMYK mode from the start.
-- Highly saturated colors such as Builder Neon cannot be reproduced in CMYK as vividly as on screen. Where color fidelity matters, or a Builder Neon background covers a large area, print it as a Pantone spot color.
-- Print Space Black with the palette's rich black value so large areas do not look like a dull gray, and keep small text and thin lines in K100 only so they do not bleed if the plates shift.
+- Print with the CMYK values in [[colors#eo-palette|EO Palette]]. Screen RGB · HEX values shift in print, so build print files in CMYK mode from the start. Where color fidelity matters, or a Builder Neon background covers a large area, print it as a Pantone spot color.
 - Air White can be replaced by white paper instead of ink. The same values look different on different papers and materials, so check the colors with a proof before the final run.
 ![app-billboard] {bg-cover} 1. Billboard
 ![app-street-banner] {bg-cover} 2. Street Banner
@@ -1267,7 +1265,7 @@ A merch line of apparel such as tees · hoodies · caps, plus hang tags · stick
 - For apparel graphics, screen printing is recommended so that vivid single colors stand out. Mix the inks to the Pantone values in [[colors#eo-palette|EO Palette]], and keep each graphic to one or two colors.
 - Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. When printing light ink on dark fabric, lay down a white underbase first for full color.
 - Screen printing struggles with very thin lines and gradients, so instead of dense patterns whose threads get too thin, use graphics of simplified units.
-- On items with a small or curved print area, such as caps, the symbol can be embroidered. Thread thickness blurs embroidery at small sizes, so keep it larger than you would in print.
+- On items with a small print area, such as caps, keep the symbol small and compact. Embroidery brings out a strongly analog mood, so prefer heat-transfer printing, which carries the crisp graphic as it is.
 - Accessories such as hang tags · stickers · badges follow the same color and graphic rules, and all merch is reviewed by the EO design team before production.
 ![app-tee] {bg-cover} 1. Oversized Tee
 ![app-hoodie] {bg-cover} 2. Hoodie

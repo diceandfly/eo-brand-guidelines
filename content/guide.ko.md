@@ -1227,7 +1227,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-principles] {bg-cover}
 
 
-### Digital {layout=grid-3} {bg-color}
+### Digital {layout=grid-2} {bg-color}
 웹 매거진 · 소셜 피드 · 영상 썸네일 등 디지털 어플리케이션입니다. 웹 레이아웃의 마진과 그리드는 정적 레이아웃에 초점을 맞춘 본 가이드라인의 지침보다, 각 사용 환경에 적합한 반응형 레이아웃 시스템 구축을 권장합니다. 
 ![app-web-frame] {device} 1. 웹 UI
 ![app-web] {scroll}
@@ -1252,9 +1252,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 
 컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray · Space Black 배경을 우선하고, Builder Neon 배경은 제한적으로 사용해 브랜드의 존재감을 강하게 드러내세요.
 
-- 인쇄물은 [[colors#eo-palette|EO Palette]]의 CMYK 값으로 출력합니다. 화면용 RGB · HEX 값을 인쇄 파일에 그대로 쓰면 색이 달라지므로, 인쇄 파일은 처음부터 CMYK 모드로 만듭니다.
-- Builder Neon처럼 채도가 높은 컬러는 CMYK 혼합으로는 화면만큼 선명하게 재현되지 않습니다. 색 재현이 중요하거나 Builder Neon 배경이 넓은 지면은 Pantone 별색으로 인쇄합니다.
-- Space Black은 넓은 면이 탁한 회색으로 뜨지 않도록 팔레트의 리치 블랙 값으로 인쇄하고, 작은 텍스트와 가는 선은 판이 어긋나도 번지지 않도록 K100 단색으로 둡니다.
+- 인쇄물은 [[colors#eo-palette|EO Palette]]의 CMYK 값으로 출력합니다. 화면용 RGB · HEX 값을 인쇄 파일에 그대로 쓰면 색이 달라지므로, 인쇄 파일은 처음부터 CMYK 모드로 만듭니다. 색 재현이 중요하거나 Builder Neon 배경이 넓은 지면은 Pantone 별색으로 인쇄합니다.
 - Air White는 잉크 대신 백색 용지로 대체할 수 있습니다. 용지 · 소재에 따라 같은 값도 색이 달라지므로, 본 인쇄 전에 교정 인쇄로 컬러를 확인합니다.
 ![app-billboard] {bg-cover} 1. 빌보드
 ![app-street-banner] {bg-cover} 2. 거리 배너
@@ -1267,7 +1265,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 - 의류 그래픽은 선명한 단색 컬러가 돋보이도록 실크스크린 인쇄를 권장합니다. 잉크는 [[colors#eo-palette|EO Palette]]의 Pantone 값에 맞춰 조색하고, 한 그래픽에 쓰는 컬러는 1-2도로 줄입니다.
 - 원단 컬러는 그래픽의 배경 컬러로 보고 [[graphic-pattern#color]]의 조합을 따릅니다. 어두운 원단에 밝은 잉크를 찍을 때는 흰색 밑색을 먼저 깔아 발색을 확보합니다.
 - 실크스크린은 아주 가는 선과 그라데이션을 재현하기 어려우므로, thread가 지나치게 가늘어지는 고밀도 패턴 대신 유닛을 단순하게 정리한 그래픽을 씁니다.
-- 캡처럼 인쇄 면이 작거나 굽은 품목은 심볼을 자수로 표현할 수 있습니다. 자수는 실의 굵기 때문에 작은 크기에서 형태가 뭉개지므로 인쇄보다 넉넉한 크기로 둡니다.
+- 캡처럼 인쇄 면이 작은 품목은 심볼을 작고 컴팩트하게 표현합니다. 자수는 아날로그적인 무드가 강하게 드러나므로, 선명한 그래픽을 그대로 옮길 수 있는 열전사 프린팅을 우선합니다.
 - 행택 · 스티커 · 뱃지 같은 부자재도 같은 컬러 · 그래픽 규칙을 따르며, 모든 굿즈는 제작 전 EO 디자인팀의 확인을 받습니다.
 ![app-tee] {bg-cover} 1. 오버사이즈 티셔츠
 ![app-hoodie] {bg-cover} 2. 후디
