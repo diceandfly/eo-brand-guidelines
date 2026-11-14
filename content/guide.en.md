@@ -1240,12 +1240,14 @@ Digital touchpoints such as the web · Instagram feed · SNS profile · YouTube 
 
 
 ### Print {layout=grid-2}
-Print and outdoor media such as posters · billboards · street banners · business cards. Outdoor media, read from afar and in a short time, give the graphic pattern area generous room as in the examples in [[graphic-pattern#zoning]], and reduce the message to about one to three lines of headline. Decide the pattern density by weighing both visual impact and viewing distance, and set the symbol size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom.
+Printed media such as business cards · posters · billboards · street banners.
 
-- On small pages whose front and back work together, such as business cards, put the graphic pattern on one side and the information on the other, and base the margins and grid on the side with the main content ([[typography#zoning|Zoning]]).
-- Print with the CMYK values in [[colors#eo-palette|EO Palette]]. Screen RGB · HEX values shift in print, so build print files in CMYK mode from the start. Where color fidelity matters, or a Builder Neon background covers a large area, print it as a Pantone spot color.
 - Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
+- Print with the CMYK values in [[colors#eo-palette|EO Palette]]. Screen RGB · HEX values shift in print, so build print files in CMYK mode from the start. Where color fidelity matters, or a Builder Neon background covers a large area, print it as a Pantone spot color.
 - Air White can be replaced by white paper instead of ink. The same values look different on different papers and materials, so check the colors with a proof before the final run.
+- On small pages whose front and back work together, such as business cards, put the graphic pattern on one side and the information on the other, and base the margins and grid on the side with the main content ([[typography#zoning|Zoning]]).
+
+Outdoor media such as billboards · street banners, read from afar and in a short time, give the graphic pattern area generous room as in the examples in [[graphic-pattern#zoning]], and reduce the message to about one to three lines of headline. Decide the pattern density by weighing both visual impact and viewing distance, and set the symbol size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom.
 ![app-billboard] {bg-cover} 1. Billboard
 ![app-street-banner] {bg-cover} 2. Street Banner
 ![app-poster] {bg-cover} 3. Poster
