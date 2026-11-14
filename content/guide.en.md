@@ -1208,18 +1208,19 @@ The following are typical cases where the pattern loses its role as protagonist.
 
 ## Applications
 
-### + Principles
-The results on this page are examples of the EO graphic system applied to various media, and actual production may differ by medium and specification. Whatever the medium, however, follow these four rules when placing the graphic pattern on a page.
+### + Approach
+This page is a set of reference drafts that apply the EO graphic system to various media. Refer to the look and feel, layout composition and media-specific direction of the applied graphic pattern, but actual production may differ by medium and specification, so give priority to the rules in each chapter and proceed with the approval of the EO design team.
 
-- **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through [[graphic-unit#morphology-density|density]]; keep posters seen up close at medium complexity. This is a general tendency, however, so designers use their judgment and put visual quality first.
-- **One page can hold several variations.** Place several variations of the same [[graphic-unit#vocabulary|metaphor]] in one composition to create rhythm.
-- **A pattern fits any proportion.** Divide the page, as in a [[typography#zoning|four-way division]], to carry several messages on one page.
-- **Lead the eye with the direction of the [[graphic-unit#vocabulary-thread|threads]].** Converge all threads on a single point to draw the eye to the mark or message placed there.
+When placing the graphic pattern on a page, we recommend following these rules.
+
+- **Match the pattern's density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through [[graphic-unit#morphology-density|density]]; keep posters seen up close at medium complexity.
+- **Lead the eye with the direction of the [[graphic-unit#vocabulary-thread|threads]].** Arrange the threads so that their compression gathers in one place, leading the eye to the mark or message there.
+- **Rebuild the pattern to fit the format.** Every graphic pattern is a responsive system that can be rearranged to the proportion of its rectangular area, but when stretching or shrinking the same pattern, check that the threads in the compression section have not become too dense.
 ![app-principles] {bg-cover}
 
 
 ### Digital {layout=grid-2} {bg-color}
-Digital touchpoints such as the web · Instagram feed · SNS profile · video thumbnails. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
+Digital touchpoints such as the web · Instagram feed · SNS profile · video thumbnails. The grid system in this guideline is based mainly on static pages, so web and digital content, whose screen sizes vary, should give priority to a responsive layout suited to each environment.
 ![app-web-frame] {device} 1. Web UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. Instagram Feed
@@ -1246,7 +1247,7 @@ Print and outdoor media such as posters · billboards · street banners. Outdoor
 - Air White can be replaced by white paper instead of ink. The same values look different on different papers and materials, so check the colors with a proof before the final run.
 ![app-billboard] {bg-cover} 1. Billboard
 ![app-street-banner] {bg-cover} 2. Street Banner
-![app-poster] {bg-cover} {zoom=1.05} 3. Poster
+![app-poster] {bg-cover} 3. Poster
 
 
 ### Merch {layout=grid-3}

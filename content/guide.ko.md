@@ -1208,18 +1208,19 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 
 ## Applications
 
-### + Principles
-이 페이지의 결과물은 EO 그래픽 시스템을 여러 매체에 적용해 본 예시로, 실제 제작에서는 매체와 사양에 따라 달라질 수 있습니다. 다만 어떤 매체든 그래픽 패턴을 지면에 올릴 때는 다음 네 가지 규칙을 지킵니다.
+### + Approach
+이 페이지는 EO 그래픽 시스템을 여러 매체에 적용해 본 참고용 시안입니다. 그래픽 패턴이 적용된 룩앤필 · 레이아웃 구성 · 매체별 활용 방향을 참고하되, 실제 제작에서는 매체와 사양에 따라 달라질 수 있으므로 각 챕터의 규칙을 우선하고 EO 디자인팀의 승인을 거쳐 진행합니다.
 
-- **밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 지면은 복잡도를 끝까지 올려 [[graphic-unit#morphology-density|밀도]]로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에 둡니다. 단, 이는 일반적인 경향이므로 시각적 완성도를 우선해 디자이너가 재량으로 판단합니다.
-- **한 지면에 여러 변형을 둘 수 있습니다.** 같은 [[graphic-unit#vocabulary|메타포]]의 변형 여러 개를 한 구성에 놓아 리듬을 만듭니다.
-- **패턴은 어떤 비율에도 맞습니다.** [[typography#zoning|4분할]]처럼 지면을 나누면 한 지면에 여러 메시지를 실을 수 있습니다.
-- **[[graphic-unit#vocabulary-thread|thread]]의 방향으로 시선을 이끕니다.** 모든 thread가 한 점으로 모이게 놓으면 그 자리의 마크나 메시지로 시선이 갑니다.
+그래픽 패턴을 지면에 올릴 때는 다음 규칙을 따르는 것을 권장합니다.
+
+- **패턴의 밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 지면은 복잡도를 끝까지 올려 [[graphic-unit#morphology-density|밀도]]로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에 둡니다. 
+- **[[graphic-unit#vocabulary-thread|thread]]의 방향으로 시선을 이끕니다.** thread의 compression이 한 곳으로 모이게 배치해 그 자리의 마크나 메시지로 시선이 유도하세요.
+- **판형에 맞춰 패턴을 다시 짭니다.** 모든 그래픽 패턴은 사각 영역의 비율에 맞춰 재배열할 수 있는 반응형 시스템이지만, 같은 패턴을 늘리거나 줄여 쓸 때 compression 구간의 thread가 과밀해지지 않았는지 체크합니다.
 ![app-principles] {bg-cover}
 
 
 ### Digital {layout=grid-2} {bg-color}
-웹 · 인스타그램 피드 · SNS 프로필 · 영상 썸네일 등 디지털 접점입니다. 웹 레이아웃의 마진과 그리드는 정적 레이아웃에 초점을 맞춘 본 가이드라인의 지침보다, 각 사용 환경에 적합한 반응형 레이아웃 시스템 구축을 권장합니다. 
+웹 · 인스타그램 피드 · SNS 프로필 · 영상 썸네일 등 디지털 접점입니다. 본 가이드라인의 그리드 시스템은 주로 정적인 지면을 기준으로 하고 있으며, 화면 크기가 달라지는 웹 · 디지털 콘텐츠는 각 사용 환경에 맞는 반응형 레이아웃을 우선해야 합니다.
 ![app-web-frame] {device} 1. 웹 UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. 인스타그램 피드
@@ -1246,7 +1247,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 - Air White는 잉크 대신 백색 용지로 대체할 수 있습니다. 용지 · 소재에 따라 같은 값도 색이 달라지므로, 본 인쇄 전에 교정 인쇄로 컬러를 확인합니다.
 ![app-billboard] {bg-cover} 1. 빌보드
 ![app-street-banner] {bg-cover} 2. 거리 배너
-![app-poster] {bg-cover} {zoom=1.05} 3. 포스터
+![app-poster] {bg-cover} 3. 포스터
 
 
 ### Merch {layout=grid-3}
