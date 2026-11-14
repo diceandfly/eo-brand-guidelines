@@ -1220,10 +1220,10 @@ The following are typical cases where the pattern loses its role as protagonist.
 ### + Principles
 Four rules to follow when placing the graphic pattern on a page.
 
-- **Match density to viewing distance.** On large pages seen from afar, such as [[#advertisement|billboards]], push complexity all the way up to hold the eye through density; keep [[#print|posters]] seen up close at medium complexity. For patterns too complex for their visible size, see [[graphic-pattern#donts|Don'ts]]; for the density of a single unit, see [[graphic-unit#morphology-density|Density]]. This is a general tendency, however, so designers use their judgment and put visual quality first.
-- **One page can hold several variations.** Place several variations of the same [[graphic-unit#vocabulary|metaphor]] in one composition to create rhythm. For the values that create variations, see [[graphic-unit#parameters|Parameters]]; for ways to combine several units, see [[graphic-unit#vocabulary-formation|Formation]].
-- **A pattern fits any proportion.** Divide the page, as in a [[typography#zoning|four-way division]], to carry several messages on one page. The size of the graphic pattern area for each page proportion follows [[graphic-pattern#zoning|Zoning]].
-- **Lead the eye with the direction of the [[graphic-unit#vocabulary-thread|threads]].** Converge all threads on a single point to draw the eye to the mark or message placed there. For tidying the lines of crossing units, see [[graphic-pattern#alignment|Alignment]].
+- **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through [[graphic-unit#morphology-density|density]]; keep posters seen up close at medium complexity. This is a general tendency, however, so designers use their judgment and put visual quality first.
+- **One page can hold several variations.** Place several variations of the same [[graphic-unit#vocabulary|metaphor]] in one composition to create rhythm.
+- **A pattern fits any proportion.** Divide the page, as in a [[typography#zoning|four-way division]], to carry several messages on one page.
+- **Lead the eye with the direction of the [[graphic-unit#vocabulary-thread|threads]].** Converge all threads on a single point to draw the eye to the mark or message placed there.
 ![app-principles] {bg-cover}
 
 

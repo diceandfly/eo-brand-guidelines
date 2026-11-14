@@ -1222,10 +1222,10 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ### + Principles
 그래픽 패턴을 지면에 올릴 때 지키는 네 가지 규칙입니다.
 
-- **밀도는 보는 거리에 맞춥니다.** [[#advertisement|빌보드]]처럼 멀리서 보는 큰 지면은 복잡도를 끝까지 올려 밀도로 시선을 잡고, 가까이서 보는 [[#print|포스터]]는 중간 복잡도에 둡니다. 보이는 크기에 비해 지나치게 복잡한 패턴은 [[graphic-pattern#donts|Don'ts]]를, 유닛 하나의 밀도는 [[graphic-unit#morphology-density|Density]]를 참조하세요. 단, 이는 일반적인 경향이므로 시각적 완성도를 우선해 디자이너가 재량으로 판단합니다.
-- **한 지면에 여러 변형을 둘 수 있습니다.** 같은 [[graphic-unit#vocabulary|메타포]]의 변형 여러 개를 한 구성에 놓아 리듬을 만듭니다. 변형을 만드는 값은 [[graphic-unit#parameters|Parameters]], 여러 유닛을 엮는 방식은 [[graphic-unit#vocabulary-formation|Formation]]을 참조하세요.
-- **패턴은 어떤 비율에도 맞습니다.** [[typography#zoning|4분할]]처럼 지면을 나누면 한 지면에 여러 메시지를 실을 수 있습니다. 지면 비율별 그래픽 패턴 영역의 크기는 [[graphic-pattern#zoning|Zoning]]을 따릅니다.
-- **[[graphic-unit#vocabulary-thread|thread]]의 방향으로 시선을 이끕니다.** 모든 thread가 한 점으로 모이게 놓으면 그 자리의 마크나 메시지로 시선이 갑니다. 교차하는 유닛의 라인 정리는 [[graphic-pattern#alignment|Alignment]]를 참조하세요.
+- **밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 지면은 복잡도를 끝까지 올려 [[graphic-unit#morphology-density|밀도]]로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에 둡니다. 단, 이는 일반적인 경향이므로 시각적 완성도를 우선해 디자이너가 재량으로 판단합니다.
+- **한 지면에 여러 변형을 둘 수 있습니다.** 같은 [[graphic-unit#vocabulary|메타포]]의 변형 여러 개를 한 구성에 놓아 리듬을 만듭니다.
+- **패턴은 어떤 비율에도 맞습니다.** [[typography#zoning|4분할]]처럼 지면을 나누면 한 지면에 여러 메시지를 실을 수 있습니다.
+- **[[graphic-unit#vocabulary-thread|thread]]의 방향으로 시선을 이끕니다.** 모든 thread가 한 점으로 모이게 놓으면 그 자리의 마크나 메시지로 시선이 갑니다.
 ![app-principles] {bg-cover}
 
 
