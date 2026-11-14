@@ -1236,7 +1236,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-social-11] {slide}
 ![app-social-12] {slide}
 ![app-sns-channel] {bg-cover} 3. SNS 프로필
-![app-sns-component] {bg-cover} 4. 영상 썸네일
+![app-sns-component] {bg-cover} {zoom=1.18} 4. 영상 썸네일
 
 
 ### Print {layout=grid-2}
@@ -1249,7 +1249,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-billboard] {bg-cover} 1. 빌보드
 ![app-street-banner] {bg-cover} 2. 거리 배너
 ![app-poster] {bg-cover} 3. 포스터
-![app-businesscard] {bg-cover} 4. 명함
+![app-businesscard] {bg-cover} {zoom=1.05} 4. 명함
 
 
 ### Merch {layout=grid-3}

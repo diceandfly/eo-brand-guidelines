@@ -1236,7 +1236,7 @@ Digital touchpoints such as the web · Instagram feed · SNS profile · video th
 ![app-social-11] {slide}
 ![app-social-12] {slide}
 ![app-sns-channel] {bg-cover} 3. SNS Profile
-![app-sns-component] {bg-cover} 4. Video Thumbnail
+![app-sns-component] {bg-cover} {zoom=1.18} 4. Video Thumbnail
 
 
 ### Print {layout=grid-2}
@@ -1249,7 +1249,7 @@ Print and outdoor media such as posters · billboards · street banners · busin
 ![app-billboard] {bg-cover} 1. Billboard
 ![app-street-banner] {bg-cover} 2. Street Banner
 ![app-poster] {bg-cover} 3. Poster
-![app-businesscard] {bg-cover} 4. Business Card
+![app-businesscard] {bg-cover} {zoom=1.05} 4. Business Card
 
 
 ### Merch {layout=grid-3}
