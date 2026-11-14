@@ -35,12 +35,13 @@
 | E21 | 2026-11-14 | Signature › Inversion 세로형(`inversion-v` "Align center") ↔ Descriptor 세로형(`descriptor-v` H/100 왼쪽 보정) | 다크에서 H/100 보정이 빠진 것처럼 보임 | 라이트에서 한 번 보정한 위치를 기준으로 하므로 문제없음 |
 | E22 | 2026-11-14 | Typography › Character Set Mono (`charset-mono` Small figures 행) | 분수 글리프가 두 줄로 깨진 것처럼 보임 | 공간 활용을 위한 원래 글리프 디자인 |
 | E23 | 2026-11-14 | Colors › Don'ts 6장 좌하단 "Typography Checklist" | 컬러 장표에 타이포 라벨 | 이 섹션 공통 샘플 목업이라 문구 내용은 중요하지 않음 |
-| E24 | 2026-11-14 | Colors › In Use 3번째 (`color-in-use-3` "08:00 - 11:00 PM") | 시작 시각에 AM/PM 없음 | 앞 시각은 뒤 표기로 유추하는 흔한 표기 |
+| E24 | 2026-11-14 | Colors › In Use 행잉 배너 (`color-hanging-banner` "08:00 - 11:00 PM") | 시작 시각에 AM/PM 없음 | 앞 시각은 뒤 표기로 유추하는 흔한 표기 |
 | E25 | 2026-11-14 | Graphic Unit › Parameters (`param-thread-compression` "compression -1 / -2") | + 방향 예시가 없음 | 한 장표에서 둘 다 보이려고 반전하면 직관성이 떨어지고, 파라미터당 장표 2장은 양식 불일치라 타협. − 부호로 유추 |
 | E26 | 2026-11-14 | Graphic Unit › Color (`color-gray` · `color-blue-green` SVG) | 캡션에 없는 Builder Neon 유닛이 섞여 있음 | 그 캔버스 안에서 그레이(블루 · 그린)의 역할을 보여 주는 그림이라 상관없음 |
 | E27 | 2026-11-14 | Graphic Unit › Morphology › Proportion | 4장만 Air White 유닛 | 분위기 환기, 그리고 컬러보다 형태에 집중시키려는 의도 |
 | E28 | 2026-11-14 | Graphic Unit › Pair (`pair-peers` · `pair-rivals` 라벨 Peer · Rival) | 캡션은 복수(Peers · Rivals), 장표 라벨은 단수 | 라벨이 두 유닛 중 하나에 붙어 있어 단수가 맞음 |
 | E29 | 2026-11-14 | Graphic Pattern › Color (`color-do-1` · `color-do-3` 등) | 캡션의 색 나열 순서 ↔ 장표의 색 순서 | 비주얼상 좋아서 장표 순서는 섞음. 캡션도 그대로 |
+| E30 | 2026-11-15 | Applications › Merch › 핀 배지 (`app-pin-badge` 서브심볼 E 블록 단독) ↔ Sub Symbol › Don'ts 6번째 "서브심볼을 EO 심볼 대신 단독 아이덴티티로 쓰지 마세요" | 서브심볼만 단독으로 쓴 것처럼 보임 | Sub Symbol 본문이 "파비콘 · 핀 배지처럼 … 아주 작은 정사각형 공간에 한하여 사용" 으로 핀 배지를 쓰임새로 명시 |
 
 결정 대기 중인 항목은 `research/content-check/findings.csv`(로컬 전용, git 제외)에 있습니다 — 여기 오르기 전까지는 예외가 아닙니다.
 

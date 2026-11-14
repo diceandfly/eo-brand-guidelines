@@ -479,7 +479,7 @@ The signature is a fixed combination with a defined relationship between symbol 
 ![dont-3]{dont} {zoom=1.6} Do not use a different typeface for the descriptor
 ![dont-4]{dont} {zoom=1.6} Do not change the font settings of the descriptor
 ![dont-5]{dont} {zoom=1.6} Do not break the descriptor onto multiple lines
-![dont-6]{dont} {zoom=1.5} Do not use the words "EO Studio" alone as a logo
+![dont-6]{dont} {zoom=1.5} Do not replace the logo with the words "EO Studio" alone, without the symbol
 ![dont-7]{dont} {zoom=2.4} Do not combine the sub symbol with a descriptor
 ![dont-8]{dont} {zoom=1.6} Do not color the symbol and the descriptor differently
 ![dont-9]{dont} {zoom=1.6} Do not stretch or distort the signature
@@ -847,10 +847,10 @@ For detailed application by element, see the Color section of each page.
 ### Color {layout=grid-2}
 #### In Use
 The following images show the EO palette applied across a range of designs.
-![color-in-use-1] 1. Poster
-![color-in-use-2] 2. Clothing
-![color-in-use-3] 3. Hanging banner
-![color-in-use-4] 4. Outdoor flag
+![color-flag] 1. Outdoor flag
+![color-hanging-banner] 2. Hanging banner
+![color-poster] 3. Poster
+![color-apparel] 4. Clothing
 
 ### Color {layout=grid-3}
 #### Don'ts {zoom=1.3}
@@ -1216,11 +1216,11 @@ When placing the graphic pattern on a page, we recommend following these rules.
 - **Match the pattern's density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through [[graphic-unit#morphology-density|density]]; keep posters seen up close at medium complexity, and business cards held in the hand simpler still.
 - **Lead the eye with the direction of the [[graphic-unit#vocabulary-thread|threads]].** Arrange the threads so that their compression gathers in one place, leading the eye to the mark or message there.
 - **Rebuild the pattern to fit the format.** Every graphic pattern is a responsive system that can be rearranged to the proportion of its rectangular area, but when stretching or shrinking the same pattern, check that the threads in the compression section have not become too dense.
-![app-principles] {bg-cover}
+![app-flag] {bg-cover}
 
 
 ### Digital {layout=grid-2} {bg-color}
-Digital touchpoints such as the web · Instagram feed · SNS profile · video thumbnails. The grid system in this guideline is based mainly on static pages, so web and digital content, whose screen sizes vary, should give priority to a responsive layout suited to each environment.
+Digital touchpoints such as the web · Instagram feed · SNS profile · YouTube channel. The grid system in this guideline is based mainly on static pages, so web and digital content, whose screen sizes vary, should give priority to a responsive layout suited to each environment.
 ![app-web-frame] {device} 1. Web UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. Instagram Feed
@@ -1235,8 +1235,8 @@ Digital touchpoints such as the web · Instagram feed · SNS profile · video th
 ![app-social-10] {slide}
 ![app-social-11] {slide}
 ![app-social-12] {slide}
-![app-sns-channel] {bg-cover} 3. SNS Profile
-![app-sns-component] {bg-cover} {zoom=1.18} 4. Video Thumbnail
+![app-sns-profile] {bg-cover} 3. SNS Profile
+![app-youtube-channel] {bg-cover} {zoom=1.18} 4. YouTube Channel
 
 
 ### Print {layout=grid-2}
@@ -1253,18 +1253,18 @@ Print and outdoor media such as posters · billboards · street banners · busin
 
 
 ### Merch {layout=grid-3}
-A brand merch line of apparel such as tees · hoodies · caps, plus hang tags · stickers · badges. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
+A brand merch line of apparel such as tees · hoodies · caps, plus hang tags · stickers · pin badges. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
 
 - For apparel graphics, screen printing is recommended so that vivid single colors stand out. Mix the inks to the Pantone values in [[colors#eo-palette|EO Palette]]. Screen printing struggles with very thin lines and gradients, so instead of dense patterns whose threads get too thin, use graphics of simplified units.
 - Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. When printing light ink on dark fabric, lay down a white underbase first for full color.
-- Always keep the symbol small and compact. Embroidery brings out a strongly analog mood, so prefer heat-transfer printing, which carries the crisp graphic as it is.
+- Always keep the symbol on apparel small and compact, and prefer heat-transfer printing, which carries the crisp graphic as it is. This is because embroidery brings out a strongly analog mood.
 - For paper accessories such as hang tags · stickers, print colors follow the standards in [[#print|Print]].
 ![app-tee] {bg-cover} 1. Oversized Tee
 ![app-hoodie] {bg-cover} 2. Hoodie
 ![app-cap] {bg-cover} 3. 5-panel Cap
 ![app-hangtag] {bg-cover} 4. Hang Tag
 ![app-sticker] {bg-cover} 5. Sticker Pack
-![app-pin] {bg-cover} 6. Badge
+![app-pin-badge] {bg-cover} 6. Pin Badge
 
 
 

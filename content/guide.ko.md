@@ -481,7 +481,7 @@ EO 시그니처는 파트너 브랜드 및 협업사 로고와 세로로도 락�
 ![dont-3]{dont} {zoom=1.6} 디스크립터에 다른 서체를 사용하지 마세요
 ![dont-4]{dont} {zoom=1.6} 디스크립터의 폰트 설정을 변경하지 마세요
 ![dont-5]{dont} {zoom=1.6} 디스크립터를 여러 행으로 나누지 마세요
-![dont-6]{dont} {zoom=1.5} EO Studio 글자만 단독으로 로고처럼 사용하지 마세요
+![dont-6]{dont} {zoom=1.5} 심볼 없이 EO Studio 글자만으로 로고를 대신하지 마세요
 ![dont-7]{dont} {zoom=2.4} 서브심볼과 디스크립터를 조합하지 마세요
 ![dont-8]{dont} {zoom=1.6} 심볼과 디스크립터를 서로 다른 색으로 칠하지 마세요
 ![dont-9]{dont} {zoom=1.6} 시그니처를 늘리거나 왜곡하지 마세요
@@ -849,10 +849,12 @@ EO 팔레트는 Builder Neon · Day Blue · Bay Green과 이를 받쳐 주는 �
 ### Color {layout=grid-2}
 #### In Use
 다음 이미지들은 EO 팔레트가 다양한 디자인에 적용된 예시입니다.
-![color-in-use-1] 1. 포스터
-![color-in-use-2] 2. 의류
-![color-in-use-3] 3. 행잉 배너
-![color-in-use-4] 4. 옥외 깃발
+![color-flag] 1. 옥외 깃발
+![color-hanging-banner] 2. 행잉 배너
+![color-poster] 3. 포스터
+![color-apparel] 4. 의류
+
+
 
 ### Color {layout=grid-3}
 #### Don'ts {zoom=1.3}
@@ -1216,11 +1218,11 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 - **패턴의 밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 지면은 복잡도를 끝까지 올려 [[graphic-unit#morphology-density|밀도]]로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에, 손에 들고 보는 명함은 더 단순하게 둡니다.
 - **[[graphic-unit#vocabulary-thread|thread]]의 방향으로 시선을 이끕니다.** thread의 compression이 한 곳으로 모이게 배치해 그 자리의 마크나 메시지로 시선을 유도합니다.
 - **판형에 맞춰 패턴을 다시 짭니다.** 모든 그래픽 패턴은 사각 영역의 비율에 맞춰 재배열할 수 있는 반응형 시스템이지만, 같은 패턴을 늘리거나 줄여 쓸 때 compression 구간의 thread가 과밀해지지 않았는지 체크합니다.
-![app-principles] {bg-cover}
+![app-flag] {bg-cover}
 
 
 ### Digital {layout=grid-2} {bg-color}
-웹 · 인스타그램 피드 · SNS 프로필 · 영상 썸네일 등 디지털 접점입니다. 본 가이드라인의 그리드 시스템은 주로 정적인 지면을 기준으로 하고 있으며, 화면 크기가 달라지는 웹 · 디지털 콘텐츠는 각 사용 환경에 맞는 반응형 레이아웃을 우선해야 합니다.
+웹 · 인스타그램 피드 · SNS 프로필 · 유튜브 채널 등 디지털 접점입니다. 본 가이드라인의 그리드 시스템은 주로 정적인 지면을 기준으로 하고 있으며, 화면 크기가 달라지는 웹 · 디지털 콘텐츠는 각 사용 환경에 맞는 반응형 레이아웃을 우선해야 합니다.
 ![app-web-frame] {device} 1. 웹 UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. 인스타그램 피드
@@ -1235,8 +1237,8 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-social-10] {slide}
 ![app-social-11] {slide}
 ![app-social-12] {slide}
-![app-sns-channel] {bg-cover} 3. SNS 프로필
-![app-sns-component] {bg-cover} {zoom=1.18} 4. 영상 썸네일
+![app-sns-profile] {bg-cover} 3. SNS 프로필
+![app-youtube-channel] {bg-cover} {zoom=1.18} 4. 유튜브 채널
 
 
 ### Print {layout=grid-2}
@@ -1253,18 +1255,18 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 
 
 ### Merch {layout=grid-3}
-티셔츠 · 후드티 · 캡 등 의류와 행택 · 스티커 · 뱃지로 구성된 브랜드 굿즈 라인입니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후드티는 앞면에 pair를 등비로 블렌드한 패턴([[graphic-unit#vocabulary-formation|차원]])을 올립니다.
+티셔츠 · 후드티 · 캡 등 의류와 행택 · 스티커 · 핀 배지로 구성된 브랜드 굿즈 라인입니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후드티는 앞면에 pair를 등비로 블렌드한 패턴([[graphic-unit#vocabulary-formation|차원]])을 올립니다.
 
 - 의류 그래픽은 선명한 단색 컬러가 돋보이도록 실크스크린 인쇄를 권장합니다. 잉크는 [[colors#eo-palette|EO Palette]]의 Pantone 값에 맞춰 조색합니다. 실크스크린은 아주 가는 선과 그라데이션을 재현하기 어려우므로, thread가 지나치게 가늘어지는 고밀도 패턴 대신 유닛을 단순하게 정리한 그래픽을 씁니다.
 - 원단 컬러는 그래픽의 배경 컬러로 보고 [[graphic-pattern#color]]의 조합을 따릅니다. 어두운 원단에 밝은 잉크를 찍을 때는 흰색 밑색을 먼저 깔아 발색을 확보합니다.
-- 심볼은 항상 작고 컴팩트하게 표현합니다. 자수는 아날로그적인 무드가 강하게 드러나므로, 선명한 그래픽을 그대로 옮길 수 있는 열전사 프린팅을 우선합니다.
+- 의류에 넣는 심볼은 항상 작고 컴팩트하게 표현하고, 선명한 그래픽을 그대로 옮길 수 있는 열전사 프린팅을 우선합니다. 자수는 아날로그적인 무드가 강하게 드러나기 때문입니다.
 - 행택 · 스티커 같은 지류 부자재의 인쇄 컬러는 [[#print|Print]]의 기준을 따릅니다.
 ![app-tee] {bg-cover} 1. 오버사이즈 티셔츠
 ![app-hoodie] {bg-cover} 2. 후드티
 ![app-cap] {bg-cover} 3. 5패널 캡
 ![app-hangtag] {bg-cover} 4. 행택
 ![app-sticker] {bg-cover} 5. 스티커 팩
-![app-pin] {bg-cover} 6. 뱃지
+![app-pin-badge] {bg-cover} 6. 핀 배지
 
 
 
