@@ -455,7 +455,7 @@ Service Signature 가로형 예시입니다. 모두 같은 디스크립터 규�
 ![inversion-h] {zoom=1.05}
 
 
-### Partner Lockup
+### + Partner Lockup
 #### Horizontal
 EO 시그니처는 파트너 브랜드 및 협업사 로고와 락업할 수 있습니다. 본 섹션의 이미지는 기본 락업 구성의 예시입니다.
 
@@ -463,7 +463,7 @@ EO 시그니처는 파트너 브랜드 및 협업사 로고와 락업할 수 있
 ![partner-h] {zoom=1.05}
 
 
-### + Partner Lockup
+### Partner Lockup
 #### Vertical
 EO 시그니처는 파트너 브랜드 및 협업사 로고와 세로로도 락업할 수 있습니다. 오른쪽은 기본 세로 락업 구성의 예시입니다.
 

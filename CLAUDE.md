@@ -29,7 +29,7 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 서체는 Founders Grotesk(본문 포함)와 Founders Grotesk Mono(label)만 사용. woff2는 `public/fonts/`(git 제외).
 
 ## 컬러 규칙
-브랜드 팔레트 7색(`--c-*`)은 `EO color palette final.svg` 기준이며 임의로 바꾸지 않는다. UI는 시맨틱 토큰(`--bg`, `--fg`, `--accent` …)만 참조. 중간 톤은 새 HEX 대신 `color-mix()`. 배지 색(`--badge-do`, `--badge-dont`, `--badge-con`)은 UI 전용이며 브랜드 컬러가 아님(`--c-` 접두는 팔레트 7색만).
+브랜드 팔레트 7색(`--c-*`)은 `EO color palette final.svg` 기준이며 임의로 바꾸지 않는다. UI는 시맨틱 토큰(`--bg`, `--fg`, `--accent` …)만 참조. 중간 톤은 새 HEX 대신 `color-mix()`. 배지 색(`--badge-do`, `--badge-dont`, `--badge-con`)은 UI 전용 역할 토큰 — 팔레트에 새 색을 더한 것이 아니므로 이름에 `--c-` 를 붙이지 않음(`--c-` 접두는 팔레트 7색만). 값이 팔레트 토큰을 참조하는 것은 허용(Do = `var(--c-bay-green)`, Conditional = `var(--c-air-white)`), Don't 주황(`--warn-orange`)만 팔레트 밖 색.
 본문·캡션의 참조 링크는 `[[page#section|라벨]]`(guide.ts `resolveXrefs`, 라벨은 목차에서 "페이지 › 섹션" 자동, `[[→ page#section]]` 이면 화살표 포함, `[[https://…|라벨]]` 은 외부 링크 새 탭).
 본문·캡션에 영문 공식 명칭(Builder Neon 등 7색)을 쓰면 파서(`colorChips`)가 이름 앞에 색 칩을 붙인다. 이름 표기는 대소문자까지 고정. 본문은 섹션 안 첫 언급에만 칩(캡션은 매번), `[Builder Neon]` 은 칩만, `[+Builder Neon]` 은 칩+이름 강제. 칩은 복사 버튼(호버 Copy 알약, 클릭 시 HEX 복사, 스크립트는 Layout.astro).
 

@@ -453,7 +453,7 @@ This keeps the [[typography#inversion|tonal value]] balance between the symbol a
 ![inversion-h] {zoom=1.05}
 
 
-### Partner Lockup
+### + Partner Lockup
 #### Horizontal
 The EO signature can be locked up with the logos of partner brands and collaborators. The images in this section show examples of the basic lockup.
 
@@ -461,7 +461,7 @@ Optically adjust the elements so that they appear the same size. After matching 
 ![partner-h] {zoom=1.05}
 
 
-### + Partner Lockup
+### Partner Lockup
 #### Vertical
 The EO signature can also be locked up vertically with the logos of partner brands and collaborators. On the right is an example of the basic vertical lockup.
 

@@ -105,9 +105,9 @@ export const langFromPath = (path: string): Lang => (LANGS as readonly string[])
 const ASSETS = path.join(ROOT, 'public', 'assets');
 export const EXTS = ['svg', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'avif'];   // 이미지 확장자 (우선순위 순). scripts/*.mjs 도 공유
 
-const GRID_COLS = 12;
+const GRID_COLS = 12;   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음, npm test [7] 이 대조). {span} 의 상한
 /** 이미지 줄 ![이름]{…} 에 쓸 수 있는 플래그 (= 로 끝나면 값을 받음) */
-const IMAGE_FLAGS = ['do', 'dont', 'con', 'nostrike', 'zoom=', 'nozoom', 'bg-color', 'bg-color=', 'bg-cover', 'bg-mirror', 'scroll', 'slide', 'slide=', 'device'];   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음). {span} 의 상한
+const IMAGE_FLAGS = ['do', 'dont', 'con', 'nostrike', 'zoom=', 'nozoom', 'bg-color', 'bg-color=', 'bg-cover', 'bg-mirror', 'scroll', 'slide', 'slide=', 'device'];
 
 function slugify(s: string): string {
   return s

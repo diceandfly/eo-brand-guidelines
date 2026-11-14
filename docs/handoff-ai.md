@@ -55,7 +55,7 @@ docs/                   file-management.md(사람용 튜토리얼) · logo-gener
 
 ## 4. 자주 하는 작업
 - **글 수정**: `content/guide.ko.md` → 같은 위치 `guide.en.md` → `npm test`. 참조 링크는 `[[page#section|라벨]]`, 컬러 이름(Builder Neon 등 대소문자 고정)은 파서가 칩을 붙임.
-- **섹션 추가**: 헤드 `### Head`(선택 `#### Subhead`), 레이아웃 플래그 `{layout=wide|half|grid-N|text-N}`, 목차 노출은 `### ++ Head`. 이미지 토큰 `![이름]` 을 쓰고 파일을 넣거나 플레이스홀더로 둠. 끝나면 `npm run assets -- --dry` 로 번호 확인.
+- **섹션 추가**: 헤드 `### Head`(선택 `#### Subhead`), 레이아웃 플래그 `{layout=wide|half|grid-N|text-N}`, 목차 노출은 `### + Head`(헤드 앞에 `+` 하나. 한 페이지에 `+` 가 하나도 없으면 전부 자동으로 오름), 서브헤드를 목차 하위 목록으로 묶으려면 `### + Head {toc=group}`. 이미지 토큰 `![이름]` 을 쓰고 파일을 넣거나 플레이스홀더로 둠. 끝나면 `npm run assets -- --dry` 로 번호 확인.
 - **장표 교체**: 사람이 둔 폴더 확인 → 파일 이름이 대상 이름과 맞는지 → `npm run import -- <페이지> <폴더> --dry` → 실행 → `npm test` → 커밋. 덮어쓴 원본은 `.trash/` 로 감.
 - **디자인 튜닝**: tokens.css 값만. 모션 토큰을 바꾸면 motion.ts 의 대체값도 같게([3]).
 - **로고 생성기**: 디자인은 생성기 `tokens.css`, 규칙은 `app.js` RULES, 사양 `docs/logo-generator/SPEC.md`.

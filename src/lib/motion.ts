@@ -62,28 +62,37 @@ const createSmoother = (smooth = smoothAmount) => ScrollSmoother.create({ wrappe
 // 아래 arriveAtHash 트윈이 겹쳐 섹션을 지나침(2026-11-13 측정 -2381px). 어차피 자동으로 섹션까지 내려가는 경우라 잠금이 길어도 무방
 const hashArrival = !!location.hash;
 const STARTUP_SMOOTH = 0.01;   // 초. 사실상 즉시
-if (smoothAmount > 0 && wrapper && content) {
-  smoother = createSmoother(hashArrival ? smoothAmount : STARTUP_SMOOTH);
-  if (!hashArrival) setTimeout(() => { if (!findMode) smoother?.smooth(smoothAmount); }, ms('--scroll-guard-hold', 0.41) * 1000);   // 폴백(아래 endGsapStartup 이 못 찾은 경우). 페이지 검색 중이면 복구 때 smoothAmount 로 새로 만듦
-}
 
-/* GSAP 시작 단계를 바로 끝냄. ScrollTrigger(_startup) · ScrollSmoother(startupPhase)는 만들어진 뒤 gsap.delayedCall(0.5) 동안
+/* GSAP 시작 단계를 바로 끝내기. ScrollTrigger(_startup) · ScrollSmoother(startupPhase)는 만들어진 뒤 gsap.delayedCall(0.5) 동안
    스크럽을 건너뛰어 스크롤 입력을 부드럽게 따라가지 않고 바로 점프합니다. 이 0.5초는 GSAP 시계라, 첫 방문처럼 로드가 무거워
    프레임이 밀리면(lagSmoothing) 실제로는 1초 넘게 이어져 "로드 직후 스무스 스크롤이 풀린다" 로 보였음(2026-11-14 실측: 0.6초까지 즉시 추종).
-   첫 refresh 로 스크롤 범위를 잰 뒤에는 기다릴 이유가 없으므로, 전역 타임라인에서 그 두 타이머(지연 0.5 · 길이 0 · 진행 중)를 찾아 바로 실행합니다.
-   GSAP 내부 구현에 기대는 부분이라 못 찾으면(버전 변경) 아무것도 안 하고 위 폴백(--scroll-guard-hold 뒤 smooth 복구)이 그대로 동작. 반환 = 끝낸 타이머 수 */
+   첫 refresh 로 스크롤 범위를 잰 뒤에는 기다릴 이유가 없으므로, 그 타이머(지연 0.5 · 길이 0 인 delayedCall)를 바로 실행합니다.
+   어느 타이머가 GSAP 것인지는 "만든 시점" 으로만 가립니다 — 이 모듈이 뜨고 스무더를 처음 만든 직후에 전역 타임라인에 있는 것(우리 코드는 아직
+   delayedCall 을 만든 적이 없음), 그리고 스무더를 다시 만들 때(페이지 검색 복구)는 그 사이에 새로 생긴 것만 startupTimers 에 모읍니다.
+   그래서 나중에 다른 곳에서 gsap.delayedCall(0.5, …) 을 써도 건드리지 않습니다(2026-11-15 콜드스타트 검토: 조건이 같은 타이머를 전부 실행하던 위험 제거).
+   단 스무더를 처음 만드는 줄보다 앞에서는 0.5초 delayedCall 을 만들지 말 것. GSAP 내부 구현에 기대는 부분이라 못 찾으면(버전 변경) 아무것도 안 하고
+   폴백(--scroll-guard-hold 뒤 smooth 복구)이 그대로 동작. endGsapStartup 의 반환 = 끝낸 타이머 수 */
+type GsapChild = gsap.core.Tween | gsap.core.Timeline;
+const startupTimers: GsapChild[] = [];
+const gsapChildren = (): GsapChild[] => gsap.globalTimeline.getChildren(false, true, false);
+const isStartupTimer = (t: GsapChild) => t.duration() === 0 && t.delay() === 0.5 && typeof t.vars.onComplete === 'function';
 const endGsapStartup = () => {
   let n = 0;
-  for (const t of gsap.globalTimeline.getChildren(false, true, false)) {
-    const done = t.vars.onComplete;
-    if (t.duration() === 0 && t.delay() === 0.5 && !t.paused() && typeof done === 'function') {
-      t.kill();
-      done();
-      n++;
-    }
+  for (const t of startupTimers.splice(0)) {
+    if (t.progress() >= 1) continue;                              // 이미 스스로 끝남
+    const done = t.vars.onComplete as () => void;
+    t.kill();
+    done();
+    n++;
   }
   return n;
 };
+
+if (smoothAmount > 0 && wrapper && content) {
+  smoother = createSmoother(hashArrival ? smoothAmount : STARTUP_SMOOTH);
+  startupTimers.push(...gsapChildren().filter(isStartupTimer));   // 이 시점에 있는 것 = ScrollTrigger · ScrollSmoother 가 방금 만든 시작 타이머뿐
+  if (!hashArrival) setTimeout(() => { if (!findMode) smoother?.smooth(smoothAmount); }, ms('--scroll-guard-hold', 0.41) * 1000);   // 폴백(endGsapStartup 이 못 찾은 경우). 페이지 검색 중이면 복구 때 smoothAmount 로 새로 만듦
+}
 
 /* 모바일 목차 드로어(Layout.astro)가 열린 동안 본문 스크롤 정지. 드로어는 eo:nav 이벤트(detail.open)만 보내고 스무더는 모름.
    스무더를 다시 만들 때(아래 페이지 검색 복구)도 열린 상태를 이어받음.
@@ -109,7 +118,9 @@ const resumeSmoother = () => {
   if (!findMode || !wrapper || !content) return;
   findMode = false;
   const y = window.scrollY;
+  const before = new Set(gsapChildren());
   smoother = createSmoother();
+  startupTimers.push(...gsapChildren().filter(t => !before.has(t) && isStartupTimer(t)));   // 새 스무더가 만든 시작 타이머만
   smoother.scrollTo(y, false);                                  // 0 에서 y 까지 달려오지 않도록 현재 위치에 바로 놓음
   if (navOpen) smoother.paused(true);
   ScrollTrigger.refresh();
@@ -158,6 +169,8 @@ if (smoother && content && 'ResizeObserver' in window) {
 }
 
 const anchorOffset = () => num('--anchor-offset', 56);
+/** 주소의 #해시 → 섹션 id. `#%E0` 처럼 깨진 % 인코딩은 decodeURIComponent 가 URIError 를 던지므로(그러면 도착 이동 · 앵커 클릭 처리가 통째로 멈춤) 원문 그대로 돌려줌 — 그런 id 는 없으니 아무 일도 안 함 */
+const hashId = (hash: string) => { const raw = hash.replace(/^#/, ''); try { return decodeURIComponent(raw); } catch { return raw; } };
 
 /**
  * 브라우저는 주소의 #앵커로 들어오면 overflow:hidden 인 래퍼까지 안쪽에서 몰래 스크롤해 버립니다.
@@ -336,7 +349,7 @@ document.addEventListener('click', e => {
   if (!a) return;
   const url = new URL(a.href);
   if (url.pathname !== location.pathname || !url.hash) return;
-  const id = decodeURIComponent(url.hash.slice(1));
+  const id = hashId(url.hash);
   if (scrollToId(id)) { e.preventDefault(); history.replaceState(null, '', url.hash); }
 });
 
@@ -347,7 +360,7 @@ let loaded = document.readyState === 'complete';
 let arrived = false;
 function arriveAtHash() {
   if (arrived || !loaded || !guardReleased || !location.hash) return;
-  const id = decodeURIComponent(location.hash.slice(1));
+  const id = hashId(location.hash);
   if (!document.getElementById(id)) return;
   arrived = true;
   // rAF 가 아니라 setTimeout: 백그라운드 탭에서는 rAF 가 멈춰 있어 도착 이동이 영영 안 일어납니다

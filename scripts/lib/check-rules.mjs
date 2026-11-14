@@ -59,6 +59,10 @@ export function checkRules(ROOT, { ok, fail, note }) {
     if (/atan2\(/.test(css)) { bad++; fail(`${f} 에 atan2() — 아이폰(웹킷)에서 틀린 값이 나옴, 숫자 토큰으로`); }
   }
 
+  // 파서의 그리드 컬럼 수(guide.ts GRID_COLS — {span} 상한 · ::: split 분배)는 tokens.css --cols 와 같아야 함
+  const gridCols = read('src/lib/guide.ts').match(/^const GRID_COLS = (\d+);/m)?.[1], cssCols = tokensCss.match(/^\s*--cols\s*:\s*(\d+)\s*;/m)?.[1];
+  if (!gridCols || gridCols !== cssCols) { bad++; fail(`guide.ts GRID_COLS(${gridCols ?? '못 찾음'}) ≠ tokens.css --cols(${cssCols ?? '못 찾음'})`); }
+
   // 레이아웃 치수 규칙 (tokens.css A-3 주석): 레이아웃 토큰은 calc(var(--lh-unit) * N) · N 은 0.25 단위, 스크립트가 parseFloat 로 읽는 토큰은 calc 금지
   const UNIT_TOKENS = ['sidebar-w', 'nav-pad-top', 'nav-pad-top-m', 'nav-pad-right', 'nav-pad-bottom', 'nav-pad-left', 'nav-logo-h', 'nav-logo-gap', 'search-h', 'search-gap',
     'search-clear-size', 'search-clear-hit', 'search-result-pad-x', 'search-result-pad-y', 'nav-indent', 'nav-sections-indent', 'nav-subsections-indent', 'nav-sections-pad-top', 'nav-sections-pad-bottom',
