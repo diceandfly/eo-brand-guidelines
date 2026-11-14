@@ -1218,6 +1218,8 @@ The following are typical cases where the pattern loses its role as protagonist.
 ## Applications
 
 ### + Principles
+The results on this page are examples of the EO graphic system applied to various media, not final production specifications. Actual production may differ by medium and specification, so treat them as references that show the direction, and give priority to the rules in each chapter.
+
 Four rules to follow when placing the graphic pattern on a page.
 
 - **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through [[graphic-unit#morphology-density|density]]; keep posters seen up close at medium complexity. This is a general tendency, however, so designers use their judgment and put visual quality first.
@@ -1228,7 +1230,7 @@ Four rules to follow when placing the graphic pattern on a page.
 
 
 ### Digital {layout=grid-2} {bg-color}
-Digital applications such as the web magazine · social feed · video thumbnails. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
+Digital touchpoints such as the web · Instagram feed · SNS profile · web tools. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
 ![app-web-frame] {device} 1. Web UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. Instagram Feed
@@ -1260,13 +1262,12 @@ Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space 
 
 
 ### Merch {layout=grid-3}
-A merch line of apparel such as tees · hoodies · caps, plus hang tags · stickers · badges. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
+A brand merch line of apparel such as tees · hoodies · caps, plus hang tags · stickers · badges. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
 
-- For apparel graphics, screen printing is recommended so that vivid single colors stand out. Mix the inks to the Pantone values in [[colors#eo-palette|EO Palette]], and keep each graphic to one or two colors.
+- For apparel graphics, screen printing is recommended so that vivid single colors stand out. Mix the inks to the Pantone values in [[colors#eo-palette|EO Palette]]. Screen printing struggles with very thin lines and gradients, so instead of dense patterns whose threads get too thin, use graphics of simplified units.
 - Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. When printing light ink on dark fabric, lay down a white underbase first for full color.
-- Screen printing struggles with very thin lines and gradients, so instead of dense patterns whose threads get too thin, use graphics of simplified units.
 - On items with a small print area, such as caps, keep the symbol small and compact. Embroidery brings out a strongly analog mood, so prefer heat-transfer printing, which carries the crisp graphic as it is.
-- Accessories such as hang tags · stickers · badges follow the same color and graphic rules, and all merch is reviewed by the EO design team before production.
+- For paper accessories such as hang tags · stickers, print colors follow the standards in [[#print|Print]].
 ![app-tee] {bg-cover} 1. Oversized Tee
 ![app-hoodie] {bg-cover} 2. Hoodie
 ![app-cap] {bg-cover} 3. 5-panel Cap
