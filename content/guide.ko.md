@@ -1218,9 +1218,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ## Applications
 
 ### + Principles
-이 페이지의 결과물은 EO 그래픽 시스템을 여러 매체에 적용해 본 예시로, 확정된 제작 사양이 아닙니다. 실제 제작에서는 매체와 사양에 따라 달라질 수 있으므로 방향을 보여 주는 참고로 보고, 각 챕터의 규칙을 우선합니다.
-
-그래픽 패턴을 지면에 올릴 때 지키는 네 가지 규칙입니다.
+이 페이지의 결과물은 EO 그래픽 시스템을 여러 매체에 적용해 본 예시로, 실제 제작에서는 매체와 사양에 따라 달라질 수 있습니다. 다만 어떤 매체든 그래픽 패턴을 지면에 올릴 때는 다음 네 가지 규칙을 지킵니다.
 
 - **밀도는 보는 거리에 맞춥니다.** 빌보드처럼 멀리서 보는 큰 지면은 복잡도를 끝까지 올려 [[graphic-unit#morphology-density|밀도]]로 시선을 잡고, 가까이서 보는 포스터는 중간 복잡도에 둡니다. 단, 이는 일반적인 경향이므로 시각적 완성도를 우선해 디자이너가 재량으로 판단합니다.
 - **한 지면에 여러 변형을 둘 수 있습니다.** 같은 [[graphic-unit#vocabulary|메타포]]의 변형 여러 개를 한 구성에 놓아 리듬을 만듭니다.
@@ -1230,7 +1228,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 
 
 ### Digital {layout=grid-2} {bg-color}
-웹 · 인스타그램 피드 · SNS 프로필 · 웹 툴 등 디지털 접점입니다. 웹 레이아웃의 마진과 그리드는 정적 레이아웃에 초점을 맞춘 본 가이드라인의 지침보다, 각 사용 환경에 적합한 반응형 레이아웃 시스템 구축을 권장합니다. 
+웹 · 인스타그램 피드 · SNS 프로필 · 영상 썸네일 등 디지털 접점입니다. 웹 레이아웃의 마진과 그리드는 정적 레이아웃에 초점을 맞춘 본 가이드라인의 지침보다, 각 사용 환경에 적합한 반응형 레이아웃 시스템 구축을 권장합니다. 
 ![app-web-frame] {device} 1. 웹 UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. 인스타그램 피드
@@ -1246,15 +1244,14 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-social-11] {slide}
 ![app-social-12] {slide}
 ![app-sns-channel] {bg-cover} 3. SNS 프로필
-![app-sns-component] {bg-cover} 4. 웹 툴
+![app-sns-component] {bg-cover} 4. 영상 썸네일
 
 
 ### Print {layout=grid-3}
 포스터 · 빌보드 · 거리 배너 등 인쇄 · 옥외 매체입니다. 멀리서 짧은 시간에 읽히는 옥외 매체는 [[graphic-pattern#zoning]]의 예시와 같이 그래픽 패턴 영역을 크게 잡고, 메시지는 헤드라인 1-3줄 수준으로 줄입니다. 패턴의 밀도는 시각적 주목도와 보는 거리를 모두 고려해 결정하며, 심볼의 크기는 [[symbol#scalability]]의 보는 거리 대비 비율로 정합니다. 거리 배너처럼 바닥에 세우거나 기둥에 매다는 세로 매체는 그래픽 패턴 영역을 하단에 둘 수 있습니다.
 
-컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray · Space Black 배경을 우선하고, Builder Neon 배경은 제한적으로 사용해 브랜드의 존재감을 강하게 드러내세요.
-
 - 인쇄물은 [[colors#eo-palette|EO Palette]]의 CMYK 값으로 출력합니다. 화면용 RGB · HEX 값을 인쇄 파일에 그대로 쓰면 색이 달라지므로, 인쇄 파일은 처음부터 CMYK 모드로 만듭니다. 색 재현이 중요하거나 Builder Neon 배경이 넓은 지면은 Pantone 별색으로 인쇄합니다.
+- 컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray · Space Black 배경을 우선하고, Builder Neon 배경은 제한적으로 사용해 브랜드의 존재감을 강하게 드러내세요.
 - Air White는 잉크 대신 백색 용지로 대체할 수 있습니다. 용지 · 소재에 따라 같은 값도 색이 달라지므로, 본 인쇄 전에 교정 인쇄로 컬러를 확인합니다.
 ![app-billboard] {bg-cover} 1. 빌보드
 ![app-street-banner] {bg-cover} 2. 거리 배너
@@ -1266,7 +1263,7 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 
 - 의류 그래픽은 선명한 단색 컬러가 돋보이도록 실크스크린 인쇄를 권장합니다. 잉크는 [[colors#eo-palette|EO Palette]]의 Pantone 값에 맞춰 조색합니다. 실크스크린은 아주 가는 선과 그라데이션을 재현하기 어려우므로, thread가 지나치게 가늘어지는 고밀도 패턴 대신 유닛을 단순하게 정리한 그래픽을 씁니다.
 - 원단 컬러는 그래픽의 배경 컬러로 보고 [[graphic-pattern#color]]의 조합을 따릅니다. 어두운 원단에 밝은 잉크를 찍을 때는 흰색 밑색을 먼저 깔아 발색을 확보합니다.
-- 캡처럼 인쇄 면이 작은 품목은 심볼을 작고 컴팩트하게 표현합니다. 자수는 아날로그적인 무드가 강하게 드러나므로, 선명한 그래픽을 그대로 옮길 수 있는 열전사 프린팅을 우선합니다.
+- 심볼은 항상 작고 컴팩트하게 표현합니다. 자수는 아날로그적인 무드가 강하게 드러나므로, 선명한 그래픽을 그대로 옮길 수 있는 열전사 프린팅을 우선합니다.
 - 행택 · 스티커 같은 지류 부자재의 인쇄 컬러는 [[#print|Print]]의 기준을 따릅니다.
 ![app-tee] {bg-cover} 1. 오버사이즈 티셔츠
 ![app-hoodie] {bg-cover} 2. 후드티

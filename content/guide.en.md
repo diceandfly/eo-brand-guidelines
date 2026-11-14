@@ -1218,9 +1218,7 @@ The following are typical cases where the pattern loses its role as protagonist.
 ## Applications
 
 ### + Principles
-The results on this page are examples of the EO graphic system applied to various media, not final production specifications. Actual production may differ by medium and specification, so treat them as references that show the direction, and give priority to the rules in each chapter.
-
-Four rules to follow when placing the graphic pattern on a page.
+The results on this page are examples of the EO graphic system applied to various media, and actual production may differ by medium and specification. Whatever the medium, however, follow these four rules when placing the graphic pattern on a page.
 
 - **Match density to viewing distance.** On large pages seen from afar, such as billboards, push complexity all the way up to hold the eye through [[graphic-unit#morphology-density|density]]; keep posters seen up close at medium complexity. This is a general tendency, however, so designers use their judgment and put visual quality first.
 - **One page can hold several variations.** Place several variations of the same [[graphic-unit#vocabulary|metaphor]] in one composition to create rhythm.
@@ -1230,7 +1228,7 @@ Four rules to follow when placing the graphic pattern on a page.
 
 
 ### Digital {layout=grid-2} {bg-color}
-Digital touchpoints such as the web · Instagram feed · SNS profile · web tools. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
+Digital touchpoints such as the web · Instagram feed · SNS profile · video thumbnails. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
 ![app-web-frame] {device} 1. Web UI
 ![app-web] {scroll}
 ![app-social-1] {slide=3:4} 2. Instagram Feed
@@ -1246,15 +1244,14 @@ Digital touchpoints such as the web · Instagram feed · SNS profile · web tool
 ![app-social-11] {slide}
 ![app-social-12] {slide}
 ![app-sns-channel] {bg-cover} 3. SNS Profile
-![app-sns-component] {bg-cover} 4. Web Tool
+![app-sns-component] {bg-cover} 4. Video Thumbnail
 
 
 ### Print {layout=grid-3}
 Print and outdoor media such as posters · billboards · street banners. Outdoor media, read from afar and in a short time, give the graphic pattern area generous room as in the examples in [[graphic-pattern#zoning]], and reduce the message to about one to three lines of headline. Decide the pattern density by weighing both visual impact and viewing distance, and set the symbol size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom.
 
-Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
-
 - Print with the CMYK values in [[colors#eo-palette|EO Palette]]. Screen RGB · HEX values shift in print, so build print files in CMYK mode from the start. Where color fidelity matters, or a Builder Neon background covers a large area, print it as a Pantone spot color.
+- Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
 - Air White can be replaced by white paper instead of ink. The same values look different on different papers and materials, so check the colors with a proof before the final run.
 ![app-billboard] {bg-cover} 1. Billboard
 ![app-street-banner] {bg-cover} 2. Street Banner
@@ -1266,7 +1263,7 @@ A brand merch line of apparel such as tees · hoodies · caps, plus hang tags ·
 
 - For apparel graphics, screen printing is recommended so that vivid single colors stand out. Mix the inks to the Pantone values in [[colors#eo-palette|EO Palette]]. Screen printing struggles with very thin lines and gradients, so instead of dense patterns whose threads get too thin, use graphics of simplified units.
 - Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. When printing light ink on dark fabric, lay down a white underbase first for full color.
-- On items with a small print area, such as caps, keep the symbol small and compact. Embroidery brings out a strongly analog mood, so prefer heat-transfer printing, which carries the crisp graphic as it is.
+- Always keep the symbol small and compact. Embroidery brings out a strongly analog mood, so prefer heat-transfer printing, which carries the crisp graphic as it is.
 - For paper accessories such as hang tags · stickers, print colors follow the standards in [[#print|Print]].
 ![app-tee] {bg-cover} 1. Oversized Tee
 ![app-hoodie] {bg-cover} 2. Hoodie
