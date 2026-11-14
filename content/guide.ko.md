@@ -817,7 +817,7 @@ Day Blue와 Bay Green은 베이 에어리어의 자연에서 가져온 시원한
 
 ### Color
 #### EO Palette {layout=grid-4}
-EO 팔레트는 Builder Neon · Day Blue · Bay Green과 이를 받쳐 주는 네 가지 무채색 컬러로 이루어집니다. Solid Gray와 Medium Gray는 미디어의 중립성을 담아, 어두운 쪽은 배경 컬러에, 밝은 쪽은 그래픽 요소에 사용합니다. Space Black과 Air White는 바탕과 텍스트의 기본이 됩니다. 
+EO 팔레트는 Builder Neon · Day Blue · Bay Green과 이를 받쳐 주는 네 가지 무채색 컬러로 이루어집니다. Solid Gray와 Medium Gray는 미디어의 중립성을 담아, 어두운 쪽은 배경 컬러에, 밝은 쪽은 그래픽 요소에 사용합니다. Space Black과 Air White는 배경과 텍스트의 기본이 됩니다. 
 
 각 컬러는 화면용 HEX · RGB와 인쇄용 CMYK · Pantone으로 제공되므로 매체에 맞는 컬러 모드를 사용해야 합니다. Air White는 잉크 대신 백색 용지로 대체할 수 있습니다.
 [swatch] Builder Neon | #F9EE3A | R249 G238 B58 | C5 M0 Y95 K0 | PANTONE 3945 C
@@ -850,21 +850,19 @@ EO 팔레트는 Builder Neon · Day Blue · Bay Green과 이를 받쳐 주는 �
 #### In Use
 다음 이미지들은 EO 팔레트가 다양한 디자인에 적용된 예시입니다.
 ![color-in-use-1] 1. 
-![color-in-use-2] 2. 의류 및 태그
+![color-in-use-2] 2. 의류
 ![color-in-use-3] 3. 행잉 배너
 ![color-in-use-4] 4. 옥외 깃발
 
 ### Color {layout=grid-3}
 #### Don'ts {zoom=1.3}
 EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트와 배경의 최소 대비는 WCAG 기준을 참고하세요.
-![dont-1]{dont} Builder Neon을 본문 텍스트 전체나 밝은 바탕 위 텍스트로 사용하지 마세요
+![dont-1]{dont} Builder Neon을 본문 텍스트 전체나 밝은 배경 위 텍스트로 사용하지 마세요
 ![dont-2]{dont} 그라데이션을 만들지 마세요
 ![dont-3]{dont} 팔레트 이외의 컬러를 추가하지 마세요 (필요 시 EO 디자인팀에 요청하세요)
 ![dont-4]{dont} 승인되지 않은 컬러 조합을 사용하지 마세요
 ![dont-5]{dont} Day Blue · Bay Green · Medium Gray 등 대비가 약한 조합을 사용하지 마세요
 ![dont-6]{dont} 명도 · 채도 · 투명도를 바꿔 새로운 톤을 만들지 마세요 (필요 시 EO 디자인팀에 요청하세요)
-
-
 
 
 # 05 Graphic System
@@ -1229,11 +1227,11 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-principles] {bg-cover}
 
 
-### Digital {layout=grid-2} {bg-color}
+### Digital {layout=grid-3} {bg-color}
 웹 매거진 · 소셜 피드 · 영상 썸네일 등 디지털 어플리케이션입니다. 웹 레이아웃의 마진과 그리드는 정적 레이아웃에 초점을 맞춘 본 가이드라인의 지침보다, 각 사용 환경에 적합한 반응형 레이아웃 시스템 구축을 권장합니다. 
 ![app-web-frame] {device} 1. 웹 UI
 ![app-web] {scroll}
-![app-social-1] {slide=3:4} 2. 소셜 피드
+![app-social-1] {slide=3:4} 2. 인스타그램 피드
 ![app-social-2] {slide}
 ![app-social-3] {slide}
 ![app-social-4] {slide}
@@ -1245,29 +1243,38 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 ![app-social-10] {slide}
 ![app-social-11] {slide}
 ![app-social-12] {slide}
-![app-sns-channel] {bg-cover} 3. SNS 채널
-![app-sns-component] {bg-cover} 4. 웹 컴포넌트
-
-
-### Advertisement {layout=grid-3}
-빌보드 · 거리 배너 · 사이니지 등 옥외 광고입니다. 멀리서 짧은 시간에 읽히는 매체이므로 그래픽 패턴 영역을 크게 잡고, 메시지는 헤드라인 한 줄 수준으로 줄입니다. 패턴의 밀도는 보는 거리에 맞추고, 로고의 크기는 [[symbol#scalability]]의 보는 거리 대비 비율로 정합니다. 거리 배너처럼 바닥에 세우거나 기둥에 매다는 세로 매체는 [[graphic-pattern#zoning]]의 예외대로 그래픽 패턴 영역을 하단에 둘 수 있습니다.
-![app-billboard] {bg-cover} 1. 빌보드
-![app-street-banner] {bg-cover} 2. 거리 배너
-![app-signage] {bg-cover} 3. 사이니지
+![app-sns-channel] {bg-cover} 3. SNS 프로필
+![app-sns-component] {bg-cover} 4. 웹 툴
 
 
 ### Print {layout=grid-3}
-포스터 · 행택 · 스티커 등 인쇄물입니다. 컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray · Space Black 바탕을 우선하고, Builder Neon 바탕은 제한적으로 사용해 브랜드으로 존재감을 강하게 드러내세요.
-![app-poster] {bg-cover} {zoom=1.25} 1. 포스터
-![app-hangtag] {bg-cover} 2. 행택
-![app-sticker] {bg-cover} 3. 스티커 팩
+포스터 · 빌보드 · 거리 배너 등 인쇄 · 옥외 매체입니다. 멀리서 짧은 시간에 읽히는 옥외 매체는 [[graphic-pattern#zoning]]의 예시와 같이 그래픽 패턴 영역을 크게 잡고, 메시지는 헤드라인 1-3줄 수준으로 줄입니다. 패턴의 밀도는 시각적 주목도와 보는 거리를 모두 고려해 결정하며, 심볼의 크기는 [[symbol#scalability]]의 보는 거리 대비 비율로 정합니다. 거리 배너처럼 바닥에 세우거나 기둥에 매다는 세로 매체는 그래픽 패턴 영역을 하단에 둘 수 있습니다.
+
+컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray · Space Black 배경을 우선하고, Builder Neon 배경은 제한적으로 사용해 브랜드의 존재감을 강하게 드러내세요.
+
+- 인쇄물은 [[colors#eo-palette|EO Palette]]의 CMYK 값으로 출력합니다. 화면용 RGB · HEX 값을 인쇄 파일에 그대로 쓰면 색이 달라지므로, 인쇄 파일은 처음부터 CMYK 모드로 만듭니다.
+- Builder Neon처럼 채도가 높은 컬러는 CMYK 혼합으로는 화면만큼 선명하게 재현되지 않습니다. 색 재현이 중요하거나 Builder Neon 배경이 넓은 지면은 Pantone 별색으로 인쇄합니다.
+- Space Black은 넓은 면이 탁한 회색으로 뜨지 않도록 팔레트의 리치 블랙 값으로 인쇄하고, 작은 텍스트와 가는 선은 판이 어긋나도 번지지 않도록 K100 단색으로 둡니다.
+- Air White는 잉크 대신 백색 용지로 대체할 수 있습니다. 용지 · 소재에 따라 같은 값도 색이 달라지므로, 본 인쇄 전에 교정 인쇄로 컬러를 확인합니다.
+![app-billboard] {bg-cover} 1. 빌보드
+![app-street-banner] {bg-cover} 2. 거리 배너
+![app-poster] {bg-cover} {zoom=1.05} 3. 포스터
 
 
 ### Merch {layout=grid-3}
-티셔츠 · 후디 · 캡 · 핀으로 구성된 굿즈 라인입니다. 실크스크린 단색 그래픽을 기본으로 합니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후디는 앞면에 pair를 등비로 블렌드한 패턴([[graphic-unit#vocabulary-formation|차원]])을 올립니다. 
+티셔츠 · 후디 · 캡 등 의류와 행택 · 스티커 · 뱃지로 구성된 굿즈 라인입니다. 티셔츠는 앞면 가슴에 EO 심볼을 작게, 뒷면에 유닛을 단순하게 정리한 전용 그래픽을 크게 놓고, 후디는 앞면에 pair를 등비로 블렌드한 패턴([[graphic-unit#vocabulary-formation|차원]])을 올립니다.
+
+- 의류 그래픽은 선명한 단색 컬러가 돋보이도록 실크스크린 인쇄를 권장합니다. 잉크는 [[colors#eo-palette|EO Palette]]의 Pantone 값에 맞춰 조색하고, 한 그래픽에 쓰는 컬러는 1-2도로 줄입니다.
+- 원단 컬러는 그래픽의 배경 컬러로 보고 [[graphic-pattern#color]]의 조합을 따릅니다. 어두운 원단에 밝은 잉크를 찍을 때는 흰색 밑색을 먼저 깔아 발색을 확보합니다.
+- 실크스크린은 아주 가는 선과 그라데이션을 재현하기 어려우므로, thread가 지나치게 가늘어지는 고밀도 패턴 대신 유닛을 단순하게 정리한 그래픽을 씁니다.
+- 캡처럼 인쇄 면이 작거나 굽은 품목은 심볼을 자수로 표현할 수 있습니다. 자수는 실의 굵기 때문에 작은 크기에서 형태가 뭉개지므로 인쇄보다 넉넉한 크기로 둡니다.
+- 행택 · 스티커 · 뱃지 같은 부자재도 같은 컬러 · 그래픽 규칙을 따르며, 모든 굿즈는 제작 전 EO 디자인팀의 확인을 받습니다.
 ![app-tee] {bg-cover} 1. 오버사이즈 티셔츠
 ![app-hoodie] {bg-cover} 2. 후디
-![app-cap] {bg-cover} 3. 5패널 캡 · 핀
+![app-cap] {bg-cover} 3. 5패널 캡
+![app-hangtag] {bg-cover} 4. 행택
+![app-sticker] {bg-cover} 5. 스티커 팩
+![app-pin] {bg-cover} 6. 뱃지
 
 
 

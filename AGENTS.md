@@ -27,7 +27,7 @@
 | E13 | 2026-11-13 | 슬로건 표기 — `alignment-do-2` · Graphic Pattern In Use 포스터 | "Build Anyway." 와 "Build anyway," 혼용 | 헤드카피냐 문장 속이냐는 형식 차이라 재량 허용 |
 | E14 | 2026-11-13 | Typography › Reference Scale 자간 값의 `[Solid Gray]` · `[Space Black]` | 대괄호 문법이라 이름 없이 색 칩만 보임 | 가독성을 위해 의도적으로 칩만 둠 |
 | E15 | 2026-11-13 | Graphic Unit › Pair › 파동(`pair-pulse`) | 본문 "중심대칭 또는 좌우대칭" ↔ 장표는 좌우대칭 하나 | 장표는 경우 하나를 보여 줌. 본문 유지 |
-| E16 | 2026-11-13 (11-14 본문 보완 · 장표 일부 채움) | Applications 페이지의 남은 장표 7장(Signage · Print 3 · Merch 3) | 장표가 없어 플레이스홀더만 보임 | 장표 준비 중. Principles(= Colors › In Use 4번째) · Billboard(= Graphic Pattern › In Use 2번째) · Street Banner(= Colors › In Use 3번째)는 디자이너 지정으로 같은 이미지를 다시 씀. 본문은 2026-11-14 디자이너 요청으로 구성은 그대로 두고 현재 규칙(Graphic Pattern › Color · Typography › Margin · 용어)에 맞춰 보완함. 장표가 들어오면 그때 본문과 대조 |
+| E16 | 2026-11-13 (11-15 장표 채움 · 섹션 재구성) | Applications 페이지의 남은 장표 1장(Digital › 웹 툴) | 장표가 없어 플레이스홀더만 보임 | 장표 준비 중. Principles(= Colors › In Use 4번째) · 빌보드(= Graphic Pattern › In Use 2번째) · 거리 배너(= Colors › In Use 3번째)는 디자이너 지정으로 같은 이미지를 다시 씀. 2026-11-15 Advertisement 섹션을 Print 에 합침. 본문은 2026-11-14 디자이너 요청으로 구성은 그대로 두고 현재 규칙(Graphic Pattern › Color · Typography › Margin · 용어)에 맞춰 보완함. 장표가 들어오면 그때 본문과 대조 |
 | E17 | 2026-11-13 | 참조 링크 "유닛 컬러" — Graphic Unit › Shaft › 다양성 → Graphic Pattern › Color, Graphic Pattern › Color → Graphic Unit › Color | 같은 라벨이 서로 반대 페이지로 감 | 문맥마다 가리키는 내용이 다름(다양성 = 여러 색을 쓰는 조합 규칙, Pattern › Color = 색의 뜻). 그대로 둠 |
 | E18 | 2026-11-14 | Symbol › Don'ts 1번째(`dont-1` 가로 약 10%) · Signature › Don'ts 9번째(`dont-9` 세로 약 6%) | "늘리지 마세요" 인데 왜곡이 약해 잘 안 보임 | 실제로 흔히 일어날 법한 실수의 크기라 이 정도가 맞음 |
 | E19 | 2026-11-14 | Symbol › Usage › Placement (`usage-placement` A3 칸) | 밝은 심볼 · 흐린 심볼이 한 칸에 둘, 범례 없음 | 디자이너가 그대로 두기로 함(의도된 표현) |

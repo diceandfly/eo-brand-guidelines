@@ -848,7 +848,7 @@ For detailed application by element, see the Color section of each page.
 #### In Use
 The following images show the EO palette applied across a range of designs.
 ![color-in-use-1] 1. 
-![color-in-use-2] 2. Clothing and tags
+![color-in-use-2] 2. Clothing
 ![color-in-use-3] 3. Hanging banner
 ![color-in-use-4] 4. Outdoor flag
 
@@ -1227,11 +1227,11 @@ Four rules to follow when placing the graphic pattern on a page.
 ![app-principles] {bg-cover}
 
 
-### Digital {layout=grid-2} {bg-color}
+### Digital {layout=grid-3} {bg-color}
 Digital applications such as the web magazine · social feed · video thumbnails. For the margins and grid of web layouts, rather than the rules of this guideline, which focus on static layouts, we recommend building a responsive layout system suited to each environment.
 ![app-web-frame] {device} 1. Web UI
 ![app-web] {scroll}
-![app-social-1] {slide=3:4} 2. Social Feed
+![app-social-1] {slide=3:4} 2. Instagram Feed
 ![app-social-2] {slide}
 ![app-social-3] {slide}
 ![app-social-4] {slide}
@@ -1243,29 +1243,38 @@ Digital applications such as the web magazine · social feed · video thumbnails
 ![app-social-10] {slide}
 ![app-social-11] {slide}
 ![app-social-12] {slide}
-![app-sns-channel] {bg-cover} 3. SNS Channel
-![app-sns-component] {bg-cover} 4. Web Component
-
-
-### Advertisement {layout=grid-3}
-Outdoor advertising such as billboards · street banners · signage. Because these media are read from afar and in a short time, give the graphic pattern area generous room and reduce the message to about a single headline. Match the pattern density to the viewing distance, and set the logo size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom, following the exception in [[graphic-pattern#zoning]].
-![app-billboard] {bg-cover} 1. Billboard
-![app-street-banner] {bg-cover} 2. Street Banner
-![app-signage] {bg-cover} 3. Signage
+![app-sns-channel] {bg-cover} 3. SNS Profile
+![app-sns-component] {bg-cover} 4. Web Tool
 
 
 ### Print {layout=grid-3}
-Printed matter such as posters · hang tags · stickers. Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
-![app-poster] {bg-cover} {zoom=1.25} 1. Poster
-![app-hangtag] {bg-cover} 2. Hang Tag
-![app-sticker] {bg-cover} 3. Sticker Pack
+Print and outdoor media such as posters · billboards · street banners. Outdoor media, read from afar and in a short time, give the graphic pattern area generous room as in the examples in [[graphic-pattern#zoning]], and reduce the message to about one to three lines of headline. Decide the pattern density by weighing both visual impact and viewing distance, and set the symbol size by the ratio to viewing distance in [[symbol#scalability]]. On vertical media that stand on the ground or hang from a pole, such as street banners, the graphic pattern area can sit at the bottom.
+
+Color combinations follow [[graphic-pattern#color]]: prefer Solid Gray · Space Black backgrounds, and use a Builder Neon background sparingly to assert the brand's presence strongly.
+
+- Print with the CMYK values in [[colors#eo-palette|EO Palette]]. Screen RGB · HEX values shift in print, so build print files in CMYK mode from the start.
+- Highly saturated colors such as Builder Neon cannot be reproduced in CMYK as vividly as on screen. Where color fidelity matters, or a Builder Neon background covers a large area, print it as a Pantone spot color.
+- Print Space Black with the palette's rich black value so large areas do not look like a dull gray, and keep small text and thin lines in K100 only so they do not bleed if the plates shift.
+- Air White can be replaced by white paper instead of ink. The same values look different on different papers and materials, so check the colors with a proof before the final run.
+![app-billboard] {bg-cover} 1. Billboard
+![app-street-banner] {bg-cover} 2. Street Banner
+![app-poster] {bg-cover} {zoom=1.05} 3. Poster
 
 
 ### Merch {layout=grid-3}
-A merch line of tees · hoodies · caps · pins. Single-color screen-printed graphics are the default. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
+A merch line of apparel such as tees · hoodies · caps, plus hang tags · stickers · badges. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
+
+- For apparel graphics, screen printing is recommended so that vivid single colors stand out. Mix the inks to the Pantone values in [[colors#eo-palette|EO Palette]], and keep each graphic to one or two colors.
+- Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. When printing light ink on dark fabric, lay down a white underbase first for full color.
+- Screen printing struggles with very thin lines and gradients, so instead of dense patterns whose threads get too thin, use graphics of simplified units.
+- On items with a small or curved print area, such as caps, the symbol can be embroidered. Thread thickness blurs embroidery at small sizes, so keep it larger than you would in print.
+- Accessories such as hang tags · stickers · badges follow the same color and graphic rules, and all merch is reviewed by the EO design team before production.
 ![app-tee] {bg-cover} 1. Oversized Tee
 ![app-hoodie] {bg-cover} 2. Hoodie
-![app-cap] {bg-cover} 3. 5-panel Cap & Pin
+![app-cap] {bg-cover} 3. 5-panel Cap
+![app-hangtag] {bg-cover} 4. Hang Tag
+![app-sticker] {bg-cover} 5. Sticker Pack
+![app-pin] {bg-cover} 6. Badge
 
 
 
