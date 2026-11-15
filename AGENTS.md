@@ -100,7 +100,7 @@
 
 | # | 위치 | 겉보기 문제 | 허용 이유 | 상태 | 결정일 |
 |---|---|---|---|---|---|
-| E1 | Graphic Pattern › Zoning (`grid-do-1` 롤업) · Typography › Zoning (`zoning-ratio` 롤업 · `zoning-4-division` 좌측 열) | "세로로 나눌 때 패턴 상단 · 가로로 나눌 때 우측 우선" 규칙과 반대로 패턴이 하단 · 좌측 | 규칙은 "우선"(권장)이라 예외 가능. 롤업 · 거리 배너처럼 바닥에 세우는 매체는 빌더 · 집이 땅에 선 형상이고, compression 이 촘촘한 쪽이 땅을 연상시켜 하단 배치가 어울림. 4분할은 Typography › Zoning 이 "번갈아 두기" 를 허용 | 확정 | 2026-11-10 (11-13 근거 추가) |
+| E1 | Graphic Pattern › Zoning (`grid-do-1` 롤업) · Typography › Zoning (`zoning-ratio` 롤업 · `zoning-4-division` 좌측 열) | "세로로 나눌 때 패턴 상단 · 가로로 나눌 때 우측 우선" 규칙과 반대로 패턴이 하단 · 좌측 | 규칙은 "우선"(권장)이라 예외 가능. 롤업 · 행잉 배너처럼 바닥에 세우거나 기둥에 매다는 매체는 빌더 · 집이 땅에 선 형상이고, compression 이 촘촘한 쪽이 땅을 연상시켜 하단 배치가 어울림. 4분할은 Typography › Zoning 이 "번갈아 두기" 를 허용 | 확정 | 2026-11-10 (11-13 근거 추가) |
 | E35 | Graphic Pattern › Pattern Gutter 본문 ("thread gutter의 1.5배" ↔ "20-25px 수준") | thread gutter 10-20px 의 1.5배는 15-30px 인데 본문은 20-25px | 각 범위의 가운데 값으로 보면 맞음 — thread gutter 10-20px 의 가운데 15px × 1.5 = 22.5px = 20-25px 의 가운데. 규칙은 배수(1.5배)이고 px 는 그 대표값이라 양 끝(15 · 30px)까지 넓혀 적지 않음 | 확정 | 2026-11-15 |
 | E29 | Graphic Pattern › Color (`color-do-1` · `color-do-3` 등) | 캡션의 색 나열 순서 ↔ 장표의 색 순서 | 비주얼상 좋아서 장표 순서는 섞음. 캡션도 그대로 | 확정 | 2026-11-14 |
 
