@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2a2b2b;
+      }
+
+      .cls-2 {
+        fill: #6ec6d2;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" width="1920" height="1080"/>
+  <g transform="translate(960 540) scale(1.01887) translate(-960.00 -550.00)">
+  <g>
+    <rect class="cls-2" y="285" width="1920" height="795"/>
+    <g>
+      <polygon class="cls-2" points="6.59 285 4.12 20 0 20 0 285 .82 682.5 7.41 682.5 6.59 285"/>
+      <polygon class="cls-2" points="49.77 285 45.45 20 38.24 20 38.24 285 39.68 682.5 51.22 682.5 49.77 285"/>
+      <polygon class="cls-2" points="102.84 285 95.27 20 82.66 20 82.66 285 85.18 682.5 105.36 682.5 102.84 285"/>
+      <polygon class="cls-2" points="173.21 285 159.96 20 137.89 20 137.89 285 142.3 682.5 177.63 682.5 173.21 285"/>
+      <polygon class="cls-2" points="273.86 285 250.68 20 212.04 20 212.04 285 219.77 682.5 281.58 682.5 273.86 285"/>
+      <polygon class="cls-2" points="427.49 285 386.92 20 319.31 20 319.31 285 332.83 682.5 441.01 682.5 427.49 285"/>
+      <polygon class="cls-2" points="673.85 285 602.85 20 484.53 20 484.53 285 508.2 682.5 697.51 682.5 673.85 285"/>
+      <polygon class="cls-2" points="1082.47 285 958.23 20 751.17 20 751.17 285 792.59 682.5 1123.88 682.5 1082.47 285"/>
+      <polygon class="cls-2" points="1775.06 285 1557.65 20 1195.29 20 1195.29 285 1267.76 682.5 1847.53 682.5 1775.06 285"/>
+    </g>
+  </g>
+</g>
+</svg>
