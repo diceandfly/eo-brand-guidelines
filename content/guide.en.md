@@ -235,7 +235,7 @@ The EO symbol is designed and tested to work across a range of sizes. Every size
 - Optimal range — A height of 40-70px (about 8-15mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/33 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
 - Recommended maximum size — A height of 70px (about 15mm, 1/33 of the viewing distance), the top of the optimal range. We recommend not using the symbol larger than this. Sizes above it are a range prepared for cases that still need a larger symbol.
 - Minimum size — A height of 20px on screen (about 4mm, 1/125 of the viewing distance) and 4mm in print. Below this, the threads of the E block blur together, so ask the EO design team to review.
-- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Never use it larger than this in any case. Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#zoning|graphic pattern]] instead of the symbol.
+- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Avoid using it larger than this wherever possible. Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#zoning|graphic pattern]] instead of the symbol.
 ![scalability] {zoom=1.05}
 
 
@@ -365,8 +365,8 @@ The text part of the signature, excluding the symbol, is called the **descriptor
 When the first or last letter of the descriptor is a glyph with a curved side, such as S · o, keep the text left aligned on its baseline and temporarily replace it with H if it is uppercase or h if it is lowercase, to set the edge of the cap box. For example, "Studio" takes its left edge from "Htudio" and its right edge from "Studih".
 
 Always get approval from the EO design team when creating a new descriptor or changing an existing one. Do not use temporary names, such as those of campaigns or events, as descriptors.
-![descriptor-v] Vertical — set in Founders Grotesk Regular, type size 0.47H, tracking 0. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then shift it left by H/100. This is because the E block of the EO symbol has the higher tonal value, which shifts the visual center to the left.
-![descriptor-h] Horizontal — set in Founders Grotesk Regular, type size 1.3H, tracking 0, with a separate tracking of -6% applied only to the space characters between words. Place the left side of the cap box W/2 from the right edge of the symbol, and raise the baseline H/10 above the bottom edge of the symbol.
+![descriptor-v] Vertical — set in Founders Grotesk Regular, type size 0.47H, letterspacing 0. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then shift it left by H/100. This is because the E block of the EO symbol has the higher tonal value, which shifts the visual center to the left.
+![descriptor-h] Horizontal — set in Founders Grotesk Regular, type size 1.3H, letterspacing 0, with a separate letterspacing of -6% applied only to the space characters between words. Place the left side of the cap box W/2 from the right edge of the symbol, and raise the baseline H/10 above the bottom edge of the symbol.
 
 
 ### Signature
@@ -381,10 +381,10 @@ The signature also needs space around it, on the same principle as the EO symbol
 #### + Scalability
 As on the Symbol page, sizes on this page are given as the symbol height on a 16-inch Mac display (about 5px/mm) viewed from 500mm. On other media, convert using the ratio in parentheses (symbol height relative to viewing distance).
 
-The smaller the signature is seen, the more the symbol and descriptor read as a single mass; the larger it is seen, the more each letter of the descriptor comes into focus. The form therefore depends on the visible size, and the threshold is a symbol height of 10mm (50px, 1/50).
+The smaller the signature is seen, the more the symbol and descriptor read as a single mass; the larger it is seen, the more each letter of the descriptor comes into focus. The form therefore depends on the visible size, and the threshold is a symbol height of 10mm (50px, 1/50). At the 10mm threshold itself, both the horizontal · vertical forms can be used.
 
-- **Below 10mm (50px, 1/50), use only the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable, and the signature can appear split into three masses: symbol · EO · Studio. Within the 6-10mm range, consider using the "Studio" version as an alternative.
-- **At 10mm and above, use only the vertical signature.** From this size, the descriptor of the vertical form reads clearly. The recommended maximum size is a symbol height of 70px (about 15mm, 1/33), and the maximum is a symbol height of 25mm (125px, 1/20).
+- **At 10mm (50px, 1/50) and below, use the horizontal signature.** The horizontal form keeps the symbol and descriptor evenly visible even at small sizes. Above 6mm (30px, 1/80), the space between the words of "EO Studio" becomes noticeable, and the signature can appear split into three masses: symbol · EO · Studio. Within the 6-10mm range, consider using the "Studio" version as an alternative.
+- **At 10mm and above, use the vertical signature.** From this size, the descriptor of the vertical form reads clearly. The recommended maximum size is a symbol height of 70px (about 15mm, 1/33), and the maximum is a symbol height of 25mm (125px, 1/20).
 - As with the minimum size of the symbol, do not use the signature below 4mm (20px, 1/125) either.
 ![scalability] {zoom=1.05}
 
@@ -447,10 +447,10 @@ The signature uses four of the six color combinations of the EO symbol. **Always
 
 ### Signature
 #### + Inversion {layout=grid-2}
-Like the symbol, the signature is built by default as a light signature in bright colors such as Builder Neon · Air White on dark backgrounds such as Space Black · Solid Gray. If you simply invert the colors to use a dark signature on a light background, an optical illusion makes the symbol look thinner and more spread out, and the letters of the descriptor look one step lighter despite the same weight.
+Like the symbol, the signature is built by default as a light signature in Air White on dark backgrounds such as Space Black · Solid Gray. If you simply invert the colors to use a dark signature on a light background, an optical illusion makes the symbol look thinner and more spread out, and the letters of the descriptor look one step lighter despite the same weight.
 
-- Vertical — Convert the light symbol by the [[symbol#inversion]] rules, and center it in both x · y where the light symbol was. Keep the descriptor centered in its original cap box position, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 0.48H · tracking to -1%, and finish by offsetting the outline outward by H/200.
-- Horizontal — Convert the light symbol by the same rules, and center it in both x · y where the light symbol was. Left align the descriptor to the left edge of the original cap box, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 1.35H · tracking to -2% (-7% for the space characters between words), and finish by offsetting the outline outward by H/200.
+- Vertical — Convert the light symbol by the [[symbol#inversion]] rules, and center it in both x · y where the light symbol was. Keep the descriptor centered in its original cap box position, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 0.48H · letterspacing to -1%, and finish by offsetting the outline outward by H/200.
+- Horizontal — Convert the light symbol by the same rules, and center it in both x · y where the light symbol was. Left align the descriptor to the left edge of the original cap box, with the baseline in its original position. Keep the weight at Regular and invert only the color, then set the type size to 1.35H · letterspacing to -2% (-7% for the space characters between words), and finish by offsetting the outline outward by H/200.
 
 This keeps the [[typography#inversion|tonal value]] balance between the symbol and the descriptor on a light background the same as in the light signature. Center the finished dark signature in x · y on the clearspace of the light signature of the same level, and use it as is.
 ![inversion-v] {zoom=1.05}
@@ -479,7 +479,7 @@ Always keep the logos optically centered.
 #### + Don'ts
 The signature is a fixed combination with a defined relationship between symbol and descriptor. Do not change or rebuild its components separately.
 ![dont-1]{dont} Do not use the vertical signature at a size so small that the descriptor is hard to read
-![dont-2]{dont} {zoom=2.3} Do not use the horizontal signature at a symbol height of 10mm (50px, 1/50) or larger
+![dont-2]{dont} {zoom=2.3} Do not use the horizontal signature at a symbol height above 10mm (50px, 1/50)
 ![dont-3]{dont} {zoom=1.6} Do not use a different typeface for the descriptor
 ![dont-4]{dont} {zoom=1.6} Do not change the font settings of the descriptor
 ![dont-5]{dont} {zoom=1.6} Do not break the descriptor onto multiple lines
@@ -544,7 +544,7 @@ The sub symbol is part of the EO symbol and follows the same principles. Do not 
 #### Founders Grotesk
 EO's typefaces are Semibold · Medium · Regular · Light · Mono Regular · Mono Light of the Founders Grotesk family.
 
-Founders Grotesk reinterprets the early-20th-century grotesques of Miller & Richard and Caslon, and its simple geometry, narrow apertures and tight tracking make it read like solid blocks at large sizes. Firm and clear, yet with humanist touches in its details, it matches EO's attitude — serious, but pursuing creativity. The family also has a monospaced typeface that can evoke the builder's motifs, such as engineering · spec sheets.
+Founders Grotesk reinterprets the early-20th-century grotesques of Miller & Richard and Caslon, and its simple geometry, narrow apertures and tight letterspacing make it read like solid blocks at large sizes. Firm and clear, yet with humanist touches in its details, it matches EO's attitude — serious, but pursuing creativity. The family also has a monospaced typeface that can evoke the builder's motifs, such as engineering · spec sheets.
 
 Each weight has a fixed role. Use Medium for display and headlines, Regular for sub-headlines, Light for body copy, and Mono Regular for informational text. For the detailed criteria, see [[#reference-scale|Reference Scale]].
 ![brand-typefaces]{bg-color}
@@ -585,7 +585,7 @@ EO typography is **a baseline grid framework measured and scaled from the space 
 
 Read this chapter in the order the framework is carried out. If you need values ready to use, see the presets in [[#reference-scale|Reference Scale]]. If you are building anew, set the Line Unit following [[#line-unit|Line Unit]] and set up the typography through the five steps of [[#setting-up|Setting Up]]. For the detailed criteria of each step, see [[#levelling-and-sizing|Levelling & Sizing]] · [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]]; for layout, [[#zoning|Zoning]] · [[#margin|Margin]] · [[#compound-grid|Compound Grid]]; for other languages and alternative typefaces, [[#multilingual|Multilingual]].
 ![framework-1]{bg-cover} **Line Unit** — the base leading of the page. The unit that sets every distance in the layout.
-![framework-2]{bg-cover} **Level** — a tier of text divided by role. Each has four parameters: multiple (x) · weight · linespacing · tracking
+![framework-2]{bg-cover} **Level** — a tier of text divided by role. Each has four parameters: multiple (x) · weight · linespacing · letterspacing
 ![framework-3]{bg-cover} **Linespacing** — the ratio of leading to type size. 140% means the leading is 1.4 times the type size
 ![framework-4]{bg-cover} **Tonal value** — the brightness of a block of text seen from a distance. The criterion for balance between levels
 
@@ -606,7 +606,7 @@ Once the Line Unit is set, subtract the top and bottom margins from the full hei
 
 ### Typographic Framework
 #### + Reference Scale {layout=wide}
-A seven-level preset based on Line Unit 1x = 28px. The first letter of a level name is the role of its content: D for display, H for headline, T for text, C for caption. This web guideline is set in four of these levels, H1 · H3 · T1 · C1; refer to the unused ones when creating new levels. Each level specifies multiple (x) · weight · linespacing · tracking, and the size in parentheses is the type size rendered on screen at 1x = 28px.
+A seven-level preset based on Line Unit 1x = 28px. The first letter of a level name is the role of its content: D for display, H for headline, T for text, C for caption. This web guideline is set in four of these levels, H1 · H3 · T1 · C1; refer to the unused ones when creating new levels. Each level specifies multiple (x) · weight · linespacing · letterspacing, and the size in parentheses is the type size rendered on screen at 1x = 28px.
 
 - **D1** — 6x / Medium / 80% / -2.5%. One or two words, such as a tagline or core keyword, on a poster or key visual
 - **H1** — 2.5x / Medium / 100% / -1.5% (70px). Main headline · page title
@@ -620,9 +620,9 @@ A seven-level preset based on Line Unit 1x = 28px. The first letter of a level n
 
 The recommended weight for each level follows these criteria: Medium for display and headlines (D1 · H1), Regular for sub-display and sub-headlines (D2 · H2 · H3), Light for body copy (T1), Mono Regular for informational text (C1). Use Founders Grotesk Semibold only in a limited way, at the designer's discretion, for optical correction when Medium-level display text is inverted onto a light background and set small. To emphasize keywords within body copy, do not change the weight; use the Builder Neon color with an underline.
 
-Set level multiples in steps of 1x · 0.5x · 0.25x, and refine linespacing and tracking so that the tonal value carries consistently from each level to its neighbors. For the adjusted values for Korean and Vietnamese, see [[#multilingual|Multilingual]].
+Set level multiples in steps of 1x · 0.5x · 0.25x, and refine linespacing and letterspacing so that the tonal value carries consistently from each level to its neighbors. For the adjusted values for Korean and Vietnamese, see [[#multilingual|Multilingual]].
 
-Founders Grotesk has narrow apertures and tight tracking, so at body level set it in Light with generous linespacing and slightly opened tracking. The presets are designed with a focus on visual communication: we recommend T1 for content where the text read in one go runs to only a few paragraphs, and T2 where the readability of body copy matters most.
+Founders Grotesk has narrow apertures and tight letterspacing, so at body level set it in Light with generous linespacing and slightly opened letterspacing. The presets are designed with a focus on visual communication: we recommend T1 for content where the text read in one go runs to only a few paragraphs, and T2 where the readability of body copy matters most.
 
 All the presets above assume Air White text on a Solid Gray background. For Space Black text on Air White · Builder Neon backgrounds, see [[#inversion]].
 ![reference-scale]{bg-color}
@@ -635,7 +635,7 @@ How to set up typography in a new medium or format. This is less a fixed sequenc
 1. Decide the number of typography levels. Decide which levels to use based on the amount of information shown on the page. For details, see [[#levelling-and-sizing|Levelling & Sizing]].
 2. Set the Line Unit and set a baseline grid in the content area of the page. As a rule, size the Line Unit from the content, or the component of it, that carries the most weight or occupies the most space on the page. For details on the Line Unit, see [[#line-unit|Line Unit]]; for grid setting, [[#margin|Margin]] · [[#compound-grid|Compound Grid]].
 3. Place the content on the grid and set the hierarchy with each level's multiple. Set the multiples in steps of 1x · 0.5x · 0.25x. For details, see [[#levelling-and-sizing|Levelling & Sizing]]. Starting from the values in [[#reference-scale|Reference Scale]] and adjusting them to the medium also works well.
-4. Refine weight · linespacing · tracking · color · line breaks for each level to match the tonal value. Tonal value is the brightness of a block of text seen from a distance; it is right when every level looks like the same text enlarged · reduced, at the same brightness. Place the levels side by side and squint, or zoom the screen out, and the differences show. As a rule, the larger the type, the lower the linespacing; the smaller the type, the higher. For details, see [[#linespacing-founders-grotesk-medium|Linespacing]].
+4. Refine weight · linespacing · letterspacing · color · line breaks for each level to match the tonal value. Tonal value is the brightness of a block of text seen from a distance; it is right when every level looks like the same text enlarged · reduced, at the same brightness. Place the levels side by side and squint, or zoom the screen out, and the differences show. As a rule, the larger the type, the lower the linespacing; the smaller the type, the higher. For details, see [[#linespacing-founders-grotesk-medium|Linespacing]].
 5. Repeat steps 3-4 until the levels reach a balance in which they look consistently enlarged · reduced according to the hierarchy.
 ![setting-up-1]{bg-color} 1. Decide the number of levels
 ![setting-up-2]{bg-cover} 2. Set the Line Unit and set a baseline grid in the content area.
@@ -652,7 +652,7 @@ Divide levels by the role of the content. The one or two words that represent th
 - **Contrast between levels** — The look and feel of typography is largely decided by the degree of contrast between adjacent levels. For roles to be told apart at a glance, the step from body (1x) to headline must be at least double (2-3x), and so must the step from headline to display. Within a role that handles detailed content (H2 → H3), a multiple of about 1.5 is appropriate. Keep all multiples to steps of 1x · 0.5x · 0.25x so that they fit the baseline grid.
 - **Symbol and levels** — Treat the symbol like a level. Setting 1x or 0.5x of the symbol height as the Line Unit ties the symbol and the typography to the same unit. The size of the symbol follows [[symbol#scalability]].
 
-As a rule, the larger the level, the heavier the weight and the tighter the linespacing and tracking. In practice, though, levelling is less a linear procedure in table-of-contents order than a process of tuning [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · weight against each other at the same time. For the preset values, see [[#reference-scale|Reference Scale]].
+As a rule, the larger the level, the heavier the weight and the tighter the linespacing and letterspacing. In practice, though, levelling is less a linear procedure in table-of-contents order than a process of tuning [[#linespacing-founders-grotesk-medium|Linespacing]] · [[#letterspacing-founders-grotesk-medium|Letterspacing]] · weight against each other at the same time. For the preset values, see [[#reference-scale|Reference Scale]].
 ![levelling-sizing]{bg-color}
 
 
@@ -690,25 +690,25 @@ The leading of C1 is half the Line Unit. Two lines of caption equal the height o
 
 ### + Letterspacing
 #### Founders Grotesk Medium
-In large type the spaces between letters look larger too, so tighten the tracking. The reference point is where the letters sit together like one block but the strokes stop just short of touching (some horizontally open glyphs may touch each other). Too tight, and combinations of consecutive vertical strokes read as one mass; too loose, and words scatter into letters and the headline loses its weight.
+In large type the spaces between letters look larger too, so tighten the letterspacing. The reference point is where the letters sit together like one block but the strokes stop just short of touching (some horizontally open glyphs may touch each other). Too tight, and combinations of consecutive vertical strokes read as one mass; too loose, and words scatter into letters and the headline loses its weight.
 ![letterspacing-medium]{bg-color}
 
 
 ### Letterspacing
 #### Founders Grotesk Regular
-Because the inherent tonal value of Regular is lower than that of Medium, securing a tonal value at sub-headline level close to that of the headline level calls for relatively tighter tracking. For example, H1 uses Medium at -1.5% tracking, while D2, at the same type size, applies an even tighter -2%.
+Because the inherent tonal value of Regular is lower than that of Medium, securing a tonal value at sub-headline level close to that of the headline level calls for relatively tighter letterspacing. For example, H1 uses Medium at -1.5% letterspacing, while D2, at the same type size, applies an even tighter -2%.
 ![letterspacing-regular]{bg-color}
 
 
 ### Letterspacing
 #### Founders Grotesk Light
-In small type the spaces look relatively small, so open the tracking to around 1-1.5%, taking light text on a dark background as the reference. Because the thin weight loses readability quickly when tracked tighter, find the compromise according to which matters more, uniform tonal value or readability.
+In small type the spaces look relatively small, so open the letterspacing to around 1-1.5%, taking light text on a dark background as the reference. Because the thin weight loses readability quickly when the letterspacing is tightened, find the compromise according to which matters more, uniform tonal value or readability.
 ![letterspacing-light]{bg-color}
 
 
 ### Letterspacing
 #### Founders Grotesk Mono Regular
-By nature, Mono is highly distinguishable even at small sizes, but its readability as running text is low, so tighten the tracking to around -7%. If many long words make the lines run long, consider switching to the body typeface.
+By nature, Mono is highly distinguishable even at small sizes, but its readability as running text is low, so tighten the letterspacing to around -7%. If many long words make the lines run long, consider switching to the body typeface.
 ![letterspacing-mono]{bg-color}
 
 
@@ -736,7 +736,7 @@ Divide the page into a graphic pattern area and a content area. Ideally the grap
 
 Place the graphic pattern area full bleed, ignoring the margin, and arrange its units following [[graphic-pattern#zoning]]. For the boundary between the two areas, set the [[#compound-grid|Compound Grid]] first, check the right proportion of the areas against its columns · rows, and align the boundary to the nearest line. If it does not fall exactly on a line, adjust it to the midline of a column · row or to a baseline.
 
-The content area is what remains, and margin and grid are set from this area. In a four-way division, use one of the divided content areas as the reference. For pages whose front and back are linked, such as business cards, use the side that carries the main content.
+The content area is what remains, and the margin is set from this area. In a four-way division, use one of the divided content areas as the reference. For pages whose front and back are linked, such as business cards, use the side that carries the main content.
 
 
 ![zoning-ratio]{bg-color} Examples of the proportion between graphic pattern area and content area
@@ -766,9 +766,9 @@ For large pages or layouts with complex components, we recommend the Compound Gr
 
 ### Typography
 #### + Inversion {layout=wide}
-EO typography is built primarily for light text, such as Air White · Medium Gray, on dark backgrounds such as Solid Gray · Space Black. As with the [[signature#inversion|signature's descriptor]], when you want dark text on a light background and simply invert the colors, an optical illusion occurs: at the same weight and tracking, the letters look thinner and the tracking looks wider.
+EO typography is built primarily for light text, such as Air White · Medium Gray, on dark backgrounds such as Solid Gray · Space Black. As with the [[signature#inversion|signature's descriptor]], when you want dark text on a light background and simply invert the colors, an optical illusion occurs: at the same weight and letterspacing, the letters look thinner and the letterspacing looks wider.
 
-In that case, keep the Line Unit · level multiples · weights as they are, correct the type size to 1.05 times (linespacing 0.95 times) and apply 1% tighter tracking. The tonal value then stays at a consistent level on light backgrounds too, and because the space the type occupies is unchanged, layout changes are kept to a minimum.
+In that case, keep the Line Unit · level multiples · weights as they are, correct the type size to 1.05 times (linespacing 0.95 times) and apply 1% tighter letterspacing. The tonal value then stays at a consistent level on light backgrounds too, and because the space the type occupies is unchanged, layout changes are kept to a minimum.
 
 Below is an example of the same presets applied to the seven-level [[#reference-scale|Reference Scale]] and set in light mode.
 ![inversion]{bg-color}
@@ -888,7 +888,7 @@ Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (hereafter, the uni
 The **EO graphic unit** (hereafter, the unit) is the smallest element of the graphic system. The logo's E block, the pattern library and application graphics are all built with the same system. Units are generated from parameters in EO Graphic Builder; for detailed instructions, see the Help menu inside the tool.
 
 - shaft size — The thickness of the shaft rectangle, as a percentage of the unit's total height including the threads on both sides. At around the default of 35%, the shaft size makes it easy to keep visual density ideal even in relatively complex graphic patterns.
-- thread top, bottom width — The width of the thread's top and bottom edges. The thread is a trapezoid abstracted from a screw thread: its right side stands vertically at the end of the column, its left side slants, and the lower thread is the upper one rotated 180° about the column center. The difference between the two values sets the thread's slope. Defaults are top 40% · bottom 0% (the percentage taken off the column width).
+- thread top, bottom width — The width of the thread's top and bottom edges. The thread is a trapezoid abstracted from a screw thread: one side stands vertically at the end of the column, the opposite side slants, and the lower thread is the upper one rotated 180° about the column center. The difference between the two values sets the thread's slope. Defaults are top 40% · bottom 0% (the percentage taken off the column width).
 - thread sides — With double, threads attach to both the top and bottom of the shaft; with single, threads attach to one side only and the shaft rests at the bottom.
 - thread amount — The number of threads attached to each of the top and bottom of the shaft.
 - thread compression — How much the thread width narrows progressively toward one side. At 0, all threads have equal width; the higher the value, the stronger the compression toward one side. Negative and positive values set the direction of compression; the slope of each thread stays as it is and does not flip.
@@ -914,7 +914,7 @@ Color shows who the protagonist of a graphic is, what forms the environment, and
 - Medium Gray — Expresses the nuance of mechanical neutrality: inactivity · the other · indifference · conservatism · the material world.
 - Space Black — As a unit color, use it sparingly rather than freely, so that it secures visual hierarchy when needed. For situations where visual impact comes first, a combination with a Builder Neon background is recommended, expressing overwhelming presence.
 - Solid Gray is not used as a unit color.
-![color-neon-white] [Builder Neon]builder · protagonist · core, [Air White]energy · counterpart · balance
+![color-neon-white] [Builder Neon]builder · protagonist · focus, [Air White]energy · counterpart · semi-highlighting
 ![color-blue-green] [Day Blue]other builders · surrounding elements · optimism, [Bay Green]other builders · surrounding elements · friendliness
 ![color-gray] [Medium Gray] inactivity · the other · conservatism · the material world
 ![color-black-on-neon] [Space Black] on [Builder Neon] recommended combination, overwhelming presence
@@ -1066,7 +1066,7 @@ However, three-dimensional extensions that project the entire plane holding the 
 ![unit-dont-2]{dont} Do not arbitrarily distort the unit's shape
 ![unit-dont-3]{dont} Do not apply more than one color to a unit
 ![unit-dont-4]{dont} Do not use Solid Gray as a unit color; it is reserved for backgrounds
-![unit-dont-5]{dont} Do not join two units whose shaft sizes do not match
+![unit-dont-5]{dont} Do not join two units along the shaft axis (docking) when their shaft sizes do not match
 ![unit-con]{con} Projecting the unit onto a three-dimensional plane
 
 
@@ -1085,7 +1085,7 @@ Vocabulary covers what a unit means and Morphology covers how it looks, so the G
 
 ### Grammar {layout=grid-2}
 #### + Zoning
-To build a new layout, first set up the Compound Grid, then use the modular grid as the primary guide to divide the page into the graphic pattern area and the content area, and finally complete the pattern inside the graphic pattern area. For detailed guidance on the Compound Grid, see [[typography#compound-grid|Compound Grid]]. Do not set a margin between the two areas explicitly; treat it as part of the content area's margin.
+To build a new layout, first build the Compound Grid, then use the modular grid as the primary guide to divide the page into the graphic pattern area and the content area, and finally complete the pattern inside the graphic pattern area. For detailed guidance on the Compound Grid, see [[typography#compound-grid|Compound Grid]]. Do not set a margin between the two areas explicitly; treat it as part of the content area's margin.
 
 The graphic pattern area is a rectangular area that corresponds to the Frame in EO Graphic Builder. Stacking units inside it, interlocked like Tetris pieces with no empty space, is a separate system. Unit placement inside the graphic pattern area does not need to align with the typography grid. The two systems, the graphic pattern area and the typography-led content area, create a contrast between strong and soft on a single page. Because typography in the content area runs left and top aligned, prefer placing the graphic pattern area on the right when splitting the page side by side, and at the top when splitting it top and bottom. The exception is vertical media that stand on the ground or hang from a pole, such as roll-up banners · hanging banners, where placing the pattern at the bottom can suit better. Set the side with dense compression against the ground so the unit reads as a builder or house standing on the ground; the dense threads then evoke the ground (see [[graphic-unit#vocabulary-thread|Builder]]).
 
@@ -1098,7 +1098,7 @@ When drafting graphics for a new metaphor in the EO Graphic Builder workspace, y
 
 ### Grammar {layout=grid-2}
 #### + Pattern Margin
-Set the pattern margin to 0 so the pattern fills 100% of the graphic pattern area on the page. Depending on the nuance of the metaphor, the pattern can extend past the page margin to the edge of the page. Placing a stretch of tight [[graphic-unit#parameters|compression]] in a unit against the edge of the page creates the illusion that the unit enters from, or reaches beyond, the page, adding visual interest. As an exception, a piece made of the graphic pattern alone, with no content area, can take a margin similar to the pattern gutter.
+Set the pattern margin to 0 so the pattern fills 100% of the graphic pattern area on the page. The graphic pattern area extends past the page margin and fills up to the edge of the page. Placing a stretch of tight [[graphic-unit#parameters|compression]] in a unit against the edge of the page creates the illusion that the unit enters from, or reaches beyond, the page, adding visual interest. As an exception, a piece made of the graphic pattern alone, with no content area, can take a margin similar to the pattern gutter.
 
 ![margin-crop-do]{do} A graphic pattern that strengthens its metaphor by placing the compressed end of a graphic unit at the edge of the page
 ![margin-crop-dont]{dont} A graphic pattern in a content layout that does not fill 100% to the margin
