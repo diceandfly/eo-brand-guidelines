@@ -6,6 +6,7 @@
  *   c. tokens.css 팔레트(--c-*) = 가이드 tokens.css · 참조하는 토큰이 모두 정의됨
  *   d. app.js RULES 블록(크기 구간 · 경계 · 시그니처 규격 · 면적 상한)의 가이드 수치
  *   e. 생성기가 쓰는 서체 파일 ⊂ 가이드 src/styles/fonts.css
+ *   f. app.js SIG_INIT(시그니처 처음 값) — 크기는 그 형의 최적 구간 안 · 키와 자리는 목업 표(ART)에 있는 것 (값 자체는 프리셋이라 고정하지 않음)
  * 생성기는 빌드 없는 단일 HTML 이라 여기서만 검사합니다. 실패 메시지는 fail(), 통과는 ok() 로 test.mjs 에 보고.
  */
 import fs from 'node:fs';
@@ -86,6 +87,27 @@ export function checkLogoGenerator(ROOT, { ok, fail }) {
   const off = pins.filter(([, got, want]) => got !== want);
   for (const [name, got, want] of off) fail(`생성기 규칙 ${name} — ${got} (기대 ${want})`);
   if (!off.length) ok(`생성기 브랜드 규칙 ${pins.length}항목 (크기 구간 · 경계 · 시그니처 규격 · 면적 상한)`);
+
+  // f. 시그니처 처음 값 — SIG_INIT 블록과 목업 표(ART 블록)를 따로 돌려 대조. 크기가 최적 구간을 벗어나면 고르자마자 경고가 뜨고, 키 · 자리가 목업에 없으면 조용히 심볼 값으로 떨어지므로 여기서 잡음
+  const ib = appSrc.match(/\/\*SIGINIT-START\*\/([\s\S]*?)\/\*SIGINIT-END\*\//), ab = appSrc.match(/\/\*ART-START\*\/([\s\S]*?)\/\*ART-END\*\//);
+  if (!ib || !ab) fail('생성기 SIG_INIT · ART 블록 표시를 찾을 수 없음');
+  else {
+    const ic = vm.createContext({});
+    vm.runInContext(ib[1] + '\n' + ab[1] + '\n;globalThis.__i = { SIG_INIT, ART };', ic);
+    const { SIG_INIT, ART } = ic.__i, bad = [];
+    const slotsOf = key => { const [m, c] = key.split(':'), a = ART[m]; return a && (a.d ? !c && a : a[c]) ? (a.d ? a : a[c]).slots : null; };   // 매체:콘텐츠 → 그 목업의 slots (인쇄 매체는 콘텐츠 없음)
+    let n = 0;
+    for (const [form, zones] of [['v', R.RULES.zones.sigV], ['h', R.RULES.zones.sigH]])
+      for (const [key, [mm, where]] of Object.entries(SIG_INIT[form] || {})) {
+        n++;
+        const slots = slotsOf(key);
+        if (!slots) { bad.push(`${form} '${key}' — 목업 표에 없는 매체:콘텐츠`); continue; }
+        if (!slots[0][3].includes(where)) bad.push(`${form} '${key}' 자리 ${where} — 그 목업의 후보(${slots[0][3].join(' ')})에 없음`);
+        if (R.zoneOf(zones, mm) !== 'optimal') bad.push(`${form} '${key}' ${mm}mm — ${form === 'v' ? '세로형' : '가로형'} 최적 구간 밖`);
+      }
+    for (const b of bad) fail(`생성기 시그니처 처음 값 ${b}`);
+    if (!bad.length) ok(`생성기 시그니처 처음 값 ${n}칸 — 크기는 최적 구간 안 · 키와 자리는 목업 표에 있음`);
+  }
 
   // e. 서체 — 생성기가 쓰는 woff2 가 가이드 fonts.css 에 선언된 파일인지 (public/fonts 공유, 이름이 어긋나면 생성기만 시스템 서체로 떨어짐)
   const files = s => new Set([...s.matchAll(/\/fonts\/([\w-]+\.woff2)/g)].map(m => m[1]));

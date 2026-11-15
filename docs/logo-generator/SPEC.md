@@ -1,13 +1,13 @@
-# EO Logo Generator — 현재 사양 (2026-11-12)
+# EO Logo Generator — 현재 사양 (2026-11-16)
 
 정적 웹 도구 `public/tools/logo-generator/`. 가이드(content/guide.ko.md › Symbol · Signature)의 규칙대로 EO 심볼과 시그니처를 **보이는 크기 기준**으로 생성해 내보낸다(화면 SVG · PNG, 인쇄 CMYK PDF · dpi PNG). 디자인 툴 대체가 아니라 "보이는 크기 기준 시각 보정 계산기". 가이드 목차 Logo › Download(`## Download {href=/tools/logo-generator/index.html}`)가 새 탭으로 연다.
 
 ## 0. 파일 · 실행 · 의존성
-- 파일: `index.html`(마크업) · `fonts.css`(서체 선언) · `tokens.css`(모든 수치 · 색 — 가이드 tokens.css 와 같은 규칙: A 시스템 · B 요소, `--<요소>-<부분>-<속성>-<상태>`) · `tool.css`(토큰만 참조하는 규칙, 블록 순서 = tokens.css 목차) · `geom.js`(심볼 지오메트리, 확정 — GEOM-START/END) · `app.js`(상태 · 시그니처 조판 · 목업 · 내보내기 · 툴팁, geom.js 다음에 읽는 같은 전역 공간. 맨 위 RULES-START/END 블록 = 가이드에서 온 수치 — 크기 구간 · 시그니처 규격 · 면적 상한, npm test [5] 가 고정) · `sig-font.js`(서체 읽는 모듈) · `vendor/`(polygon-clipping 0.15.7 · fontkitten 1.0.3, 둘 다 MIT, 라이선스 동봉).
+- 파일: `index.html`(마크업) · `fonts.css`(서체 선언) · `tokens.css`(모든 수치 · 색 — 가이드 tokens.css 와 같은 규칙: A 시스템 · B 요소, `--<요소>-<부분>-<속성>-<상태>`) · `tool.css`(토큰만 참조하는 규칙, 블록 순서 = tokens.css 목차) · `geom.js`(심볼 지오메트리, 확정 — GEOM-START/END) · `app.js`(상태 · 시그니처 조판 · 목업 · 내보내기 · 툴팁, geom.js 다음에 읽는 같은 전역 공간. 맨 위 RULES-START/END 블록 = 가이드에서 온 수치 — 크기 구간 · 시그니처 규격 · 면적 상한, npm test [5] 가 고정. SIGINIT-START/END = 시그니처 처음 값 · ART-START/END = 목업 표, [5] 가 둘을 대조) · `sig-font.js`(서체 읽는 모듈) · `vendor/`(polygon-clipping 0.15.7 · fontkitten 1.0.3, 둘 다 MIT, 라이선스 동봉).
 - 실행: `npm run dev` → `http://localhost:4321/tools/logo-generator/index.html` (빌드하면 `dist/tools/logo-generator/` 로 그대로 복사). 빌드 단계 없음 — Astro 는 public 을 복사만 한다. file:// 로 열면 시그니처 서체를 못 읽는다(심볼은 동작, 경고 표시).
 - 서체: 가이드와 같은 `public/fonts/`(git 제외, 클라이언트가 넣음). 시그니처는 `founders-grotesk-regular.woff2` 의 아웃라인을 쓴다(출력에는 아웃라인만). 없으면 Signature 가 "Signature font missing" 으로 잠긴다.
 - 가이드 링크(i · 이름 클릭)는 같은 서버의 `/en/02-logo/…`.
-- 검사: `npm test` 의 [5] — geom.js 를 node 에서 돌려 확정 수치(다크 총높이 · 오른쪽 클리어스페이스 식)를, app.js 의 HEX · CMYK 를 가이드 스와치와 대조 (`scripts/lib/logo-generator-check.mjs`).
+- 검사: `npm test` 의 [5] — geom.js 를 node 에서 돌려 확정 수치(다크 총높이 · 오른쪽 클리어스페이스 식)를, app.js 의 HEX · CMYK 를 가이드 스와치와 대조, 시그니처 처음 값이 그 형의 최적 구간 안이고 목업 표에 있는 매체 · 자리인지 (`scripts/lib/logo-generator-check.mjs`).
 - 정본 지오메트리 SVG 는 `docs/logo-generator/source/` (geom.js 안에 문자열로도 들어 있음).
 
 ## 1. 심볼 지오메트리 (geom.js — 확정, 손대지 않음)
@@ -18,7 +18,7 @@
 - 다크(가이드 Symbol › Inversion, 일러 작업 순서 그대로 2026-11-13): ① E 블록 전체 · O 팔각형을 블록 중심 기준 정비율 확대(높이 +2/30H) — 십자 구멍은 원래 크기 ② H/60 외곽선 오프셋 — 바깥 윤곽은 밖으로, 십자는 안으로(2026-11-13 사용자 결정 H/100 → H/60, 생성기 상수 DARK_OFFSET · DARK_HOLE_OFFSET) ③ 간격 = 라이트 − H/30(regular 4/30 → 3/30). 총 높이 1.1H, 십자 = 라이트 − 2/60H(길이 · 팔 두께 모두, npm test [5] 고정).
 
 ## 2. 크기 축
-- **Visual height(= Symbol height, S)** 가 사용자 결정값. 500mm 에서 보이는 심볼 높이(mm), 슬라이더 4-30mm. 거리 · 매체 때문에 자동으로 바뀌지 않는다(매체를 고를 때만 그 매체의 처음 값으로 한 번 맞춤).
+- **Visual height(= Symbol height, S)** 가 사용자 결정값. 500mm 에서 보이는 심볼 높이(mm), 슬라이더 4-30mm. 거리 때문에 자동으로 바뀌지 않는다(매체 · 콘텐츠 · 로고 형을 고를 때만 그 처음 값으로 한 번 맞춤 — §4).
 - 실제 높이 = S × 거리 ÷ 500. 출력 px = 실제 높이 × 매체 px/mm(화면) 또는 dpi ÷ 25.4(인쇄).
 - Viewing 섹션에서 Real size height · Output height 를 직접 넣으면 S 로 역산.
 - 경고(심볼): 4mm 미만 Outside guide · 4mm Minimum visual size · 15mm 까지 Within optimal range · 15-25mm Above recommended size · 25mm 초과 Above maximum size(2026-11-15 문구 변경, 저장은 막지 않음). 슬라이더 구간 색도 같다(4-15 최적 · 15-25 권장 초과 · 그 밖 가이드 밖). 가이드 문장의 최적 범위는 8-15mm 라 아래 끝(4 ↔ 8mm)만 다르다 — 의도적 공존이므로 서로 맞추지 않는다(AGENTS.md E4 · DEBT.md D20).
@@ -38,20 +38,39 @@
 - 저장 잠금(Save 의 SVG ↓ · PNG ↓ 회색): Descriptor 가 비면 “No descriptor — use the symbol instead”, 서체에 없는 글자가 있으면 “Missing glyphs: 한, 글”(빠진 글자 나열), 서체를 못 읽었을 때도 잠김. 메시지는 크기 경고 줄에 주황. 빈 Descriptor 는 EO 를 채우지 않고 캡 박스 자리만 둔다.
 
 ## 4. Viewing 섹션 — 매체
-매체 = 프리셋(대표 거리 · 출력 단위 · px/mm 또는 dpi · 처음 Visual height · 목업). 고른 뒤 거리는 자유.
+매체 = 프리셋(대표 거리 · 출력 단위 · px/mm 또는 dpi · 처음 Visual height · 처음 자리 · 목업). 고른 뒤 거리는 자유.
 
-| 매체 | 거리 | 출력 | 처음 S | 콘텐츠 |
-|---|---|---|---|---|
-| iPhone 18 | 30cm | 6.04 pt/mm (460ppi @3x) | 8 | Feed 3:4 · Story 9:16 · Video 16:9 |
-| iPhone 18 Pro Max | 30cm | 같음 | 8.5 | 같음 |
-| MacBook 16″ | 50cm | 5 px/mm (1728 × 1117) | 12 | Video 16:9 · Website(7) |
-| Desktop 24″ | 65cm | 3.6 px/mm (1920 × 1080) | 12 | Video 16:9 · Website(7) |
-| Desktop 27″ | 70cm | 4.28 px/mm (2560 × 1440) | 12 | Video 16:9 · Website(7) |
-| A4 document | 40cm | 300dpi | 10 | — |
-| A2 poster | 120cm | 150dpi | 7 | — |
-| Billboard 48 × 14ft | 40m | 20dpi | 5 | — |
+| 매체 | 거리 | 출력 | 콘텐츠 |
+|---|---|---|---|
+| iPhone 18 | 30cm | 6.04 pt/mm (460ppi @3x) | Feed 3:4 · Story 9:16 · Video 16:9 |
+| iPhone 18 Pro Max | 30cm | 같음 | 같음 |
+| MacBook 16″ | 50cm | 5 px/mm (1728 × 1117) | Video 16:9 · Website |
+| Desktop 24″ | 65cm | 3.6 px/mm (1920 × 1080) | Video 16:9 · Website |
+| Desktop 27″ | 70cm | 4.28 px/mm (2560 × 1440) | Video 16:9 · Website |
+| A4 document | 40cm | 300dpi | — |
+| A2 poster | 120cm | 150dpi | — |
+| Billboard 48 × 14ft | 40m | 20dpi | — |
 
-- 콘텐츠에 처음 값이 있으면(Website 7) 그 값, 없으면 매체 값.
+처음 값 = 처음 Visual height(mm) · 목업 속 처음 자리. 로고 형마다 다르다.
+
+| 매체 · 콘텐츠 | 심볼 | 세로형 시그니처 | 가로형 시그니처 |
+|---|---|---|---|
+| iPhone 18 — Feed · Story | 8 · 오른쪽 위 | 11 · 가운데 | 7 · 가운데 |
+| iPhone 18 — Video | 8 · 오른쪽 위 | 11 · 가운데 | 8 · 가운데 |
+| iPhone 18 Pro Max — Feed · Story | 8.5 · 오른쪽 위 | 12 · 가운데 | 8 · 가운데 |
+| iPhone 18 Pro Max — Video | 8.5 · 오른쪽 위 | 12 · 가운데 | 9 · 가운데 |
+| MacBook 16″ — Video | 12 · 오른쪽 위 | 13 · 가운데 | 9 · 가운데 |
+| MacBook 16″ — Website | 7 · 위 가운데 | 10 · 위 가운데 | 5 · 위 가운데 |
+| Desktop 24″ · 27″ — Video | 12 · 오른쪽 위 | 15 · 가운데 | 10 · 가운데 |
+| Desktop 24″ · 27″ — Website | 7 · 위 가운데 | 12 · 위 가운데 | 6 · 위 가운데 |
+| A4 document | 10 · 왼쪽 위 | 10 · 아래 가운데 | 8 · 왼쪽 위 |
+| A2 poster | 7 · 오른쪽 아래 | 10 · 오른쪽 아래 | 5 · 왼쪽 아래 |
+| Billboard | 5 · 왼쪽 아래 | 심볼과 같음 | 4 · 왼쪽 아래 |
+
+- 처음 값은 매체 · 콘텐츠 · 로고 형(심볼 · 세로형 · 가로형)이 바뀔 때 한 번 맞춘다. 켜져 있는 버튼을 다시 눌러도, Type · Descriptor 를 바꿔도 그대로.
+- 심볼: 매체 값(`MEDIA` 의 vis), 콘텐츠에 처음 값이 있으면(Website 7) 그 값. 자리는 목업 표(`ART` slots)의 기본 자리.
+- 시그니처: `SIG_INIT`(2026-11-16 디자이너 지정). Desktop 24″ · 27″ 는 MacBook 값을 화면이 보이는 크기 비율(× 1.18 · 1.24)로 키운 정수이고, 그 형의 최적 구간 끝(세로형 15 · 가로형 10)은 넘지 않게 했다 — 그래서 두 Desktop 의 값이 같다. 세로형 빌보드는 칸을 두지 않아 심볼과 같은 값(5 · 왼쪽 아래)이고 “Use horizontal at this size” 가 뜬다 — 목업 위 알림이 이미 시그니처를 비추천하므로 그대로 둔다. 가로형 빌보드의 4 는 최소 크기라 “Minimum visual size” 가 뜬다.
+- 값은 프리셋이라 npm test 가 고정하지 않는다. [5] 는 크기가 그 형의 최적 구간 안인지, 키 · 자리가 목업 표에 있는지만 본다.
 
 ## 5. 작업공간 미리보기
 - 가운데 로고 = **As seen**: S × 화면 보정 px/mm. 이 화면을 50cm 에서 볼 때 현장에서 보는 것과 같은 크기. 매체가 달라도 S 가 같으면 같은 크기.
@@ -62,9 +81,9 @@
 - Show clearspace guide(기본 꺼짐): 가운데 로고에 장표 문법의 클리어스페이스 — 점선 격자(바깥 + 로고 경계선), 모서리 칸에 작은 H/2(가로형 시그니처는 H, label × 0.6, 오른쪽 보정으로 좁아진 칸은 생략, 칸이 작으면 생략). 폰 실물 목업 안의 클리어스페이스도 같은 문법(화면 px 로 그려 mm 좌표에 맞춤).
 - 오른쪽 아래 = 매체 목업 + 이름 · 화면 크기 · 해상도(인쇄는 dpi). 폰은 가운데에 캘리브레이션 실물 크기 목업.
   - MacBook · Desktop 24″ · 27″ 목업은 실제 크기 비율이 서로 맞는다(Desktop 24″ 를 기본 상자에 맞춘 배율 × 1.25 로 셋 다 그림). A4 · A2 · Billboard 는 상자 맞춤 + 보정 배율(boost).
-  - 목업 속 로고 자리: 기본 자리 + 후보(흐린 심볼, 호버 · 클릭으로 이동, 매체 + 콘텐츠별 기억). 겹치는 후보의 클릭 영역은 두 중심 사이에서 나눈다.
+  - 목업 속 로고 자리: 처음 자리(§4) + 후보(흐린 심볼, 호버 · 클릭으로 이동, 매체 + 콘텐츠 + 로고 형별 기억). 겹치는 후보의 클릭 영역은 두 중심 사이에서 나눈다.
   - 여백: 콘텐츠 영역 긴 변 1/24, 가로는 10% 좁게, 최소 H/2. Website 는 1/48(헤더 자리 · 위 가운데 처음), Story 는 9:16 프레임 전체 기준 7곳, A2 · Billboard 는 조닝의 콘텐츠 영역 안.
-  - 크기 상한: 목업 안 로고가 반대쪽 여백에 닿는 크기(로고 + 여백 2개 > 면 폭 또는 높이)에서 Visual height 가 더 오르지 않고 크기 경고 줄에 빨강 “Too large for this layout”. 자리와 무관(붙은 여백은 앵커라 침범 없음). 거리 · 매체 · 로고 종류를 바꿔 넘치면 그 상한으로 보이고, 사용자가 정한 값(visReq)은 남아 있어 되돌리면 원래 크기로 돌아온다. 메시지는 넘치는 동안 계속.
+  - 크기 상한: 목업 안 로고가 반대쪽 여백에 닿는 크기(로고 + 여백 2개 > 면 폭 또는 높이)에서 Visual height 가 더 오르지 않고 크기 경고 줄에 빨강 “Too large for this layout”. 자리와 무관(붙은 여백은 앵커라 침범 없음). 거리 · Descriptor 를 바꿔 넘치면 그 상한으로 보이고, 사용자가 정한 값(visReq)은 남아 있어 되돌리면 원래 크기로 돌아온다(매체 · 콘텐츠 · 로고 형을 바꾸면 처음 값으로 다시 맞춘다). 메시지는 넘치는 동안 계속.
   - 목업 위 알림(경고 주황): 로고 면적이 놓인 공간의 10%를 넘으면 Larger than the guide suggests, 빌보드에서 시그니처를 고르면 Signature not recommended on billboards.
   - 목업 선 색: 라이트 모드 Air White 고정, 다크 모드는 페어 글자색.
 

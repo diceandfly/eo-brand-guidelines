@@ -40,7 +40,7 @@ const PRESETS = [
   { n: 6, fg: 'Builder Neon', bg: 'Solid Gray', mode: 'light' },
 ];
 const LS_KEY = 'eo-symbol-generator:pxmm';
-const st = { pxmm: 5, calibrated: false, dist: 500, unit: 'px', vis: 12, mode: 'light', preset: 2, clear: true, icon: true, pngScale: 1, visReq: 12, artLimit: false, dpi: null, place: {}, content: {}, guide: false, kind: 'symbol', sigType: 'company', orient: 'v', sigName: 'Magazine' };   // kind = symbol | signature · sigType = company | service · orient = v | h   // guide = 화면에 클리어스페이스 박스 표시 (내보내기와 별개)   // place = 매체별 목업 심볼 자리 (목업에서 클릭해 바꿈)   // 배경은 내보내지 않음 (투명 고정 — Background 토글 폐기)
+const st = { pxmm: 5, calibrated: false, dist: 500, unit: 'px', vis: 12, mode: 'light', preset: 2, clear: true, icon: true, pngScale: 1, visReq: 12, artLimit: false, dpi: null, place: {}, content: {}, guide: false, kind: 'symbol', sigType: 'company', orient: 'v', sigName: 'Magazine' };   // kind = symbol | signature · sigType = company | service · orient = v | h   // guide = 화면에 클리어스페이스 박스 표시 (내보내기와 별개)   // place = 매체 · 콘텐츠 · 로고 형별 목업 로고 자리 (목업에서 클릭해 바꿈)   // 배경은 내보내지 않음 (투명 고정 — Background 토글 폐기)
 try { const v = parseFloat(localStorage.getItem(LS_KEY)); if (v > 1 && v < 30) { st.pxmm = v; st.calibrated = true; } } catch (e) {}
 const $ = id => document.getElementById(id);
 const fmt = (v, n = 3) => (Math.round(v * 10 ** n) / 10 ** n).toFixed(n);
@@ -224,7 +224,7 @@ function update() {
   let c;
   try { c = compose(); $('err').style.display = 'none'; }
   catch (e) { $('err').textContent = 'Generation failed: ' + e.message + (typeof polygonClipping === 'undefined' ? ' — could not load polygon-clipping from the CDN (check the connection).' : ''); $('err').style.display = 'block'; return; }
-  { const lim = artLimitS(c), want = st.visReq; st.artLimit = want > lim + 1e-6;   // 목업 안 로고가 반대쪽 여백에 닿으면 그 크기에서 멈춤 (빨간 메시지) — 사용자가 정한 값(visReq)은 지우지 않음: 거리 · 로고 종류를 되돌리면 원래 크기로
+  { const lim = artLimitS(c), want = st.visReq; st.artLimit = want > lim + 1e-6;   // 목업 안 로고가 반대쪽 여백에 닿으면 그 크기에서 멈춤 (빨간 메시지) — 사용자가 정한 값(visReq)은 지우지 않음: 거리 · 디스크립터를 되돌리면 원래 크기로
     const nv = st.artLimit ? Math.max(MM_MIN, Math.floor(lim * 100) / 100) : want;
     if (Math.abs(nv - st.vis) > 1e-9) { st.vis = nv; $('hSlider').value = st.vis; if (document.activeElement !== $('hmm')) $('hmm').value = mmText(st.vis); c = compose(); } }
   const { z, sym, frame } = c;
@@ -247,7 +247,7 @@ function update() {
     ['typeRow', 'layRow'].forEach(id => $(id).classList.toggle('off', !sig)); $('nameRow').classList.toggle('off', !sig || co);
     if (document.activeElement !== $('sigName')) $('sigName').value = co ? 'EO Studio' : st.sigName; $('sigName').disabled = !sig || co; }
   $('hSlider').style.setProperty('--zones', zoneTrack());   // 슬라이더 구간 색
-  { const m = medium(), v = (m.contents?.find(([k]) => k === curContent()) || [])[2] ?? m.vis, f = (v - MM_MIN) / (MM_MAX - MM_MIN), x = `calc(var(--slider-thumb-w) * 0.5 + ${(f * 100).toFixed(3)}% - var(--slider-thumb-w) * ${f.toFixed(5)})`;   // 매체 · 콘텐츠 처음 값 자리 = 눈금 (Website 7 등)
+  { const v = initVis(), f = (v - MM_MIN) / (MM_MAX - MM_MIN), x = `calc(var(--slider-thumb-w) * 0.5 + ${(f * 100).toFixed(3)}% - var(--slider-thumb-w) * ${f.toFixed(5)})`;   // 지금 형 · 매체 · 콘텐츠의 처음 값 자리 = 눈금 (Website 7 · 시그니처 표)
     const zc = `var(--slider-zone-${zoneAt(v)})`;   // 눈금 색 = 그 자리 구간 색
     $('hSlider').style.setProperty('--vis-mark', v ? `linear-gradient(to right, transparent calc(${x} - var(--slider-tick-w) / 2), ${zc} calc(${x} - var(--slider-tick-w) / 2) calc(${x} + var(--slider-tick-w) / 2), transparent calc(${x} + var(--slider-tick-w) / 2))` : 'none'); }
 
@@ -333,7 +333,7 @@ $('hpx').onchange = e => { const v = parseFloat(e.target.value) / (st.unit === '
 // 매체 = 쓰는 곳: 고르면 대표 거리로 한 번 맞추고, 출력 단위 · 해상도와 그림을 정함 (거리는 그 뒤 자유). MacBook 16″ = 가이드 기준 500mm · 5px/mm (기본 배율 1728px ÷ 345mm) / Desktop 24″ = FHD 100% 3.6px/mm · 65cm / iPhone 18 = 그 기기 논리 해상도(pt) / A4 · Poster · Billboard = 인쇄(dpi).
 const PHONE_PXMM = 460 / 3 / 25.4;   // iPhone 18 (6.3″ · 460ppi · @3x) 논리 해상도 ≈ 6.04 pt/mm. 일반 모델 미발표(2026-11) — 같은 6.3″ 로 알려진 18 Pro 수치
 const MEDIA = {   // 출력 기준 — 화면: 그 매체의 표준 px/mm · 인쇄: 그 매체의 실제 출력 해상도 dpi (대형 출력일수록 낮음)
-  // vis = 매체를 고를 때 Visual height 처음 값 (그 매체에서 흔한 로고 크기 — 사용자가 직접 조정)
+  // vis = 매체를 고를 때 Visual height 처음 값 (그 매체에서 흔한 심볼 크기 — 사용자가 직접 조정). 시그니처의 처음 값은 아래 SIG_INIT
   // dist = 대표 거리 (매체마다 필수, 옵션 값은 매체 id) — 매체를 고르면 이 거리로 맞춤, 다른 경우만 거리 칸에서 직접 수정 (Symbol height 는 그대로, 실제 크기 · 출력만 변함)
   'iphone': { dist: 300, unit: 'px', pxmm: PHONE_PXMM, vis: 8, real: true, contents: [['feed', 'Feed 3:4'], ['story', 'Story 9:16'], ['video', 'Video 16:9']] },   // real = 실물 크기 목업 · contents = 디지털 매체의 콘텐츠 종류 (목업 프레임 · 로고 자리 후보가 바뀜, 인쇄 매체는 없음 → 비활성)   // iPhone 18
   'iphone-pm': { dist: 300, unit: 'px', pxmm: PHONE_PXMM, vis: 8.5, real: true, contents: [['feed', 'Feed 3:4'], ['story', 'Story 9:16'], ['video', 'Video 16:9']] },   // iPhone 18 Pro Max (6.9″ · 460ppi · @3x — 화면 72.9 × 158.4mm, 440 × 956 pt)
@@ -345,13 +345,28 @@ const MEDIA = {   // 출력 기준 — 화면: 그 매체의 표준 px/mm · 인
   'billboard': { dist: 40000, unit: 'mm', dpi: 20, vis: 5 },   // Billboard 48 × 14ft — 처음 값 5mm = 40m 에서 400mm (보드 높이의 약 9.4%, 2026-11-13 4 → 5). 실물 크기 출력 10-20dpi. 상황은 일반적인 하나만 (먼 거리는 로고가 가이드보다 커져 다루지 않음)
 };
 const medium = () => MEDIA[$('distPreset').value];
+/*SIGINIT-START*/
+// 시그니처를 골랐을 때의 처음 값 — [Visual height mm, 목업 자리] (2026-11-16 디자이너 지정, npm test [5] 가 그 형의 최적 구간 안인지 검사). 키 = 매체:콘텐츠 (artKey 와 같음 — 인쇄 매체는 콘텐츠가 없어 '매체:'). 심볼은 MEDIA 의 vis · 목업 slots 의 기본 자리 그대로
+// 칸이 없으면 심볼과 같은 값 — 세로형 빌보드 (목업 위 알림이 이미 시그니처를 비추천). Desktop 24″ · 27″ = MacBook 값을 화면이 보이는 크기 비율(× 1.18 · 1.24)로 키운 정수, 그 형의 최적 구간 끝(세로형 15 · 가로형 10)은 넘지 않게
+const SIG_INIT = {
+  v: { 'iphone:feed': [11, 'c'], 'iphone:story': [11, 'c'], 'iphone:video': [11, 'c'], 'iphone-pm:feed': [12, 'c'], 'iphone-pm:story': [12, 'c'], 'iphone-pm:video': [12, 'c'],
+    'macbook:video': [13, 'c'], 'macbook:web': [10, 'tc'], 'desktop-24:video': [15, 'c'], 'desktop-24:web': [12, 'tc'], 'desktop-27:video': [15, 'c'], 'desktop-27:web': [12, 'tc'],
+    'a4:': [10, 'bc'], 'a2:': [10, 'br'] },
+  h: { 'iphone:feed': [7, 'c'], 'iphone:story': [7, 'c'], 'iphone:video': [8, 'c'], 'iphone-pm:feed': [8, 'c'], 'iphone-pm:story': [8, 'c'], 'iphone-pm:video': [9, 'c'],
+    'macbook:video': [9, 'c'], 'macbook:web': [5, 'tc'], 'desktop-24:video': [10, 'c'], 'desktop-24:web': [6, 'tc'], 'desktop-27:video': [10, 'c'], 'desktop-27:web': [6, 'tc'],
+    'a4:': [8, 'tl'], 'a2:': [5, 'bl'], 'billboard:': [4, 'bl'] },
+};
+/*SIGINIT-END*/
+const formKey = () => st.kind !== 'signature' ? 's' : st.orient;   // 지금 로고 형 — s 심볼 · v 세로형 · h 가로형 시그니처
+const sigInit = () => SIG_INIT[formKey()]?.[artKey()];   // 지금 형 · 매체 · 콘텐츠의 시그니처 처음 값 (심볼 · 빈 칸은 없음)
+const initVis = () => { const m = medium(), s = sigInit(); return s ? s[0] : (m.contents?.find(([k]) => k === curContent()) || [])[2] ?? m.vis; };   // 처음 Visual height — 시그니처 표 > 콘텐츠 값 (Website 7) > 매체 값
 const DPI_OPTS = [20, 72, 150, 300];   // 인쇄 매체 PNG 해상도 버튼 — 20 빌보드 · 72 배너 · 사인 · 150 포스터 · 300 손에 드는 인쇄 (그 이상은 파일만 커짐)
 const printDpi = () => st.dpi || medium().dpi;   // 고른 dpi (매체를 바꾸면 그 매체 처음 값으로)
 const pxPerMm = () => st.unit === 'px' ? medium().pxmm : printDpi() / 25.4;   // 매체가 정함 — 화면이면 그 매체 px/mm, 인쇄면 그 매체 dpi (사용자 화면 보정값은 미리보기에만)
-$('contSel').onchange = e => { st.content[$('distPreset').value] = e.target.value;   // 콘텐츠에 처음 Visual height 가 있으면 그 값 (Website 7), 없으면 매체 값으로
-  const m = medium(), cv = (m.contents.find(([v]) => v === e.target.value) || [])[2] ?? m.vis; if (cv) setVis(cv); update(); };
+$('contSel').onchange = e => { st.content[$('distPreset').value] = e.target.value;   // 그 콘텐츠의 처음 Visual height 로 (initVis — 시그니처 표 > Website 7 > 매체 값)
+  setVis(initVis()); update(); };
 $('distPreset').onchange = e => { st.dist = medium().dist; st.dpi = medium().dpi || null;   // 매체마다 대표 거리 (dist) — 옵션 값은 매체 id (같은 거리 매체가 둘이면 dist 로)
-  const m = medium(), cv = m.contents ? ((m.contents.find(([v]) => v === curContent()) || [])[2] ?? m.vis) : m.vis; if (cv) setVis(cv); if (document.activeElement === $('dist')) $('dist').blur(); update(); showDist(); };   // 매체를 고르면 그 매체의 대표 거리 · 처음 Visual height 로 한 번 맞춤 (그 뒤 거리는 자유 — 매체는 그대로)
+  setVis(initVis()); if (document.activeElement === $('dist')) $('dist').blur(); update(); showDist(); };   // 매체를 고르면 그 매체의 대표 거리 · 처음 Visual height 로 한 번 맞춤 (그 뒤 거리는 자유 — 매체는 그대로)
 // 보는 거리 표시: 내부는 mm, 칸에는 3m 미만 cm · 3m 부터 m (Poster 까지 cm, Billboard 는 m)
 const DIST_M_FROM = 3000;
 let distUnit = 'cm';
@@ -379,12 +394,13 @@ $('modeDark').onclick = () => setMode('dark');
 $('clear').onchange = e => { st.clear = e.target.checked; update(); };
 $('icon').onchange = e => { st.icon = e.target.checked; update(); };
 $('guide').onchange = e => { st.guide = e.target.checked; update(); };
-$('kSym').onclick = () => { st.kind = 'symbol'; update(); };
-$('kSig').onclick = () => { st.kind = 'signature'; update(); };
+const setForm = fn => { const was = formKey(); fn(); if (formKey() !== was) setVis(initVis()); update(); };   // 로고 형(심볼 · 세로형 · 가로형)이 바뀌면 그 형의 처음 Visual height 로 한 번 맞춤 — 매체 · 콘텐츠를 고를 때와 같음 (같은 버튼을 다시 누르면 그대로)
+$('kSym').onclick = () => setForm(() => { st.kind = 'symbol'; });
+$('kSig').onclick = () => setForm(() => { st.kind = 'signature'; });
 $('tCo').onclick = () => { st.sigType = 'company'; update(); };
 $('tSv').onclick = () => { st.sigType = 'service'; update(); };
-$('oV').onclick = () => { st.orient = 'v'; update(); };
-$('oH').onclick = () => { st.orient = 'h'; update(); };
+$('oV').onclick = () => setForm(() => { st.orient = 'v'; });
+$('oH').onclick = () => setForm(() => { st.orient = 'h'; });
 $('sigName').oninput = e => { const el = e.target, v = el.value, cap = v.replace(/^(\s*)(\p{Ll})/u, (m, sp, ch) => sp + ch.toUpperCase());   // 첫 글자는 늘 대문자 (입력칸에서 바로 바뀜 = 보이는 것과 나가는 것이 같음)
   if (cap !== v) { const p = el.selectionStart; el.value = cap; el.setSelectionRange(p, p); } st.sigName = cap; update(); };
 $('pngScale').querySelectorAll('button').forEach((b, i) => b.onclick = () => { if (st.unit === 'mm') st.dpi = DPI_OPTS[i]; else st.pngScale = +b.dataset.v; update(); });
@@ -419,6 +435,7 @@ const artPlace = (box, w, h, m, where) => {
   const [bx, by, bw, bh] = box, my = Math.max(0, Math.min(Math.max(m, h / 2), (bh - h) / 2)), mx = Math.max(0, Math.min(Math.max(m * 0.9, h / 2), (bw - w) / 2));
   return { c: [bx + (bw - w) / 2, by + (bh - h) / 2], tl: [bx + mx, by + my], tr: [bx + bw - mx - w, by + my], br: [bx + bw - mx - w, by + bh - my - h], bl: [bx + mx, by + bh - my - h], tc: [bx + (bw - w) / 2, by + my], bc: [bx + (bw - w) / 2, by + bh - my - h] }[where];
 };
+/*ART-START*/
 const PHONE_BODY = {   // 폰 본체 선 (세로 v · 가로 h) — 콘텐츠마다 다른 건 맨 뒤 콘텐츠 영역(zn)뿐
   iphone: { v: `<rect class="ln" width="71.9" height="150" rx="11"/><rect class="ln" x="1.6" y="1.6" width="68.7" height="146.8" rx="9.6"/><rect class="ln" x="25.95" y="4.6" width="20" height="6.2" rx="3.1"/><line class="ln" x1="23.95" y1="145" x2="47.95" y2="145"/>`, h: `<rect class="ln" width="150" height="71.9" rx="11"/><rect class="ln" x="1.6" y="1.6" width="146.8" height="68.7" rx="9.6"/><rect class="ln" x="4.6" y="25.95" width="6.2" height="20" rx="3.1"/><line class="ln" x1="63.0" y1="66.9" x2="87.0" y2="66.9"/>` },
   iphonePM: { v: `<rect class="ln" width="78" height="163.4" rx="12"/><rect class="ln" x="1.7" y="1.7" width="74.6" height="160.0" rx="10.4"/><rect class="ln" x="29.0" y="4.8" width="20" height="6.2" rx="3.1"/><line class="ln" x1="27.0" y1="158.4" x2="51.0" y2="158.4"/>`, h: `<rect class="ln" width="163.4" height="78" rx="12"/><rect class="ln" x="1.7" y="1.7" width="160.0" height="74.6" rx="10.4"/><rect class="ln" x="4.8" y="29.0" width="6.2" height="20" rx="3.1"/><line class="ln" x1="69.7" y1="73" x2="93.7" y2="73"/>` },
@@ -462,6 +479,7 @@ const ART = {
   'billboard': { w: 15830, h: 10870, boost: 1.55, spec: { size: [14630, 4270], space: [4389, 4270] }, slots: [[[600, 0, 4389, 4270], 4389 / 24, 'bl', ['tl', 'bl']]],   // Billboard — 48 × 14ft 보드 + 발판 + 기둥 하나 (가이드 Pattern › In Use 빌보드). 조닝: 왼쪽 30% 콘텐츠 · 오른쪽 70% 그래픽 패턴, 로고 = 콘텐츠 영역 왼쪽 아래
     d: `<rect class="ln" x="600" width="14630" height="4270"/><path class="ln" d="M2600 4270 V4570 M7915 4270 V4570 M13230 4270 V4570"/><rect class="ln" y="4570" width="15830" height="300"/><rect class="ln" x="7415" y="4870" width="1000" height="6000"/><path class="ln" d="M-800 10870 H16630"/><path class="zn" d="M4989 0 V4270 M4989 0 L15230 4270 M15230 0 L4989 4270"/>` },
 };
+/*ART-END*/   // ART-START … ART-END = 목업 표 (npm test [5] 가 SIG_INIT 의 키 · 자리를 여기와 대조)
 // 목업 캡션 글 — 1줄 매체 이름 / 2줄 디지털: 화면 크기 · 해상도, 인쇄: 크기 · dpi (3m 부터 m)
 function artLabel(a) {
   const sel = $('distPreset'), name = sel.options[sel.selectedIndex].textContent, [sw0, sh0] = a.spec.size, m = medium();
@@ -478,9 +496,10 @@ function renderReal(c, a) {   // 폰 = 고른 콘텐츠의 실물 크기 목업 
 }
 // 목업 심볼 자리 — slots = [[면 x, y, 폭, 높이], 여백, 기본 자리, 후보 자리들] (매체마다 쓸 만한 자리만: 화면 UI = 위 모서리 · 가운데, 지면 = 네 모서리, 빌보드 = 콘텐츠 영역 왼쪽 위 · 아래)
 const curContent = () => { const m = medium(); return m.contents ? (st.content[$('distPreset').value] || m.contents[0][0]) : null; };
-const artKey = () => $('distPreset').value + ':' + (curContent() || '');   // 자리 기억 = 매체 + 콘텐츠별
+const artKey = () => $('distPreset').value + ':' + (curContent() || '');   // 매체 + 콘텐츠 (SIG_INIT 의 키)
+const placeKey = () => artKey() + ':' + formKey();   // 자리 기억 = 매체 + 콘텐츠 + 로고 형별 (형마다 처음 자리가 달라 따로 기억)
 const artFor = () => { const a = ART[$('distPreset').value]; return a && !a.d ? a[curContent()] : a; };   // 콘텐츠별 목업이 있으면 그것
-const slotWhere = (i, sl) => ((st.place[artKey()] || [])[i]) || sl[2];   // 고른 자리 (없으면 기본)
+const slotWhere = (i, sl) => ((st.place[placeKey()] || [])[i]) || (!i && sigInit()?.[1]) || sl[2];   // 고른 자리 > 시그니처 처음 자리 (SIG_INIT) > 목업 기본
 // 자리 계산 — 가운데 계열(c · tc · bc)은 가로로 클리어스페이스 박스를 가운데에 (아이콘 보정을 켜면 오른쪽 여백이 줄어 심볼이 오른쪽으로 = 가이드 App & Social Icons › Alignment). 모서리는 심볼 가장자리 기준이라 그대로
 function placeSym(c, sl, sw, sh, where) {
   const [x, y] = artPlace(sl[0], sw, sh, sl[1], where);
@@ -509,7 +528,7 @@ function ghostMarks(c, a, f2, sw, sh, k, r) {   // 다른 자리 후보마다 �
 const artFg = c => st.mode === 'light' ? HEX['Air White'] : c.fg;   // 목업 · 가이드 선의 기준색 — 라이트 모드는 Air White 고정 (페어 심볼 색을 따르지 않음), 다크는 페어 글자색. 목업 속 로고는 늘 페어 색
 let artHov = false;   // 마우스가 목업 위에 있나 — 다시 그릴 때 후보를 바로 보이게 (클릭 뒤 깜빡임 방지)
 document.addEventListener('pointerover', e => { const on = !!(e.target.closest && e.target.closest('svg.mock')); if (on !== artHov) { artHov = on; document.querySelectorAll('svg.mock').forEach(s => s.classList.toggle('hov', on)); } });
-document.addEventListener('click', e => { const g = e.target.closest && e.target.closest('.artGhost'); if (!g) return; (st.place[artKey()] ||= [])[+g.dataset.slot] = g.dataset.where; update(); });
+document.addEventListener('click', e => { const g = e.target.closest && e.target.closest('.artGhost'); if (!g) return; (st.place[placeKey()] ||= [])[+g.dataset.slot] = g.dataset.where; update(); });
 const ART_REF = () => ART['desktop-24'].video, ART_REF_BOOST = 1.25;   // 화면 목업 배율 기준 = Desktop 24″ 를 기본 상자에 맞춘 배율 × 1.25 (MacBook 이 작아 보이지 않게 셋을 같이 키움)
 function renderArt(c) {
   const a = artFor(), el = $('mediumArt'), m0 = medium();

@@ -65,7 +65,7 @@ docs/                   file-management.md(사람용 튜토리얼) · logo-gener
 - **장표 교체**: 사람이 둔 폴더 확인 → 파일 이름이 대상 이름과 맞는지 → `npm run import -- <페이지> <폴더> --dry` → 실행 → `npm test` → 커밋. 덮어쓴 원본은 `.trash/` 로 감.
 - **장표 색 검수 기준**: 장표 PNG 는 내보내기 과정에서 팔레트 HEX 와 조금 다른 값으로 나오므로, 새 장표는 팔레트가 아니라 기존 장표의 값과 비교한다 — Builder Neon `#F6EE3A` · Day Blue `#6CC6D1` · Bay Green `#67B98B` · Medium Gray `#8E8E8E` · Solid Gray `#292B2B` · Space Black `#080404`(또는 `#090405`) · Air White `#FCFAF5`(또는 `#FCFBF4`). 이 값에서 벗어난 장표(전체가 밝거나 한 색만 다름)와 가장자리 1px 줄은 들여오기 전에 승인 주체에게 확인한다.
 - **디자인 튜닝**: tokens.css 값만. 모션 토큰을 바꾸면 motion.ts 의 대체값도 같게([3]).
-- **로고 생성기**: 디자인은 생성기 `tokens.css`, 규칙은 `app.js` RULES, 사양 `docs/logo-generator/SPEC.md`.
+- **로고 생성기**: 디자인은 생성기 `tokens.css`, 규칙은 `app.js` RULES, 매체별 처음 값(프리셋)은 `MEDIA` · `SIG_INIT`, 사양 `docs/logo-generator/SPEC.md`.
 
 ## 5. 핸드오프 아카이브 · 이스터에그
 - 사용: 검색창에 `designisgood`(`src/lib/archive.ts` `ARCHIVE_KEY`) → 지금 페이지의 `/archive/handoff/…` 로 이동, 아카이브에서 다시 치면 현재 가이드로(Search.astro). 아카이브 빌드에는 환경 변수 `EO_ARCHIVE=<날짜>` 가 들어가 목차에 표시 + "현재 가이드" 링크(`data-archive-exit`).
