@@ -311,7 +311,7 @@
   --art-zone-dash: 2 2; /* 조닝 점선 (px) */
   --ghost-hit: calc(var(--lh-unit) * 0.5); /* 목업 위 후보 자리를 누르기 쉬운 여유 (화면 px, JS) */
   --cs-dash: 1px 2px; /* 클리어스페이스 점선 = 장표처럼 촘촘하게 */
-  --cs-label-min: calc(var(--lh-unit) * 0.8); /* 모서리 칸이 이보다 작으면 H/2 를 쓰지 않음 (JS) */
+  --cs-label-min: calc(var(--lh-unit) * 0.8); /* 모서리 칸이 이보다 작으면 H/2 · H’ 를 쓰지 않음 (JS) */
   --cs-label-scale: 0.6; /* 모서리 칸 H/2 글자 = label × 이 배율 (새 레벨 아님) */
   --art-opacity: 0.8; /* 목업 그림 + 그림 속 로고 전체 (묶음 불투명도 — 겹친 선이 진해지지 않음). 가운데 로고가 주인공 */
   --art-sym-opacity: 1; /* 그림 속 심볼 = 또렷하게 */

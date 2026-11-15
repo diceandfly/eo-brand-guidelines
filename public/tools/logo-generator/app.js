@@ -548,7 +548,7 @@ function renderArt(c) {
 const TOK_PX = new Map();   // 토큰 px 값 (창 크기가 바뀌면 비움 — lh-unit 이 창에 따라 변할 수 있어서)
 function tokenPx(name) { if (TOK_PX.has(name)) return TOK_PX.get(name); const d = document.createElement('div'); d.style.cssText = `position:absolute;visibility:hidden;width:var(${name})`; document.body.appendChild(d); const v = d.getBoundingClientRect().width; d.remove(); TOK_PX.set(name, v); return v; }
 
-// 클리어스페이스 가이드 (화면용) — 장표 문법: 점선 격자(바깥 + 로고 경계선) · 모서리 칸에 클리어스페이스 값(H/2, 가로형 시그니처는 H)
+// 클리어스페이스 가이드 (화면용) — 장표 문법: 점선 격자(바깥 + 로고 경계선) · 모서리 칸에 클리어스페이스 값(H/2, 가로형 시그니처는 H, Right side correction 으로 좁아진 오른쪽 칸은 H’)
 function csGuideSvg(c, gf, gx, gy, aH) {
   const r = v => +v.toFixed(2), W = gf.w * aH, Hh = gf.h * aH;
   return `<svg class="csGuide" style="left:${r(gx)}px;top:${r(gy)}px;--art-fg:${artFg(c)};--art-bg:${c.bgView}" width="${r(W)}" height="${r(Hh)}" viewBox="0 0 ${r(W)} ${r(Hh)}">${csGuideInner(c, gf, aH)}</svg>`;
@@ -560,7 +560,7 @@ function csGuideInner(c, gf, aH) {   // 좌표 = 화면 px (aH = 심볼 높이 p
   const cells = [[0, 0, L, 0], [W - R, 0, R, 90], [W - R, Hh - tb, R, 180], [0, Hh - tb, L, 270]];   // [x, y, 폭, 회전] — 높이는 tb
   if (Math.min(L, tb) >= tokenPx('--cs-label-min')) {
     const lab = s.sig && s.cs === 1 ? 'H' : 'H/2';   // 가로형 시그니처 = H (가이드 Signature › Clearspace 장표)
-    g += cells.filter(([, , w]) => Math.abs(w - L) < .01).map(([x, y, w]) => `<text x="${r(x + w / 2)}" y="${r(y + tb / 2)}" text-anchor="middle" dominant-baseline="central">${lab}</text>`).join('');   // 오른쪽 보정으로 좁아진 칸은 글자 없음
+    g += cells.map(([x, y, w]) => `<text x="${r(x + w / 2)}" y="${r(y + tb / 2)}" text-anchor="middle" dominant-baseline="central">${Math.abs(w - L) < .01 ? lab : 'H’'}</text>`).join('');   // 오른쪽 보정으로 좁아진 칸 = H’ (가이드 Symbol › Clearspace 장표와 같은 표기: H’ = (0.42 + 0.0012 × S) × H)
   }
   return g;
 }
