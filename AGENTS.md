@@ -39,6 +39,8 @@
 | E19 | Symbol › Usage › Placement (`usage-placement` A3 칸) | 밝은 심볼 · 흐린 심볼이 한 칸에 둘, 범례 없음 | 디자이너가 그대로 두기로 함(의도된 표현) | 확정 | 2026-11-14 |
 | E18 | Symbol › Don'ts 1번째(`dont-1` 가로 약 10%) · Signature › Don'ts 8번째(`dont-8` 세로 약 6%) | "늘리지 마세요" 인데 왜곡이 약해 잘 안 보임 | 실제로 흔히 일어날 법한 실수의 크기라 이 정도가 맞음 | 확정 | 2026-11-14 |
 
+함께 볼 것: E41(Color 여섯 조합 ↔ 의류에 넣은 심볼) — Applications 표
+
 #### 02 Logo › Sub Symbol
 
 | # | 위치 | 겉보기 문제 | 허용 이유 | 상태 | 결정일 |
@@ -57,7 +59,7 @@
 | E33 | Signature › Usage › Symbol or Signature 본문 ("텍스트가 또렷하게 읽히지 않을 만큼 작은 자리") | 시그니처 대신 심볼을 쓰는 "작은 자리" 에 수치 기준이 없음(Scalability 의 최소 크기 4mm · 20px 와 이어지지 않음) | 상황 · 사용자 · 디바이스를 디자이너가 종합적으로 고려할 일이라 보이는 크기가 기준이 되는데, 실험 연구를 한 바 없어 명시적 기준을 두지 않음(2026-11-15 괄호 안 수치 삭제). 수치를 다시 넣지 말 것 | 확정 | 2026-11-15 |
 | E21 | Signature › Inversion 세로형(`inversion-v` "Align center") ↔ Descriptor 세로형(`descriptor-v` H/100 왼쪽 보정) | 다크에서 H/100 보정이 빠진 것처럼 보임 | 라이트에서 한 번 보정한 위치를 기준으로 하므로 문제없음 | 확정 | 2026-11-14 |
 
-함께 볼 것: E32(Scalability 장표 좌상단 네모) · E20(Partner Lockup 가로형) · E18(Don'ts 8번째) — Symbol 표
+함께 볼 것: E32(Scalability 장표 좌상단 네모) · E39(Scalability 본문의 70px · 약 15mm) · E20(Partner Lockup 가로형) · E18(Don'ts 8번째) — Symbol 표
 
 E34(Scalability 장표의 10mm 경계 표기)는 2026-11-15 본문을 장표에 맞춰 고치면서 뺐습니다(경계인 10mm 에서는 두 형 모두). 빠진 번호는 다시 쓰지 않습니다.
 
@@ -85,7 +87,6 @@ E34(Scalability 장표의 10mm 경계 표기)는 2026-11-15 본문을 장표에 
 | # | 위치 | 겉보기 문제 | 허용 이유 | 상태 | 결정일 |
 |---|---|---|---|---|---|
 | E37 | Graphic Unit › Motif("shaft가 두꺼울수록 앞으로 나아가는 힘도 강해집니다") ↔ Vocabulary › Shaft › 다양성("무조건 두꺼울수록 좋은 것이 아니라 각기 다른 개성") | 연달아 읽으면 shaft 두께의 뜻이 상충처럼 보임 | 메타포는 맥락마다 다르게 읽음 — Motif 는 shaft 의 일반 정의(힘의 세기), 다양성은 여러 유닛을 나란히 놓을 때의 성격 차이 | 확정 | 2026-11-15 |
-| E11 | Graphic Unit › Parameters (`param-thread-width`) ↔ Morphology › Shape 1번째(`shape-do`) | `shape-do` 는 캡션 수치(top 40% · bottom 10%)와 그림에서 잰 변의 비율이 달라 보임. `param-thread-width` 는 노란 선 길이(컬럼의 40%)가 본문 괄호 "컬럼 폭에서 줄어드는 비율" 과 안 맞아 보였으나, 2026-11-16 본문 괄호를 "윗변은 컬럼 폭 대비 폭, 아랫변은 컬럼 폭에서 줄어드는 비율" 로 고쳐 풀림 | 왼쪽 장표는 파라미터가 어느 변인지 가리키는 그림이지 값을 정하는 그림이 아님, 오른쪽은 가능한 경우 하나. 두 장 모두 수치를 재는 도면이 아니므로, 그림에서 잰 비율을 캡션 · 본문의 수치와 대조하지 말 것 | 확정 | 2026-11-13 (11-15 shape-do 캡션 수치 포함, 11-16 본문 괄호 수정) |
 | E25 | Graphic Unit › Parameters (`param-thread-compression` "compression -1 / -2") | + 방향 예시가 없음 | 한 장표에서 둘 다 보이려고 반전하면 직관성이 떨어지고, 파라미터당 장표 2장은 양식 불일치라 타협. − 부호로 유추 | 확정 | 2026-11-14 |
 | E40 | Graphic Unit › Parameters · Don'ts, Graphic Pattern › Zoning 본문의 "EO Graphic Builder" ↔ 저장소 | 가이드가 유닛을 만드는 도구로 가리키는 EO Graphic Builder(빌더 내 도움말 포함)가 저장소 · 핸드오프 문서에 없음 | 빌더는 프로젝트 중반에 인하우스에 납품했고, 인하우스가 필요에 맞게 고쳐 쓰며 따로 관리하는 도구라 이 저장소의 범위가 아님. 빠졌다고 보고하거나 가이드의 빌더 언급을 고치지 말 것 | 확정 | 2026-11-16 |
 | E26 | Graphic Unit › Color (`color-gray` · `color-blue-green` SVG) | 캡션에 없는 Builder Neon 유닛이 섞여 있음 | 그 캔버스 안에서 그레이(블루 · 그린)의 역할을 보여 주는 그림이라 상관없음 | 확정 | 2026-11-14 |
@@ -95,6 +96,7 @@ E34(Scalability 장표의 10mm 경계 표기)는 2026-11-15 본문을 장표에 
 | E2 | Graphic Unit › Formation › 규모 (`formation-scale`) | "Peer" 칸 두 유닛의 방향이 본문(같은 방향 나란히)과 달라 보임 | 메타포 장표는 연상에 어느 정도 자유도가 있다는 것을 상정한 그림 | 확정 | 2026-11-13 |
 | E7 | Graphic Unit › Morphology | `rhythm-uniform-do` = `proportion-line-do`, `rhythm-excess-do` = `density-mass-do` 같은 그림 | "이상적인 형태" 라 같은 그림이 맞음 | 확정 | 2026-11-10 |
 | E27 | Graphic Unit › Morphology › Proportion | 4장만 Air White 유닛 | 분위기 환기, 그리고 컬러보다 형태에 집중시키려는 의도 | 확정 | 2026-11-14 |
+| E11 | Graphic Unit › Morphology › Shape 1번째(`shape-do`) | 캡션 수치(top 40% · bottom 10%)와 그림에서 잰 변의 비율이 달라 보임 | 가능한 경우 하나를 보여 주는 그림이지 수치를 재는 도면이 아님. 그림에서 잰 비율을 캡션 · 본문의 수치와 대조하지 말 것 | 확정 | 2026-11-13 (11-15 캡션 수치 포함, 11-16 Parameters 2번째 장표는 본문 괄호를 고쳐 뺌) |
 | E12 | Graphic Unit › Don'ts (`unit-dont-4` Solid Gray 유닛) ↔ Graphic Pattern › Color `color-do-3` (Space Black on Neon) | 화면에서 둘 다 "Neon 위 어두운 유닛" 으로 보임 | 유닛 색이 분명히 다르고, 색에 대한 금지 · 허용을 보여 주는 장표라 문제없음 | 확정 | 2026-11-13 |
 
 함께 볼 것: E10(`shaft-diversity`) — 1-A
@@ -113,7 +115,8 @@ E34(Scalability 장표의 10mm 경계 표기)는 2026-11-15 본문을 장표에 
 
 | # | 위치 | 겉보기 문제 | 허용 이유 | 상태 | 결정일 |
 |---|---|---|---|---|---|
-| E16 | Applications 페이지 | Approach(깃발) · Print 2번째(행잉 배너) · 3번째(포스터)가 Colors › In Use 1 · 2 · 3번째와 같은 이미지 | 디자이너 지정으로 다시 씀. 2026-11-15 Graphic Pattern › In Use 를 없애고 그 장표(포스터 3장 · 빌보드 · 명함 · 영상 썸네일)를 Applications 로 옮김(Print = 빌보드 · 포스터 · 명함, Digital 4번째 = 영상 썸네일 — 맥 목업만 남김). 2026-11-15 Advertisement 섹션을 Print 에 합침. 이 페이지의 결과물은 확정 사양이 아닌 예시(Approach 첫 문단에 안내) — 실제 제작 사양과 다르다고 지적하지 말 것. 본문은 2026-11-14 디자이너 요청으로 구성은 그대로 두고 현재 규칙(Graphic Pattern › Color · Typography › Margin · 용어)에 맞춰 보완했고, 2026-11-15 장표를 채운 뒤 본문과 대조함 | 확정 | 2026-11-13 (11-15 장표 채움 · 섹션 재구성 · 포스터 포함) |
+| E16 | Applications 페이지 | Approach(깃발) · Print 2번째(행잉 배너) · 3번째(포스터)가 Colors › In Use 1 · 2 · 3번째와 같은 이미지 | 디자이너 지정으로 다시 씀. 2026-11-15 Graphic Pattern › In Use 를 없애고 그 장표(포스터 3장 · 빌보드 · 명함 · 영상 썸네일)를 Applications 로 옮김(Print = 빌보드 · 포스터 · 명함, Digital 4번째 유튜브 채널 = 옛 영상 썸네일, 맥 목업만 남김). 2026-11-15 Advertisement 섹션을 Print 에 합침. 이 페이지의 결과물은 확정 사양이 아닌 예시(Approach 첫 문단에 안내) — 실제 제작 사양과 다르다고 지적하지 말 것. 본문은 2026-11-14 디자이너 요청으로 구성은 그대로 두고 현재 규칙(Graphic Pattern › Color · Typography › Margin · 용어)에 맞춰 보완했고, 2026-11-15 장표를 채운 뒤 본문과 대조함 | 확정 | 2026-11-13 (11-15 장표 채움 · 섹션 재구성 · 포스터 포함) |
+| E41 | Applications › Merch 1번째(`app-tee` 검은 티의 Day Blue 심볼 · 회색 티의 Builder Neon 심볼) ↔ Symbol › Color | 의류에 넣은 심볼의 색이 심볼의 여섯 가지 기본 컬러 조합에 없음 | 심볼을 통한 디지털 브랜드 커뮤니케이션과 실물 굿즈는 다르게 봄 — 굿즈는 원단 컬러를 그래픽의 배경 컬러로 보고 Graphic Pattern › Color 의 조합을 따름(Merch 본문). 가이드에 문장을 따로 더하지 않기로 함 | 확정 | 2026-11-16 |
 | E30 | Applications › Merch › 핀 배지 (`app-pin-badge` 서브심볼 E 블록 단독) ↔ Sub Symbol › Don'ts 6번째 "서브심볼을 EO 심볼 대신 단독 아이덴티티로 쓰지 마세요" | 서브심볼만 단독으로 쓴 것처럼 보임 | Sub Symbol 본문이 "파비콘 · 핀 배지처럼 … 아주 작은 정사각형 공간에 한하여 사용" 으로 핀 배지를 쓰임새로 명시 | 확정 | 2026-11-15 |
 
 함께 볼 것: E13(Print 포스터 슬로건) — 1-A

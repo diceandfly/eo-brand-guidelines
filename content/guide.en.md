@@ -1261,7 +1261,7 @@ Outdoor media such as billboards · hanging banners, read from afar and in a sho
 A brand merch line of apparel such as tees · hoodies · caps, plus hang tags · stickers · pin badges. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
 
 - For apparel graphics, screen printing is recommended so that vivid single colors stand out. Mix the inks to the Pantone values in [[colors#eo-palette|EO Palette]]. Screen printing struggles with very thin lines and gradients, so instead of dense patterns whose threads get too thin, use graphics of simplified units.
-- Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. The color of the symbol on apparel follows the same combinations. When printing light ink on dark fabric, lay down a white underbase first for full color.
+- Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. When printing light ink on dark fabric, lay down a white underbase first for full color.
 - Always keep the symbol on apparel small and compact, and prefer heat-transfer printing, which carries the crisp graphic as it is. This is because embroidery brings out a strongly analog mood.
 - For merch rendered in the color of its material, such as metal · engraving, apply the form alone instead of a color combination, and always render it in a single color.
 - For paper accessories such as hang tags · stickers, print colors follow the standards in [[#print|Print]].
