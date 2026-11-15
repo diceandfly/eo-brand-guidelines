@@ -231,13 +231,13 @@ The EO symbol is designed and tested to work across a range of sizes. Every size
 - Optimal range — A height of 40-70px (about 8-15mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/33 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
 - Recommended maximum size — A height of 70px (about 15mm, 1/33 of the viewing distance), the top of the optimal range. We recommend not using the symbol larger than this. Sizes above it are a range prepared for cases that still need a larger symbol.
 - Minimum size — A height of 20px on screen (about 4mm, 1/125 of the viewing distance) and 4mm in print. Below this, the threads of the E block blur together, so ask the EO design team to review.
-- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Never use it larger than this in any case. Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[applications|graphic pattern]] instead of the symbol.
+- Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Never use it larger than this in any case. Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#zoning|graphic pattern]] instead of the symbol.
 ![scalability] {zoom=1.05}
 
 
 ### + Usage
 #### Placement
-The EO symbol is a strong but simple shape. On typical pages, we therefore recommend using it as a sign-off in one of the four corners of the content area. In a video thumbnail that invites the click, the main content should be the protagonist; on a poster that catches the eye, the [[applications|graphic pattern]] should be. The symbol's presence should step back to let them lead.
+The EO symbol is a strong but simple shape. On typical pages, we therefore recommend using it as a sign-off in one of the four corners of the content area. In a video thumbnail that invites the click, the main content should be the protagonist; on a poster that catches the eye, the [[graphic-pattern#zoning|graphic pattern]] should be. The symbol's presence should step back to let them lead.
 
 As a sign-off, place the symbol in the corner farthest from the person or graphic pattern that is the protagonist of the layout, with appropriate space from the other visual elements around it. This keeps symbol placement simple and consistent, while leaving enough flexibility to accommodate a dynamic graphic system.
 ![usage-placement]
@@ -423,7 +423,7 @@ Examples of the horizontal Service Signature. All are built to the same descript
 #### Symbol or Signature
 Choose between the signature and the EO symbol by who is speaking. Use the signature where the company EO Studio, or a service the company runs, is the speaker, and the EO symbol for content from EO as a media brand. Use only one of the two in a single deliverable.
 
-Because the signature carries text, it needs more room than the EO symbol. Where the space is too small for the text to read clearly (below a symbol height of 20px in digital or 4mm in print), use the EO symbol alone instead of the signature.
+Because the signature carries text, it needs more room than the EO symbol. Where the space is too small for the text to read clearly, use the EO symbol alone instead of the signature.
 
 If you are unsure, first check whether the deliverable truly needs the company name EO Studio. If it does not, the EO symbol is enough. If you are still unsure, ask the EO design team.
 ![usage-do-1]{do} The signature on emails · official documents and other materials that speak for the company
@@ -888,14 +888,14 @@ The **EO graphic unit** (hereafter, the unit) is the smallest element of the gra
 - thread sides — With double, threads attach to both the top and bottom of the shaft; with single, threads attach to one side only and the shaft rests at the bottom.
 - thread amount — The number of threads attached to each of the top and bottom of the shaft.
 - thread compression — How much the thread width narrows progressively toward one side. At 0, all threads have equal width; the higher the value, the stronger the compression toward one side. Negative and positive values set the direction of compression; the slope of each thread stays as it is and does not flip.
-- thread gutter — The space between the vertical cells in which the threads sit. In EO Graphic Builder it is labeled gutter.
+- thread gutter — The space between the vertical cells in which the threads sit. A single value applies in common to every gap between cells within a unit. In EO Graphic Builder it is labeled gutter.
 
 ![param-shaft-size] shaft size — shaft thickness 2-95%
 ![param-thread-width] thread top, bottom width — change in slope
 ![param-thread-sides] thread sides — double · single
 ![param-thread-amount] thread amount — number of threads
 ![param-thread-compression] thread compression — direction · strength of thread compression
-![param-gutter] thread gutter — fixed spacing between threads
+![param-gutter] thread gutter — spacing common to all threads
 
 
 ### Graphic Unit
@@ -908,7 +908,7 @@ Color shows who the protagonist of a graphic is, what forms the environment, and
 - Day Blue — Builders of a different character · community · surrounding elements. Emphasizes the nuance of positive energy · optimism drawn from a blue sky.
 - Bay Green — Builders of a different character · community · surrounding elements. Emphasizes the nuance of softness · friendliness drawn from the green of California's chaparral hills. (team, teamwork, co-working, diversity, nature)
 - Medium Gray — Expresses the nuance of mechanical neutrality: inactivity · the other · indifference · conservatism · the material world.
-- Space Black — For situations where visual impact comes first, a combination with a Builder Neon background is recommended, expressing overwhelming presence.
+- Space Black — As a unit color, use it sparingly rather than freely, so that it secures visual hierarchy when needed. For situations where visual impact comes first, a combination with a Builder Neon background is recommended, expressing overwhelming presence.
 - Solid Gray is not used as a unit color.
 ![color-neon-white] [Builder Neon]builder · protagonist · core, [Air White]energy · counterpart · balance
 ![color-blue-green] [Day Blue]other builders · surrounding elements · optimism, [Bay Green]other builders · surrounding elements · friendliness
@@ -944,7 +944,7 @@ A thread is one turn of a screw thread and stands for one act of problem solving
 The shaft is the axis of the screw and symbolizes the timeline of the building process; the shaft size expresses how strong the core qualities of that process are. Keywords expressed with shaft: growth · diversity · backing.
 
 - Growth — Conviction · magnitude of strength. Expressed by three or more shafts thickening step by step.
-- Diversity — Differences in character. Expressed by placing several units with different shaft sizes side by side in random order. The larger the shaft size, the shorter the threads, so each unit's impression changes markedly; the nuance is not that thicker is better, but that each is different. Use an even mix of [[graphic-pattern#color|unit colors]].
+- Diversity — Differences in character. Expressed by placing several units with different shaft sizes side by side in random order. The larger the shaft size, the shorter the threads, so each unit's impression changes markedly; the nuance is not that thicker is always better, but that each has its own character. Use an even mix of [[graphic-pattern#color|unit colors]].
 - Backing — The side that bears or receives weight. With threads on one side only, the shaft on that side becomes the ground and the threads stand on it; the taller the threads and the steeper their slope, the more dramatic the expression. Make the shaft of the supporting unit below thick and the unit above thin, so the relationship of bearing weight is clear.
 - Apply Builder Neon to the unit that represents EO or the protagonist.
 ![shaft-growth] Growth — shafts thickening step by step
@@ -1026,7 +1026,7 @@ Raising the compression value tightens the threads toward one side and creates r
 
 ### Morphology {layout=grid-4}
 #### Density
-Seen up close · large, each thread reads as a distinct shape; seen from afar · small, adjacent shapes merge into a gray mass of even density. The edge of the gray mass changes with compression, and its density with the thread gutter and thread slope. The thread gutter is the minimum spacing between threads and decides whether tight threads read as individual lines or merge into a gray mass. For digital assets at typical resolutions, we recommend a thread gutter of about 10-20px.
+Seen up close · large, each thread reads as a distinct shape; seen from afar · small, adjacent shapes merge into a gray mass of even density. The edge of the gray mass changes with compression, and its density with the thread gutter and thread slope. The thread gutter is the spacing applied in common between all threads within a unit, and it decides whether tight threads read as individual lines or merge into a gray mass. For digital assets at typical resolutions, we recommend a thread gutter of about 10-20px.
 
 - Tight stretches almost always look better merged into a gray mass. Rather than exposing threads that repeat evenly at hairline thickness, lower the thread gutter so the stretch merges into a narrow band at the end of the unit. For digital assets at typical resolutions, the thread gutter rarely goes above 30px.
 - A Space Black unit shrinks visually on a light background, and the gray mass at the tight end can scatter into individual threads, breaking the original rhythm. When inverting from a light to a dark color (or the reverse), reset the thread gutter and compression.
@@ -1137,7 +1137,7 @@ Use Builder Neon as a background color, with Space Black units on top, only on p
   - Medium Gray is a supporting color; combining it with units in other colors is the default. Only when deliberately depicting a negative situation, such as resistance · stagnation, may a pattern be composed of Medium Gray alone.
   - Do not use Solid Gray as a unit color.
 - Background color
-  - Consider Solid Gray first as a background color: it lowers the contrast with all five unit colors by one step, holding every color together calmly.
+  - Consider Solid Gray first as a background color: it lowers the contrast with all five unit colors by one step, holding every color together calmly. Consider a Space Black background next.
   - On Builder Neon · Day Blue · Bay Green · Air White backgrounds, use only Space Black units.
   - Do not use Medium Gray as a background color in digital environments. For merch, only when the physical material's color can be matched to Medium Gray, Builder Neon · Space Black units may be used on it in limited cases, with approval from the EO design team.
 
