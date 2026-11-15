@@ -241,6 +241,7 @@ function update() {
   if (document.activeElement !== $('hpx')) $('hpx').value = Math.round(z.outPx * (st.unit === 'px' ? st.pngScale : 1));    // 저장될 파일의 심볼 높이 px (화면 = 매체 px/mm × 1x-4x · 인쇄 = 고른 dpi)
   $('modeLight').classList.toggle('on', st.mode === 'light'); $('modeDark').classList.toggle('on', st.mode === 'dark');
   renderPresets(c.symOnly);   // 썸네일은 심볼 (페어 고르기용)
+  if (typeof drawTitleLogo === 'function' && $('logo').firstChild) drawTitleLogo();   // 타이틀 심볼 — 창 크기 · 화면 보정에 따라 보이는 크기가 바뀌면 다시
   { const sig = st.kind === 'signature', co = st.sigType === 'company';   // Logo 섹션 — Symbol 이면 시그니처 행 비활성 (늘 자리를 지킴)
     $('kSym').classList.toggle('on', !sig); $('kSig').classList.toggle('on', sig);
     $('tCo').classList.toggle('on', co); $('tSv').classList.toggle('on', !co); $('oV').classList.toggle('on', st.orient === 'v'); $('oH').classList.toggle('on', st.orient === 'h');
@@ -681,5 +682,18 @@ $('calSave').onclick = () => { st.pxmm = calV; st.calibrated = true; try { local
 
 
 update();
-// 타이틀 왼쪽 EO 심볼 — regular 지오메트리의 라이트 심볼, Air White
-try { const sym = buildSymbol(14, 'light'), fr = { x0: 0, y0: 0 }, H = 100; $('logo').innerHTML = `<svg class="logo" viewBox="0 0 ${(sym.lightW * H).toFixed(2)} ${H}" aria-hidden="true"><path fill="${HEX['Air White']}" fill-rule="evenodd" d="${pathD(sym.mp, fr, H)}"/></svg>`; } catch (e) { console.warn('logo', e); }
+// 타이틀 왼쪽 EO 심볼 — 화면에 그려지는 높이 그대로의 보이는 크기로 생성 (생성기 출력과 같은 보정: S = 표시 높이 px ÷ 화면 px/mm, 50cm 에서 보는 기준), 라이트 · Air White
+// 높이는 CSS(--logo-h = 타이틀 글자 크기 기준)가 정하므로 그린 뒤 재서 그 S 로 다시 그림. 창 크기 · 화면 보정이 바뀌면 update 에서 다시 (같은 S 면 그대로)
+let titleS = null;
+function drawTitleLogo() {
+  try {
+    const el = $('logo'), cur = el.querySelector('svg'), h = cur ? cur.getBoundingClientRect().height : 0;
+    const S = h ? Math.round(h / st.pxmm * 10) / 10 : 14;   // 처음 한 번은 재기 위한 임시 크기
+    if (S === titleS) return;
+    titleS = S;
+    const sym = buildSymbol(S, 'light'), fr = { x0: 0, y0: 0 }, H = 100;
+    el.innerHTML = `<svg class="logo" viewBox="0 0 ${(sym.lightW * H).toFixed(2)} ${H}" aria-hidden="true"><path fill="${HEX['Air White']}" fill-rule="evenodd" d="${pathD(sym.mp, fr, H)}"/></svg>`;
+    if (!h) drawTitleLogo();   // 잰 높이로 한 번 더
+  } catch (e) { console.warn('logo', e); }
+}
+drawTitleLogo();
