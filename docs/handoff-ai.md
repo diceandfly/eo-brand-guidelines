@@ -60,6 +60,7 @@ docs/                   file-management.md(사람용 튜토리얼) · logo-gener
 - **섹션 추가**: 헤드 `### Head`(선택 `#### Subhead`), 레이아웃 플래그 `{layout=wide|half|grid-N|text-N}`, 목차 노출은 `### + Head`(헤드 앞에 `+` 하나. 한 페이지에 `+` 가 하나도 없으면 전부 자동으로 오름), 서브헤드를 목차 하위 목록으로 묶으려면 `### + Head {toc=group}`. 이미지 토큰 `![이름]` 을 쓰고 파일을 넣거나 플레이스홀더로 둠. 끝나면 `npm run assets -- --dry` 로 번호 확인.
 - **메모 처리**: md 안 `!~ … ~!` 는 디자이너가 남긴 메모(화면에 글자 그대로 나옴). 가이드 문장으로 정리하고 표시를 지운 뒤 같은 내용을 영문에도 반영. 남아 있으면 파서 경고라 `npm test` [1] · `npm run build` 가 멈춤.
 - **장표 교체**: 사람이 둔 폴더 확인 → 파일 이름이 대상 이름과 맞는지 → `npm run import -- <페이지> <폴더> --dry` → 실행 → `npm test` → 커밋. 덮어쓴 원본은 `.trash/` 로 감.
+- **장표 색 검수 기준**: 장표 PNG 는 내보내기 과정에서 팔레트 HEX 와 조금 다른 값으로 나오므로, 새 장표는 팔레트가 아니라 기존 장표의 값과 비교한다 — Builder Neon `#F6EE3A` · Day Blue `#6CC6D1` · Bay Green `#67B98B` · Medium Gray `#8E8E8E` · Solid Gray `#292B2B` · Space Black `#080404`(또는 `#090405`) · Air White `#FCFAF5`(또는 `#FCFBF4`). 이 값에서 벗어난 장표(전체가 밝거나 한 색만 다름)와 가장자리 1px 줄은 들여오기 전에 승인 주체에게 확인한다.
 - **디자인 튜닝**: tokens.css 값만. 모션 토큰을 바꾸면 motion.ts 의 대체값도 같게([3]).
 - **로고 생성기**: 디자인은 생성기 `tokens.css`, 규칙은 `app.js` RULES, 사양 `docs/logo-generator/SPEC.md`.
 

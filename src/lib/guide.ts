@@ -489,6 +489,11 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       else if (!allowed.includes(k)) warn(`[guide] ${where}: {${shown}} 은 모르는 속성입니다 (${allowed.join(' · ')}). 무시합니다`);
     }
   };
+  // 헤드 · 서브헤드 줄의 값 검사: 숫자가 아닌 zoom · 16:9 꼴이 아닌 ratio (이미지 줄의 zoom 경고와 같은 뜻)
+  const checkValues = (attrs: Record<string, string>, where: string) => {
+    if (attrs.zoom !== undefined && !Number.isFinite(parseFloat(attrs.zoom))) warn(`[guide] ${where}: {zoom=${attrs.zoom}} 의 배율이 숫자가 아닙니다. 무시합니다`);
+    if (attrs.ratio !== undefined && !normalizeRatio(attrs.ratio)) warn(`[guide] ${where}: {ratio=${attrs.ratio}} 의 비율은 16:9 처럼 적습니다. 무시합니다`);
+  };
   const here = () => sub?.url ?? '첫 페이지 앞';
 
   for (const line of lines) {
@@ -528,6 +533,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       split = undefined;
       const [name, attrs] = takeAttrs(m[1]);
       checkAttrs(attrs, PAGE_ATTRS, `"${name}" 페이지`);
+      if (attrs.toc !== undefined && attrs.toc !== 'none') warn(`[guide] "${name}" 페이지: 페이지 줄의 {toc=…} 는 none 만 됩니다 ({toc=${attrs.toc}}). 무시합니다`);
       const slug = slugify(name);
       sub = {
         name, slug,
@@ -545,6 +551,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       const tocMark = !!m[1];
       const [head, attrs] = takeAttrs(smartQuotes(m[2]));
       checkAttrs(attrs, HEAD_ATTRS, `"${head}" (${sub.url})`);
+      checkValues(attrs, `"${head}" (${sub.url})`);
       section = {
         id: '', label: head, crumb: [head], head, bodyHtml: '', layout: 'basic',   // id 는 flushSection 에서 (서브헤드까지 읽은 뒤)
         ratio: normalizeRatio(attrs.ratio), items: [], tocMark, split,
@@ -566,6 +573,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     if ((m = line.match(/^####\s+(\+\s*)?(.+?)\s*$/)) && section) { // #### Subhead  /  #### + Subhead {layout=…}  (+ 와 {…} 는 헤드 줄과 동일하게 동작)
       const [subhead, attrs] = takeAttrs(smartQuotes(m[2]));
       checkAttrs(attrs, SUBHEAD_ATTRS, `"${subhead}" (${sub!.url})`, { span: '헤드 줄(###)', toc: '헤드 줄(###)' });
+      checkValues(attrs, `"${subhead}" (${sub!.url})`);
       if (m[1]) { section.tocMark = true; section.markOnSubhead = true; }
       if (section.tocGroup) { warn(`[guide] "${section.head}" {toc=group}: 묶음 섹션은 헤드만 둡니다(서브헤드 "${subhead}" 없이) (${sub!.url}). 무시합니다`); section.tocGroup = undefined; }
       if (attrs.layout) pendingLayout = attrs.layout;
@@ -583,6 +591,8 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       const flags = [...m[2].matchAll(/\{([^}]*)\}/g)].map(g => g[1]).join(' ').trim().split(/\s+/).filter(Boolean);
       const where = `![${token}] (${sub!.url})`;
       for (const f of flags) if (!IMAGE_FLAGS.includes(f.replace(/=.*$/, '='))) warn(`[guide] ${where}: {${f}} 은 모르는 이미지 플래그입니다 (${IMAGE_FLAGS.join(' · ')}). 무시합니다`);
+      const badges = flags.filter(f => f === 'do' || f === 'dont' || f === 'con');
+      if (badges.length > 1) warn(`[guide] ${where}: 배지는 하나만 씁니다 ({${badges.join(' ')}}). 뒤의 것을 씁니다`);
       if (flags.includes('do')) item.badge = 'do';
       if (flags.includes('dont')) item.badge = 'dont';
       if (flags.includes('con')) item.badge = 'con';                   // 조건부(conditional): 삼각형, 대각선 없음
