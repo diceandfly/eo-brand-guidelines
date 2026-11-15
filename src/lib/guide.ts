@@ -108,6 +108,10 @@ export const EXTS = ['svg', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'avif'];   // �
 const GRID_COLS = 12;   // 본문 그리드 컬럼 수 (tokens.css --cols 와 같음, npm test [7] 이 대조). {span} 의 상한
 /** 이미지 줄 ![이름]{…} 에 쓸 수 있는 플래그 (= 로 끝나면 값을 받음) */
 const IMAGE_FLAGS = ['do', 'dont', 'con', 'nostrike', 'zoom=', 'nozoom', 'bg-color', 'bg-color=', 'bg-cover', 'bg-mirror', 'scroll', 'slide', 'slide=', 'device'];
+// 페이지 · 헤드 · 서브헤드 줄의 {…} 속성. 목록에 없는 키({layuot=…} 같은 오타)는 경고 — 조용히 무시되면 레이아웃이 기본값으로 돌아가도 모름
+const PAGE_ATTRS = ['href', 'toc'];
+const HEAD_ATTRS = ['layout', 'ratio', 'zoom', 'bg-color', 'bg-cover', 'toc', 'span'];
+const SUBHEAD_ATTRS = ['layout', 'ratio', 'zoom', 'bg-color', 'bg-cover'];
 
 function slugify(s: string): string {
   return s
@@ -477,8 +481,28 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     }
   };
 
+  // {…} 속성 키 검사: 목록에 없는 키는 경고. only = 다른 줄에서만 뜻이 있는 키(서브헤드 줄의 span · toc)
+  const checkAttrs = (attrs: Record<string, string>, allowed: string[], where: string, only: Record<string, string> = {}) => {
+    for (const k of Object.keys(attrs)) {
+      const shown = attrs[k] ? `${k}=${attrs[k]}` : k;
+      if (only[k]) warn(`[guide] ${where}: {${shown}} 은 ${only[k]} 에만 씁니다. 무시합니다`);
+      else if (!allowed.includes(k)) warn(`[guide] ${where}: {${shown}} 은 모르는 속성입니다 (${allowed.join(' · ')}). 무시합니다`);
+    }
+  };
+  const here = () => sub?.url ?? '첫 페이지 앞';
+
   for (const line of lines) {
     let m: RegExpMatchArray | null;
+
+    // !~ 메모 ~! (디자이너가 작업자에게 남긴 메모)는 화면에 글자 그대로 나오므로 남아 있으면 경고 — 가이드 문장으로 정리하고 표시를 지울 것 (AGENTS.md §3)
+    if (/!~|~!/.test(line)) warn(`[guide] 메모(!~ … ~!)가 남아 있습니다 (${here()}): ${line.trim().slice(0, 60)}`);
+    // 구조 줄이 제자리에 없으면 조용히 빠지거나 본문 글자가 되므로 경고
+    if (/^#\s+\S/.test(line) && !/^#\s+\d+\s+\S/.test(line)) warn(`[guide] 챕터 줄에 번호가 없습니다: "${line.trim()}" — "# 02 Logo" 처럼 씁니다. 이 줄은 챕터가 되지 않고, 아래 페이지는 앞 챕터에 붙거나 빠집니다`);
+    else if (/^##\s+\S/.test(line) && !chapter) warn(`[guide] 페이지 줄 "${line.trim()}" 앞에 챕터(# 02 Logo)가 없어 빠집니다`);
+    else if (/^###\s+\S/.test(line) && !sub) warn(`[guide] 섹션 줄 "${line.trim()}" 앞에 페이지(## Logo)가 없어 빠집니다`);
+    else if (/^####\s+\S/.test(line) && !section) warn(`[guide] 서브헤드 줄 "${line.trim()}" 앞에 헤드(### Head)가 없어 빠집니다 (${here()})`);
+    else if (/^\s+!\[[^\]]+\]/.test(line)) warn(`[guide] 이미지 줄은 줄 맨 앞에서 시작해야 합니다 (${here()}): ${line.trim().slice(0, 40)} — 들여쓰면 본문 글자가 됩니다`);
+    else if (/^(!\[[^\]]+\]|\[swatch\])/.test(line) && !section) warn(`[guide] "${line.trim().slice(0, 40)}" 앞에 섹션(### Head)이 없어 빠집니다 (${here()})`);
 
     if (/^:::\s*split\s*$/.test(line)) {                             // ::: split  → 다음 섹션들을 한 12컬럼 행에 (::: 로 닫음). 폭은 섹션의 {span=N}
       flushSection();
@@ -503,6 +527,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       flushSection();
       split = undefined;
       const [name, attrs] = takeAttrs(m[1]);
+      checkAttrs(attrs, PAGE_ATTRS, `"${name}" 페이지`);
       const slug = slugify(name);
       sub = {
         name, slug,
@@ -519,6 +544,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
       flushSection();
       const tocMark = !!m[1];
       const [head, attrs] = takeAttrs(smartQuotes(m[2]));
+      checkAttrs(attrs, HEAD_ATTRS, `"${head}" (${sub.url})`);
       section = {
         id: '', label: head, crumb: [head], head, bodyHtml: '', layout: 'basic',   // id 는 flushSection 에서 (서브헤드까지 읽은 뒤)
         ratio: normalizeRatio(attrs.ratio), items: [], tocMark, split,
@@ -539,6 +565,7 @@ export function loadGuide(lang: Lang, source: string, tokens: Tokens, opts: Load
     }
     if ((m = line.match(/^####\s+(\+\s*)?(.+?)\s*$/)) && section) { // #### Subhead  /  #### + Subhead {layout=…}  (+ 와 {…} 는 헤드 줄과 동일하게 동작)
       const [subhead, attrs] = takeAttrs(smartQuotes(m[2]));
+      checkAttrs(attrs, SUBHEAD_ATTRS, `"${subhead}" (${sub!.url})`, { span: '헤드 줄(###)', toc: '헤드 줄(###)' });
       if (m[1]) { section.tocMark = true; section.markOnSubhead = true; }
       if (section.tocGroup) { warn(`[guide] "${section.head}" {toc=group}: 묶음 섹션은 헤드만 둡니다(서브헤드 "${subhead}" 없이) (${sub!.url}). 무시합니다`); section.tocGroup = undefined; }
       if (attrs.layout) pendingLayout = attrs.layout;
@@ -712,7 +739,7 @@ export function buildSearchIndex(guide: Guide): SearchEntry[] {
       s: sub.name,
       h: straightQuotes(sec.head),
       t: straightQuotes(sec.subhead ?? sec.head),
-      b: `${stripTags(sec.bodyHtml)} ${caps}`.slice(0, 400)
+      b: `${stripTags(sec.bodyHtml)} ${caps}`   // 본문 + 캡션 전문 (앞부분만 색인하면 뒤쪽 낱말이 검색되지 않음). 결과의 발췌 길이는 Search.astro 가 자름
     });
   }
   return out;

@@ -21,6 +21,7 @@ npm test         # 두 md 파싱(경고 0) · 플레이스홀더 수 · 모션 �
 1. 저장소를 클론하고 `npm install`.
 2. `public/fonts/README.md` 에 적힌 woff2 5개를 `public/fonts/` 에 넣고(파일명 그대로), `npm run fonts:ko` 로 한글 서체를 받습니다.
 3. `npm run build` → `dist/` 가 완성된 정적 사이트입니다. 이 폴더를 호스팅(Vercel · Netlify · S3 · 사내 서버 등 정적 파일을 올릴 수 있는 곳)에 배포합니다.
+   - 주소에는 확장자가 없고(`/ko/02-logo/symbol`) 파일은 `symbol.html` 입니다(astro.config.mjs `trailingSlash: 'never'` · `build.format: 'file'`). 호스팅이 확장자 없는 주소를 `.html` 파일로 찾아 주는지 확인하세요 — 이 기능(clean URLs · pretty URLs · 재작성 규칙)이 없거나 꺼져 있으면 첫 화면 말고는 모두 404 가 됩니다. `npm run preview` 는 이 처리를 해 줍니다.
 4. 폰트 파일과 `dist/` 는 저장소에 커밋하거나 푸시하지 않습니다. 커밋을 시도하면 훅이 막습니다 (`npm install` 이 `prepare` 스크립트로 `git config core.hooksPath .githooks` 를 실행해 훅을 켭니다).
 
 자동 배포(푸시할 때마다 빌드)가 필요하면 폰트를 저장소 밖에 두는 방식이 필요합니다. 예: 클라이언트 CDN 에 폰트를 올리고 `src/styles/fonts.css` 의 경로를 그 주소로 바꾸기. 그 전까지는 위의 로컬 빌드 방식이 가장 단순합니다.

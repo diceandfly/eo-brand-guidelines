@@ -560,7 +560,7 @@ const TIPS = {
   'Resolution': 'Pixel density of the saved PNG. Hover over a value to see what it suits.',
   'Save': 'Saves the logo with the settings above. Vector for print and design work, PNG for quick use.',
   'Symbol height': 'Height as seen from 500mm — the measure the guide’s size rules are based on.',
-  'Color': 'Color pairings from the guide. The signature uses four of the six.',
+  'Color': 'Color combinations from the guide. The signature uses four of the six.',
   'Logo': 'Symbol alone, or the signature with EO Studio or a service name.',
   'Viewing': 'Where and from how far the logo is seen. Sets the output unit and the mockup.',
   'Visual size': 'How big the logo looks from 500mm. This is the value you choose; the other sizes follow from it.',
@@ -569,7 +569,7 @@ const TIPS = {
   'Right side correction': 'Narrows the right clearspace so the symbol looks optically centered. The guide always applies it. Symbol only.',
   'Show clearspace guide': 'Shows the clearspace on the preview only. Not saved.',
 };
-const TIP_ABOUT = 'Calculates the optical corrections of the EO logo for the size it is seen at, so every use stays on brand.\n\n1. Choose the logo.\n2. Choose the medium it is used on.\n3. Set how big it should look, using the mockup as a reference.\n4. Pick a color pairing from the guide.\n5. Save in the format the job needs.';
+const TIP_ABOUT = 'Calculates the optical corrections of the EO logo for the size it is seen at, so every use stays on brand.\n\n1. Choose the logo.\n2. Choose the medium it is used on.\n3. Set how big it should look, using the mockup as a reference.\n4. Pick a color combination from the guide.\n5. Save in the format the job needs.';
 const TIP_ABOUT_HINT = 'For anything unclear about using the logo, contact the EO design team.';   // 타이틀에 올리면 = 사용법
 const TIP_I = { 'Include clearspace': 1, 'Right side correction': 1 };   // 토글 = 오른쪽 i 가 가이드
 const PG = () => st.kind === 'signature' ? 'signature' : 'symbol';

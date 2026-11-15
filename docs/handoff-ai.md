@@ -52,10 +52,13 @@ docs/                   file-management.md(사람용 튜토리얼) · logo-gener
 8. **아카이브(`public/archive/handoff/`)는 손으로 고치지 않음.** 다시 만들 때만 `npm run archive`.
 9. **모바일 경계**는 `src/lib/tokens.ts` `MOBILE_MAX`. CSS `@media` 숫자는 [7] 이 대조.
 10. **모듈 간 통신은 문서 이벤트**(`eo:nav` · `eo:scroll-ready`). `window.__` 전역 금지([7]).
+11. **승인이 필요한 일은 승인 주체에게.** 위 5-7 과 예외 등재 · 푸시에서 말하는 "사람" 은 승인 주체다(AGENTS.md §1 — 최종 핸드오프 전에는 가이드를 만든 디자이너, 뒤에는 EO 디자인팀). 요청한 사람이 승인 주체인지 분명하지 않으면 먼저 묻고, 다른 사람의 뜻을 전달받은 요청은 승인 주체의 결정인지 확인한 뒤 진행한다. 추측으로 승인된 것으로 치지 않는다.
+12. **테스트 기준을 낮춰 통과시키지 않는다.** 플레이스홀더 기준(`scripts/test.mjs` `MAX_PLACEHOLDERS`)을 올리거나 [5] 고정값 · [7] 검사를 느슨하게 고치는 것은 승인 주체의 결정. 새 이미지 자리를 만들어 [2] 가 실패하면 실패한 채로 보고한다.
 
 ## 4. 자주 하는 작업
 - **글 수정**: `content/guide.ko.md` → 같은 위치 `guide.en.md` → `npm test`. 참조 링크는 `[[page#section|라벨]]`, 컬러 이름(Builder Neon 등 대소문자 고정)은 파서가 칩을 붙임.
 - **섹션 추가**: 헤드 `### Head`(선택 `#### Subhead`), 레이아웃 플래그 `{layout=wide|half|grid-N|text-N}`, 목차 노출은 `### + Head`(헤드 앞에 `+` 하나. 한 페이지에 `+` 가 하나도 없으면 전부 자동으로 오름), 서브헤드를 목차 하위 목록으로 묶으려면 `### + Head {toc=group}`. 이미지 토큰 `![이름]` 을 쓰고 파일을 넣거나 플레이스홀더로 둠. 끝나면 `npm run assets -- --dry` 로 번호 확인.
+- **메모 처리**: md 안 `!~ … ~!` 는 디자이너가 남긴 메모(화면에 글자 그대로 나옴). 가이드 문장으로 정리하고 표시를 지운 뒤 같은 내용을 영문에도 반영. 남아 있으면 파서 경고라 `npm test` [1] · `npm run build` 가 멈춤.
 - **장표 교체**: 사람이 둔 폴더 확인 → 파일 이름이 대상 이름과 맞는지 → `npm run import -- <페이지> <폴더> --dry` → 실행 → `npm test` → 커밋. 덮어쓴 원본은 `.trash/` 로 감.
 - **디자인 튜닝**: tokens.css 값만. 모션 토큰을 바꾸면 motion.ts 의 대체값도 같게([3]).
 - **로고 생성기**: 디자인은 생성기 `tokens.css`, 규칙은 `app.js` RULES, 사양 `docs/logo-generator/SPEC.md`.

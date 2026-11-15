@@ -7,7 +7,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
 목차 하단의 EN | KR로 전환합니다. 같은 챕터·페이지 이름(slug)이 있으면 같은 페이지로, 없으면 첫 페이지로 갑니다.
 
 이 파일 하나가 사이트의 모든 글과 이미지 배치를 결정합니다.
-이 주석 블록(<!-- -->)은 화면에 나오지 않습니다. 자유롭게 메모를 남기세요.
+이 주석 블록(맨 위 <!-- 부터 아래 닫는 줄까지)은 화면에 나오지 않습니다. 자유롭게 메모를 남기세요.
 
 ■ 위계 (기호로 구분)
   # 02 Logo              ← 챕터.   "번호 이름" 형식. 번호는 목차와 URL(/02-logo/…)에 쓰입니다.
@@ -31,7 +31,7 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
     → 트리로 쓰려면 마크다운 중첩 불렛 그대로: "- 항목" 아래 두 칸 들여쓴 "  - [[symbol#color]]"
   #### Primary Lockup    ← 서브헤드 (선택). 헤드 바로 다음 줄에만 씁니다. 없으면 표시되지 않습니다.
   그 아래 줄들            ← 본문. 마크다운(문단, 굵게, 링크, 목록)을 쓸 수 있습니다.
-                            **굵게** 는 웨이트 한 단계(300 → 400) + 네온 색(tokens.css --t-body-strong-c)으로 강조됩니다. 언더라인은 쓰지 않습니다 — 링크 · 참조만 언더라인이라 둘이 바로 구분됩니다. 언더라인은 링크 · 참조 전용.
+                            **굵게** 는 네온 색(tokens.css --t-body-strong-c) + 언더라인으로 강조됩니다. 웨이트 · 자간은 본문 그대로입니다 — 한 레벨에 웨이트를 섞지 않는 규칙(Typography › Reference Scale). 링크 · 참조도 언더라인이지만 색이 달라 구분됩니다.
                             불릿 글자는 쓴 대로입니다: "- 항목" 은 –(엔 대시), "+ 항목" 은 +. 파서는 깊이를 보지 않지만 가이드의 규칙은 1단 · 2단(두 칸 들여쓴 중첩) 모두 "- " 입니다 (tokens.css --t-body-bullet-dash / --t-body-bullet-plus).
                             키워드 소개는 그냥 글로, 앞뒤를 띄운 긴 대시로 씁니다: "- 키워드 — 설명" (강조하려면 "- **키워드** — 설명"). 캡션도 같음: "![x] 세로형 — 설명". 아무것도 인식하지 않는 그냥 글자입니다.
                             (2026-11-04 폐기한 슬래시 라벨 "키워드/ 설명" · "키워드// 설명" 은 2026-11-10 파서에서도 지웠습니다. 그때의 md · 파서는 git 태그 archive/keyword-labels-2026-11-04)
@@ -133,12 +133,16 @@ EO Brand Guidelines — 콘텐츠 파일 튜토리얼 (영어판)
                         연달아 오면, 그 서브헤드들을 목차에서 이 항목 아래 한 단계 들여쓴 목록으로 보여 줌. 헤드 · 서브헤드가
                         체계적으로 이어지는 묶음에만 (Vocabulary · Morphology · Grammar). 흩어진 같은 헤드는 묶이지 않음
                         서브헤드 줄에 붙이면(#### + Clearspace) 목차에는 서브헤드가 올라갑니다. 헤드가 반복되는 섹션에 유용합니다.
-                        {layout=…} 속성도 헤드 줄·서브헤드 줄 어느 쪽에 써도 됩니다. 단 {span=N} 은 헤드 줄에만 (서브헤드 줄에서는 무시).
+                        {layout=…} 속성도 헤드 줄·서브헤드 줄 어느 쪽에 써도 됩니다. 단 {span=N} · {toc=…} 은 헤드 줄에만 (서브헤드 줄에 쓰면 경고 후 무시). 목록에 없는 속성({layuot=…} 같은 오타)도 경고합니다.
                   헤드가 페이지 이름이나 챕터 이름과 같으면(Colors 페이지의 "Color" — 대소문자 · 기호 · 끝의 s 는 무시하고 비교) 목차에는 서브헤드가 표시됩니다.
+
+■ 메모
+  !~ 이렇게 감싼 글 ~! 은 디자이너가 작업자에게 남기는 메모입니다. 화면에 글자 그대로 나오므로, 남아 있으면 경고가 납니다 (npm test · npm run build 는 멈춤).
+  작업자는 메모를 가이드 문장으로 정리한 뒤 표시를 지우고, 같은 내용을 다른 언어 파일에도 반영합니다 (AGENTS.md §3).
 
 ■ 지금 상태
   guide.ko.md의 영어 번역입니다. 헤드·이미지 줄·split 블록은 국문과 줄 단위로 같게 유지합니다 (구조가 어긋나면 에셋 폴더가 어긋남).
-  [대괄호] 안은 아직 확정되지 않아 채워야 하는 값입니다.
+  국문이 최종본이므로 국문을 고치면 이 파일도 같은 커밋에서 맞춥니다 (2026-11-10 부터 1:1 동기화, 용어는 docs/terms.md).
 =====================================================================
 -->
 
@@ -358,7 +362,7 @@ Where the company itself steps forward, such as contracts · proposals · offici
 #### + Descriptor {layout=grid-2} {zoom=1.05}
 The text part of the signature, excluding the symbol, is called the **descriptor**. Any word, whether a company name · service name · domain, follows the specifications below exactly. The height (H) and width (W) of one E block of the symbol are the basis for every size setting.
 
-When the first or last letter of the descriptor is a glyph with a curved side, such as S · o, keep the text left aligned on its baseline and temporarily replace it with H if it is uppercase or h if it is lowercase, to set the edge of the cap box. For example, “Studio” takes its left edge from “Htudio” and its right edge from “Studih”.
+When the first or last letter of the descriptor is a glyph with a curved side, such as S · o, keep the text left aligned on its baseline and temporarily replace it with H if it is uppercase or h if it is lowercase, to set the edge of the cap box. For example, "Studio" takes its left edge from "Htudio" and its right edge from "Studih".
 
 Always get approval from the EO design team when creating a new descriptor or changing an existing one. Do not use temporary names, such as those of campaigns or events, as descriptors.
 ![descriptor-v] Vertical — set in Founders Grotesk Regular, type size 0.47H, tracking 0. Place the top of the cap box H/5 below the bottom edge of the symbol, center it on the symbol, then shift it left by H/100. This is because the E block of the EO symbol has the higher tonal value, which shifts the visual center to the left.

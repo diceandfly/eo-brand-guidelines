@@ -26,7 +26,7 @@ EO 리브랜딩의 웹용 브랜드 가이드라인. Astro 정적 사이트, 로
 ## 타이포 규칙
 5레벨 고정: display / heading / body / ui / label. 행간이 기준 단위(`--lh-unit`). 레벨마다 m(행간 배수)·p(행간÷폰트, 숫자 1.4 = 140% — % 금지: 아이폰 웹킷에서 깨짐, npm test [7])·ls·w 토큰만 가지며 폰트 사이즈는 계산값. 레벨을 늘리지 말 것.
 검색 · 스와치 · 로고 폴백의 파생 배율은 허용(새 레벨 아님): 검색 결과 ui × `--search-result-scale`, 컬러 카드 패널 body × `--swatch-panel-scale`(밝은 면 × `--swatch-panel-fg-light-scale`), 로고 폴백 글자 `--nav-logo-h`.
-서체는 Founders Grotesk(본문 포함)와 Founders Grotesk Mono(label)만 사용. woff2는 `public/fonts/`(git 제외).
+서체는 Founders Grotesk(본문 포함)와 Founders Grotesk Mono(label)만 사용. 한글 글리프는 Pretendard 로 떨어짐(tokens.css `--font-ko` · 서체 스택의 'Pretendard KO', `npm run fonts:ko` 로 받는 `public/fonts/pretendard`) — 가이드의 Multilingual 규칙이므로 지우지 말 것. woff2는 `public/fonts/`(git 제외).
 
 ## 컬러 규칙
 브랜드 팔레트 7색(`--c-*`)은 `EO color palette final.svg` 기준이며 임의로 바꾸지 않는다. UI는 시맨틱 토큰(`--bg`, `--fg`, `--accent` …)만 참조. 중간 톤은 새 HEX 대신 `color-mix()`. 배지 색(`--badge-do`, `--badge-dont`, `--badge-con`)은 UI 전용 역할 토큰 — 팔레트에 새 색을 더한 것이 아니므로 이름에 `--c-` 를 붙이지 않음(`--c-` 접두는 팔레트 7색만). 값이 팔레트 토큰을 참조하는 것은 허용(Do = `var(--c-bay-green)`, Conditional = `var(--c-air-white)`), Don't 주황(`--warn-orange`)만 팔레트 밖 색.
