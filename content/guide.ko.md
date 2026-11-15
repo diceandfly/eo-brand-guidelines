@@ -891,7 +891,7 @@ EO의 컬러가 일관되게 유지되도록 다음은 피하세요. 텍스트�
 - thread top, bottom width — thread 윗변과 아랫변의 폭. thread는 나사산을 추상화한 사다리꼴 셰이프로, 한쪽 변은 컬럼 끝에 수직으로 서고 반대쪽 변은 기울어지며, 아래쪽 thread는 위쪽을 컬럼 중심 기준으로 180° 회전한 모양입니다. 두 값의 차이가 thread의 기울기를 결정합니다. 기본값은 위 40% · 아래 0%(컬럼 폭에서 줄어드는 비율).
 - thread sides — double은 shaft 상하 양쪽, single은 한쪽에만 thread가 붙고 shaft가 아래쪽 바닥에 놓입니다.
 - thread amount — shaft 상하에 각각 붙는 thread의 개수.
-- thread compression — thread 폭이 한쪽으로 갈수록 점점 좁아지는 정도. 0이면 모든 thread의 너비가 균등하고, 값이 커질수록 한쪽으로 압축되는 세기가 강해집니다. 음수/양수 값은 compression의 방향을 결정하며, 개별 thread의 기울기는 반전되지 않고 그대로 유지됩니다.
+- thread compression — thread 폭이 한쪽으로 갈수록 점점 좁아지는 정도. 0이면 모든 thread의 너비가 균등하고, 값이 커질수록 한쪽으로 압축되는 세기가 강해집니다. 음수/양수 값은 compression의 방향을 결정하며, 개별 thread의 기울기는 반전되지 않고 그대로 유지됩니다. 유닛 전체를 좌우로 뒤집는 것도 가능하므로, 촘촘한 쪽과 thread의 방향은 어느 쪽으로든 만들 수 있습니다.
 - thread gutter — thread가 놓이는 세로 칸과 칸 사이 간격입니다. 설정한 값 하나가 유닛 안의 모든 칸 사이에 공통으로 적용됩니다. 빌더에서는 gutter로 표기합니다.
 
 ![param-shaft-size] shaft size — shaft의 두께 2-95%
@@ -934,11 +934,11 @@ Vocabulary는 이러한 맵핑 규칙을 모은 EO 그래픽 시스템의 어휘
 thread는 나사산 한 바퀴로서 한 번의 문제 해결을 의미합니다. 유닛 안에서 thread가 얼마나 촘촘한지 · 어느 쪽으로 쏠리는지 · 얼마나 길게 이어지는지는 그 시간의 성격을 표현합니다. thread로 표현하는 키워드는 역경 · 가속 · 번개 · 빌더입니다.
 
 - 역경 — 어려움의 시간, 환경의 저항. 유닛을 가로 방향으로 눕히는 것으로 표현합니다. thread가 촘촘할수록 더 큰 어려움을 표현, 어느 쪽이 촘촘한지는 시작과 끝의 고비를 표현합니다.
-- 가속 — thread 밀도의 변화는 때론 가속도, 힘이 붙는 구간 변화처럼 느껴질 수도 있습니다. compression이 진행 방향으로 촘촘해지면 가속이고, 반대인 감속이 될 수도 있습니다. 유닛을 반복해서 이어 붙이면 루틴처럼 되풀이되는 흐름처럼 보이기도 합니다.
+- 가속 — thread 밀도의 변화는 때론 가속도, 힘이 붙는 구간 변화처럼 느껴질 수도 있습니다. compression이 진행 방향으로 풀리면 가속이고, 반대로 촘촘해지면 감속이 될 수도 있습니다. 유닛을 반복해서 이어 붙이면 루틴처럼 되풀이되는 흐름처럼 보이기도 합니다.
 - 번개 — 스파크 · 영감 · 에너지. shaft가 충분히 길고 thread의 compression이 비교적 완만하게 퍼질 때, 마치 번개 줄기와 같은 인상을 줄 수 있습니다. 이 메타포에는 Builder Neon · Air White만 사용합니다.
 - 빌더 — 한 명의 빌더 · 사람 · 개체. 유닛을 세로 방향으로 세우는 것으로 표현합니다. compression은 하단을 촘촘하게 하며, 상단 thread가 기운 방향이 바라보는 방향이 됩니다. EO나 주인공을 대변하는 유닛에 Builder Neon, 당사자성은 있으나 주인공은 아닌 유닛에 Air White, 동료 · 친구에는 Day Blue · Bay Green, 타자 · 적대적 존재에는 Medium Gray를 사용합니다.
 ![thread-adversity] 역경 — 타임라인 방향으로 촘촘해지는 thread
-![thread-acceleration] 가속 — compression이 진행 방향으로 쏠린 thread
+![thread-acceleration] 가속 — 진행 방향으로 갈수록 넓어지는 thread
 ![thread-lightning] 번개 — 길고 가는, compression이 완만하게 적용된 thread
 ![thread-builder] 빌더 — compression의 무게중심을 아래에 둔, 바닥에 서 있는 듯한 인상
 

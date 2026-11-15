@@ -891,7 +891,7 @@ The **EO graphic unit** (hereafter, the unit) is the smallest element of the gra
 - thread top, bottom width — The width of the thread's top and bottom edges. The thread is a trapezoid abstracted from a screw thread: one side stands vertically at the end of the column, the opposite side slants, and the lower thread is the upper one rotated 180° about the column center. The difference between the two values sets the thread's slope. Defaults are top 40% · bottom 0% (the percentage taken off the column width).
 - thread sides — With double, threads attach to both the top and bottom of the shaft; with single, threads attach to one side only and the shaft rests at the bottom.
 - thread amount — The number of threads attached to each of the top and bottom of the shaft.
-- thread compression — How much the thread width narrows progressively toward one side. At 0, all threads have equal width; the higher the value, the stronger the compression toward one side. Negative and positive values set the direction of compression; the slope of each thread stays as it is and does not flip.
+- thread compression — How much the thread width narrows progressively toward one side. At 0, all threads have equal width; the higher the value, the stronger the compression toward one side. Negative and positive values set the direction of compression; the slope of each thread stays as it is and does not flip. The whole unit can also be flipped horizontally, so both the tight end and the thread direction can face either way.
 - thread gutter — The space between the vertical cells in which the threads sit. A single value applies in common to every gap between cells within a unit. In EO Graphic Builder it is labeled gutter.
 
 ![param-shaft-size] shaft size — shaft thickness 2-95%
@@ -934,11 +934,11 @@ This section mainly covers keyword expression; for guidance on visual quality, s
 A thread is one turn of a screw thread and stands for one act of problem solving. How tight the threads are within a unit · which way they lean · how long they run express the character of that time. Keywords expressed with thread: adversity · acceleration · spark · builder.
 
 - Adversity — A time of difficulty, resistance from the environment. Expressed by laying the unit horizontally. Tighter threads express greater difficulty; which end is tighter shows whether the hardest stretch comes at the start or at the end.
-- Acceleration — A change in thread density can feel like acceleration, a stretch where momentum builds. When compression tightens in the direction of travel, it reads as acceleration; reversed, as deceleration. Units repeated end to end can also read as a recurring, routine-like flow.
+- Acceleration — A change in thread density can feel like acceleration, a stretch where momentum builds. When compression loosens in the direction of travel, it reads as acceleration; when it tightens instead, it can read as deceleration. Units repeated end to end can also read as a recurring, routine-like flow.
 - Spark — Lightning · inspiration · energy. When the shaft is long enough and the thread compression spreads relatively gently, the unit can resemble a bolt of lightning. Use only Builder Neon · Air White for this metaphor.
 - Builder — A single builder · person · entity. Expressed by standing the unit vertically. Compression tightens the bottom, and the direction in which the upper threads lean is the direction the figure faces. Use Builder Neon for a unit that represents EO or the protagonist, Air White for a unit with a stake in the story but not the protagonist, Day Blue · Bay Green for peers · friends, and Medium Gray for others · hostile presences.
 ![thread-adversity] Adversity — threads tightening along the timeline
-![thread-acceleration] Acceleration — threads with compression weighted in the direction of travel
+![thread-acceleration] Acceleration — threads that widen in the direction of travel
 ![thread-lightning] Spark — long, thin threads with gentle compression
 ![thread-builder] Builder — compression weighted at the bottom, as if standing on the ground
 
