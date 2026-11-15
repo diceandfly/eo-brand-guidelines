@@ -158,6 +158,7 @@ E34(Scalability 장표의 10mm 경계 표기)는 2026-11-15 본문을 장표에 
 
 - [CLAUDE.md](CLAUDE.md) — 구조 · 용어 · 타이포 · 컬러 규칙(정본)
 - [docs/handoff-ai.md](docs/handoff-ai.md) — 불변식 · 작업 순서 · 검증 · 런타임 함정
+- [docs/coldstart-verification.md](docs/coldstart-verification.md) — AI 인수 공방 검증 기록(콜드스타트 3라운드 · 조건 · 결과 · 다시 돌리는 절차 · 프롬프트)
 - [docs/HANDOFF.md](docs/HANDOFF.md) — 사람용 요약
 - [docs/file-management.md](docs/file-management.md) — 콘텐츠 · 이미지 · 아카이브 튜토리얼
 - [docs/logo-generator/](docs/logo-generator/) — 생성기 사양(SPEC) · 부채(DEBT)
