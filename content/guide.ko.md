@@ -1242,16 +1242,16 @@ Builder Neon · Air White · Day Blue · Bay Green · Medium Gray를 [[graphic-u
 
 
 ### Print {layout=grid-2}
-명함 · 포스터 · 빌보드 · 거리 배너 등 인쇄 매체입니다.
+명함 · 포스터 · 빌보드 · 행잉 배너 등 인쇄 매체입니다.
 
 - 컬러 조합은 [[graphic-pattern#color]]를 따라 Solid Gray · Space Black 배경을 우선하고, Builder Neon 배경은 제한적으로 사용해 브랜드의 존재감을 강하게 드러내세요.
 - 인쇄물은 [[colors#eo-palette|EO Palette]]의 CMYK 값으로 출력합니다. 화면용 RGB · HEX 값을 인쇄 파일에 그대로 쓰면 색이 달라지므로, 인쇄 파일은 처음부터 CMYK 모드로 만듭니다. 색 재현이 중요하거나 Builder Neon 배경이 넓은 지면은 Pantone 별색으로 인쇄합니다.
 - Air White는 잉크 대신 백색 용지로 대체할 수 있습니다. 용지 · 소재에 따라 같은 값도 색이 달라지므로, 본 인쇄 전에 교정 인쇄로 컬러를 확인합니다.
 - 명함처럼 앞뒷면이 연계되는 작은 지면은 한 면에 그래픽 패턴을, 다른 면에 정보를 나눠 담고, 마진과 그리드는 주요 콘텐츠가 있는 면을 기준으로 합니다([[typography#zoning|Zoning]]).
 
-빌보드 · 거리 배너처럼 멀리서 짧은 시간에 읽히는 옥외 매체는 [[graphic-pattern#zoning]]의 예시와 같이 그래픽 패턴 영역을 크게 잡고, 메시지는 헤드라인 1-3줄 수준으로 줄입니다. 패턴의 밀도는 시각적 주목도와 보는 거리를 모두 고려해 결정하며, 심볼의 크기는 [[symbol#scalability]]의 보는 거리 대비 비율로 정합니다. 거리 배너처럼 바닥에 세우거나 기둥에 매다는 세로 매체는 그래픽 패턴 영역을 하단에 둘 수 있습니다.
+빌보드 · 행잉 배너처럼 멀리서 짧은 시간에 읽히는 옥외 매체는 [[graphic-pattern#zoning]]의 예시와 같이 그래픽 패턴 영역을 크게 잡고, 메시지는 헤드라인 1-3줄 수준으로 줄입니다. 패턴의 밀도는 시각적 주목도와 보는 거리를 모두 고려해 결정하며, 심볼의 크기는 [[symbol#scalability]]의 보는 거리 대비 비율로 정합니다. 행잉 배너처럼 바닥에 세우거나 기둥에 매다는 세로 매체는 그래픽 패턴 영역을 하단에 둘 수 있습니다.
 ![app-billboard] {bg-cover} 1. 빌보드
-![app-street-banner] {bg-cover} 2. 거리 배너
+![app-hanging-banner] {bg-cover} 2. 행잉 배너
 ![app-poster] {bg-cover} 3. 포스터
 ![app-businesscard] {bg-cover} {zoom=1.05} 4. 명함
 
