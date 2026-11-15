@@ -230,11 +230,11 @@ Because the visual weight of the EO symbol drifts to the left the smaller it is 
 
 ### Symbol
 #### + Scalability
-The EO symbol is designed and tested to work across a range of sizes. Every size rule is based not on the actual pixel · print size but on the height seen by the eye at a distance of 500mm; for media viewed from farther away, apply it to the height converted to the end user's typical viewing distance (actual height × 500 ÷ distance).
+The EO symbol is designed and tested to work across a range of sizes. Every size rule is based not on the actual pixel · print size but on the height seen by the eye at a distance of 500mm; for media viewed from farther away, apply it to the height converted to the end user's typical viewing distance (actual height × 500 ÷ distance). For the viewing distance of each medium, refer to the Medium presets of the [[download|logo generator]]; for physical media whose viewing distance varies, we recommend converting at a distance the designer judges from the end user's main usage environment.
 
 - Optimal range — A height of 40-70px (about 8-15mm) on a 16-inch Mac display viewed from 500mm. Relative to viewing distance, this is 1/60-1/33 of the distance; on other media, scale by this ratio. The optical correction of the thread angle is also tuned to this range.
 - Recommended maximum size — A height of 70px (about 15mm, 1/33 of the viewing distance), the top of the optimal range. We recommend not using the symbol larger than this. Sizes above it are a range prepared for cases that still need a larger symbol.
-- Minimum size — A height of 20px on screen (about 4mm, 1/125 of the viewing distance) and 4mm in print. Below this, the threads of the E block blur together, so ask the EO design team to review.
+- Minimum size — A seen height of 4mm (20px, 1/125 of the viewing distance), on screen and in print alike. Below this, the threads of the E block blur together, so ask the EO design team to review.
 - Maximum size — A height of 125px (about 25mm, 1/20 of the viewing distance). Avoid using it larger than this wherever possible. Any larger and the symbol reads as a flat shape rather than a graphic. When you need a stronger presence, use the [[graphic-pattern#zoning|graphic pattern]] instead of the symbol.
 ![scalability] {zoom=1.05}
 
@@ -483,12 +483,11 @@ The signature is a fixed combination with a defined relationship between symbol 
 ![dont-3]{dont} {zoom=1.6} Do not use a different typeface for the descriptor
 ![dont-4]{dont} {zoom=1.6} Do not change the font settings of the descriptor
 ![dont-5]{dont} {zoom=1.6} Do not break the descriptor onto multiple lines
-![dont-6]{dont} {zoom=1.5} Do not replace the logo with the words "EO Studio" alone, without the symbol
-![dont-7]{dont} {zoom=2.4} Do not combine the sub symbol with a descriptor
-![dont-8]{dont} {zoom=1.6} Do not color the symbol and the descriptor differently
-![dont-9]{dont} {zoom=1.6} Do not stretch or distort the signature
-![dont-10]{dont} {zoom=1.6} Do not apply glow · shadow · gradient effects
-![dont-11]{dont} {zoom=1.6} Do not reduce legibility by placing the signature over complex images
+![dont-6]{dont} {zoom=2.4} Do not combine the sub symbol with a descriptor
+![dont-7]{dont} {zoom=1.6} Do not color the symbol and the descriptor differently
+![dont-8]{dont} {zoom=1.6} Do not stretch or distort the signature
+![dont-9]{dont} {zoom=1.6} Do not apply glow · shadow · gradient effects
+![dont-10]{dont} {zoom=1.6} Do not reduce legibility by placing the signature over complex images
 
 
 
@@ -888,7 +887,7 @@ Like the [[symbol#motif|EO symbol]], the **EO graphic unit** (hereafter, the uni
 The **EO graphic unit** (hereafter, the unit) is the smallest element of the graphic system. The logo's E block, the pattern library and application graphics are all built with the same system. Units are generated from parameters in EO Graphic Builder; for detailed instructions, see the Help menu inside the tool.
 
 - shaft size — The thickness of the shaft rectangle, as a percentage of the unit's total height including the threads on both sides. At around the default of 35%, the shaft size makes it easy to keep visual density ideal even in relatively complex graphic patterns.
-- thread top, bottom width — The width of the thread's top and bottom edges. The thread is a trapezoid abstracted from a screw thread: one side stands vertically at the end of the column, the opposite side slants, and the lower thread is the upper one rotated 180° about the column center. The difference between the two values sets the thread's slope. Defaults are top 40% · bottom 0% (the percentage taken off the column width).
+- thread top, bottom width — The width of the thread's top and bottom edges. The thread is a trapezoid abstracted from a screw thread: one side stands vertically at the end of the column, the opposite side slants, and the lower thread is the upper one rotated 180° about the column center. The difference between the two values sets the thread's slope. Defaults are top 40% · bottom 0% (the top edge as a percentage of the column width, the bottom edge as the percentage taken off the column width).
 - thread sides — With double, threads attach to both the top and bottom of the shaft; with single, threads attach to one side only and the shaft rests at the bottom.
 - thread amount — The number of threads attached to each of the top and bottom of the shaft.
 - thread compression — How much the thread width narrows progressively toward one side. At 0, all threads have equal width; the higher the value, the stronger the compression toward one side. Negative and positive values set the direction of compression; the slope of each thread stays as it is and does not flip. The whole unit can also be flipped horizontally, so both the tight end and the thread direction can face either way.
@@ -910,7 +909,7 @@ Color shows who the protagonist of a graphic is, what forms the environment, and
 - Builder Neon — The main color, highest in hierarchy, expressing the nuance of the builder · protagonist · focus · highlighting. It works best when it covers 20-50% of the whole page.
 - Air White — A neutral color, high in hierarchy but without identity, expressing the nuance of energy · the counterpart · semi-highlighting. It works best when it covers 10-30% of the whole page.
 - Day Blue — Builders of a different character · community · surrounding elements. Emphasizes the nuance of positive energy · optimism drawn from a blue sky.
-- Bay Green — Builders of a different character · community · surrounding elements. Emphasizes the nuance of softness · friendliness drawn from the green of California's chaparral hills. (team, teamwork, co-working, diversity, nature)
+- Bay Green — Builders of a different character · community · surrounding elements. Emphasizes the nuance of softness · friendliness drawn from the green of California's chaparral hills.
 - Medium Gray — Expresses the nuance of mechanical neutrality: inactivity · the other · indifference · conservatism · the material world.
 - Space Black — As a unit color, use it sparingly rather than freely, so that it secures visual hierarchy when needed. For situations where visual impact comes first, a combination with a Builder Neon background is recommended, expressing overwhelming presence.
 - Solid Gray is not used as a unit color.
@@ -1262,8 +1261,9 @@ Outdoor media such as billboards · hanging banners, read from afar and in a sho
 A brand merch line of apparel such as tees · hoodies · caps, plus hang tags · stickers · pin badges. On the tee, place a small EO symbol on the front chest and a large dedicated graphic of simplified units on the back; on the hoodie, place a pattern that blends a pair at an equal ratio ([[graphic-unit#vocabulary-formation|Dimension]]) on the front.
 
 - For apparel graphics, screen printing is recommended so that vivid single colors stand out. Mix the inks to the Pantone values in [[colors#eo-palette|EO Palette]]. Screen printing struggles with very thin lines and gradients, so instead of dense patterns whose threads get too thin, use graphics of simplified units.
-- Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. When printing light ink on dark fabric, lay down a white underbase first for full color.
+- Treat the fabric color as the graphic's background color and follow the combinations in [[graphic-pattern#color]]. The color of the symbol on apparel follows the same combinations. When printing light ink on dark fabric, lay down a white underbase first for full color.
 - Always keep the symbol on apparel small and compact, and prefer heat-transfer printing, which carries the crisp graphic as it is. This is because embroidery brings out a strongly analog mood.
+- For merch rendered in the color of its material, such as metal · engraving, apply the form alone instead of a color combination, and always render it in a single color.
 - For paper accessories such as hang tags · stickers, print colors follow the standards in [[#print|Print]].
 ![app-tee] {bg-cover} 1. Oversized Tee
 ![app-hoodie] {bg-cover} 2. Hoodie

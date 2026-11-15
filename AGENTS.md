@@ -37,7 +37,7 @@
 | E32 | Symbol › Scalability · Signature › Scalability 장표 좌상단 네모 ("1cm · Optimized at 1cm on screen") | 125px(≈25mm) 행 옆에 있어 그 크기가 "최적" 이라는 뜻처럼, 또는 본문의 최적 범위(8-15mm)와 다른 기준처럼 보임 | 이 장표의 범례 정보(화면에서 1cm 로 보이는 기준 네모)일 뿐 크기 규칙이 아님. 장표의 모든 수치는 실제 픽셀 · 인쇄 크기가 아니라 눈에 보이는 크기 기준 | 확정 | 2026-11-13 |
 | E39 | Symbol › Scalability · Signature › Scalability 본문과 Symbol 장표의 권장 최대 크기 "70px(약 15mm, 1/33)" | 약 5px/mm 로 셈하면 70px = 14mm 이고 15mm = 75px = 1/33 이라 세 값이 딱 맞지 않음(로고 생성기의 경계는 15mm) | 대략적인 기준이며, 1.4cm 보다 1.5cm 로 말하는 쪽을 사람들이 선호해 15mm 로 적음. px · mm 를 서로 맞춰 고치지 말 것 | 확정 | 2026-11-15 |
 | E19 | Symbol › Usage › Placement (`usage-placement` A3 칸) | 밝은 심볼 · 흐린 심볼이 한 칸에 둘, 범례 없음 | 디자이너가 그대로 두기로 함(의도된 표현) | 확정 | 2026-11-14 |
-| E18 | Symbol › Don'ts 1번째(`dont-1` 가로 약 10%) · Signature › Don'ts 9번째(`dont-9` 세로 약 6%) | "늘리지 마세요" 인데 왜곡이 약해 잘 안 보임 | 실제로 흔히 일어날 법한 실수의 크기라 이 정도가 맞음 | 확정 | 2026-11-14 |
+| E18 | Symbol › Don'ts 1번째(`dont-1` 가로 약 10%) · Signature › Don'ts 8번째(`dont-8` 세로 약 6%) | "늘리지 마세요" 인데 왜곡이 약해 잘 안 보임 | 실제로 흔히 일어날 법한 실수의 크기라 이 정도가 맞음 | 확정 | 2026-11-14 |
 
 #### 02 Logo › Sub Symbol
 
@@ -57,7 +57,7 @@
 | E33 | Signature › Usage › Symbol or Signature 본문 ("텍스트가 또렷하게 읽히지 않을 만큼 작은 자리") | 시그니처 대신 심볼을 쓰는 "작은 자리" 에 수치 기준이 없음(Scalability 의 최소 크기 4mm · 20px 와 이어지지 않음) | 상황 · 사용자 · 디바이스를 디자이너가 종합적으로 고려할 일이라 보이는 크기가 기준이 되는데, 실험 연구를 한 바 없어 명시적 기준을 두지 않음(2026-11-15 괄호 안 수치 삭제). 수치를 다시 넣지 말 것 | 확정 | 2026-11-15 |
 | E21 | Signature › Inversion 세로형(`inversion-v` "Align center") ↔ Descriptor 세로형(`descriptor-v` H/100 왼쪽 보정) | 다크에서 H/100 보정이 빠진 것처럼 보임 | 라이트에서 한 번 보정한 위치를 기준으로 하므로 문제없음 | 확정 | 2026-11-14 |
 
-함께 볼 것: E32(Scalability 장표 좌상단 네모) · E20(Partner Lockup 가로형) · E18(Don'ts 9번째) — Symbol 표
+함께 볼 것: E32(Scalability 장표 좌상단 네모) · E20(Partner Lockup 가로형) · E18(Don'ts 8번째) — Symbol 표
 
 E34(Scalability 장표의 10mm 경계 표기)는 2026-11-15 본문을 장표에 맞춰 고치면서 뺐습니다(경계인 10mm 에서는 두 형 모두). 빠진 번호는 다시 쓰지 않습니다.
 
@@ -85,8 +85,9 @@ E34(Scalability 장표의 10mm 경계 표기)는 2026-11-15 본문을 장표에 
 | # | 위치 | 겉보기 문제 | 허용 이유 | 상태 | 결정일 |
 |---|---|---|---|---|---|
 | E37 | Graphic Unit › Motif("shaft가 두꺼울수록 앞으로 나아가는 힘도 강해집니다") ↔ Vocabulary › Shaft › 다양성("무조건 두꺼울수록 좋은 것이 아니라 각기 다른 개성") | 연달아 읽으면 shaft 두께의 뜻이 상충처럼 보임 | 메타포는 맥락마다 다르게 읽음 — Motif 는 shaft 의 일반 정의(힘의 세기), 다양성은 여러 유닛을 나란히 놓을 때의 성격 차이 | 확정 | 2026-11-15 |
-| E11 | Graphic Unit › Parameters (`param-thread-width`) ↔ Morphology › Shape 1번째(`shape-do`) | 노란 선 길이(컬럼의 40%)가 본문 "컬럼 폭에서 줄어드는 비율" 과 안 맞아 보임. `shape-do` 는 캡션 수치(top 40% · bottom 10%)와 그림에서 잰 변의 비율이 달라 보임 | 왼쪽 장표는 파라미터가 어느 변인지 가리키는 그림이지 값을 정하는 그림이 아님, 오른쪽은 가능한 경우 하나. 두 장 모두 수치를 재는 도면이 아니므로, 그림에서 잰 비율을 캡션 · 본문의 수치와 대조하지 말 것 | 확정 | 2026-11-13 (11-15 shape-do 캡션 수치 포함) |
+| E11 | Graphic Unit › Parameters (`param-thread-width`) ↔ Morphology › Shape 1번째(`shape-do`) | `shape-do` 는 캡션 수치(top 40% · bottom 10%)와 그림에서 잰 변의 비율이 달라 보임. `param-thread-width` 는 노란 선 길이(컬럼의 40%)가 본문 괄호 "컬럼 폭에서 줄어드는 비율" 과 안 맞아 보였으나, 2026-11-16 본문 괄호를 "윗변은 컬럼 폭 대비 폭, 아랫변은 컬럼 폭에서 줄어드는 비율" 로 고쳐 풀림 | 왼쪽 장표는 파라미터가 어느 변인지 가리키는 그림이지 값을 정하는 그림이 아님, 오른쪽은 가능한 경우 하나. 두 장 모두 수치를 재는 도면이 아니므로, 그림에서 잰 비율을 캡션 · 본문의 수치와 대조하지 말 것 | 확정 | 2026-11-13 (11-15 shape-do 캡션 수치 포함, 11-16 본문 괄호 수정) |
 | E25 | Graphic Unit › Parameters (`param-thread-compression` "compression -1 / -2") | + 방향 예시가 없음 | 한 장표에서 둘 다 보이려고 반전하면 직관성이 떨어지고, 파라미터당 장표 2장은 양식 불일치라 타협. − 부호로 유추 | 확정 | 2026-11-14 |
+| E40 | Graphic Unit › Parameters · Don'ts, Graphic Pattern › Zoning 본문의 "EO Graphic Builder" ↔ 저장소 | 가이드가 유닛을 만드는 도구로 가리키는 EO Graphic Builder(빌더 내 도움말 포함)가 저장소 · 핸드오프 문서에 없음 | 빌더는 프로젝트 중반에 인하우스에 납품했고, 인하우스가 필요에 맞게 고쳐 쓰며 따로 관리하는 도구라 이 저장소의 범위가 아님. 빠졌다고 보고하거나 가이드의 빌더 언급을 고치지 말 것 | 확정 | 2026-11-16 |
 | E26 | Graphic Unit › Color (`color-gray` · `color-blue-green` SVG) | 캡션에 없는 Builder Neon 유닛이 섞여 있음 | 그 캔버스 안에서 그레이(블루 · 그린)의 역할을 보여 주는 그림이라 상관없음 | 확정 | 2026-11-14 |
 | E17 | 참조 링크 "유닛 컬러" — Graphic Unit › Shaft › 다양성 → Graphic Pattern › Color, Graphic Pattern › Color → Graphic Unit › Color | 같은 라벨이 서로 반대 페이지로 감 | 문맥마다 가리키는 내용이 다름(다양성 = 여러 색을 쓰는 조합 규칙, Pattern › Color = 색의 뜻). 그대로 둠 | 확정 | 2026-11-13 |
 | E15 | Graphic Unit › Pair › 파동(`pair-pulse`) | 본문 "중심대칭 또는 좌우대칭" ↔ 장표는 좌우대칭 하나 | 장표는 경우 하나를 보여 줌. 본문 유지 | 확정 | 2026-11-13 |
@@ -106,7 +107,7 @@ E34(Scalability 장표의 10mm 경계 표기)는 2026-11-15 본문을 장표에 
 | E35 | Graphic Pattern › Pattern Gutter 본문 ("thread gutter의 1.5배" ↔ "20-25px 수준") | thread gutter 10-20px 의 1.5배는 15-30px 인데 본문은 20-25px | 각 범위의 가운데 값으로 보면 맞음 — thread gutter 10-20px 의 가운데 15px × 1.5 = 22.5px = 20-25px 의 가운데. 규칙은 배수(1.5배)이고 px 는 그 대표값이라 양 끝(15 · 30px)까지 넓혀 적지 않음 | 확정 | 2026-11-15 |
 | E29 | Graphic Pattern › Color (`color-do-1` · `color-do-3` 등) | 캡션의 색 나열 순서 ↔ 장표의 색 순서 | 비주얼상 좋아서 장표 순서는 섞음. 캡션도 그대로 | 확정 | 2026-11-14 |
 
-함께 볼 것: E13(`alignment-do-2` 슬로건) — 1-A, E12(`color-do-3`) · E17("유닛 컬러" 링크) — Graphic Unit 표
+함께 볼 것: E13(`alignment-do-2` 슬로건) — 1-A, E12(`color-do-3`) · E17("유닛 컬러" 링크) · E40(Zoning 의 "EO Graphic Builder") — Graphic Unit 표
 
 #### 05 Graphic System › Applications
 
