@@ -63,7 +63,7 @@ const archived = process.env[ARCHIVE_ENV];   // 핸드오프 아카이브 빌드
   </ul>
   </div>
 
-  <!-- 핸드오프 아카이브 표시 (아카이브 빌드에만). 링크는 같은 페이지의 현재 가이드 — data-archive-exit 는 scripts/archive.mjs 가 경로를 아카이브로 바꾸지 않는 표시 -->
+  <!-- 핸드오프 아카이브 표시 (아카이브 빌드에만, 두 언어 모두 영문 — UI_TEXT archive · archiveExit). 링크는 같은 페이지의 현재 가이드 — data-archive-exit 는 scripts/archive.mjs 가 경로를 아카이브로 바꾸지 않는 표시 -->
   {archived && (
     <p class="nav__archive"><span>{UI_TEXT[lang].archive} · {archived}</span><a data-archive-exit href={current?.url ?? `/${lang}`}>{UI_TEXT[lang].archiveExit}</a></p>
   )}
